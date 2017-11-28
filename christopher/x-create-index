@@ -1,0 +1,145 @@
+#lang racket
+
+(require xml net/sendurl unstable/sequence)
+
+(module+ test
+  (require rackunit))
+
+(define TARGET "index.html")
+
+;; -----------------------------------------------------------------------------
+;; -> Void
+(module+ test
+  (displayln (main))
+  (send-url
+   (string-append
+    "file:///Users/matthias/0Unison/Private/Felleisen.org/htdocs/christopher/"
+    TARGET)))
+
+(define (main)
+  (define loi (create-loi))
+  (define mat (create-matrix loi))
+  (define xex (create-xtable mat))
+  (define bod (create-xbody xex))
+  (define htm (create-xhtml bod))
+  ; (pretty-print xex)
+  (with-output-to-file TARGET
+    #:exists 'replace
+    (lambda ()
+      (display-xml/content htm))))
+
+;; Xexpr -> Xexpr 
+(define (create-xbody x)
+  `(html
+    (head
+     (title "Christopher's World"))
+    (body
+     (center
+      ,@(make-list 3 `(p ,@(make-list 33 'nbsp))))
+     (center
+      (h3 "2015 Machu Pichu")
+      (br)
+      (br)
+      (br)
+      ,x))))
+  
+;; -----------------------------------------------------------------------------
+;; [Matrix X] = a list of lists of equal length of Xs and 'nbsp
+;; Image      = Path [to .png file]
+
+(module+ test
+  (void #;displayln (create-loi)))
+
+(define (create-loi)
+  (for*/list ([f (directory-list)]
+              [n (in-value (path->string f))]
+              #:when (regexp-match ".png$" n))
+    n))
+
+;; -----------------------------------------------------------------------------
+;; Xexpr -> XHTML
+(define (create-xhtml x)
+  (xexpr->xml x))
+
+;; -----------------------------------------------------------------------------
+;; [Matrix X] -> Xexpr
+(define (create-xtable image-matrix)
+  `(table
+    ()
+    ,@(for/list ((row image-matrix))
+        `(tr
+          ,@(for/list ([image row])
+              `(td ([valign ,(random-pick valign)]
+                    [width ,W]
+                    [height ,H]
+                    [align ,(random-pick align)])
+                   ,(if (symbol? image)
+                        image
+                        `(a ([href ,(jpg image)])
+                            (img ([src ,image] [alt "x"] [width ,width]))))))))))
+
+(module+ test
+  (check-equal? (jpg "x.png") "x.jpg"))
+(define (jpg f)
+  (regexp-replace ".png$" f ".jpg"))
+
+
+;; -----------------------------------------------------------------------------
+;; [Listof X] -> [Matrix X]
+(module+ test
+  (define (same-length m)
+    (define L (length (first m)))
+    (and (= (length m) L) (andmap (lambda (n) (= L (length n))) m)))
+  (check-pred same-length (create-matrix '(1 2 3)))
+  (check-pred same-length (create-matrix '(1 2 3 4))))
+
+(define (create-matrix loi)
+  (define L (length loi))
+  (define N (nearest-square L))
+  (define K (fill-with-random-spaces loi (- (* N N) L)))
+  (for/list ((row (in-slice N K)))
+    row))
+
+;; -----------------------------------------------------------------------------
+;; [Listof Image] N -> [Listof OImage]
+(module+ test
+  (check-pred (lambda (n) (= (length n) 4)) (fill-with-random-spaces '(1 2) 2)))
+
+(define (fill-with-random-spaces l0 n)
+  (for/fold ([l l0]) ([space (make-list n 'nbsp)])
+    (add-to space l)))
+
+;; -----------------------------------------------------------------------------
+;; X [Listof X] -> [Listof X]
+(module+ test
+  (check-true (cons? (member 1 (add-to 1 '(0 2 4))))))
+
+(define (add-to x l)
+  (define L (length l))
+  (define X (random L))
+  (append (take l X) (list x) (drop l X)))
+
+;; -----------------------------------------------------------------------------
+;; N -> N
+(module+ test
+  (check-equal? (nearest-square 4) 2)
+  (check-equal? (nearest-square 3) 2))
+
+(define (nearest-square n)
+  (for*/first ([i (in-naturals n)][k (in-value (floor (sqrt i)))]
+              #:when (= (* k k) i))
+    (sqrt i)))
+
+;; -----------------------------------------------------------------------------
+;; [Listof X] -> X
+(module+ test
+  (check-true (cons? (member (random-pick align) align))))
+
+(define (random-pick l)
+  (list-ref l (random (length l))))
+
+(define align (map symbol->string '(left center right)))
+(define valign (map symbol->string '(bottom middle top)))
+(define width (number->string 100))
+(define W "170")
+(define H "130")

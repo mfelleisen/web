@@ -1,0 +1,43 @@
+#!/usr/bin/env racket
+#lang racket
+
+(require 2htdp/image)
+
+(define (main)
+  (for ((jpg (in-directory)) #:when (regexp-match ".jpg$" (path->string jpg)))
+    (move-and-label-one jpg)))
+
+;; Path -> Void
+;; create png and create copy of picture with new name 
+(define (move-and-label-one jpg)
+  (define str (path->string jpg))
+  (cond
+    [(regexp-match "\\.png" str) "done"]
+    [(regexp-match "\\.jpg" str) 
+     (with-handlers ((exn? (lambda (e) (displayln `(,jpg ,str ,(exn-message e))))))
+       (define png (regexp-replace "\\.jpg" str ".png"))
+       (define flg (save-image (label-image jpg) png))
+       (unless flg (error 'move-and-label "failed: ~a" png))
+       (displayln `(moved ,jpg to ,png)))]
+    [else (error 'move-and-label-one "shouldnt happen: ~a" str)]))
+
+;; Path -> PNG
+(define (label-image jpg)
+  (define p (path->string jpg))
+  (define b (bitmap/file p))
+  (define f (second (regexp-match #rx"(.*).jpg" p)))
+  (define t (text f 33 'white))
+  (define t* (map (lambda (a) (rotate a t)) '(0 90 180 270)))
+  (define b000 (overlay/align/offset 'left  'top    (first t*)  0 0 b))
+  (define b090 (overlay/align/offset 'left  'bottom (second t*) 0 0 b000))
+  (define b180 (overlay/align/offset 'right 'bottom (third t*)  0 0 b090))
+  (define b270 (overlay/align/offset 'right 'top    (fourth t*) 0 0 b180))
+  b270
+  ;; now return 
+  (scale .2 b))
+
+; (label-image (build-path "ani1.JPG"))
+
+; (move-and-label-one (string->path "ani1.JPG"))
+
+(main)
