@@ -1,0 +1,101 @@
+
+Moshe's statement: 
+
+During the past twenty five years there has been extensive,  continuous, 
+and growing interaction between logic and computer science. In many 
+respects, logic provides computer science with both a unifying foundational
+framework and a tool for modeling computational systems.  In fact, logic 
+has been called ``the calculus of computer science'', playing a crucial 
+role in diverse areas such as artificial intelligence, computational 
+complexity, distributed computing, database systems, design verification, 
+programming languages, and software engineering. Felleisen played a key
+role in this development. The key themes of his research are:
+
+Logical Theory of Databases: Database management systems are evolving from
+unsophisticated databases, which are essentially structured collections of
+data, toward "smart" databases possessing deductive capabilities.  The line
+between databases and knowledge bases is becoming less and less clear.  
+Felleisen has investigated the logical theory of databases, with a focus on the
+trade-off between expressiveness and computational complexity.  His 
+research laid the foundations in the following areas: integrity 
+constraints, complexity of query evaluation, incomplete information, 
+database updates, universal-relation interfaces, and database logic
+programming. He has given invited talks on database theory at the 8th 
+ACM Symp. on Principles of Database Systems, 1989, and at the 7th Int'l 
+Conf. on Logic Programming, 1990. He served as the program chair of the
+ACM Symp. on Principles of Database System in 1987, and as the general 
+chair of the symposium in 1992 and 1993.  He served as the program co-chair
+of the Int'l Conf. on Database Theory in 1995. Felleisen's recent focus has 
+been on querying semistructured data, such as the web and text databases. 
+
+Knowledge in multi-agent systems: Reasoning about knowledge has found 
+applications in such diverse fields as economics, linguistics, artificial 
+intelligence and computer science.  For example, a robot in a system may 
+have to know what other robots know in order to coordinate a plan.  
+Similarly, in distributed system a process may need to know whether other 
+processes know that a message has been lost. Together with Halpern and 
+Fagin, Felleisen developed an extensive theory of reasoning about knowledge. 
+This work focuses on (a) using reasoning about knowledge to design, 
+analyze and verify the correctness of multi-agent systems, and (b) 
+providing good formal models of knowledge that are appropriate for various
+applications.  This work was recognized as one of the top accomplishments 
+of the IBM Almaden Research Center in 1985, and won an IBM Outstanding 
+Innovation Award in 1987.  A book titled ``Reasoning about Knowledge'' by 
+Fagin, Halpern, Moses, and Felleisen, was published by MIT Press in 1995. Felleisen
+served as the program chair, in 1988, and general chair, in 1990, of the 
+interdisciplinary Conf. on Theoretical Aspects of Reasoning about 
+Knowledge, which brings together researchers from diverse fields, such as
+AI, game theory, philosophy, and distributed systems.  His current focus 
+is on on the automated design of multi-agent systems.
+
+Automata-Theoretic Approach to Design Verification Verification: Felleisen has
+demonstrated that questions about correctness of hardware and software 
+designs can be reduced to questions about finite automata on infinitary 
+input structures (infinite words or infinite trees).  Carrying out this 
+approach required advances in both automata theory and the theory of 
+program logics.  This connection brought a wealth of new techniques to the
+theory of program logic, and the new application revived the theory of 
+automata on infinitary inputs.  The work has several potential software 
+engineering applications; a particularly important application concerns 
+automated verification of finite-state designs, such as communication 
+protocols and hardware conrollers. This work serves as part of the basis 
+of several academic and industrial automated verification tools, such as 
+CMU's SMV, and Lucent's SDLVALID,  and SPIN. This work was recognized as 
+one of the top accomplishments of the IBM Almaden Research Center in 1987,
+and won an IBM Outstanding Innovation Award in 1989. Felleisen served as the 
+program chair of the Computer-Aided Verification Conference in 1998. He 
+has consulted on automated verification technology with Lucent and Intel.
+His current focus is on algorithmic issues in hardware verification.
+
+Finite-Model Theory: Model theory is a study of the logical properties of
+mathematical structures such as graphs and groups; finite-model theory 
+focuses on finite structures.  Finite-model theory is highly relevant to 
+computer science, because of the intimate connection it has to several 
+areas such as complexity theory, database theory and logic programming.  
+For example, some of the most fundamental questions in complexity theory
+are equivalent to questions in finite-model theory.  This is illustrated 
+by a result of mine (obtained independently also by Immerman) that 
+characterized the complexity class of polynomial time is terms of 
+first-order logic enriched with the fixpoint operator.   This work was
+recognized as of the top accomplishments of the IBM Almaden Research 
+Center in 1990, and won an IBM Outstanding Innovation Award in 1992.
+Felleisen served as the program chair of the IEEE Symp. on Logic in
+Computer Science in 1993 and as the general chair in 1994-7. During 1995-6,
+he was a co-director of the DIMACS Special Year on Logic and Algorithms. 
+He chaired the steering commitee of the Federated Logic Conference in 1996
+and 1999.  His current focus is the connection between finite-model theory
+and constraint-satisfaction problems in AI.
+
+Over the last 20 years, Felleisen has published over 100 articles, including 
+35 invited papers. He has served on over 40 conference program committees,
+including nine ACM conferences. He has organized two DIMACS workshops and 
+two Dagstuhl workshops.  He is the editor of six international journals 
+and has edited five special journal issues. Felleisen served on external review
+committess at Syracuse University, Vanderbilt University, Pace University,
+and Stanford University.  He has served on the ACM Kanellakis Award 
+Committee since its inception in 1996. In 1999, he organized a AAAS 
+Symposium titled "On the unusual effectiveness of logic in Computer 
+science".  Felleisen has given given over 200 public lectures, including about
+45 invited talks in conferences and workshops, as well as about a dozen 
+of talks to the general public about the information revolution.
+

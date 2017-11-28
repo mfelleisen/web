@@ -1,0 +1,465 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"/><meta name="viewport" content="width=device-width, initial-scale=0.8"/><title>Developing Developers</title><link rel="stylesheet" type="text/css" href="scribble.css" title="default"/><link rel="stylesheet" type="text/css" href="figure.css" title="default"/><link rel="stylesheet" type="text/css" href="manual-style.css" title="default"/><link rel="stylesheet" type="text/css" href="manual-racket.css" title="default"/><script type="text/javascript" src="scribble-common.js"></script><script type="text/javascript" src="figure.js"></script><script type="text/javascript" src="manual-racket.js"></script><!--[if IE 6]><style type="text/css">.SIEHidden { overflow: hidden; }</style><![endif]--></head><body id="scribble-racket-lang-org"><div class="tocset"><div class="tocview"><div class="tocviewlist tocviewlisttopspace"><div class="tocviewtitle"><table cellspacing="0" cellpadding="0"><tr><td style="width: 1em;"><a href="javascript:void(0);" title="Expand/Collapse" class="tocviewtoggle" onclick="TocviewToggle(this,&quot;tocview_0&quot;);">&#9660;</a></td><td></td><td><a href="index.html" class="tocviewlink" data-pltdoc="x">Thoughts</a></td></tr></table></div><div class="tocviewsublisttop" style="display: block;" id="tocview_0"><table cellspacing="0" cellpadding="0"><tr><td align="right"></td><td><a href="" class="tocviewselflink" data-pltdoc="x">Developing Developers</a></td></tr><tr><td align="right"></td><td><a href="Growing_a_Programmer.html" class="tocviewlink" data-pltdoc="x">Growing a Programmer</a></td></tr><tr><td align="right"></td><td><a href="Unions_for_PhD_Students_.html" class="tocviewlink" data-pltdoc="x">Unions for Ph<span class="mywbr"> &nbsp;</span>D Students?</a></td></tr><tr><td align="right"></td><td><a href="How_do_I_get_a_PhD.html" class="tocviewlink" data-pltdoc="x">How do I get a Ph<span class="mywbr"> &nbsp;</span>D</a></td></tr><tr><td align="right"></td><td><a href="Racket_is____.html" class="tocviewlink" data-pltdoc="x"><span style="font-style: italic">Racket</span> is ...</a></td></tr><tr><td align="right"></td><td><a href="why-pl2.html" class="tocviewlink" data-pltdoc="x">Why teach Ph<span class="mywbr"> &nbsp;</span>D core courses, with programming languages</a></td></tr><tr><td align="right"></td><td><a href="Danger__unsafe_languages.html" class="tocviewlink" data-pltdoc="x">Danger:<span class="mywbr"> &nbsp;</span> unsafe languages</a></td></tr><tr><td align="right"></td><td><a href="What_should_the_core_achieve_.html" class="tocviewlink" data-pltdoc="x">What should the core achieve?</a></td></tr><tr><td align="right"></td><td><a href="python.html" class="tocviewlink" data-pltdoc="x">Python for asset-<wbr></wbr>backed securities</a></td></tr><tr><td align="right"></td><td><a href="Measuring_education.html" class="tocviewlink" data-pltdoc="x">Measuring education</a></td></tr><tr><td align="right"></td><td><a href="Refereed_conferences__not_.html" class="tocviewlink" data-pltdoc="x">Refereed conferences, not!</a></td></tr><tr><td align="right"></td><td><a href="what-is-pl.html" class="tocviewlink" data-pltdoc="x">Why teach programming languages</a></td></tr><tr><td align="right"></td><td><a href="_.html" class="tocviewlink" data-pltdoc="x"><span class="special">.</span></a></td></tr></table></div></div><div class="tocviewlist"><table cellspacing="0" cellpadding="0"><tr><td style="width: 1em;"><a href="javascript:void(0);" title="Expand/Collapse" class="tocviewtoggle" onclick="TocviewToggle(this,&quot;tocview_1&quot;);">&#9658;</a></td><td></td><td><a href="" class="tocviewselflink" data-pltdoc="x">Developing Developers</a></td></tr></table><div class="tocviewsublistbottom" style="display: none;" id="tocview_1"><table cellspacing="0" cellpadding="0"><tr><td align="right"></td><td><a href="#%28part._.Abstract%29" class="tocviewlink" data-pltdoc="x">Abstract</a></td></tr><tr><td align="right">1&nbsp;</td><td><a href="#%28part._.Explicit_and_.Systematic_.Program_.Design%29" class="tocviewlink" data-pltdoc="x">Explicit and Systematic Program Design</a></td></tr><tr><td align="right">2&nbsp;</td><td><a href="#%28part._.Organizing_the_.Idea_into_.Courses%29" class="tocviewlink" data-pltdoc="x">Organizing the Idea into Courses</a></td></tr><tr><td align="right">3&nbsp;</td><td><a href="#%28part._.What_s_.Missing_%29" class="tocviewlink" data-pltdoc="x">What&rsquo;s Missing?</a></td></tr><tr><td align="right">4&nbsp;</td><td><a href="#%28part._unique%29" class="tocviewlink" data-pltdoc="x">P.S. Uniqueness</a></td></tr></table></div></div></div><div class="tocsub"><div class="tocsubtitle">On this page:</div><table class="tocsublist" cellspacing="0"><tr><td><span class="tocsublinknumber"></span><a href="#%28part._.Abstract%29" class="tocsubseclink" data-pltdoc="x">Abstract</a></td></tr><tr><td><span class="tocsublinknumber">1<tt>&nbsp;</tt></span><a href="#%28part._.Explicit_and_.Systematic_.Program_.Design%29" class="tocsubseclink" data-pltdoc="x">Explicit and Systematic Program Design</a></td></tr><tr><td><span class="tocsublinknumber">1.1<tt>&nbsp;</tt></span><a href="#%28part._.Traditional_.Programming_.Courses%29" class="tocsubseclink" data-pltdoc="x">Traditional Programming Courses</a></td></tr><tr><td><span class="tocsublinknumber">1.2<tt>&nbsp;</tt></span><a href="#%28part._.Explicit_.Design_.Rules%29" class="tocsubseclink" data-pltdoc="x">Explicit Design Rules</a></td></tr><tr><td><span class="tocsublinknumber">1.3<tt>&nbsp;</tt></span><a href="#%28part._.The_.Design_.Process_is_.General%29" class="tocsubseclink" data-pltdoc="x">The Design Process is General</a></td></tr><tr><td><span class="tocsublinknumber">1.4<tt>&nbsp;</tt></span><a href="#%28part._.Programming_is_a_.People_.Discipline%29" class="tocsubseclink" data-pltdoc="x">Programming is a People Discipline</a></td></tr><tr><td><span class="tocsublinknumber">2<tt>&nbsp;</tt></span><a href="#%28part._.Organizing_the_.Idea_into_.Courses%29" class="tocsubseclink" data-pltdoc="x">Organizing the Idea into Courses</a></td></tr><tr><td><span class="tocsublinknumber">2.1<tt>&nbsp;</tt></span><a href="#%28part._.Fundamentals_.I__.Designing_with_.Teaching_.Languages%29" class="tocsubseclink" data-pltdoc="x">Fundamentals I:<span class="mywbr"> &nbsp;</span> Designing with Teaching Languages</a></td></tr><tr><td><span class="tocsublinknumber">2.2<tt>&nbsp;</tt></span><a href="#%28part._trinity%29" class="tocsubseclink" data-pltdoc="x">A Note on the Trinity</a></td></tr><tr><td><span class="tocsublinknumber">2.3<tt>&nbsp;</tt></span><a href="#%28part._.Fundamentals_.I.I__.Designing_with_.Java%29" class="tocsubseclink" data-pltdoc="x">Fundamentals II:<span class="mywbr"> &nbsp;</span> Designing with Java</a></td></tr><tr><td><span class="tocsublinknumber">2.4<tt>&nbsp;</tt></span><a href="#%28part._.Logic__.Reasoning_about_.Well-designed_.Code%29" class="tocsubseclink" data-pltdoc="x">Logic:<span class="mywbr"> &nbsp;</span> Reasoning about Well-<wbr></wbr>designed Code</a></td></tr><tr><td><span class="tocsublinknumber">2.5<tt>&nbsp;</tt></span><a href="#%28part._.O.O.D__.Scaling_.It_.Up%29" class="tocsubseclink" data-pltdoc="x">OOD:<span class="mywbr"> &nbsp;</span> Scaling It Up</a></td></tr><tr><td><span class="tocsublinknumber">2.6<tt>&nbsp;</tt></span><a href="#%28part._.Software_.Development__.Putting_it_.All_.Together%29" class="tocsubseclink" data-pltdoc="x">Software Development:<span class="mywbr"> &nbsp;</span> Putting it All Together</a></td></tr><tr><td><span class="tocsublinknumber">3<tt>&nbsp;</tt></span><a href="#%28part._.What_s_.Missing_%29" class="tocsubseclink" data-pltdoc="x">What&rsquo;s Missing?</a></td></tr><tr><td><span class="tocsublinknumber">4<tt>&nbsp;</tt></span><a href="#%28part._unique%29" class="tocsubseclink" data-pltdoc="x">P.S. Uniqueness</a></td></tr></table></div></div><div class="maincolumn"><div class="main"><div class="versionbox"><span class="version">6.11.0.2</span></div><div class="navsettop"><span class="navleft"><div class="nosearchform"></div>&nbsp;&nbsp;</span><span class="navright">&nbsp;&nbsp;<a href="index.html" title="backward to &quot;Thoughts&quot;" data-pltdoc="x">&larr; prev</a>&nbsp;&nbsp;<a href="index.html" title="up to &quot;Thoughts&quot;" data-pltdoc="x">up</a>&nbsp;&nbsp;<a href="Growing_a_Programmer.html" title="forward to &quot;Growing a Programmer&quot;" data-pltdoc="x">next &rarr;</a></span>&nbsp;</div><h3><a name="(part._.Developing_.Developers)"></a>Developing Developers</h3><div class="SAuthorListBox"><span class="SAuthorList"><p class="author">Matthias Felleisen</p></span></div><blockquote class="refpara"><blockquote class="refcolumn"><blockquote class="refcontent"><p>8 Sep 2015</p></blockquote></blockquote></blockquote><h4><a name="(part._.Abstract)"></a>Abstract</h4><p>Northeastern offers a unique <span class="refelem"><span class="refcolumn"><span class="refcontent">But see <a href="#%28part._unique%29" data-pltdoc="x">P.S. Uniqueness</a>.</span></span></span> curriculum on programming.  Instead of the
+currently fashionable programming language, it focuses on <span style="font-style: italic">explicit
+and systematic approaches to program design</span>.  To bring this idea across to
+the full range of Northeastern freshmen, the first course uses a simple
+teaching language that is tailored to our goals.  Follow-up courses explain
+how to apply the design principles to industrial programming languages, how
+they enable logical reasoning about code, and why they matter when
+programmers deal with large and complex software.</p><p>In parallel, these core courses on programming insist on presenting
+programming as a people discipline. Students find out that people write
+programs to inform other people of ideas. Working with compilers and
+interpreters also teaches them that these tools provide only shallow
+feedback. For true insight, they must turn to other people. Hence, students
+work in pairs from the very first day in class. Pair programming forces
+them to articulate their thoughts so that they can converse about
+programs. Downstream courses also teach students how to present their ideas
+to large groups and how to listen and evaluate such presentations.</p><p><span style="font-weight: bold">Acknowledgments</span> Corky Cartwright, Bruce Duba, Robby Findler, Kathi
+Fisler, Matthew Flatt, Dan Friedman, Gregor Kiczales, Shriram
+Krishnamurthi, and Mitch Wand helped me hone this vision over 25
+years. Many Northeastern colleagues have taught these core courses and
+their feedback improved my initial vision: Amal Ahmed, Will Clinger, Pete
+Manolios, Viera Proulx, Olin Shivers, Sam Tobin-Hochstadt, Jesse Tov, David Van Horn,
+and Thomas Wahl. Dale Vaillancourt and Carl Eastlund, former PhD students,
+were critical to my first attempt at <span style="font-style: italic">Logic in Computer Science</span>.  Larry Finkelstein and
+Richard Rasala put in place a playground where I could easily influence the
+shape of the core courses.</p><p class="SHistory">Changed in version 1.0: Wed Sep 16 15:07:49 EDT 2015: initial release <br/><br/>Changed in version 1.1: Wed Sep 16 21:59:11 EDT 2015:
+typos and feedback from
+<br/> <span class="hspace">&nbsp;&nbsp;&nbsp;</span> Tony Garnock-Jones,
+<br/> <span class="hspace">&nbsp;&nbsp;&nbsp;</span> Therapon Skotiniotis,
+<br/> <span class="hspace">&nbsp;&nbsp;&nbsp;</span> Shriram Krishnamurthi,
+<br/> <span class="hspace">&nbsp;&nbsp;&nbsp;</span> Matthew Flatt,
+<br/> <span class="hspace">&nbsp;&nbsp;&nbsp;</span> Vincent St-Amour,
+<br/> <span class="hspace">&nbsp;&nbsp;&nbsp;</span> Karl Lieberherr
+<br/> <span class="hspace">&nbsp;&nbsp;&nbsp;</span> Nick Shelley
+<br/><br/>Changed in version 1.2: Wed Sep 16 23:14:00 EDT 2015: added <a href="#%28part._unique%29" data-pltdoc="x">P.S. Uniqueness</a> <br/><br/>Changed in version 1.3: Thu Sep 17 18:59:11 EDT 2015: added <a href="#%28counter._%28figure._fig~3asteps%29%29" data-pltdoc="x">figure&nbsp;<span class="FigureRef">3</span></a> <br/><br/>Changed in version 1.4: Fri Sep 18 10:28:42 EDT 2015: note on
+<a href="http://arxiv.org/abs/1306.4713v2">OO teaching languages</a> <br/><br/>Changed in version 1.5: Sun Sep 20 15:24:08 EDT 2015 added <a href="#%28part._trinity%29" data-pltdoc="x">A Note on the Trinity</a>,
+<br/>
+<span class="hspace">&nbsp;&nbsp;&nbsp;</span> fixed the description of Waterloo&rsquo;s curriculum
+<br/><br/>Changed in version 1.6: Thu Nov  5 21:27:20 EST 2015 feedback, typos from
+<br/> <span class="hspace">&nbsp;&nbsp;&nbsp;</span> Thomas Wahl
+<br/><br/>Changed in version 1.7: Thu Feb 11 10:21:44 EST 2016 typos from Marc Kaufmann
+<br/><br/>Changed in version 1.8: Tue Mar 21 12:12:50 EDT 2017 garbled sentence from Ron Garcia
+<br/><br/>Changed in version 1.9: Wed Nov 15 17:11:18 EST 2017 changed title to what
+it should have been all along
+<br/></p><h4>1<tt>&nbsp;</tt><a name="(part._.Explicit_and_.Systematic_.Program_.Design)"></a>Explicit and Systematic Program Design</h4><p>Ninety-percent or more of the College&rsquo;s graduates will end up engineering
+software for the first few years out of college. The College&#8212;<wbr></wbr>which is us,
+all the professors and instructors&#8212;<wbr></wbr>owe them a solid preparation for this
+task. Well-prepared students will stand out in industry and thus strengthen
+our reputation. Bit by bit, they may also improve the currently sad state
+of affairs of engineering software systems.</p><p><div class="SIntrapara"><blockquote class="refpara"><blockquote class="refcolumn"><blockquote class="refcontent"><p>I first spelled out the &ldquo;explicit design&rdquo; idea in
+<a href="http://www.ccs.neu.edu/racket/pubs/#jfp2004-fffk">Structure and Interpretation of the Computer Science
+Curriculum</a> [<span style="font-style: italic">JFP</span> 2004].</p></blockquote></blockquote></blockquote></div><div class="SIntrapara">In response to this challenge, our College has developed a unique approach
+to teaching over the past 12 years. The core curriculum radically differs
+from traditional approaches in how it trains students as programmers and
+problem solvers. The purpose of this essay is to sketch the ideas behind
+the approach (this section) and its organization into courses (the next
+one).</div></p><p>When these courses are taught properly, they not only improve the
+preparation of our students for their first job as creators of software.
+They also lay the foundation for the students&rsquo; careers as project leaders,
+managers of software teams, CTOs, CEOs, entrepreneurs, medical doctors, and
+wherever else systematic problem solving matters.</p><h5>1.1<tt>&nbsp;</tt><a name="(part._.Traditional_.Programming_.Courses)"></a>Traditional Programming Courses</h5><p> The vast majority of courses
+on programming employ a &ldquo;tinker until it works&rdquo; approach. Instructors
+tend to pick a currently fashionable programming language and then proceed
+in a rather old-fashioned manner, dating back to the days of Fortran IV.
+At the beginning, instructors show some version of a &ldquo;hello world&rdquo;
+program (console or GUI based), followed by simplistic input modes (again
+console or GUI based), variable declarations and assignments, arrays and
+loops.  Still further down the road, these courses may also introduce
+functions, methods, and classes.</p><p><div class="SIntrapara"><blockquote class="refpara"><blockquote class="refcolumn"><blockquote class="refcontent"><p><span style="font-weight: bold">Q</span> What&rsquo;s the biggest lie in computing?
+<span style="font-weight: bold">A</span> &ldquo;It works.&rdquo;</p></blockquote></blockquote></blockquote></div><div class="SIntrapara">What students learn in such courses, is to mimic their instructors. In
+classes and labs, they see code snippets that introduce new syntactic
+constructs and spell out their pragmatics. Homework assignments ask them to
+solve similar problems. A typical student will copy the snippets of code
+from class and modify them until the program seems to work. Over the course
+of a semester, the distance between the code snippets from class and those
+needed to solve homework problems grows to test students&rsquo; ability to
+generalize.</div></p><p>In sum, traditional programming courses teach programming
+<span style="font-style: italic">implicitly</span>, with students picking it up via mimicking and
+experimenting. This approach may appeal to students who love to tinker with
+gadgets and video games, but it also turns off many others who might be
+equally talented for engineering actual software or benefit to the same
+extent from a properly taught course on programming and problem solving.</p><blockquote class="Figure"><blockquote class="Centerfigure"><blockquote class="FigureInside"><p><img style="vertical-align: -0.0px; margin: -3px -3px -3px -3px;" src="pict.png" alt="image" width="458.53721923828124" height="424.8478759765625"/></p></blockquote></blockquote><p class="Centertext"><span class="Legend"><span class="FigureTarget"><a name="(counter._(figure._fig~3adr))" x-target-lift="Figure"></a>Figure&nbsp;1: </span>Courses on program design</span></p></blockquote><h5>1.2<tt>&nbsp;</tt><a name="(part._.Explicit_.Design_.Rules)"></a>Explicit Design Rules</h5><p><a href="http://www.ccs.neu.edu/home/matthias/HtDP2e/index.html"></a><span style="font-style: italic">How to Design Programs</span>
+ is the first text book on programming that explicitly spells out how to
+ construct programs in a systematic manner. One half focuses on
+ <span style="font-style: italic">structural design</span>, the other on <span style="font-style: italic">design and use of
+abstractions</span>, <span style="font-style: italic">generative recursion</span> (&ldquo;divide and conquer&rdquo;), and
+ <span style="font-style: italic">accumulators</span> (&ldquo;loop variables&rdquo;).</p><p><a href="#%28counter._%28figure._fig~3adr%29%29" data-pltdoc="x">Figure&nbsp;<span class="FigureRef">1</span></a> displays the <span style="font-style: italic">design recipe</span> used for structural
+ design. It consists of two dimensions: the <span style="font-style: italic">y</span> axis specifies a
+ six-step problem-solving process, the <span style="font-style: italic">x</span> axis enumerates (some of)
+ the forms of data with which programmers represent information, in
+ increasing complexity.</p><p><div class="SIntrapara">The <span style="font-style: italic">vertical direction</span> presents a six-step process that prompts students to
+</div><div class="SIntrapara"><ol><li><p>read the problem statement, figure out the data that is needed to
+represent the information of interest, and illustrate their insight with
+concrete examples;</p></li><li><p>articulate a purpose statement that concisely describes what the
+function or program is supposed to compute, including a signature;</p></li><li><p>work through functional examples, that is, explain what the function
+or program is supposed to produce when given certain inputs, based on steps
+1 and 2;</p></li><li><p>create an outline of the program, based on steps 1 and 2;</p></li><li><p>fill in the outline from step 4, using steps 2 and 3; and</p></li><li><p>turn the examples from step 2 into a test suite for the program from step 5.</p></li></ol></div><div class="SIntrapara">Every step of the design process generates a well-defined outcome. When
+ students ask for help, instructors can inspect these outcomes and thus
+ diagnose the students&rsquo; problems. To get students unstuck, every step also
+ comes with a question-and-answer &ldquo;game&rdquo; that somewhat depends on the
+ column of the design recipe but is &ldquo;parametric&rdquo; with respect to the
+ actual problem. Instructors can use this &ldquo;game&rdquo; to help students along
+ <span style="font-style: italic">without</span> giving one-off hints for the specific problem at hand.
+ Eventually students realize that this process exists so that they can
+ learn to help themselves.</div></p><p>The <span style="font-style: italic">horizontal direction</span> of the structural design recipe expands
+ students&rsquo; understanding of data. Roughly speaking, every language comes
+ with a sub-language for data, and programmers choose certain forms of data
+ to represent information from the domain of interest (&ldquo;the
+ world&rdquo;). Atomic data is drawn from this domain, and processing atomic
+ data demands domain knowledge. Because traditional programming courses
+ often focus on processing atomic data (especially numbers), they rely on
+ domain knowledge and thus fail to show how much computing and programming
+ can contribute to systematic problem solving and design.  Every step along
+ the horizontal axis increases students&rsquo; knowledge of the world of data,
+ taking them all the way to trees, forests, graphs, and so on. Also at each
+ step, they must re-interpret the six steps from the design
+ process. <span class="refelem"><span class="refcolumn"><span class="refcontent"><a href="http://www.ccs.neu.edu/home/matthias/OnHtDP/turing_is_useless.html">Turing is Useless</a> spells out this
+idea in more detail.</span></span></span>  Conversely, this organization implies that
+ <span style="font-style: italic">instructors may assign only homework problems that are within the
+<span style="font-weight: bold">convex hull</span> of students&rsquo; <span style="font-weight: bold">design knowledge</span></span> for a specific
+ stage in their design development.</p><p>A design-process approach guides students all the way through the
+ composition of well-designed functions into complete programs, the
+ creation of programming abstractions; the coding of &ldquo;divide-and-conquer&rdquo;
+ recursive algorithms; and the creation of algorithms that maintain
+ invariants across iterations (&ldquo;accumulators&rdquo;).</p><p>Once students understand each of these design recipes, they also learn to
+ choose among alternatives that produce equivalent functionality. For
+ example, structural design naturally yields insertion sort algorithms,
+ while generative recursion yields quick sort or merge sort algorithms.
+ To make an informed choice, students need to learn about designing under
+ constraints and, in computing, about big-O.</p><h5>1.3<tt>&nbsp;</tt><a name="(part._.The_.Design_.Process_is_.General)"></a>The Design Process is General</h5><p>Teaching explicit and systematic design introduces students to a general
+ problem-solving approach that applies to many more domains than
+ programming. A journalist can use it to plan a story. The first step calls
+ for developing the background. Next comes the articulation of the thesis,
+ the collection of illustrative examples, the creation of an outline based
+ on facts, the writing, and the final fact-checking step. It is equally
+ obvious that
+ businessmen can tackle logistical problems in this manner,
+ engineers must follow a similar approach,
+ lawyers may analyze a case with it,
+ scientists perform lab work in this way,
+and
+ surgeons are able to conduct operations with a systematic process.</p><blockquote class="refpara"><blockquote class="refcolumn"><blockquote class="refcontent"><p>Unsafe languages, such as C, C++, and Objective C, increase
+the number of dependencies and thus put an extra burden on the programmer
+when it comes to the inevitable search for, and elimination of,
+mistakes. A safe language is therefore a superior introductory language.</p></blockquote></blockquote></blockquote><h5>1.4<tt>&nbsp;</tt><a name="(part._.Programming_is_a_.People_.Discipline)"></a>Programming is a People Discipline</h5><p> The design-oriented approach
+ gradually introduces students to the idea that programming is about coping
+ with <span style="font-style: italic">complexity</span> in software&#8212;<wbr></wbr>which roughly corresponds to the
+ number of dependencies among modules, classes, functions, methods,
+ expressions, and statements. Without logical reasoning about designs,
+ programmers quickly get lost in the thicket of dependencies.</p><p>Compilers, interpreters, and other IDE tools provide almost no help with
+ controlling complexity; ACL2 and its relatives are too expensive for
+ general programming problems.  Hence, programmers who need help (normally)
+ turn to other programmers because they are people who can think.  It is
+ therefore imperative that students develop the skill to converse about
+ program designs, meaning they must learn to articulate their thoughts in
+ all kinds of ways. The best way to do so, is to present programming as a
+ discipline that is not about nerds sitting in a cubicle but people helping
+ other people creating beautiful and well-designed artifacts.</p><h4>2<tt>&nbsp;</tt><a name="(part._.Organizing_the_.Idea_into_.Courses)"></a>Organizing the Idea into Courses</h4><p><a href="#%28counter._%28figure._fig~3apc%29%29" data-pltdoc="x">Figure&nbsp;<span class="FigureRef">2</span></a> presents a concise summary of the College&rsquo;s core
+ programming courses in the form of a dependence graph.  Students majoring
+ in computer science ought to have covered these courses by the time they start
+ their second co-op. Students who just want a taste of programming and
+ systematic problem solving take <span style="font-style: italic">Fundamentals I</span>. The following subsections spell out
+ how these courses line up with the idea of teaching &ldquo;explicit, systematic
+ design&rdquo; and the &ldquo;people skills&rdquo; that go with them.</p><blockquote class="Figure"><blockquote class="Centerfigure"><blockquote class="FigureInside"><p><img style="vertical-align: -0.0px; margin: -3px -3px -3px -3px;" src="pict_2.png" alt="image" width="673.5720703124999" height="605.25"/></p></blockquote></blockquote><p class="Centertext"><span class="Legend"><span class="FigureTarget"><a name="(counter._(figure._fig~3apc))" x-target-lift="Figure"></a>Figure&nbsp;2: </span>Courses on program design</span></p></blockquote><h5>2.1<tt>&nbsp;</tt><a name="(part._.Fundamentals_.I__.Designing_with_.Teaching_.Languages)"></a>Fundamentals I: Designing with Teaching Languages</h5><p><div class="SIntrapara"> The goals of the
+first course are to
+</div><div class="SIntrapara"><ul><li><p>introduce novice programmers to the systematic and explicit design of programs</p></li><li><p>expose students with prior programming experience to design.</p></li></ul></div><div class="SIntrapara">All students&#8212;<wbr></wbr>including those who never take another course on
+programming&#8212;<wbr></wbr>ought to appreciate (1) the idea of systematic problem
+solving and (2) the complexities of creating well-engineered software.</div></p><p><div class="SIntrapara">When it comes to choosing a language for the first course, we must take
+into account the above goals and two relevant theorems:
+</div><div class="SIntrapara"><blockquote><p><span style="font-weight: bold">Theorem 1</span> Novice programmers make mistakes.</p></blockquote></div></p><p><div class="SIntrapara"><blockquote><p><span style="font-weight: bold">Theorem 2</span> A compiler and the run-time system articulate error
+messages under the assumption that the programmer knows the entire language.</p></blockquote></div><div class="SIntrapara">These theorems have three immediate consequences relevant to <span style="font-style: italic">Fundamentals I</span>:
+</div><div class="SIntrapara"><blockquote><p><span style="font-weight: bold">Corollary 1</span> An introductory course cannot serve a wide spectrum of
+complete novices if it uses an off-the-shelf (industrial) language.</p><p>Examples of ill-suited languages include C++, Java, JavaScript, Python,
+Racket, and Scheme&#8212;<wbr></wbr>even though they are, or were, used for
+first courses. Pascal is also too large, even though Wirth explicitly
+motivated Pascal as a &ldquo;small teaching language.&rdquo;</p></blockquote></div></p><blockquote><p><span style="font-weight: bold">Corollary 2</span> Reducing the size of the language improves its error messages.</p></blockquote><blockquote><p><span style="font-weight: bold">Corollary 3</span> An introductory course needs <span style="font-style: italic">a series of small
+languages</span> that suffice to illustrate the design recipes.</p></blockquote><p><a href="#%28counter._%28figure._fig~3asteps%29%29" data-pltdoc="x">Figure&nbsp;<span class="FigureRef">3</span></a> summarizes this little excursion into the land of
+social theorems with two simple graphs. The graph on the left shows how an
+&ldquo;off-the-shelf&rdquo; language may have a gentle curve for a short period, but
+then poses a steep (learning) curve for every novice. The blue line in the
+graph suggests how smooth the curve ought to be instead. The graph on the
+right shows how to approximate the blue line with a step function&#8212;<wbr></wbr>a
+necessity because language technology is discrete.</p><blockquote class="Figure"><blockquote class="Centerfigure"><blockquote class="FigureInside"><blockquote class="SCentered"><p><img src="pict_3.png" alt="image" width="200.0" height="200.0"/> <span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <img src="pict_4.png" alt="image" width="200.0" height="200.0"/></p></blockquote></blockquote></blockquote><p class="Centertext"><span class="Legend"><span class="FigureTarget"><a name="(counter._(figure._fig~3asteps))" x-target-lift="Figure"></a>Figure&nbsp;3: </span>Languages: steep walls vs continuous growth</span></p></blockquote><p><span style="font-style: italic">Fundamentals I</span> uses four (out of five) steps, aka, teaching languages, collectively
+known as <span style="font-style: italic">*SL</span>. The first one (<span style="font-style: italic">Beginning Student Language</span>
+or <span style="font-style: italic">BSL</span>) codifies students&rsquo; notation from pre-algebra courses in
+high school: function definitions, conditional function definitions, and
+function applications. It extends this small set with conventional
+(numbers, booleans) and unconventional (images) atomic data plus structure
+definitions.  The downstream languages expand the expressive power of this
+first language with compact notations for lists, local definitions, and
+higher-order functions.</p><p>As for <span style="font-weight: bold">people skills</span>, <span style="font-style: italic">Fundamentals I</span> introduces students to the idea of
+<span style="font-style: italic">pair programming</span>. Students work in pairs for all homework
+assignments. A pair consists of a &ldquo;pilot&rdquo; and a &ldquo;co-pilot.&rdquo; The former
+is in control of the keyboard and the design process. To inform the latter,
+the pilot explains the design aloud; the co-pilot checks the evolving
+design against the question-and-answer game from the design recipe and
+questions any deviations from the recipe. It is the task of the co-pilot to
+engage the pilot in conversation. Partners switch roles on a regular basis.</p><p>Pair programming also helps students who are paired with partners of
+unequal knowledge and skills. In the context of <span style="font-style: italic">Fundamentals I</span>, these roles are
+often non-obvious. Students who &ldquo;have always programmed&rdquo; tend to find
+themselves in the role of misguided hack, who must be pushed back to the
+ways of explicit design by the seemingly less knowledgeable partner.
+<span class="refelem"><span class="refcolumn"><span class="refcontent">Teaching greatly enhances learning.</span></span></span>
+Even if experience with programming helps one of the partners, both
+benefit: one by becoming a teacher, the other by having someone to talk to
+even when no teaching assistants are around.</p><p>The course switches partnerships on a regular basis so that students get to
+know other people and different ways of interacting with distinct
+personalities.</p><h5>2.2<tt>&nbsp;</tt><a name="(part._trinity)"></a>A Note on the Trinity</h5><p>The trinity of design, teaching languages, and pedagogic IDE&#8212;<wbr></wbr>in our case
+DrRacket&#8212;<wbr></wbr>smoothly takes students from plain pre-algebra courses to
+full-fledged programming. Explicit design overcomes their fear of word
+problems in algebra and eases them into the world of complex programs, all
+the way to distributed communicating programs. The teaching language
+presents a familiar language and gently move students up the slope. <span style="font-style: italic">Fundamentals I</span>
+uses the DrRacket IDE for the teaching languages, which eliminates all
+clutter that Eclipse, IntelliJ, and similar products come with. In essence,
+DrRacket relates to the latter the way a single-engine teaching airplane
+relates to a JumboJet; pilots always fly the former before they get into
+the cockpit of the latter.</p><p>Time and again people react to my presentations of this trinity.  One
+common objection is that explicit design must work in all languages and
+therefore we might as well indulge students, parents, chairmen, deans, and
+egos by teaching the currently hot &ldquo;thing.&rdquo; On one hand, they are
+correct. Explicit design works for all languages; if it didn&rsquo;t, we would be
+wasting our students&rsquo; time in <span style="font-style: italic">Fundamentals I</span> and fail them at a massive
+scale. Indeed, it would not enable <span style="font-style: italic">Fundamentals II</span>. On the other hand, objectors
+fail to see that the introduction of explicit design calls for a careful
+composition of all the pieces that make for a novice-friendly environment:
+accessible error messages from the chosen language and a pedagogic IDE
+without clutter. Anyone who wishes to replace one element of this trinity
+must consider the other two, too.</p><h5>2.3<tt>&nbsp;</tt><a name="(part._.Fundamentals_.I.I__.Designing_with_.Java)"></a>Fundamentals II: Designing with Java</h5><p><div class="SIntrapara">The goals of <span style="font-style: italic">Fundamentals II</span> are to show students how to
+</div><div class="SIntrapara"><ul><li><p>systematically design programs in the context of a real-world language</p></li><li><p>incorporate existing libraries into design.</p></li></ul></div><div class="SIntrapara">The course must therefore use a language that is currently used in industry
+and comes with significant libraries.</div></p><p><div class="SIntrapara">With regard to <span style="font-weight: bold">design</span>, the course has three concrete goals:
+</div><div class="SIntrapara"><ul><li><p>add type checking</p></li><li><p>cover object-oriented programming, and</p></li><li><p>incorporate the idea of &ldquo;programming via composition of existing
+building blocks.&rdquo;</p></li></ul></div></p><p>While the design concepts from <span style="font-style: italic">Fundamentals I</span> heavily rely on types in several
+different ways, they do not assume type checking. The rationale behind this
+choice is twofold. On one hand, in this day and age, many (if not most) of
+our students will use a dynamically typed language like *SL for their first
+co-op. They need a systematic process even more than those who end up with
+a statically checked language. On the other hand, type checking just adds
+another formal layer to the practice of programming, that is, adding error
+messages to those from the reader, parse, and run-time system just adds to
+the confusion about layers that affects novice programmers. Most mainstream
+programming languages come with an explicit static type system, however,
+and our students deserve to see how type checking jives with design.</p><p><div class="SIntrapara"><blockquote class="refpara"><blockquote class="refcolumn"><blockquote class="refcontent"><p>The same people eventually recognized that C++ is <span style="font-style: italic">not</span> a
+proper object-oriented language because it does not allow programmers to focus
+on objects as run-time values. A better terminology would have been
+&ldquo;value-oriented programming&rdquo; but this choice would conflict with the
+narrow-minded use of &ldquo;value&rdquo; in the object-oriented community.</p></blockquote></blockquote></blockquote></div><div class="SIntrapara">Similarly industrial programmers have known for a while that
+&ldquo;object-oriented programming won.&rdquo; What they mean with this statement, is
+that languages introduced as object-oriented with classes and/or objects
+dominate the world of engineering software. Examples are C#, Java,
+JavaScript, Python, and Ruby [on Rails]. Fortunately, as Gregor Kiczales
+said after adopting our approach at UBC, &ldquo;<a href="http://www.ccs.neu.edu/home/matthias/HtDP2e/index.html">How to Design Programs</a> [meaning <span style="font-style: italic">Fundamentals I</span>] is the
+best introduction to proper object-oriented programming.&rdquo;  We cannot
+expect our students to make this transition on their own,
+however. Therefore <span style="font-style: italic">Fundamentals II</span> spends about 60% of the second semester on
+explaining how the design concepts from <span style="font-style: italic">Fundamentals I</span> apply to Java-based
+programming and on adapting the design concepts for abstractions&#8212;<wbr></wbr>both
+their creation and their use&#8212;<wbr></wbr>to an object-oriented context.</div></p><p>The latter is also crucial for constructing programs from libraries and
+frameworks. While real programmers spend some time creating components from
+scratch, a lot of their work is to find frameworks or libraries that
+provide part of the functionality and to plug those together. Our explicit
+design approach covers this idea as the use of existing abstractions, but
+<span style="font-style: italic">additional research is needed to formulate useful design recipes</span>.</p><p><span style="font-weight: bold">Notes</span> (1) Real-world languages such as Java obstruct proper design. For
+example, both our approach to program design as well as the gang of four&rsquo;s
+well-known design patterns lead to identical code for processing sequential
+or tree-shaped data structures. Unfortunately, Java&rsquo;s failure to properly
+implement tail-calls then forces programmers to reformulate the properly
+designed pieces of code with <span class="stt">while</span> and <span class="stt">for</span> loops.</p><p>(2) Sam Tobin-Hochstadt and David Van Horn implemented <a href="http://arxiv.org/abs/1306.4713v2">teaching languages for <span style="font-style: italic">Fundamentals II</span></a> to bridge the gap between <span style="font-style: italic">Fundamentals I</span> and <span style="font-style: italic">Fundamentals II</span>
+and used them to teach honors sections of the latter. The teaching
+languages gradually introduced the concepts from object-oriented languages,
+starting from a functional approach and matching the design concepts. If a
+computer science unit has the luxury to spend an additional semester on
+preparing their students for real-world programming, this approach is
+highly commendable. <span style="font-weight: bold">End of Notes</span></p><p><div class="SIntrapara"><blockquote class="refpara"><blockquote class="refcolumn"><blockquote class="refcontent"><p>Viera Proulx proposed and implemented code reviews for <span style="font-style: italic">Fundamentals II</span>.</p></blockquote></blockquote></blockquote></div><div class="SIntrapara">With regard to <span style="font-weight: bold">people skills</span>, <span style="font-style: italic">Fundamentals II</span> is like <span style="font-style: italic">Fundamentals I</span> and adds a first
+taste of code reviews. That is, <span style="font-style: italic">Fundamentals II</span> continues to have students program in
+pairs. In addition, <span style="font-style: italic">Fundamentals II</span> provides the proper context to request a first code
+review from students. One possibility is to assign a small project toward the
+end of the course and to have students present an overview to the
+instructor. An alternative is to have students present pieces from their
+homework portfolio.</div></p><h5>2.4<tt>&nbsp;</tt><a name="(part._.Logic__.Reasoning_about_.Well-designed_.Code)"></a>Logic: Reasoning about Well-designed Code</h5><blockquote class="refpara"><blockquote class="refcolumn"><blockquote class="refcontent"><p>People often use the term &ldquo;type-safe&rdquo; languages. The term is
+vague because untyped languages also come with sound prediction systems, and
+&ldquo;safety&rdquo; has no universal definition.</p></blockquote></blockquote></blockquote><p>Logic is to programming what analysis is to engineering. Engineers use
+ analytic mathematics to make predictions about the robustness and behavior
+ of their blueprints. Programmers continuously predict the behavior of the
+ phrases they write down and compose. As programming language researchers
+ have shown over the past 50 years, logic provides the proper foundation
+ for programmers&rsquo; predictions and logical meta-theory explains the validity
+ of making predictions. More precisely, predictions correspond to theorems,
+ validations for predictions are proofs, and program executions map to
+ models. It is thus proper to call a validation system <span style="font-style: italic">sound</span> if
+ its predictions are always true statements about executions; an
+ <span style="font-style: italic">unsound</span> system makes correct and <span style="font-style: italic">incorrect</span> predictions.</p><blockquote class="refpara"><blockquote class="refcolumn"><blockquote class="refcontent"><p>If a programmer is lucky, the bad array reference in C/C++
+causes a seg fault.</p></blockquote></blockquote></blockquote><p>Consider arrays in a typed language. Roughly speaking, an array <span class="stt">a</span> of
+ type <span class="stt">T</span> is a function that maps an index in some prefix of the natural
+ numbers to instances of <span class="stt">T</span>. Programmers can thus predict that applying
+ <span class="stt">a</span> to <span class="stt">i</span>&#8212;<wbr></wbr>often written as <span class="stt">a[i]</span>&#8212;<wbr></wbr>yields (bits that
+ represent) some <span class="stt">T</span> if the control flow reaches the point beyond the
+ array reference. In a sound language such as Java or ML, this claim
+ always holds; it roughly corresponds to the <span style="font-style: italic">modus ponens</span> rule of
+ classical logic. In C or C++, this claim is wrong. If <span class="stt">i</span> is out of
+ bounds, the array reference produces whatever random bits it finds and
+ interprets them as elements of <span class="stt">T</span>&#8212;<wbr></wbr>even if doing so makes no sense.</p><p>When programmers create code, they continuously make, and rely on,
+ predictions&#8212;<wbr></wbr>consciously or subconsciously. This is simply how programming
+ works, even if programmers do not design code but &ldquo;tinker until it works.&rdquo;
+ The logical term for making predictions is &ldquo;reasoning about programs.&rdquo; The
+ predictions correspond to <span style="font-style: italic">theorems</span> and the arguments in their
+ support are <span style="font-style: italic">proofs</span>.  In typed languages, for example, function types
+ are theorems, the function definition is a proof, and the type checker
+ ensures that the proof supports the theorem. If a function has a well-chosen
+ name, other programmers can use the function based on its type and name.</p><p><div class="SIntrapara">Given this background, the goals of <span style="font-style: italic">Logic in Computer Science</span> are to
+</div><div class="SIntrapara"><ul><li><p>make reasoning about programs explicit</p></li><li><p>introduce students to tools that assist programmers with this task.</p></li></ul></div><div class="SIntrapara">Students thus get a first taste of how it works, and they experience how much
+ easier it is to reason about well-designed programs.</div></p><p><span style="font-style: italic">Logic in Computer Science</span> realizes the first goal with an introduction of classical
+(propositional and first-order) logic, heavily emphasizing structural
+induction as a proof method for establishing theorems about functions and
+programs. Structural induction is dual to the design recipe of <span style="font-style: italic">Fundamentals I</span>&#8212;<wbr></wbr>by
+design&#8212;<wbr></wbr>and therefore works particularly well.</p><p>The course motivates the second goal by applying logic to sizable
+programs. Logical reasoning applied to such programs requires the
+management of large number of details. Software is well-suited for managing
+numerous details, so students <span style="font-style: italic">Logic in Computer Science</span> uses a proof assistant for the task
+of scaling proofs to complete programs.</p><p>ACL2, the chosen proof assistant, encapsulates a logic that closely
+corresponds to the design recipe of <span style="font-style: italic">Fundamentals I</span>. If students properly design the
+desired functions in <span style="font-style: italic">Fundamentals I</span>, ACL2 can often prove the desired theorems
+easily. If students tinker their way to a complete function, the proof
+assistant tends to fail. In short, ACL2 naturally reinforces the explicit
+design rules of <span style="font-style: italic">Fundamentals I</span>.</p><h5>2.5<tt>&nbsp;</tt><a name="(part._.O.O.D__.Scaling_.It_.Up)"></a>OOD: Scaling It Up</h5><p>The primary goal of <span style="font-style: italic">OOD</span> is to deepen students&rsquo; practical programming
+ skills by scaling up the complexity of the projects, without changing the
+ programming language from <span style="font-style: italic">Fundamentals II</span>. Instead of complete, but relatively
+ small programs, students are expected to design program components and
+ glue components together. Designing components also introduces the
+ challenge of creating interfaces and protocols and, conversely, of using
+ existing interfaces and protocols.</p><p>Interfaces and protocols often come with logical assertions that partly
+ explain the implementations&rsquo; behavior. A classical assertion may restrict the
+ kinds of arguments a method can cope with, e.g., only positive integers or
+ only an array of integers that add up to 100. A temporal assertion in an
+ interface may require that an <span class="stt">open</span> method is called before a
+ <span class="stt">read</span> method.</p><p>While <span style="font-style: italic">Logic in Computer Science</span> shows how logical reasoning formally works on small
+ functions and programs, <span style="font-style: italic">OOD</span> focuses on stating and exploiting such
+ assertions during the informal prediction process that takes place when
+ programmers design interfaces and code. Until formal methods researchers
+ make formal reasoning affordable, this informal mode of thinking will
+ inform the best designers in the field.</p><p>As feasible, <span style="font-style: italic">OOD</span> also scales up students&rsquo; communication skills. Instead
+ of presenting their designs and code to an instructor, students may present
+ their work to the entire class. Instructors should encourage the class to
+ comment on the content of the presentation.</p><h5>2.6<tt>&nbsp;</tt><a name="(part._.Software_.Development__.Putting_it_.All_.Together)"></a>Software Development: Putting it All Together</h5><p><span style="font-style: italic">Software Dev</span> is basically a capstone of our core courses.  The ideal <span style="font-style: italic">Software Dev</span>
+student has taken <span style="font-style: italic">OOD</span>, completed the first co-op, and explored the
+landscape of programming languages. What this student needs, is a chance to
+get involved in the maintenance of code. More than any other task in the
+realm of software, maintaining code shows why design matters, why logical
+reasoning matters, and why people skills matter.</p><p>To emphasize these points, <span style="font-style: italic">Software Dev</span> instructors ought to allow students to
+choose their favorite programming language for the course project(s). The
+students should not perceive the chosen language as a constraint, though
+they will necessarily find out that it is one. If they don&rsquo;t, instructors
+have chosen the wrong project.</p><p>Since the ideal <span style="font-style: italic">Software Dev</span> student is <span style="font-style: italic">not</span> able to manage a large project,
+instructors ought to introduce students to this aspect of engineering
+software <span style="font-style: italic">explicitly</span>&#8212;<wbr></wbr>that is, not via &ldquo;mimic and modify.&rdquo; One way
+to accomplish this goal is to have students design parts of the projects
+each week, to expose the weaknesses of their designs during code review, and
+to then provide good versions of these designs later in the semester.</p><p>The key to <span style="font-style: italic">Software Dev</span> is that students must revisit code that they or their
+peers created weeks ago and that the overall project is complex and large
+(say more than 5,000 lines of code in any language) that this maintenance
+task becomes non-trivial.  This step may take the form of fixing bugs,
+adding features, replacing features, and even subtracting them. To complete
+such tasks, students must reconstruct the thoughts that the creators of the
+code had&#8212;<wbr></wbr>and often did not write down as assertions or other validated
+statements. Hence, if code repositories are rotated among the students,
+this task drives home most clearly why (1) such additional assertions and
+comments matter and (2) pair programming leaves behind residue of design
+knowledge.</p><p><div class="SIntrapara"><span style="font-style: italic">Software Dev</span> also expands the <span style="font-weight: bold">people skills</span> that go with engineering
+software. Students continue to program in pairs to hone their interpersonal
+communication skills. In addition students must get a chance to present
+several times to their peers in class to improve their presentation
+skills. Finally, <span style="font-style: italic">Software Dev</span> is also the ideal point for introducing students to
+the act of reviewing their peers&rsquo; code.  One way to achieve this goal is to
+follow the IBM &ldquo;white room&rdquo; practice of code reviews, which over years of
+experimentation suggests that
+</div><div class="SIntrapara"><ul><li><p>code reviews benefit from a general familiarity with the task;</p></li><li><p>the result of code reviews does <span style="font-style: italic">not</span> depend on prior attempts
+to read designs or code;</p></li><li><p>the ideal code review panel consists of three panelists: (1) a head
+reader who guides the panel&rsquo;s interaction with the presenters, (2) a
+secondary reader, and (3) a secretary who primarily focuses on writing down
+the issues revealed during the review and suggestions made.</p></li></ul></div><div class="SIntrapara">Instructors can inform panelists of their performance and can judge the
+secretary&rsquo;s work by editing the review memo before it goes from the panel
+to the presenters.</div></p><p><span style="font-weight: bold">Note</span> Instructors get a lot of respect in this course if <span style="font-style: italic">they
+implement</span> the project and are willing to present <span style="font-style: italic">their own code</span> at
+any point in time. <span style="font-weight: bold">End of Note</span></p><h4>3<tt>&nbsp;</tt><a name="(part._.What_s_.Missing_)"></a>What&rsquo;s Missing?</h4><p>The College&rsquo;s core curriculum has stood the test of time. Our co-op
+employers recruit our students in good and bad times, and many are put to
+work on actual programming projects. It has also become clear that our
+students are still missing out on some skills that they need to become
+well-rounded engineers of software.</p><p><span style="font-weight: bold">Independent Exploration</span> Programming is like playing an instrument.
+The more we practice, the better we get at it. Programming is also like
+science. Constantly pushing the boundaries of our knowledge is key. What I
+often find, however, is that our students do not seem to understand that
+programming <span style="font-style: italic">beyond the classroom</span> is essential to their growth. Why
+do our students lack incentives to explore on their own? What can we do to
+provide incentives?</p><p><div class="SIntrapara"><blockquote class="refpara"><blockquote class="refcolumn"><blockquote class="refcontent"><p>Companies are clearly recognizing that tricky coding questions
+about algorithms knowledge do not identify the best developers.</p></blockquote></blockquote></blockquote></div><div class="SIntrapara"><span style="font-weight: bold">Performance Debugging</span> Students also have a hard time connecting
+ knowledge from algorithms to program design. While regurgitable knowledge
+ from our algorithms course might currently help with job interviews,
+ developing software needs a specific skill set from algorithms that
+ colleges in general fail to teach:
+</div><div class="SIntrapara"><ul><li><p>use a performance debugger to identify hot spots in programs,</p></li><li><p>analyze hotspots and their surroundings,</p></li><li><p>create alternative solutions, and</p></li><li><p>set up relevant performance test suites to easily compare different solutions.</p></li></ul></div><div class="SIntrapara">A course based on the above cycle would motivate the dry material of a
+ standard algorithms course and turn homework problems into hands-on
+ assignments, which might make the course more accessible than a pure
+ theory course. Creating such a course on performance debugging would
+ further set apart our curriculum as novel and innovative.</div></p><blockquote class="refpara"><blockquote class="refcolumn"><blockquote class="refcontent"><p>See <a href="http://www.ccs.neu.edu/home/matthias/Tmp/Cplusplus/">the course charter</a> that Peter D., Alan M.,
+Magy S., Abutalib A., and myself worked out.</p></blockquote></blockquote></blockquote><p><span style="font-weight: bold">Unsafe Programming</span> For better or worse, the world now has a software
+infrastructure built in unsound (unsafe) languages, such as C, C++, or
+Objective C. Over the past decade or so, people have recognized this
+problem and have smothered the infrastructure software with layers created
+in safe languages. One approach is to use (reasonably) safe scripting
+languages that allow easy access to the unsafe layer as needed. Python
+scripting is a prime example for this mode of work.</p><p>When programmers work in a mixed context they encounter entirely new
+problems: seg faults, core dumps, or programs that output implausible
+results. Our students must learn to write code in this world, pinpoint
+bugs, and debugging techniques that take into account lack of soundness.
+The College has finally created a course along these lines; time will tell
+whether it accomplishes its mission.</p><p><div class="SIntrapara"><span style="font-weight: bold">Software Engineering</span> Once students know how to develop programs
+systematically, they may wish to explore some of the software engineering
+topics in depth. Three topics stand out in my mind:
+</div><div class="SIntrapara"><ul><li><p><span style="font-weight: bold">testing</span>&#8212;<wbr></wbr>While all five core courses heavily emphasize unit
+testing, our students would greatly benefit from a course that exposes them
+to the wider topic&#8212;<wbr></wbr>regression testing, black-box and white-box testing,
+etc.&#8212;<wbr></wbr>as well as the currently most widely used testing methods&#8212;<wbr></wbr>random
+testing and mutation testing.</p></li><li><p><span style="font-weight: bold">programming in a team</span>&#8212;<wbr></wbr>None of the five core courses are
+suitable for true team programming, which is quite different from pair
+programming. Most of our graduates will end up working in teams and
+preparing them for this style of work seems critical.</p></li><li><p><span style="font-weight: bold">software modeling</span> &ndash; Software engineers benefit from
+&ldquo;executable&rdquo; models of their plans as much as architects like to simulate
+3D walk-throughs of blueprints. Mapping such a model to constraint solvers
+may reveal oversights, conflicts, hidden constraints and other issues that
+become expensive to fix if they are not discovered in time. Researchers
+like Daniel Jackson and Emina Torlak have clearly demonstrated the value of
+modeling software blueprints and have made some effort to turn their
+insights into courses. Perhaps it is time for Northeastern to catch up.</p></li></ul></div></p><p>In addition to these topics, the College must also pay attention to
+emerging domains where software will play a critical role. No matter what
+courses are offered though, the instruction should emphasize explicit ideas
+over &ldquo;mimic and learn implicitly.&rdquo;</p><h4>4<tt>&nbsp;</tt><a name="(part._unique)"></a>P.S. Uniqueness</h4><p><div class="SIntrapara">Our College is no longer the only computer science unit that teaches an
+explicit and systematic approach to programming. A number of colleagues
+have adapted our approach to their special needs and contexts:
+</div><div class="SIntrapara"><ul><li><p><span style="font-weight: bold">Brown</span> teaches two versions of a like-minded first-year
+curriculum. One covers explicit and systematic design in untyped and typed
+functional (teaching) language as well as Java. Krishnamurthi&rsquo;s alternative
+introduction synthesizes our freshman course with an algorithmic course
+based on
+<a href="http://www.amazon.com/Introduction-Algorithms-A-Creative-Approach/dp/0201120372">Udi
+Manber&rsquo;s excellent book</a>.</p></li><li><p>Kathi Fisler mapped out an adaptation of our first-year curriculum at
+<span style="font-weight: bold">WPI</span>. Her adaptation improved on several aspects of <span style="font-style: italic">Fundamentals II</span>; her
+&ldquo;honors&rdquo; variant of <span style="font-style: italic">Fundamentals I</span> actually deserves the name.</p></li><li><p>Prabhakar Ragde at <span style="font-weight: bold">Waterloo</span> has created three flavors of
+courses similar to our <span style="font-style: italic">Fundamentals I</span>: &ldquo;regular,&rdquo; &ldquo;non-major,&rdquo; and &ldquo;advanced.&rdquo;
+All second-semester versions move into the design of imperative programs
+inspired by the remaining material of HtDP/1e. Logic is covered in the
+&ldquo;advanced&rdquo; track using Haskell.</p></li><li><p>Gregor Kiczales at <span style="font-weight: bold">British Columbia</span> offers several different
+tracks for the last few weeks of the first course. Each shows students how
+to apply explicit design in a range of scripting languages, tailored to
+certain majors. He also created a Coursera version of the course, dubbed
+<span style="font-style: italic">Systematic Programming</span>; this on-line version has attracted several
+brilliant young high school students to the Racket community.</p></li><li><p>At the <span style="font-weight: bold">University of Chile</span>, &#201;ric Tanter uses Python to teach
+HtDP.</p></li><li><p>Mike Sperber merged <span style="font-style: italic">Fundamentals I</span> and <span style="font-style: italic">Logic in Computer Science</span> into a single course at
+<span style="font-weight: bold">Tuebingen</span>, developed appropriate variations of our teaching
+languages, and published a popular text book in German on the course.</p></li><li><p>Kenichi Asai from <span style="font-weight: bold">Ochanomizu University</span> has
+<a href="http://www.is.ocha.ac.jp/~asai/papers/tfpie2015.pdf">ported the GUI framework</a> for teaching <span style="font-style: italic">Fundamentals I</span> to OCaml and
+experimented with a functionally typed course in the third semester. His
+department also offers a regular version of <span style="font-style: italic">Fundamentals I</span>.</p></li></ul></div><div class="SIntrapara">A fair number of other universities (e.g. Chicago, Delaware, Northwestern,
+Utah) and colleges (e.g., Boston College, Vassar) teach other variations on the
+first and second course, but I am not familiar with all of their
+improvements and variations.</div></p><div class="navsetbottom"><span class="navleft"><div class="nosearchform"></div>&nbsp;&nbsp;</span><span class="navright">&nbsp;&nbsp;<a href="index.html" title="backward to &quot;Thoughts&quot;" data-pltdoc="x">&larr; prev</a>&nbsp;&nbsp;<a href="index.html" title="up to &quot;Thoughts&quot;" data-pltdoc="x">up</a>&nbsp;&nbsp;<a href="Growing_a_Programmer.html" title="forward to &quot;Growing a Programmer&quot;" data-pltdoc="x">next &rarr;</a></span>&nbsp;</div></div></div><div id="contextindicator">&nbsp;</div></body></html>

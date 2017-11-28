@@ -1,0 +1,32 @@
+
+research: year 22 of a 40-year project 
+------------------------------------------------------------
+ -- type inference to support Type Racket (Ben G)
+ -- typed DSLs (Stephen C), 
+    create collaboration point for Emina Torlack @ UW
+ -- the Syndicate language (Tony GJ, Sam C) 
+    a new model for coordinating concurrent programs 
+ -- compiler tools (Leif A)
+
+funding: raise one dollar less than needed
+------------------------------------------------------------
+ -- in the 4th month of my 16-month plan for an Expedition 
+    topic: language-oriented programming; 
+    see attached, invited CACM column 
+    (all of the above are an element of the vision we will sell)
+ -- depending on last year's 2 NSF submissions,
+    I will re-submit smaller ones, too
+ -- track AFOSR program officers to see 
+    whether there's a new contact point
+
+teaching: continue to provide high-class courses for the 99% 
+------------------------------------------------------------
+ -- design and deliver Accelerated in F'17
+    I started recruiting top-tier TAs
+ -- design and deliver new course on LOP in S'18 (see Expedition)
+ -- run summer school on this second topic (July '17) 
+
+service: I served this College for 15 years at a 
+rate like nobody else. Not that anyone cares. 
+------------------------------------------------------------
+Check. 

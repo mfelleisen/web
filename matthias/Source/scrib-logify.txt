@@ -1,0 +1,152 @@
+From: Matthew Flatt <mflatt@cs.utah.edu>
+Subject: Re: [racket] Scriblogify Error -- I'm baaack!
+Date: October 27, 2012 11:15:35 PM EDT
+To: Patrick King <slowthought@gmail.com>
+Cc: users@racket-lang.org
+
+You're running into sandbox filesystem-protection rules.
+
+When you include a path in #:requires for `make-evaluator', then read
+access is granted for that file in the sandbox, so that's why the extra
+#:require path changes the document's behavior.
+
+Outside of DrRacket... well, I'm not excatly sure. Something in
+DrRacket's configuration of various path and module parameters enables
+access to the directory containing "my-scribble-doc.scrbl", while the
+configuration of raw `racket', `scribble', or `raco scribblogify'
+doesn't allow access to the directory.
+
+Assuming that you trust the code that you run in documentation --- at
+least as much as you trust the document itself --- the best approach is
+probably to use `call-with-trusted-sandbox-configuration':
+
+@(interaction 
+ #:eval (call-with-trusted-sandbox-configuration
+         (lambda ()
+           (make-evaluator 
+            'racket/base
+            (sandbox-output 'string)
+            (sandbox-error-output 'string)
+            #:requires '("../Private/my-racket-mod.rkt"))))
+  (f 1 2))
+
+I didn't actually try that with `raco scribblogify', but I got the
+errors that you report when using `raco scribble', and using
+`call-with-trusted-sandbox-configuration' solves the problem with `raco
+scribble'.
+
+At Fri, 26 Oct 2012 22:38:25 -0400, Patrick King wrote:
+When last I wrote on my problems with Scriblogify, I attributed them to
+Windows 7 security... I was way too optimistic, and way too ashamed to
+bother the community again. I have found a couple smoking guns since then,
+and found that they, too, had nothing to do with my problem. The following
+is repeatable in Racket 5.3 and Windows 7:
+
+The following are all part of a project "ScriblogifyBug", which contains
+folders "Private", where I hide implementation details, and "Blog", where I
+boast about my implementation. Like a good little programmer, I use
+rackunit to create custom tests relevant to my code, and use submodules to
+implement tests. Like an enthusiastic Racketeer, I blog via
+Scribble and Scriblogify.
+
+#lang racket/base
+;; begin Private/my-test-mod.rkt
+(require rackunit)
+(provide (all-defined-out)
+        (all-from-out rackunit))
+
+(define-simple-check
+ (check-my-func f)
+ (procedure? f))
+;; end Private/my-test-mod.rkt
+
+#lang racket/base
+;; begin Private/my-racket-mod.rkt
+(provide f)
+
+(module+ test
+ (require "my-test-mod.rkt"))
+
+(define (f x y)
+ (+ x y))
+
+(module+ test
+ (printf "Tests running.~n")
+ (check-eq? 1 1)
+ (check-my-func f))
+;; end Private/my-racket-mod.rkt
+
+#lang scribble/manual
+@; begin Blog/my-scribble-doc.scrbl
+@(require racket/sandbox scribble/eval)
+@title{Trapping the Scriblogify Bug}
+@author{Pat}
+
+I expect this file to render fine via the @italic{Scribble HTML} button
+within DrRacket,
+and it does. However, I am curious why I must explicitly require
+"my-test-mod.rkt", which
+is only called from within the test submodule of "my-racket-mod.rkt".
+
+Let's demonstate my nifty new function, @racket[f].
+
+@(interaction #:eval(make-evaluator 'racket/base
+                                   (sandbox-output 'string)
+                                   (sandbox-error-output 'string)
+                                   #:requires
+'("../Private/my-racket-mod.rkt"
+
+"../Private/my-test-mod.rkt"))
+             ;                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+             ;                               Why must I explicitly require
+this?
+             (f 1 2))
+
+
+I also expect this file to fail to render via @italic{raco scriblogify
+"my-scribble-doc.scrbl"},
+and it does, yielding the error
+@italic{"current-directory: `exists' access denied for
+~\ScriblogifyBug\Blog\"}. With different
+tweaks, I've gotten
+similar 'exists' errors for the files in ../Private, involving
+current-directory or similar
+functions described in @bold{14.2 Filesystem} in the documentation, so I
+suspect a Windows
+specific path quirk. For instance, if I put all three files in the same
+directory (modifying
+the @racket{require}s in "my-scribble-doc.scrbl" accordingly), I get the
+error
+@italic{"file-exists?: `exists' access denied for C:\Program
+Files\Racket\.\racket.exe"}. I
+am not sure how to interpret "\.\", and C:\Program Files\Racket certainly
+exists on my system,
+as does C:\Program Files\Racket\Racket.exe (so there's the path issue and
+the case issue).
+@; end Blog/my-scribble-doc.scrbl
+
+So, in summary, two issues:
+
+a) Scribble needs help finding and interpreting files found within
+submodules that I would expect to be both findable and irrelevant. When
+explicitly told every potentially relevant file, it can figure out that it
+can ignore it, when rendered within DrRacket.
+
+2) Scriblogify doesn't find the help sufficient, when run from the command
+line.
+
+c) One common clue, various path related errors that might be Windows
+Weirdness.
+
+Ok, me sticking with Windows is an issue, one that I hope to rectify in the
+next six months as certain work-related constraints are relaxed.
+
+All thoughts appreciated.
+
+Pat
+____________________
+ Racket Users list:
+ http://lists.racket-lang.org/users
+____________________
+ Racket Users list:
+ http://lists.racket-lang.org/users

@@ -1,0 +1,38 @@
+<div>
+
+ <SCRIPT language="JavaScript"> 
+   overimage=new Image 
+   outimage=new Image 
+   overimage.src="Images/family-ger2007-3.gif"
+   outimage.src="Images/family-ger2007.gif"
+ </SCRIPT> 
+
+<table align="center" valign="middle">
+  <tr> 
+    <!-- td><img src="Images/exiled.jpg" width="50" /></td -->
+    <!-- td><img src="http://www.helgafelleisen.com/Tmp/4_500.jpg" width="50" /></td -->
+    <!-- td><a class="ax" href="http://www.helgafelleisen.com/">Helga's world</a><br />
+        (also see <a class="ax" href="http://www.uniquelylara.com/">Uniquely Lara</a>)</td -->
+    <td rowspan="4">
+<!-- a href="#" 
+   onmouseover="image.src=overimage.src"
+   onmouseout="image.src=outimage.src">
+   <img name="image" alt="family" src="Images/family-ger2007.gif" width="280" border="0" />
+</a -->
+   </td>
+  </tr>
+
+  <tr> 
+    <td><img src="Chris/chris.gif" width="50" /></td>
+    <td><a href="Chris/index.html">Chris</a></td></tr>
+
+  <tr> 
+    <td><img src="Seba/seba.jpg" width="50" /></td>
+    <td><a href="Seba/index.html">Sebastian</a></td></tr>
+
+  <tr> 
+    <td>(no, they are not <i>that</i> young anymore)</td></tr>
+
+</table>
+
+</div>

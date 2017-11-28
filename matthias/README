@@ -1,0 +1,43 @@
+
+  -----------------------------------------------
+  DO NOT REMOVE HTML FILES WITH /BIN/RM -R *.HTML
+  -----------------------------------------------
+
+The directory is generated with from index.ss:
+
+ racket index.rkt
+
+The Script generates most .html files. It is aware of most directories. 
+
+Exceptions: 
+
+ Tmp/
+
+ cquotes.html
+ squotes.html
+
+ htdp.html 
+ HtDP/
+
+ PL 
+ umlauts 
+ Vita/
+ plt-design
+
+  -----------------------------------------------
+  Creating a New Directory
+  -----------------------------------------------
+
+create a index.ss file 
+
+define the navigation links or import the links from HOME
+
+use 
+ (produce-page filename Xexpr[html])
+ to produce the actual page 
+
+ (html PageTitle (U LogoURL False) Links Xexpr)
+ to produce an Xexpr that produce-page can consume 
+
+ (include/reader FileName xml-as-qq)
+ to produce Xexpr from included XML file

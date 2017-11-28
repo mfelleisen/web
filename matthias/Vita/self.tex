@@ -1,0 +1,295 @@
+\documentclass{article}
+
+\usepackage{times}
+
+\def\email#1{ {\tt <#1>} }
+
+\def\dollars#1{\$#1}
+\def\dollars#1{\relax}
+
+\def\specialtopic#1{\subsection*{#1}} % don't start table!
+
+\def\topic#1{\subsection*{#1}}
+\def\subtopic#1{\bigskip\noindent{#1}}
+\def\endtopic{\vskip1.5cm}
+
+\def\litem#1 {\par\begingroup\clubpenalty=10000%
+           \def\par{\endgraf\endgroup}%
+	   \noindent\hangindent=2cm\hangafter=0%
+	   \hbox to0pt{\hskip-2cm#1\hfill}}
+
+% ----------------------------------------------------------------------------------
+
+\begin{document}
+
+\begin{center}
+{\bf Matthias Felleisen}
+\ \\
+{College of Computer Science}\\
+{Northeastern University}\\
+{Boston, Massachusetts 02115}\\
+\verb|matthias@ccs.neu.edu|\\
+\verb|http://www.ccs.neu.edu/home/matthias/|\\
+\end{center}
+
+\topic{Education} 
+\litem{Aug. 1987} Ph.D., Indiana University, Bloomington, Indiana
+\litem{Dec. 1983} Dipl. Wirtschafts-Ingenieur, Universit\"at Karlsruhe, Germany
+\litem{Aug. 1981} M.S., The University of Arizona, Tucson, Arizona
+\endtopic
+
+\topic{Professional Experience} 
+\litem{2001--pr.} Trustee\footnote{An endowed chair donated by the Board of
+Trustees of Northeastern University.} Professor, Northeastern University, Boston, Massachusetts
+\litem{1993--2001} Professor, Rice University, Houston, Texas
+\litem{1992--1993} Associate Professor, Rice University, Houston, Texas
+\litem{1987--1992} Assistant Professor, Rice University, Houston, Texas
+\litem{1984--1986} Research/Teaching Assistant, Indiana University, Bloomington
+\litem{summer '85} Research Associate, MCC, Austin, Texas
+\litem{1982--1983} Programmer, IDS, Karlsruhe, Germany
+\litem{1980} Associate Instructor, Universit\"at Karlsruhe, Germany
+\endtopic
+
+\topic{Extended Visits} 
+\litem{June 1996} Ecole Normale Superieure, Paris, France
+\litem{1993--1994} Carnegie Mellon University, Pittsburgh, PA 
+\litem{May 1991} Ecole Normale Superieure, Paris, France
+\endtopic
+
+\topic{Research Interests} 
+
+ I am interested in all aspects of programming, programming languages, and
+ programming environments.  Over the past few years, I have also begun to
+ investigate the role of programming language technology in software
+ engineering.
+\endtopic
+
+\topic{Educational Interests} 
+
+ I am interested in the role of programming as a (software) design activity
+ and in how to teach programming at all levels of education: K-12, college,
+ and MS programs.
+\endtopic
+
+\topic{Awards/Fellowships} 
+\litem{2010} ACM Educator of the Year (Karl Karlstrom Prize)
+\litem{2007} ACM Fellow 
+\endtopic
+
+\topic{Active Grants} 
+\litem{2010--2014} O. Shivers, M. Felleisen, M. Wand. CRASH. Darpa. \dollars{2,400,000}
+\litem{2010--2013} M. Felleisen. Modular ACL2. NSF. \dollars{499,000}
+  (collaborative with R. Page). 
+\litem{2009--2013} M. Felleisen. A Hot-House for Programming Languages. NSF. \dollars{684,000}
+\litem{2009--2012} M. Felleisen, R. Pucella. Software Contracts in a Higher-Order World. AFOSR. \dollars{480,000}
+\litem{2006--2010} M. Felleisen. Interface-Oriented Programming. NSF. \dollars{300,000}
+
+\subtopic{Past Grants} 
+\litem{2006--2009} M. Felleisen. Using Market Forces to Improve the Design of Software. NSF. \dollars{104,000} 
+  (collaborative with R. Findler). 
+\litem{2005--2009} M. Felleisen. Support for  Language-Oriented Programming in PLT Scheme. NSF. \dollars{200,000}
+\litem{2006--2009} M. Felleisen. Integrating Mechanized Logic into the SE Curriculum. NSF. \dollars{300,000} 
+  (collaborative with R. Page).  
+\endtopic
+
+\topic{Professional Activities} 
+
+\litem{2009-pr.} Editor in Chief: {\it Journal of Functional Programming\/} 
+\litem{2004-2008} Editor: {\it Journal of Functional Programming\/} 
+\litem{2001-2008} Pearl Editor: {\it Journal of Functional Programming\/} 
+\litem{2010} Program Committee, {\it Aspect-Oriented System Design\/}.
+\litem{2010} Program Committee, {\it International Lisp Conference\/}.
+\litem{2008} Program Committee, {\it Trends in Functional Programming\/}.
+\litem{2006} Program Committee Chairman, {\it The 2007 ACM Symposium on the Principles of Programming Languages\/}.
+\litem{2006} Program Committee, {\it The 2006 CUFP Workshop\/} (at {\it ICFP 2006\/}).
+\litem{2005} Program Committee,  {\it Object-Oriented Programming, Systems, Languages, and Applications 2005\/}.
+\endtopic
+
+\topic{Outreach \& Software Projects} 
+
+\litem{1995--pr.} TeachScheme!
+\litem{1994--pr.} Racket, formerly known as PLT Scheme
+\endtopic
+
+\topic{Books} 
+
+\litem{2009} {\it Semantics Engineering with PLT Redex}. MIT Press. (with R. Findler, M. Flatt). 
+\endtopic
+
+\topic{Refereed Publications: Journals and Book Chapters} 
+% -------------------------------------------------------------------
+\litem{2011} {Dimoulas, C., M. Felleisen}.
+ On contract satisfaction in a higher-order world.  
+ {\it Transactions on Programming Languages and Systems}, accepted. 
+% -------------------------------------------------------------------
+\litem{2010} {Culpepper, R., M. Felleisen}.
+ Debugging hygienic macros. 
+ {\it Science of Computer Programming \bf75}(7), 496-515.
+% -------------------------------------------------------------------
+\litem{2009} {Felleisen, M., S. Krishnamurthi}.
+ Viewpoint: Why computer science doesn't matter. 
+ {\it Communications of the ACM \bf52\rm(7)}, 37--40.
+% -------------------------------------------------------------------
+\litem{2007} {Krishnamurthi S.,  P. Hopkins,  J. McCarthy, P. Graunke, G. Pettyjohn , M. Felleisen}.
+ Implementation and Use of the PLT Scheme Web Server. {\it Journal of
+ Higher-Order and Symbolic Computing\/}, to appear.
+% -------------------------------------------------------------------
+\litem{2006} {Krishnamurthi S., R. B. Findler, P. Graunke, and Matthias
+ Felleisen}.  Modeling Web Interactions and Errors.  In Dina Goldin, Scott
+ Smolka, Peter Wegner (eds.), {\it Interactive Computation: The New
+ Paradigm\/}, Spring\-er Verlag, 2006, 255--276.
+
+\endtopic
+
+\topic{Conference Publications}  
+
+\litem{2011} {Dimoulas, C., M. Felleisen}.
+ Correct contracts.
+ In {\it Proc. 38th ACM Symposium on Principles of Programming
+ Languages\/}, 2011, to appear.
+
+\litem{2010} {Strickland, T.S., M. Felleisen}.
+ Contracts for first-class modules.
+ In {\it Proc. Sixth Symposium on Dynamic Languages 2010}, to appear. 
+ 		  
+\litem{2010} {Eastlund C., M. Felleisen}
+ Hygienic macros for ACL2. 
+ In {\it Proc. 2010 Symposium on Trends in Functional Programming}, to
+ appear. 
+
+\litem{2010} {Strickland, T.S., M. Felleisen}.
+ Implementing general contract boundaries. 
+ In {\it Proc. 21st Symposium on Implementation and Application of
+ Functional Languages}, to appear. 
+
+\litem{2010} {Tobin-Hochstadt, S. and M. Felleisen}.
+ Logical types for untyped languages. 
+ In {\it Proc. 2010 ACM International Conference on Functional Programming\/}, 2010, 117--128.
+
+\litem{2010} {Culpepper, R. and M. Felleisen}.
+ Fortifying macros. 
+ In {\it Proc. 2010 ACM International Conference on Functional Programming\/}, 2010, 235--246.
+
+\litem{2009} {Strickland, T.S., M. Felleisen}.
+ Contracts for first-class modules.
+ In {\it Proc. Fifth Symposium on Dynamic Languages 2009}, 27--38.
+
+\litem{2009} {Eastlund C., M. Felleisen}
+ Making induction manifest in modular ACL2. 
+ In {\it Proc. 2009 Conf. Principles and Practice of Declarative Programming}, 105--116.
+
+\litem{2009} {Dimoulas C., R. Pucella, M. Felleisen}.
+ Future contracts. 
+ In {\it Proc. 2009 Conf. Principles and Practice of Declarative Programming}, 195--206.
+
+\litem{2009} {Felleisen, M.,R.B. Findler, M. Flatt, S. Krishnamurthi}.
+ A functional I/O system or, fun for freshman kids. 
+ In {\it Proc. 2009 ACM International Conference on Functional Programming\/}, 2009, 47--58 
+
+\litem{2009} {Strickland, S., Tobin-Hochstadt, S., and M. Felleisen}.
+ Practical Variable-Arity Polymorphism. 
+ In {\it Proc. 2009 European Symposium on Programming\/}, 32--46.
+
+\litem{2009} {Eastlund, C. and M. Felleisen}.
+ Toward a Practical Module System for ACL2. 
+ In {\it Proc. 9th ACM Symposium on Practical Aspects of Declarative Languages\/}, 2009, 46--60. 
+
+\litem{2008} {Tobin-Hochstadt, S. and M. Felleisen}.
+ The Design and Implementation of Typed Scheme. 
+ In {\it Proc. 35th ACM Symposium on Principles of Programming Languages\/}, 2008, 395--407.
+
+\litem{2007} {Flatt, M., R.B. Findler, G. Yu, M. Felleisen}.
+ Adding delimited and composable control to a production programming environment.
+ In {\it Proc. 2007 ACM International Conference on Functional
+ Programming\/}, 2007, 165--177.
+
+\litem{2007} {Culpepper. R and M. Felleisen}.
+ Debugging Macros, 
+ In {\it Proc. Generative Programming and Component Engineering\/}, 2007, 135--144.
+
+\litem{2006} {Flatt, M., R.B. Findler, M. Felleisen}.
+ Scheme with Classes, Mixins, and Traits. 
+ In {\it Proc. Asian Symposium on Programming Languages and Systems (ASPLA
+ 2006)\/}, 270--289.
+
+\litem{2006} {Tobin-Hochstadt, S., M. Felleisen}.
+ Interlanguage Migration: From Scripts to Programs.
+ {\it Proc. Dynamic Languages Symposium (OOPSLA 2007 Track)\/}, 964--974.
+
+\litem{2006} {Meunier, P., R. Findler, and M. Felleisen}
+ Modular Set-Based Analysis from Contracts.
+ In {\it Proc. 33rd ACM Symposium on Principles of Programming
+ Languages\/}, 2006, 218--231. 
+
+\litem{2005} {Pettyjohn, G., J. Clements, J. Marshall, S. Krishnamurthi,
+ M. Felleisen} 
+ Continuations from Generalized Stack Inspection. 
+ In {\it Proc. 2005 ACM International Conference on Functional
+ Programming\/}, 216--227.
+
+\litem{2005} {Cobbe, R. and M. Felleisen}
+ Environmental acquisition revisited.
+ In {\it Proc. 32nd ACM Symposium on Principles of Programming
+ Languages\/}, 2005, 14--25.
+\endtopic
+
+\topic{Miscellaneous} 
+
+\litem{2009} {Eastlund, C., and M. Felleisen}. 
+ Automatically Verified GUI Programs. 
+ {\it Proc. Symp. ACL2 Theorem Prover and its Applications}, 2009, to appear. 
+
+\litem{2008} {Page, R., Eastlund, C., and M. Felleisen}. 
+ Functional programming and theorem proving for undergraduates: a progress report.
+ {\it Proc. Works 2008, Functional and declarative programming in
+ education}, 21-30. 
+
+\litem{2007} {Eastlund, C., Vaillancourt, D., and M. Felleisen}. 
+ ACL2 for Freshmen: First Experiences.
+ {\it Proc. Symp. ACL2 Theorem Prover and its Applications}, 2007, 
+
+\litem{2006} {Vaillancourt, D., R. Page, M. Felleisen}.
+ Dracula: ACL2 in DrScheme. 
+ {\it Proc. Symp. ACL2 Theorem Prover and its Applications}, 2006, 107--116.
+
+\litem{2006} {Culpepper, R. and M. Felleisen}.
+ A Macro Stepper for Sceme 
+ {\it Proc. Worksh. Scheme and Functional Programming}, Portland (OR),
+ 2006. 
+\endtopic
+
+\topic{Ph.D. Students} 
+
+\litem{2010} Ryan Culpepper. {\it Refining Syntactic Sugar: Tools for Supporting Macro Development.\/}\\
+
+\litem{2009} Sam Tobin-Hochstadt. {\it Typed Scheme: From Scripts to Programs.\/}\\
+
+\litem{2008} Richard Cobbe. {\it Much Ado about Nothing: Putting Null in its Place.\/}\\
+
+\litem{2006} Philippe Meunier. {\it Modular Set-Based Analysis from Contracts.\/}\\
+
+\litem{2005} John Clements. {\it Portable and High-level Access to the Stack with Continuation Marks.\/}\\
+
+\endtopic
+
+%% -----------------------------------------------------------------------------
+
+\topic{Keynotes at Conference \& Workshops} 
+
+\litem{2010} TeachScheme! -- A Checkpoint.
+At the {\it International Conference on Functional Programming\/}, 
+Baltimore, September, 2010. 
+
+\litem{2010} Types for Untyped Languages. 
+At the {\it Symposium on Typed Languages: Design and Implementation\/},
+Madrid, January, 2010. 
+
+\litem{2009} From Soft Scheme to Typed Scheme: Experience from 20 Years of
+Script Evolution, and Some Ideas of What Works. 
+At the {\it 2009 Workshop on Scripts to Programs\/}, Genoa, Italy, July 2009. 
+
+\litem{2005} How to Design Class Hierarchies. 
+At the {\it 2005 Functional and Declarative Programming in Education\/},
+Talinn, Estonia, September 2005. (Delivered by M. Flatt, due to a family death)
+
+\end{document}

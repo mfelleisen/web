@@ -1,0 +1,44 @@
+Meine fuenf einflussreichsten Arbeiten sind (aber es gibt auch andere): 
+
+1. The DrScheme Projekt; available at: www.drscheme.org 
+
+   DrScheme ist eine Programmierumgebung fuer mehrere Programmiersprachen,
+   incl. Scheme, Java, ML, und Python Dialekte. Sie besteht aus ca. 450,000
+   Zeilen C und Scheme Code. Zur Zeit arbeiten etwa drei ehemalige
+   Doktoranden, zwei "Postdocs" (an der Northeastern), und 20 Doktoranden
+   (an fuenf Universitaeteten) an der Umgebung. Tagelich holen sich
+   zwischen 300 und 500 Leute die Umgebung von der Webseite. 
+
+   Beschreibung:  
+   Findler, Clements, Flanagan, Flatt, Krishnamurthi, Steckler, and Felleisen. 
+   DrScheme: A Programming Environment for Scheme  
+
+2. "How to Design Programs", MIT Press, 2001; available at: www.htdp.org
+
+   Diese Textbuch ist der erste Band einer Abhandlung ueber Design im
+   Bereich der Programmierung und Softwareerstellung. 
+
+   Beschreibung: 
+   Felleisen, Findler, Flatt, Krishnamurthi 
+   The Structure and Interpretation of the Computer Science Curriculum  
+   Journal of Functional Programming, 2004
+
+   Felleisen, Findler, Flatt, Krishnamurthi 
+   The TeachScheme! Project:  Computing and Programming for Every Student  
+   Journal of Computer Science Education, 2004
+
+3. Flanagan, Sabry, Duba and Felleisen 
+   In 20 years of the ACM SIGPLAN Conference on Programming Language 
+   Design and Implementation: 1979 - 1999. A Selection. 
+   The Essence of Compiling with Continuations (Retrospective)  
+ 
+4. Felleisen 
+   On the Expressive Power of Programming Languages  
+   Science of Computer Programming 
+
+5. Wright and Felleisen 
+   A Syntactic Approach to Type Soundness  
+   Information and Computation, 1991
+
+Die Papiere 3, 4, und 5 sowohl als die Veroeffentlichungen ueber 1 und 2
+sind auf dem Web (http://www.ccs.neu.edu/scheme/pubs/) erhaeltlich. 

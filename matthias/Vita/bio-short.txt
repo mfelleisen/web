@@ -1,0 +1,32 @@
+
+Matthias Felleisen, a Trustee Professor at Northeastern University,
+explores all aspects of program and programming language design.  His
+current research involves work on behavioral software contracts, gradual
+typing of scripting languages, language interoperability, language
+extensibility, and module systems. In addition to his research, Felleisen
+engages in educational outreach work. For the past 20 years, he and his
+team have worked with middle schools, high schools, after-school programs,
+and college faculty on injecting design ideas into mathematics and computer
+science courses. Such educational interactions often inspire his research,
+and many research efforts end up improving his educational work.  The ACM
+inducted Felleisen as a Fellow in 2007. In 2009, he received the ACM Karl
+V. Karlstrom Award. ACM SIGCSE honored him as the Educator of the Year in
+2010, and ACM SIGPLAN added their lifetime award in 2012.
+
+
+
+Matthias Felleisen explores all aspects of program design and programming
+language design.  His current research involves work on behavioral software
+contracts, gradual typing of scripting languages, language
+interoperability, language extensibility, and module systems. In addition
+to his research, Felleisen engages in educational outreach work. For the
+past 20 years, he and his team have worked with middle schools, high
+schools, after-school programs, and college faculty on injecting design
+ideas into mathematics and computer science courses. Such educational
+interactions often inspire his research, and many research efforts end up
+improving his educational work.  The ACM inducted Felleisen as a Fellow in
+2007. In 2009, he received the ACM Karl V. Karlstrom Award. ACM SIGCSE
+honored him as the Educator of the Year in 2010, and ACM SIGPLAN added
+their lifetime award in 2012.
+
+

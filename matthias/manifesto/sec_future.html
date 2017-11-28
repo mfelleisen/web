@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"/><title>7&nbsp;Racket, the Future: From Imperfections
+to Research Opportunities</title><link rel="stylesheet" type="text/css" href="scribble.css" title="default"/><link rel="stylesheet" type="text/css" href="racket.css" title="default"/><link rel="stylesheet" type="text/css" href="manual-style.css" title="default"/><link rel="stylesheet" type="text/css" href="manual-racket.css" title="default"/><script type="text/javascript" src="scribble-common.js"></script><script type="text/javascript" src="manual-racket.js"></script><!--[if IE 6]><style type="text/css">.SIEHidden { overflow: hidden; }</style><![endif]--></head><body id="scribble-racket-lang-org"><div class="tocset"><div class="tocview"><div class="tocviewlist tocviewlisttopspace"><div class="tocviewtitle"><table cellspacing="0" cellpadding="0"><tr><td style="width: 1em;"><a href="javascript:void(0);" title="Expand/Collapse" class="tocviewtoggle" onclick="TocviewToggle(this,&quot;tocview_0&quot;);">&#9660;</a></td><td></td><td><a href="index.html" class="tocviewlink" data-pltdoc="x">The Racket Manifesto</a></td></tr></table></div><div class="tocviewsublistonly" style="display: block;" id="tocview_0"><table cellspacing="0" cellpadding="0"><tr><td align="right">1&nbsp;</td><td><a href="Racket__Historically_Speaking.html" class="tocviewlink" data-pltdoc="x">Racket, Historically Speaking</a></td></tr><tr><td align="right">2&nbsp;</td><td><a href="The_Principles_of_Racket.html" class="tocviewlink" data-pltdoc="x">The Principles of Racket</a></td></tr><tr><td align="right">3&nbsp;</td><td><a href="sec_pl-pl.html" class="tocviewlink" data-pltdoc="x">Racket is a Programming-<wbr></wbr>Language Programming Language</a></td></tr><tr><td align="right">4&nbsp;</td><td><a href="sec_full.html" class="tocviewlink" data-pltdoc="x">Racket Covers a Full Programming Language Spectrum</a></td></tr><tr><td align="right">5&nbsp;</td><td><a href="sec_intern.html" class="tocviewlink" data-pltdoc="x">Racket Internalizes Extra-<wbr></wbr>Linguistic Mechanisms</a></td></tr><tr><td align="right">6&nbsp;</td><td><a href="sec_feedback.html" class="tocviewlink" data-pltdoc="x">The Racket Design Feedback Loop</a></td></tr><tr><td align="right">7&nbsp;</td><td><a href="" class="tocviewselflink" data-pltdoc="x">Racket, the Future:<span class="mywbr"> &nbsp;</span> From Imperfections
+to Research Opportunities</a></td></tr><tr><td align="right">8&nbsp;</td><td><a href="Acknowledgments.html" class="tocviewlink" data-pltdoc="x">Acknowledgments</a></td></tr><tr><td align="right"></td><td><a href="doc-bibliography.html" class="tocviewlink" data-pltdoc="x">Bibliography</a></td></tr></table></div></div></div></div><div class="maincolumn"><div class="main"><div class="navsettop"><span class="navleft"><div class="nosearchform"></div>&nbsp;&nbsp;</span><span class="navright">&nbsp;&nbsp;<a href="sec_feedback.html" title="backward to &quot;6 The Racket Design Feedback Loop&quot;" data-pltdoc="x">&larr; prev</a>&nbsp;&nbsp;<a href="index.html" title="up to &quot;The Racket Manifesto&quot;" data-pltdoc="x">up</a>&nbsp;&nbsp;<a href="Acknowledgments.html" title="forward to &quot;8 Acknowledgments&quot;" data-pltdoc="x">next &rarr;</a></span>&nbsp;</div><h3>7<tt>&nbsp;</tt><a name="(part._sec~3afuture)"></a>Racket, the Future: From Imperfections
+to Research Opportunities</h3><p><div class="SIntrapara">Racket&rsquo;s design principles have produced a programming language that
+</div><div class="SIntrapara"><ul><li><p>enables the rapid creation of new languages for specific problem
+areas and thus enables language-oriented programming;</p></li><li><p>supports a full spectrum of general-purpose programming languages
+with various conventional degrees of safety; and</p></li><li><p>internalizes mechanisms from its system context into linguistic
+constructs for fine-grained, programmable control.</p></li></ul></div><div class="SIntrapara">Turning principles into reality almost always yields an incomplete, and
+ possibly even flawed, product.<span class="refelem"><span class="refcolumn"><span class="refcontent">The same caveat applies to the
+design <span style="font-style: italic">process</span>, not only its result, but
+covering the positives and negatives of the design process is beyond the
+scope of this paper.</span></span></span> Racket is no exception, but we consider these
+ imperfections as opportunities for future research. The remainder of this
+ paper sketches some of them.</div></p><p>Racket&rsquo;s key advantage is its syntax extension system. It makes experienced
+ programmers extremely productive, but it comes with an extraordinarily steep
+ learning curve. Its syntax elaboration algorithm is hard to understand;
+ its toolbox is large and complex; and it has some brittle, unexplored
+ corners that occasionally trip up even experienced programmers.  The
+ situation calls for simplifications of the syntax system and for
+ the creation of a smooth ramp for the toolbox (in terms of both tools and
+ documentation).</p><p>In addition, the syntax extension system does not allow for a separation of
+ concerns, and programs suffer from this. For example, many programming
+ languages allow programmers to separate specifications from
+ implementations. In conventional Racket, contracts play the role of
+ specifications, functions implement them, and programmers may choose to
+ separate the two concerns in a module. No such separation exists for the
+ syntax system. While Culpepper&rsquo;s dissertation&nbsp;(<a href="doc-bibliography.html#%28autobib._.Ryan._.Culpepper._and._.Matthias._.Felleisen.Fortifying._macros.In._.I.C.F.P%2C._pp..._235--2462010%29" data-pltdoc="x">Culpepper and Felleisen</a> <a href="doc-bibliography.html#%28autobib._.Ryan._.Culpepper._and._.Matthias._.Felleisen.Fortifying._macros.In._.I.C.F.P%2C._pp..._235--2462010%29" data-pltdoc="x">2010</a>)
+ research has made some progress in this direction, a lot more work on
+ separating syntax specifications from syntax implementations is
+ needed. Realizing both will greatly improve Racket&rsquo;s support for the
+ principle of language-oriented programming.</p><p>Besides a language, modern programmers need an ecosystem. Indeed, many
+ programmers equate languages with their ecosystems. For Racket, this equation
+ means that the creation of a new language ought to include the derivation of
+ an IDE from DrRacket.  To some extent, DrRacket can already support new
+ languages automatically, e.g., with on-line syntax checking and simple
+ refactoring actions. For other tools, such as a syntax-directed stepper, this
+ process would need a significant amount of work and comes without guidance or
+ automation.<span class="refelem"><span class="refcolumn"><span class="refcontent">Spoofax&nbsp;(<a href="doc-bibliography.html#%28autobib._.Kats._.C...L..._.Lennart._and._.Eelco._.Visser.The._.Spoofax._language._workbench.In._.O.O.P.S.L.A%2C._pp..._444--4632010%29" data-pltdoc="x">Lennart and Visser</a> <a href="doc-bibliography.html#%28autobib._.Kats._.C...L..._.Lennart._and._.Eelco._.Visser.The._.Spoofax._language._workbench.In._.O.O.P.S.L.A%2C._pp..._444--4632010%29" data-pltdoc="x">2010</a>) comes with domain-specific
+languages for the generation of IDE tools, but also relies on extra-linguistic
+mechanisms.</span></span></span></p><p>The currently available enforcement mechanisms give rise to a full spectrum of
+ conventional programming languages: Typed Racket, Racket with contracts,
+ Racket, and <a href="http://docs.racket-lang.org/foreign/index.html" class="RktModLink" data-pltdoc="x"><span class="RktSym">ffi/unsafe</span></a> Racket. Although this spectrum is
+ expressive, it lacks power at both ends. To achieve full control over its
+ context, Racket probably needs access to assembly languages on all possible
+ platforms (from hardware to the web&rsquo;s JavaScript). How to integrate this power
+ in a portable manner is unclear. To realize the full power of types, Racket
+ will have to be equipped with dependent types. Tobin-Hochstadt and his Typed
+ Racket group are currently working on first steps in this direction, focusing
+ on numeric constraints in <a href="http://docs.racket-lang.org/ts-reference/index.html" class="RktModLink" data-pltdoc="x"><span class="RktSym">typed/racket</span></a>. When a Racket program uses vectors, its
+ corresponding typed variant type-checks what goes into these vectors and what
+ comes out, but like ML or Haskell, indexing is left to a (contractual) check
+ in the run-time system. Integrating Xi and Pfenning&rsquo;s form of programming with
+ numeric constraints&nbsp;(<a href="doc-bibliography.html#%28autobib._.Hongwei._.Xi._and._.Frank._.Pfenning.Eliminating._array._bound._checking._through._dependent._types.In._.P.L.D.I%2C._pp..._249--2571998%29" data-pltdoc="x">Xi and Pfenning</a> <a href="doc-bibliography.html#%28autobib._.Hongwei._.Xi._and._.Frank._.Pfenning.Eliminating._array._bound._checking._through._dependent._types.In._.P.L.D.I%2C._pp..._249--2571998%29" data-pltdoc="x">1998</a>) into <a href="http://docs.racket-lang.org/ts-reference/index.html" class="RktModLink" data-pltdoc="x"><span class="RktSym">typed/racket</span></a> is a natural step beyond plain
+ types.</p><p>More generally, Racket&rsquo;s spectrum of languages creates a multi-lingual
+ world for programmers, though with far more structure than currently found
+ in practice.  Even though Matthews and Findler&nbsp;(<a href="doc-bibliography.html#%28autobib._.Jacob._.Matthews._and._.Robert._.Bruce._.Findler.Operational._semantics._for._multi-language._programs.T.O.P.L.A.S._31%283%29%2C._pp..._12~3a1--12~3a442009%29" data-pltdoc="x">Matthews and Findler</a> <a href="doc-bibliography.html#%28autobib._.Jacob._.Matthews._and._.Robert._.Bruce._.Findler.Operational._semantics._for._multi-language._programs.T.O.P.L.A.S._31%283%29%2C._pp..._12~3a1--12~3a442009%29" data-pltdoc="x">2009</a>) have
+ studied the basics of multi-lingual programs, their theory covers only a
+ small part of this world. Our work on Racket clearly calls for extensions
+ of this result in several directions, including the sound interaction
+ between by-value and by-name (or lazy) variants of Racket, typed and
+ dependently typed variants, and so on.  We expect that studying how to
+ protect verified code as it is co-mingled with other kinds of code will
+ yield new insights into Racket&rsquo;s safety mechanisms.</p><p>Racket must also broaden its horizon and consider security concerns, both
+ as an enforcement action but also as an application of the third
+ principle. While sandboxes address some of the security concerns of
+ running a student program in a homework submission server, properly
+ addressing this problem calls for articulating security policies and
+ enforcing them in a system. Moore, et al.&nbsp;(<a href="doc-bibliography.html#%28autobib._.Scott._.Moore%2C._.Christos._.Dimoulas%2C._.Dan._.King%2C._and._.Stephen._.Chong.S.H.I.L.L~3a._a._secure._shell._scripting._language.In._.S.O.S.P%2C._pp..._183--1992014%29" data-pltdoc="x">Moore et al.</a> <a href="doc-bibliography.html#%28autobib._.Scott._.Moore%2C._.Christos._.Dimoulas%2C._.Dan._.King%2C._and._.Stephen._.Chong.S.H.I.L.L~3a._a._secure._shell._scripting._language.In._.S.O.S.P%2C._pp..._183--1992014%29" data-pltdoc="x">2014</a>) recently presented
+ Shill, a secure scripting language implemented atop Racket. Their work
+ exposed serious gaps between Racket&rsquo;s principle of language-oriented
+ programming and its implementation as well as in Racket&rsquo;s approach to
+ enforcing security. Once again, we consider these weaknesses an
+ opportunity to improve Racket and expect to study these problems in the
+ near future.</p><div class="navsetbottom"><span class="navleft"><div class="nosearchform"></div>&nbsp;&nbsp;</span><span class="navright">&nbsp;&nbsp;<a href="sec_feedback.html" title="backward to &quot;6 The Racket Design Feedback Loop&quot;" data-pltdoc="x">&larr; prev</a>&nbsp;&nbsp;<a href="index.html" title="up to &quot;The Racket Manifesto&quot;" data-pltdoc="x">up</a>&nbsp;&nbsp;<a href="Acknowledgments.html" title="forward to &quot;8 Acknowledgments&quot;" data-pltdoc="x">next &rarr;</a></span>&nbsp;</div></div></div><div id="contextindicator">&nbsp;</div></body></html>

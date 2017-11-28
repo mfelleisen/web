@@ -1,0 +1,41 @@
+Matthias Felleisen wurde 1958 in Weingarten (Baden) geboren. 
+Nach drei Jahren Grundschule in selbem Dorf, wechselten ihn 
+seine Eltern aufs Justus-Knecht-Gymnasium in Bruchsal. Dort
+machte er im April 1977 sein Abitur, und ging danach zur 
+Bundeswehr als Fallschirmjaeger in Lebach und Eichelheer
+(ehem. Kreis Bruchsal). Ein Jahr spaeter schrieb er sich 
+an der Technische Universitaet Karlsruhe ein, mit dem Ziel 
+ein Diplom im Wirtschaftsingenieurswesen zu erhalten. 
+
+In seinem dritten Semester erhielt Matthias Felleisen
+ein Fulbrightstipendium. Die Fulbrightstiftung schickte ihn
+zur University of Arizona, wo er nach einem Monat Studium 
+der Managementwissenschaften in die Informatik ubersiedelte. 
+Nach einem Jahr und einem Sommersemester erwarb Felleisen
+den Mastertitle und kehrte dann nach Karlsruhe zurueck. 
+Er beendet dort sein Diplom (Wi. Ing) in zwei Jahren 
+mit einer Diplomarbeit ueber Suchen in Bibliotheken 
+algebraischer Spezifikationen ab. 
+
+Anfang 1984 ging Felleisen zu seinem Doktorandenstudium 
+nach Bloomington, Indiana wo er 1987 seinen Doktor under
+Prof Friedman ablegte (Alternative Angebote: Cornell, 
+Karlsruhe (Goos)). Das Thema seiner Dissertation war
+das Lambda-Control-State Kalkuel, die Grundlage der
+Evaluationcontextsemantik, die heutzutage oft fuer 
+Typenkorrektheitssaetze benutzt wird. 
+
+Im Sommer 1987 wurde Felleisen zum Assistenzprofessor an 
+der Rice University in Houston ernannt, nachdem er ein 
+Angebot aus Berkeley abgelehnt hatte. Vier Jahre spaeter
+erhielt er "tenure" und eine volle Professur. 
+
+Nach dreizehn Jahren an der Rice University, einem Sabbathjahr 
+an der Carnegie Mellon University, und zwei Sabbathsommern an
+der Ecole Normale Superieure in Paris (rue d'Ulm), wechselte er
+im Jahre 2001 zur Northeastern University in Boston als Trustee
+Professor. Dort gruendete er mit Mitch Wand und Karl Lieberherr
+das Northeastern University Programming Research Lab mit einem
+Forschungsschwerpunkt in Programmiersprachen und Software 
+Engineering. 
+

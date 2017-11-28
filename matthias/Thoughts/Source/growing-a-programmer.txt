@@ -1,0 +1,21 @@
+Growing a Programmer 
+
+Northeastern's computer science curriculum is unique in the nation.  It is
+the only approach to programming that focuses on explicit and systematic
+problem solving. Instead of the currently fashionable programming language.
+it initially uses a simple notation tailored to the curricular goals. 
+Follow-up courses then programming explain how to apply these principles to
+languages used in industry and how these problem-solving principles enable 
+logical reasoning.
+
+In parallel these courses send the message that the programming is a people
+discipline. From the very first day, students never work alone, but in
+pairs. They are thus forced to learn how to articulate their thoughts about
+problems and solutions. Downstream courses also teach students how to
+present their ideas to large groups and how to listen and evaluate such
+presentations. 
+
+A Northeastern computer science major is equally well prepared to become a
+software engineer, a surgeon, or a supply-chain manager. Many will end up
+being CEOs. 
+

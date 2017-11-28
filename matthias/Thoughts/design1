@@ -1,0 +1,6 @@
+@margin-note*{In his book ``The Mythical Man-Month'' Fred Brooks describes and
+contrasts these forms of programming on the first pages. In addition to
+``garage programming'' and a ``programming product,'' he also recognizes
+``component programming'' and ``systems programming.'' This book is about the
+``programming products;'' our next two books will cover ``components'' and
+``systems'' design.}

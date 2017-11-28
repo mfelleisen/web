@@ -1,0 +1,110 @@
+<div>
+
+<table width="88%">
+ <tr>
+  <td> 
+
+   <p>
+    I have two personal, intertwined research goals: learning how to
+    design programs systematically and creating a language that helps me
+    express my thoughts.
+   </p>
+
+   <p>
+    My first goal is to discover <em>how to design programs, components,
+    and programming systems systematically.</em> I don't know any other way
+    to understand design than to program and re-program and re-re-program
+    small and large programs.  As I am getting to understand what happens,
+    I am writing things down in <a class="ax" href="http://www.ccs.neu.edu/home/matthias/HtDP2e/index.html"><cite>How to Design
+    Programs</cite></a>, <cite>How to Design Components</cite> and
+    <cite>How to Design Systems,</cite> ordinary text books at first glance but a second look will pay off. 
+One day I may distill the
+    ideas in to a small little book called <cite>How to Design</cite>.
+   </p>
+
+  </td>
+ </tr>
+
+ <tr>
+  <td> 
+
+   <p>
+    My second goal is to design a programming language that supports the
+    programming styles needed for my first
+    goal. <a class="ax" href="http://racket-lang.org">Racket</a> is the evolving
+    subject of this project. I recently had a chance to lead-author
+    <a class="ax" href="http://www.ccs.neu.edu/racket/pubs/#manifesto"><cite>the Racket
+    Manifesto</cite></a>, which spells out my perspective on this 20-year-old and
+    on-going project. Please read the paper if you want to know what
+    the Racket project is all about. 
+   </p>
+
+  </td>
+ </tr>
+ <!-- tr height="05" /><td / -->
+
+<tr><td>
+<p>With my current and former students I work on a variety of projects in
+  support of the Racket project:
+<ul>
+<li>the transition from untyped scripts to typed programs, with 
+ <a class="ax" href="http://www.ccs.neu.edu/home/asumu/">Asumu Takikawa</a> and
+ <a class="ax" href="http://www.ccs.neu.edu/home/samth/">Sam Tobin-Hochstadt (Indiana University)</a>;
+plus
+ <a class="ax" href="http://www.ccs.neu.edu/home/types/">Ben Greenmann</a> and
+ <a class="ax" href="http://www.ccs.neu.edu/home/stchang/">Stephen Chang (PhD '15)</a> 
+who are exploring an alternative approach (see <a href="http://prl.ccs.neu.edu/gtp/">Gradual Typing Across the Spectrum</a>)
+</li>
+
+<li>component mechanisms and behavioral software contracts, with   
+ <a class="ax" href="http://people.seas.harvard.edu/~chrdimo/">Christos Dimoulas (Harvard)</a> 
+and
+ <a class="ax" href="http://www.eecs.northwestern.edu/~robby/">Robby Findler (Northwestern)</a>
+</li>
+
+<li>improving macro technology for the design of domain-specific language, with 
+ <a class="ax" href="http://www.cs.utah.edu/~ryan/">Ryan Culpepper (PhD '10)</a> 
+and
+ <a class="ax" href="http://www.cs.utah.edu/~mflatt/">Matthew Flatt (Utah)</a>
+ </li>
+
+<li>compiler and IDE tools, with 
+<a class="ax" href="http://leifandersen.net">Leif Andersen</a>
+and
+<a class="ax" href="http://users.eecs.northwestern.edu/~stamourv/">Vincent
+  St-Amour (Northwestern)</a>
+</li>
+
+<li>and reduction semantics, with 
+ <a class="ax" href="http://http://www.ece.northwestern.edu/~robby/">Robby
+ Findler (Northwestern)</a> and
+and
+ <a class="ax" href="http://www.cs.utah.edu/~mflatt/">Matthew Flatt (Utah)</a>.
+</li>
+
+</ul>
+ In addition, <a class="ax" href="http://www.ccs.neu.edu/home/tonyg/">Tony
+ Garnock-Jones</a> and I are working on a functional framework for
+ programming and reasoning about distributed and interactive graphical
+ programs, a generalization of my <a class="ax" href="http://docs.racket-lang.org/teachpack/2htdp2htdp.html"><tt>2htdp</tt>
+ library for Racket</a>.  This provides me with a personal "playground" for
+ exploring and testing all of the above in practice.  
+   </p>
+  </td>
+ </tr>
+
+ <tr>
+  <td>
+    <p>
+ Financial support for my research currently comes from NSF, DARPA, AFOSR,
+ CISCO, and Mozilla. Past funding sources include CORD, US DoED, Exxon,
+ Microsoft, and Texas ATP.  </p></td>
+
+</tr>
+</table>
+
+<!-- 
+ <a class="ax" href="http://www.cs.brown.edu/~sk/">Shriram
+ Krishnamurthi</a>
+--> 
+</div>

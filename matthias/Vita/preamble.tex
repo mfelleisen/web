@@ -1,0 +1,155 @@
+\overfullrule=3pt
+
+\newcommand{\ponly}[1]{{}}
+\newcommand{\lonly}[1]{\logic{#1}{}}
+
+%% tex macros go here
+
+% \usepackage{color}
+
+%% this is critical for the size of a page and the length of the paper 
+\usepackage{mathptmx}
+\usepackage{courier}	
+\usepackage[scaled=.90]{helvet}
+
+\usepackage{graphicx}
+
+
+
+%% this looks about right for an NSF proposal ; you can't see whether it
+% looks right. hey a contract may hold perhaps or so or not and hukairs
+% whose fault it is. 
+\usepackage{fullpage}
+% \topmargin -0.325 truein
+% \textheight 8.6 truein
+% \textwidth 6.4 truein
+% \oddsidemargin 0.0 truein
+% \evensidemargin 0.7 truein
+
+%% macros 
+
+\def\beginfig{\begin{figure}[t]{\noindent}\small}
+\def\endfig{{\noindent\hrulefill\par}\end{figure}}
+
+\def\OC{{\sc OC}}
+
+\renewcommand{\topfraction}{1}
+\renewcommand{\dbltopfraction}{1}
+\renewcommand{\bottomfraction}{1}
+\renewcommand{\textfraction}{0}
+
+\renewcommand{\floatpagefraction}{.99} % for one-column
+\renewcommand{\dblfloatpagefraction}{.99} % for two-.
+
+\newenvironment{code}{\begin{quote}\footnotesize\begin{alltt}}{\end{alltt}\end{quote}}
+
+%%
+\newsavebox{\precondimpl}
+\newsavebox{\postcondimpl}
+\newsavebox{\multipleprecondimpl}
+\newsavebox{\multiplepostcondimpl}
+\newsavebox{\msuper}
+\newsavebox{\msub}
+\newsavebox{\mleft}
+\newsavebox{\mright}
+\newsavebox{\mbot}
+
+%% ==================================================================================
+
+\newcommand{\ProofLabelText}[1]{\RightLabel{ (#1)}}
+
+\newcommand{\PAR}{\;\;|\;\;}
+\newcommand{\SEND}[1]{\langle #1 \rangle}
+\newcommand{\RECV}[1]{( #1 )}
+\newcommand{\META}[1]{\downharpoonleft\!\!#1}
+\newcommand{\EVENTS}{\overline{\alpha}}
+\newcommand{\ACTIONS}{\overline{a}}
+\newcommand{\ROUTES}{\overline{\pi}}
+\newcommand{\ACTORS}{\overline{A}}
+\newcommand{\ACTORSQ}{\overline{A_Q}}
+\newcommand{\ACTORSI}{\overline{A_I}}
+\newcommand{\VM}[3]{[#1 \: #2 \: #3]}
+\newcommand{\FTABLE}{\mathit{table}}
+\newcommand{\FLIFT}{\mathit{lift}}
+\newcommand{\FDROP}{\mathit{drop}}
+\newcommand{\FINTERP}{\mathit{interp}}
+\newcommand{\FINJECT}{\mathit{inject}}
+\newcommand{\OPMATCH}[2]{#1\;||\;#2}
+\newcommand{\OPMATCHV}[2]{#1\;||_v\;#2}
+\newcommand{\EVENTARROW}[1]{\overset{#1}{\longrightarrow}}
+\newcommand{\EVAL}[1]{[\![#1]\!]}
+\newcommand{\STATEVEC}[2]{#1 \triangleleft #2}
+\newcommand{\ACTORSIGMA}[2]{#1 : #2}
+\newcommand{\ACTOR}[3]{\ACTORSIGMA{#1}{\STATEVEC{#2}{#3}}}
+\newcommand{\SPAWNA}[4]{\ACTOR{#1}{#2}{#3 ; #4}}
+\newcommand{\SPAWNVM}[1]{\ACTOR{\cdot}{\cdot}{\VM{\cdot}{\cdot}{(\ACTOR{\cdot}{#1}{\cdot\,;\cdot})}}}
+
+\newcommand{\longrightsquigarrow}{\!\xymatrix@C=1.5em{{}\ar@{~>}[r]&{}}\!}
+\newcommand{\acting}{\longrightarrow}
+  %% ^ used before the distinction between ESTEP and ASTEP is drawn
+\newcommand{\ESTEP}{\longrightsquigarrow} %% event step = dispatch
+\newcommand{\ASTEP}{\longrightarrow}     %% action step = interpretation
+\newcommand{\APPEND}{+\!\!\!\!+\:}
+
+%% =============================================================================
+%% Schuster's stuff
+
+\newcommand{\todo}[1]{\textbf{TODO: #1}}
+\newcommand{\placeholder}[1]{\textbf{(#1)}}
+\newcommand{\langname}{\mbox{CFSML}}
+\newcommand{\speclangname}{SCFSM} %% \langname $_S$}
+\newcommand{\kw}[1]{\texttt{#1}}
+\newcommand{\func}[1]{\mathsf{#1}}
+
+% Programming language
+\newcommand{\agentid}{i}
+\newcommand{\config}[4]{\left\langle\!\! \left\langle\; \raisebox{0pt}[1.0em]{} #1 \;|\; #2 \;\right\rangle\!\!\right\rangle^{#3}_{#4}}
+\newcommand{\progconfig}{K}
+\newcommand{\addr}{a}
+\newcommand{\lbl}{l}
+\newcommand{\albl}[1]{{\agentid\colon #1}}
+\newcommand{\emptyseq}{\epsilon}
+\newcommand{\run}{r}
+\newcommand{\progstep}[1]{
+  \settowidth{\labelLength}{$#1$}
+  \setlength{\labelLength}{\ifdim \labelLength < \defaultLabelLength \defaultLabelLength \else \labelLength\fi}
+  \stackrel
+  {#1}
+  {\begin{tikzpicture}
+    \draw[arrows=->] (0,0) -- (\labelLength,0);
+   \end{tikzpicture}}
+}
+\newcommand{\progmultistep}[1]{
+  \settowidth{\labelLength}{$#1$}
+  \setlength{\labelLength}{\ifdim \labelLength < \defaultLabelLength \defaultLabelLength \else \labelLength\fi}
+  \stackrel
+  {#1}
+  {\begin{tikzpicture}
+    \draw[arrows=->>] (0,0) -- (\labelLength,0);
+   \end{tikzpicture}}
+}
+
+% Specification language
+\newcommand{\specname}{{d}}
+\newcommand{\specinstancename}{f}
+\newcommand{\commit}{o}
+\newcommand{\commitset}{O}
+\newcommand{\activation}{\pi}
+
+% Specification configurations
+\newcommand{\specconfig}{\widehat{\progconfig}}
+\newcommand{\specid}{\hat{\imath}}
+\newcommand{\specmap}{\widehat{\alpha}}
+\newcommand{\addrmap}{A}
+\newcommand{\outset}{\Omega}
+\newcommand{\specstate}{{s}}
+\newcommand{\specinstance}{z}
+\newcommand{\speclbl}{{\lbl}}
+\newcommand{\specexp}{{e}}
+
+% Conformance
+\newcommand{\powerset}[1]{\mathcal{P}(#1)}
+\newcommand{\multiset}[1]{\mathcal{M}(#1)}
+\newcommand{\relname}{\vDash}
+\newcommand{\conforms}[2]{#1\relname#2}
+\newcommand{\initconforms}[2]{#1\relname_0#2}
