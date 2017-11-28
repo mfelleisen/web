@@ -56,3 +56,5 @@ that are allowed to lobby Members of Congress. And lobby they do.
 F-1 visas for MS students. Really? H1B mills for students with BS degrees
 that are sometimes not worth the paper they are printed on. 
 
+Colleges are the ward of the Government, which is why faculty must hope for
+	  Government to grow, grow, grow.  
