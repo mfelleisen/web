@@ -13,8 +13,16 @@
 ;; defines: presentations
 (require "../Presentations/index.ss")
 
-(define where (build-path (find-system-path 'home-dir) "0Unison" "0Web"))
-(displayln where)
+(define where
+  (build-path
+    (find-system-path 'home-dir)
+    "Hub"
+    "Felleisen.org"
+    "matthias"))
+
+(displayln `(*************************************************))
+(displayln `(these pages are placed into this directory ,where))
+(displayln `(*************************************************))
 (current-directory where)
 
 ; ---------------------------------------------------------------------------
