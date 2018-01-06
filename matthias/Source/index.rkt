@@ -8,7 +8,7 @@
 
 ;; -----------------------------------------------------------------------------
 ;; pubs 
-(require "../NUPLT/aux.scm" "../../../Hub/NUPLT/pub-aux.ss" (lib "process.ss"))
+(require (file "/Users/matthias/Hub/NUPLT/aux.scm") (file "///Users/matthias/Hub/NUPLT/pub-aux.ss") (lib "process.ss"))
 
 ;; defines: presentations
 (require "../Presentations/index.ss")
@@ -51,12 +51,12 @@
      ("Programming"      "programming.html")
      ,LINE
      ("Thoughts"      "Thoughts/index.html")
-     ("Coordinates"   "plan.html")
+     ("Professional Coordinates" "plan.html")
      ("Miscellaneous" "misc.html")
 ;     ("Resources"     "resources.html")
 ;     ("Quotes"        "quotes.html")
      ,LINE
-     ("Family"        "family.html")
+     ("Family"        "http://www.felleisen.org/")
      ,LINE
      ("Home"          "index.html"))))
 
@@ -269,7 +269,7 @@
               (html "Family"
                     (image "children.gif")
                     (remove-link "Family" LINKS)
-                    (xml "family.xml")))
+		    "http://www.felleisen.org/"))
 
 ;                            
 ;                            
