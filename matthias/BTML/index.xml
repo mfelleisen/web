@@ -1,0 +1,12 @@
+<book>
+
+<p>The book, written in the style of <a href = "../BTLS">The Little
+Schemer,</a> introduces instructors, students, and practicioners to
+type-directed functional programming.  It covers basic types, quickly moves
+into datatypes, and ends with a coverage of functional programming with
+modules. The book uses a minimal core of SML, which can easily be
+translated into the various ML dialects (SML/NJ, CAML).  Enjoy!</p>
+
+</book> 
+
+
