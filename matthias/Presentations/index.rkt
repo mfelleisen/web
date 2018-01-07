@@ -78,9 +78,8 @@
 
    (presentation
     "Functional Programming is Easy, and Good for You"
-    "fp.html" "11GS/gs.pdf" 
-    '(a ([href "11GS/gs.zip"]) "slides (gs.zip)")
-    '(a ([href "11GS/gs.key.gz"]) "slides (gs.key.gz)"))
+    "fp.html"
+    "11GS/gs.pdf")
 
    (presentation
     "The TeachScheme! Project"
