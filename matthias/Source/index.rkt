@@ -40,7 +40,7 @@
      ,LINE
      ("Books"         "books.html")
      ((nbsp nbsp nbsp "HtDP")         "http://www.htdp.org/")
-     ((nbsp nbsp nbsp "HtDP/2e")      "HtDP2e/index.html")
+     ((nbsp nbsp nbsp "HtDP/3e")      "HtDP3e/index.html")
      ((nbsp nbsp nbsp "On HtDP")      "OnHtDP/index.html")
 ;     ((nbsp nbsp nbsp "HtDC") "htdc.html")
      ((nbsp nbsp nbsp "Sem. Eng.") "http://redex.racket-lang.org/")
