@@ -23,6 +23,7 @@ Enjoy.
 
 }
 
+@include-section{free-speech.scrbl}
 @include-section{developing.scrbl}
 @include-section{growing-a-programmer.scrbl}
 @;(include-section "../../../../Hub/Class/programming-with-class.scrbl")

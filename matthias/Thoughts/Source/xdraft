@@ -10,4 +10,4 @@ scribble --html ++xref-in setup/xref load-collections-xref \
 
 echo 'completely done'
 
-open ~/0Unison/0Web/Thoughts/Source/Tmp/$1.html
+open ./Tmp/$1.html
