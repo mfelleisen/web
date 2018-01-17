@@ -1,0 +1,68 @@
+- Intro: Mitch noted that we can only see the deltas with perspective. I'm
+  going to present some recent history, so the deltas are not yet very well
+  formed. I present this history because I see research ideas in these
+  forming deltas.
+
+- Setting the stage: overview of several branches/themes of research (and 1
+  of non-research) and show where this theme fits in. 
+
+  Branch 1: Type-preserving compilation: picking up from Leif's
+            presentation, which shows a history of types + compilation and
+            ends with type-preserving compilation down to assembly.
+
+  Branch 2: Dependent type theory: types rich enough to express near
+  arbitrary correctness criteria.
+
+  Branch 3: An idea from industry: large engineering projects need to be
+  auditable.
+
+  Branch 1 and 3 come together into the idea of certifying compilation---a
+  compiler that generates proofs that it produces the "correct" result.
+
+- What is and why do we want a certifying compiler? "The Design and
+  Implementation of a Certifying Compiler".
+
+  What is a certifying compiler, what does it give you, how do you build
+  one?  End by introducing branch 2: discussing why you want you might want
+  to use dependently typed languages to realize a certifying compiler,
+  although there are other ways.  - What does a typed assembly language
+  look like and give us? Discuss "A Dependently Typed Assembly Language"
+
+  If we had a dependently typed assembly, we could do certifying
+  compilation as type-preserving compilation.  "Dependently" typed. Present
+  language, discover what guarantees this language gives you, and what
+  guarantees you don't get.
+
+- How do we start compiling dependent types to assembly? Discuss "CPS
+  Translating Inductive and Coinductive Types"
+
+  Now in the intersection of branches 1 and 2: can we do dependent-type
+  preserving compilation?  In this paper, we do a simple test case. Get
+  high-level dependently typed code into CPS form so we can move to
+  assembly. While CPS and type-preserving compilation has been
+  well-studied, this paper shows that work does not scale to dependent
+  types.
+
+  Discuss this failure and what that could mean for type preserving
+  compilation for dependent types.
+
+- Can we avoid CPS or is this a fundamental problem? Discuss "On the
+  degeneracy of Σ types in the presence of computational classical logic"
+
+  Exploring the negative result.  This paper tells us somewhat more than
+  the prior paper: not only does CPS not work, if our language has (or can
+  realize) call/cc in the presence of Σ types, then our proofs are
+  meaningless.  If we plan to get to assembly, which has pretty arbitrary
+  control flow (and hence call/cc), then we have a problem.
+
+  Discuss why it fails and if/how to recover consistency.
+
+- Doing it anyway. Discuss "Type-preserving compilation of end-to-end verification of security enforcement"
+
+  Now in the intersection of branches 1--3: certifying compilation via
+  dependent type-preserving compilation.  So we just got done showing
+  type-preserving compilation doesn't scale to dependent types.  This paper
+  gives a type-preserving compiler from the Fine language (refinement
+  types, plus other things) to "dependently" typed CIL, the .NET Common
+  Intermediate Language.  We'll consider how they do the impossible (hint:
+  they don't) and what we can learn.

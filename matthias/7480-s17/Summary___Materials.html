@@ -1,0 +1,289 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"/><meta name="viewport" content="width=device-width, initial-scale=0.8"/><title>3&nbsp;Summary &amp; Materials</title><link rel="stylesheet" type="text/css" href="scribble.css" title="default"/><link rel="stylesheet" type="text/css" href="manual-style.css" title="default"/><link rel="stylesheet" type="text/css" href="manual-racket.css" title="default"/><script type="text/javascript" src="scribble-common.js"></script><script type="text/javascript" src="manual-racket.js"></script><!--[if IE 6]><style type="text/css">.SIEHidden { overflow: hidden; }</style><![endif]--></head><body id="scribble-racket-lang-org"><div class="tocset"><div class="tocview"><div class="tocviewlist tocviewlisttopspace"><div class="tocviewtitle"><table cellspacing="0" cellpadding="0"><tr><td style="width: 1em;"><a href="javascript:void(0);" title="Expand/Collapse" class="tocviewtoggle" onclick="TocviewToggle(this,&quot;tocview_0&quot;);">&#9660;</a></td><td></td><td><a href="index.html" class="tocviewlink" data-pltdoc="x">History of Programming Languages</a></td></tr></table></div><div class="tocviewsublisttop" style="display: block;" id="tocview_0"><table cellspacing="0" cellpadding="0"><tr><td align="right">1&nbsp;</td><td><a href="org.html" class="tocviewlink" data-pltdoc="x">General</a></td></tr><tr><td align="right">2&nbsp;</td><td><a href="lectures.html" class="tocviewlink" data-pltdoc="x">Lectures</a></td></tr><tr><td align="right">3&nbsp;</td><td><a href="" class="tocviewselflink" data-pltdoc="x">Summary &amp; Materials</a></td></tr></table></div></div><div class="tocviewlist"><table cellspacing="0" cellpadding="0"><tr><td style="width: 1em;"><a href="javascript:void(0);" title="Expand/Collapse" class="tocviewtoggle" onclick="TocviewToggle(this,&quot;tocview_1&quot;);">&#9658;</a></td><td>3&nbsp;</td><td><a href="" class="tocviewselflink" data-pltdoc="x">Summary &amp; Materials</a></td></tr></table><div class="tocviewsublistbottom" style="display: none;" id="tocview_1"><table cellspacing="0" cellpadding="0"><tr><td align="right">3.1&nbsp;</td><td><a href="#%28part._fa%29" class="tocviewlink" data-pltdoc="x">Full Abstraction:<span class="mywbr"> &nbsp;</span> From PCF to SPCF</a></td></tr><tr><td align="right">3.2&nbsp;</td><td><a href="#%28part._redex%29" class="tocviewlink" data-pltdoc="x">Programming Languages and Calculi</a></td></tr><tr><td align="right">3.3&nbsp;</td><td><a href="#%28part._own%29" class="tocviewlink" data-pltdoc="x">From Encapsulation to Ownership</a></td></tr><tr><td align="right">3.4&nbsp;</td><td><a href="#%28part._gc%29" class="tocviewlink" data-pltdoc="x">Garbage Collection vs Manual Allocation</a></td></tr><tr><td align="right">3.5&nbsp;</td><td><a href="#%28part._olin%29" class="tocviewlink" data-pltdoc="x">Higher-<wbr></wbr>order Flow Analysis</a></td></tr><tr><td align="right">3.6&nbsp;</td><td><a href="#%28part._lr%29" class="tocviewlink" data-pltdoc="x">Logical Relations:
+          Stepping Beyond Toy Languages</a></td></tr><tr><td align="right">3.7&nbsp;</td><td><a href="#%28part._transf%29" class="tocviewlink" data-pltdoc="x">Analysis-<wbr></wbr>Based Program Transformation</a></td></tr><tr><td align="right">3.8&nbsp;</td><td><a href="#%28part._refinement%29" class="tocviewlink" data-pltdoc="x">Refinement Types</a></td></tr><tr><td align="right">3.9&nbsp;</td><td><a href="#%28part._tdc%29" class="tocviewlink" data-pltdoc="x">Typed Directed Compilation</a></td></tr><tr><td align="right">3.10&nbsp;</td><td><a href="#%28part._tdc-dep%29" class="tocviewlink" data-pltdoc="x">Type-<wbr></wbr>directed Compilation <br/>
+     with Dependent Types</a></td></tr><tr><td align="right">3.11&nbsp;</td><td><a href="#%28part._conc-bug%29" class="tocviewlink" data-pltdoc="x">Refactoring</a></td></tr><tr><td align="right">3.12&nbsp;</td><td><a href="#%28part._conc%29" class="tocviewlink" data-pltdoc="x">Conversational Context &amp; Concurrency</a></td></tr><tr><td align="right">3.13&nbsp;</td><td><a href="#%28part._stackpl%29" class="tocviewlink" data-pltdoc="x">Type Inference in Stack-<wbr></wbr>based <br/>
+            Programming Languages</a></td></tr><tr><td align="right">3.14&nbsp;</td><td><a href="#%28part._mhy1%29" class="tocviewlink" data-pltdoc="x">Tracing JITs for Dynamic Languages</a></td></tr><tr><td align="right">3.15&nbsp;</td><td><a href="#%28part._olif1%29" class="tocviewlink" data-pltdoc="x">From PE to a JITs</a></td></tr><tr><td align="right">3.16&nbsp;</td><td><a href="#%28part._datal%29" class="tocviewlink" data-pltdoc="x">Datalog for Static Analysis</a></td></tr><tr><td align="right">3.17&nbsp;</td><td><a href="#%28part._max%29" class="tocviewlink" data-pltdoc="x">Categorical Semantics of <br/> Untyped Languages</a></td></tr><tr><td align="right">3.18&nbsp;</td><td><a href="#%28part._linear%29" class="tocviewlink" data-pltdoc="x">Linear Types for Low-<wbr></wbr>level Languages</a></td></tr><tr><td align="right">3.19&nbsp;</td><td><a href="#%28part._probpl%29" class="tocviewlink" data-pltdoc="x">Probably Something</a></td></tr><tr><td align="right">3.20&nbsp;</td><td><a href="#%28part._frp%29" class="tocviewlink" data-pltdoc="x">Functional Reactive Programming</a></td></tr><tr><td align="right">3.21&nbsp;</td><td><a href="#%28part._soft%29" class="tocviewlink" data-pltdoc="x">Soft Typing</a></td></tr><tr><td align="right">3.22&nbsp;</td><td><a href="#%28part._gt%29" class="tocviewlink" data-pltdoc="x">No good answers:
+Gradually typed <br/>
+object-<wbr></wbr>oriented languages</a></td></tr><tr><td align="right">3.23&nbsp;</td><td><a href="#%28part._conc2%29" class="tocviewlink" data-pltdoc="x">No good answers (2):<span class="mywbr"> &nbsp;</span> Shared Memory <br/> Concurrency and Language Designs</a></td></tr></table></div></div></div><div class="tocsub"><div class="tocsubtitle">On this page:</div><table class="tocsublist" cellspacing="0"><tr><td><span class="tocsublinknumber">3.1<tt>&nbsp;</tt></span><a href="#%28part._fa%29" class="tocsubseclink" data-pltdoc="x">Full Abstraction:<span class="mywbr"> &nbsp;</span> From PCF to SPCF</a></td></tr><tr><td><span class="tocsublinknumber">3.2<tt>&nbsp;</tt></span><a href="#%28part._redex%29" class="tocsubseclink" data-pltdoc="x">Programming Languages and Calculi</a></td></tr><tr><td><span class="tocsublinknumber">3.3<tt>&nbsp;</tt></span><a href="#%28part._own%29" class="tocsubseclink" data-pltdoc="x">From Encapsulation to Ownership</a></td></tr><tr><td><span class="tocsublinknumber">3.4<tt>&nbsp;</tt></span><a href="#%28part._gc%29" class="tocsubseclink" data-pltdoc="x">Garbage Collection vs Manual Allocation</a></td></tr><tr><td><span class="tocsublinknumber">3.5<tt>&nbsp;</tt></span><a href="#%28part._olin%29" class="tocsubseclink" data-pltdoc="x">Higher-<wbr></wbr>order Flow Analysis</a></td></tr><tr><td><span class="tocsublinknumber">3.6<tt>&nbsp;</tt></span><a href="#%28part._lr%29" class="tocsubseclink" data-pltdoc="x">Logical Relations:
+          Stepping Beyond Toy Languages</a></td></tr><tr><td><span class="tocsublinknumber">3.7<tt>&nbsp;</tt></span><a href="#%28part._transf%29" class="tocsubseclink" data-pltdoc="x">Analysis-<wbr></wbr>Based Program Transformation</a></td></tr><tr><td><span class="tocsublinknumber">3.8<tt>&nbsp;</tt></span><a href="#%28part._refinement%29" class="tocsubseclink" data-pltdoc="x">Refinement Types</a></td></tr><tr><td><span class="tocsublinknumber">3.9<tt>&nbsp;</tt></span><a href="#%28part._tdc%29" class="tocsubseclink" data-pltdoc="x">Typed Directed Compilation</a></td></tr><tr><td><span class="tocsublinknumber">3.10<tt>&nbsp;</tt></span><a href="#%28part._tdc-dep%29" class="tocsubseclink" data-pltdoc="x">Type-<wbr></wbr>directed Compilation <br/>
+     with Dependent Types</a></td></tr><tr><td><span class="tocsublinknumber">3.11<tt>&nbsp;</tt></span><a href="#%28part._conc-bug%29" class="tocsubseclink" data-pltdoc="x">Refactoring</a></td></tr><tr><td><span class="tocsublinknumber">3.12<tt>&nbsp;</tt></span><a href="#%28part._conc%29" class="tocsubseclink" data-pltdoc="x">Conversational Context &amp; Concurrency</a></td></tr><tr><td><span class="tocsublinknumber">3.13<tt>&nbsp;</tt></span><a href="#%28part._stackpl%29" class="tocsubseclink" data-pltdoc="x">Type Inference in Stack-<wbr></wbr>based <br/>
+            Programming Languages</a></td></tr><tr><td><span class="tocsublinknumber">3.14<tt>&nbsp;</tt></span><a href="#%28part._mhy1%29" class="tocsubseclink" data-pltdoc="x">Tracing JITs for Dynamic Languages</a></td></tr><tr><td><span class="tocsublinknumber">3.15<tt>&nbsp;</tt></span><a href="#%28part._olif1%29" class="tocsubseclink" data-pltdoc="x">From PE to a JITs</a></td></tr><tr><td><span class="tocsublinknumber">3.16<tt>&nbsp;</tt></span><a href="#%28part._datal%29" class="tocsubseclink" data-pltdoc="x">Datalog for Static Analysis</a></td></tr><tr><td><span class="tocsublinknumber">3.17<tt>&nbsp;</tt></span><a href="#%28part._max%29" class="tocsubseclink" data-pltdoc="x">Categorical Semantics of <br/> Untyped Languages</a></td></tr><tr><td><span class="tocsublinknumber">3.18<tt>&nbsp;</tt></span><a href="#%28part._linear%29" class="tocsubseclink" data-pltdoc="x">Linear Types for Low-<wbr></wbr>level Languages</a></td></tr><tr><td><span class="tocsublinknumber">3.19<tt>&nbsp;</tt></span><a href="#%28part._probpl%29" class="tocsubseclink" data-pltdoc="x">Probably Something</a></td></tr><tr><td><span class="tocsublinknumber">3.20<tt>&nbsp;</tt></span><a href="#%28part._frp%29" class="tocsubseclink" data-pltdoc="x">Functional Reactive Programming</a></td></tr><tr><td><span class="tocsublinknumber">3.21<tt>&nbsp;</tt></span><a href="#%28part._soft%29" class="tocsubseclink" data-pltdoc="x">Soft Typing</a></td></tr><tr><td><span class="tocsublinknumber">3.22<tt>&nbsp;</tt></span><a href="#%28part._gt%29" class="tocsubseclink" data-pltdoc="x">No good answers:
+Gradually typed <br/>
+object-<wbr></wbr>oriented languages</a></td></tr><tr><td><span class="tocsublinknumber">3.23<tt>&nbsp;</tt></span><a href="#%28part._conc2%29" class="tocsubseclink" data-pltdoc="x">No good answers (2):<span class="mywbr"> &nbsp;</span> Shared Memory <br/> Concurrency and Language Designs</a></td></tr></table></div></div><div class="maincolumn"><div class="main"><div class="navsettop"><span class="navleft"><div class="nosearchform"></div>&nbsp;&nbsp;</span><span class="navright">&nbsp;&nbsp;<a href="lectures.html" title="backward to &quot;2 Lectures&quot;" data-pltdoc="x">&larr; prev</a>&nbsp;&nbsp;<a href="index.html" title="up to &quot;History of Programming Languages&quot;" data-pltdoc="x">up</a>&nbsp;&nbsp;<span class="nonavigation">next &rarr;</span></span>&nbsp;</div><h3>3<tt>&nbsp;</tt><a name="(part._.Summary___.Materials)"></a>Summary &amp; Materials</h3><p>This page will list students&rsquo; summaries and (links to) reading materials.</p><h4>3.1<tt>&nbsp;</tt><a name="(part._fa)"></a>Full Abstraction: From PCF to SPCF</h4><p>Robin Milner. Fully abstract models of typed lambda calculi.
+<a href="http://www.sciencedirect.com/science/article/pii/0304397577900536">Theoretical
+Computer Science, 4(1), February 1977, pages 1-22.</a></p><p>Gordon Plotkin. LCF considered a programming language.
+<a href="http://www.sciencedirect.com/science/article/pii/0304397577900445">Theoretical
+Computer Science, 5(3), December 1977, pages 223-256.</a></p><p>Gerard Berry and Pierre-Louis Curien. Sequential algorithms on concrete data structures.
+<a href="http://www.sciencedirect.com/science/article/pii/S0304397582800029">Theoretical
+Computer Science, 20(3), July 1982, pages 265-321.</a></p><p>Robert Cartwright, Pierre-Louis Curien, Matthias Felleisen.
+<a href="http://www.sciencedirect.com/science/article/pii/S0890540184710479">Information
+and Computation, 111(2), June 1994, pages 297-401.</a></p><h4>3.2<tt>&nbsp;</tt><a name="(part._redex)"></a>Programming Languages and Calculi</h4><p>Gordon Plotkin.
+Call-by-name, call-by-value, and the lambda calculus.
+<a href="http://www.sciencedirect.com/science/article/pii/0304397575900171">Theoretical
+Computer Science, 1975, pages 125-159.</a></p><p>Matthias Felleisen, Daniel Friedman, Eugene Kohlbecker, and Bruce Duba.
+Reasoning with continuations.
+Logic in Computer Science, 1986, pages 314-325. (I cannot find an on-line
+link.)</p><p>Matthias Felleisen, Daniel Friedman.
+Control operators, the SECD machine and the lambda calculus.
+<a href="https://www.cs.indiana.edu/ftp/techreports/TR197.pdf">Formal
+Description of Programming Concepts, 1986, pages 193-217.</a></p><p>Matthias Felleisen, Daniel Friedman.
+A calculus of assignments in higher-order languages.
+<a href="http://dl.acm.org/citation.cfm?doid=41625.41654">Principles of
+Programming Languages, 1986, pages 314-325</a></p><p>Matthias Felleisen, Robert Hieb.
+A calculus of assignments in higher-order languages.
+<a href="http://www.sciencedirect.com/science/article/pii/0304397592900147">Theoretical
+Computer Science, 1992, pages 235-271</a></p><h4>3.3<tt>&nbsp;</tt><a name="(part._own)"></a>From Encapsulation to Ownership</h4><p>John C. Reynolds. Syntactic control of interference.
+<a href="http://dl.acm.org/ft_gateway.cfm?id=512766&amp;ftid=71348&amp;dwn=1&amp;CFID=887254127&amp;CFTOKEN=27281994">Principles
+of Programming Languages, 1978, pages 39-46.</a></p><p>John Hogg. Islands: aliasing protection in object-oriented languages.
+<a href="http://dl.acm.org/ft_gateway.cfm?id=117975&amp;ftid=29239&amp;dwn=1&amp;CFID=887254127&amp;CFTOKEN=27281994">Object-oriented
+Programming Systems Languages and Applications, 1991, pages 271-285.</a></p><p>David G. Clarke, John M. Potter, and James Noble.
+Ownership types for flexible alias protection.
+<a href="http://dl.acm.org/citation.cfm?id=286947">Object-oriented
+Programming Systems Languages and Applications, 1998, pages 48-64.</a></p><p>Christian Grothoff, Jens Palsberg, and Jan Vitek.
+Encapsulating objects with confined types.
+<a href="http://dl.acm.org/ft_gateway.cfm?id=1286823&amp;ftid=475808&amp;dwn=1&amp;CFID=887254127&amp;CFTOKEN=27281994">Transactions
+on Programming Languages and Systems, 29(6), October 2007.</a></p><h4>3.4<tt>&nbsp;</tt><a name="(part._gc)"></a>Garbage Collection vs Manual Allocation</h4><p>Henry Lieberman and Carl Hewitt.
+A real-time garbage collector based on the lifetimes of objects.
+<a href="http://web.media.mit.edu/~lieber/Lieberary/GC/Realtime/Realtime.html">MIT
+version</a> <a href="http://dl.acm.org/citation.cfm?id=358147">Communications of the
+ACM, Volume 26 Issue 6, June 1983, pages 419-429.</a></p><p>Benjamin Zorn.
+The measured cost of conservative garbage collection.
+University of Colorado at Boulder Technical Report CU-CS-573-92.
+April, 1992.
+<a href="ttp://www.cs.colorado.edu/department/publications/reports/docs/CU-CS-573-92.pdf">TR</a>
+<a href="http://dl.acm.org/citation.cfm?id=160993">Software&#8212;<wbr></wbr>Practice &amp;
+Experience, Volume 23 Issue 7, July 1993, pages 733-756.</a></p><p>William D Clinger and Lars Hansen.  Generational garbage collection and the
+radioactive decay model.  In the
+<a href="http://www.cesura17.net/~will/Professional/Research/Papers/radioactive.pdf">Proceedings
+of the 1997 ACM Conference on Programming Language Design and
+Implementation, June 1997, pages 97-108.</a></p><p>William D Clinger and Fabio V Rojas.
+Linear combinations of radioactive decay models for generational
+garbage collection.
+In <a href="http://dx.doi.org/10.1016/j.scico.2006.02.005">Science of
+Computer Programming, Volume 62, Issue 2, 1 October 2006, pages 184-203.</a></p><p>Felix S Klock II and William D Clinger.
+Bounded-latency regional garbage collection.
+<a href="http://www.cesura17.net/~will/Professional/Research/Papers/boundedLatencyGC.pdf">Proceedings
+of the 2011 Dynamic Languages Symposium (DLS 2011), 24 October 2011, pages 73-83.</a></p><h4>3.5<tt>&nbsp;</tt><a name="(part._olin)"></a>Higher-order Flow Analysis</h4><h4>3.6<tt>&nbsp;</tt><a name="(part._lr)"></a>Logical Relations:
+          Stepping Beyond Toy Languages</h4><p>Andrew Pitts and Ian Stark.
+Operational reasoning for functions with local state.
+<a href="http://homepages.inf.ed.ac.uk/stark/operfl.pdf">Higher-Order
+Operational Techniques in Semantics (HOOTS &#8217;98), 1998, pages 227-274.</a></p><p>Andrew Appel and David McAllester.
+An indexed model of recursive types for foundational proof-carrying code.
+<a href="http://delivery.acm.org/10.1145/510000/504712/p657-appel.pdf?ip=72.92.233.181&amp;id=504712&amp;acc=AUTHOR%2DIZED&amp;key=4D4702B0C3E38B35%2E4D4702B0C3E38B35%2E4D4702B0C3E38B35%2E55350B711228B17F&amp;CFID=722404099&amp;CFTOKEN=79199995&amp;__acm__=1485755598_2a4b4d38248fc00b8e5bcbea2ba578a7">ACM
+Transactions on Programming Languages and Systems 23 (5), September 2001,
+pages 657-683.</a></p><p>Amal Ahmed.
+Semantics of Types for Mutable State.  Ch. 2, 3, 4.
+<a href="http://www.ccs.neu.edu/home/amal/ahmedsthesis.pdf">Ph.D. thesis,
+Princeton University, Princeton NJ, Nov. 2004. Tech Report TR-713-04.</a></p><p>Amal Ahmed.
+Step-indexed syntactic logical relations for recursive and quantified types.
+<a href="http://www.ccs.neu.edu/home/amal/papers/lr-recquant.pdf">European
+Symposium on Programming (ESOP &rsquo;06), March 2006, pages 69-83.</a></p><p>Amal Ahmed, Derek Dreyer, and Andreas Rossberg.
+State-Dependent Representation Independence.
+<a href="http://www.ccs.neu.edu/home/amal/papers/sdri.pdf">Principles of
+Programming Languages (POPL &rsquo;09), January 2009, pages 340-353.</a></p><h4>3.7<tt>&nbsp;</tt><a name="(part._transf)"></a>Analysis-Based Program Transformation</h4><p>Olin Shivers. The Semantics of Scheme Control-Flow Analysis.
+<a href="http://dl.acm.org/citation.cfm?doid=115865.115884">Conference on Programming Language Design and
+Implementation, June, 1991, pages 190-198.</a></p><p>Mitch Wand and Paul Steckler. Selective and Lightweight Closure Conversion.
+<a href="http://dl.acm.org/citation.cfm?doid=174675.178044">Conference on Principles of Programming Languages,
+January, 1994, pages 435-445.</a></p><p>Mitch Wand and Igor Siveroni. Constraint Systems for Useless Variable Elimination.
+<a href="http://doi.acm.org/10.1145/292540.292567">Conference on Principles of Programming Languages,
+January, 1999, pages 291-302.</a></p><p>Mitch Wand and Will Clinger. Set Constraints for Destructive Array Update Optimization.
+<a href="http://ieeexplore.ieee.org/document/674169/">International Conference on Computer Languages, 1998, pages
+184&ndash;195.</a></p><p>Christos Dimoulas and Mitch Wand. The Higher-order Aggregate Update
+Problem. <a href="http://dx.doi.org/10.1007/978-3-540-93900-9_8">Verification, Model Checking, and Abstract
+Interpretation, 2009, pages 44-58.</a></p><h4>3.8<tt>&nbsp;</tt><a name="(part._refinement)"></a>Refinement Types</h4><p>Noam Zeilberger.
+Principles of type refinement.
+<a href="http://noamz.org/oplss16/refinements-notes.pdf">Lectures
+Notes. Oregon Programming Language Summer School, 2016.</a></p><p>Freeman, Tim, and Frank Pfenning.
+Refinement types for ML.
+<a href="https://www.cs.cmu.edu/~fp/papers/pldi91.pdf">Programming Language
+Design and Implementation, 1991, pages 268-277.</a></p><p>Xi, Hongwei, and Frank Pfenning.
+Dependent types in practical programming.
+<a href="https://www.cs.cmu.edu/~fp/papers/popl99.pdf">Principles of
+Programming Languages, 1999, pages 214-227.</a></p><p>Flanagan, Cormac.
+Hybrid type checking.
+<a href="http://dl.acm.org/citation.cfm?id=1667051">Transactions on
+Programming Languages, 2010, 32(6), pages 1-34.</a></p><p>Xi, Hongwei.
+Dependent ML: an approach to practical programming with dependent types.
+<a href="http://www.cs.bu.edu/~hwxi/academic/papers/JFPdml.pdf">Journal of
+Functional Programming. 17(2): 215-286, 2007.</a></p><p>Rondon, Patrick M., Ming Kawaguci, and Ranjit Jhala.
+Liquid Types.
+<a href="http://goto.ucsd.edu/~rjhala/liquid/liquid_types.pdf">Programming Language
+Design and Implementation, 2008, pages 158-169.</a></p><h4>3.9<tt>&nbsp;</tt><a name="(part._tdc)"></a>Typed Directed Compilation</h4><p>Xavier Leroy. Unboxed objects and polymorphic typing.
+<a href="http://gallium.inria.fr/~xleroy/publi/unboxed-polymorphism.pdf">Principles of Programming Languages,
+1992, pages 177-188.</a></p><p>Greg Morrisett. Compiling with types.</p><p>Xavier Leroy. An overview of Types in Compilation.
+<a href="x">Workshop Types in Compilation, Lecture Notes in Computer Science, 1998, pages ??.</a></p><p>Greg Morrisett and Robert Harper. Typed Closure Conversion for Recursively-Defined Functions.
+<a href="http://www.sciencedirect.com/science/article/pii/S1571066105807029">Electronic Notes in Theoretical
+Computer Science, 1998, 10, pages 230-241.</a></p><p>David Tarditi, Greg Morrisett, Perry Cheng,. Chris Stone, Bob Harper. and Peter Lee.
+TIL: A Type-Directed Optimizing Compiler for ML.
+<a href="http://doi.acm.org/10.1145/231379.231414">Programming Language Design and Implementation, 1996, pages
+181-192.</a></p><h4>3.10<tt>&nbsp;</tt><a name="(part._tdc-dep)"></a>Type-directed Compilation <br/>
+     with Dependent Types</h4><p>George Necula and Peter Lee. The design and implementation of a certifying compiler.
+<a href="y">Programming Languages and Implementation, 1998, pages 333&ndash;344.</a></p><p>Gilles Barthe, John Hatcliff, and  Morten Heine B Sorensen. CPS translations and applications: the cube and
+ beyond.
+<a href="z">Higher-Order and Symbolic Computation, 1999, 12(2), pages 125&ndash;170.</a></p><p>Hongwei Xi and Robert Harper. A Dependently Typed Assembly Language.
+<a href="http://doi.acm.org/10.1145/507635.507657">International Conference on Functional Programming, 2001, pages
+169&ndash;180.</a></p><p>Hugo Herbelin. On the degeneracy of $\Sigma$-types in presence of computational classical logic.
+<a href="w">International Conference on Typed Lambda Calculi and Applications, 2005, pages 209&ndash;220.</a></p><p>Juan, Chen, Ravi Chugh, and Nikhil Swamy.
+Type-preserving Compilation of End-to-end Verification of Security Enforcement.
+<a href="http://doi.acm.org/10.1145/1806596.1806643">Programming Language Design and Implementation, 2010,
+pages 412&ndash;423.</a></p><h4>3.11<tt>&nbsp;</tt><a name="(part._conc-bug)"></a>Refactoring</h4><p>Frank Tip, Adam Kiezun, Dirk B&#228;umer.
+Refactoring for generalization using type constraints.
+<a href="http://dl.acm.org/citation.cfm?id=949308">OOPSLA 2003, pages 13-26.</a></p><p>Robert M. Fuhrer, Frank Tip, Adam Kiezun, Julian Dolby, Markus Keller.
+Efficiently refactoring java applications to use generic libraries.
+<a href="http://dl.acm.org/citation.cfm?id=2144898">ECOOP 2005, pages 71-96.</a></p><p>Max Sch&#228;fer, Torbj&#246;rn Ekman, Oege de Moor.
+Sound and extensible renaming for Java.
+<a href="http://dl.acm.org/citation.cfm?id=1449787"> OOPSLA 2008, pages 277-294.</a></p><p>Friedrich Steimann, Andreas Thies.
+From public to private to absent: Refactoring Java programs under
+constrained accessibility.
+<a href="http://link.springer.com/chapter/10.1007/978-3-642-03013-0_19">ECOOP
+2009, pages 419-443.</a></p><p>Max Sch&#228;fer, Andreas Thies, Friedrich Steimann, Frank Tip.
+A comprehensive approach to naming and accessibility in refactoring Java programs.
+<a href="http://ieeexplore.ieee.org/document/6152131/">IEEE Trans. Software
+Eng. 38(6), 2012, pages 1233-1257.</a></p><h4>3.12<tt>&nbsp;</tt><a name="(part._conc)"></a>Conversational Context &amp; Concurrency</h4><p>P. Brinch Hansen. Monitors and Concurrent Pascal: a personal history.
+<a href="http://dl.acm.org/citation.cfm?id=155361">History of Programming Languages II. SIGPLAN Notices, 1993, 28(3), pages 1&ndash;35.</a>
+<a href="http://thecorememory.com/MonConPas.pdf">(also available here)</a></p><p>C. Hewitt, P. Bishop, and R. Steiger. A universal modular ACTOR formalism for artificial intelligence.
+<a href="https://eighty-twenty.org/files/Hewitt,%20Bishop,%20Steiger%20-%201973%20-%20A%20universal%20modular%20ACTOR%20formalism%20for%20artificial%20intelligence.pdf">International Joint Conference on Artificial Intelligence, 1973, pages 235&#8211;245.</a>
+<a href="http://ijcai.org/Proceedings/73/Papers/027B.pdf">(also available here)</a></p><p>G. A. Agha.  Actors: a model of concurrent computation in distributed systems.
+<a href="https://dspace.mit.edu/bitstream/handle/1721.1/6952/AITR-844.pdf">Technical Report 844. MIT Artificial Intelligence Laboratory, June 1985.</a></p><p>C. Fournet and G. Gonthier. The join calculus: a language for distributed mobile programming.
+<a href="http://research.microsoft.com/en-us/um/people/fournet/papers/join-tutorial.pdf">Applied Semantics Summer
+School, September 2000, Caminha, Portugal.</a></p><p>N. J. Carriero, D. Gelernter, T. G. Mattson, and A. H. Sherman. The
+Linda alternative to message-passing systems.
+<a href="http://heather.miller.am/teaching/cs7680/pdfs/Linda-Alternative-to-Message-Passing.pdf"> Parallel Comput., 20(4) pages 633&ndash;655, 1994.</a></p><h4>3.13<tt>&nbsp;</tt><a name="(part._stackpl)"></a>Type Inference in Stack-based <br/>
+            Programming Languages</h4><p>J. Poial. Algebraic specification of stack effects.
+<a href="https://www.academia.edu/22579532/Algebraic_Specification_of_Stack_Effects._Forth_Dimensions_Vol_XVI_18_20">Forth
+Dimensions, XVI(18_20).</a></p><p>J. Poial. Multiple stack effects for Forth programs.
+<a href="https://www.kodu.ee/~jpoial/teadus/EuroForth91_Multiple.pdf">Euro Forth 1991</a></p><p>B. Stoddart &amp; P.J. Knaggs. Type inference in stack based languages.
+<a href="http://www.rigwit.co.uk/papers/fac-type.pdf">Formal Aspects of Computing, 1992, pages 1-11.</a></p><p>C. Okasaki. Techniques for embedding post-fix languages in Haskell.
+<a href="https://github.ccs.neu.edu/robkleffner/research/blob/master/literature/Technique%20for%20Embedding%20Postfix%20Languages%20in%20Haskell.pdf">cite
+4</a></p><p>C. Diggins. Typing functional stack based languages.
+<a href="https://www.researchgate.net/publication/228985001_Typing_Functional_Stack-Based_Languages">Unpublished
+manuscrtip, 2007.</a></p><p>A. Saabas &amp; T. Uustalu. Type systems for optimizing stack-based code.
+<a href="http://set.ee/publications/bytecode07.pdf">Byte Code, 2007, pages 1-16.</a> (See Electronic Notes in
+Theoretical Computer Science.)</p><h4>3.14<tt>&nbsp;</tt><a name="(part._mhy1)"></a>Tracing JITs for Dynamic Languages</h4><p>Vasanth Bala, Evelyn Duesterwald, and Sanjeev Banerjia.
+Dynamo: a transparent dynamic optimization system.
+<a href="https://doi.org/10.1145/349299.349303">Programming Language Design
+and Implementation, 2000, pages 1-12.</a></p><p>Andreas Gal and Michael Franz
+Incremental dynamic code generation with trace trees.
+<a href="https://www.cs.montana.edu/ross/classes/fall2009/cs550/resources/Tracemonkey-01.pdf"> Technical Report
+ICS-TR-06-16, University of California, Irvine, 2006.</a></p><p>Andreas Gal, Brendan Eich, Mike Shaver, David Anderson, David Mandelin, Mohammad R. Haghighat, Blake Kaplan,
+Graydon Hoare, Boris Zbarsky, Jason Orendorff, Jesse Ruderman, Edwin Smith, Rick Reitmaier, Michael Bebenita,
+Mason Chang, and Michael Franz.
+Trace-based just-in-time type specialization for dynamic languages.
+<a href="https://doi.org/10.1145/1542476.1542528">Programming Language Design
+and Implementation, 2009, pages 465-478.</a></p><p>Carl Friedrich Bolz, Antonio Cuni, Maciej Fija&#322;kowski, and Armin Rigo.
+Tracing the meta-level: PyPy&rsquo;s tracing JIT compiler.
+<a href="https://doi.org/10.1145/1565824.1565827">Implementation, Compilation, Optimization of Object-Oriented
+Languages and Programming Systems, 2009, pages 18-25.</a></p><p>Michael Bebenita, Florian Brandner, Manuel Fahndrich, Francesco Logozzo, Wolfram Schulte, Nikolai Tillmann, and
+Herman Venter.
+SPUR: a trace-based JIT compiler for CIL.
+<a href="https://doi.org/10.1145/1869459.1869517">Object-Oriented Programming, Systems, Languages and Applications
+2010, pages 708-725.</a></p><p>H&#229;kan Ard&#246;, Carl Friedrich Bolz, and Maciej Fija&#322;kowski
+Loop-aware optimizations in PyPy&rsquo;s tracing JIT.
+<a href="https://doi.org/10.1145/2384577.2384586">Dynamic Languages Symposium (DLS), 2012,
+pages 63-72.</a></p><h4>3.15<tt>&nbsp;</tt><a name="(part._olif1)"></a>From PE to a JITs</h4><p>Gregory T. Sullivan.
+Dynamic partial evaluation.
+<a href="http://dl.acm.org/citation.cfm?id=668117">Programs as Data
+Objects. Springer Berlin Heidelberg, 2001. 238-256.</a></p><p>Carl Friedrich Bolz, Antonio Cuni, Maciej Fija&#322;kowski, and Armin Rigo.
+Tracing the meta-level: PyPy&rsquo;s tracing JIT compiler.
+<a href="https://doi.org/10.1145/1565824.1565827">Implementation, Compilation, Optimization of Object-Oriented
+Languages and Programming Systems, 2009, pages 18-25.</a></p><p>Thomas W&#252;rthinger, Christian Wimmer, Andreas W&#246;&#223;, Lukas Stadler,
+Gilles Duboscq, Christian Humer, Gregor Richards, Doug Simon, Mario Wolczko.
+One VM to rule them all.
+<a href="http://dl.acm.org/citation.cfm?doid=2509578.2509581">Onward! New
+Ideas, New Paradigms, and Reflections on Programming &amp; Software, 2013, pages
+187-204.</a></p><h4>3.16<tt>&nbsp;</tt><a name="(part._datal)"></a>Datalog for Static Analysis</h4><p>Stefano Ceri, Georg Gottlob, and Letizia Tanca.
+What you always wanted to know about datalog (and never dared to ask).
+<a href="http://www.csd.uoc.gr/~hy562/1112_spring/instr_material/WhatYouAlwaysWantedtoKnowAboutDatalog_AndNeverDaredtoAsk.pdf">IEEE
+Transactions on Knowledge and Data Engineering, 1989.</a></p><p>A&#946;man, Uwe.
+On edge addition rewrite systems and their relevance to program analysis.
+<a href="http://dl.acm.org/citation.cfm?id=668694">International
+Workshop on Graph Gramars and Their Application to Computer Science, 1994,
+pages 321-335</a></p><p>Thomas Reps
+Demand interprocedural program analysis using logic databases.
+<a href="http://link.springer.com/chapter/10.1007%2F978-1-4615-2207-2_8">Application
+of Logic Databases, 1995, pages 163-196.</a></p><p>Monica Lam, John Whaley, V. Benjamin Livshits, Michael C. Martin, Dzintars Avots, Michael Carbin, Christopher Unkel.
+Context-sensitive program analysis as database queries.
+<a href="http://dl.acm.org/citation.cfm?id=1065169">Principles of Database
+Systems, 2005,pages 1-12.</a></p><p>Martin Bravenboer and Yannis Smaragdakis
+Strictly declarative specifications of sophisticated points-to analyses.
+<a href="http://dl.acm.org/citation.cfm?id=1640108&amp;dl=ACM&amp;coll=DL&amp;CFID=889273679&amp;CFTOKEN=74570083">Object Oriented Programming Systems Languages and Applications, 2009, pages 243-262.</a></p><h4>3.17<tt>&nbsp;</tt><a name="(part._max)"></a>Categorical Semantics of <br/> Untyped Languages</h4><p>Dana Scott. Relating theories of the lambda calculus.
+<a href="https://www.cs.washington.edu/node/7272">To H.B. Curry. Essays on Combinatory Logic, Lambda Calculus and Formalism.
+1980, pages 403-450.</a></p><p>C.P.J. Koymans. Models of the lambda calculus.
+<a href="http://www.sciencedirect.com/science/article/pii/S0019995882907963">Information and Control, 52(3), 1982, pages 306-332.</a></p><p>Susumu Hayashi. Adjunctions of semi-functors.
+<a href="http://dl.acm.org/citation.cfm?id=6587">Theoretical Computer Science,
+41(1), 1985, pages 95-104.</a></p><p>J. Lambek &amp; P. Scott. Introduction to Higher Categorical Logic.
+<a href="http://dl.acm.org/citation.cfm?id=7517">Cambridge University
+Press, 1986.</a></p><p>R. Hoofman &amp; I. Moerdijk. A remark on the theory of semi-functors.
+<a href="http://repository.ubn.ru.nl/handle/2066/129066">Mathematical
+Structures in Computer Science, 5(1), 1995, pages 1-8.</a></p><h4>3.18<tt>&nbsp;</tt><a name="(part._linear)"></a>Linear Types for Low-level Languages</h4><p>Yves Lafont.
+The linear abstract machine.
+<a href="http://www.sciencedirect.com/science/article/pii/0304397588901004">Theoretical
+Computer Science, 59(1&#8211;2), 1988, pages 157&#8211;180.</a></p><p>Henry Baker.
+Lively linear Lisp &ndash; &#8220;look ma, no garbage!&#8221;
+<a href=" http://dl.acm.org/citation.cfm?id=142162">SIGPLAN Notices, 27(8), 1992,
+pages 89 - 98.</a></p><p>Jawahar Chirimar, Carl A. Gunter, Jon G. Riecke.
+Reference counting as a computational interpretation of linear logic.
+<a href="https://pdfs.semanticscholar.org/7497/fe6b73326c62c73e403f7b8dc8bd97df9e89.pdf">Journal
+of Functional Programming, 6(2), 1996, pages 195-244.</a></p><p>Martin Hofmann.
+A type system for bounded space and functional in-place update&#8211;extended abstract.
+<a href="https://www.tcs.ifi.lmu.de/mitarbeiter/martin-hofmann/publikationen-pdfs/c17-typesystemforboundedspace.pdf">European
+Symposium on Programming, 2000, pages 165-179.</a></p><h4>3.19<tt>&nbsp;</tt><a name="(part._probpl)"></a>Probably Something</h4><p>D Wingate, A Stuhlmueller, ND Goodman.
+Lightweight implementations of probabilistic programming languages via
+transformational compilation.
+<a href="http://www.jmlr.org/proceedings/papers/v15/wingate11a/wingate11a.pdf">International
+Conference on Artificial Intelligence and Statistics, 2011, pages 770-778.</a></p><p>Vikash Mansinghka, Daniel Selsam, Yura Perov.
+Venture: a higher-order probabilistic programming platform with
+programmable inference.
+<a href="https://arxiv.org/pdf/1404.0099v1">arXiv.</a></p><p>L Yang, P Hanrahan, ND Goodman.
+Generating efficient mcmc kernels from probabilistic programs.
+<a href="http://www.jmlr.org/proceedings/papers/v33/yang14d.pdf">International
+Conference on Artificial Intelligence and Statistics, 2014, pages 1068-1076.</a></p><p>JW van de Meent, H Yang, V Mansinghka, F Wood.
+Particle gibbs with ancestor sampling for probabilistic programs.
+<a href="http://www.jmlr.org/proceedings/papers/v38/vandemeent15.pdf">International
+Conference on Artificial Intelligence and Statistics, 2015, pages 986-994.</a></p><p>D Ritchie, A Stuhlm&#252;ller, ND Goodman.
+C3: lightweight incrementalized MCMC for probabilistic programs using
+continuations and callsite caching.
+<a href="http://www.jmlr.org/proceedings/papers/v51/ritchie16.pdf">International
+Conference on Artificial Intelligence and Statistics, 2016, pages 28-37.</a></p><h4>3.20<tt>&nbsp;</tt><a name="(part._frp)"></a>Functional Reactive Programming</h4><p>Conal Elliott and Paul Hudak.
+Functional reactive animation.
+<a href="http://dl.acm.org/citation.cfm?id=258973">International Conference
+on Functional Programming, 1997, pages 263 - 273.</a></p><p>Zhanyong Wan and Paul Hudak.
+Functional reactive programming from first principles.
+<a href="http://haskell.cs.yale.edu/wp-content/uploads/2011/02/frp-1st.pdf">Programming
+Language Design And Implementation, 2000, pages 242-252.</a></p><p>Conal Elliott.
+Functional implementations of continuous modeled animation.
+<a href="http://link.springer.com/chapter/10.1007/BFb0056621">International
+Symposium on Principles of Declarative Programming, 2006, pages 284-299.</a></p><p>Gregory H. Cooper and Shriram Krishnamurthi.
+Embedding dynamic dataflow in a call-by-value language.
+<a href="http://cs.brown.edu/people/sk/Publications/Papers/Published/ck-frtime/paper.pdf">European
+Symposium on Programming Languages and Systems, 2006, pages 294-308.</a></p><h4>3.21<tt>&nbsp;</tt><a name="(part._soft)"></a>Soft Typing</h4><h4>3.22<tt>&nbsp;</tt><a name="(part._gt)"></a>No good answers:
+Gradually typed <br/>
+object-oriented languages</h4><p>G. Bierman, E. Meijer, and M. Torgersen.
+Adding dynamic types to C#.
+<a href="http://link.springer.com/chapter/10.1007/978-3-642-14107-2_5">European
+Conference on Object-Oriented Programming, 2010, pages 76-100.</a></p><p>Bard Bloom, John Field, Nathaniel Nystrom, Johan &#214;stlund, Gregor Richards, Rok Strnisa, Jan Vitek, and Tobias Wrigstad.
+Thorn: robust, concurrent, extensible scripting on the JVM.
+<a href="http://dl.acm.org/citation.cfm?id=1640098">Object-oriented
+Programming Systems Languages and Applications, 2009, Pages 117-136.</a></p><p>Esteban Allende, Oscar Calla&#250;, Johan Fabry, &#201;ric Tanter, Marcus Denker.
+Gradual typing for Smalltalk.
+<a href="http://www.sciencedirect.com/science/article/pii/S0167642313001445">In
+Science of Computer Programming, 2014, 96(1), pages 52&#8211;69.</a></p><p>Michael M. Vitousek, Andrew M. Kent, Jeremy G. Siek, and Jim Baker.
+Design and evaluation of gradual typing for python.
+<a href="http://dl.acm.org/citation.cfm?id=2661101">Dynamic Languages
+Symposium, 2014, pages 45-56.</a></p><p>Asumu Takikawa, Daniel Feltey, Ben Greenman, Max S. New, Jan Vitek, and Matthias Felleisen.
+Is sound gradual typing dead?.
+<a href="http://dl.acm.org/citation.cfm?id=2837630">Principles of
+Programming Languages, 2016, pages 456-468.</a></p><h4>3.23<tt>&nbsp;</tt><a name="(part._conc2)"></a>No good answers (2): Shared Memory <br/> Concurrency and Language Designs</h4><p>Leslie Lamport.
+How to make a multiprocessor computer that correctly executes multiprocess programs.
+<a href="http://dl.acm.org/citation.cfm?id=1311750">IEEE Trans. Computers 1979,
+28(9): 690-691.</a></p><p>Hans-Juergen Boehm.
+Threads cannot be implemented as a library.
+<a href="http://www.hpl.hp.com/techreports/2004/HPL-2004-209.pdf">PLDI 2005, 261-268.</a></p><p>Peter Sewell, Susmit Sarkar, Scott Owens, Francesco Zappa Nardelli, Magnus O. Myreen.
+X86-TSO: a rigorous and usable programmer&rsquo;s model for x86 multiprocessors.
+<a href="http://dl.acm.org/citation.cfm?id=1785443">Commun. ACM  2010, 53(7): 89-97.</a></p><p>Jaroslav Sevc&#237;k.
+Safe optimisations for shared-memory concurrent programs.
+<a href="http://www.di.ens.fr/~zappa/teaching/mpri/2012/transsafety.pdf">PLDI 2011, 306-316.</a></p><p>Hans-Juergen Boehm, Sarita V. Adve.
+Foundations of the C++ concurrency memory model.
+<a href="http://www.hpl.hp.com/techreports/2008/HPL-2008-56.html">PLDI 2008, 68-78.</a></p><p>Viktor Vafeiadis, Thibaut Balabonski, Soham Chakraborty, Robin Morisset, Francesco Zappa Nardelli.
+Common compiler optimisations are invalid in the C11 memory model and what we can do about it.
+<a href="http://dl.acm.org/citation.cfm?id=2676995">POPL 2015, 209-220.</a></p><div class="navsetbottom"><span class="navleft"><div class="nosearchform"></div>&nbsp;&nbsp;</span><span class="navright">&nbsp;&nbsp;<a href="lectures.html" title="backward to &quot;2 Lectures&quot;" data-pltdoc="x">&larr; prev</a>&nbsp;&nbsp;<a href="index.html" title="up to &quot;History of Programming Languages&quot;" data-pltdoc="x">up</a>&nbsp;&nbsp;<span class="nonavigation">next &rarr;</span></span>&nbsp;</div></div></div><div id="contextindicator">&nbsp;</div></body></html>

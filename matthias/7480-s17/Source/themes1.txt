@@ -1,0 +1,134 @@
+Congrats! All three proposals are themes. 
+
+Your next tasks are to pick a date when you wish to present (see Lectures)
+and to compile a list of at most 10 links to papers that you would use to
+work out your theme.
+
+DUE DATE: Please send me your proposed date (first-come/first serve) and
+your proposed papers by Jan 17. 
+
+-----------------------------------------------------------------------------
+Rob
+-- Type inference in stack-based (concatenative) programming languages
+   This is what I've been studying and writing up
+-- Sequence variables in programming languages
+   Related to my thesis stuff, but also applies to functional 
+   languages and not just types
+-- Row polymorphism
+   Because it can do more cool things than just records
+-- Algebraic effect types
+   Because I despise using basic monads for effects and have hope for this solution
+
+-----------------------------------------------------------------------------
+Daniel 
+-- Resource Aware Programming Languages / Type Systems
+-- Hoare Type Theory
+-- Linear Types for Low-level Languages
+
+-----------------------------------------------------------------------------
+Max 
+-- Categorical Approaches to Untyped/Dynamically Typed Languages
+
+-----------------------------------------------------------------------------
+William
+-- Compiling with dependent types
+
+-----------------------------------------------------------------------------
+Ming-Ho
+-- Strictness analysis
+-- Analysis of asynchronous programs
+-- Inferring types for dynamic languages
+-- Optimizations in tracing JITs for dynamic languages
+
+-----------------------------------------------------------------------------
+Tony 
+-- Conversational Contexts 
+
+-----------------------------------------------------------------------------
+Ben Chung 
+-- Blended analysis
+-- Runtime deoptimization
+-- Hybrid type inference
+-- Gradual typing for objects (as a last resort)
+
+-----------------------------------------------------------------------------
+Leif as proposed by William
+-- Compiling with types (focusing on use for optimization)
+-- Type Driven Optimizations (Preceding William)
+
+-- Macro Hydrangea leading to sets of scopes
+-- Hybrid Programmatic and direct manipulation (like sketch 'n sketch)
+-- Open Compiler Designs (going up to polyglot and/or other AOP based designs)
+
+-----------------------------------------------------------------------------
+Sam 
+-- FRP
+-- types for asynchronous communication
+-- parallel reduction semantics
+
+-----------------------------------------------------------------------------
+Brian 
+-- Interpreters as definitions of functional languages
+-- Safe languages for systems programming
+-- High-level languages with unsafe features for systems programming
+
+-----------------------------------------------------------------------------
+Ben G 
+-- Henglein's calculus of coercions 
+   (maybe also, techniques by Serrano, 
+    Wright/Jagannathan, to reduce the cost of dynamic typing in scheme programs)
+
+-- JIT techniques for Javascript programs
+   (reducing the cost of dynamic typing)
+
+-- history behind "you want it when"; 
+   the problem phase separation causes Typed Racket 
+   and how to implement persistent compile-time effects
+
+-- "datalog" as a framework for implementing static analyses
+
+-----------------------------------------------------------------------------
+Oli 
+
+-- partial evaluation: "from futamura to truffle"
+  tracing back the roots of truffly/pypy style of language implementation
+   a variation on this theme could be "from futamura to jikes" (ie.
+   focus on systems where the implementation and host language are the
+   same). I did work with meta-circular vms in the past and would love
+   to revisit the topic
+
+-- compiler optimizations based on assumed/observed invariants:
+  "from self to hotspot"
+  that's of course a huge theme. I would narrow it down by focusing on
+  one concrete type of invariant. The classical thing would be receiver
+  type in oo languages. but maybe something lesser would be fun like
+  speculating on exceptions.
+
+-- on stack replacement (ie. mapping the internal state of different
+  versions of the same function)
+  not many papers out there
+  I have implementation experience. I found the literature very
+  disappointing but would like to revisit
+
+-- bidirectional programs (ie. boomerang)
+  I am fascinated by the idea. also it seems that it was adapted real
+  quick (ie. augeas) which is interesting.
+  I have no previous knowledge on the topic
+
+-----------------------------------------------------------------------------
+Aviral 
+
+-- Data Flow Analysis using The IFDS/IDE Framework 
+   (I really want to do this as I am working on this right now)
+-- Types for Javascript
+-- Call Graph construction techniques for Scala
+
+-----------------------------------------------------------------------------
+Andrew 
+
+-- Universal probabilistic programming languages (in the spirit of Church)
+-- Automatic differentiation (the kind involving real numbers) (possibly too
+   large a theme, could be restricted to compilation)
+-- Derivatives (the kind involving data structures), parsing with derivatives,
+   and zippers (possibly too small a theme or not enough connective tissue)
+-- Abstracting Abstract Machines
