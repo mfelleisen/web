@@ -1,6 +1,9 @@
 #lang scribble/manual
 
 @(require "shared.ss" "growing-a-programmer.rkt")
+@(define matthias "/matthias/Articles/")
+@(define damore-memo (string-append matthias "the-google-memo.pdf"))
+@(define damore-opinion (string-append matthias "google-served.pdf"))
 
 @title*{Free Speech}
 @author{Matthias Felleisen}
@@ -37,13 +40,13 @@ Keep this story in mind as you read the rest of this thought.
 @section*{The Google Memo}
 
 In the summer of 2017, James Damore wrote and circulated a memo on Google's
-@link["matthias/Articles/the-google-memo.pdf"]{internal company politics}.
-The memo is, on one hand, a @italic{cri de cœur} concerning the way Google
-wishes to indoctrinates its employees about gender and minority issues. As
-the memo correctly states, such "camps" almost always backfire and do
-little or no good. On the other hand, it is a sophomoric collection of
-random quotes from social science (and proto-science) papers to support a
-highly questionable thesis concerning the innate programming abilities of
+@link[damore-memo]{internal company politics}.  The memo is, on one hand, a
+@italic{cri de cœur} concerning the way Google wishes to indoctrinates its
+employees about gender and minority issues. As the memo correctly states,
+such "indoctrination camps" almost always backfire and do little or no
+good. On the other hand, it is a sophomoric collection of random quotes
+from social science (and proto-science) papers to support a highly
+questionable thesis concerning the innate programming abilities of
 women. If Damore had focused on his primary concern, the extreme culture of
 political correctness at Google, he might have had an impact.
 
@@ -119,3 +122,7 @@ a request for fake data from their advisors?
 Campus is where centrist speech goes to die. 
 
 
+p.s. By coincidence, Allysia Finley wrote
+@link["https://www.wsj.com/articles/ok-google-youve-been-served-1516044100?mod=searchresults&page=1&pos=2"]{a
+wonderful opinion piece} ( @link[damore-opinion]{PDF}) on Google's culture
+and the discrimination lawsuit against it.
