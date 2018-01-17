@@ -15,6 +15,10 @@
 @(define hs @element['hspace]{---})
 
 
+@history[ #:changed "1.1" @elem{Tue Jan 16 22:16:14 EST 2018@nl
+Opinion piece added} ]
+
+
 @history[ #:changed "1.0" @elem{Sun Jan 14 21:18:23 EST 2018, initial
 release @nl Thanks to @link["http://www.cs.cornell.edu/~jgm/"]{Greg
 Morrisett} for suggesting that I put this memo story in context. @nl} ]
