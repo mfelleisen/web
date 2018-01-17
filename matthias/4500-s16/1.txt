@@ -1,0 +1,22 @@
+
+Develop the program 'quality' in your favorite language,
+which measures some properties of programs. For now, 
+'quality' merely determines the average length of the 
+lines of code in a program in your chosen language. To 
+allow programmers extensive commenting, it ignores all
+lines that start with the comment character. 
+
+Programmers will run 'quality' from the command line and
+pipe in raw text files. Here is the command if you were
+to run 'quality' in a Unix-style context: 
+
+ $ ./quality.py < quality.py 
+
+[assuming that Python is your favorite language]. 
+
+-------------------------------------------------------
+Question What will 'quality do when a user pipes in 
+ a text file? 
+
+Answer It will interpret it as a code file in your
+favorite language and produce a nonsense output. 
