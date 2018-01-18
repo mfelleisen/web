@@ -2,26 +2,38 @@
 
 @(require "shared.ss" "growing-a-programmer.rkt")
 @(define matthias "/matthias/Articles/")
-@(define damore-memo (string-append matthias "the-google-memo.pdf"))
-@(define damore-opinion (string-append matthias "google-served.pdf"))
+@(define wsj "https://www.wsj.com/articles/")
+
+@(define damore-memo    (string-append matthias "the-google-memo.pdf"))
+
+@(define damore-suit-pdf (string-append matthias "damore-lawsuit.pdf"))
+@(define damore-suit-url "https://www.scribd.com/document/368692388/James-Damore-Lawsuit#download")
+
+@(define finley-opinion-pdf (string-append matthias "finley-opinion.pdf"))
+@(define finley-opinion-url (string-append wsj "ok-google-youve-been-served-1516044100?mod=searchresults&page=1&pos=2"))
+
+@(define holman-opinion-pdf (string-append matthias "holman-opinion.pdf"))
+@(define holman-opinion-url (string-append wsj "of-furries-and-fascism-at-google-1516144969?mod=searchresults&page=1&pos=1"))
+
 
 @title*{Free Speech}
 @author{Matthias Felleisen}
 
 @date{Jan 14 2018}
 
-
 @(define nl @element['newline]{ })
 @(define hs @element['hspace]{---})
 
+@history[ #:changed "1.2" @elem{Tue Jan 16 22:16:14 EST 2018@nl
+Postscript on Holman's opinion piece added @nl }]
 
 @history[ #:changed "1.1" @elem{Tue Jan 16 22:16:14 EST 2018@nl
-Opinion piece added} ]
+Postscript on Finley's opinion piece added @nl
+plus link to @link[damore-suit-url]{Damore's lawsuit} @nl} ]
 
-
-@history[ #:changed "1.0" @elem{Sun Jan 14 21:18:23 EST 2018, initial
-release @nl Thanks to @link["http://www.cs.cornell.edu/~jgm/"]{Greg
-Morrisett} for suggesting that I put this memo story in context. @nl} ]
+@history[ #:changed "1.0" @elem{Sun Jan 14 21:18:23 EST 2018, initial release @nl 
+Thanks to @link["http://www.cs.cornell.edu/~jgm/"]{Greg Morrisett} for suggesting 
+ that I put this memo story in context. @nl} ]
 
 @section*{A Short Story of Courage}
 
@@ -123,10 +135,21 @@ faculty member. Plus, I had made my point.
 Do you think that these four young women would have the courage to reject
 a request for fake data from their advisors? 
 
-Campus is where centrist speech goes to die. 
+@bold{Campus is where centrist speech goes to die.}
+
+@section*{Postscripts}
 
 
-p.s. By coincidence, Allysia Finley wrote
-@link["https://www.wsj.com/articles/ok-google-youve-been-served-1516044100?mod=searchresults&page=1&pos=2"]{a
-wonderful opinion piece} ( @link[damore-opinion]{PDF}) on Google's culture
-and the discrimination lawsuit against it.
+p.s. By coincidence, Allysia Finley wrote @link[finley-opinion-url]{a
+wonderful opinion piece} (@link[finley-opinion-pdf]{PDF}) on Google's
+culture. She is citing extensively from @link[damore-suit-url]{Damore's
+discrimination lawsuit} (@link[damore-suit-pdf]{PDF}) against it.  The text
+of Damore's lawsuit shows screenshots of internal Google postings and
+emails that call for violence against Damore or denigrate conservatives and
+religious people. It is an interesting read. 
+
+p.p.s. And a day later, Holman Jenkins has a
+@link[holman-opinion-url]{different take} (@link[holman-opinion-pdf]{PDF})
+on Google. He also extensively cites the Damore lawsuit, and his citations
+are even scarier than Finley's. His conjecture is that Alpha's CEOs have
+lost control over their employees.
