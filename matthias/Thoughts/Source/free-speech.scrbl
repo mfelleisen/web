@@ -24,6 +24,9 @@
 @(define nl @element['newline]{ })
 @(define hs @element['hspace]{---})
 
+@history[ #:changed "1.3" @elem{Fri Jan 19 18:13:32 EST 2018@nl
+Clarified scope of test @nl}]
+
 @history[ #:changed "1.2" @elem{Tue Jan 16 22:16:14 EST 2018@nl
 Postscript on Holman's opinion piece added @nl }]
 
@@ -79,8 +82,8 @@ read the memo. Good enough for the man or woman on the street.
 @section*{What Would a Scientist Do}
 
 My first reaction was that a scientist @emph{must} read the memo before
-condemning it. My second one was "let's test the PhD students in my
-lab". And then I realized it would also be a test of free speech on
+condemning it. My second one was "let's test the PhD students in my lab and
+the College". And then I realized it would also be a test of free speech on
 campus. Surely, free speech hurts but I have suffered free speech from The
 Left for three decades and I know it doesn't kill.
 
@@ -102,9 +105,10 @@ read and critique it at my suggestion. Nobody ever approached me.
 @section*{Censure} 
 
 In December, Northeastern's administration informed me that four female PhD
-students had complained about the memo. It made them feel uncomfortable. 
-The women wished to stay anonymous because of the "differential in
-authority". In response,
+students in the College had complained about the memo. It made them feel
+uncomfortable.  The women wished to stay anonymous because of the
+"differential in authority". In response,
+@;
 @itemlist[
 
 @item{I explained my motivation, exactly as above, and eventually followed
