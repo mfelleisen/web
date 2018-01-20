@@ -6,8 +6,8 @@
 
 @(define damore-memo    (string-append matthias "the-google-memo.pdf"))
 
-@(define damore-suit-pdf (string-append matthias "damore-lawsuit.pdf"))
-@(define damore-suit-url "https://www.scribd.com/document/368692388/James-Damore-Lawsuit#download")
+@(define damore-suit-pdf (string-append matthias "damore-suit.pdf"))
+@(define damore-suit-url "https://www.scribd.com/document/368692388/James-Damore-Lawsuit")
 
 @(define finley-opinion-pdf (string-append matthias "finley-opinion.pdf"))
 @(define finley-opinion-url (string-append wsj "ok-google-youve-been-served-1516044100?mod=searchresults&page=1&pos=2"))
