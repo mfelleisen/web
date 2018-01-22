@@ -124,7 +124,7 @@
   (define raw (parameterize ([current-input-port (open-input-file retrieve-from-where)])
                 (read-pure-xml)))
   (define y (map (lambda (x) `(,(car x) ,(cadr x) ,@(filter mypaper? (cddr x)))) (cddr raw)))
-  (pub-directory "/racket/pubs/")
+  (pub-directory "http://www.ccis.neu.edu/racket/pubs/")
   (map publist->html y))
 
 (produce-page "papers.html"
