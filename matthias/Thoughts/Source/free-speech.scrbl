@@ -24,6 +24,9 @@
 @(define nl @element['newline]{ })
 @(define hs @element['hspace]{---})
 
+@history[ #:changed "1.4" @elem{ Wed Jan 24 08:37:07 EST 2018 @nl
+Typos, anonymous source @nl}]
+
 @history[ #:changed "1.3" @elem{Fri Jan 19 18:13:32 EST 2018@nl
 Clarified scope of test @nl}]
 
@@ -60,7 +63,7 @@ Keep this story in mind as you read the rest of this thought.
 
 In the summer of 2017, James Damore wrote and circulated a memo on Google's
 @link[damore-memo]{internal company politics}.  The memo is, on one hand, a
-@italic{cri de cœur} concerning the way Google wishes to indoctrinates its
+@italic{cri de cœur} concerning the way Google wishes to indoctrinate its
 employees about gender and minority issues. As the memo correctly states,
 such "indoctrination camps" almost always backfire and do little or no
 good. On the other hand, it is a sophomoric collection of random quotes
@@ -85,7 +88,7 @@ My first reaction was that a scientist @emph{must} read the memo before
 condemning it. My second one was "let's test the PhD students in my lab and
 the College". And then I realized it would also be a test of free speech on
 campus. Surely, free speech hurts but I have suffered free speech from The
-Left for three decades and I know it doesn't kill.
+Left for three decades, and I know it doesn't kill.
 
 So I posted the memo on my door and linked to it from my professional web page 
 @;
@@ -99,8 +102,8 @@ with the word "Google" linked to Damore's memo.
 Then I waited. 
 
 I waited to see whether anybody would approach me with specific comments on
-the memo. I wanted to see whether he or she had read the memo or would it
-read and critique it at my suggestion. Nobody ever approached me.
+the memo. I wanted to see whether he/she had read the memo (or would read
+it at my suggestion) and could critique it. Nobody ever approached me.
 
 @section*{Censure} 
 
