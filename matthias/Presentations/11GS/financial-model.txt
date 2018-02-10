@@ -1,0 +1,32 @@
+From: Grant Rettke <grettke@acm.org>
+Date: September 9, 2011 11:23:19 AM EDT
+To: racket <users@racket-lang.org>
+Subject: [racket] Documenting a financial model in Racket?
+
+Hi,
+
+At work I've inherited a financial application whose model that is too
+complicated to be documented.
+
+It has got me really curious how I might use Racket to document,
+understand, and implement the model so that we can really flesh out
+how it works. It would be useful purely from that regard, and also if
+we ever migrated to a different technology (than Java).
+
+What approaches, techniques, or features of Racket do you think might
+be interesting?
+
+My list: Typed Racket, in-code documentation, Rackunit,
+purely-functional or perhaps classes and interfaces, not sure what
+would be easier for people to read.
+
+Best wishes,
+
+Grant
+
+-- 
+http://www.wisdomandwonder.com/
+ACM, AMA, COG, IEEE
+_________________________________________________
+ For list-related administrative tasks:
+ http://lists.racket-lang.org/listinfo/users

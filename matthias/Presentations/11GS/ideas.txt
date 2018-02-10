@@ -1,0 +1,36 @@
+
+;; ---------------------------------------------------------------------------------------------------------------
+       
+   The Landscape 
+   -------------
+
+          functional programming                  =!=             functional programming language 
+                   |                                                         |
+                   |                                                         |
+                   v                                                         v
+            "Functional C"                                         dimensions of FPLs: 
+	    							   pure (Haskell) vs impure (OCAML)
+                                                                   typed (SML) vs untyped (Scheme) % always safe
+								   common VM (F#) vs special VM (Racket)
+                                                                   first-order (ACL2) vs higher-order (Lisp)
+                                                                   sequential (most of the above)
+								   	      vs parallel (Clojure)
+								   	      vs distributed (Erlang)
+								   
+           
+                                  embedded domain-specific languages
+				    often declarative (layout manager in Swing),
+				    functional (???), or
+				    functional-reactive (GS's trading language)
+
+
+
+Anonymous programmer, 25 Sept 2011:
+"Unfortunately, most of the time I am not actually programming, rather, I am
+obliged to "mend" lousy, poorly documented (if at all) code others have
+done - functions of 1000+ lines, huge unreadable SQL stored procedures
+written by hardly competent, uninterested "programmers" are my daily "stone
+of Sisyphus".
+
+"In addition, I see too many people that did not improve much through
+programming for more than 20 years." 

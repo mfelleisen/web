@@ -1,0 +1,10 @@
+From: Moshe Vardi <vardi@cs.rice.edu>
+Date: August 29, 2011 7:45:43 AM EDT
+To: Matthias Felleisen <matthias@ccs.neu.edu>, Shriram Krishnamurthi <shriram@gmail.com>
+Cc: Moshe Vardi <vardi@cs.rice.edu>
+Subject: FP is Hard
+
+
+http://dave.fayr.am/posts/2011-08-19-lets-go-shopping.html
+
+Moshe

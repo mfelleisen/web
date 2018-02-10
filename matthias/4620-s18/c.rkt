@@ -1,106 +1,66 @@
-#lang racket 
+#lang racket
+
+;; PROBLEM (∃! x .. y) determines whether exactly one of the values x .. y is
+;; a non-#false value and produces this value; otherwise it produces #false
 
 (module+ test (require rackunit))
 
-#|
-S-expression is one of: 
- -- Symbol 
- -- Number 
- -- [Listof S-expression]
+;; Let's try this for ∃! of two pieces, i.e., (∃! x y). 
 
-Expression is one of: 
- -- Variable ~~ Symbol 
- -- Number 
- -- (list 'if Expression Expression Expression)
- -- (list 'lambda [Listof Variable] Expression) 
- -- (cons Expression [Listof Expression])
- -- (cons STXWORD [Listof S-expression])
-|#
+;; -----------------------------------------------------------------------------
+;; Any Any -> Any 
+;; only one of the two values is truish, pick that one 
+(module+ test 
+  (check-false (∃! #t #t))
+  (check-false (∃! #f #f))
+  (check-equal? (∃! 1 #f) 1)
+  (check-equal? (∃! #f 1) 1))
 
-(define STXTRANS '())
-(define (STXWORD) (map first STXTRANS))
+(define (∃! v1 v2)
+  (if v1 (and (not v2) v1) v2))
 
-;; *************************************************
-(define (extend-syntax macro transformer)
-  (set! STXTRANS
-        (cons (list macro transformer)
-              STXTRANS)))
+;; Now let's try to generalize to an arbitrary number of arguments. 
 
-;; EXAMPLE
-;; (let ((variable S-expression1)) S-expression2)
-;; ==>
-;; ((lambda (variable) S-expression2) S-expression1)
-(define (let-transformer stx)
-  (match stx
-    [`(let ((,variable ,rhs-expression)) ,body-expression)
-     `((lambda (,variable) ,body-expression) ,rhs-expression)]
-    [else (error 'let-transformer "not a let: ~e" stx)]))
+;; -----------------------------------------------------------------------------
+;; Any ... -> Any
+;; only one of all these values is truish, pick that one 
 
-(extend-syntax 'let let-transformer)
+(module+ test 
+  (check-false  (∃!* #t #t))
+  (check-false  (∃!* #f #f))
+  (check-equal? (∃!* 1 #f) 1)
+  (check-equal? (∃!* 1 #f #f) 1)
+  (check-false (∃!* 1 #f #f 2))
+  (check-equal? (∃!* #f 1) 1))
 
-;; *************************************************
+(define (∃!* . args0)
+  
+  ;; [Listof Any] Any -> Any
+  ;; SEEN have we seen any non-#false value 
+  (define (aux args seen)
+    (cond
+      [(empty? args) seen]
+      [else (define temp {(first args)})
+            (if (and seen temp) #false (aux (rest args) (or temp seen)))]))
+  
+  ;; -- IN --
+  (aux args0 #false))
+
+
+;; Does this work as well as we want?
 
 ;; -----------------------------------------------------------------------------
 
-(define KEYWORDS '(if lambda))
+(require (for-syntax syntax/parse))
 
-;; S-expression -> Expression
-;; determine whether the S-expression belongs to Expression
-;; EFFECT raise an exception when a sub-tree is invalid 
+(module+ test 
+  (check-false  (∃!/s #t #t (displayln 1)))
+  (check-false  (∃!/s #f #f (begin (displayln 2) #false)))
+  (check-equal? (∃!/s #f #f (begin (displayln 3) 3)) 3)
+  (check-equal? (∃!/s 1 #f) 1)
+  (check-equal? (∃!/s #f 1) 1))
 
-(module+ test
-  (check-equal? (expander 'a) 'a)
-  (check-equal? (expander '(lambda (a) b)) '(lambda (a) b))
-  (check-equal?
-   (expander '((lambda (a) (if (zero? a) (lambda (x y) x) (lambda (x y) y))) 10))
-   '((lambda (a) (if (zero? a) (lambda (x y) x) (lambda (x y) y))) 10))
+(define-syntax (∃!/s stx)
+  (syntax-parse stx
+    [(_ e1:expr ...) #'(∃!* (lambda () e1) ...)]))
 
-  ;; ******************************************************************
-  (check-equal?
-   (expander '(let ((a  10))
-                (if (zero? a) (lambda (x y) x) (lambda (x y) y))))
-   '((lambda (a) (if (zero? a) (lambda (x y) x) (lambda (x y) y))) 10))
-
-  (check-exn exn:fail? (lambda () (expander '(let ((a 10)) (lambda a a)))))
-
-  (check-exn exn:fail? (lambda () (expander '(let ((10 a)) a))))
-  ;; ******************************************************************
-
-  (check-exn exn:fail?
-             (lambda ()
-               (expander '((lambda x) 10))))
-  (check-exn exn:fail?
-             (lambda ()
-               (expander '((if 1 2 3 4) (lambda (x) x) (lambda (x) 42))))))
-
-(define (expander s)
-  (match s
-    [(? symbol?) s]
-    [(? number?) s]
-    [`(if ,que ,thn ,els)
-     `(if ,(expander que) ,(expander thn) ,(expander els))]
-    [`(lambda ,paras ,body)
-     `(lambda ,(all-variables paras) ,(expander body))]
-    [`(,(and (? not-keyword) fun)  ,args ...)
-     `(,(expander fun) ,@(map expander args))]
-    [`(,(and (? stx-word) macro) ,forms ...)
-     (expander ((retrieve-transformer macro) s))]
-    [else
-     (error 'expander "not a valid Expression: ~e" s)]))
-
-;; S-expression -> [Listof Symbol]
-(define (all-variables s)
-  (if (andmap symbol? s) s (error 'expander "not a valid Parameter List: ~e" s)))
-
-;; S-expression -> Boolean 
-(define (not-keyword x)
-  (not (or (member x (STXWORD)) (member x KEYWORDS))))
-
-;; S-expression -> Boolean
-(define (stx-word s)
-  (member s (STXWORD)))
-
-;; Symbol -> [S-expression -> S-expression]
-;; ASSUME (stx-word? s) holds 
-(define (retrieve-transformer s)
-  (second (assq s STXTRANS)))

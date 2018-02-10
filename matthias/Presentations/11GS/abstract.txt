@@ -1,0 +1,53 @@
+
+          Functional Programming is Easy and Good for You
+
+  	       	     Matthias Felleisen 
+		  Northeastern University 
+
+Academics love functional programming, many practitioners fear it. But,
+neither love nor fear are appropriate. Functional programming technology
+comes with advantages and disadvantages, like all other technology. With
+this talk, I will introduce functional programming, distinguish it from
+functional programming languages, and explain the importance of both.
+
+One key benefit of functional programming is its unrivaled clarity of
+expression. In contrast to imperative programming, all communication
+between distinct components uses explicit channels.  Hence it easy to test 
+components, to compose them, and to validate them.
+
+The requirement of explicit channels also means that both the programmer as
+well as the compiler knows all dependencies. As a result, functional
+programming creates numerous opportunities to exploit modern forms of
+parallelism. For the programmer, explicit communication means a reduction
+in race conditions; for the compiler, it means lowering the cost of
+automatic parallelization.
+
+Last but not least, functional programming languages provide many more
+mechanisms for designing and implementing embedded domain-specific
+programming languages. Such languages greatly facilitate collaboration with
+domain experts and in principle, they enable compilers to produce much more
+efficient code than for programs in full-fledged languages.
+
+;; --- 
+
+Matthias Felleisen, a Trustee Professor at Northeastern University, has
+spent 25 years exploring programming languages and especially functional
+programming languages. He received his PhD from Indiana University, under
+the supervision of Daniel P. Friedman, and launched his academic career at
+Rice University in 1987. Since 2008, he is a Fellow of the Association of
+Computing Machinery (ACM). Ten years ago Felleisen moved his team to
+Northeastern University to form the largest functional programming research
+group in the United States.
+
+In 1995, Felleisen created a nation-wide outreach program that uses
+functional programming to fuse mathematics and computer programming.  He
+and his team also created functional teaching languages and a pedagogic
+development environment, dubbed DrScheme. The experience of producing,
+distribution, and maintaining a 500Kloc ``shrink wrap'' application has
+changed Felleisen's perspective as an academic researcher. 
+
+Over sixteen years, Felleisen and his team trained a thousand teachers,
+deployed the curriculum in hundreds of schools, and evolved it into a
+quickly spreading after-school programming for inner city middle school
+students. In 2009, Felleisen received Karl V. Karlstrom Award, which the
+ACM bestows on the outstanding international educator of the year.
