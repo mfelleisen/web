@@ -1,9 +1,0 @@
-#!/bin/tcsh 
-
-scribble --htmls ++xref-in setup/xref load-collections-xref \
-          --redirect-main "http://docs.plt-scheme.org/" \
-# "http://pre.plt-scheme.org/docs/html/" \
-          --dest ../../ \
-          Thoughts.scrbl 
-
-open ../index.html
