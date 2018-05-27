@@ -12,6 +12,27 @@ https://www.wsj.com/articles/why-arent-there-more-women-in-science-and-technolog
 women are more broadly talented than men
 
 -----------
+10 resume do's and don'ts for developers 
+InfoWorld Nov 2016 
+resume-tips.pdf 
+
+recruiters and hiring managers reveal what makes a candidate stand out---or fall flat 
+
+-----------
+Functional at Scale 
+CACM Dec 2016 
+cacm-functional-at-scale.pdf 
+
+applying functional programming principles to distributed programming projects 
+
+-----------
+React: Facebook's Functional Turn on Writing JavaScript 
+CACM Dec 2016 
+cacm-react.pdf 
+
+a discussion with React's creators 
+
+-----------
 Scientific Regress
 April 2016 
 science-regress.pdf
@@ -82,6 +103,13 @@ On hand-written note-taking
 taking-notes.pdf
 
 can handwriting make you smarter? On taking notes in lectures
+
+-----------
+Does Professor Quality Matter? 
+Chicago Journals 11 June 2013
+usaf-teaching.pdf
+
+Evidence from random assignments of students to professors 
 
 -----------
 Immigrants are geniuses 
