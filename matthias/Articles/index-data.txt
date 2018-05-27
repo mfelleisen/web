@@ -19,6 +19,20 @@ resume-tips.pdf
 recruiters and hiring managers reveal what makes a candidate stand out---or fall flat 
 
 -----------
+Fiat Chrysler Recalls 5.3M Vehicles for Cruise Control Software Glitch 
+WSJ 25 May 2018 
+bugs-vehicle-recall.pdf
+https://www.wsj.com/articles/fiat-chrysler-recalls-nearly-5-million-u-s-vehicles-for-cruise-control-software-glitch-1527254818
+defect could prevent drivers from being able to slow down by canceling cruise function 
+
+-----------
+JPL Institutional Coding Standard for the C Programming Language 
+NASA Jet Propulsion Lab (CalTech)
+jpl-coding-standard-for-c.pdf 
+
+version for external distribution 
+
+-----------
 Functional at Scale 
 CACM Dec 2016 
 cacm-functional-at-scale.pdf 
@@ -31,6 +45,20 @@ CACM Dec 2016
 cacm-react.pdf 
 
 a discussion with React's creators 
+
+-----------
+Ex-Goldman Programmer Found Guilty in Code Theft 
+WSJ Dec 2010 
+programmer-goes-to-prison.pdf 
+
+a programmer who copied code ended up in prison 
+
+-----------
+Ex-Citadel Engineer Arrested on Code Theft Charges
+FierceFinancialT Oct 2011 
+programmer-at-Citadel-arrested-on-code-theft.pdf 
+
+another programmer goes to prison 
 
 -----------
 Scientific Regress
