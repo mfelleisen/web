@@ -26,6 +26,13 @@ https://www.wsj.com/articles/fiat-chrysler-recalls-nearly-5-million-u-s-vehicles
 defect could prevent drivers from being able to slow down by canceling cruise function 
 
 -----------
+Apple's New Software Aim: Fewer Features, Fewer Bugs 
+WSJ 03 June 2018 
+apple-bugs.pdf
+https://www.wsj.com/articles/apple-software-bit-by-bugs-is-a-focus-at-developers-conference-1528030800
+how much bugs might affect Apple's reputation and bottom line 
+
+-----------
 JPL Institutional Coding Standard for the C Programming Language 
 NASA Jet Propulsion Lab (CalTech)
 jpl-coding-standard-for-c.pdf 
@@ -154,10 +161,10 @@ friends-one-on-one.pdf
 one-on-one conversations with friends vs "parties"
 
 -----------
-10 Types of Friends 
-8 Dec 2014
-
+10 Types of Friends
+Blog 8 Dec 2014
 https://waitbutwhy.com/2014/12/10-types-odd-friendships-youre-probably-part.html
+
 
 -----------
 Centrists Anywhere 
