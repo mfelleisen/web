@@ -1,4 +1,11 @@
 -----------
+The New York Times on John McCain 
+30 August 2018
+nyt.html
+
+.. who do you believe? Me or your own eyes? Go read. 
+
+-----------
 Google's Ideological Echo Chamber 
 2017
 the-google-memo.pdf
@@ -200,3 +207,4 @@ You are not as smart as you think you are
 smart-think.pdf
 https://www.wsj.com/articles/youre-not-as-smart-as-you-think-perils-and-benefits-of-overconfidence-1532100629
 .. where all the women are strong,all the men are good-looking, and all the children are above average.
+
