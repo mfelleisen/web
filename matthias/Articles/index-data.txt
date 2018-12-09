@@ -68,6 +68,13 @@ cacm-react.pdf
 a discussion with React's creators 
 
 -----------
+The Friendship That Made Google Huge
+New Yorker Dec 2018
+pair-programming-at-google.pdf
+https://www.newyorker.com/magazine/2018/12/10/the-friendship-that-made-google-huge
+an example of long-standing pair programming at Google 
+
+-----------
 Ex-Goldman Programmer Found Guilty in Code Theft 
 WSJ Dec 2010 
 programmer-goes-to-prison.pdf 
