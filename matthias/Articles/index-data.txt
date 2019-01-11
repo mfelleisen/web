@@ -67,6 +67,13 @@ jpl-coding-standard-for-c.pdf
 version for external distribution 
 
 -----------
+Egoless Programming 
+Weinberg, The Psychology of Computer Programming, 1971 
+psychology-of-programming.pdf
+
+programmers are creators, like artists, and their code can be a part of their ego; but they highly paid and must learn to work thru crits seriously---without ego
+
+-----------
 The Friendship That Made Google Huge
 New Yorker Dec 2018
 pair-programming-at-google.pdf
