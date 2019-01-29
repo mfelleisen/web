@@ -22,6 +22,20 @@ https://www.newyorker.com/magazine/2018/12/10/the-friendship-that-made-google-hu
 an example of long-standing pair programming at Google 
 
 -----------
+JIRA is an antipattern 
+Jon Evans, blog, November 2018 
+
+https://techcrunch.com/2018/12/09/jira-is-an-antipattern/
+feature/issue/bug tracking tools have unintended consequences, or let's do principles, not industry
+
+-----------
+CodeFlow: Code Reviews at MS 
+CACM, Feb 2019
+code-flow.pdf
+https://cacm.acm.org/magazines/2019/2/234350-codeflow/fulltext
+Microsoft's approach to running/measuring/evaluating code reviews
+
+-----------
 Fiat Chrysler Recalls 5.3M Vehicles for Cruise Control Software Glitch 
 WSJ 25 May 2018 
 bugs-vehicle-recall.pdf
