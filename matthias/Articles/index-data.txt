@@ -1,13 +1,6 @@
 # Software Development 
 
 -----------
-JPL Institutional Coding Standard for the C Programming Language 
-NASA Jet Propulsion Lab (CalTech)
-jpl-coding-standard-for-c.pdf 
-
-version for external distribution 
-
------------
 Egoless Programming 
 Weinberg, The Psychology of Computer Programming, 1971 
 psychology-of-programming.pdf
@@ -24,9 +17,16 @@ an example of long-standing pair programming at Google
 -----------
 JIRA is an antipattern 
 Jon Evans, blog, November 2018 
-
+jira-antipattern.pdf
 https://techcrunch.com/2018/12/09/jira-is-an-antipattern/
 feature/issue/bug tracking tools have unintended consequences, or let's do principles, not industry
+
+-----------
+JPL Institutional Coding Standard for the C Programming Language 
+NASA Jet Propulsion Lab (CalTech)
+jpl-coding-standard-for-c.pdf 
+
+version for external distribution 
 
 -----------
 CodeFlow: Code Reviews at MS 
@@ -77,7 +77,7 @@ Why I’m Not Looking to Hire Computer-Science Majors
 WSJ 2017
 why.pdf
 
-Gelernter 
+Gelernter (Yale)
 
 # Cheating in Software Development 
 
@@ -115,6 +115,8 @@ experiments aren't all that repeatable and there's real bias in science
 The Myth of Basic Science 
 WSJ 23 Oct. 2015 
 myth-of-basic-science.pdf
+
+several people have the same innovative idea, because it's in the air; one emerges as the creator 
 
 -----------
 Inside Science 
