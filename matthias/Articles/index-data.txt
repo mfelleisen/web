@@ -36,6 +36,13 @@ https://cacm.acm.org/magazines/2019/2/234350-codeflow/fulltext
 Microsoft's approach to running/measuring/evaluating code reviews
 
 -----------
+Lawmakers Scrutinize Timeline for Boeing 737 MAX Software Fix 
+WSJ 26 March 2019 
+congress-software.png
+https://www.wsj.com/articles/lawmakers-scrutinize-timeline-for-boeing-737-max-software-fix-11553601603?shareToken=st352fde0ba593442ca39726e711a7129b
+Even Congress wonders why we can't get software fixed in a timely fashion ...
+
+-----------
 Fiat Chrysler Recalls 5.3M Vehicles for Cruise Control Software Glitch 
 WSJ 25 May 2018 
 bugs-vehicle-recall.pdf
