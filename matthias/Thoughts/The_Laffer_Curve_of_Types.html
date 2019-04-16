@@ -3,11 +3,10 @@
 the expressions of a program language and the type system as a proof system that
 proves type-theorems about expressions in a particular program. These people are
 also trained as proto-logicians, and thus they tend to ask about soundness when
-they are confronted with a new typed programming language.</p><p>I started working on &ldquo;gradual typing&rdquo; in 1998, <span class="refelem"><span class="refcolumn"><span class="refcontent">The slogan
-&ldquo;gradual typing&rdquo; is clever, but I prefer <a href="https://www2.ccs.neu.edu/racket/pubs/#typed-racket">migratory typing</a>,
-because this phrase tells us what we want to accomplish with such a type system.</span></span></span>  and
-this work has changed my mind. I now consider type system design as an exercise
-in engineering, specifically engineering the interface between programming
+they are confronted with a new typed programming language.</p><p>I started working on <a href="https://www2.ccs.neu.edu/racket/pubs/#typed-racket"><span style="font-style: italic">migratory typing</span></a> in 1998 (after
+working on soft typing for the previous eight or nine years),, and this work has
+changed my mind. I have come to consider type system design as an exercise in
+engineering, specifically engineering the interface between programming
 languages and human beings.  This change in perspective affects which questions
 I ask about a type system. While I do not deny the importance of soundness, I
 have also come to think of it as only one of several equally important
@@ -15,18 +14,18 @@ questions. My now-favorite question concerns the usefulness of the type system.<
 the Laffer curve and its origin story. All of us programming language
 researchers know the idea behind the Laffer curve from engineering and
 mathematics courses. Concisely, engineering is an optimization process, that is,
-the maximization of some function subject. The Laffer curve spells out this
+the maximization of some function subject to constraints. The Laffer curve spells out this
 insight for the vague discipline of economics. Since type-system design is
-equally vague, I think we can learn a lot form this analogy.</p><p><span style="font-style: italic">Note</span> I have explained the ideas in this &ldquo;thought&rdquo; to a small number of
+equally vague at this point, I think we can learn a lot form this analogy.</p><p><span style="font-style: italic">Note</span> I have explained the ideas in this &ldquo;thought&rdquo; to a small number of
 visitors over the years. Many of these academics dismiss the Laffer curve simply
 because it is associated with economic policies favored by conservatives, and
-because they are knee-jerk liberals or, worse, progressives. But just because
-&ldquo;they&rdquo; thought of it does not mean it may not convey a kernel of truths; just
-as much as liberal ideas about taxation may also say something acceptable.</p><h4>1<tt>&nbsp;</tt><a name="(part._.The_.Original_.Laffer_.Curve_.Story)"></a>The Original Laffer Curve Story</h4><p><div class="SIntrapara"><blockquote class="refpara"><blockquote class="refcolumn"><blockquote class="refcontent"><p>President Kennedy also proposed a tax rate decrease to
+because they are knee-jerk liberals. But just because &ldquo;they&rdquo; thought of it
+does not mean it may not come with a kernel of truth; just as much as liberal
+ideas about taxation may also say something acceptable.</p><h4>1<tt>&nbsp;</tt><a name="(part._.The_.Original_.Laffer_.Curve_.Story)"></a>The Original Laffer Curve Story</h4><p><div class="SIntrapara"><blockquote class="refpara"><blockquote class="refcolumn"><blockquote class="refcontent"><p>President Kennedy also proposed a tax rate decrease to
 stimulate the economy and increase the tax income of the federal government
 but without public reference to this curve.</p></blockquote></blockquote></blockquote></div><div class="SIntrapara">  The Laffer curve of taxation
 dates back centuries. It became widely known under this name in the 1980s
-when US President Reagan&rsquo;s economists based, and explained, their proposal
+when US President Reagan&rsquo;s economists based their proposal
 for tax rate decreases on this idea. <a href="https://en.wikipedia.org/wiki/Laffer_curve#Origin">Rumor</a> has it that
 Laffer, an economist, explained the idea on a napkin over a dinner with
 members of President Ford&rsquo;s White House staff, and that a <span style="font-style: italic">Wall Street
@@ -54,13 +53,14 @@ a <span style="font-style: italic"></span>1<span style="font-style: italic"></sp
 receive sufficiently large hand-outs to survive. Or, their work might not be
 motivated by income; we all know such people.  Second, there is no reason to
 believe that there is a single maximum; the curve might have several local
-maxima. Finally, nothing suggests that the income function is even continuous
-with respect to tax rates, though this point is not captured in the graph.</p><h4>2<tt>&nbsp;</tt><a name="(part._.Applying_the_.Laffer_.Curve_to_.Types_and_.Type_.Systems)"></a>Applying the Laffer Curve to Types and Type Systems</h4><p>Now let&rsquo;s replace &ldquo;tax&rdquo; with &ldquo;type system,&rdquo; &ldquo;rate&rdquo; with
+maxima.</p><p><span style="font-style: italic">Notee</span> What the last graph does not bring across is that the income
+function might not even be continuous with respect to tax rates. But this
+thought isn&rsquo;t about the Laffer curve per se, so let&rsquo;s move on.</p><h4>2<tt>&nbsp;</tt><a name="(part._.Applying_the_.Laffer_.Curve_to_.Types_and_.Type_.Systems)"></a>Applying the Laffer Curve to Types and Type Systems</h4><p>Now let&rsquo;s replace &ldquo;tax&rdquo; with &ldquo;type system,&rdquo; &ldquo;rate&rdquo; with
 &ldquo;expressiveness,&rdquo; and &ldquo;income&rdquo; with &ldquo;effectiveness.&rdquo; While the meaning of
-expressiveness is relatively clear for a type system, effectiveness comes with
+expressiveness is tentatively clear for a type system, effectiveness comes with
 several different aspects. At a minimum, effectiveness should cover the
 prevention of run-time exceptions, but it should also measure the ease to get
-programs to run.</p><p>With these pretty vague ideas in mind, here is what the first Laffer curve of
+programs to run and run fast enough.</p><p>With these pretty vague ideas in mind, here is what the first Laffer curve of
 types looks like this:</p><blockquote class="SCentered"><p><img src="pict_5.png" alt="image" width="150" height="150"/></p></blockquote><p>The left-most point represents dynamic typing, which tags all values and uses
 these tags to check at run time whether a primitive operation may operate on
 some given arguments.  In this world, there is only one expressible &rdquo;theorem&rdquo;
@@ -68,8 +68,8 @@ and all expressions satisfy it. Of course, such a simplistic type system does
 not prevent any run-time exceptions, so we should not consider it an effective
 type system. By contrast, there is an &ldquo;extremist&rdquo; type system that is
 guaranteed to prevent all run-time exceptions, and it is represented by the red
-dot on the right. It simply won&rsquo;t bless <span style="font-style: italic">any</span> programs as type correct,
-meaning no programs will ever be allowed to run. Hence it is appropriate to
+dot on the right. It simply doesn&rsquo;t bless <span style="font-style: italic">any</span> programs as type correct,
+meaning no programs are ever be allowed to run. Hence it is appropriate to
 assign this type system a score of <span style="font-style: italic"></span>0<span style="font-style: italic"></span> effectiveness, too.</p><p>Empirical evidence suggests that there are effective type systems. Let&rsquo;s record
 this observation as red dots between the two extreme one:</p><blockquote class="SCentered"><p><img src="pict_6.png" alt="image" width="150" height="150"/></p></blockquote><p>For example, many programmers consider Java&rsquo;s type system an improvement over
 C++&rsquo;s. Similarly, type system experts think of Haskell&rsquo;s type system as yet more
@@ -96,27 +96,28 @@ programmer writes the factorial function, with an unchecked but documented type
 signature, a basic comment, and an example formulated as a unit test. The right
 side shows how little has to change to turn this module into a fully typed and
 type-checked one.</p><p>This sample migration demonstrates two important points.  The first one to note
-is that this factorial function is not just <span class="RktSym"><a href="http://docs.plt-scheme.org/ts-reference/type-ref.html#%28form._%28%28lib._typed-racket%2Fbase-env%2Fbase-types..rkt%29._.Integer%29%29" class="RktStxLink" data-pltdoc="x">Integer</a></span> but <span class="RktSym"><a href="http://docs.plt-scheme.org/ts-reference/type-ref.html#%28form._%28%28lib._typed-racket%2Fbase-env%2Fbase-types..rkt%29._.Natural%29%29" class="RktStxLink" data-pltdoc="x">Natural</a></span>. The second one is
-that the function definition did not have to change for the type checker to
-bless the module. This simplicity does not come for free, however; the designers
-of Typed Racket intentionally provide <span class="RktSym"><a href="http://docs.plt-scheme.org/ts-reference/type-ref.html#%28form._%28%28lib._typed-racket%2Fbase-env%2Fbase-types..rkt%29._.Natural%29%29" class="RktStxLink" data-pltdoc="x">Natural</a></span> and a whole set-based hierarchy of
-numeric types. Also their type system checks <span class="RktSym"><a href="http://docs.plt-scheme.org/reference/if.html#%28form._%28%28quote._~23~25kernel%29._if%29%29" class="RktStxLink" data-pltdoc="x">if</a></span> expressions so as to
-confirm the induction scheme for <span class="RktSym"><a href="http://docs.plt-scheme.org/ts-reference/type-ref.html#%28form._%28%28lib._typed-racket%2Fbase-env%2Fbase-types..rkt%29._.Natural%29%29" class="RktStxLink" data-pltdoc="x">Natural</a></span> and similar set-based type
-definitions.</p><p>A different team of type-system designers might not have bothered with support
-for <span class="RktSym"><a href="http://docs.plt-scheme.org/ts-reference/type-ref.html#%28form._%28%28lib._typed-racket%2Fbase-env%2Fbase-types..rkt%29._.Natural%29%29" class="RktStxLink" data-pltdoc="x">Natural</a></span>, They might have expected developers to switch to <span class="RktSym"><a href="http://docs.plt-scheme.org/ts-reference/type-ref.html#%28form._%28%28lib._typed-racket%2Fbase-env%2Fbase-types..rkt%29._.Integer%29%29" class="RktStxLink" data-pltdoc="x">Integer</a></span>. Similarly,
+is that the type of this factorial function is not just <span class="RktSym"><a href="http://docs.plt-scheme.org/ts-reference/type-ref.html#%28form._%28%28lib._typed-racket%2Fbase-env%2Fbase-types..rkt%29._.Integer%29%29" class="RktStxLink" data-pltdoc="x">Integer</a></span> but <span class="RktSym"><a href="http://docs.plt-scheme.org/ts-reference/type-ref.html#%28form._%28%28lib._typed-racket%2Fbase-env%2Fbase-types..rkt%29._.Natural%29%29" class="RktStxLink" data-pltdoc="x">Natural</a></span>. The
+second one is that the function definition did not have to change for the type
+checker to bless the module. This simplicity does not come for free,
+however. The designers of Typed Racket intentionally provide <span class="RktSym"><a href="http://docs.plt-scheme.org/ts-reference/type-ref.html#%28form._%28%28lib._typed-racket%2Fbase-env%2Fbase-types..rkt%29._.Natural%29%29" class="RktStxLink" data-pltdoc="x">Natural</a></span> and a whole
+set-based hierarchy of numeric types. Also, their type system checks <span class="RktSym"><a href="http://docs.plt-scheme.org/reference/if.html#%28form._%28%28quote._~23~25kernel%29._if%29%29" class="RktStxLink" data-pltdoc="x">if</a></span>
+expressions so as to confirm the induction scheme for <span class="RktSym"><a href="http://docs.plt-scheme.org/ts-reference/type-ref.html#%28form._%28%28lib._typed-racket%2Fbase-env%2Fbase-types..rkt%29._.Natural%29%29" class="RktStxLink" data-pltdoc="x">Natural</a></span> and similar
+set-based type definitions.</p><p>A different team of type-system designers might not have bothered with support
+for <span class="RktSym"><a href="http://docs.plt-scheme.org/ts-reference/type-ref.html#%28form._%28%28lib._typed-racket%2Fbase-env%2Fbase-types..rkt%29._.Natural%29%29" class="RktStxLink" data-pltdoc="x">Natural</a></span>. They might have expected programmers to switch to <span class="RktSym"><a href="http://docs.plt-scheme.org/ts-reference/type-ref.html#%28form._%28%28lib._typed-racket%2Fbase-env%2Fbase-types..rkt%29._.Integer%29%29" class="RktStxLink" data-pltdoc="x">Integer</a></span>. Similarly,
 such a team might not have added a modicum of dependent typing to avoid the
 need for Java-like casts in the branches of an <span class="RktSym"><a href="http://docs.plt-scheme.org/reference/if.html#%28form._%28%28quote._~23~25kernel%29._if%29%29" class="RktStxLink" data-pltdoc="x">if</a></span> expression that
-discerns the different parts of a union of types.</p><p>The expressiveness of a migratory type system is also affected by a second
-dimension, the granularity of type annotations.  While Typed Racket demands that
-developers migrate entire modules, Siek and Vitousek&rsquo;s
-<a href="https://github.com/mvitousek/reticulated">Reticulated Python</a> allows the annotation of individual
-function and method parameters, fields in classes, and variables. This &ldquo;micro&rdquo;
-approach to migratory typing clearly requires much less work from the developer
-than a &ldquo;macro&rdquo; based one. Yet another approach, implemented as
-<a href="https://plg.uwaterloo.ca/~dynjs/strongscript/">StrongScript</a>, is even more restrictive than the &ldquo;macro&rdquo;
-variant. In this setting of so-called &ldquo;manifest migratory type systems,&rdquo;
-programmers must port the bottom-half an entire class hierarchy and may not
-extend a typed class with an untyped one.</p><p>At this point the first research question is clearly how to measure the
+discerns the different parts of a union of types.</p><blockquote class="refpara"><blockquote class="refcolumn"><blockquote class="refcontent"><p>Is this really about expressiveness or ease-of-use or both?</p></blockquote></blockquote></blockquote><p>The expressiveness of a migratory type system is additionally affected by two
+other factors: the granularity of type annotations and the presence of <span class="stt">type
+Dyn</span>.  While Typed Racket demands that developers migrate entire modules, Siek
+and Vitousek&rsquo;s <a href="https://github.com/mvitousek/reticulated">Reticulated Python</a> allows the annotation of
+individual function and method parameters, fields in classes, and
+variables. This &ldquo;micro&rdquo; approach to migratory typing clearly requires much
+less work from the developer than a &ldquo;macro&rdquo; based one. Even better, if a
+programmer does not know the type yet, it is possible to use <span class="stt">Dyn</span> and refine
+it later.</p><p>Yet another approach, implemented as <a href="https://plg.uwaterloo.ca/~dynjs/strongscript/">StrongScript</a>, is even more
+restrictive than the &ldquo;macro&rdquo; variant. In this setting of so-called &ldquo;manifest
+migratory type systems,&rdquo; programmers must port the bottom-half an entire class
+hierarchy and may not extend a typed class with an untyped one.</p><p>At this point the first research question is clearly how to measure the
 expressiveness of a migratory typing system.</p><p><div class="SIntrapara">Concerning the effectiveness of migratory type system, I see at least three
 different dimensions:
 </div><div class="SIntrapara"><ul><li><p><span style="font-weight: bold">Prevention</span> of run-time exceptions. Some migratory type systems are
