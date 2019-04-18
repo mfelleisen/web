@@ -1,22 +1,27 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"/><meta name="viewport" content="width=device-width, initial-scale=0.8"/><title>The Laffer Curve of Types</title><link rel="stylesheet" type="text/css" href="scribble.css" title="default"/><link rel="stylesheet" type="text/css" href="thoughts.css" title="default"/><link rel="stylesheet" type="text/css" href="figure.css" title="default"/><link rel="stylesheet" type="text/css" href="racket.css" title="default"/><link rel="stylesheet" type="text/css" href="manual-style.css" title="default"/><link rel="stylesheet" type="text/css" href="manual-racket.css" title="default"/><script type="text/javascript" src="scribble-common.js"></script><script type="text/javascript" src="figure.js"></script><script type="text/javascript" src="manual-racket.js"></script><!--[if IE 6]><style type="text/css">.SIEHidden { overflow: hidden; }</style><![endif]--></head><body id="scribble-racket-lang-org"><div class="tocset"><div class="tocview"><div class="tocviewlist tocviewlisttopspace"><div class="tocviewtitle"><table cellspacing="0" cellpadding="0"><tr><td style="width: 1em;"><a href="javascript:void(0);" title="Expand/Collapse" class="tocviewtoggle" onclick="TocviewToggle(this,&quot;tocview_0&quot;);">&#9660;</a></td><td></td><td><a href="index.html" class="tocviewlink" data-pltdoc="x">Thoughts</a></td></tr></table></div><div class="tocviewsublisttop" style="display: block;" id="tocview_0"><table cellspacing="0" cellpadding="0"><tr><td align="right"></td><td><a href="" class="tocviewselflink" data-pltdoc="x"><span class="technical">The Laffer Curve of Types</span></a></td></tr><tr><td align="right"></td><td><a href="Referential_Transparency.html" class="tocviewlink" data-pltdoc="x"><span class="technical">Referential Transparency</span></a></td></tr><tr><td align="right"></td><td><a href="How_do_I_get_a_PhD.html" class="tocviewlink" data-pltdoc="x"><span class="curriculum">How do I get a Ph<span class="mywbr"> &nbsp;</span>D</span></a></td></tr><tr><td align="right"></td><td><a href="Free_Speech.html" class="tocviewlink" data-pltdoc="x"><span class="politics">Free Speech</span></a></td></tr><tr><td align="right"></td><td><a href="Developing_Developers.html" class="tocviewlink" data-pltdoc="x"><span class="curriculum">Developing Developers</span></a></td></tr><tr><td align="right"></td><td><a href="Growing_a_Programmer.html" class="tocviewlink" data-pltdoc="x"><span class="curriculum">Growing a Programmer</span></a></td></tr><tr><td align="right"></td><td><a href="Unions_for_PhD_Students_.html" class="tocviewlink" data-pltdoc="x"><span class="sci-pol">Unions for Ph<span class="mywbr"> &nbsp;</span>D Students?</span></a></td></tr><tr><td align="right"></td><td><a href="Racket_is____.html" class="tocviewlink" data-pltdoc="x"><span class="technical"><span style="font-style: italic">Racket</span> is ...</span></a></td></tr><tr><td align="right"></td><td><a href="why-pl2.html" class="tocviewlink" data-pltdoc="x"><span class="sci-pol">Why teach Ph<span class="mywbr"> &nbsp;</span>D core courses, with programming languages</span></a></td></tr><tr><td align="right"></td><td><a href="Danger__unsafe_languages.html" class="tocviewlink" data-pltdoc="x"><span class="technical">Danger:<span class="mywbr"> &nbsp;</span> unsafe languages</span></a></td></tr><tr><td align="right"></td><td><a href="What_should_the_core_achieve_.html" class="tocviewlink" data-pltdoc="x"><span class="curriculum">What should the core achieve?</span></a></td></tr><tr><td align="right"></td><td><a href="Python_for_asset-backed_securities.html" class="tocviewlink" data-pltdoc="x"><span class="politics">Python for asset-<wbr></wbr>backed securities</span></a></td></tr><tr><td align="right"></td><td><a href="Measuring_education.html" class="tocviewlink" data-pltdoc="x"><span class="curriculum">Measuring education</span></a></td></tr><tr><td align="right"></td><td><a href="Refereed_conferences__not_.html" class="tocviewlink" data-pltdoc="x"><span class="sci-pol">Refereed conferences, not!</span></a></td></tr><tr><td align="right"></td><td><a href="what-is-pl.html" class="tocviewlink" data-pltdoc="x"><span class="sci-pol">Why teach programming languages</span></a></td></tr><tr><td align="right"></td><td><a href="_.html" class="tocviewlink" data-pltdoc="x"><span class="special">.</span></a></td></tr></table></div></div><div class="tocviewlist"><table cellspacing="0" cellpadding="0"><tr><td style="width: 1em;"><a href="javascript:void(0);" title="Expand/Collapse" class="tocviewtoggle" onclick="TocviewToggle(this,&quot;tocview_1&quot;);">&#9658;</a></td><td></td><td><a href="" class="tocviewselflink" data-pltdoc="x"><span class="technical">The Laffer Curve of Types</span></a></td></tr></table><div class="tocviewsublistbottom" style="display: none;" id="tocview_1"><table cellspacing="0" cellpadding="0"><tr><td align="right"></td><td><a href="#%28part._.The_.Original_.Laffer_.Curve_.Story%29" class="tocviewlink" data-pltdoc="x">The Original Laffer Curve Story</a></td></tr><tr><td align="right"></td><td><a href="#%28part._.Applying_the_.Laffer_.Curve_to_.Types_and_.Type_.Systems%29" class="tocviewlink" data-pltdoc="x">Applying the Laffer Curve to Types and Type Systems</a></td></tr><tr><td align="right"></td><td><a href="#%28part._.The_.Laffer_.Curve_of_.Migratory_.Typing%29" class="tocviewlink" data-pltdoc="x">The Laffer Curve of Migratory Typing</a></td></tr><tr><td align="right"></td><td><a href="#%28part._.Why_are_.We_.Avoiding_.These_.Questions%29" class="tocviewlink" data-pltdoc="x">Why are We Avoiding These Questions</a></td></tr></table></div></div></div><div class="tocsub"><div class="tocsubtitle">On this page:</div><table class="tocsublist" cellspacing="0"><tr><td><span class="tocsublinknumber"></span><a href="#%28part._.The_.Original_.Laffer_.Curve_.Story%29" class="tocsubseclink" data-pltdoc="x">The Original Laffer Curve Story</a></td></tr><tr><td><span class="tocsublinknumber"></span><a href="#%28part._.Applying_the_.Laffer_.Curve_to_.Types_and_.Type_.Systems%29" class="tocsubseclink" data-pltdoc="x">Applying the Laffer Curve to Types and Type Systems</a></td></tr><tr><td><span class="tocsublinknumber"></span><a href="#%28part._.The_.Laffer_.Curve_of_.Migratory_.Typing%29" class="tocsubseclink" data-pltdoc="x">The Laffer Curve of Migratory Typing</a></td></tr><tr><td><span class="tocsublinknumber"></span><a href="#%28part._.Why_are_.We_.Avoiding_.These_.Questions%29" class="tocsubseclink" data-pltdoc="x">Why are We Avoiding These Questions</a></td></tr></table></div></div><div class="maincolumn"><div class="main"><div class="versionbox"><span class="version">7.2.0.12</span></div><div class="navsettop"><span class="navleft"><div class="nosearchform"></div>&nbsp;&nbsp;</span><span class="navright">&nbsp;&nbsp;<a href="index.html" title="backward to &quot;Thoughts&quot;" data-pltdoc="x">&larr; prev</a>&nbsp;&nbsp;<a href="index.html" title="up to &quot;Thoughts&quot;" data-pltdoc="x">up</a>&nbsp;&nbsp;<a href="Referential_Transparency.html" title="forward to &quot;Referential Transparency&quot;" data-pltdoc="x">next &rarr;</a></span>&nbsp;</div><h3><a name="(part._.The_.Laffer_.Curve_of_.Types)"></a><span class="technical">The Laffer Curve of Types</span></h3><div class="SAuthorListBox"><span class="SAuthorList"><p class="author">Matthias Felleisen</p></span></div><blockquote class="refpara"><blockquote class="refcolumn"><blockquote class="refcontent"><p>Apr 21 2019</p></blockquote></blockquote></blockquote><p class="SHistory">Changed in version 1.0: Sat Apr 13 19:06:32 EDT 2019, initial release</p><blockquote class="SCentered"><p><span class="Larger"><span style="color: red">Draft</span></span></p></blockquote><p>Most of my research colleagues think of types as a language of theorems about
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"/><meta name="viewport" content="width=device-width, initial-scale=0.8"/><title>The Laffer Curve of Types</title><link rel="stylesheet" type="text/css" href="scribble.css" title="default"/><link rel="stylesheet" type="text/css" href="thoughts.css" title="default"/><link rel="stylesheet" type="text/css" href="figure.css" title="default"/><link rel="stylesheet" type="text/css" href="racket.css" title="default"/><link rel="stylesheet" type="text/css" href="manual-style.css" title="default"/><link rel="stylesheet" type="text/css" href="manual-racket.css" title="default"/><script type="text/javascript" src="scribble-common.js"></script><script type="text/javascript" src="figure.js"></script><script type="text/javascript" src="manual-racket.js"></script><!--[if IE 6]><style type="text/css">.SIEHidden { overflow: hidden; }</style><![endif]--></head><body id="scribble-racket-lang-org"><div class="tocset"><div class="tocview"><div class="tocviewlist tocviewlisttopspace"><div class="tocviewtitle"><table cellspacing="0" cellpadding="0"><tr><td style="width: 1em;"><a href="javascript:void(0);" title="Expand/Collapse" class="tocviewtoggle" onclick="TocviewToggle(this,&quot;tocview_0&quot;);">&#9660;</a></td><td></td><td><a href="index.html" class="tocviewlink" data-pltdoc="x">Thoughts</a></td></tr></table></div><div class="tocviewsublisttop" style="display: block;" id="tocview_0"><table cellspacing="0" cellpadding="0"><tr><td align="right"></td><td><a href="" class="tocviewselflink" data-pltdoc="x"><span class="technical">The Laffer Curve of Types</span></a></td></tr><tr><td align="right"></td><td><a href="Referential_Transparency.html" class="tocviewlink" data-pltdoc="x"><span class="technical">Referential Transparency</span></a></td></tr><tr><td align="right"></td><td><a href="How_do_I_get_a_PhD.html" class="tocviewlink" data-pltdoc="x"><span class="curriculum">How do I get a Ph<span class="mywbr"> &nbsp;</span>D</span></a></td></tr><tr><td align="right"></td><td><a href="Free_Speech.html" class="tocviewlink" data-pltdoc="x"><span class="politics">Free Speech</span></a></td></tr><tr><td align="right"></td><td><a href="Developing_Developers.html" class="tocviewlink" data-pltdoc="x"><span class="curriculum">Developing Developers</span></a></td></tr><tr><td align="right"></td><td><a href="Growing_a_Programmer.html" class="tocviewlink" data-pltdoc="x"><span class="curriculum">Growing a Programmer</span></a></td></tr><tr><td align="right"></td><td><a href="Unions_for_PhD_Students_.html" class="tocviewlink" data-pltdoc="x"><span class="sci-pol">Unions for Ph<span class="mywbr"> &nbsp;</span>D Students?</span></a></td></tr><tr><td align="right"></td><td><a href="Racket_is____.html" class="tocviewlink" data-pltdoc="x"><span class="technical"><span style="font-style: italic">Racket</span> is ...</span></a></td></tr><tr><td align="right"></td><td><a href="why-pl2.html" class="tocviewlink" data-pltdoc="x"><span class="sci-pol">Why teach Ph<span class="mywbr"> &nbsp;</span>D core courses, with programming languages</span></a></td></tr><tr><td align="right"></td><td><a href="Danger__unsafe_languages.html" class="tocviewlink" data-pltdoc="x"><span class="technical">Danger:<span class="mywbr"> &nbsp;</span> unsafe languages</span></a></td></tr><tr><td align="right"></td><td><a href="What_should_the_core_achieve_.html" class="tocviewlink" data-pltdoc="x"><span class="curriculum">What should the core achieve?</span></a></td></tr><tr><td align="right"></td><td><a href="Python_for_asset-backed_securities.html" class="tocviewlink" data-pltdoc="x"><span class="politics">Python for asset-<wbr></wbr>backed securities</span></a></td></tr><tr><td align="right"></td><td><a href="Measuring_education.html" class="tocviewlink" data-pltdoc="x"><span class="curriculum">Measuring education</span></a></td></tr><tr><td align="right"></td><td><a href="Refereed_conferences__not_.html" class="tocviewlink" data-pltdoc="x"><span class="sci-pol">Refereed conferences, not!</span></a></td></tr><tr><td align="right"></td><td><a href="what-is-pl.html" class="tocviewlink" data-pltdoc="x"><span class="sci-pol">Why teach programming languages</span></a></td></tr><tr><td align="right"></td><td><a href="_.html" class="tocviewlink" data-pltdoc="x"><span class="special">.</span></a></td></tr></table></div></div><div class="tocviewlist"><table cellspacing="0" cellpadding="0"><tr><td style="width: 1em;"><a href="javascript:void(0);" title="Expand/Collapse" class="tocviewtoggle" onclick="TocviewToggle(this,&quot;tocview_1&quot;);">&#9658;</a></td><td></td><td><a href="" class="tocviewselflink" data-pltdoc="x"><span class="technical">The Laffer Curve of Types</span></a></td></tr></table><div class="tocviewsublistbottom" style="display: none;" id="tocview_1"><table cellspacing="0" cellpadding="0"><tr><td align="right"></td><td><a href="#%28part._.The_.Original_.Laffer_.Curve_.Story%29" class="tocviewlink" data-pltdoc="x">The Original Laffer Curve Story</a></td></tr><tr><td align="right"></td><td><a href="#%28part._.Applying_the_.Laffer_.Curve_to_.Types_and_.Type_.Systems%29" class="tocviewlink" data-pltdoc="x">Applying the Laffer Curve to Types and Type Systems</a></td></tr><tr><td align="right"></td><td><a href="#%28part._.The_.Laffer_.Curve_of_.Migratory_.Typing%29" class="tocviewlink" data-pltdoc="x">The Laffer Curve of Migratory Typing</a></td></tr><tr><td align="right"></td><td><a href="#%28part._.Why_are_.We_.Avoiding_.These_.Questions%29" class="tocviewlink" data-pltdoc="x">Why are We Avoiding These Questions</a></td></tr></table></div></div></div><div class="tocsub"><div class="tocsubtitle">On this page:</div><table class="tocsublist" cellspacing="0"><tr><td><span class="tocsublinknumber"></span><a href="#%28part._.The_.Original_.Laffer_.Curve_.Story%29" class="tocsubseclink" data-pltdoc="x">The Original Laffer Curve Story</a></td></tr><tr><td><span class="tocsublinknumber"></span><a href="#%28part._.Applying_the_.Laffer_.Curve_to_.Types_and_.Type_.Systems%29" class="tocsubseclink" data-pltdoc="x">Applying the Laffer Curve to Types and Type Systems</a></td></tr><tr><td><span class="tocsublinknumber"></span><a href="#%28part._.The_.Laffer_.Curve_of_.Migratory_.Typing%29" class="tocsubseclink" data-pltdoc="x">The Laffer Curve of Migratory Typing</a></td></tr><tr><td><span class="tocsublinknumber"></span><a href="#%28part._.Why_are_.We_.Avoiding_.These_.Questions%29" class="tocsubseclink" data-pltdoc="x">Why are We Avoiding These Questions</a></td></tr></table></div></div><div class="maincolumn"><div class="main"><div class="versionbox"><span class="version">7.3.0.1</span></div><div class="navsettop"><span class="navleft"><div class="nosearchform"></div>&nbsp;&nbsp;</span><span class="navright">&nbsp;&nbsp;<a href="index.html" title="backward to &quot;Thoughts&quot;" data-pltdoc="x">&larr; prev</a>&nbsp;&nbsp;<a href="index.html" title="up to &quot;Thoughts&quot;" data-pltdoc="x">up</a>&nbsp;&nbsp;<a href="Referential_Transparency.html" title="forward to &quot;Referential Transparency&quot;" data-pltdoc="x">next &rarr;</a></span>&nbsp;</div><h3><a name="(part._.The_.Laffer_.Curve_of_.Types)"></a><span class="technical">The Laffer Curve of Types</span></h3><div class="SAuthorListBox"><span class="SAuthorList"><p class="author">Matthias Felleisen</p></span></div><blockquote class="refpara"><blockquote class="refcolumn"><blockquote class="refcontent"><p>Apr 21 2019</p></blockquote></blockquote></blockquote><p class="SHistory">Changed in version 1.0: Sat Apr 13 19:06:32 EDT 2019, initial release</p><blockquote class="SCentered"><p><span class="Larger"><span style="color: red">Draft</span></span></p></blockquote><p>Most of my research colleagues think of types as a language of theorems about
 the expressions of a program language and the type system as a proof system that
 proves type-theorems about expressions in a particular program. These people are
-also trained as proto-logicians, and thus they tend to ask about soundness when
-they are confronted with a new typed programming language.</p><p>I started working on <a href="https://www2.ccs.neu.edu/racket/pubs/#typed-racket"><span style="font-style: italic">migratory typing</span></a> in 1998 (after
-working on soft typing for the previous eight or nine years),, and this work has
-changed my mind. I have come to consider type system design as an exercise in
-engineering, specifically engineering the interface between programming
-languages and human beings.  This change in perspective affects which questions
-I ask about a type system. While I do not deny the importance of soundness, I
-have also come to think of it as only one of several equally important
-questions. My now-favorite question concerns the usefulness of the type system.</p><p>In my search for assessing the usefulness of type systems, I have come across
-the Laffer curve and its origin story. All of us programming language
+also trained as proto-logicians, and thus they immediately turn to soundness
+when they are confronted with a new typed programming language.</p><p>Over the past 20 or so years, I have slowly changed my mind about
+soundness. While I still appreciate its relevance, I have come to think of it as
+only one of several equally important questions. The problem is that the other
+questions are much more difficult to answer, and the worst part is that they are
+far more relevant than soundness.</p><p>Work on <a href="https://www2.ccs.neu.edu/racket/pubs/#typed-racket"><span style="font-style: italic">migratory typing</span></a> changed my mind.
+<span class="refelem"><span class="refcolumn"><span class="refcontent">I prefer <span style="font-style: italic">migratory typing</span> over <span style="font-style: italic">gradual typing</span>, even
+though the latter won because it is clearly a better marketing slogan.</span></span></span>  I
+started working on this topic in 1998 (after working on soft typing for the
+previous eight or nine years). Through the design of a migratory type system, I
+have come to consider type system design as an exercise in engineering,
+specifically engineering the interface between programming languages and human
+beings (HLI).</p><p>In search of assessment methods for the quality of the type systems, I have come
+across the Laffer curve and its origin story. All of us programming language
 researchers know the idea behind the Laffer curve from engineering and
 mathematics courses. Concisely, engineering is an optimization process, that is,
-the maximization of some function subject to constraints. The Laffer curve spells out this
-insight for the vague discipline of economics. Since type-system design is
-equally vague at this point, I think we can learn a lot form this analogy.</p><p><span style="font-style: italic">Note</span> I have explained the ideas in this &ldquo;thought&rdquo; to a small number of
+the maximization of some function subject to constraints. The Laffer curve
+spells out this insight for the vague discipline of economics. Since type-system
+design is equally vague at this point, I think we can learn a lot form this
+analogy.</p><p><span style="font-style: italic">Note</span> I have explained the ideas in this &ldquo;thought&rdquo; to a small number of
 visitors over the years. Many of these academics dismiss the Laffer curve simply
 because it is associated with economic policies favored by conservatives, and
 because they are knee-jerk liberals. But just because &ldquo;they&rdquo; thought of it
@@ -53,7 +58,7 @@ a <span style="font-style: italic"></span>1<span style="font-style: italic"></sp
 receive sufficiently large hand-outs to survive. Or, their work might not be
 motivated by income; we all know such people.  Second, there is no reason to
 believe that there is a single maximum; the curve might have several local
-maxima.</p><p><span style="font-style: italic">Notee</span> What the last graph does not bring across is that the income
+maxima.</p><p><span style="font-style: italic">Note</span> What the last graph does not bring across is that the income
 function might not even be continuous with respect to tax rates. But this
 thought isn&rsquo;t about the Laffer curve per se, so let&rsquo;s move on.</p><h4><a name="(part._.Applying_the_.Laffer_.Curve_to_.Types_and_.Type_.Systems)"></a>Applying the Laffer Curve to Types and Type Systems</h4><p>Now let&rsquo;s replace &ldquo;tax&rdquo; with &ldquo;type system,&rdquo; &ldquo;rate&rdquo; with
 &ldquo;expressiveness,&rdquo; and &ldquo;income&rdquo; with &ldquo;effectiveness.&rdquo; While the meaning of
@@ -61,7 +66,7 @@ expressiveness is tentatively clear for a type system, effectiveness comes with
 several different aspects. At a minimum, effectiveness should cover the
 prevention of run-time exceptions, but it should also measure the ease to get
 programs to run and run fast enough.</p><p>With these pretty vague ideas in mind, here is what the first Laffer curve of
-types looks like this:</p><blockquote class="SCentered"><p><img src="pict_5.png" alt="image" width="150" height="150"/></p></blockquote><p>The left-most point represents dynamic typing, which tags all values and uses
+types looks like:</p><blockquote class="SCentered"><p><img src="pict_5.png" alt="image" width="150" height="150"/></p></blockquote><p>The left-most point represents dynamic typing, which tags all values and uses
 these tags to check at run time whether a primitive operation may operate on
 some given arguments.  In this world, there is only one expressible &rdquo;theorem&rdquo;
 and all expressions satisfy it. Of course, such a simplistic type system does
@@ -74,15 +79,15 @@ assign this type system a score of <span style="font-style: italic"></span>0<spa
 this observation as red dots between the two extreme one:</p><blockquote class="SCentered"><p><img src="pict_6.png" alt="image" width="150" height="150"/></p></blockquote><p>For example, many programmers consider Java&rsquo;s type system an improvement over
 C++&rsquo;s. Similarly, type system experts think of Haskell&rsquo;s type system as yet more
 effective than Java&rsquo;s. But also note that far fewer programmers master Haskell&rsquo;s
-type system than Java&rsquo;s, so it isn&rsquo;t just pluses and no minuses.</p><p>In short, we may wish to imagine the graph of the effectiveness function of
+type system than Java&rsquo;s, so it isn&rsquo;t just all pluses and no minuses.</p><p>In short, we may wish to imagine the graph of the effectiveness function of
 types as follows:</p><blockquote class="SCentered"><p><img src="pict_7.png" alt="image" width="150" height="150"/></p></blockquote><p>It ignores the stupid type system that prevents all programs from running. Thus,
 its right-most red dot is placed a bit above the <span style="font-style: italic">x</span> axis. Think of a
 refinement or a dependent type system that is effective in preventing almost all
 run-time exceptions. But, because such a type system also imposes a much higher
 burden on the developer than Haskell&rsquo;s or even Java&rsquo;s, the pay-off is much lower
-than for those and the dot is below theirs.</p><h4><a name="(part._.The_.Laffer_.Curve_of_.Migratory_.Typing)"></a>The Laffer Curve of Migratory Typing</h4><p>While it is actually difficult to appreciate the Laffer curve of types in the
-world of statically typed programming languages, it is much more obvious in the
-context of migratory typing.  Unlike the design of static type system, the
+than for those and the dot is below theirs.</p><h4><a name="(part._.The_.Laffer_.Curve_of_.Migratory_.Typing)"></a>The Laffer Curve of Migratory Typing</h4><p>While it is somewhat difficult to appreciate the Laffer curve of types in the
+world of statically typed programming languages, its role in the context of
+migratory typing is obvious.  Unlike the design of static type system, the
 design of a migratory typing system does not start from a blank state. Instead
 the designers must study how programmers have used the dynamically typed
 language to which they are adding types. These programmers don&rsquo;t just create
@@ -101,61 +106,51 @@ is that the type of this factorial function is not just <span class="RktSym"><a 
 second one is that the function definition did not have to change for the type
 checker to bless the module. This simplicity does not come for free,
 however. The designers of Typed Racket intentionally provide <span class="RktSym"><a href="http://docs.plt-scheme.org/ts-reference/type-ref.html#%28form._%28%28lib._typed-racket%2Fbase-env%2Fbase-types..rkt%29._.Natural%29%29" class="RktStxLink" data-pltdoc="x">Natural</a></span> and a whole
-set-based hierarchy of numeric types. Also, their type system checks <span class="RktSym"><a href="http://docs.plt-scheme.org/reference/if.html#%28form._%28%28quote._~23~25kernel%29._if%29%29" class="RktStxLink" data-pltdoc="x">if</a></span>
+set-based hierarchy of numeric types. Also, our type system checks <span class="RktSym"><a href="http://docs.plt-scheme.org/reference/if.html#%28form._%28%28quote._~23~25kernel%29._if%29%29" class="RktStxLink" data-pltdoc="x">if</a></span>
 expressions so as to confirm the induction scheme for <span class="RktSym"><a href="http://docs.plt-scheme.org/ts-reference/type-ref.html#%28form._%28%28lib._typed-racket%2Fbase-env%2Fbase-types..rkt%29._.Natural%29%29" class="RktStxLink" data-pltdoc="x">Natural</a></span> and similar
 set-based type definitions.</p><p>A different team of type-system designers might not have bothered with support
 for <span class="RktSym"><a href="http://docs.plt-scheme.org/ts-reference/type-ref.html#%28form._%28%28lib._typed-racket%2Fbase-env%2Fbase-types..rkt%29._.Natural%29%29" class="RktStxLink" data-pltdoc="x">Natural</a></span>. They might have expected programmers to switch to <span class="RktSym"><a href="http://docs.plt-scheme.org/ts-reference/type-ref.html#%28form._%28%28lib._typed-racket%2Fbase-env%2Fbase-types..rkt%29._.Integer%29%29" class="RktStxLink" data-pltdoc="x">Integer</a></span>. Similarly,
 such a team might not have added a modicum of dependent typing to avoid the
 need for Java-like casts in the branches of an <span class="RktSym"><a href="http://docs.plt-scheme.org/reference/if.html#%28form._%28%28quote._~23~25kernel%29._if%29%29" class="RktStxLink" data-pltdoc="x">if</a></span> expression that
-discerns the different parts of a union of types.</p><p>We should wish to understand how such design choices concerning expressiveness
-affect programmers. The question is how we would go about researching the
-answer.</p><p><span style="font-weight: bold">Granularity</span> So let&rsquo;s say we ran a team that owned a large code base written
-in some dynamically typed language, and we did wish to migrate this code to a
-typed sister language.</p><p>If the code were in Typed Racket, our developers would have to add type
+discerns the different parts of a union type.</p><p><span style="font-weight: bold">Granularity</span> So let&rsquo;s say we are running a team that owns a large code
+base written in some dynamically typed language, and we wish to migrate this
+code to a typed sister language.</p><p>If the code were in Typed Racket, our developers would have to add type
 annotations to entire modules at once. For a small module, such as the factorial
 one above, adding a type annotation is not an onerous task. But some Racket
 modules are thousands of lines long. (Yes we did violate good coding practices
 in the past, for good reasons at the time and for reasons that illustrate why we
-are programming language researchers.) Migrating such a large module all at once
-into the typed world all at once is clearly a heavy burden. I coined the phrase
-<span style="font-style: italic">macro</span> migratory typing for this approach.</p><p>The designers of <a href="https://github.com/mvitousek/reticulated">Reticulated Python</a>, Siek and Vitousek, made
+are programming language researchers.) Migrating such a large module into the
+typed world all at once is clearly a heavy burden. I coined the phrase
+<span style="font-style: italic">macro</span> migratory typing for this degree of granularity.</p><p>The designers of <a href="https://github.com/mvitousek/reticulated">Reticulated Python</a>, Siek and Vitousek, made
 a rather different choice, and I refer to this as the <span style="font-style: italic">micro</span>
 choice. Reticulated allows developers to annotate individual function and method
 parameters, their return types, individual fields in classes, or individual
 variables.  Just because one such feature is annotated with a type does not mean
-that others have to be annotated.  This micro approach clearly requires much
-less work from the developer than a &ldquo;macro&rdquo; based one, meaning developers are
-probably more likely to take to it. For example, the developer of a rather
-complex algorithm for an otherwise mundane piece of code may just wish to
-annotate this algorithm withtypes to express some basic design ideas&#8212;<wbr></wbr>and leave
-the rest alone.</p><p>Yet another approach, dubbed <span style="font-style: italic">manifest</span> here and implemented as
-<a href="https://plg.uwaterloo.ca/~dynjs/strongscript/">StrongScript</a> for example, fits neither the (implemented) micro or
-macro approach. From an implementation perspective, the manifest generalizes the
-idea of run-time tags to run-time type-tags so that the run-time system can
+that others have to be annotated.</p><p>Yet another approach, dubbed <span style="font-style: italic">manifest</span> and implemented as
+<a href="https://plg.uwaterloo.ca/~dynjs/strongscript/">StrongScript</a> for example, fits neither the (implemented) micro
+nor macro approach. From an implementation perspective, the manifest generalizes
+the idea of run-time tags to run-time type-tags so that the run-time system can
 check whether methods are called properly, not just language primitives. The
-price for the StrongScript developer is that migrating a simple method becomes
+price for the StrongScript developer is that migrating a single method becomes
 impossible if a derived class overrides this method. All overriding methods must
 also be annotated with types at the same time, and further extensions must use
-types, too. By contrast, other features of the class do not need to be typed.</p><p><span style="font-weight: bold">Granularity and <span class="stt">type Dynamic</span></span> The presence or absence of <span class="stt">type
+types for this method, too. By contrast, other features of the class do not need
+to be typed.</p><p><span style="font-weight: bold">Granularity and <span class="stt">type Dynamic</span></span> The presence or absence of <span class="stt">type
 Dynamic</span> is a second factor concerning granularity. Some migratory type systems
-take the uni-type system idea totally seriously. In this context, every missing
-type annotation is defaulted to <span class="stt">Dynamic</span>, and to make this viable, the
+map every missing type annotation to <span class="stt">Dynamic</span>. To make this viable, the
 compiler inserts run-time casts from <span class="stt">Dynamic</span> to appropriate types for
-primitive operations automatically&#8212;<wbr></wbr>which is what the implementation of a
-dynamically typed language does. The designers of such type systems don&rsquo;t speak
-of &ldquo;migration&rdquo; but &ldquo;refinement.&rdquo; That is, a developer does not add types in
-this context, but makes the type more precise than <span class="stt">Dynamic</span>.</p><p>The choice of adding <span class="stt">type Dynamic</span> to a migratory type system is orthogonal
-to the whether the designers opt for the macro, micro, or manifest
-approach. But, obviously including <span class="stt">Dynamic</span> in the type language affects and
-making its use convenient determines how much work type migration imposes on the
-developer.</p><p>Again, we should ask how these design choices concerning granularity affect the
-effectiveness of a migratory type system. On one hand, there are plain technical
-concerns and questions; on the other hand, I am also alluding to human factors
-here.</p><p><span style="font-weight: bold">Prevention</span> One purpose of types is to prevent certain classes of
+primitive operations automatically, that is, they explicate the workings of a
+dynamically typed language. The designers of such type systems don&rsquo;t speak of
+&ldquo;migration&rdquo; but &ldquo;refinement,&rdquo; meaning a developer replaces an occurrence of
+<span class="stt">Dynamic</span> with a more precise type.</p><p>In principle, the choice of adding <span class="stt">type Dynamic</span> to a migratory type system
+is orthogonal to the choice of macro, micro, or manifest granularity. In
+practice, micro migratory typing always comes with <span class="stt">type Dynamic</span> but
+currently there is no implementation of a macro migratory type system with this
+universal type.</p><p><span style="font-weight: bold">Prevention</span> One purpose of types is to prevent certain classes of
 mistakes. There&rsquo;s little need to elaborate on this idea for static typing; there
 is enough literature out there. But let&rsquo;s at least agree that the prevention of
 mistakes implies the prevent of run-time exceptions as raised by a dynamically
-typed language.</p><p>In the context of migratory typing, the effectiveness of error prevention
+typed language.</p><p>should the next idea be in &rsquo;ease&rsquo;</p><p>In the context of migratory typing, the effectiveness of error prevention
 clearly depends on the all of the above factors. The expressible
 types-as-theorems determine which run-time exceptions are prevented,
 e.g. <span class="RktPn">(</span><span class="RktSym">!</span><span class="stt"> </span><span class="RktVal"><span class="nobreak">-1</span></span><span class="RktPn">)</span>. The size of statically checked region of code helps
@@ -172,32 +167,33 @@ conjecture that designers came up with these compromised solutions in the name
 of performance, because they guess that proper protection is expensive and in
 the meantime <a href="https://www2.ccs.neu.edu/racket/pubs/#gtnffvf-jfp19">our research confirmed</a> that sound and complete
 migratory typing might be brutally expansive.</p><p><span style="font-weight: bold">Performance</span> If the addition of types causes a program to become so slow
-that users can no longer use it, migratory typing fails. I knew we needed
-run-time checks. Therefore I wanted to convert modules so that execution would
-spend a lot of time in code generated from typed fragments and untyped fragments
-with rarely executed run-time checks in the middle. And even with such
-foresight, I failed to get a Typed Racket with proper performance.</p><p>So, over the last couple of years performance has emerged as a major dimension
-of effectiveness in the world of migratory typing. We need research to make
-migratory effective in this direction.</p><p><span style="font-weight: bold">The Benefits of Adding Types</span> All of us in this research area take it for
+to become unusable, migratory typing is a failure.</p><p>When we designed Typed Racket, I knew we needed run-time checks. Therefore I
+wanted to convert modules so that execution would spend a lot of time in code
+generated from typed fragments and untyped fragments with rarely executed
+run-time checks in the middle.</p><p>And even with such foresight, I failed to get a Typed Racket with proper
+performance.</p><p>So, over the last couple of years performance has emerged as a major dimension
+of effectiveness in the world of sound migratory typing. We need research to
+make migratory effective in this direction.</p><p><span style="font-weight: bold">The Benefits of Adding Types</span> All of us in this research area take it for
 granted that migrating dynamically typed code to a typed sister language is a
 &ldquo;good thing.&rdquo; We have abstract arguments. We show concrete examples of how the
 addition of types revealed hidden bugs (that nobody ever bothered). We allude to
 the benefits of type annotations for interactions with the IDE. We believe that
 type annotations help with maintenance tasks down the line.</p><p>I have seen some papers that measure the pros and cons of similar programs
-written in distinct statically and dynamically typed programming languages. The
-context of migratory typing supplies a much better test bed than a pair of
-unrelated programming languages. <span class="refelem"><span class="refcolumn"><span class="refcontent">It also isn&rsquo;t clear to me whether
-the research methodology is properly developed, and an experiment in the setting
-of migratory typing would help develop this method further.</span></span></span>  Key is, research
-on migratory typing has made these questions truly relevant for the working
-developer, and it enables novel ways of studying the relationship between the
-various aspects of expressiveness and effectiveness. The syntax of statically
-and dynamically typed program phrases barely differ. It is thus easy to write
-programs in either one of these dialects, and a study does not have to account
-for differences in programming language.  In most cases, these dynamically typed
-languages also have a (reasonably) large developer community that has created
-many code repositories. A researcher can study these repos to understand the
-programming idioms of the language and the needs of code migration.</p><p>So, my final question is how we develop real evidence for our claims about the
+<span class="refelem"><span class="refcolumn"><span class="refcontent">It also isn&rsquo;t clear to me whether the research methodology is
+properly developed, and an experiment in the setting of migratory typing would
+help develop this method further.</span></span></span>  written in distinct statically and
+dynamically typed programming languages. The context of migratory typing
+supplies a much better test bed than a pair of unrelated programming
+languages. Key is, research on migratory typing has made these questions truly
+relevant for the working developer, and it enables novel ways of studying the
+relationship between the various aspects of expressiveness and
+effectiveness. The syntax of statically and dynamically typed program phrases
+barely differ. It is thus easy to write programs in either one of these
+dialects, and a study does not have to account for differences in programming
+language.  In most cases, these dynamically typed languages also have a
+(reasonably) large developer community that has created many code
+repositories. A researcher can study these repos to understand the programming
+idioms of the language and the needs of code migration.</p><p>So, my final question is how we develop real evidence for our claims about the
 benefits of migratory typing.</p><h4><a name="(part._.Why_are_.We_.Avoiding_.These_.Questions)"></a>Why are We Avoiding These Questions</h4><p>The &ldquo;we&rdquo; here is the community of programming language researchers, including
 myself. My students and I have tackled some of these questions, with results
 that are somewhat satisfying and simultaneously just raising more questions than
@@ -207,7 +203,17 @@ decade of migratory typing, though, none of us provided good answers. Otherwise
 the serious performance problems of Typed Racket wouldn&rsquo;t have shown up as a
 surprise. Ben Greenman, Asumu Takikawa, and the rest of the team had to develop
 a whole new performance evaluation method to answer the performance question
-properly and to help others evaluate the performance of their implementations.</p><p>Of the remaining questions, none come with easily quantifiable answers. Indeed,
+properly and to help others evaluate the performance of their implementations.</p><p><span style="font-weight: bold">Ease of Migration (1)</span> counts of casts, type annotations, etc.</p><p>We should wish to understand how such design choices concerning expressiveness
+affect programmers. The question is how we would go about researching the
+answer.</p><p>This micro approach clearly requires much less work from the developer than a
+macro based one, meaning developers are probably more likely to take to
+it. For example, the developer of a rather complex algorithm for an otherwise
+mundane piece of code may just wish to annotate this algorithm with types to
+express some basic design ideas&#8212;<wbr></wbr>and leave the rest alone.</p><p>Obviously including <span class="stt">Dynamic</span> in the type language affects and making its use
+convenient determines how much work type migration imposes on the developer.</p><p>Again, we should ask how these design choices concerning granularity affect the
+effectiveness of a migratory type system. On one hand, there are plain technical
+concerns and questions; on the other hand, I am also alluding to human factors
+here.</p><p>Of the remaining questions, none come with easily quantifiable answers. Indeed,
 we don&rsquo;t even have research methods for many of them. Which is probably why we
 don&rsquo;t address them. And this is a real problem.</p><p>Many PhD applications in the programming language area state that the applicants
 wish to improve the code that working developers produce and their working
