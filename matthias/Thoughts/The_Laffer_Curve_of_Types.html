@@ -9,12 +9,11 @@ only one of several equally important questions. The problem is that the other
 questions are much more difficult to answer, and the worst part is that they are
 far more relevant than soundness.</p><p>Work on <a href="https://www2.ccs.neu.edu/racket/pubs/#typed-racket"><span style="font-style: italic">migratory typing</span></a> changed my mind.
 <span class="refelem"><span class="refcolumn"><span class="refcontent">I prefer <span style="font-style: italic">migratory typing</span> over <span style="font-style: italic">gradual typing</span>, even
-though the latter won because it is clearly a better marketing slogan.</span></span></span>  I
-started working on this topic in 1998 (after working on soft typing for the
-previous eight or nine years). Through the design of a migratory type system, I
-have come to consider type system design as an exercise in engineering,
-specifically engineering the interface between programming languages and human
-beings (HLI).</p><p>In search of assessment methods for the quality of the type systems, I have come
+though the latter is clearly a better marketing slogan.</span></span></span>  I started working on
+this topic in 1998 (after working on soft typing for the previous eight or nine
+years). Through the design of a migratory type system, I have come to consider
+type system design as an exercise in engineering, specifically engineering the
+interface between programming languages and human beings (HLI).</p><p>In search of assessment methods for the quality of the type systems, I have come
 across the Laffer curve and its origin story. All of us programming language
 researchers know the idea behind the Laffer curve from engineering and
 mathematics courses. Concisely, engineering is an optimization process, that is,
@@ -112,7 +111,13 @@ set-based type definitions.</p><p>A different team of type-system designers migh
 for <span class="RktSym"><a href="http://docs.plt-scheme.org/ts-reference/type-ref.html#%28form._%28%28lib._typed-racket%2Fbase-env%2Fbase-types..rkt%29._.Natural%29%29" class="RktStxLink" data-pltdoc="x">Natural</a></span>. They might have expected programmers to switch to <span class="RktSym"><a href="http://docs.plt-scheme.org/ts-reference/type-ref.html#%28form._%28%28lib._typed-racket%2Fbase-env%2Fbase-types..rkt%29._.Integer%29%29" class="RktStxLink" data-pltdoc="x">Integer</a></span>. Similarly,
 such a team might not have added a modicum of dependent typing to avoid the
 need for Java-like casts in the branches of an <span class="RktSym"><a href="http://docs.plt-scheme.org/reference/if.html#%28form._%28%28quote._~23~25kernel%29._if%29%29" class="RktStxLink" data-pltdoc="x">if</a></span> expression that
-discerns the different parts of a union type.</p><p><span style="font-weight: bold">Granularity</span> So let&rsquo;s say we are running a team that owns a large code
+discerns the different parts of a union type.</p><blockquote><p><span style="font-weight: bold">Research Results</span> When we developed Typed Racket, we set up a metric
+that turned the above observations into metrics. For example, we report for a
+substantial corpus of Racket programs how many type annotations have to be added
+to migrate the code, how many lines of code have to change to accommodate the
+type checker, and so on. These numeric results for the functional part of Racket
+substantially differ from the object-oriented part suggesting that migrating the
+former will be much easier than the latter.</p></blockquote><p><span style="font-weight: bold">Granularity</span> So let&rsquo;s say we are running a team that owns a large code
 base written in some dynamically typed language, and we wish to migrate this
 code to a typed sister language.</p><p>If the code were in Typed Racket, our developers would have to add type
 annotations to entire modules at once. For a small module, such as the factorial
@@ -135,7 +140,17 @@ price for the StrongScript developer is that migrating a single method becomes
 impossible if a derived class overrides this method. All overriding methods must
 also be annotated with types at the same time, and further extensions must use
 types for this method, too. By contrast, other features of the class do not need
-to be typed.</p><p><span style="font-weight: bold">Granularity and <span class="stt">type Dynamic</span></span> The presence or absence of <span class="stt">type
+to be typed.</p><blockquote><p><span style="font-weight: bold">Research Conjectures</span> This micro approach requires much less work from
+the developer than a macro based one. Hence, developers are probably more likely
+to use it for migrating dynamically typed code to a typed setting. For example,
+the developer of a rather complex algorithm for an otherwise mundane piece of
+code may wish to annotate this algorithm with types to express some basic design
+ideas&#8212;<wbr></wbr>and leave the rest of the code alone.</p><p>In contrast, I consider the manifest approach fatally flawed. It forces
+a programmer to migrate too many methods at once, even if someone else is
+responsible for the derived ones. Both Typed Racket and Reticulated allow
+programmers to add annotations to one class without forcing them to add types
+elsewhere.</p><p>I do not yet know how to formulate these conjectures in a testable manner and,
+once I have done so, how to test them.</p></blockquote><p><span style="font-weight: bold">Granularity and <span class="stt">type Dynamic</span></span> The presence or absence of <span class="stt">type
 Dynamic</span> is a second factor concerning granularity. Some migratory type systems
 map every missing type annotation to <span class="stt">Dynamic</span>. To make this viable, the
 compiler inserts run-time casts from <span class="stt">Dynamic</span> to appropriate types for
@@ -146,55 +161,63 @@ dynamically typed language. The designers of such type systems don&rsquo;t speak
 is orthogonal to the choice of macro, micro, or manifest granularity. In
 practice, micro migratory typing always comes with <span class="stt">type Dynamic</span> but
 currently there is no implementation of a macro migratory type system with this
-universal type.</p><p><span style="font-weight: bold">Prevention</span> One purpose of types is to prevent certain classes of
-mistakes. There&rsquo;s little need to elaborate on this idea for static typing; there
-is enough literature out there. But let&rsquo;s at least agree that the prevention of
-mistakes implies the prevent of run-time exceptions as raised by a dynamically
-typed language.</p><p>should the next idea be in &rsquo;ease&rsquo;</p><p>In the context of migratory typing, the effectiveness of error prevention
-clearly depends on the all of the above factors. The expressible
-types-as-theorems determine which run-time exceptions are prevented,
-e.g. <span class="RktPn">(</span><span class="RktSym">!</span><span class="stt"> </span><span class="RktVal"><span class="nobreak">-1</span></span><span class="RktPn">)</span>. The size of statically checked region of code helps
-developers narrow down from where exceptions may originate. The presence of
-<span class="stt">Dynamic</span> makes it easy to add types and get the exact same run-time
-exceptions of dynamically typed languages&#8212;<wbr></wbr>except that the developer may now
-have to look for that one, single <span class="stt">type Dynamic</span> that is left over in some
-large region of otherwise properly typed code.</p><p>And then there are migratory type systems that are unsound, such as
+universal type.</p><blockquote><p><span style="font-weight: bold">Research Conjecture</span> The inclusion of <span class="stt">Dynamic</span> in the type
+language seems to make it convenient for a programmer to omit a type annotation
+when it is considered unnecessary or when it is perhaps too
+difficult/time-consuming to re-construct.</p><p>Again, I don&rsquo;t even know how to ask the question precisely but once I/we can, we
+still need a good method for tackling it.</p></blockquote><p><span style="font-weight: bold">Error Prevention, Debugging</span> One purpose of types is to prevent certain
+classes of mistakes. This holds for both sound and unsound type systems.
+There&rsquo;s little need to elaborate on this idea for static typing; there is enough
+literature out there.</p><blockquote><p><span style="font-weight: bold">Research Conjecture</span> In the context of migratory typing, the
+effectiveness of error prevention clearly depends on expressiveness.  For the
+macro approach, expressiveness determines which run-time exceptions are
+prevented, e.g. <span class="RktPn">(</span><span class="RktSym">!</span><span class="stt"> </span><span class="RktVal"><span class="nobreak">-1</span></span><span class="RktPn">)</span>.  By comparison, the micro approach combined
+with <span class="stt">type Dynamic</span> seems to prevent fewer run-time exceptions.</p><p>Strangely enough, nobody has investigated this conjecture.</p></blockquote><p>A related but different question is how to debug when a type-based run-time
+exception is raised. As I have argued many times in public settings, a sound
+type system narrows down the search for the source of such exceptions a lot more
+than unsound ones.</p><p>While soundness is an obvious concept in the logical context, people seem to
+accept that it exists on a gray-scale even in implementations of statically
+typed languages. Java seems to be less type-sound than Haskell in people&rsquo;s mind.</p><p><div class="SIntrapara">In the world of migratory typing, soundness is much less obvious both in terms
+of acceptance and in logical terms:
+</div><div class="SIntrapara"><ul><li><p>There are migratory type systems that are unsound, such as
 TypeScript. While these typed languages may prevent some run-time exceptions,
 they open the door for subtle, no insidious mistakes concerning the interaction
 of typed and untyped code. Worse, there are type-sound languages with migratory
-typing that don&rsquo;t protect the untyped code from mistakes in type annotations. I
-conjecture that designers came up with these compromised solutions in the name
+typing that don&rsquo;t protect the untyped code from mistakes in type annotations.</p><p>I conjecture that designers came up with these compromised solutions in the name
 of performance, because they guess that proper protection is expensive and in
 the meantime <a href="https://www2.ccs.neu.edu/racket/pubs/#gtnffvf-jfp19">our research confirmed</a> that sound and complete
-migratory typing might be brutally expansive.</p><p><span style="font-weight: bold">Performance</span> If the addition of types causes a program to become so slow
+migratory typing might be brutally expansive.</p></li><li><p>Typed Racket vs Reticulated &ndash; Ben&rsquo;s and Max&rsquo;s papers</p></li></ul></div></p><blockquote><p><span style="font-weight: bold">Research Conjecture</span> what affects debugging?</p><p>The size of statically checked region of code
+helps developers narrow down from where exceptions may originate. The presence
+of <span class="stt">Dynamic</span> makes it easy to add types and get the exact same run-time
+exceptions of dynamically typed languages&#8212;<wbr></wbr>except that the developer may now
+have to look for that one, single <span class="stt">type Dynamic</span> that is left over in some
+large region of otherwise properly typed code.</p></blockquote><p><span style="font-weight: bold">Performance</span> If the addition of types causes a program to become so slow
 to become unusable, migratory typing is a failure.</p><p>When we designed Typed Racket, I knew we needed run-time checks. Therefore I
 wanted to convert modules so that execution would spend a lot of time in code
 generated from typed fragments and untyped fragments with rarely executed
-run-time checks in the middle.</p><p>And even with such foresight, I failed to get a Typed Racket with proper
-performance.</p><p>So, over the last couple of years performance has emerged as a major dimension
+run-time checks in the middle.</p><blockquote><p><span style="font-weight: bold">Research Results</span>  And even with such foresight, I failed to get a
+Typed Racket with proper performance.</p></blockquote><p>So, over the last couple of years performance has emerged as a major dimension
 of effectiveness in the world of sound migratory typing. We need research to
 make migratory effective in this direction.</p><p><span style="font-weight: bold">The Benefits of Adding Types</span> All of us in this research area take it for
 granted that migrating dynamically typed code to a typed sister language is a
 &ldquo;good thing.&rdquo; We have abstract arguments. We show concrete examples of how the
 addition of types revealed hidden bugs (that nobody ever bothered). We allude to
 the benefits of type annotations for interactions with the IDE. We believe that
-type annotations help with maintenance tasks down the line.</p><p>I have seen some papers that measure the pros and cons of similar programs
-<span class="refelem"><span class="refcolumn"><span class="refcontent">It also isn&rsquo;t clear to me whether the research methodology is
-properly developed, and an experiment in the setting of migratory typing would
-help develop this method further.</span></span></span>  written in distinct statically and
-dynamically typed programming languages. The context of migratory typing
-supplies a much better test bed than a pair of unrelated programming
-languages. Key is, research on migratory typing has made these questions truly
-relevant for the working developer, and it enables novel ways of studying the
-relationship between the various aspects of expressiveness and
-effectiveness. The syntax of statically and dynamically typed program phrases
-barely differ. It is thus easy to write programs in either one of these
+type annotations help with maintenance tasks down the line.</p><blockquote><p><span style="font-weight: bold">Research Criticism</span> I have seen some <a href="https://users.dcc.uchile.cl/~rrobbes/p/ICSE2014-docstypes.pdf">papers</a> that
+measure the pros and cons of similar programs <span class="refelem"><span class="refcolumn"><span class="refcontent">It also isn&rsquo;t clear
+to me whether the research methodology is properly developed, and an experiment
+in the setting of migratory typing would help develop this method further.</span></span></span>
+written in distinct statically and dynamically typed programming languages.</p><p>The context of migratory typing supplies a much better test bed than a pair of
+unrelated programming languages. Key is, research on migratory typing has made
+these questions truly relevant for the working developer, and it enables novel
+ways of studying the relationship between the various aspects of expressiveness
+and effectiveness. The syntax of statically and dynamically typed program
+phrases barely differ. It is thus easy to write programs in either one of these
 dialects, and a study does not have to account for differences in programming
 language.  In most cases, these dynamically typed languages also have a
 (reasonably) large developer community that has created many code
 repositories. A researcher can study these repos to understand the programming
-idioms of the language and the needs of code migration.</p><p>So, my final question is how we develop real evidence for our claims about the
-benefits of migratory typing.</p><h4><a name="(part._.Why_are_.We_.Avoiding_.These_.Questions)"></a>Why are We Avoiding These Questions</h4><p>The &ldquo;we&rdquo; here is the community of programming language researchers, including
+idioms of the language and the needs of code migration.</p></blockquote><h4><a name="(part._.Why_are_.We_.Avoiding_.These_.Questions)"></a>Why are We Avoiding These Questions</h4><p>The &ldquo;we&rdquo; here is the community of programming language researchers, including
 myself. My students and I have tackled some of these questions, with results
 that are somewhat satisfying and simultaneously just raising more questions than
 they answer.</p><p>Of the above questions, the one concerning performance is the easiest to
@@ -203,17 +226,7 @@ decade of migratory typing, though, none of us provided good answers. Otherwise
 the serious performance problems of Typed Racket wouldn&rsquo;t have shown up as a
 surprise. Ben Greenman, Asumu Takikawa, and the rest of the team had to develop
 a whole new performance evaluation method to answer the performance question
-properly and to help others evaluate the performance of their implementations.</p><p><span style="font-weight: bold">Ease of Migration (1)</span> counts of casts, type annotations, etc.</p><p>We should wish to understand how such design choices concerning expressiveness
-affect programmers. The question is how we would go about researching the
-answer.</p><p>This micro approach clearly requires much less work from the developer than a
-macro based one, meaning developers are probably more likely to take to
-it. For example, the developer of a rather complex algorithm for an otherwise
-mundane piece of code may just wish to annotate this algorithm with types to
-express some basic design ideas&#8212;<wbr></wbr>and leave the rest alone.</p><p>Obviously including <span class="stt">Dynamic</span> in the type language affects and making its use
-convenient determines how much work type migration imposes on the developer.</p><p>Again, we should ask how these design choices concerning granularity affect the
-effectiveness of a migratory type system. On one hand, there are plain technical
-concerns and questions; on the other hand, I am also alluding to human factors
-here.</p><p>Of the remaining questions, none come with easily quantifiable answers. Indeed,
+properly and to help others evaluate the performance of their implementations.</p><p>Of the remaining questions, none come with easily quantifiable answers. Indeed,
 we don&rsquo;t even have research methods for many of them. Which is probably why we
 don&rsquo;t address them. And this is a real problem.</p><p>Many PhD applications in the programming language area state that the applicants
 wish to improve the code that working developers produce and their working
@@ -226,4 +239,20 @@ under the street lamps because that&rsquo;s where the light is. But that&rsquo;s
 we dropped them. I firmly conjecture that developing methods for the above
 questions and answers will help us point our research into directions that will
 make our work directly relevant to the working developers out there, and I think
-this would be a good thing for us and them.</p><div class="navsetbottom"><span class="navleft"><div class="nosearchform"></div>&nbsp;&nbsp;</span><span class="navright">&nbsp;&nbsp;<a href="index.html" title="backward to &quot;Thoughts&quot;" data-pltdoc="x">&larr; prev</a>&nbsp;&nbsp;<a href="index.html" title="up to &quot;Thoughts&quot;" data-pltdoc="x">up</a>&nbsp;&nbsp;<a href="Referential_Transparency.html" title="forward to &quot;Referential Transparency&quot;" data-pltdoc="x">next &rarr;</a></span>&nbsp;</div></div></div><div id="contextindicator">&nbsp;</div></body></html>
+this would be a good thing for us and them.</p><p><table cellspacing="0" cellpadding="0"><tr><td><p>&#160;</p></td></tr><tr><td><p>&#160;</p></td></tr><tr><td><p>&#160;</p></td></tr><tr><td><p>&#160;</p></td></tr><tr><td><p>&#160;</p></td></tr><tr><td><p>&#160;</p></td></tr><tr><td><p>&#160;</p></td></tr><tr><td><p>&#160;</p></td></tr><tr><td><p>&#160;</p></td></tr><tr><td><p>&#160;</p></td></tr><tr><td><p><span style="font-weight: bold">Postscript</span> I served as a reviewer of
+<a href="https://jyx.jyu.fi/bitstream/handle/123456789/47698/978-951-39-6388-0_vaitos04122015.pdf?sequence=1">Antti-Juhani Kaijanaho</a>&rsquo;s dissertation, which explained, argued
+for, and illustrated &ldquo;evidence-based programming language design.&rdquo; I do not
+have this particular research direction in mind with my thought, but such
+research should serve us all as inspiration to look for the correct methods and
+to develop methodologies for studying the usefulness of these methods. Also, by
+coincidence, Viera Proulx pointed me to an <a href="https://pdfs.semanticscholar.org/e075/4c27f9b9beca3973f19f4e1c026ef047b7db.pdf">opinion piece</a> (by
+Stefik and Hanenberg, whom I mentioned above) that seems to argue a similar
+point more broadly, just as I was writing up this thought.
+
+As indicated with a margin note, I conjecture that these researchers and I
+strongly differ on what we could consider an adequate method and, worse, what we
+would consider evidence in support for a programming language or a even just a
+language construct. For example, I am afraid that due the chosen method and its
+particular use, people might reject <span class="RktSym"><a href="http://docs.plt-scheme.org/reference/lambda.html#%28form._%28%28lib._racket%2Fprivate%2Fbase..rkt%29._lambda%29%29" class="RktStxLink" data-pltdoc="x">lambda</a></span> in a programming language
+because the <a href="http://www.cs.kent.edu/~jmaletic/cs63902/Papers/Merlin16.pdf"> user study</a> of <span class="stt">lambda</span> in C++ expressions
+supplies &ldquo;evidence&rdquo; that closures are unusable features. </p></td></tr><tr><td><p>&#160;</p></td></tr><tr><td><p>&#160;</p></td></tr><tr><td><p>&#160;</p></td></tr><tr><td><p>&#160;</p></td></tr><tr><td><p>&#160;</p></td></tr><tr><td><p>&#160;</p></td></tr><tr><td><p>&#160;</p></td></tr><tr><td><p>&#160;</p></td></tr><tr><td><p>&#160;</p></td></tr><tr><td><p>&#160;</p></td></tr></table></p><div class="navsetbottom"><span class="navleft"><div class="nosearchform"></div>&nbsp;&nbsp;</span><span class="navright">&nbsp;&nbsp;<a href="index.html" title="backward to &quot;Thoughts&quot;" data-pltdoc="x">&larr; prev</a>&nbsp;&nbsp;<a href="index.html" title="up to &quot;Thoughts&quot;" data-pltdoc="x">up</a>&nbsp;&nbsp;<a href="Referential_Transparency.html" title="forward to &quot;Referential Transparency&quot;" data-pltdoc="x">next &rarr;</a></span>&nbsp;</div></div></div><div id="contextindicator">&nbsp;</div></body></html>
