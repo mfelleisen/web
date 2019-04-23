@@ -240,21 +240,21 @@ language.  In most cases, these dynamically typed languages also have a
 (reasonably) large developer community that has created many code
 repositories. A researcher can study these repos to understand the programming
 idioms of the language and the needs of code migration.</p></blockquote><h4><a name="(part._.We_.Need_a_.Laffer_.Curve_of_.Migratory_.Typing)"></a>We Need a Laffer Curve of Migratory Typing</h4><p>The &ldquo;we&rdquo; here is the community of programming language researchers,
-including myself. My students and I have tackled some small parts of the
-above research questions, with results that are somewhat satisfying and
-simultaneously just raising more questions than they answer.  So there&rsquo;s a
-lot to be done.</p><p>Of the challenges, the one concerning performance was the easiest to
-address&#8212;<wbr></wbr>because it lent itself to quantitative statements. Yet, we did
-not do well even for this easily quantifiable area. For the first decade of
-migratory typing, none of us provided good answers, and many still don&rsquo;t.
-We lacked a performance-evaluation method, and it took time and labor  to
-develop one. Sadly, people at first didn&rsquo;t understand that we had developed
-a generally applicable method; all they saw were the negative
-performance results for Typed Racket&#8212;<wbr></wbr>though this says more about how
-people read papers than what we did.</p><p>Of the remaining questions, none come with easily quantifiable answers, and
-we lack research methods for all of them. Some of these questions will also
-require that we dive into the messy area of user studies.  And that&rsquo;s why
-we probably don&rsquo;t address these questions.</p><p>This state of the world is a real problem, especially considering how many
+including myself; and the&ldquo;curve&rdquo; part denotes the desire to understand
+the relationship between &ldquo;expressiveness&rdquo; and &ldquo;effectiveness.&rdquo;</p><p>My students and I have tackled some aspects of the above research
+questions, with results that are somewhat satisfying and simultaneously
+just raising more questions than they answer.  So there&rsquo;s a lot to be done.</p><p>The challenge concerning performance was the easiest to address&#8212;<wbr></wbr>because
+it lent itself to quantitative statements. Yet, we did not do well even for
+this easily quantifiable area. For the first decade of migratory typing,
+none of us provided good answers, and many still don&rsquo;t.  We lacked a
+performance-evaluation method, and it took time and labor to develop
+one. Sadly, people at first didn&rsquo;t understand that we had developed a
+generally applicable method; all they saw were the negative performance
+results for Typed Racket&#8212;<wbr></wbr>though this says more about how people read
+papers than what we did.</p><p>Of the remaining challenges, none come with easily quantifiable answers,
+and we lack research methods for all of them. Some of these questions will
+also require that we dive into the messy area of user studies.  And that&rsquo;s
+why we probably don&rsquo;t address these questions.</p><p>This state of the world is a real problem, especially considering how many
 of us and how many of our aspiring PhD students in programming languages
 wish to improve the daily lives of working software
 developers. Unfortunately, we find it easier to continue the work we have
@@ -270,7 +270,8 @@ questions. The answers will help us point our research into directions that
 will make our work directly relevant to the working developers out there.,
 And I think this would be a good thing for us and them.</p><p><span style="font-weight: bold">Other Papers</span></p><p>One group of researchers, with various collaborators, has actively
 investigated various aspects of the relationship between static types and
-<a name="(elem._(gentag._0))"></a><a href="https://users.dcc.uchile.cl/~rrobbes/p/ICSE2014-docstypes.pdf">API usability</a>,
+<a name="(elem._(gentag._0))"></a><a href="https://users.dcc.uchile.cl/~rrobbes/p/ICSE2014-docstypes.pdf">API usability</a> (which uses a Dart, arguably a programming
+language with a modicum of migratory typing),
 <a href="https://pleiad.cl/papers/2012/kleinschmagerAl-icpc2012.pdf">software maintainability</a>, and
 <a href="https://www.dcc.uchile.cl/TR/2012/TR_DCC-20120418-005.pdf">usability of undocumented software</a>.
 Interested readers can also follow links from these papers to somewhat
