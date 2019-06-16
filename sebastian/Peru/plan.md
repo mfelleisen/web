@@ -1,5 +1,5 @@
 
-To LIMA, Peru: 
+## To LIMA, Peru: 
 
  Sebastian and Lauren 
  9:21 a.m. Sun., Jun. 23, 2019 
@@ -19,7 +19,7 @@ To LIMA, Peru:
  arrives: 9:35pm 
 
 
-LIMA HOTEL: 
+## LIMA HOTEL: 
 
  Sunday Jun 23 - Monday Jun 24 
  Wyndham Costa Del Sol Lima Airport
