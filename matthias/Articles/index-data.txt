@@ -29,6 +29,14 @@ jpl-coding-standard-for-c.pdf
 version for external distribution 
 
 -----------
+Lessons From a Trip to the Moon
+Andy Kessler 
+
+https://www.wsj.com/articles/lessons-from-a-trip-to-the-moon-11563137910?shareToken=st8042a20f82914e82b2c5d2bcd5ac22d5
+
+What is a 1202? 50 seconds before landing the Lunar Module, that's what the computer displayed. 
+
+-----------
 CodeFlow: Code Reviews at MS 
 CACM, Feb 2019
 code-flow.pdf
