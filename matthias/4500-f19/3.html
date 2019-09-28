@@ -15,7 +15,7 @@ player placements;</p><p>The operation should reject placements that result in b
     tiles neighbor other tiles, tiles not placed on the periphery, and
     tiles where the avatar does not occupy a port that faces the board&rsquo;s
     interior.</p></li><li><p>one that creates a state from a bunch of <span style="font-style: italic">intermediate</span> tile &amp;
-player placements;</p><p>The operation should reject placements that result in boards with tile
+player placements;</p><p>The operation should <span style="color: pink">try to</span> reject placements that result in boards with tile
      placements that couldn&rsquo;t have possibly resulted from a series of turns.</p></li></ul></div><div class="SIntrapara">You might need other operations to design these. Consider making those
 public if you see a need for players or referees (via rule checkers) to use
 them.</div></p><p>As the plan points out, the board itself cannot enforce rules. Baking
