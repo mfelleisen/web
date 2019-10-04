@@ -9,11 +9,12 @@ methods/functions should compute without pre-determining <span style="font-style
 should compute it.&#8212;<wbr></wbr>Separately describe the internal organization of the
 referee and player.</p><p>The memo must not exceed two pages. Less is more.</p><p><span style="color: blue">Programming Task</span> Design the implementation of the rule enforcing
 component. It relies on the design of an action component, which is a data
-representation of the actions a player may request.</p><p>For now, the following rules govern our Tsuro games.</p><p>When a player requests the initial placement of an avatar on a specific
-port <span style="font-style: italic">p</span> an tile at a certain spot <span style="font-style: italic"></span>(<span style="font-style: italic">x,y</span>)<span style="font-style: italic"></span> on the board, the
+representation of the actions a player may request.</p><p><span style="color: purple">In addition to the basic constraints of <a href="tsuro.html" data-pltdoc="x">Tsuro</a>,</span>
+for now, the following rules govern our Tsuro games.</p><p>When a player requests the initial placement of an avatar on a specific
+port <span style="font-style: italic">p</span> and tile at a certain spot <span style="font-style: italic"></span>(<span style="font-style: italic">x,y</span>)<span style="font-style: italic"></span> on the board, the
 requested action is legal if the squares horizontally and vertically
 neighboring <span style="font-style: italic"></span>(<span style="font-style: italic">x,y</span>)<span style="font-style: italic"></span> are unoccupied and the <span style="font-style: italic">p</span> faces an
-unoccupied square, too.</p><p><div class="SIntrapara">When a player requests the placement of a tile during its turn, the
+unoccupied square,</p><p><div class="SIntrapara">When a player requests the placement of a tile during its turn, the
 requested placement must not conflict with the given information and
 the tile placement may not cause
 </div><div class="SIntrapara"><ul><li><p>the player&rsquo;s suicide, unless this is the only possible option; or</p></li><li><p>send any avatar into an infinite loop.</p></li></ul></div><div class="SIntrapara">Everything else is legal.</div></p><p><span style="color: blue">Testing Task</span> Develop an external test harness for the game board.</p><p><div class="SIntrapara">An input is a JSON array of <a href="4.html#%28tech._state._pat%29" class="techoutside" data-pltdoc="x"><span class="techinside">state-pat</span></a>s followed by a sequence of
