@@ -23,8 +23,14 @@
 (define presentations
   (list
    (presentation
+    "Language-Oriented Programming"
+    "lop.html" "lop-19.pdf"
+    '(div (i "LambdaWorld") " Cádiz, Spain; October 2019")
+    )
+
+   (presentation
     "The Racket Manifesto"
-    "manifesto.html" "Manifesto/manifesto16.pdf"
+    "manifesto.html" "manifesto/manifesto.pdf"
     '(div (i "CurryOn") " Rome, Italy; July 2016")
     )
 
