@@ -6,14 +6,13 @@ that we have the game logic in place and well tested, it is time to plan
 the second phase of our <a href="plan.html" data-pltdoc="x"><span style="color: red">Tsuro</span><span class="stt">.</span><span style="color: red">Com</span>, <span style="color: red">a Plan</span></a>.</p><p>The key to this second phase is a refinement of the local protocol into a
 distributed protocol. This change should not affect the logical structure
 of the protocol. Instead it should spell out (1) which remote proxy objects
-take on which task and (2) what the format of the TCP messages looks like.</p><p>Keep this memo to at most one page.</p><p><span style="color: blue">Programming Task</span></p><ul><li><p>Your first task is to implement a third strategy that works as
-follows:</p><p><div class="SIntrapara"><span class="refelem"><span class="refcolumn"><span class="refcontent">For those of you who have not taken theory, it is
+take on which task and (2) what the format of the TCP messages looks like.</p><p>Keep this memo to at most one page.</p><p><span style="color: blue">Programming Task</span></p><p><span class="refelem"><span class="refcolumn"><span class="refcontent">For those of you who have not taken theory, it is
 mathematically provable that there is no algorithm that discovers whether a
-function (or method) call goes into an infinite loop.</span></span></span>
-</div><div class="SIntrapara"><ul><li><p>Modify your <span class="stt">referee</span> and <span class="stt">administrator</span> so that no
+function (or method) call goes into an infinite loop.</span></span></span></p><ul><li><p>Modify your <span class="stt">referee</span> and <span class="stt">administrator</span> so that no
 <span style="font-style: italic">exceedingly slow</span> calls to players pull down the system. Use
 <span class="stt">3s</span> as your limit.</p><p>Collect in <span class="stt">slow.md</span> all github commits necessary (message and id) to
-accomplish this goal. Describe your implementation in a short paragraph.</p></li><li><p>When the player is asked to place an initial tile, it searches for
+accomplish this goal. Describe your implementation in a short paragraph.</p></li><li><p>Your <span class="strike" style="text-decoration:line-through">first</span> <span style="color: purple">proper programming</span> task is to implement
+a third strategy that works as follows:</p><p><div class="SIntrapara"><ul><li><p>When the player is asked to place an initial tile, it searches for
 the first legal spot available in counter-clockwise direction starting from
 (0,0) [exclusive]. To place the avatar, the player searches for the first
 legal port again in counter-clockwise fashion that faces an empty square.
