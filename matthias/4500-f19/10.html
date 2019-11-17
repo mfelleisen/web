@@ -20,4 +20,11 @@ the shape specified in from <a href="9.html" data-pltdoc="x">9 &#8212;<wbr></wbr
 specified there, in order. The harness must ensure that a client has
 connected to an administrator before it starts the next one. If this task
 demands changes to existing code, describe the changes with git commits and
-messages in the design document.</p><div class="navsetbottom"><span class="navleft"><div class="nosearchform"></div>&nbsp;&nbsp;</span><span class="navright">&nbsp;&nbsp;<a href="9.html" title="backward to &quot;9 --- Cleaning Up&quot;" data-pltdoc="x">&larr; prev</a>&nbsp;&nbsp;<a href="assignments.html" title="up to &quot;---The Project&quot;" data-pltdoc="x">up</a>&nbsp;&nbsp;<span class="nonavigation">next &rarr;</span></span>&nbsp;</div></div></div><div id="contextindicator">&nbsp;</div></body></html>
+messages in the design document.</p><blockquote class="refpara"><blockquote class="refcolumn"><blockquote class="refcontent"><p>Response to Peter&rsquo;s astute analysis on piazza.</p></blockquote></blockquote></blockquote><p><span style="color: purple">Addendum</span> <span class="stt">xclients</span> is expected to connect the spawned players
+to the IP address at the given port given on the command line; if no
+command-line arguments are specified, <span class="stt">xclient</span> connects to
+<span class="stt">LOCALHOST</span> at <span class="stt">45678</span>.</p><p><div class="SIntrapara">As for the possible results, recall the major design question of this
+course:
+</div><div class="SIntrapara"><blockquote><p><span style="font-style: italic">which components knows what.</span></p></blockquote></div><div class="SIntrapara">Hence it must be <span class="stt">xserver</span> that delivers the result of the tournament
+(as requested above), and <span class="stt">xclient</span> may optionally inform its &ldquo;owner&rdquo;
+of the information sent via <span class="stt">end-of-tournament</span>.</div></p><div class="navsetbottom"><span class="navleft"><div class="nosearchform"></div>&nbsp;&nbsp;</span><span class="navright">&nbsp;&nbsp;<a href="9.html" title="backward to &quot;9 --- Cleaning Up&quot;" data-pltdoc="x">&larr; prev</a>&nbsp;&nbsp;<a href="assignments.html" title="up to &quot;---The Project&quot;" data-pltdoc="x">up</a>&nbsp;&nbsp;<span class="nonavigation">next &rarr;</span></span>&nbsp;</div></div></div><div id="contextindicator">&nbsp;</div></body></html>
