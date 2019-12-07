@@ -14,9 +14,9 @@
 
 ;; -----------------------------------------------------------------------------
 (define (% {x : Real}) (/ x 100))
-(define PROJECT      (% 50))
-(define PRESENTATION (% 20))
-(define PANEL        (% 20))
+(define PROJECT      (% 60))
+(define PRESENTATION (% 17))
+(define PANEL        (% 17))
 (define LAB          (%  9))
 (define FINAL        (% 20))
 (define ASSIGNMENTS  (% 80))
@@ -95,11 +95,11 @@
   (define value-labs            1.0)
 
   (define perfect-grade
-    (+ (* 50/100 value-projects)
-       (* 20/100 value-presentations)
-       (* 20/100 value-panels)
+    (+ (* 60/100 value-projects)
+       (* 17/100 value-presentations)
+       (* 17/100 value-panels)
        (* 09/100 value-labs)
-       (% 1))) ;; <-- whim of the instructor 
+       (* 01/100))) ;; <-- whim of the instructor 
 
   (check-=
    (final-grade perfect-projects perfect-presentations perfect-panels perfect-labs)
