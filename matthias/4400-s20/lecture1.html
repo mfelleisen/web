@@ -38,7 +38,10 @@ meaning&#8212;<wbr></wbr>often called <span style="font-style: italic">semantics
 one <span style="font-style: italic">programmer</span>&#8212;<wbr></wbr>the creator of code&#8212;<wbr></wbr>to many others&#8212;<wbr></wbr>the
 maintainers. Once these thoughts are expressed in a programming language, a
 computer can also understand and interpret them on behalf of a
-<span style="font-style: italic">consumer</span>.</p><p><div class="SIntrapara">Hence one first idea for studying the meaning of language constructs is to use
+<span style="font-style: italic">consumer</span>.</p><p><span class="refelem"><span class="refcolumn"><span class="refcontent">Some people call an interpreter an <span style="font-style: italic">operational
+semantics</span>. But the mathematics of programming languages also knows of
+mathematical-operational semantics and denotational semantics and even
+other forms.</span></span></span></p><p><div class="SIntrapara">Hence one first idea for studying the meaning of language constructs is to use
 the interpretation procedure found in computers:
 </div><div class="SIntrapara"><ul><li><p><span style="font-style: italic">Interpretation</span> is the process of determining the answer and
 outputs of a program that is supplied with the desired inputs.</p></li><li><p><span style="font-style: italic">Compilation</span> is the process of translating a program <span class="stt">P</span> written in
@@ -56,29 +59,36 @@ one that is known to fall into this class.</p><p>While many computer scientists 
 limits of programming&#8212;<wbr></wbr>if they are still aware of it&#8212;<wbr></wbr><span class="emph">I</span> consider it
 completely useless for the working programmer. Time permitting, I will explain
 my alternative idea of comparing programming languages, which is much more in
-tune with how developers work and thus perceive programming languages.</p></li><li><p>How do we implement programming languages/language constructs efficiently?</p><p><span class="refelem"><span class="refcolumn"><span class="refcontent">When I taught at Rice, known as the Department of Compiler
-Science at the time, we ran one undergraduate course on Compilers and
-three, non-overlapping follow-up courses.</span></span></span></p><p>This is a wide open question and still subject to research. I will touch on
-this topic, but <span style="font-style: italic">Compilers</span> (taught by Ben Lerner and Olin Shivers)
-addresses this question in some depth.</p></li><li><p>What properties do languages guarantee for all programs?</p><p>Some programming languages come with type systems, which are mechanisms for
-making and validating claims about (pieces of) programs. If an implementation is
-in sync with the type system of the language, the behavior of programs
-satisfies certain properties that are helpful to programmers as they cope with
-run-time errors. C++ is, for example, a language whose type system and
-implementation are out of sync; Java and its type system live mostly in harmony.</p><p>A recent development is the emergence of languages that permit both a typed
+tune with how developers work and thus perceive programming languages.</p></li><li><p>What properties do languages guarantee for all programs?</p><p>Weak forms of "intent" come with universal guarantees, that is, guarantees
+that apply to all programs. If a language comes with such guarantees, it is
+easier to understand some aspects of the written text clearly. For a simple
+example, some languages are memory safe, meaning programs cannot
+accidentally mess up and reference memory outside their boundaries.</p><p>Types are the most widely studied "guarantee system". A type system is a
+mechanism for making and validating claims about (pieces of) programs. If
+an implementation is in sync with the type system of the language, the
+behavior of programs satisfies certain properties that are helpful to
+programmers as they cope with run-time errors. C++ is, for example, a
+language whose type system and implementation are out of sync; Java and its
+type system live mostly in harmony.</p><p>A recent development is the emergence of languages that permit both a typed
 and an untyped style of software development. They come under various
 slogans, e.g., optional typing, pluggable type systems, gradual typing, and
 migratory typing. Hack and TypeScript are two prominent industrial
 examples; Typed Racket&#8212;<wbr></wbr>the first such language&#8212;<wbr></wbr>is the most complete
 academic research vehicle in this area. The emergence of such languages has
 re-opened the question of what it means for type systems to relate to the
-behavior of all programs.</p></li></ul></div></p><p>Like in most contexts, researchers focus on the questions they can answer
+behavior of all programs.</p></li><li><p>How do we implement programming languages/language constructs efficiently?</p><p><span class="refelem"><span class="refcolumn"><span class="refcontent">When I taught at Rice, known as the Department of Compiler
+Science at the time, we ran one undergraduate course on Compilers and
+three, non-overlapping follow-up courses.</span></span></span></p><p>This is a wide open question and still subject to research. I will touch on
+this topic, but <span style="font-style: italic">Compilers</span> (taught by Ben Lerner and Olin Shivers)
+addresses this question in some depth.</p></li></ul></div></p><p>Like in most contexts, researchers focus on the questions they can answer
 at the cost of ignoring those that are of true interest to people who must
 use these technical artifacts. Fortunately the two parts overlap to some
 extent. This course will focus on well-established ideas from the overlap.</p><h4><a name="(part._.Administrivia_.I)"></a>Administrivia I</h4><p>You must pair-program on all homework assignments. We will attempt to set up
 partnerships during the first lecture.</p><p>If you wish to earn a grade in this course, read <a href="general.html" data-pltdoc="x">General</a> and act on it
 immediately, together with your partner.</p><p>Next, as soon as you are assigned a github repository, start working on
-<a href="1.html" data-pltdoc="x">1 &#8212;<wbr></wbr> JSON, Design</a>.</p><h4><a name="(part._.Representing_.Programs_as_.Data)"></a>Representing Programs as Data</h4><p>Say we wish to understand a programming language by writing programs in another
+<a href="1.html" data-pltdoc="x">1 &#8212;<wbr></wbr> JSON, Design</a>.</p><h4><a name="(part._.Representing_.Programs_as_.Data)"></a>Representing Programs as Data</h4><p><span class="refelem"><span class="refcolumn"><span class="refcontent">An interpreter for a language is often called a
+<span style="font-style: italic">meta-interpreter</span>, especially when the interpreter is written in
+the same language as the one it is interpreting.</span></span></span></p><p>Say we wish to understand a programming language by writing programs in another
 programming language. First we need words to express this idea. The first
 language is called <span style="font-style: italic">object language</span>, as in the "object of study" or the
 "object of interest"; the second one is called <span style="font-style: italic">meta-language</span> as in the
@@ -90,11 +100,13 @@ programs for their research and beyond.</p><p>According to the design recipe phi
 domain. For us, the application domain is a programming language or actually
 programming languages. This form of <span class="emph">reflective</span> (or <span class="emph">recursive</span>)
 notion is common in the foundational areas of computer science, and admittedly,
-it needs some getting used to.</p><p><span style="font-weight: bold">Example</span> Let&rsquo;s make this concrete. Say we wish to understand a miniscule
+it needs some getting used to.</p><p><span class="refelem"><span class="refcolumn"><span class="refcontent">Focusing on a single part or aspect of a language is often
+referred to as <span style="font-style: italic">modeling</span>; here we think of modeling as leaving out
+(currently) uninteresting details.</span></span></span></p><p><span style="font-weight: bold">Example</span> Let&rsquo;s make this concrete. Say we wish to understand a miniscule
 part of a object language, such as plain arithmetic.</p><p><div class="SIntrapara">We must first describe the information in our domain as precisely as possible:
-<span class="refelem"><span class="refcolumn"><span class="refcontent">By using fully parenthesized notation, we avoid the whimsical
+</div><div class="SIntrapara"><table cellspacing="0" cellpadding="0" class="SVerbatim"><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="stt">An arithmetic expression (</span><a name="(tech._ae)"></a><span style="font-style: italic">ae</span><span class="stt">) is one of:</span></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="stt"></span><span class="hspace">&nbsp;</span><span class="stt">-- an integer</span></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="stt"></span><span class="hspace">&nbsp;</span><span class="stt">-- (</span><a href="#%28tech._ae%29" class="techoutside" data-pltdoc="x"><span class="techinside">ae</span></a><span class="stt"></span><span class="hspace">&nbsp;</span><span class="stt">+ </span><a href="#%28tech._ae%29" class="techoutside" data-pltdoc="x"><span class="techinside">ae</span></a><span class="stt">)</span></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="stt"></span><span class="hspace">&nbsp;</span><span class="stt">-- (</span><a href="#%28tech._ae%29" class="techoutside" data-pltdoc="x"><span class="techinside">ae</span></a><span class="stt"></span><span class="hspace">&nbsp;</span><span class="stt">* </span><a href="#%28tech._ae%29" class="techoutside" data-pltdoc="x"><span class="techinside">ae</span></a><span class="stt">)</span></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="stt">where </span><a href="#%28tech._ae%29" class="techoutside" data-pltdoc="x"><span class="techinside">ae</span></a><span class="stt"></span><span class="hspace">&nbsp;</span><span class="stt">represents an arithmetic expression.</span></p></td></tr></table></div><div class="SIntrapara"><span class="refelem"><span class="refcolumn"><span class="refcontent">By using fully parenthesized notation, we avoid the whimsical
 question of operator precedence for this starter example.</span></span></span>
-</div><div class="SIntrapara"><table cellspacing="0" cellpadding="0" class="SVerbatim"><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="stt">An arithmetic expression (</span><a name="(tech._ae)"></a><span style="font-style: italic">ae</span><span class="stt">) is one of:</span></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="stt"></span><span class="hspace">&nbsp;</span><span class="stt">-- an integer</span></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="stt"></span><span class="hspace">&nbsp;</span><span class="stt">-- (</span><a href="#%28tech._ae%29" class="techoutside" data-pltdoc="x"><span class="techinside">ae</span></a><span class="stt"></span><span class="hspace">&nbsp;</span><span class="stt">+ </span><a href="#%28tech._ae%29" class="techoutside" data-pltdoc="x"><span class="techinside">ae</span></a><span class="stt">)</span></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="stt"></span><span class="hspace">&nbsp;</span><span class="stt">-- (</span><a href="#%28tech._ae%29" class="techoutside" data-pltdoc="x"><span class="techinside">ae</span></a><span class="stt"></span><span class="hspace">&nbsp;</span><span class="stt">* </span><a href="#%28tech._ae%29" class="techoutside" data-pltdoc="x"><span class="techinside">ae</span></a><span class="stt">)</span></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="stt">where </span><a href="#%28tech._ae%29" class="techoutside" data-pltdoc="x"><span class="techinside">ae</span></a><span class="stt"></span><span class="hspace">&nbsp;</span><span class="stt">represents an arithmetic expression.</span></p></td></tr></table></div><div class="SIntrapara">Since we wish to make our understanding precise with programs that work on such
+Since we wish to make our understanding precise with programs that work on such
 arithmetic expressions, we must pick a data representation for this information
 in our chosen programming language.</div></p><p>Luckily, whoever described this language of arithmetic expressions knows that
 this form of descriptions lends itself to a simple translation into the kind of
