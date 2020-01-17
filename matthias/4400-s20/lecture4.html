@@ -27,7 +27,7 @@ design and analysis, compiler research develops algorithms that reduce
 speed, time, energy consumption and other non-functional attributes of a
 program&rsquo;s execution (in theory. In practice, compilers often change the
 behavior of some programs in subtle ways).</p><h4><a name="(part._.Compiler_.Correctness)"></a>Compiler Correctness</h4><p>Again, we can think of a programming language in terms of mathematics, and
-we can thus state and prove that the two interpretations are equal functions.</p><p><span style="font-weight: bold">Theorem</span> <span class="stt">value-of</span> == <span class="stt">static-distance</span> o <span class="stt">value-of-stack</span></p><p>Now the difference between the extensional view of this equation and the
+we can thus state and prove that the two interpretations are equal functions.</p><p><span style="font-weight: bold">Theorem</span> <span class="stt">value-of</span> ==  <span class="stt">value-of-stack</span> o <span class="stt">static-distance</span></p><p>Now the difference between the extensional view of this equation and the
 intensional construction of the functions is even clearer. While the plain
 <span class="stt">value-of</span> function consumes <span style="font-style: italic">O</span>(<span style="font-style: italic">n</span>)<span style="font-style: italic"></span> time and space where <span style="font-style: italic">n</span>
 measure the size of the program, the compiler-interpreter combination takes
