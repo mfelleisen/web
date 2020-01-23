@@ -7,9 +7,10 @@ github repo with the following organization:</p><p><div class="SIntrapara"><ul><
 it determines the value of <a href="2.html#%28tech._vexpr%29" class="techoutside" data-pltdoc="x"><span class="techinside">VExpr</span></a>s transformed into static-distance
 form. The interpreter must pre-allocate all necessary memory <span class="emph">before</span> the
 interpretation proper starts. <span class="refelem"><span class="refcolumn"><span class="refcontent">If you chose a language that
-prohibits mutation, use the state monad instead.</span></span></span> The interpreter uses this
-pre-allocated memory imperatively to represent the current environment for each
-sub-expression in an imperative manner.</p><p>You will need to modify your JSON parser to accept <a href="2.html#%28tech._vexpr%29" class="techoutside" data-pltdoc="x"><span class="techinside">VExpr</span></a> programs that
+prohibits mutation, <span class="strike" style="text-decoration:line-through">use the state monad instead</span> find an alternative
+solution.</span></span></span> The interpreter uses this pre-allocated memory imperatively to
+represent the current environment for each sub-expression in an imperative
+manner.</p><p>You will need to modify your JSON parser to accept <a href="2.html#%28tech._vexpr%29" class="techoutside" data-pltdoc="x"><span class="techinside">VExpr</span></a> programs that
 may contain JSON arrays of the form <span class="stt">[</span><a href="#%28tech._natural%29" class="techoutside" data-pltdoc="x"><span class="techinside">Natural</span></a><span class="stt">, </span><a href="#%28tech._natural%29" class="techoutside" data-pltdoc="x"><span class="techinside">Natural</span></a><span class="stt">]</span> in
 places where <a href="2.html#%28tech._var%29" class="techoutside" data-pltdoc="x"><span class="techinside">Var</span></a>s occur. The two numbers are interpreted as in
 <a href="2.html" data-pltdoc="x">2 &#8212;<wbr></wbr> Static Distance, Simple Interpretation</a>; recall that the count starts at 0.</p><p><a name="(tech._natural)"></a><span style="font-style: italic">Natural</span> is a natural number.</p><p><span style="font-weight: bold">Programming Task 2</span> Design <span class="stt">ast</span>, which is a parser that maps
