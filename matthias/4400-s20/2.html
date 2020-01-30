@@ -26,7 +26,7 @@ from the left the declaration is within this array. Both counts start at
 produces a JSON (representation of) a <a href="#%28tech._vexpr%29" class="techoutside" data-pltdoc="x"><span class="techinside">VExpr</span></a> with lists of natural
 numbers in places of variable references.</p></li><li><p>Design the program <span class="stt">interpreter</span>, which consumes a <a href="#%28tech._vexpr%29" class="techoutside" data-pltdoc="x"><span class="techinside">VExpr</span></a>
  and produces its value, an integer <span style="color: purple">via a substitution/replacement
-process</span> (<span style="color: purple">see</span> <a href="lecture3.html" data-pltdoc="x">3 &#8212;<wbr></wbr> Scope, Static Distance, Compilation</a>).</p><p>A variable reference in <a href="#%28tech._vexpr%29" class="techoutside" data-pltdoc="x"><span class="techinside">VExpr</span></a> stands for its definition. As with
+process</span> (<span style="color: purple">see</span> <a href="lecture3.html" data-pltdoc="x">3 &#8212;<wbr></wbr> Scope, Compilation</a>).</p><p>A variable reference in <a href="#%28tech._vexpr%29" class="techoutside" data-pltdoc="x"><span class="techinside">VExpr</span></a> stands for its definition. As with
  ordinary definitions, this means that you may replace every occurrence of
  a variable with its definition. An interpreter will replace every variable
  with its value.</p><p>Hence, if the interpreter encounters a variable, say <span class="stt">"x"</span>, we know
