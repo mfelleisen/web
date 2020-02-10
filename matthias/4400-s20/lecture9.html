@@ -54,15 +54,15 @@ passed along with every interpretive function/method call;</p></li><li><p>the st
 once (here, two).</div></p><p>Stop! Use one of the previous examples or a simplified one to justify that
 <span class="RktSym">Store</span><span class="RktMeta"></span> must be a result.</p><p>Now the question is how the two accumulators relate. Intuitively, the store
 represents the memory of a computer, that is, a bunch of addressable memory
-cells in which actual values reside. Mathematically, this is an association
+locations in which actual values reside. Mathematically, this is an association
 between addresses and values. In PL, an address is usually called a
 <span style="font-style: italic">location</span>. In turn, this suggests that instead of boxed values,
 the revised interpreter sticks locations into the environment and uses
 the store to look up the current value of a location.</p><p>Where do locations come from? The interpreter must know which locations
 have already been used for some variable and which ones are free to use
 when the interpreter encounters a declaration or a function parameter. If
-we ignore the problem that computers have a finite number of cells, we can
-just count up from 0 to infinity as long as we know which cells are in
+we ignore the problem that computers have a finite number of locations, we can
+just count up from 0 to infinity as long as we know which locations are in
 use.</p><p>To summarize, the store is an association of locations and values and
 supplies three functions: one for allocating a fresh location, one for
 (re)associating a value with a location, and one for retrieving the value
