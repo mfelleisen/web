@@ -109,7 +109,7 @@ equations may have
 type inference, it means type checking succeeded in an ordinary manner.</p></li><li><p><span class="emph">no solution</span></p><p>Type checking would fail. There are no types that get this expression thru
 the type checker. None. Don&rsquo;t even look.</p></li><li><p><span class="emph">an infinite number of solutions</span></p><p>When you solve a system of three equations in three variables and two are
 dependent,  you get an equation that describes a two-dimensional
-plane. In the context of type inference, you get a function whose type is
+plain. In the context of type inference, you get a function whose type is
 compatible with several, seemingly distinct uses.</p><p>Milner called this idea <span style="font-style: italic">let polymorphism</span>, and it was&#8212;<wbr></wbr>and by
 some OCaml and Haskell programmers still is&#8212;<wbr></wbr>considered a practical and
 lightweight form of useful polymorphism. </p></li></ul></div></p><p><div class="SIntrapara">Here is a sketch of how and why it works. Consider this expression:
