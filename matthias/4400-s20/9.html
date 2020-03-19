@@ -26,7 +26,9 @@ have to worry which <span class="RktSym">k</span> the <span class="RktSym">cps</
 expression and produces a <a href="#%28tech._toy%29" class="techoutside" data-pltdoc="x"><span class="techinside">Toy</span></a> expression in continuation-passing
 style that, if it were evaluated, would evaluate all sub-expressions in the
 same order as the given one.</p><p>Remember that continuation-passing style means <span class="emph">all function calls
-must be in tail position.</span></p><p><div class="SIntrapara"><span style="font-weight: bold">Hint</span> The cps conversion of primitive operations deserves special
+must be in tail position.</span></p><p><span style="color: purple">Unlike the language in class, </span> <a href="#%28tech._toy%29" class="techoutside" data-pltdoc="x"><span class="techinside">Toy</span></a> <span style="color: purple"> has functions
+that take many arguments. Pass the continuation argument as the first
+one. Do not curry your functions.</span></p><p><div class="SIntrapara"><span style="font-weight: bold">Hint</span> The cps conversion of primitive operations deserves special
 attention. First, make sure <span class="stt">cps</span> can distinguish ordinary identifiers
 from prim-op identifiers. Second, transform prim-ops such as <span class="stt">"+"</span> to
 cps <a href="#%28tech._toy%29" class="techoutside" data-pltdoc="x"><span class="techinside">Toy</span></a> expression
