@@ -1,0 +1,33 @@
+["call", ["fun*", ["resume"],
+    [["let", "gen",   "=", ["fun*", ["x"], [ "call", [ "call", "!", "resume"], "x"]]],
+     ["let", "pythn", "=", ["fun*", ["x"],
+			     ["if-0", "x",
+			       111,
+			       ["seq*",
+				 ["call", "yield", "x"], 
+				 ["call", "pythn", [ "call", "+", "x", -1]]]]]],
+     ["let", "using", "=", ["fun*", ["f"], 
+			     ["call", "+",
+			       ["call", "f", 33], 
+			       ["call", "+",
+				 [ "call", "f", 33], 
+				 [ "call", "f", 3]]]]],
+
+
+     ["let", "yield", "=", ["fun*", ["y"],
+			     [ "grab", "c",
+				["call",
+				  ["call", "=", "resume", ["call","enter","c"]],
+				  "y"]]]],
+
+     ["let", "enter", "=", ["fun*", ["c"],
+			     [ "fun*", ["z"],
+				["grab","k",
+				  ["seq*",
+				    ["call","=","resume", ["call","enter","k"]], 
+				    ["call", "c", "z"]]]]]],
+     ["seq*",
+       ["call", "=", "resume", [ "call", "enter", [ "fun*", [ "x"], [ "stop", [ "call", "pythn", "x"]]]]], 
+
+       ["call", "using", "gen"]]]],
+  ["call", "@", 0]]
