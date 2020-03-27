@@ -16,7 +16,8 @@ interpreter gets to work on the code.</p><p><span class="refelem"><span class="r
 available in Haskell, OCaml, Scala, Scheme, and SML/NJ. An even stronger
 generalization was used in the runtime system of Microsoft&rsquo;s Mach 4
 (ultimately unsuccessful) operating system platform.</span></span></span></p><p>See <a href="example.rkt">for some poetic sample uses</a>
-of this still-unusual construct.</p></li><li><p><span class="stt">["stop", </span><a href="9.html#%28tech._toy%29" class="techoutside" data-pltdoc="x"><span class="techinside">Toy</span></a><span class="stt">]</span>, which eliminates its continuation and then
+(<a href="example-plain.rkt">in plain Racket</a>) of this
+still-unusual construct.</p></li><li><p><span class="stt">["stop", </span><a href="9.html#%28tech._toy%29" class="techoutside" data-pltdoc="x"><span class="techinside">Toy</span></a><span class="stt">]</span>, which eliminates its continuation and then
 evaluates its sub-expression to obtain the final answer.</p><p>Modify your <span class="RktSym">interpreter</span> to use constructs from your chosen
 implementation language to realize the behavior of <span class="stt">"stop"</span>. We realize
 <span class="stt">"stop"</span> as a <span style="font-style: italic">native</span> construct (though we could also realize
