@@ -60,11 +60,7 @@ in [0 .. 9]:
 </div><div class="SIntrapara"><ul><li><p>An input file in <span class="stt">ITests</span> contains a single <a href="#%28tech._while%29" class="techoutside" data-pltdoc="x"><span class="techinside">While</span></a> block.</p></li><li><p>An output file in <span class="stt">ITests</span> contains a single JSON value, the
 result of the final expression in the <span class="stt">"block"</span> program. If the result
 is a number, the value is a JSON number. If the result is an array, the
-value is the content of the array, with nested array values spliced in.</p><p>The driver may error at three stages:
-<span class="stt">"parser error"</span>,
-<span class="stt">"var undeclared"</span>,
-<span class="stt">"var undeclared"</span>,
-<span class="stt">"arithmetic error"</span>,
-or
-<span class="stt">"indexing error"</span>.
-It is impossible for the machine itself to get stuck.</p></li></ul></div></p><p>Recall <a href="json.html" data-pltdoc="x"><span style="color: red">JSON: Simplicity and Complexity</span></a>.</p><div class="navsetbottom"><span class="navleft"><div class="nosearchform"></div>&nbsp;&nbsp;</span><span class="navright">&nbsp;&nbsp;<a href="10.html" title="backward to &quot;10 --- Control&quot;" data-pltdoc="x">&larr; prev</a>&nbsp;&nbsp;<a href="assignments.html" title="up to &quot;Assignments&quot;" data-pltdoc="x">up</a>&nbsp;&nbsp;<span class="nonavigation">next &rarr;</span></span>&nbsp;</div></div></div><div id="contextindicator">&nbsp;</div></body></html>
+value is the content of the array, with nested array values spliced in.</p><p>The driver may error at three stages: parsing, static checking, and
+interpretation of <a href="#%28tech._expression%29" class="techoutside" data-pltdoc="x"><span class="techinside">Expression</span></a>s and <a href="#%28tech._lh%29" class="techoutside" data-pltdoc="x"><span class="techinside">LHS</span></a>s. It is impossible for
+the machine itself to get stuck. The precise messages are:
+<span class="stt">"parser error"</span>, <span class="stt">"var undeclared"</span>, <span class="stt">"number expected"</span>, <span class="stt">"indexing error"</span>.</p></li></ul></div></p><p>Recall <a href="json.html" data-pltdoc="x"><span style="color: red">JSON: Simplicity and Complexity</span></a>.</p><div class="navsetbottom"><span class="navleft"><div class="nosearchform"></div>&nbsp;&nbsp;</span><span class="navright">&nbsp;&nbsp;<a href="10.html" title="backward to &quot;10 --- Control&quot;" data-pltdoc="x">&larr; prev</a>&nbsp;&nbsp;<a href="assignments.html" title="up to &quot;Assignments&quot;" data-pltdoc="x">up</a>&nbsp;&nbsp;<span class="nonavigation">next &rarr;</span></span>&nbsp;</div></div></div><div id="contextindicator">&nbsp;</div></body></html>
