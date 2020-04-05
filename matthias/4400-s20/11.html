@@ -52,8 +52,10 @@ the latter records how many fields an array has (and that cannot change).</p><p>
  variables are declared.</p><p><span style="font-style: italic">Step</span> 2 and 3 Design <span class="stt">expression_interpreter</span> and
  <span class="stt">lhs_interpreter</span>. In addition to their primary AST argument, both consume
  two additional arguments: an environment and a store. As their names suggest,
- they produce values and locations, respectively.</p><p><span style="font-style: italic">Step</span> 4 Design and implement a CESK machine for the <a href="#%28tech._stmt%29" class="techoutside" data-pltdoc="x"><span class="techinside">Stmt</span></a> part of
-the <a href="#%28tech._while%29" class="techoutside" data-pltdoc="x"><span class="techinside">While</span></a> language.</p><p><span style="font-weight: bold">Testing Task</span> Write the test harness <span class="stt">xrun</span> for your program. This
+ they produce values and locations, respectively.</p><p><span style="color: red">To yield error messages in a deterministic manner, the interpreters
+evaluate sub-expressions from left to right.</span></p><p><span style="font-style: italic">Step</span> 4 Design and implement a CESK machine for the <a href="#%28tech._stmt%29" class="techoutside" data-pltdoc="x"><span class="techinside">Stmt</span></a> part of
+the <a href="#%28tech._while%29" class="techoutside" data-pltdoc="x"><span class="techinside">While</span></a> language.</p><p><span style="color: red">Transitions that involve more than one expression evaluate those
+expression from left to right.</span></p><p><span style="font-weight: bold">Testing Task</span> Write the test harness <span class="stt">xrun</span> for your program. This
 is step 5. This test harness composes the parser, the static checker, and
 the CESK machine in the expected manner.</p><p><div class="SIntrapara">Create ten tests for <span class="stt">xrun</span>. Place them in <span class="stt">ITests/</span>. A test consists
 of <span class="strike" style="text-decoration:line-through">three</span> <span style="color: purple">two</span> files: <span class="stt">N-in.json</span>, <span class="stt">N-cps.json</span>, and <span class="stt">N-out.json</span> for N
