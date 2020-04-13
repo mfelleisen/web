@@ -9,7 +9,9 @@ directory for this homework.</p><p><span class="emph">Step</span> 1 Design the p
 locations in the C, E, and K registers.</p><p><span class="emph">Step</span> 2 Design a heap data structure that is parameterized over the
 size of the finite store implementations. <span style="font-weight: bold">Note</span> If your programming
 language does not have finite arrays, limit the size of the store
-programmatically.</p><p><span class="emph">Step</span> 3 Design a garbage collector for your CESK machine.</p><p><span style="font-weight: bold">Testing Task</span> Write the test harness <span class="stt">xrun</span>. Its job is to run the
+programmatically.</p><p><span class="emph">Step</span> 3 Design a garbage collector for your CESK machine.</p><p><span style="color: purple"><span style="font-weight: bold">Note</span> A student asked how many store locations an array may
+consume. To be on the safe side, assume an array of size <span style="font-style: italic">n</span> may
+consume <span style="font-style: italic">n + </span>2<span style="font-style: italic"></span> locations.</span></p><p><span style="font-weight: bold">Testing Task</span> Write the test harness <span class="stt">xrun</span>. Its job is to run the
 CESK machine on programs delivered via <span class="stt">STDIN</span> and to produce the result
 of the run to <span class="stt">SDTOUT</span>.</p><p><div class="SIntrapara">Create ten tests for <span class="stt">xrun</span>. Place them in <span class="stt">ITests/</span>. A test consists
 of two files: <span class="stt">N-in.json</span>  and <span class="stt">N-out.json</span> for N in [0 .. 9]:
