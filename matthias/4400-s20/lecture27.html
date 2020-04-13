@@ -91,7 +91,9 @@ organization of the program itself is critical because after code has been
 deployed, developers will have to read this code over and over and over
 again. </p></td></tr><tr><td><p><span class="stt"></span></p></td><td><p> . </p></td></tr><tr><td colspan="2"><p> Fundamentals I therefore teaches about the design space and the process
 of designing code systematically. Not applying this idea will be your loss and
-the loss of your (future) colleagues.</p></td></tr></table></p><h4><a name="(part._.On_the_.Expressive_.Power_of_.Programming_.Languages)"></a>On the Expressive Power of Programming Languages</h4><blockquote class="refpara"><blockquote class="refcolumn"><blockquote class="refcontent"><p>Sadly, a lot of people these days use the words &ldquo;syntactic
+the loss of your (future) colleagues.</p></td></tr></table></p><h4><a name="(part._.On_the_.Expressive_.Power_of_.Programming_.Languages)"></a>On the Expressive Power of Programming Languages</h4><blockquote class="refpara"><blockquote class="refcolumn"><blockquote class="refcontent"><p>I was inspired by Landin&rsquo;s informal writings about the
+landscape of programming languages and his identification of syntactic
+sugar. Sadly, a lot of people these days use the words &ldquo;syntactic
 sugar&rdquo; and have no clue where they come from (Landin, the 1960s) and what they
 mean. Buyer beware.</p></blockquote></blockquote></blockquote><p><div class="SIntrapara">Many years ago, <a href="https://www2.ccs.neu.edu/racket/pubs/#scp91-felleisen">I studied a simplification of this problem</a>:
 </div><div class="SIntrapara"><blockquote><p>Suppose two languages differ only in one linguistic
@@ -115,13 +117,13 @@ can do anything to the given program. For example, it could encode the entire
 program as a number and then use an interpreter to &ldquo;run&rdquo; this program.</p><p>A <span class="RktSym">cps</span> translation is such a simulation proper. It changes the
 function-call protocol for every single function in the entire program.
 As a result, it is even necessary to supply the rewritten program with a
-continuation.</p></li><li><p>By contrast, the <span style="color: turquoise">turquoise narrows</span>
+continuation.</p></li><li><p>By contrast, the <span style="color: purple">purple narrows</span>
 represents simulations that must translate all language constructs to the same
 construct&#8212;<wbr></wbr>except for the one that we are trying to simulate.</p><p>In the example of <a href="#%28counter._%28figure._fig~3atranslations%29%29" data-pltdoc="x">figure&nbsp;<span class="FigureRef">105</span></a> <span class="stt">"grab"</span> would be the
 construct that a translation can change in any way possible but only it. All
 others must stay in place. Changing the function-call protocol is <span class="emph">not</span>
 permitted under this rule.</p></li><li><p>And besides simulations proper and homomorphisms there are <span style="color: orange">orange translations</span> that might have interesting properties.</p></li></ul></div><div class="SIntrapara">In short, computational theoretician permit the use of any means to get the
-desired proof. My proposal is to admit only <span style="color: turquoise">turquoise homomorphisms up to</span>.</div></p><p>Why?</p><p>Developers never have control of the entire program. They typically control a
+desired proof. My proposal is to admit only <span style="color: purple">purple homomorphisms up to</span>.</div></p><p>Why?</p><p>Developers never have control of the entire program. They typically control a
 module or two. But, if they really need <span class="RktSym">cps</span> to implement <span class="stt">"grab"</span>,
 they must ask <span class="emph">all</span> their colleagues to change their functions and
 function calls. I do not think we want to say that <a href="9.html#%28tech._toy%29" class="techoutside" data-pltdoc="x"><span class="techinside">Toy</span></a> is just as
@@ -154,7 +156,80 @@ languages in ways that macro expressibility cannot. But, it relies on rather
 esoteric approaches to types and deep knowledge of complexity and recursion
 theory. I conjecture that these classifications are probably not relevant for
 working programmers.</p></td><td><p> . </p></td></tr></table></p><h4><a name="(part._.The_.End)"></a>The End</h4><p>Remember the guy at the beach? How can a rock-solid understanding of
-programming languages help this guy?</p><p>Here are a number of things you might get out of this course.</p><p><span style="font-weight: bold">Conversations about programming languages</span> When you discuss
+programming languages help this guy?</p><p>To this day, working software developers will consider their programming
+language and their preferred IDE primary tools of the trade. There are a
+few others, mostly skills, and you must develop them during your time here
+and even more so once you graduate.</p><p>Here are a number of things you might get out of this course. In the spirit
+of &ldquo;programming is a people discipline,&rdquo; let&rsquo;s start with conversations
+about programming languages and then move on to technical concepts.</p><p><span style="font-weight: bold">Conversations about programming languages</span> When you discuss
 programming languages, their pluses and minuses, above all keep in mind
-that cultural, social, and psychological factors deeply affect these
-discussions.</p><div class="navsetbottom"><span class="navleft"><div class="nosearchform"></div>&nbsp;&nbsp;</span><span class="navright">&nbsp;&nbsp;<a href="lecture26.html" title="backward to &quot;26 --- Q &amp; A&quot;" data-pltdoc="x">&larr; prev</a>&nbsp;&nbsp;<a href="lectures.html" title="up to &quot;Lectures&quot;" data-pltdoc="x">up</a>&nbsp;&nbsp;<a href="lecture28.html" title="forward to &quot;28 --- Monads&quot;" data-pltdoc="x">next &rarr;</a></span>&nbsp;</div></div></div><div id="contextindicator">&nbsp;</div></body></html>
+that not only technical but cultural, social, and psychological factors
+deeply affect these discussions.</p><p><span class="refelem"><span class="refcolumn"><span class="refcontent">Kahneman&rsquo;s &ldquo;Thinking Fast and Slow&rdquo; explains this idea
+really well.</span></span></span>
+To address the <span class="emph">cultural</span>, <span class="emph">social</span>, and <span class="emph">psychological</span>,
+you will have to develop, practice, and use personal communication
+skills. And even then, it will always be difficult to overcome people&rsquo;s
+prejudices.</p><p><div class="SIntrapara">To address <span class="emph">technical</span> points, you need to settle on a common language
+to discuss ideas:
+</div><div class="SIntrapara"><ul><li><p>Pay attention to <span class="emph">terminology</span>. To this day, confused ideas
+dating back decades permeate the way people speak about language concepts.</p><p><span style="font-style: italic">Example</span> People insist on speaking of &ldquo;references&rdquo; and then of
+&ldquo;by reference&rdquo; when they discuss mutable compound <span class="emph">values</span> such as
+structs, dictionaries or arrays. They cannot separate implementation (a
+reference to the heap) from the concept (value).</p></li><li><p>Find out whether your conversational partners know about <span class="emph">language
+technology</span>.</p><p><span style="font-style: italic">Example</span> You are likely to have built an interpreter in
+Fundamentals I or at least have attended a lecture on this topic.  Many CS
+graduates never see an interpreter or compiler during their entire
+education.</p></li><li><p>Stick to the same <span class="emph">conceptual level</span> and, when you must switch,
+be explicit about it.</p><p><span class="emph">Example</span> While the word &ldquo;scope&rdquo; is a syntactic concept,
+&ldquo;substitution&rdquo; (an operation on syntax) or &ldquo;environment&rdquo; explain it
+operationally. Switching back and forth may lead to apples-to-orange
+comparisons.</p></li></ul></div><div class="SIntrapara">When you have developed a common ontology, you can converse effectively.</div></p><blockquote class="SCentered"><p><a href="https://youtu.be/MbXWrmQW-OE"><img src="conversation.png" alt="" width="360" height="360"/></a></p></blockquote><p><span style="font-weight: bold">Concepts and their Meaning</span> This course covers the principles of
+<span class="emph">sequential</span> programming languages and touches on some current
+event-based concurrency.</p><p><div class="SIntrapara">Expressiveness theory suggests that we think of the dominant dimensions of
+this design space as follows: </div><div class="SIntrapara"><ul><li><p><span class="emph">basic algebra</span>, which includes all forms of local control
+(if, basic loops)</p></li><li><p>first-class and higher-order functions</p></li><li><p><span class="emph">state</span>, which includes variable assignments and mutable
+objects, from the simplest one-slot object to gigabyte arrays</p></li><li><p><span class="emph">control</span>, as in non-local control, which covers program exists,
+loop and function exists (continue, return), exception handling,
+generators, and far more general ideas.</p></li></ul></div><div class="SIntrapara">When you add parallelism to this mix, the last two aspects cause tremendous
+complications and yet remain indispensable.</div></p><blockquote class="SCentered"><p><img style="vertical-align: 0px; margin: -3px -3px -3px -3px;" src="pict_69.png" alt="image" width="456.0" height="366.0"/></p></blockquote><p><div class="SIntrapara">Orthogonal to these dimensions, we must think about programming languages
+present themselves to developers in several layers:
+</div><div class="SIntrapara"><ul><li><p><span class="emph">syntax</span>, which comprises the vocabulary of the language and its
+context-free grammatical rules.</p><p>The notational aspects of syntax is a matter of personal taste, from the
+particular use of certain tokens (<a href="https://en.wikipedia.org/wiki/Semicolon#Computing_usage">see separator vs terminator</a>).</p><p>The principles of syntax have not changed since the late 1960s, though, and
+syntax is thus not a technical topic worthy of deep coverage.  It wouldn&rsquo;t
+help the guy on the beach.</p></li><li><p><span class="emph">static properties</span>, that is, relationships among distinct
+and physically disjoint pieces of syntax that can be validated
+<span class="emph">without running the program</span> or <span class="emph">determining its complete
+meaning</span>.</p><p>Static properties range from the very simple&#8212;<wbr></wbr>replacing a variable with a
+static distance coordinate&#8212;<wbr></wbr>to the complex&#8212;<wbr></wbr>-checking the validity of
+type declarations and implied claims about the program.</p><p>People occasionally use the phrase &ldquo;context-sensitive&rdquo; here.</p></li><li><p><span class="emph">semantics</span>, which refers to the actual meaning of grammatically
+correct and possibly statically validated programs.</p><p>Meaning is what messages are to convey. It&rsquo;s the most central
+idea. Many language researchers consider it a &ldquo;conquered problem,&rdquo;
+except that every time we wish to apply it to a new application area,
+we&rsquo;re stuck.</p></li><li><p><span class="emph">performance</span>, which tells us about the cost of individual
+language constructs and some compositions.</p><p>A developer must understand the performance of a construct. Accessing
+a field in a structure or a slot in an array takes constant time. A
+loop or a function call should not consume space on the control stack.
+In both cases, the CESK machines and the corresponding homework
+assignments give some insight here. This aspect is, however, best left
+to a course on compilers, because going beyond individual expressions
+and statements is impossible without some knowledge of how efficient
+implementations function.</p><p><span style="color: red">Warning</span> People often jump from knowledge about the performance
+of some basic features to general conclusions about the performance of
+the entire programming language. The area of performance measurement
+is yet another niche discipline within programming languages, and too
+few people know a lot.</p><p><span class="emph">Example</span> Some people say Python is a naive interpreter and
+therefore slow. The first part of the statement is true, but the
+second part does not follow at all. Many Python libraries aren&rsquo;t thin
+veneers over C libraries, and compositions of such libraries run
+extremely fast. Hence certain classes of Python programs are really
+some of the best you can get.</p><p>Some people claim Python programs are always fast. Such people live in
+a bubble, namely, a narrow slice of Python programs that are merely
+compositions of C-veneer libraries.</p><p><span style="color: red">Advice</span> Complete systems and individual modules need systematic
+performance evaluations. When you discover a performance problem, try
+to use performance debuggers to spot a performance bottleneck. Beware!
+Such bottlenecks may just be complex data representations and
+algorithms and, without fundamental changes, you might not be able to
+eliminate them.</p></li></ul></div></p><blockquote><table cellspacing="0" cellpadding="0" class="boxed" style="border-collapse: collapse;"><tr><td style="border-bottom: 1px solid black;"><p>syntactic terms</p></td><td style="border-bottom: 1px solid black;"><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p></td><td style="border-bottom: 1px solid black;"><p>static reasoning</p></td><td style="border-bottom: 1px solid black;"><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p></td><td style="border-bottom: 1px solid black;"><p>semantic terms</p></td></tr><tr><td valign="bottom"><p>variable</p></td><td valign="bottom"><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p></td><td valign="bottom"><p>static distance coordinate</p></td><td valign="bottom"><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p></td><td valign="bottom"><p>environment</p></td></tr><tr><td valign="bottom"><p></p></td><td valign="bottom"><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p></td><td valign="bottom"><p></p></td><td valign="bottom"><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p></td><td valign="bottom"><p>store, location</p></td></tr><tr><td valign="bottom"><p>expression</p></td><td valign="bottom"><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p></td><td valign="bottom"><p></p></td><td valign="bottom"><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p></td><td valign="bottom"><p>value</p></td></tr><tr><td valign="bottom"><p>statement</p></td><td valign="bottom"><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p></td><td valign="bottom"><p></p></td><td valign="bottom"><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p></td><td valign="bottom"><p>effect</p></td></tr><tr><td valign="bottom"><p>declaration</p></td><td valign="bottom"><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p></td><td valign="bottom"><p>visible region</p></td><td valign="bottom"><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p></td><td valign="bottom"><p>environment</p></td></tr><tr><td valign="bottom"><p>type</p></td><td valign="bottom"><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p></td><td valign="bottom"><p>type checking</p></td><td valign="bottom"><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p></td><td valign="bottom"><p>type (un)soundness</p></td></tr><tr><td valign="bottom"><p></p></td><td valign="bottom"><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p></td><td valign="bottom"><p></p></td><td valign="bottom"><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p></td><td valign="bottom"><p> . </p></td></tr><tr><td valign="bottom"><p>scope</p></td><td valign="bottom"><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p></td><td valign="bottom"><p>visible region</p></td><td valign="bottom"><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p></td><td valign="bottom"><p>environment</p></td></tr></table></blockquote><h4><a name="(part._.Back_to_the_.Guy_on_the_.Beach)"></a>Back to the Guy on the Beach</h4><p>You are unlikely to embrace the syntax that was fashionable years and decades ago. But you are likely to be in a
+position where you have to understand its meaning. So training yourself to look beyond syntax is the key to
+becoming an effective developer.}</p><div class="navsetbottom"><span class="navleft"><div class="nosearchform"></div>&nbsp;&nbsp;</span><span class="navright">&nbsp;&nbsp;<a href="lecture26.html" title="backward to &quot;26 --- Q &amp; A&quot;" data-pltdoc="x">&larr; prev</a>&nbsp;&nbsp;<a href="lectures.html" title="up to &quot;Lectures&quot;" data-pltdoc="x">up</a>&nbsp;&nbsp;<a href="lecture28.html" title="forward to &quot;28 --- Monads&quot;" data-pltdoc="x">next &rarr;</a></span>&nbsp;</div></div></div><div id="contextindicator">&nbsp;</div></body></html>
