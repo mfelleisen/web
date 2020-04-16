@@ -186,11 +186,14 @@ operationally. Switching back and forth may lead to apples-to-orange
 comparisons.</p></li></ul></div><div class="SIntrapara">When you have developed a common ontology, you can converse effectively.</div></p><blockquote class="SCentered"><p><a href="https://youtu.be/MbXWrmQW-OE"><img src="conversation.png" alt="" width="360" height="360"/></a></p></blockquote><p><span style="font-weight: bold">Concepts and their Meaning</span> This course covers the principles of
 <span class="emph">sequential</span> programming languages and touches on some current
 event-based concurrency.</p><p><div class="SIntrapara">Expressiveness theory suggests that we think of the dominant dimensions of
-this design space as follows: </div><div class="SIntrapara"><ul><li><p><span class="emph">basic algebra</span>, which includes all forms of local control
-(if, basic loops)</p></li><li><p>first-class and higher-order functions</p></li><li><p><span class="emph">state</span>, which includes variable assignments and mutable
-objects, from the simplest one-slot object to gigabyte arrays</p></li><li><p><span class="emph">control</span>, as in non-local control, which covers program exists,
+this design space as follows:
+</div><div class="SIntrapara"><ul><li><p><span class="emph">basic algebra</span>, which includes all forms of local control
+(if, basic loops)</p><p>Here <span class="emph">static scope</span> is the dominant idea, its denotation is the <span class="emph">environment</span>.</p></li><li><p>first-class and higher-order functions</p></li><li><p><span class="emph">state</span>, which includes variable assignments and mutable
+objects, from the simplest one-slot object to gigabyte arrays</p><p>What we need to understand here is the <span class="emph">dynamic extent</span> of an effect,
+and the <span class="emph">store</span> is its meaning.</p></li><li><p><span class="emph">control</span>, as in non-local control, which covers program exists,
 loop and function exists (continue, return), exception handling,
-generators, and far more general ideas.</p></li></ul></div><div class="SIntrapara">When you add parallelism to this mix, the last two aspects cause tremendous
+generators, and far more general ideas.</p><p>At this point, we need to understand the notion of a <span class="emph">continuation</span> as
+a separate idea that represents dynamic control flow.</p></li></ul></div><div class="SIntrapara">When you add parallelism to this mix, the last two aspects cause tremendous
 complications and yet remain indispensable.</div></p><blockquote class="SCentered"><p><img style="vertical-align: 0px; margin: -3px -3px -3px -3px;" src="pict_69.png" alt="image" width="456.0" height="366.0"/></p></blockquote><p><div class="SIntrapara">Orthogonal to these dimensions, we must think about programming languages
 present themselves to developers in several layers:
 </div><div class="SIntrapara"><ul><li><p><span class="emph">syntax</span>, which comprises the vocabulary of the language and its
