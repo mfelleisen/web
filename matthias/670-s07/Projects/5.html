@@ -1,0 +1,180 @@
+<html><head><title>Project 5</title></head><body bgcolor="white"><br /><hr width="80%" height="3" /><table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="15%" valign="top" align="left" rowspan="2"><table border="0"><tr><td><a href="../../index.html" style="text-decoration: none"><font color="grey"><b>Teaching</b></font></a></td></tr><tr><td><a href="../index.html" style="text-decoration: none"><font color="grey"><b>670 S '07</b></font></a></td></tr><tr><td><font color="black"><b>&nbsp;</b></font></td></tr><tr><td><a href="index.html" style="text-decoration: none"><font color="grey"><b>Projects</b></font></a></td></tr><tr><td><a href="presentations.html" style="text-decoration: none"><font color="grey"><b>Presentations</b></font></a></td></tr><tr><td><a href="programming.html" style="text-decoration: none"><font color="grey"><b>Programming</b></font></a></td></tr><tr><td><font color="black"><b>&nbsp;</b></font></td></tr><tr><td><a href="squadron.html" style="text-decoration: none"><font color="grey"><b>Squadron Scramble</b></font></a></td></tr><tr><td><a href="aircraft.html" style="text-decoration: none"><font color="grey"><b>Aircrafts</b></font></a></td></tr><tr><td><a href="1.html" style="text-decoration: none"><font color="grey"><b>Project 1</b></font></a></td></tr><tr><td><a href="2.html" style="text-decoration: none"><font color="grey"><b>Project 2</b></font></a></td></tr><tr><td><a href="3.html" style="text-decoration: none"><font color="grey"><b>Project 3</b></font></a></td></tr><tr><td><a href="4.html" style="text-decoration: none"><font color="grey"><b>Project 4</b></font></a></td></tr><tr><td><font color="black"><b>Project 5</b></font></td></tr><tr><td><a href="6.html" style="text-decoration: none"><font color="grey"><b>Project 6</b></font></a></td></tr><tr><td><a href="7.html" style="text-decoration: none"><font color="grey"><b>Project 7</b></font></a></td></tr><tr><td><a href="8.html" style="text-decoration: none"><font color="grey"><b>Project 8</b></font></a></td></tr><tr><td><a href="9.html" style="text-decoration: none"><font color="grey"><b>Project 9</b></font></a></td></tr><tr><td><a href="10.html" style="text-decoration: none"><font color="grey"><b>Project 10</b></font></a></td></tr><tr><td><a href="11.html" style="text-decoration: none"><font color="grey"><b>Project 11</b></font></a></td></tr><tr><td><a href="12.html" style="text-decoration: none"><font color="grey"><b>Project 12</b></font></a></td></tr><tr><td><a href="13.html" style="text-decoration: none"><font color="grey"><b>Project 13</b></font></a></td></tr></table></td><td width="3%" /><td valign="top" align="left"><h3>Project 5</h3></td>&nbsp;</tr><tr><td /><td valign="top" align="left" colspan="3"><div><div><p><font color="red">Due date: </font>2/10 : NOON</p>
+
+<h3>Representing Players and Turns</h3>
+
+<p>
+ It is now time to look at the big picture again. The eventual goal is to
+ have a Squadron Scramble game system that can pitch a number of different
+ automatic players against each other. You may even consider including a
+ human player later. 
+</p>
+
+<p>
+ The last project created the basic ingredients for an automatic player:
+ representations of cards, decks, stacks, hands, and squadrons. Based on
+ these you can now implement an automatic player and test it rigorously
+ before you link it into a game administrator (possibly your own). 
+</p>
+
+<font color="darkpurple">
+<p><b>New Task 0:</b> [POINTS: 5, by Friday NOON only] Draw a sequence
+  diagram for the implicitly proposed interaction between the game
+  administrator and players of Squadron Scramble.
+</p>
+</font>
+
+<p><b>Task 1:</b> [POINTS: 20] Implement a Squadron Scramble
+ <code>turn</code>. The purpose of a <code>turn</code> object is to
+ represent the (sub)state of the game that the player needs to know to play
+ the game, assuming the player encapsulates its own state. In our case,
+ this means the deck, the discard stack, the discarded bomber squadrons of
+ the other players. For completeness sake, my <code>turn</code>
+ representation also includes the name of the player whose turn it
+ is. (This alludes to the idea that the administrator could also keep track
+ of the player's state and hand it back for a turn.)</p>
+
+<p>
+ In addition, a <code>turn</code> must also include methods that allow the
+ player to perform all legal game actions. As discussed in class, a
+ software designer must make a trade-off here, either equipping the turn
+ with imperative actions that record the actions or demanding a record of
+ the actions as a part of the player's <code>take-turn</code> return
+ values. The signature of <code>turn</code> shows that I have come up with
+ a compromise solution: the actions of taking cards from the deck or stack
+ are imperative capabilities of the <code>turn</code> object while attacks
+ and discarded squadrons are recorded in the result of the
+ <code>player</code>'s <code>take-turn</code> method. 
+</p>
+
+<b>Turn Interface:</b>
+<pre><code>
+;; Turn-to-Player INTERFACE
+
+   turn-card-on-deck?        : turn/c -&gt; boolean?
+   ;; is there are a card on the deck? 
+
+   turn-get-a-card-from-deck : turn/c -&gt; card/c
+   ;; get a card from this turn's deck
+
+   turn-stack-inspect        : turn/c -&gt; (listof card/c)
+   ;; what cards are available from this turn's stack?
+
+   turn-get-cards-from-stack : turn/c int -&gt; (listof card/c)
+   ;; take a bunch of cards from the stack during this turn 
+
+   turn-can-attack?          : turn/c alliance/c 
+                               -&gt; 
+                              (listof squadron/c)
+   ;; which players/bombers can you attack in this turn 
+   ;; given an fighter squadron belonging to an alliance?
+
+;; Turn-to-Administrator INTERFACE
+
+   create-turn               : string? 
+                               deck/c 
+                               stack/c 
+                               (listof squadron/c) 
+                               -&gt; 
+                               turn/c
+   ;; create a turn that assumes the player isn't cheating
+   
+   turn-end                  : turn/c -&gt; from/c
+   ;; did the turn use the top-most card on the 
+   ;; deck or some number of stack cards
+</code></pre>
+where the result of a call to <code>turn-end</code> is represented via the
+following data: 
+
+<pre>
+<font size="-1">
+<code>
+             +--------------------+           
+             | From    ABSTRACT   |           
+             +--------------------+           
+                      |                       
+                     / \                  
+                     ---                  
+                      |                   
+          ---------------------           
+          |                   |
+// how many cards        // player took one 
+// were taken?           // card from deck 
++------------------+     +------------------+
+| FromStack        |     | FromDeck         |
++------------------+     +------------------+
+| int n            |     +------------------+ 
++------------------+     
+</code>
+</font>
+</pre>
+
+<p><b>Task 2:</b> [POINTS: 20] Implement a Squadron Scramble
+ <code>player</code>. In principle, such a player can pursue many
+ different strategies and can even switch strategies during a game. For
+ this assignment, your program must play the game as follows: 
+</p>
+<ol>
+<li>
+ unless the deck is empty, it takes one card from the desk or a random
+ number of cards from the stack;
+</li>
+
+<li>
+ it forms as many complete fighter squadrons (using wild cards where
+ needed) to attack as many bomber squadrons as possible;
+</li>
+
+<li> 
+ it discard as many complete remaining squadrons as possible; and 
+</li>
+
+<li>
+ it returns a card.
+</li>
+</ol>
+
+<b>Player Interface:</b>
+<pre><code>
+   create            : string? -&gt; player/c
+   ;; create a player with a (unique) name
+
+   player-name       : player/c -&gt; string?
+   ;; request name from player 
+ 
+   player-hand       : player/c -&gt; hand?
+   ;; ask a player for its hand 
+
+   player-first-hand : player/c (listof card/c) -&gt; any
+   ;; hand this player the first N cards 
+
+   player-take-turn  : player/c turn/c -&gt; done?
+   ;; grant this player a turn
+</code></pre>
+where the result of a call to <code>take-turn</code> is represented via the
+following data: 
+<pre>
+<font size="-1">
+<code>
+             +--------------------+           
+             | Done    ABSTRACT   |           +-------------------+
+             +--------------------+           | Attack            |      
+             | Listof[Attack] a   |----------&gt;+-------------------+
+             | Listof[Squadron] d |           | Squadron fighters |
+             +--------------------+           | Squadron bombers  |
+                      |                       +-------------------+
+                     / \                  
+                     ---                  
+                      |                   
+          ---------------------           
+          |                   |
+ // normal end           // end of player's cards (at most 1 on hand)
++------------------+     +------------------+
+| Ret              |     | End              |
++------------------+     +------------------+
+| Card r           |     | Card r           | // NULL means no cards left
++------------------+     +------------------+
+</code>
+</font>
+</pre>
+
+</div></div></td></tr></table><hr width="80%" height="3" /><table width="80%" align="center"><tr><td align="left"><font size="-2">last updated on Tue Jun  9 22:03:19 EDT 2009</font></td><td align="right"><font size="-2">generated with <a href="http://www.plt-scheme.org/">PLT Scheme</a></font></td></tr></table></body></html>

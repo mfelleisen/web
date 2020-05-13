@@ -1,0 +1,28 @@
+<div time="1170176445">
+
+Someone asked: 
+
+<blockquote>
+<p>Does this mean that we should have all static methods?  In the OO
+course, we learned how to convert non-object-oriented signatures into
+object-oriented methods by using the implicit 'this' for the first argument
+in cases where the that argument was the object that the method belonged
+to.</p>
+
+<p>Is this correct?</p>
+</blockquote>
+
+<p>If you are NOT using an OO PL, you should implement the signature AS IS. </p>
+
+<p>If you are using an OO PL, you should implement the signature IN THE
+  SPIRIT OF 213 (or 370). In other words, you didn't just learn this in
+  370 (OO), you grew up with this from the very first day at NU.</p>
+
+<p>
+The signatures are specified in a true-and-only OO manner. They specify
+that the first argument is THIS or SELF and the remaining arguments are the
+arguments of a method. I don't want to force people, however, to use an OO
+language, which is why I allow for this much variance. Otherwise you are to
+implement the signature as-is, especially the state-less part.  
+</p>
+</div>

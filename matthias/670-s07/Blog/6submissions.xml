@@ -1,0 +1,66 @@
+<div time="1171399277">
+
+<p>
+ <font color="red">Read <a href="Blog/670-submission-notes.html">Richard's
+ turn-in guidelines.</a> Now. Or else. </font>
+</p>
+
+<hr />
+
+Also, concerning project 6, he adds: 
+<ul>
+  <li>
+    <p>
+      The test cases that you write should be placed in
+      <code>Tests/Project6</code>; the <code>Tests</code> directory should
+      be at top-level within your submission directory.  (That is,
+      <code>Tests</code> should be a sibling of <code>README</code>.)
+    </p>
+
+    <p>
+      Each test case should be stored in a separate file, with the
+      <code>.xml</code> extension, and a filename that suggests the purpose
+      of the test case.  <strong>DO NOT PUT SPACES IN THE TEST CASE
+      FILENAMES.</strong>
+    </p>
+
+    <p>
+      You may put other files in this directory (e.g., notes to yourself
+      about the test cases), but they must not have <code>.xml</code>
+      extensions.
+    </p>
+  </li>
+
+  <li>
+    <p>
+      For task 1, you must include a <code>run-harness</code> script that
+      will start your test harness (<em>not</em> your test-case
+      administrator).  This script is subject to the same requirements as
+      your other scripts.  Further, it must expect <em>no</em> command-line
+      arguments (optional arguments for your own purposes are fine), and it
+      must perform no input-output beyond that specified by the project.
+    </p>
+
+    <p>
+      This script should run a single test case, which it reads from stdin,
+      write the test's output to stdout, and then terminate.
+    </p>
+
+    <p>
+      In most cases, this script will simply start your test harness.
+      (Since a Unix child process, by default, inherit its parent's open
+      file descriptors, your test harness will have the same stdin/stdout
+      as the script.)
+    </p>
+  </li>
+
+  <li>
+    <p>
+      If you attempt Task 2, your <code>run</code> script must accept one
+      command-line parameter, the name of the test case to run.  (You may
+      support additional parameters if you desire, as long as they are not
+      required.)
+    </p>
+  </li>
+</ul>
+</div>

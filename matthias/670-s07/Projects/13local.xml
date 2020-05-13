@@ -1,0 +1,19 @@
+<!-- p>This diagram specifies how players register with the game administrator
+  in the local case:</p>
+
+<pre>
+<code>
+<font size="-1">
+ admin                                          player 
+  |                             register(name)    |    
+  | &lt;-------------------------------------------- |    
+  |                                               |    
+  |  return: Boolean                              |    
+  | ============================================> |    
+  |                                               |    
+</font>
+</code>
+</pre>
+
+<p>The player sends a message to the administrator and receives either a
+  follower (a string denoting a color) or false in return. </p -->

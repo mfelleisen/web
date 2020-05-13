@@ -1,0 +1,117 @@
+<html><head><title>Project 9</title></head><body bgcolor="white"><br /><hr width="80%" height="3" /><table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="15%" valign="top" align="left" rowspan="2"><table border="0"><tr><td><a href="../../index.html" style="text-decoration: none"><font color="grey"><b>Teaching</b></font></a></td></tr><tr><td><a href="../index.html" style="text-decoration: none"><font color="grey"><b>670 S '07</b></font></a></td></tr><tr><td><font color="black"><b>&nbsp;</b></font></td></tr><tr><td><a href="index.html" style="text-decoration: none"><font color="grey"><b>Projects</b></font></a></td></tr><tr><td><a href="presentations.html" style="text-decoration: none"><font color="grey"><b>Presentations</b></font></a></td></tr><tr><td><a href="programming.html" style="text-decoration: none"><font color="grey"><b>Programming</b></font></a></td></tr><tr><td><font color="black"><b>&nbsp;</b></font></td></tr><tr><td><a href="squadron.html" style="text-decoration: none"><font color="grey"><b>Squadron Scramble</b></font></a></td></tr><tr><td><a href="aircraft.html" style="text-decoration: none"><font color="grey"><b>Aircrafts</b></font></a></td></tr><tr><td><a href="1.html" style="text-decoration: none"><font color="grey"><b>Project 1</b></font></a></td></tr><tr><td><a href="2.html" style="text-decoration: none"><font color="grey"><b>Project 2</b></font></a></td></tr><tr><td><a href="3.html" style="text-decoration: none"><font color="grey"><b>Project 3</b></font></a></td></tr><tr><td><a href="4.html" style="text-decoration: none"><font color="grey"><b>Project 4</b></font></a></td></tr><tr><td><a href="5.html" style="text-decoration: none"><font color="grey"><b>Project 5</b></font></a></td></tr><tr><td><a href="6.html" style="text-decoration: none"><font color="grey"><b>Project 6</b></font></a></td></tr><tr><td><a href="7.html" style="text-decoration: none"><font color="grey"><b>Project 7</b></font></a></td></tr><tr><td><a href="8.html" style="text-decoration: none"><font color="grey"><b>Project 8</b></font></a></td></tr><tr><td><font color="black"><b>Project 9</b></font></td></tr><tr><td><a href="10.html" style="text-decoration: none"><font color="grey"><b>Project 10</b></font></a></td></tr><tr><td><a href="11.html" style="text-decoration: none"><font color="grey"><b>Project 11</b></font></a></td></tr><tr><td><a href="12.html" style="text-decoration: none"><font color="grey"><b>Project 12</b></font></a></td></tr><tr><td><a href="13.html" style="text-decoration: none"><font color="grey"><b>Project 13</b></font></a></td></tr></table></td><td width="3%" /><td valign="top" align="left"><h3>Project 9</h3></td>&nbsp;</tr><tr><td /><td valign="top" align="left" colspan="3"><div><div><p><font color="red">Due date: </font>3/16 : NOON</p>
+
+
+
+<h3>Running a Turn, Enforcing Contracts</h3>
+
+<p><b>Task 1:</b> [POINTS: 20] Your first task is to equip your
+  implementations of <code>turn</code> and <code>play-one-turn</code> with
+  behavioral and temporal contracts as described in the
+  <a href="contracts.html">Contracts Specifications</a>. The goal of these
+  contracts is to prevent ill-behaved players from crashing the server or
+  from upsetting its basic internal invariants. </p>
+
+<p>You may either implement the contracts manually or through the use of a
+  contract system for your language. A contract error must signal an
+  exception from which the overall program may recover. Note: you are
+  better off learning how to use a contract system than writing your
+  own. As far as I know, all chosen languages provide some basic contract
+  system though none of them provide sound ones. 
+</p>
+
+<p><b>Task 2:</b> [POINTS: 20] Your second task is to equip your test
+  harness of <a href="7.xml">Project 7</a> with capabilities for checking
+  test cases concerning contract violations. That is, if the (proxy-)player
+  violates the contract with <code>turn</code> or
+  <code>play-one-round</code>, the test harness must report the violation
+  on stdout.  See <a href="MESSAGES3.txt">MESSAGE3.txt</a> for the revised
+  and extended language of test cases. </p>
+
+<pre>
+<code>
+<font size="-1">
+SEQUENCE DIAGRAM
+
+               TESTER      
+                |
+&lt; - I/O : 1 ---&gt;| 
+                |  create()
+           pp = |-----------------------------------&gt; ProxyPlayer 
+                |                                         |
+                |                                         |
+                |  create / run-one-turn()                |
+                |----------&gt; Administrator                |
+                |              |                          |
+                |              | create()                 |
+                |          t = |----------&gt; Turn          |
+                |              |              |           |
+                |              |-------------------------&gt;|  take-turn(t)
+                |              |              |           |  
+                |              |              |           | &lt; --- I/O : 2 ---&gt;
+                |              |              |           |  
+                |              |              |&lt;----------| get-a-card-from-deck() 
+                |              |              |&lt;----------| get-cards-from-stack(n)
+                |              |              |           |  
+                |              |&lt;=========================| done 
+                |              |              |        ======
+                |              |              |        ======
+                               |-------------&gt;|             end()
+                               |            =====
+                               |            =====
+&lt; - I/O : 3 ---&gt;|
+  
+                
+I/O 1: TESTER reads a _xtrn_ with all the necessary items
+       for the Administrator from standard input. 
+I/O 2: ProxyPlayer reads as many _mesg_ from standard input as there are
+       and then one _done_. 
+       The _mesg_s are turned into appropriate method calls. After
+       it reads _done_, the ProxyPlayer finishes its turn and returns the
+       specified information. 
+I/O 3: TESTER writes either a CONTRACT _resp_, a TIMING _resp_, or 
+         bool  %% is this the end of the battle?
+         borc  %% the return card (or false)
+         slst  %% the discards 
+         from  %% did the player take the cards from the stack or the deck?
+         atta  %% (possibly empty) series of attacks
+       to standard output, then closes the port.
+
+The formats of the external representations is a minor revision of the
+<a href="MESSAGES3.txt">old XML data definitions</a>, including <a href="MESSAGES2.txt">MESSAGES2</a>. 
+
+For your convenience, they are collected in one file: <a href="MESSAGES3.txt">MESSAGES3</a>.
+</font>
+</code>
+</pre>
+
+<p><b>Task 3:</b> [POINTS: 0, see below] The third task is to develop test
+ cases for your administrator that ensure that it can deal with
+ <code>esac</code>-type test cases as before and that is also deals with
+ <code>CONTRACT</code> and <code>TIMING</code> errors properly. 
+</p>
+
+<p>
+ POINTS: The base score for Task 2 is 0 points.  We will run our own test
+ administrator for <em>all test harnesses</em> on our test cases. We will
+ also run <em>all submitted test cases</em> on our test harness. 
+</p>
+
+<p>
+ (1) You will receive a point for each test case that discovers
+ an error in our interaction module. If distinct test cases discover the
+ same error in someone else's code, you don't get more than one point.  (2)
+ You will lose one point for each test case that contains an error. (3) You
+ will not receive fewer than 0 points (though we will display the negative
+ points in the chart).
+</p>
+
+<p><b>Task 4:</b> [POINTS: 5] When the game administrator hands a turn to a
+  player, the latter should protect its integrity with contracts about the
+  cards that it may receive information about through the turn. Formulate
+  such contracts in plain English and explain how we can get some of the
+  necessary information already and what we would need to add to get the
+  rest.  See EXERCISE in <a href="contracts.html">Contracts
+  Specifications</a>.
+</p>
+
+</div></div></td></tr></table><hr width="80%" height="3" /><table width="80%" align="center"><tr><td align="left"><font size="-2">last updated on Tue Jun  9 22:03:19 EDT 2009</font></td><td align="right"><font size="-2">generated with <a href="http://www.plt-scheme.org/">PLT Scheme</a></font></td></tr></table></body></html>

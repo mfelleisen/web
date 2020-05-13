@@ -1,0 +1,38 @@
+<div time="1176765100">
+
+<p>
+ The deadline for Project 13 was extended by two hours. 
+</p>
+
+<p>
+ I have also made cosmetic changes to Project 13, and I have spelled out a
+ hint concerning the client side. (See red text) -- 
+ Use case 1 was changed only as a hint. You're welcome to implement it in
+ any way you know how to fire up a TCP recipient. 
+</p>
+
+<p>
+ When you turn in Project 13, be sure to include scripts that compile/run the
+ server and client programs independently. 
+</p>
+
+<p>
+ For test fest "Project 10", my transmission routines inserted comments
+ into non-empty elements with the intention of finally breaking programs
+ based on regular-expression. The following is a legitimate
+ <code>END</code> message: 
+<pre><code><font size="-2">
+&lt;END>&lt;AIRCRAFT NAME="Bell P-39D" TAG="2" />&lt;LIST />&lt;/END>
+</font></code></pre>
+ Adding a comment to this message is legitimate according to the rules: 
+<pre><code><font size="-2">
+&lt;END>&lt;!--are you reg-exp-ing for &lt;/END>-->&lt;AIRCRAFT NAME="Bell P-39D" TAG="2" />&lt;LIST />&lt;/END>
+</font></code></pre>
+ The embedded <code>&lt;END></code> text causes problems if you base the
+ legitimacy test of tree-structured data on regular-expression matching. --
+ I mentioned this fact time and again during code walks and also reminded
+ you that this fact is the subject of the first and key part of CS U 390, 
+ the only true prerequisite of the course. 
+</p>
+
+</div>

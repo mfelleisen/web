@@ -1,0 +1,8 @@
+<div time="1176132893">
+
+Also see below: For project 12, your run script must run a single game,
+without displaying the Player UI.  This script's output should be the same
+as in project 11, except that it should also print out a one-line
+notification whenever a player exchanges a wildcard.
+
+</div>

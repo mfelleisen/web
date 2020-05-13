@@ -1,0 +1,72 @@
+<week>
+<assignment due="3/2 : 11:59pm" points="40/250">
+
+<h3>Visualize the State of a Player</h3>
+
+<p><b>Task 1:</b> [POINTS: 30] Your last task before spring break is to add
+ a module that helps you visualize a game graphically. First, change the
+ interface of player so that create-player consumes a second argument:
+<code>
+<pre>
+   create-player :: string? boolean? -> player/c
+   ;; create a player, with[out] visual display
+</pre>
+</code>
+ If the argument is <code>true</code>, the player's actions are
+ visualized. If the argument is false, they aren't. 
+</p>
+
+<p>
+ To accomplish this, you should use the model-view pattern (aka MVC). That
+ is, your visualization code should be completely separated from your
+ player code. Furthermore, it should be possible to use two distinct,
+ unrelated graphical tool boxes to implement the visualization
+ module. [Note: the pattern usually comes with the word "control". Since
+ you are not implementing an interactive graphical user interface, you
+ don't need a control.]
+</p>
+
+<center><img src="8.png" width="300"></img></center>
+
+<p>Your code should be able to display at least fours parts of the player's
+  state:
+<ol>
+<li>the name of the player (as specified in <code>create-player</code>);</li>
+<li>the current hand;</li>
+<li>all discarded airplanes, which includes both the properly discarded
+  squadrons as well as those fighter squadrons used to shoot down the
+  bomber squadrons of other players; and </li>
+<li>the number of points that the player is guaranteed to win during the
+  on-going battle, i.e., the points for the bomber squadrons that have been
+  shot down. 
+</li>
+</ol>
+ This part of the assignment is worth 10 points.
+</p>
+
+<p>Your code should be able to visualize at least two player actions: 
+<ol>
+<li>each change to its state during a method call,</li>
+<li>and the beginning of a turn.</li>
+</ol>
+Each of those two pieces is worth 10 points. 
+</p>
+
+<p>
+ The external design (i.e., the look and feel) of the graphical
+ visualization is up to you. You are free to choose your favorite graphical
+ toolbox and display medium. I have posted an example above, but you are
+ not forced to follow this in any way.
+</p>
+
+<p>
+ For the internal design, you should follow the standard rules of
+ programming you have encountered at Northeastern. 
+</p>
+
+<p><b>Task 2:</b> [POINTS: 10] Read up on the Open Cable Application
+ Platform (OCAP). Then write up one paragraph (at most 250 words, usual
+ HTML format) comparing the 670 project to elements of OCAP programming.
+</p>
+</assignment>
+</week>

@@ -1,0 +1,132 @@
+<html>
+  <body>
+    <p>
+      Several notes about homework submissions:
+
+      <ul>
+        <li><p>Do not put spaces in your filenames.</p></li>
+
+        <li><p>Write memos in the HTML format specified in project 2.</p></li>
+
+        <li><p>Limit your README to 80 columns a line, please.</p></li>
+
+        <li>
+          <p>
+            You may make only limited assumptions about the environment in
+            which we will run your programs, including
+            the <code>compile</code>, <code>run</code>,
+            and <code>run-tests</code> scripts.  You may assume only the
+            following
+            variable:
+
+            <blockquote>
+              <code>PATH=/arch/unix/bin:/usr/X11R6/bin:/usr/bin:/bin</code>
+            </blockquote>
+            You may also assume an appropriate setting
+            for <code>TERM</code>.
+          </p>
+
+          <p>
+            This has three consequences.  First, if you need some other
+            setting in your environment (which is unlikely given the nature
+            of the project and the languages most of you are using), you
+            must set those environment variables directly within your
+            scripts.
+          </p>
+
+          <p>
+            Second, if you use a compiler or runtime that's not in the
+            above PATH, you must adjust your scripts accordingly.  You may
+            either set the <code>PATH</code> variable in those scripts, or
+            you may specify absolute paths for compilers, etc.  (In
+            particular, if you need Java 5, you must arrange for the
+            scripts to use <code>javac</code> and <code>java</code> out
+            of <code>/arch/beta/bin</code>, not out
+            of <code>/usr/bin</code>.)
+          </p>
+
+          <p>
+            Third: no <code>DISPLAY</code> variable, so no GUIs.  If we
+            ask you to write a GUI at some point, we'll explicitly relax
+            this restriction.
+          </p>
+
+          <p>
+            To test your setup, run your scripts as follows:
+
+            <blockquote>
+              <pre>/usr/bin/env -i PATH=/arch/unix/bin:/usr/X11R6/bin:/usr/bin:/bin TERM=$TERM ./compile
+              </pre>
+            </blockquote>
+          </p>
+
+        <li>
+          <p>
+            Along the lines of the following item, you may assume that we
+            will run your scripts from within the top-level directory of
+            your submission (that is, from
+            within <code>turnin/ProjectN</code>, the directory that is
+            supposed to contain the scripts).  Of course, you shouldn't
+            make any assumptions about what that directory
+            is <em>named</em>, as we'll almost certainly check it out with
+            a different name when we grade.  (Grading twenty-five different
+            directories all named <code>Project3</code> doesn't work so
+            well.)
+          </p>
+
+          <p>
+            On a related note: do not use absolute paths to refer to parts
+            of your submission.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            As some of you have learned, the different end-of-line
+            conventions can cause problems with cross-platform portability.
+            Fortunately, Subversion can help with this.  For plain text
+            files, including and <em>especially</em>
+            the <code>compile</code>, <code>run</code>,
+            and <code>run-tests</code> scripts, you need to set
+            the <code>svn:eol-style</code> property correctly.  We haven't
+            talked about properties, but here's how you do this:
+            <blockquote>
+              <pre>svn propset svn:eol-style native README</pre>
+            </blockquote>
+            where <code>README</code> is the name of the file to be set.  As
+            with other SVN commands, you may supply multiple file arguments.
+            Like any other change, this has to be committed.  See the SVN
+            book
+            (<a
+                href="http://svnbook.red-bean.com/nightly/en/svn.advanced.props.html#svn.advanced.props.manip"><code>propset</code></a>, <a
+                                                                                                                                            href="http://svnbook.red-bean.com/nightly/en/svn.advanced.props.file-portability.html#svn.advanced.props.special.eol-style"><code>svn:eol-style</code></a>)
+            for more details on what's going on here.
+          </p>
+
+          <p>
+            There is a way to automate this process so that, for example,
+            all <code>*.java</code> files are automatically set to a native
+            eol-style.  If you're interested, see Richard.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            If you check in your <code>compile</code> script under
+            Windows, it won't automatically be executable when you (or we)
+            check it out under Solaris.  To fix this, do the following:
+
+            <blockquote>
+              <pre>svn propset svn:executable x compile run run-tests</pre>
+            </blockquote>
+
+            and commit the change.  (You can actually use any value in
+            place of "<code>x</code>"; the important thing is that the
+            property actually have a value.)
+          </p>
+        </li>
+
+      </ul>
+    </p>
+  </body>
+</html>

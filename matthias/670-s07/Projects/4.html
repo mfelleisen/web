@@ -1,0 +1,145 @@
+<html><head><title>Project 4</title></head><body bgcolor="white"><br /><hr width="80%" height="3" /><table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="15%" valign="top" align="left" rowspan="2"><table border="0"><tr><td><a href="../../index.html" style="text-decoration: none"><font color="grey"><b>Teaching</b></font></a></td></tr><tr><td><a href="../index.html" style="text-decoration: none"><font color="grey"><b>670 S '07</b></font></a></td></tr><tr><td><font color="black"><b>&nbsp;</b></font></td></tr><tr><td><a href="index.html" style="text-decoration: none"><font color="grey"><b>Projects</b></font></a></td></tr><tr><td><a href="presentations.html" style="text-decoration: none"><font color="grey"><b>Presentations</b></font></a></td></tr><tr><td><a href="programming.html" style="text-decoration: none"><font color="grey"><b>Programming</b></font></a></td></tr><tr><td><font color="black"><b>&nbsp;</b></font></td></tr><tr><td><a href="squadron.html" style="text-decoration: none"><font color="grey"><b>Squadron Scramble</b></font></a></td></tr><tr><td><a href="aircraft.html" style="text-decoration: none"><font color="grey"><b>Aircrafts</b></font></a></td></tr><tr><td><a href="1.html" style="text-decoration: none"><font color="grey"><b>Project 1</b></font></a></td></tr><tr><td><a href="2.html" style="text-decoration: none"><font color="grey"><b>Project 2</b></font></a></td></tr><tr><td><a href="3.html" style="text-decoration: none"><font color="grey"><b>Project 3</b></font></a></td></tr><tr><td><font color="black"><b>Project 4</b></font></td></tr><tr><td><a href="5.html" style="text-decoration: none"><font color="grey"><b>Project 5</b></font></a></td></tr><tr><td><a href="6.html" style="text-decoration: none"><font color="grey"><b>Project 6</b></font></a></td></tr><tr><td><a href="7.html" style="text-decoration: none"><font color="grey"><b>Project 7</b></font></a></td></tr><tr><td><a href="8.html" style="text-decoration: none"><font color="grey"><b>Project 8</b></font></a></td></tr><tr><td><a href="9.html" style="text-decoration: none"><font color="grey"><b>Project 9</b></font></a></td></tr><tr><td><a href="10.html" style="text-decoration: none"><font color="grey"><b>Project 10</b></font></a></td></tr><tr><td><a href="11.html" style="text-decoration: none"><font color="grey"><b>Project 11</b></font></a></td></tr><tr><td><a href="12.html" style="text-decoration: none"><font color="grey"><b>Project 12</b></font></a></td></tr><tr><td><a href="13.html" style="text-decoration: none"><font color="grey"><b>Project 13</b></font></a></td></tr></table></td><td width="3%" /><td valign="top" align="left"><h3>Project 4</h3></td>&nbsp;</tr><tr><td /><td valign="top" align="left" colspan="3"><div><div><p><font color="red">Due date: </font>2/2 : NOON</p>
+
+<h3>Representing Stacks, Decks, and Hands</h3>
+
+<p><b>Task 1:</b> [POINTS: 25] It is now time to design all basic,
+ obviously needed data representations: stacks, decks, and hands (how
+ players organize their cards).
+</p>
+
+<p>
+ To get you started, the listing below transliterates the interfaces from
+ my Scheme implementation into quasi-code that everyone should be able to
+ read. 
+</p>
+
+<a name="stack" />
+<p><b>Stack</b></p>
+
+<pre><code>
+   create  : card/c -&gt; stack/c
+   ;; creates a stack from a single card
+
+   depth   : stack/c -&gt; int
+   ;; how many cards are on the stack? 
+
+   push    : stack/c card/c -&gt; stack/c
+   ;; add a card to the stack 
+
+   take    : stack/c int -&gt; (listof card/c)
+   ;; (take s n) returns the first n cards from this stack 
+
+   pop!    : stack/c int -&gt; stack/c
+   ;; creates a stack by removing the first n cards from this stack 
+</code></pre>
+
+<p><b>Deck</b></p>
+
+<pre><code>
+   create       : -&gt; deck/c
+   ;; create a deck using the standard (directory) order of cards
+   
+   shuffle      : deck/c -&gt; deck/c
+   ;; shuffle this deck (reasonably) randomly 
+   
+   empty?       : deck/c -&gt; boolean?
+   ;; is this deck empty? 
+
+   take         : deck/c -&gt; card/c
+   ;; look at the top card from this deck 
+   ;; ASSSUME: non-empty-deck/c
+
+   pop          : deck/c -&gt; deck/c
+   ;; remove the top card from this deck 
+
+   list_to_deck : (listof card/c) -&gt; deck/c
+   ;; create a deck from a list of cards
+
+   deck_to_list : deck/c -&gt; (listof card/c)
+   ;; convert this deck to a list (needed?)
+</code></pre>
+
+<p><b>Hand</b></p>
+
+<p>
+ A "hand" is how the player organizes the cards on his hand. This is of
+ course completely up to you. Some people don't organize their cards at
+ all; others are hyper-organized and plan ahead. You will need to implement
+ the following functions, however, which also involves designing a
+ representation of squadrons: 
+</p>
+
+<pre><code>
+   create         : (listof card/c) -&gt; hand/c
+   ;; organize a list of cards as a hand 
+
+   hand_to_list   : hand/c -&gt; (listof card/c)
+   ;; convert the hand into a list of cards 
+
+   size           : hand/c -&gt; int
+   ;; how many cards are on this hand? 
+   
+   value          : hand/c -&gt; int
+   ;; determine the value of a hand (10 for bomber, 5 per fighter)
+
+   completes      : hand/c -&gt; (listof squadron/c)
+   ;; determines the complete squadrons on this hand 
+
+   wildcards      : hand/c -&gt; (listof wild-card/c)
+   ;; determine the available wild-cards on a hand
+
+   complementable : hand/c -&gt; (listof squadron/c)
+   ;; which squadrons can benefit from one or two wild-cards
+   ;; [sorted by size] 
+
+   plus           : hand/c (listof card/c) -&gt; hand/c
+   ;; (plus h c) creates a hand from h and c
+
+   minus          : hand/c (listof card/c) -&gt; hand/c
+   ;; (minus h c) creates a hand by removing c from h 
+</code></pre>   
+
+<p><b>Squadron:</b></p>
+
+<p><b>Squadron = [listof card/c]</b></p>
+
+<pre><code>
+   squadron-first-craft : squadron/c -&gt; aircraft/c
+   ;; extract an aircraft card from this squadron 
+
+   squadron-alliance    : squadron/c -&gt; alliance/c
+   ;; to which alliance does this squadron belong? 
+
+   squadron-name        : squadron/c -&gt; string?
+   ;; what is the name of this squadron? 
+
+   squadron-complete?   : squadron/c -&gt; boolean?
+   ;; is this squadron complete?
+
+   squadron-incomplete? : squadron/c -&gt; boolean?
+   ;; is this squadron complete?
+
+   squadron-fighter?    : squadron/c -&gt; boolean?
+   ;; is this a fighter squadron?
+
+   squadron-bomber?     : squadron/c -&gt; boolean?
+   ;; is this a bomber squadron? 
+
+   squadron-value       : squadron/c -&gt; natural-number/c
+   ;; what is the value of this squadron? 
+</code></pre>
+
+<p><b>Task 2:</b> [POINTS: 4] Explain with a paragraph of at most 50 words
+  (per concept) why <code>Stack</code> requires <code>take</code>, why
+  <code>Deck</code> needs <code>empty?</code>, why <code>Hand</code> comes
+  with <code>wildcards</code>, and why a representation for
+  <code>Squadron</code> is needed (and what it entails). To get full
+  credit, your explanation must trace the needs for these functions and
+  data representations back to specific use cases.
+</p>
+
+<p><b>Task 3:</b> [POINTS: 10] Develop <em>two</em> interfaces for (a
+  representation of) <code>Turn</code>s, <code>Player</code>s, and
+  <code>Administrator</code>s. Use the above notation. Explain each choice
+  with a single paragraph. </p>
+</div></div></td></tr></table><hr width="80%" height="3" /><table width="80%" align="center"><tr><td align="left"><font size="-2">last updated on Tue Jun  9 22:03:19 EDT 2009</font></td><td align="right"><font size="-2">generated with <a href="http://www.plt-scheme.org/">PLT Scheme</a></font></td></tr></table></body></html>

@@ -1,0 +1,466 @@
+
+<div>
+  <p>
+    The airplane images in this table, plus an index file in XML, are
+          available as a tar bundle:
+    <a href="SquadronScramble/aircrafts.tar.gz">
+      aircrafts.tar.gz
+    </a>
+  </p>
+  <table align="center">
+    <quasiquote>
+      <tr>
+        <td>
+          Name of Aircraft
+        </td>
+        <td>
+          Type
+        </td>
+        <td>
+          Nation
+        </td>
+        <td>
+          Image
+        </td>
+      </tr>
+    </quasiquote>
+    <tr>
+      <td>
+        Baku Geki KI-99
+      </td>
+      <td>
+        bomber
+      </td>
+      <td>
+        Japan
+      </td>
+      <td height="50" align="center" valign="mid">
+        *
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Bell P-39D
+      </td>
+      <td>
+        fighter
+      </td>
+      <td>
+        US AF
+      </td>
+      <td>
+        <img src="SquadronScramble/Bell P-39D.jpg" width="50" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Boeing B-17E
+      </td>
+      <td>
+        bomber
+      </td>
+      <td>
+        US AF
+      </td>
+      <td>
+        <img src="SquadronScramble/Boeing B-17E.jpg" width="50" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Boulton Paul Defiant
+      </td>
+      <td>
+        fighter
+      </td>
+      <td>
+        UK
+      </td>
+      <td>
+        <img src="SquadronScramble/Boulton Paul Defiant.jpg" width="50" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Brewster F2A-3
+      </td>
+      <td>
+        fighter
+      </td>
+      <td>
+        US AF
+      </td>
+      <td>
+        <img src="SquadronScramble/Brewster F2A-3.jpg" width="50" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Bristol Blenheim
+      </td>
+      <td>
+        bomber
+      </td>
+      <td>
+        UK
+      </td>
+      <td>
+        <img src="SquadronScramble/Bristol Blenheim.jpg" width="50" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Consolidated B-24D
+      </td>
+      <td>
+        bomber
+      </td>
+      <td>
+        US Navy
+      </td>
+      <td>
+        <img src="SquadronScramble/Consolidated B-24D.jpg" width="50" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Consolidated PB2Y-3
+      </td>
+      <td>
+        bomber
+      </td>
+      <td>
+        US AF
+      </td>
+      <td>
+        <img src="SquadronScramble/Consolidated PB2Y-3.jpg" width="50" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Curtiss P-40E
+      </td>
+      <td>
+        fighter
+      </td>
+      <td>
+        US AF
+      </td>
+      <td>
+        <img src="SquadronScramble/Curtiss P-40E.jpg" width="50" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Dornier Do 26
+      </td>
+      <td>
+        bomber
+      </td>
+      <td>
+        Germany
+      </td>
+      <td>
+        <img src="SquadronScramble/Dornier Do 26.jpg" width="50" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Douglas A-20a
+      </td>
+      <td>
+        bomber
+      </td>
+      <td>
+        US AF
+      </td>
+      <td>
+        <img src="SquadronScramble/Douglas A-20a.jpg" width="50" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Focke Wulf FW 190
+      </td>
+      <td>
+        fighter
+      </td>
+      <td>
+        Germany
+      </td>
+      <td>
+        <img src="SquadronScramble/Focke Wulf FW 190.jpg" width="50" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Grumman F4f-4
+      </td>
+      <td>
+        fighter
+      </td>
+      <td>
+        US AF
+      </td>
+      <td>
+        <img src="SquadronScramble/Grumman F4f-4.jpg" width="50" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Hawker Hurricane
+      </td>
+      <td>
+        fighter
+      </td>
+      <td>
+        UK
+      </td>
+      <td>
+        <img src="SquadronScramble/Hawker Hurricane.jpg" width="50" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Heinkel He 111
+      </td>
+      <td>
+        bomber
+      </td>
+      <td>
+        Germany
+      </td>
+      <td>
+        <img src="SquadronScramble/Heinkel He 111.jpg" width="50" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Lockheed P-38E
+      </td>
+      <td>
+        fighter
+      </td>
+      <td>
+        US Navy
+      </td>
+      <td>
+        <img src="SquadronScramble/Lockheed P-38E.jpg" width="50" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Martin B-26C
+      </td>
+      <td>
+        bomber
+      </td>
+      <td>
+        US Navy
+      </td>
+      <td>
+        <img src="SquadronScramble/Martin B-26C.jpg" width="50" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Messerschmitt ME-109
+      </td>
+      <td>
+        fighter
+      </td>
+      <td>
+        Germany
+      </td>
+      <td>
+        <img src="SquadronScramble/Messerschmitt ME-109.jpg" width="50" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Messerschmitt ME-110
+      </td>
+      <td>
+        fighter
+      </td>
+      <td>
+        Germany
+      </td>
+      <td>
+        <img src="SquadronScramble/Messerschmitt ME-110.jpg" width="50" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Mitsubishi 96
+      </td>
+      <td>
+        fighter
+      </td>
+      <td>
+        Japan
+      </td>
+      <td>
+        <img src="SquadronScramble/Mitsubishi 96.jpg" width="50" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Mitsubishi 98
+      </td>
+      <td>
+        bomber
+      </td>
+      <td>
+        Japan
+      </td>
+      <td>
+        <img src="SquadronScramble/Mitsubishi 98.jpg" width="50" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Mitsubishi 99
+      </td>
+      <td>
+        bomber
+      </td>
+      <td>
+        Japan
+      </td>
+      <td>
+        <img src="SquadronScramble/Mitsubishi 99.jpg" width="50" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Nakajima 97
+      </td>
+      <td>
+        fighter
+      </td>
+      <td>
+        Japan
+      </td>
+      <td>
+        <img src="SquadronScramble/Nakajima 97.jpg" width="50" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Northrop A-17a
+      </td>
+      <td>
+        bomber
+      </td>
+      <td>
+        US AF
+      </td>
+      <td>
+        <img src="SquadronScramble/Northrop A-17a.jpg" width="50" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Republic P-47D
+      </td>
+      <td>
+        fighter
+      </td>
+      <td>
+        US Navy
+      </td>
+      <td>
+        <img src="SquadronScramble/Republic P-47D.jpg" width="50" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        I-16
+      </td>
+      <td>
+        fighter
+      </td>
+      <td>
+        Soviet Union
+      </td>
+      <td>
+        <img src="SquadronScramble/I-16.jpg" width="50" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Savoia Marchetti SM82
+      </td>
+      <td>
+        bomber
+      </td>
+      <td>
+        Italy
+      </td>
+      <td>
+        <img src="SquadronScramble/Savoia Marchetti SM82.jpg" width="50" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Sento KI-001
+      </td>
+      <td>
+        fighter
+      </td>
+      <td>
+        Japan
+      </td>
+      <td height="50" align="center" valign="mid">
+        *
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Short Stirling
+      </td>
+      <td>
+        bomber
+      </td>
+      <td>
+        UK
+      </td>
+      <td>
+        <img src="SquadronScramble/Short Stirling.jpg" width="50" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Supermarine Spitfire
+      </td>
+      <td>
+        fighter
+      </td>
+      <td>
+        UK
+      </td>
+      <td>
+        <img src="SquadronScramble/Supermarine Spitfire.jpg" width="50" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Vickers Wellington
+      </td>
+      <td>
+        bomber
+      </td>
+      <td>
+        UK
+      </td>
+      <td>
+        <img src="SquadronScramble/Vickers Wellington.jpg" width="50" />
+      </td>
+    </tr>
+  </table>
+  <p>
+    * According to a Web search, these two airplanes existed only in
+          the imagination of Pearl Harbor observers and survivors.
+  </p>
+</div>

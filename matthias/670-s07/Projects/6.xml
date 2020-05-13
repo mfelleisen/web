@@ -1,0 +1,114 @@
+<week>
+<assignment due="2/17 : NOON" points="35/150">
+
+<h3>Checking Players</h3>
+
+<p>
+ Now that you have one kind of player ready to go, it is time to test
+ it. Rigorously. To this end, we will conduct a "test fest." You will
+ implement a test harness for players that reads test inputs from the
+ standard file system and you will design test cases. Then we will run 
+ <em>all</em> test cases on <em>all</em> submissions. Your score depends on
+ how well your players hold up and how well you design your test cases. 
+</p>
+
+<p><b>Task 1:</b> Your task is to implement a test harness for
+  your players. The test harness interacts with our test case administrator
+  a via standard input and output. Each input and output message is an XML
+  message, some simple/some complex. The following diagram demonstrates how
+  the harness works:
+</p>
+
+<p><b>Constraint:</b> You may <em>not</em> modify your player's export
+ interface as you implement this test harness. You may change only its
+ imports: from the plain <code>turn</code> to th <code>proxy-turn</code>
+ package/module. The latter implements the same interface as
+ <code>turn</code>, but does so via I/O as indicated in the sequence
+ diagram below. Read up on the proxy pattern. 
+</p>
+
+<pre>
+<code>
+<font size="-1">
+SEQUENCE DIAGRAM
+
+               TESTER                                                            
+                  |                                                              
+ &lt;-- I/O : 1 ---> |    create()                                                 
+                  |----------------------------> PLAYER                          
+                  |                                |  
+                  |   first-hand(List[Card])       |                             
+                  |------------------------------->|
+                  |                                |                             
+                  |                                |                             
+              t = +------> PROXY-TURN              |                             
+                  |         |                      |                             
+                  |         | take-turn(t)         |                             
+                  +------------------------------->|                             
+                  |         |                      |                             
+                  |         |                      |                             
+                  |         |&lt;---------------------+  inspect-stack()            
+                  |         |                      |                             
+                  |         |                      |                             
+                  |         |&lt;---------------------+  card-on-deck?()            
+                  |         |                      |                             
+                  |         |                      |                             
+                  |         |&lt;---------------------+  get-cards-from-stack(Nat)  
+ &lt;-- I/O : 2  --------------|                      |
+                  |         |&lt;---------------------+  get-a-card-from-deck()  
+ &lt;-- I/O : 3  --------------|                      |                                
+                  |         |&lt;---------------------+  can-attack?(Alliance)      
+                  |         |                      |                             
+  result      =   |&lt;===============================+ :: done                     
+                  |                                                              
+                  |                                                              
+ &lt;-- I/O : 4 ---->|  send : result                                               
+                  |                                                              
+                =====
+                =====
+
+I/O 1: TESTER reads fsth and turn from standard input 
+I/O 2: PTurn  writes message for get-cards-from-stack to standard output 
+       PTurn  reads okay on standard input 
+I/O 3: PTurn  writes message for get-a-card-from-deck to standard output 
+       PTurn  reads card from standard input 
+I/O 4: TESTER writes done to standard output
+
+Read the auxiliary file for the <a href="MESSAGES.txt">XML data definitions</a>.
+</font>
+</code>
+</pre>
+
+<p><b>Task 1a:</b> The second part of this task is to develop test cases
+  for your player. Create a file for each test case. Remember that due to
+  the somewhat random nature of the player, writing test cases is
+  non-trivial and, for some things that you might imagine, impossible. 
+</p>
+
+<p>
+ POINTS: The base score for Task 1 is 30 points. 
+ We will run our own test administrator for <em>all</em> test harnesses
+ on <em>all</em> test cases submitted. We will then tabulate and publish
+ the results as a matrix with links to the test cases that your player
+ passed and failed. 
+</p>
+
+<p>
+ (1) You will receive an additional point for each test case that discovers
+ an error in someone else's player. (2) You will lose one point for each
+ error that someone else's test case reveals in your player, but (3) you
+ will not receive fewer than 30 points.
+</p>
+
+<hr />
+
+<p><b>Task 2:</b>[POINTS: 5] Your second task is to design and implement a
+ test case administrator. It reads a test case, starts up your test
+ harness, and writes XML messages to standard output and listens for
+ transmissions on standard input. Finally, it reads off the final done sent
+ and determines whether this is the expected result according to the test
+ case.
+</p>
+
+</assignment>
+</week>

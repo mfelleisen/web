@@ -1,0 +1,50 @@
+<div time="1173995821">
+
+<font color="red">Never mind! This was a bogus test fest. Thanks to Andrea
+  for noticing the bug (eliminated).
+</font>
+
+<p>
+The results of the test fest for Project 7 are now
+<a href="Blog/test-fest-7/index.html">on-line.</a> 
+</p>
+
+<font color="red">You <em>can</em> run your test harness for the "play one round"
+  method manually using the mechanism below.
+</font>
+
+
+<p>
+To check how your players are doing directly, I recommend that you
+reorganize the test cases and run them manually as follows. Say case1 is in
+file case1.xml and looks like this: 
+</p>
+<font size="-3">
+<pre>
+<code>
+&lt;TURN name="a">&lt;STACK />&lt;STACK>&lt;AIRCRAFT NAME="..." TAG="2" />&lt;/STACK>&lt;LIST />&lt;LIST />&lt;/TURN>
+&lt;TURN-GET-CARDS-FROM-STACK no="1" />
+&lt;END>&lt;AIRCRAFT NAME="..." TAG="2" />&lt;LIST />&lt;/END>
+</code>
+</pre>
+</font>
+
+<p>Then run the test case as follows, assuming your test script is called
+  <code>harness-for-interact</code>: 
+</p>
+
+<font size="-3">
+<pre>
+<code>
+cat TestInteract/case1.xml | ./harness-for-interact
+&lt;TRUE />
+&lt;AIRCRAFT NAME="..." TAG="2" />
+&lt;LIST />
+&lt;STACK NO="1" />
+&lt;ATTACKS />
+</code>
+</pre>
+</font>
+You can now inspect the output and determine whether it is as expected. 
+
+</div>

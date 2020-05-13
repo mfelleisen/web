@@ -1,0 +1,37 @@
+<p>
+As part of grading, I ran everyone's harness against a very simple test
+case (based on one of those used for the test fest).  The actual input,
+provided on stdin, to your harness follows here:
+</p>
+
+<blockquote>
+<pre>
+&lt;TURN name="a"&gt;&lt;STACK /&gt;&lt;STACK&gt;&lt;AIRCRAFT NAME="Bell P-39D" TAG="2" /&gt;&lt;/STACK&gt;&lt;LIST /&gt;&lt;LIST /&gt;&lt;/TURN&gt;
+&lt;TURN-GET-CARDS-FROM-STACK no="1" /&gt;
+&lt;END&gt;&lt;AIRCRAFT NAME="Bell P-39D" TAG="2" /&gt;&lt;LIST /&gt;&lt;/END&gt;
+</pre>
+</blockquote>
+
+<p>
+In this stage, I was only checking whether your harness completed the test
+case, not whether it produced the expected results.  So, if your feedback
+report indicates that your harness ran successfully against this input,
+this means only that it did not crash, and that it produced output that
+looks vaguely syntactically valid given the project's specification.  This
+statement does <em>not</em> guarantee that your system performed correctly
+against the test case.
+</p>
+
+<p>
+Also, many teams lost a point for not documenting that the fourth argument
+to <code>playOneTurn</code> means: is it all of the discarded squadrons, or
+only the bombers?  This was indeed up to you for this project, so you could
+choose either.  Of course, your Administrator's client needs to know, so
+your choice needs to be documented in the Administrator interface.
+Further, your use of this argument must be consistent with its description:
+since <code>Turn</code>'s constructor expects a list of the other players'
+discarded bombers as its 4th argument, then if you define
+<code>playOneTurn</code> to accept a list of <em>all</em> discarded
+squadrons, then you have to filter it accordingly before creating the
+turn.
+</p>

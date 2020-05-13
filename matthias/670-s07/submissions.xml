@@ -1,0 +1,298 @@
+<div time="1171399204">
+    <p>Richard says: </p>
+
+    <h3>CSU 670 Spring 2007: Project Requirements</h3>
+
+    <p>
+      There's been a lot of confusion, apparently, about the precise
+      requirements for project layout, memo formatting, scripts, and so
+      forth.  This document attempts to clarify this.  As of project 6, I
+      will start taking off large numbers of points if you do not follow
+      these guidelines.
+    </p>
+
+    <h2>Directory Layout</h2>
+
+    <p>
+      Within your submission directory, I must see the following files and
+      directories, in the following locations.  (This isn't a change; I'm
+      just being very specific about our expectations.)
+    </p>
+
+    <ul>
+      <li>
+        <p>
+          <code>README</code> &nbsp;&nbsp;&nbsp; This must be a text
+          file, limited to 80 columns per line, that contains a roadmap
+          for your code.
+        </p>
+
+        <p>
+          The roadmap is simply a <em>short</em> (one-line) description
+          of each file and directory within your project.  You may omit
+          the <code>Memos</code> directory and the scripts described
+          below.  Furthermore, if you have added third-party libraries to
+          your project, your roadmap should identify and describe only
+          the top-level directory for the library; you do not need to
+          describe each library file.
+        </p>
+      </li>
+
+      <li>
+        <p>
+          <code>compile</code> &nbsp;&nbsp;&nbsp; This must be an
+          executable file that compiles your project and your test cases.
+          (If you're using a scripting language like Perl or Ruby,
+          then <code>compile</code> should simply print a message that
+          says that no compilation is necessary.)  See below for additional
+          requirements that apply to this script.
+        </p>
+
+      </li>
+
+      <li>
+        <p>
+          <code>run</code> &nbsp;&nbsp;&nbsp; This must be an executable
+          file that runs your program.  If there is no program to run, as
+          with the earlier assignments, then this should be a NOP.  See
+          below for additional requirements that apply to this script.
+        </p>
+      </li>
+
+      <li>
+        <p>
+          <code>run-tests</code> &nbsp;&nbsp;&nbsp; This must be an
+          executable file that runs your program's test cases.  On the rare
+          occasion when there are no test cases, then this should be a NOP.
+          See below for additional requirements that apply to this script.
+        </p>
+      </li>
+
+      <li>
+        <p>
+          <code>Memos/</code> &nbsp;&nbsp;&nbsp; This directory will
+          contain all of your memos, sorted by project:
+        </p>
+        <ul>
+          <li>
+            <p><code>Project6/</code> &nbsp;&nbsp;&nbsp; This directory
+              contains memos for project 6.  See below for formatting
+              requirements.
+            </p>
+          </li>
+
+          <li>
+            <p><code>Project7/</code> &nbsp;&nbsp;&nbsp; memos for
+              project 7.
+            </p>
+          </li>
+
+          <li>
+            <p>... and so on.</p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+    <p>
+      Otherwise, you may arrange your files and directories however you
+      like.
+    </p>
+
+    <p>
+       <strong>IMPORTANT:</strong> you should generally avoid filenames that
+      contain spaces, as the Unix shell scripting languages don't deal with
+      these very well.  (Yes, thanks, I know the tricks to work around
+      those problems, and I'm not interested.  Just don't do it.)  You must
+      absolutely avoid spaces in the filenames of files that we
+      specifically ask for by name.  If you put spaces in other filenames
+      in your project, it is <em>your</em> responsibility to ensure that
+      your <code>compile</code> etc. scripts work correctly on Solaris.
+    </p>
+
+    <h2>Script Requirements</h2>
+
+    <p>
+      This section describes requirements that apply to
+      the <code>compile</code>, <code>run</code>,
+      and <code>run-tests</code> scripts.
+    </p>
+
+    <ol>
+      <li>
+        <p>
+          These scripts must be executable: when I check them out, they
+          should automatically have Unix permissions at
+          least <code>-rwxr-xr-x</code>.  To ensure this, especially if
+          you're using a different OS for your development, execute the
+          following command:
+        </p>
+
+        <blockquote>
+          <pre>svn propset svn:executable x compile run run-tests</pre>
+        </blockquote>
+
+        <p>
+          and commit the change.
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Furthermore, if this file is a script (and it probably is),
+          then please make sure that it does not contain any Windows
+          end-of-line markings.  If you're developing on Windows, please
+          execute the following command to have SVN automatically
+          translate Windows end-of-line markers to Unix:
+        </p>
+
+        <blockquote>
+          <pre>svn propset svn:eol-style native compile ...</pre>
+        </blockquote>
+
+        <p>
+          and commit the change.
+        </p>
+      </li>
+
+      <li>
+        <p>
+          You may make only limited assumptions about the environment in
+          which we will run your programs, including
+          the <code>compile</code>, <code>run</code>,
+          and <code>run-tests</code> scripts.  You may assume only the
+          following
+          variable:
+        </p>
+
+        <blockquote>
+          <p>
+            <code>
+              PATH=/arch/unix/bin:/usr/X11R6/bin:/usr/bin:/bin
+            </code>
+          </p>
+        </blockquote>
+
+        <p>
+          You may also assume an appropriate setting
+          for <code>TERM</code>.
+        </p>
+
+        <p>
+          This has three consequences.  First, if you need some other
+          setting in your environment (which is unlikely given the nature
+          of the project and the languages most of you are using), you
+          must set those environment variables directly within your
+          scripts.
+        </p>
+
+        <p>
+          Second, if you use a compiler or runtime that's not in the
+          above PATH, you must adjust your scripts accordingly.  You may
+          either set the <code>PATH</code> variable in those scripts, or
+          you may specify absolute paths for compilers, etc.  (In
+          particular, if you need Java 5, you must arrange for the
+          scripts to use <code>javac</code> and <code>java</code> out
+          of <code>/arch/beta/bin</code>, not out
+          of <code>/usr/bin</code>.  And if you're using Ant with Java5,
+          you <strong>must</strong> set the <code>PATH</code> variable
+          within your script, or Ant won't be able to find the correct
+          compiler.)
+        </p>
+
+        <p>
+          Third: no <code>DISPLAY</code> variable, so no GUIs.  If we
+          ask you to write a GUI at some point, we'll explicitly relax
+          this restriction.
+        </p>
+
+        <p>
+          To ensure that your script runs in these environments, run your
+          scripts as follows:
+        </p>
+
+        <blockquote>
+          <pre>/usr/bin/env -i PATH=/arch/unix/bin:/usr/X11R6/bin:/usr/bin:/bin TERM=$TERM ./compile
+          </pre>
+        </blockquote>
+      </li>
+
+      <li>
+        <p>
+          You should assume that I will run your script from the directory
+          which contains it (that is, from
+          within <code>turnin/Project<i>N</i></code>).  Of course, since
+          this will be in <em>my</em> working copy, you shouldn't make any
+          assumptions about what that directory is named.  So, if your
+          program or scripts have to refer to files in your submission by
+          name, you should specify these with paths relative to your
+          submission's top-level directory.
+	  </p>
+      </li>
+    </ol>
+
+    <h2>Memo Formatting Requirements</h2>
+
+    <p>
+      Memos must be written in HTML.  Further:
+    </p>
+
+    <ol>
+      <li>
+        <p>
+          The memo's file name must indicate the task: the memo for task
+          3 must be in <code>task3.html</code>, and so on.  In filenames,
+          spelling, punctuation, and capitalization are significant.
+          Also, you may not put spaces in your filenames.
+        </p>
+      </li>
+
+      <li>
+        <p>
+          The memo must begin with a first-level header (i.e.,
+          &lt;h1&gt;) that states your name and your partner's name.  The
+          next thing in the memo most be a second-level header (i.e.,
+          &lt;h2&gt;) that identifies the project and the task (simply
+          saying "Project 7, Task 2" is sufficient).
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Code snippets may be in monospaced text, but the main text must
+          be in the default (proportionally-spaced) font.  If you have to
+          use the horizontal scroll bar to see all of the text on a
+          reasonably-sized browser window, you have a problem.  (Here's
+          why: when I convert these to PS and then to PDF for printing,
+          the tool I use scales the document down so that it's one page
+          wide.  If the text is wide enough to require the horizontal
+          scroll bar, the text in the PS file is too small to read.)
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Don't include figures or images.  If a memo specifically
+          requires them, we'll give you specific instructions on what to
+          do.
+        </p>
+      </li>
+
+      <li>
+        <p>
+          I shouldn't have to say this, but just to be clear on
+          expectations: no JavaScript, ECMAScript, Java applets, etc.
+        </p>
+      </li>
+
+      <li>
+        <p>
+          I <em>really</em> shouldn't have to say this: normal English
+          rules of spelling, punctuation, grammar, and so forth still
+          apply.  You will lose points if you have too many mistakes at
+          this level.
+        </p>
+      </li>
+    </ol>
+
+</div>

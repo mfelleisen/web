@@ -1,0 +1,8 @@
+<div time="1172451019">
+
+Richard writes: "In the past, we've specified that we run your process in an
+environment containing settings only for the PATH &amp; TERM variables.  Since
+project 8 requires you to create a graphical display, you may assume an
+appropriate setting for the DISPLAY variable."
+
+</div>

@@ -1,0 +1,62 @@
+<div time="1173910148">
+
+Richard writes that "I've put (a version of) the test-fest administrator
+into everyone's SVN directory" and: 
+<blockquote>
+<p>
+Since several teams have asked about why their test cases failed, we have
+made our test fest administrator available to you to run.  While you can't
+inspect the administrator (it's in compiled form), you can still instrument
+your own code to get additional information about exactly what's happening.
+</p>
+<p>
+The test fest administrator is now in SVN, in your submission directories
+for projects 6 and 7.  Within those directories, I've added several things:
+</p>
+<font size="-1">
+<pre>
+    run-admin-6
+    run-admin-7
+    compiled/
+    utils/
+    aircrafts/ (if you didn't already have this directory)
+</pre>
+</font>
+<p>
+The administrator will only work on the CCIS Solaris network.  To run it:
+<ol>
+<li>
+  If you still have copies of these turnin directories checked out, then
+     update them.  Otherwise,
+<font size="-1">
+<pre>
+ svn co http://svn.barzilay.org/670/**TEAM**/turnin/Project6
+ svn co http://svn.barzilay.org/670/**TEAM**/turnin/Project7
+</pre>
+</font>
+     making the obvious replacement for **TEAM**.
+</li>
+
+<li>
+  cd to Project6 or Project7, as appropriate.
+</li>
+
+<li>
+  Invoke the run-admin-6 or run-admin-7 script.  Each script expects two
+     command line arguments: the script that starts your test harness
+     (run-harness, if you followed our submission directions), and the
+     directory containing the test cases (Tests/Project6 or tests/Project7,
+     if you followed our directions).
+</li>
+</ol>
+</p>
+
+Caveat: 
+<p>
+Unfortunately, it's not the same one that we ran, so the
+students may see different error messages -- I'm pretty sure I made this
+tarball up before you added the various contracts to the codebase.
+</p>
+</blockquote>
+
+</div>

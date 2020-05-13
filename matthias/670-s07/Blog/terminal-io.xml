@@ -1,0 +1,19 @@
+<div time="1172506540">
+
+<p>
+As some of you have discovered, entering LARGE test cases is nearly
+impossible in Unix terminals. (I was unaware of this limit and hadn't
+encountered this problem in previous editions of the course.) So you
+must either give up on large test cases or implement the test
+administrator(s). 
+</p>
+
+<p>
+If you are interested in "purchasing" such a test administrator from
+Richard, please drop him a line. He will then place a test administrator
+(for Solaris) into your SVN directory (where we expected the
+administrator). The cost is 5 POINTS.
+</p>
+
+
+</div>

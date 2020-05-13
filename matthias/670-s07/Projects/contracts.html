@@ -1,0 +1,188 @@
+<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--
+
+Generated from contracts.tex by tex2page, v 20050501
+(running on MzScheme 369.9, unix), 
+(c) Dorai Sitaram, 
+http://www.ccs.neu.edu/~dorai/tex2page/tex2page-doc.html
+
+-->
+<head>
+<title>
+contracts
+</title>
+<link rel="stylesheet" type="text/css" href="contracts-Z-S.css" title=default>
+<meta name=robots content="index,follow">
+</head>
+<body>
+<div id=title>
+<p></p>
+<p>
+</p>
+<p>
+</p>
+<p>
+</p>
+<a name="node_sec_Temp_1"></a>
+<h2>Player</h2>
+<p></p>
+<div align=left><pre class=scheme>  (<span class=keyword>define</span> <span class=variable>player/c</span> (<span class=variable>flat-named-contract</span> <span class=selfeval>&quot;Player&quot;</span> <span class=variable>player?</span>))
+  
+  (<span class=keyword>provide/contract</span>
+   ...
+   [<span class=variable>player-take-turn</span>   (<span class=variable>-&gt;</span> <span class=variable>player/c</span> <span class=variable>turn/c</span> <span class=variable>done/c</span>)]
+   <span class=comment>;; grant this player a turn with at least one card on either deck or stack</span>
+   <span class=comment>;; EXERCISE (TASK 4): what must hold true for the cards in player/c and turn/c?</span>
+   <span class=comment>;; what can you express? what can't you express?</span>
+   ...
+</pre></div><p></p>
+<p>
+</p>
+<a name="node_sec_Temp_2"></a>
+<h2>Turn, ProxyTurn</h2>
+<p></p>
+<div align=left><pre class=scheme>  (<span class=keyword>define</span> <span class=variable>turn/c</span> (<span class=variable>flat-named-contract</span> <span class=selfeval>&quot;Turn&quot;</span> <span class=variable>turn?</span>))
+  
+  <span class=comment>;; Turn -&gt; Contract</span>
+  <span class=comment>;; ... is the given value a natural number in (0,N]</span>
+  <span class=comment>;; where N is the depth of this turn's stack</span>
+  (<span class=keyword>define</span> (<span class=variable>in-range</span> <span class=variable>t</span>)
+    (<span class=variable>and/c</span> <span class=variable>natural-number/c</span> (<span class=variable>&gt;/c</span> <span class=selfeval>0</span>) (<span class=variable>&lt;=/c</span> (<span class=variable>stack-depth</span> (<span class=variable>turn-stack-inspect</span> <span class=variable>t</span>)))))
+  
+  <span class=comment>;; Alliance -&gt; (Squadron -&gt; Boolean)</span>
+  (<span class=keyword>define</span> (<span class=variable>anti?</span> <span class=variable>a</span>)
+    (<span class=keyword>lambda</span> (<span class=variable>bs</span>)
+      (<span class=variable>alliance=?</span> (<span class=variable>enemy</span> (<span class=variable>squadron-alliance</span> <span class=variable>bs</span>)) <span class=variable>a</span>)))
+
+  (<span class=keyword>provide/contract</span>
+     ...
+     <span class=comment>;; --- ADMINISTRATOR INTERFACE ---</span>
+     [<span class=variable>create-turn</span> (<span class=variable>-&gt;</span> <span class=variable>string?</span> <span class=variable>deck/c</span> <span class=variable>stack/c</span> (<span class=variable>listof</span> <span class=variable>discard-bomber/c</span>) <span class=variable>turn/c</span>)]
+     <span class=comment>;; create a turn that assumes the player isn't cheating</span>
+     <span class=comment>;; EXERCISE: what must hold true for the deck, stack, and the discards?</span>
+
+     [<span class=variable>turn-end</span>    (<span class=variable>-&gt;</span> <span class=variable>turn/c</span> <span class=variable>from/c</span>)]
+     <span class=comment>;; did the turn use the top-most card on the deck or some number of stack cards</span>
+     <span class=comment>;; TIME: must take place after get-cards-from-stack or</span>
+     <span class=comment>;; get-a-card-from-deck has been called [otherwise player is incorrect]</span>
+
+     <span class=comment>;; --- PLAYER INTERFACE ---</span>
+     [<span class=variable>turn-card-on-deck?</span>        (<span class=variable>-&gt;</span> <span class=variable>turn/c</span> <span class=variable>boolean?</span>)]
+     <span class=comment>;; is there are a card on the deck?</span>
+
+     [<span class=variable>turn-get-a-card-from-deck</span> (<span class=variable>-&gt;</span> <span class=variable>turn/c</span> <span class=variable>card?</span>)]
+     <span class=comment>;; what cards are available from this turn's stack</span>
+     <span class=comment>;; TIME: neither get-card-from-stack nor this function has been called</span>
+
+     [<span class=variable>turn-stack-inspect</span>        (<span class=variable>-&gt;</span> <span class=variable>turn/c</span> (<span class=variable>listof</span> <span class=variable>card?</span>))]
+     <span class=comment>;; what cards are available from this turn's stack?</span>
+
+     [<span class=variable>turn-get-cards-from-stack</span> (<span class=variable>-&gt;r</span> ([<span class=variable>t</span> <span class=variable>turn/c</span>][<span class=variable>n</span> (<span class=variable>in-range</span> <span class=variable>t</span>)]) 
+				     (<span class=variable>and/c</span> (<span class=variable>listof</span> <span class=variable>card?</span>) 
+					    (<span class=keyword>lambda</span> (<span class=variable>c</span>) (<span class=variable>=</span> (<span class=variable>length</span> <span class=variable>c</span>) <span class=variable>n</span>))))]
+     <span class=comment>;; take a bunch of cards from the stack during this turn</span>
+     <span class=comment>;; TIME: neither get-a-card-from-deck nor this function has been called</span>
+
+     [<span class=variable>turn-can-attack?</span>          (<span class=variable>-&gt;r</span> ([<span class=variable>t</span> <span class=variable>turn/c</span>]
+				      [<span class=variable>a</span> <span class=variable>alliance?</span>])
+				     (<span class=variable>listof</span> (<span class=variable>and/c</span> <span class=variable>discard-bomber/c</span> (<span class=variable>anti?</span> <span class=variable>a</span>))))]
+     <span class=comment>;; which players/bombers can you attack in this turn given an A fighter?</span>
+     ...
+</pre></div><p></p>
+<p>
+</p>
+<a name="node_sec_Temp_3"></a>
+<h2>Turn Results</h2>
+<p></p>
+<div align=left><pre class=scheme>  (<span class=keyword>define</span> <span class=variable>from/c</span> (<span class=variable>or/c</span> <span class=variable>from-deck?</span> <span class=variable>from-stack?</span>))
+  
+  (<span class=keyword>define</span> <span class=variable>done/c</span> (<span class=variable>flat-named-contract</span> <span class=selfeval>&quot;Done&quot;</span> <span class=variable>done?</span>))
+  
+  (<span class=keyword>define</span> <span class=variable>discard/c</span> (<span class=variable>flat-named-contract</span> <span class=selfeval>&quot;Discard&quot;</span> <span class=variable>squadron-complete?</span>))
+  
+  (<span class=keyword>define</span> <span class=variable>discard-bomber/c</span> (<span class=variable>and/c</span> <span class=variable>discard/c</span> <span class=variable>squadron-bomber?</span>))
+  
+  (<span class=keyword>define</span> <span class=variable>discard-fighter/c</span> (<span class=variable>and/c</span> <span class=variable>discard/c</span> <span class=variable>squadron-fighter?</span>))
+  
+  (<span class=keyword>define</span> <span class=variable>discard*/c</span> (<span class=variable>and/c</span> (<span class=variable>listof</span> <span class=variable>discard/c</span>) (<span class=variable>setof</span> <span class=variable>discard/c</span>)))
+
+  (<span class=keyword>define</span> <span class=variable>attack/c</span> (<span class=variable>flat-named-contract</span> <span class=selfeval>&quot;Attack&quot;</span> <span class=variable>attack?</span>))
+
+  <span class=comment>;; Squadron -&gt; (Squadron -&gt; Boolean)</span>
+  <span class=comment>;; does b belong to the alliance ooposing f?</span>
+  (<span class=keyword>define</span> (<span class=variable>opposed?</span> <span class=variable>f</span>)
+    (<span class=keyword>define</span> <span class=variable>alliance</span> (<span class=variable>squadron-alliance</span> <span class=variable>f</span>))
+    (<span class=variable>flat-named-contract</span> 
+     <span class=keyword>`</span>(<span class=variable>opposed-to:</span> <span class=keyword>,</span><span class=variable>alliance</span>)
+     (<span class=keyword>lambda</span> (<span class=variable>b</span>)
+       (<span class=variable>alliance=?</span> (<span class=variable>enemy</span> <span class=variable>alliance</span>) (<span class=variable>squadron-alliance</span> <span class=variable>b</span>)))))
+  
+  (<span class=keyword>define</span> <span class=variable>attack*/c</span> 
+    (<span class=variable>and/c</span> (<span class=variable>listof</span> <span class=variable>attack/c</span>) 
+           (<span class=variable>setof</span> <span class=variable>attack/c</span>)
+           (<span class=variable>flat-named-contract</span> <span class=keyword>'</span>(<span class=variable>setof</span> <span class=variable>fighters</span>)
+            (<span class=keyword>lambda</span> (<span class=variable>x</span>) (<span class=variable>set?</span> (<span class=variable>map</span> <span class=variable>attack-fighters</span> <span class=variable>x</span>))))
+           (<span class=variable>flat-named-contract</span> <span class=keyword>'</span>(<span class=variable>setof</span> <span class=variable>bombers</span>)
+            (<span class=keyword>lambda</span> (<span class=variable>x</span>) (<span class=variable>set?</span> (<span class=variable>map</span> <span class=variable>attack-bombers</span> <span class=variable>x</span>))))))
+
+  (<span class=keyword>provide/contract</span>
+   <span class=comment>;; results for turn-end:</span>
+   [<span class=variable>struct</span> <span class=variable>from-deck</span>  ()]
+   [<span class=variable>struct</span> <span class=variable>from-stack</span> ([<span class=variable>count</span> <span class=variable>natural-number/c</span>])]
+
+   ...
+   
+   [<span class=variable>struct</span> <span class=variable>done</span>       ((<span class=variable>attacks</span> <span class=variable>attack*/c</span>) (<span class=variable>discards</span> <span class=variable>discard*/c</span>))]
+   [<span class=variable>struct</span> (<span class=variable>end</span> <span class=variable>done</span>) ((<span class=variable>attacks</span> <span class=variable>attack*/c</span>) (<span class=variable>discards</span> <span class=variable>discard*/c</span>) (<span class=variable>card</span> <span class=variable>borc/c</span>))]
+   [<span class=variable>struct</span> (<span class=variable>ret</span> <span class=variable>done</span>) ((<span class=variable>attacks</span> <span class=variable>attack*/c</span>) (<span class=variable>discards</span> <span class=variable>discard*/c</span>) (<span class=variable>card</span> <span class=variable>card?</span>))]
+   
+   [<span class=variable>make-attack</span>       (<span class=variable>-&gt;r</span> ([<span class=variable>f</span> <span class=variable>discard-fighter/c</span>][<span class=variable>b</span> (<span class=variable>and/c</span> <span class=variable>discard-bomber/c</span> (<span class=variable>opposed?</span> <span class=variable>f</span>))]) <span class=variable>attack/c</span>)]
+   [<span class=variable>attack-fighters</span>   (<span class=variable>-&gt;</span> <span class=variable>attack/c</span> <span class=variable>discard-fighter/c</span>)]
+   [<span class=variable>attack-bombers</span>    (<span class=variable>-&gt;</span> <span class=variable>attack/c</span> <span class=variable>discard-bomber/c</span>)]
+   ...
+</pre></div><p></p>
+<p>
+</p>
+<a name="node_sec_Temp_4"></a>
+<h2>Squadrons</h2>
+<p></p>
+<div align=left><pre class=scheme>  <span class=comment>;; -&gt; (Card -&gt; Boolean)</span>
+  <span class=comment>;; is this a card</span>
+  (<span class=keyword>define</span> (<span class=variable>all-same-name-or-wild-card</span> <span class=variable>squad</span>)
+    (<span class=keyword>define</span> <span class=variable>name</span> <span class=selfeval>&quot;&quot;</span>)
+    (<span class=variable>andmap</span> (<span class=keyword>lambda</span> (<span class=variable>crd</span>)
+	      (<span class=keyword>or</span> (<span class=variable>wild-card?</span> <span class=variable>crd</span>) 
+		  (<span class=keyword>let</span> ([<span class=variable>a</span> (<span class=variable>aircraft-name</span> <span class=variable>crd</span>)])
+		    (<span class=keyword>when</span> (<span class=variable>string=?</span> <span class=variable>name</span> <span class=selfeval>&quot;&quot;</span>) (<span class=keyword>set!</span> <span class=variable>name</span> <span class=variable>a</span>))
+		    (<span class=variable>string=?</span> <span class=variable>a</span> <span class=variable>name</span>))))
+            <span class=variable>squad</span>))
+
+  <span class=comment>;; Any -&gt; Boolean</span>
+  <span class=comment>;; is this list of cards a true squadron?</span>
+  (<span class=keyword>define</span> (<span class=variable>squadron?</span> <span class=variable>squad</span>)
+    (<span class=keyword>and</span> (<span class=variable>list?</span> <span class=variable>squad</span>) 
+         (<span class=variable>andmap</span> <span class=variable>card?</span> <span class=variable>squad</span>)
+         (<span class=variable>pair?</span> (<span class=variable>filter</span> <span class=variable>aircraft?</span> <span class=variable>squad</span>))
+	 (<span class=variable>all-same-name-or-wild-card</span> <span class=variable>squad</span>)))
+
+  (<span class=keyword>define</span> <span class=variable>squadron/c</span> (<span class=variable>flat-named-contract</span> <span class=selfeval>&quot;Squadron&quot;</span> <span class=variable>squadron?</span>))
+
+  (<span class=keyword>provide/contract</span> 
+    [<span class=variable>squadron/c</span>  <span class=variable>contract?</span>]
+    ...
+</pre></div><p></p>
+<p>
+For a brief tutorial on PLT Scheme's contract system, see 
+
+<a href="http://people.cs.uchicago.edu/~robby/plt-contracts-guide/">
+Findler and Felleisen's FAQ</a>
+
+.</p>
+<p>
+</p>
+<p></p>
+<div align=right class=colophon>Last modified: Monday, March 12th, 2007 7:13:38pm<br><div align=right class=advertisement>HTML conversion by <a href="http://www.ccs.neu.edu/~dorai/tex2page/tex2page-doc.html">TeX2page 20050501</a></div></div>
+</div>
+</body>
+</html>

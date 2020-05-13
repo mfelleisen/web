@@ -1,0 +1,29 @@
+<div time="1172417678">
+
+Richard writes: 
+<ol>
+ <li>the "run-harness" script should execute your test harness from Task 2;
+    it should expect no command-line arguments and should perform *NO*
+    input/output to stdin/stdout beyond that specified in the task.  (I/O
+    to other places is fine.)</li>
+
+ <li>Any test cases you write for Task2a should be in Tests/Project7.  We'll
+    continue this convention for later assignments; I won't mention this
+    again.</li>
+
+ <li><p>
+    WARNING: we were fairly lenient the first time around on handing files
+    in the wrong location for Project6.  Going forward -- and this includes
+    your resubmission for project 6 -- your files *must* be in the
+    specified locations, as of the deadline, or you will not receive credit
+    for the relevant tasks.</p>
+
+   <p>
+    (If you're having SVN problems with submitting, let me know *BEFORE*
+    the deadline, and I'll work with you to get those addressed.  But if
+    you don't say anything until after the deadline, there's nothing I can
+    do.)</p>
+ </li>
+</ol>
+
+</div>

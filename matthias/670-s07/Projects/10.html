@@ -1,0 +1,123 @@
+<html><head><title>Project 10</title></head><body bgcolor="white"><br /><hr width="80%" height="3" /><table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="15%" valign="top" align="left" rowspan="2"><table border="0"><tr><td><a href="../../index.html" style="text-decoration: none"><font color="grey"><b>Teaching</b></font></a></td></tr><tr><td><a href="../index.html" style="text-decoration: none"><font color="grey"><b>670 S '07</b></font></a></td></tr><tr><td><font color="black"><b>&nbsp;</b></font></td></tr><tr><td><a href="index.html" style="text-decoration: none"><font color="grey"><b>Projects</b></font></a></td></tr><tr><td><a href="presentations.html" style="text-decoration: none"><font color="grey"><b>Presentations</b></font></a></td></tr><tr><td><a href="programming.html" style="text-decoration: none"><font color="grey"><b>Programming</b></font></a></td></tr><tr><td><font color="black"><b>&nbsp;</b></font></td></tr><tr><td><a href="squadron.html" style="text-decoration: none"><font color="grey"><b>Squadron Scramble</b></font></a></td></tr><tr><td><a href="aircraft.html" style="text-decoration: none"><font color="grey"><b>Aircrafts</b></font></a></td></tr><tr><td><a href="1.html" style="text-decoration: none"><font color="grey"><b>Project 1</b></font></a></td></tr><tr><td><a href="2.html" style="text-decoration: none"><font color="grey"><b>Project 2</b></font></a></td></tr><tr><td><a href="3.html" style="text-decoration: none"><font color="grey"><b>Project 3</b></font></a></td></tr><tr><td><a href="4.html" style="text-decoration: none"><font color="grey"><b>Project 4</b></font></a></td></tr><tr><td><a href="5.html" style="text-decoration: none"><font color="grey"><b>Project 5</b></font></a></td></tr><tr><td><a href="6.html" style="text-decoration: none"><font color="grey"><b>Project 6</b></font></a></td></tr><tr><td><a href="7.html" style="text-decoration: none"><font color="grey"><b>Project 7</b></font></a></td></tr><tr><td><a href="8.html" style="text-decoration: none"><font color="grey"><b>Project 8</b></font></a></td></tr><tr><td><a href="9.html" style="text-decoration: none"><font color="grey"><b>Project 9</b></font></a></td></tr><tr><td><font color="black"><b>Project 10</b></font></td></tr><tr><td><a href="11.html" style="text-decoration: none"><font color="grey"><b>Project 11</b></font></a></td></tr><tr><td><a href="12.html" style="text-decoration: none"><font color="grey"><b>Project 12</b></font></a></td></tr><tr><td><a href="13.html" style="text-decoration: none"><font color="grey"><b>Project 13</b></font></a></td></tr></table></td><td width="3%" /><td valign="top" align="left"><h3>Project 10</h3></td>&nbsp;</tr><tr><td /><td valign="top" align="left" colspan="3"><div><div><p><font color="red">Due date: </font>3/23 : NOON</p>
+
+
+
+<h3>Running a Turn, Enforcing the Rules of the Game</h3>
+
+PROBLEM: a player may wish to discard a squadron with aircraft (A,1) plus
+ two wildcards even though some other player has already discarded (A,2)
+ (A,3) plus a wildcard as a squadron. This is not allowed. BUT players
+ don't know what others have discarded, so how can they check? 
+
+Project 12? 
+
+<p>The goal of this Project is to implement a rule checker for Squadron
+ Scramble. The rule checker is called by <code>play-one-turn</code>. It
+ consumes a player's representation and the result of playing one turn. It
+ determines whether the actions during the turn and the results of the turn
+ are consistent with the rules of the game.
+</p>
+
+<p>
+<font color="red">
+Your rule checker is <em>not</em> to enforce the rule that a player cannot
+discard/attack with a squadron if the same airplane type has been used to
+form a squadron before. Since the player doesn't receive all the necessary
+information, it is unfair to enforce the rule. 
+</font>
+A player shouldn't use the same aircraft in two separate turns with
+different wildcards for this purpose, and the player does have enough
+information to play by this portion of the rule. For simplicity though, we
+ignore this part, too. 
+</p>
+
+<p><b>Task 1:</b> [POINTS: 10] Design the rule checking function.</p>
+
+<pre>
+<code>
+<font size="-1">
+SEQUENCE DIAGRAM
+
+               TESTER      
+                |
+&lt; - I/O : 1 ---&gt;| 
+                |  create()
+           pp = |-----------------------------------&gt; ProxyPlayer 
+                |                                         |
+                |           first-hand(hand)              |
+                |----------------------------------------&gt;|
+                |                                         |
+                |                                         |
+                |  create / run-one-turn()                |
+                |----------&gt; Administrator                |
+                |              |                          |
+                |              | create()                 |
+                |          t = |----------&gt; Turn          |
+                |              |              |           |
+                |              |-------------------------&gt;|  take-turn(t)
+                |              |              |           |  
+                |              |              |           | &lt; --- I/O : 2 ---&gt;
+                |              |              |           |  
+                |              |              |&lt;----------| get-a-card-from-deck() 
+                |              |              |&lt;----------| get-cards-from-stack(n)
+                |              |              |           |  
+                |              |&lt;=========================| done 
+                |              |              |        ======
+                |              |              |        ======
+                               |-------------&gt;|             end()
+                               |            =====
+                               |            =====
+&lt; - I/O : 3 ---&gt;|
+  
+                
+I/O 1: TESTER reads an _xtrn_ <em>and</em> a _hand_ with all the necessary items
+       for the Administrator from standard input. 
+I/O 2: ProxyPlayer reads as many _mesg_ from standard input as there are
+       and then one _done_. 
+       The _mesg_s are turned into appropriate method calls. After
+       it reads _done_, the ProxyPlayer finishes its turn and returns the
+       specified information to <code>play-one-turn</code>. 
+I/O 3: TESTER writes one of the following to standard output and then
+       closes the port: 
+       -- a CONTRACT _resp_, if a <a href="contracts.html">contract</a> is violated;
+       -- a TIMING _resp_, if a <a href="contracts.html">timing contract</a> is violated;
+       -- a CHEATING _resp_, if a rule of the game is violated;
+       -- or the following five XML elements if the turn worked out okay: 
+         bool  %% is this the end of the battle?
+         borc  %% the return card (or false)
+         slst  %% the discards 
+         from  %% did the player take the cards from the stack or the deck?
+         atta  %% (possibly empty) series of attacks
+</font></code></pre>
+For your convenience, the message formats and the formats of test cases are
+collected <a href="MESSAGES4.txt">in one file (MESSAGES4).</a>
+
+<p><b>Task 2:</b> [POINTS: 10-50] The above diagram modifies the
+ interaction protocol of Projects 6 and 7 so that your test harness first
+ calls the proxy-players's <code>first-hand</code> method (basically a
+ non-empty list of cards) and then plays one turn.</p>
+
+<p>
+ Modify your test harness so that it plays according to the above protocol.
+</p>
+
+<p>
+ Also develop a test suite for your rule checker according to the
+ specifications. As for Projects 7 and 9 we will run all test cases against
+ all revisions of <code>play-one-turn</code>. For each of your tests that
+ discovers an error in some other rule checker, you will get an extra
+ point. If two (or more) of your test cases discover the same flaw, you
+ will receive <em>one</em> extra credit point, not two. You may receive at
+ most 40 extra credit points this way. 
+</p>
+
+<p><b>Task 3:</b> [POINTS: 5] Your third task is to design and implement a
+ test case administrator. It reads a test case, starts up your test
+ harness, and writes XML messages to standard output and listens for
+ transmissions on standard input. It compares the received input against
+ the specified output and decides whether <code>play-one-turn</code>
+ passed.
+</p>
+
+
+</div></div></td></tr></table><hr width="80%" height="3" /><table width="80%" align="center"><tr><td align="left"><font size="-2">last updated on Tue Jun  9 22:03:19 EDT 2009</font></td><td align="right"><font size="-2">generated with <a href="http://www.plt-scheme.org/">PLT Scheme</a></font></td></tr></table></body></html>

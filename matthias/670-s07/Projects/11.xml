@@ -1,0 +1,68 @@
+<week>
+<assignment due="3/30 : NOON" points="??/???">
+
+<!-- center><font size="+4" color="red">Draft</font></center -->
+
+<h3>Implement the Game Administrator, Groom Good Players</h3>
+
+<p>
+ The goal of this Project is to of the game administrator so that you can
+ conduct Squadron Scramble tournaments. For projects 9 and 10 you have
+ implemented some essential building blocks. So the purpose of this project
+ is really just to finish what you have started. 
+</p>
+
+<p>
+ Initially you should use two to six instances of your Project 6 player for
+ the tournaments. Once you can run tournaments you can use the framework to
+ develop and implement alternative player strategies. (We may run a
+ class-wide tournament with the best player from each team.) 
+</p>
+
+<p><b>Task 1:</b> [POINTS: 30] Implement the game administrator. It must
+ conduct complete games according to the rules of Squadron Scramble. That
+ is, it must run battles until (at least) one player has more than 250
+ points. For each battle, the administrator creates a new deck, shuffles
+ it, hands out first hands to all registered players, creates a one-card
+ stack, and finally starts the battle. At the end of a battle, it scores
+ all players and adds/subtracts the points of the battle to the point total
+ for each player.
+</p>
+
+<p>
+ You are free to design the game administrator and its interface. You must
+ ensure, however, that it can deal with an arbitrary number of
+ players. These players can register with the administrator when it is
+ created or afterwards.
+</p>
+
+<p>The task includes the addition of a callback protocol that informs
+ players of the loss of a discarded bomber squadron. That is, when player
+ 1 performs an attack with a fighter squadron on some bomber squadron of
+ player 2, the administrator must inform player 2 of this attack. The
+ new player method has this signature: 
+<pre><code>
+   player-inform       : player/c discard-bomber/c -> any
+   ;; inform player that the squadron was shot down 
+</code></pre>
+</p>
+
+<p>
+ Make sure that your administrator deals with failing and cheating players
+ in an appropriate manner. That is, if a player diverges, crashes, violates
+ the contracts of a turn, cheats, your administrator must ignore the turn
+ and throw the player out of the game.
+</p>
+
+<p><b>Task 2:</b> [POINTS: 15] Your second task is to design and implement
+ alternative strategies for playing the game. Think of at least three
+ different strategies and implement them in players. Then run some games to
+ find out which of the strategies performs best.
+</p>
+
+<p><b>Task 3:</b> [POINTS: 5] Describe the best strategy in a short,
+ two-paragraph memo (at most 400 words). </p>
+
+</assignment>
+</week>
+

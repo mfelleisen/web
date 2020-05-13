@@ -1,0 +1,36 @@
+<week>
+<assignment due="1/16 (in class)" points="7/7">
+
+<p>
+ <b>Objective:</b> to describe the essential elements of a "project story"
+</p>
+
+<hr />
+
+<p>
+ <b>Task 1:</b> Describe in a memo the process of buying gas for a passenger
+ car. You may wish to visit a near-by gas station and watch several
+ transactions at some pump, especially if you haven't bought gas in a
+ while. Limit: one page (letter format, 1in boundary, 11pt font, 16pt base
+ line; you may write less than one page) [POINTS: 2]
+</p>
+
+<p>
+ <b>Task 2:</b> Your second task is to analyze the story from the software
+ perspective. Describe the major concepts; then identify and describe the
+ use case[s]. Limit: one page (letter format, 1in boundary, 11pt font, 16pt
+ base line; you may write less than one page) [POINTS: 2]
+</p>
+
+<p>
+ Task 3: Download the tar bundle from the "Aircrafts" page (see tab on the
+ left). Design a program/script that changes the <code>index.xml</code>
+ file as follows: (1) it changes the nation attribute to "allies" or "axis"
+ as appropriate; (2) for an aircraft without image attribute, it creates an
+ image attribute of the shape `<code>image =
+ "question.jpg"</code>'. [POINTS: 3]
+</p>
+
+<p></p>
+</assignment>
+</week>

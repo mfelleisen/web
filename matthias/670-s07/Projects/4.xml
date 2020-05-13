@@ -1,0 +1,147 @@
+<week>
+<assignment due="2/2 : NOON" points="39/70">
+
+<h3>Representing Stacks, Decks, and Hands</h3>
+
+<p><b>Task 1:</b> [POINTS: 25] It is now time to design all basic,
+ obviously needed data representations: stacks, decks, and hands (how
+ players organize their cards).
+</p>
+
+<p>
+ To get you started, the listing below transliterates the interfaces from
+ my Scheme implementation into quasi-code that everyone should be able to
+ read. 
+</p>
+
+<a name="stack" />
+<p><b>Stack</b></p>
+
+<pre><code>
+   create  : card/c -> stack/c
+   ;; creates a stack from a single card
+
+   depth   : stack/c -> int
+   ;; how many cards are on the stack? <!--   ;; ASSUME: (depth s) &ge; 0 -->
+
+   push    : stack/c card/c -> stack/c
+   ;; add a card to the stack 
+
+   take    : stack/c int -> (listof card/c)
+   ;; (take s n) returns the first n cards from this stack <!--   ;; ASSUME: 0 &lt; n &le; (depth s) -->
+
+   pop!    : stack/c int -> stack/c
+   ;; creates a stack by removing the first n cards from this stack <!--   ;; ASSUME: 0 &lt; n &le; (depth s) -->
+</code></pre>
+
+<p><b>Deck</b></p>
+
+<pre><code>
+   create       : -> deck/c
+   ;; create a deck using the standard (directory) order of cards
+   
+   shuffle      : deck/c -> deck/c
+   ;; shuffle this deck (reasonably) randomly 
+   
+   empty?       : deck/c -> boolean?
+   ;; is this deck empty? 
+
+   take         : deck/c -> card/c
+   ;; look at the top card from this deck 
+   ;; ASSSUME: non-empty-deck/c
+
+   pop          : deck/c -> deck/c
+   ;; remove the top card from this deck <!-- ;; ASSUME: given non-empty-deck/c -->
+
+   list_to_deck : (listof card/c) -> deck/c
+   ;; create a deck from a list of cards
+
+   deck_to_list : deck/c -> (listof card/c)
+   ;; convert this deck to a list (needed?)
+</code></pre>
+
+<p><b>Hand</b></p>
+
+<p>
+ A "hand" is how the player organizes the cards on his hand. This is of
+ course completely up to you. Some people don't organize their cards at
+ all; others are hyper-organized and plan ahead. You will need to implement
+ the following functions, however, which also involves designing a
+ representation of squadrons: 
+</p>
+
+<pre><code>
+   create         : (listof card/c) -> hand/c
+   ;; organize a list of cards as a hand 
+
+   hand_to_list   : hand/c -> (listof card/c)
+   ;; convert the hand into a list of cards 
+
+   size           : hand/c -> int
+   ;; how many cards are on this hand? <!--   ;; ASSUME: (size h) &gt; 0 -->
+   
+   value          : hand/c -> int
+   ;; determine the value of a hand (10 for bomber, 5 per fighter)
+
+   completes      : hand/c -> (listof squadron/c)
+   ;; determines the complete squadrons on this hand <!--   ;; ASSUME: hand/c -> (listof (and squadron/c squadron-complete?)) -->
+
+   wildcards      : hand/c -> (listof wild-card/c)
+   ;; determine the available wild-cards on a hand
+
+   complementable : hand/c -> (listof squadron/c)
+   ;; which squadrons can benefit from one or two wild-cards
+   ;; [sorted by size] <!--   ;; ASSUME: hand/c -> (listof (and/c squadron/c squadron-incomplete?)) -->
+
+   plus           : hand/c (listof card/c) -> hand/c
+   ;; (plus h c) creates a hand from h and c<!--   ;; ASSUME: the cards in h are disjoint from the cards in c -->
+
+   minus          : hand/c (listof card/c) -> hand/c
+   ;; (minus h c) creates a hand by removing c from h <!--   ;; ASSUME: the cards in c are in h -->
+</code></pre>   
+
+<p><b>Squadron:</b></p>
+
+<p><b>Squadron = [listof card/c]</b></p>
+
+<pre><code>
+   squadron-first-craft : squadron/c -> aircraft/c
+   ;; extract an aircraft card from this squadron 
+
+   squadron-alliance    : squadron/c -> alliance/c
+   ;; to which alliance does this squadron belong? 
+
+   squadron-name        : squadron/c -> string?
+   ;; what is the name of this squadron? 
+
+   squadron-complete?   : squadron/c -> boolean?
+   ;; is this squadron complete?
+
+   squadron-incomplete? : squadron/c -> boolean?
+   ;; is this squadron complete?
+
+   squadron-fighter?    : squadron/c -> boolean?
+   ;; is this a fighter squadron?
+
+   squadron-bomber?     : squadron/c -> boolean?
+   ;; is this a bomber squadron? 
+
+   squadron-value       : squadron/c -> natural-number/c
+   ;; what is the value of this squadron? 
+</code></pre>
+
+<p><b>Task 2:</b> [POINTS: 4] Explain with a paragraph of at most 50 words
+  (per concept) why <code>Stack</code> requires <code>take</code>, why
+  <code>Deck</code> needs <code>empty?</code>, why <code>Hand</code> comes
+  with <code>wildcards</code>, and why a representation for
+  <code>Squadron</code> is needed (and what it entails). To get full
+  credit, your explanation must trace the needs for these functions and
+  data representations back to specific use cases.
+</p>
+
+<p><b>Task 3:</b> [POINTS: 10] Develop <em>two</em> interfaces for (a
+  representation of) <code>Turn</code>s, <code>Player</code>s, and
+  <code>Administrator</code>s. Use the above notation. Explain each choice
+  with a single paragraph. </p>
+</assignment>
+</week>

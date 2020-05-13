@@ -1,0 +1,105 @@
+<html><head><title>Lecture 7: Assertions and Contract</title></head><body bgcolor="white"><br /><hr width="80%" height="3" /><table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="15%" valign="top" align="left" rowspan="2"><table border="0"><tr><td><a href="../../index.html" style="text-decoration: none"><font color="grey"><b>Teaching</b></font></a></td></tr><tr><td><a href="../index.html" style="text-decoration: none"><font color="grey"><b>670 S '07</b></font></a></td></tr><tr><td><font color="black"><b>&nbsp;</b></font></td></tr><tr><td><a href="index.html" style="text-decoration: none"><font color="grey"><b>Lectures</b></font></a></td></tr><tr><td><a href="2.html" style="text-decoration: none"><font color="grey"><b>Lecture 2</b></font></a></td></tr><tr><td><a href="3.html" style="text-decoration: none"><font color="grey"><b>Lecture 3</b></font></a></td></tr><tr><td><a href="6.html" style="text-decoration: none"><font color="grey"><b>Lecture 6</b></font></a></td></tr><tr><td><font color="black"><b>Lecture 7</b></font></td></tr></table></td><td width="3%" /><td valign="top" align="left"><h3>Lecture 7: Assertions and Contract</h3></td>&nbsp;</tr><tr><td /><td valign="top" align="left" colspan="3"><div><div><div>
+<h2>Assertions and Proofs: Minimums in Arrays</h2>
+<p />
+<div align="left"><pre class="scheme"><span class="variable">class</span> <span class="variable">Min</span> {
+    
+    <span class="variable">static</span> <span class="variable">int</span> <span class="variable">min</span>(<span class="variable">int</span> <span class="variable">a</span>[]) { 
+	<span class="variable">//</span> <span class="variable">assert:</span> <span class="variable">a.length</span> <span class="variable">&gt;</span> <span class="selfeval">0</span> 
+	<span class="variable">int</span> <span class="variable">m</span> <span class="variable">=</span> <span class="variable">a</span>[<span class="selfeval">0</span>]<span class="comment">;</span>
+	<span class="variable">for</span>(<span class="variable">int</span> <span class="variable">elmnt</span> <span class="selfeval">:</span> <span class="variable">a</span>) 
+	    <span class="variable">m</span> <span class="variable">=</span> <span class="variable">smaller</span>(<span class="variable">elmnt</span><span class="keyword">,</span><span class="variable">m</span>)<span class="comment">;</span>
+	<span class="variable">//</span> <span class="variable">assert:</span> <span class="variable">forall</span>(<span class="variable">i</span> <span class="variable">in</span> [<span class="selfeval">0</span><span class="keyword">,</span><span class="variable">a.length</span>){ <span class="variable">m</span> <span class="variable">&lt;=</span> <span class="variable">a</span>[<span class="variable">i</span>] }
+	<span class="variable">//</span>       <span class="variable">&amp;</span> <span class="variable">exists</span>(<span class="variable">i</span> <span class="variable">in</span> [<span class="selfeval">0</span><span class="keyword">,</span><span class="variable">a.length</span>){ <span class="variable">m</span> <span class="variable">==</span> <span class="variable">a</span>[<span class="variable">i</span>] }
+	<span class="variable">return</span> <span class="variable">m</span><span class="comment">;</span>
+    }
+
+    <span class="variable">static</span> <span class="variable">int</span> <span class="variable">smaller</span>(<span class="variable">int</span> <span class="variable">x</span><span class="keyword">,</span> <span class="variable">int</span> <span class="variable">y</span>) {
+	<span class="variable">//</span> <span class="variable">assert:</span> <span class="variable">true</span>
+	<span class="keyword">if</span> (<span class="variable">x</span> <span class="variable">&lt;</span> <span class="variable">y</span>)
+	    <span class="variable">//</span> <span class="variable">assert:</span> <span class="variable">x</span> <span class="variable">&lt;</span> <span class="variable">y</span> 
+	    <span class="variable">return</span> <span class="variable">x</span><span class="comment">;</span>
+	<span class="keyword">else</span> 
+	    <span class="variable">//</span> <span class="variable">assert:</span> <span class="variable">y</span> <span class="variable">&lt;=</span> <span class="variable">x</span>
+	    <span class="variable">return</span> <span class="variable">y</span><span class="comment">;</span>
+    }
+
+    <span class="variable">public</span> <span class="variable">static</span> <span class="variable">void</span> <span class="variable">main</span>(<span class="variable">String</span> <span class="variable">argv</span>[]) { 
+	<span class="variable">int</span> <span class="variable">a</span>[] <span class="variable">=</span> {<span class="selfeval">-3</span><span class="keyword">,</span><span class="selfeval">2</span><span class="keyword">,</span><span class="selfeval">-8</span>}<span class="comment">;</span>
+	<span class="variable">int</span> <span class="variable">b</span>[] <span class="variable">=</span> {<span class="selfeval">-19</span>}<span class="comment">;</span>
+	<span class="variable">int</span> <span class="variable">c</span>[] <span class="variable">=</span> {}<span class="comment">;</span>
+	<span class="variable">System.out.println</span>(<span class="variable">min</span>(<span class="variable">a</span>) <span class="variable">+</span> <span class="selfeval">" == -8"</span>)<span class="comment">;</span>
+	<span class="variable">System.out.println</span>(<span class="variable">min</span>(<span class="variable">b</span>) <span class="variable">+</span> <span class="selfeval">" == -19"</span>)<span class="comment">;</span>
+	<span class="variable">try</span> {
+	    <span class="variable">System.out.println</span>(<span class="variable">min</span>(<span class="variable">c</span>))<span class="comment">;</span>
+	}
+	<span class="variable">catch</span> (<span class="variable">ArrayIndexOutOfBoundsException</span> <span class="variable">e</span>) {
+	    <span class="variable">System.out.println</span>(<span class="selfeval">"contract!"</span>)<span class="comment">;</span>
+	}
+    }
+
+}
+
+</pre></div><p />
+<p>
+</p>
+<a name="node_sec_Temp_2" />
+<h2>Assertions and Proofs: Minimums in Lists</h2>
+<p />
+<div align="left"><pre class="scheme"><span class="variable">class</span> <span class="variable">Cons</span> {
+    <span class="variable">private</span> <span class="variable">int</span>  <span class="variable">fst</span><span class="comment">;</span>
+    <span class="variable">private</span> <span class="variable">Cons</span> <span class="variable">rst</span><span class="comment">;</span>
+    <span class="variable">public</span> <span class="variable">Cons</span>(<span class="variable">int</span> <span class="variable">fst</span><span class="keyword">,</span> <span class="variable">Cons</span> <span class="variable">rst</span>) { 
+	<span class="variable">this.fst</span> <span class="variable">=</span> <span class="variable">fst</span><span class="comment">;</span>
+	<span class="variable">this.rst</span> <span class="variable">=</span> <span class="variable">rst</span><span class="comment">;</span>
+    }
+
+    <span class="variable">//</span> <span class="variable">find</span> <span class="variable">the</span> <span class="variable">minimum</span> <span class="variable">number</span> <span class="variable">on</span> <span class="variable">this</span> <span class="variable">list</span> 
+    <span class="variable">public</span> <span class="variable">int</span> <span class="variable">min</span>() { 
+	<span class="variable">int</span> <span class="variable">m</span><span class="comment">;</span>
+	<span class="keyword">if</span> (<span class="variable">null</span> <span class="variable">!=</span> <span class="variable">this.rst</span>)
+	    <span class="variable">m</span> <span class="variable">=</span> <span class="variable">smaller</span>(<span class="variable">this.fst</span><span class="keyword">,</span><span class="variable">this.rst.min</span>())<span class="comment">;</span>
+	<span class="keyword">else</span> 
+	    <span class="variable">m</span> <span class="variable">=</span> <span class="variable">this.fst</span><span class="comment">;</span>
+	<span class="variable">//</span> <span class="variable">assert:</span> <span class="variable">forall</span>(<span class="variable">i</span> <span class="variable">in</span> <span class="variable">Nat</span>) { <span class="variable">m</span> <span class="variable">&lt;=</span> <span class="variable">this.rest^i</span>()<span class="variable">.first</span>() }
+	<span class="variable">//</span>       <span class="variable">&amp;</span> <span class="variable">exists</span>(<span class="variable">i</span> <span class="variable">in</span> <span class="variable">Nat</span>) { <span class="variable">m</span> <span class="variable">=</span> <span class="variable">this.rest^i</span>()<span class="variable">.first</span>() }
+	<span class="variable">return</span> <span class="variable">m</span><span class="comment">;</span>
+    }
+
+    <span class="variable">private</span> <span class="variable">static</span> <span class="variable">int</span> <span class="variable">smaller</span>(<span class="variable">int</span> <span class="variable">x</span><span class="keyword">,</span> <span class="variable">int</span> <span class="variable">y</span>) {
+	<span class="keyword">if</span> (<span class="variable">x</span> <span class="variable">&lt;</span> <span class="variable">y</span>)
+	    <span class="variable">return</span> <span class="variable">x</span><span class="comment">;</span>
+	<span class="keyword">else</span> 
+	    <span class="variable">return</span> <span class="variable">y</span><span class="comment">;</span>
+    }
+    
+    <span class="variable">//</span> <span class="variable">effect:</span> <span class="variable">strange</span> 
+    <span class="variable">public</span> <span class="variable">void</span> <span class="variable">set</span>(<span class="variable">Cons</span> <span class="variable">nxt</span>) {
+	<span class="variable">this.rst</span> <span class="variable">=</span> <span class="variable">nxt</span><span class="comment">;</span>
+    }
+}
+
+<span class="variable">class</span> <span class="variable">Main2</span> {
+    <span class="variable">public</span> <span class="variable">static</span> <span class="variable">void</span> <span class="variable">main</span>(<span class="variable">String</span> <span class="variable">argv</span>[]) { 
+	<span class="variable">Cons</span> <span class="variable">mt</span> <span class="variable">=</span> <span class="variable">null</span><span class="comment">;</span>
+	<span class="variable">Cons</span> <span class="variable">c1</span> <span class="variable">=</span> <span class="variable">new</span> <span class="variable">Cons</span>(<span class="selfeval">+1</span><span class="keyword">,</span><span class="variable">mt</span>)<span class="comment">;</span>
+	<span class="variable">Cons</span> <span class="variable">c2</span> <span class="variable">=</span> <span class="variable">new</span> <span class="variable">Cons</span>(<span class="selfeval">-1</span><span class="keyword">,</span><span class="variable">c1</span>)<span class="comment">;</span>
+
+	<span class="variable">System.out.println</span>(<span class="variable">c2.min</span>() <span class="variable">+</span> <span class="selfeval">" == -1"</span>)<span class="comment">;</span>
+
+	<span class="variable">try</span> {
+	    <span class="variable">c2.set</span>(<span class="variable">c2</span>)<span class="comment">;</span>
+	    <span class="variable">System.out.println</span>(<span class="variable">c2.min</span>() <span class="variable">+</span> <span class="selfeval">" == -1"</span>)<span class="comment">;</span>
+	}
+	<span class="variable">catch</span> (<span class="variable">StackOverflowError</span> <span class="variable">e</span>) { 
+	    <span class="variable">System.out.println</span>(<span class="selfeval">"contract!"</span>)<span class="comment">;</span>
+	}
+    }
+}
+
+
+</pre></div><p />
+<p>
+</p>
+</div>
+
+</div></div></td></tr></table><hr width="80%" height="3" /><table width="80%" align="center"><tr><td align="left"><font size="-2">last updated on Tue Jun  9 22:03:19 EDT 2009</font></td><td align="right"><font size="-2">generated with <a href="http://www.plt-scheme.org/">PLT Scheme</a></font></td></tr></table></body></html>

@@ -1,0 +1,21 @@
+<div time="1174003018">
+
+Someone asked: 
+<blockquote>
+ Suppose the harness receives an ill-formed turn. In that case, it will
+ send a CONTRACT message and close its input port <em>before</em> the
+ administrator can send the GET-CARDs requests. Is this acceptable? 
+</blockquote>
+The answer is that this is <em>not</em> in the spirit of the assignment
+which says that "[t]he goal of these contracts is to prevent ill-behaved
+players from crashing the server or from upsetting its basic internal
+invariants." In this case, a bad test case designer would crash the test
+harness, and that's not what you wish to test. Instead you want to guard
+against this. 
+
+<p>
+ If you submit such a test case with an ill-formed test, my administrator
+ will discover this flaw and throw it out. 
+</p>
+
+</div>

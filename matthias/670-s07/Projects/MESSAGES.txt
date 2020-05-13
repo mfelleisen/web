@@ -1,0 +1,83 @@
+
+
+%% ------------------------------------------------------------------
+%% MESSAGES
+
+mesg = <TURN-GET-CARDS-FROM-STACK no=NatString />
+     | <TURN-GET-A-CARD-FROM-DECK />
+
+NatString = String that is interpreted as an Natural Number
+
+okay = <OKAY />
+
+%% ------------------------------------------------------------------
+%% FIRST HAND
+
+fsth = squd
+
+%% ------------------------------------------------------------------
+%% TURN
+
+turn = <TURN>
+        bool     %% is card on deck?                                 
+        stck     %% the entire stack                                 
+        slst     %% the list of bomber squadrons attackable by AXIS  
+        slst     %% the list of bomber squadrons attackable by ALLIES
+       </TURN>
+
+%% ------------------------------------------------------------------
+%% BOOLEAN 
+
+bool = <TRUE /> 
+     | <FALSE />
+
+%% ------------------------------------------------------------------
+%% STACK
+
+stck = <STACK> card ... </STACK>
+
+%% ------------------------------------------------------------------
+%% LIST OF SQUADRONS
+
+slst = <LIST> squd ... </LIST>
+
+%% ------------------------------------------------------------------
+%% SQUADRONs
+
+squd = <SQUADRON> card ... </SQUADRON> 
+
+%% ------------------------------------------------------------------
+%% CARDS
+
+card = <AIRCRAFT NAME=String TAG=String123 />
+     | <KEEPEM TAG=String456 />
+     | <VICTORY />
+
+String123 = "1" | "2" | "3"
+String456 = String123 | "4" | "5" | "6" 
+
+%% ------------------------------------------------------------------
+%% FINAL MESSAGE
+ 
+done = <END> borc slst atck ... </END>
+     | <RET> card slst atck ... </RET>
+
+atck = <ATTACK> 
+        squd %% the fighters and ...
+        squd %% ... the bombers that they attack 
+       </ATTACK>
+
+%% ------------------------------------------------------------------
+%% TEST CASES
+
+case = <CASE>
+        fsth  %% the first hand for the player 
+        borc  %% the top-most card on the deck or <FALSE /> if empty
+        stck  %% the stack 
+        slst  %% the AXIS attackable list 
+        slst  %% the ALLIES attackable list 
+        done  %% the expected result 
+      </CASE>
+
+borc = <FALSE /> 
+     | card 

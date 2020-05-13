@@ -1,0 +1,77 @@
+<html><head><title>Project 3</title></head><body bgcolor="white"><br /><hr width="80%" height="3" /><table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="15%" valign="top" align="left" rowspan="2"><table border="0"><tr><td><a href="../../index.html" style="text-decoration: none"><font color="grey"><b>Teaching</b></font></a></td></tr><tr><td><a href="../index.html" style="text-decoration: none"><font color="grey"><b>670 S '07</b></font></a></td></tr><tr><td><font color="black"><b>&nbsp;</b></font></td></tr><tr><td><a href="index.html" style="text-decoration: none"><font color="grey"><b>Projects</b></font></a></td></tr><tr><td><a href="presentations.html" style="text-decoration: none"><font color="grey"><b>Presentations</b></font></a></td></tr><tr><td><a href="programming.html" style="text-decoration: none"><font color="grey"><b>Programming</b></font></a></td></tr><tr><td><font color="black"><b>&nbsp;</b></font></td></tr><tr><td><a href="squadron.html" style="text-decoration: none"><font color="grey"><b>Squadron Scramble</b></font></a></td></tr><tr><td><a href="aircraft.html" style="text-decoration: none"><font color="grey"><b>Aircrafts</b></font></a></td></tr><tr><td><a href="1.html" style="text-decoration: none"><font color="grey"><b>Project 1</b></font></a></td></tr><tr><td><a href="2.html" style="text-decoration: none"><font color="grey"><b>Project 2</b></font></a></td></tr><tr><td><font color="black"><b>Project 3</b></font></td></tr><tr><td><a href="4.html" style="text-decoration: none"><font color="grey"><b>Project 4</b></font></a></td></tr><tr><td><a href="5.html" style="text-decoration: none"><font color="grey"><b>Project 5</b></font></a></td></tr><tr><td><a href="6.html" style="text-decoration: none"><font color="grey"><b>Project 6</b></font></a></td></tr><tr><td><a href="7.html" style="text-decoration: none"><font color="grey"><b>Project 7</b></font></a></td></tr><tr><td><a href="8.html" style="text-decoration: none"><font color="grey"><b>Project 8</b></font></a></td></tr><tr><td><a href="9.html" style="text-decoration: none"><font color="grey"><b>Project 9</b></font></a></td></tr><tr><td><a href="10.html" style="text-decoration: none"><font color="grey"><b>Project 10</b></font></a></td></tr><tr><td><a href="11.html" style="text-decoration: none"><font color="grey"><b>Project 11</b></font></a></td></tr><tr><td><a href="12.html" style="text-decoration: none"><font color="grey"><b>Project 12</b></font></a></td></tr><tr><td><a href="13.html" style="text-decoration: none"><font color="grey"><b>Project 13</b></font></a></td></tr></table></td><td width="3%" /><td valign="top" align="left"><h3>Project 3</h3></td>&nbsp;</tr><tr><td /><td valign="top" align="left" colspan="3"><div><div><p><font color="red">Due date: </font>1/26 : NOON</p>
+
+<h3>Representing Basic Data</h3>
+
+<p>
+ The first task is always to design a data representation for the basic
+ pieces of information. To do so, you study the use cases and develop
+ interfaces for these first. If the problem is complex, you may wish to use
+ role-playing to check whether implementations of the interfaces
+ suffice. My own inclination is to prepare interfaces and classes for
+ modifications later and to modify them as needed. 
+</p>
+
+<p><b>Task 1:</b> [POINTS: 4] The representation of cards suggests the
+  following hierarchy of data and functions:
+<pre>
+<font size="-1">
+<code>
+                       +-----------------+                
+                       | Card            |
+                       +-----------------+                
+                       | Image file_name |  
+                       +-----------------+                
+                                |                   
+                               / \                  
+                               ---                  
+                                |                   
+                    ---------------------           
+                    |                   |           
+               +----------+    +-----------------+  
+               | WildCard |    | Aircraft        |  
+               +----------+    +-----------------+  
+               +----------+    | String name     |  
+                     |         | Alliance a      |  
+                    / \        | Category forb   |  
+                    ---        +-----------------+  
+                     |         +-----------------+  
+         ---------------------           
+         |                   |           
+  +--------------+     +--------------+
+  | Victory      |     | Keepem       |
+  +--------------+     +--------------+
+  +--------------+     | int index    |
+  +--------------+     +--------------+
+                       +--------------+
+</code>
+</font>
+</pre>
+ Use classes or modules (or some other grouping mechanism in your chosen
+ language) to represent this form of data.</p>
+
+<p>
+ You may wish to consider adding the following functions:
+ <code>card-value</code>, <code>card-&lt;</code>,
+ <code>cards-have-same-name</code>. [POINT 1]
+</p>
+
+<p><b>Task 2:</b> [POINTS: 4] Your second task is to write up three use
+  cases: 
+<ol>
+<li>"Players register with administrator"</li>
+<li>"Player takes turn"</li>
+<li>"Administrator plays a complete game"</li>
+</ol>
+ Note that the third case uses the second one. </p>
+
+<p><b>Task 3:</b> [POINTS: 3] One goal of writing up use cases (or
+  "stories") is to find out whether some (possibly important) piece of
+  information is missing. Often you meet your customer only for scheduled
+  meetings and to prepare these meetings you write down questions. Your
+  task is to formulate <em>three questions</em> concerning Squadron
+  Scramble. The questions must be about the game per se, not its
+  implementation, because you are still working out the problem (not its
+  solution). 
+ </p>
+
+</div></div></td></tr></table><hr width="80%" height="3" /><table width="80%" align="center"><tr><td align="left"><font size="-2">last updated on Tue Jun  9 22:03:19 EDT 2009</font></td><td align="right"><font size="-2">generated with <a href="http://www.plt-scheme.org/">PLT Scheme</a></font></td></tr></table></body></html>

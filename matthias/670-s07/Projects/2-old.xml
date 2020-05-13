@@ -1,0 +1,13 @@
+<dvi>
+
+ Task 1: identify potential problems with the interface between the
+ gas-station software and the human user. Example: the user may forget to
+ press "yes" or "no" when asked whether a receipt is desired. [Points 5]
+
+ Task 2: modify this Java program [with comments and test cases] to
+ implement "snap backs" [Points 10]
+
+ Task 3: modify this Java program [without comments and test cases] to
+ implement "snap backs" [Points 10]
+
+</dvi>

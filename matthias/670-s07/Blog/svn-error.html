@@ -1,0 +1,71 @@
+
+<div>
+    <p>
+      Several people have reported seeing a very strange error message from
+      Subversion, usually when they're trying to submit, that looks like the
+      following:
+    </p>
+
+    <blockquote>
+      <pre>svn: MKCOL of '/670/!svn/wrk/1fbb671d-fe29-0410-8551-f45a352d06c5/lee1tim-leonsico/turnin/Project5':
+405 Method Not Allowed (http://svn.barzilay.org)
+      </pre>
+    </blockquote>
+
+    <p>
+      Since this error message gives you almost no information about what's
+      going on, people immediately email me in a panic when they see this.
+      Fortunately, it's usually pretty easy to get around this problem.
+    </p>
+    <p>
+      I've seen this error message arise in two cases.  First, you will see
+      this error if you try to add a directory to the repository that
+      already exists in the repository.  In this case, here's how to
+      proceed:
+    </p>
+
+    <ol>
+      <li>
+        <p>
+          Move your copy of the directory out of the way.
+        </p>
+      </li>
+
+      <li><p>
+          Use <code>svn revert</code> to back out of the
+          uncommitted <code>svn add</code> or <code>svn mkdir</code>.
+          Specify the name of the directory as an argument to the
+          revert command so you don't delete any other changes by
+          mistake.
+      </p></li>
+
+      <li><p>
+          Use <code>svn update</code> to get the repository's copy of
+          the new directory, then merge the contents of your copy in by
+          hand.
+      </p></li>
+    </ol>
+
+    <p>
+      Second, you will see this error as you're following
+      the <a
+             href="http://www.ccs.neu.edu/home/cobbe/670-s07/tools-lecture/node26.html">submission
+        instructions</a> but create your <code><i>&lt;TMP&gt;</i></code>
+      directory in your existing working copy.  To fix this, just delete
+      the temp directory and try again in another location.
+    </p>
+
+    <p>
+      The next time you see this error message, please try these steps to
+      fix the problem before you email me.
+    </p>
+
+    <p>
+      And, since this is a course about constructing robust software,
+      there's something else we can learn from this.  This error is a
+      perfect example of why you <strong>must</strong> think about your
+      software's error messages, and whether or not they'll be helpful to
+      your users&mdash;who almost certainly don't know the software as well
+      as you do.
+    </p>
+  </div>

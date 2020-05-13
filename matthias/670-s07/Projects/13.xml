@@ -1,0 +1,262 @@
+<week>
+<assignment due="4/16 : MIDNIGHT" points="??/???">
+
+<!-- center><font size="+4" color="red">Draft</font></center -->
+
+<h3>Squadron Scramble.com</h3>
+
+<p>
+ Your boss has finally revealed your client's true goal: the construction
+ of a vastly popular web service (over TCP/IP, not HTTP) for running
+ automated Squadron Scramble competitions. Specifically, the client wishes
+ to deploy a Squadron Scramble administrator on port 8080 where automated
+ Squadron Scramble players can register and play a game.
+</p>
+
+<p><b>Your Penultimate Task:</b> [POINTS: 10] For this project you should
+ <em>not</em> modify the code for your administrator or player, except that
+ the administrator code should live up to all the tests run for the test
+ fests. Otherwise it has slim chances of running a complete
+ tournament. Because of the importance of this task, I have decided to
+ break it out and assign points separately. Naturally if your administrator
+ already lives up to all the tests in the test fest, you will receive those
+ 10 points immediately. 
+</p>
+
+<p>
+ Please understand this task also as a hint for establishing the robustness
+ of your player <em>without</em> getting credit for it. 
+</p>
+
+<p><b>Your Final Task:</b> [POINTS: 50] Turn your game administrator from
+ <a href="11.html">Project 11</a> into an on-line administrator that serves
+ registration and game-playing requests on port 8080. Furthermore, turn
+ your best[*] game player into an on-line player that can register and play
+ a game of Squadron Scramble.
+</p>
+
+<p>
+ In order to create the communication among the game administrator and the
+ two to six players, you must use the remote proxy pattern instead. The
+ communication protocol for the remote proxy pattern is specified below. It
+ assumes a proxy player on the game administrator computer that
+ communicates with the proxy administrator on the player's computer. To get
+ started, the administrator computer should also run a server.
+</p>
+
+<p>[*] The word "best" means most stable, least prone to crashing. In case
+  of a true competition you would want to turn your best-strategy player
+  into the one that is the most stable, least prone to crashes. 
+</p>
+
+<hr />
+
+<h4>The Game Protocol</h4>
+
+<ol>
+
+<li>Use case: a player registers with the administrator  
+
+<p>
+ To implement this protocol for a distributed setting, you should employ
+ the remote proxy pattern. Then the interchange looks like this:
+</p>
+
+<pre><code><font size="-1">
+   SERVER                                        CLIENT
+=============================== WIRE ======================================
+
+                                                                  SomeOne 
+                                                                     |
+                                                                     |
+                                                           create()  |
+                        server             remote-admin &lt; ---------- |
+              create()     |                      |                  |
+ admin &lt;------------------ |                      |        create()  |    
+  |                        |                      |   player &lt; ----  | = p
+  |                        |                      |    |             |
+  |                        |                      |    | register(p) |
+  |                        |                      |&lt;---------------- |    
+  |                        |       REGISTER(n)    |    |             |
+  |                        | &lt;------------------- |                  |
+  |           create(n,..) |                      |    |             |  
+  |  remote-player &lt;------ | = r                  |    |             |  
+  |             |          |                      |    |             |
+  | register(r) |          |                      |    |             |
+  | &lt;--------------------- |                      |    |             |
+  |             |          .                      |    |             |
+  |             |          .                      |    |             |
+  |             |          . return: Boolean      |    |             |
+  | ==========> | ==============================> | ===============> |
+  |                                               |    |             |
+
+QoS: 5 seconds for registration 
+</font></code></pre>
+ Here <code>CLIENT</code> and <code>SERVER</code> are distinct processes
+ (possibly) running on distinct computers. 
+
+<p>Once the server receives a message to start the game (see next use
+ case), it does not create a remote-player but returns <code>false</code> to
+ the <code>remote-admin</code> immediately.
+</p>
+
+</li>
+
+
+<li>New use case: you starting a game: 
+<pre><code><font size="-1">
+   SERVER                                        CLIENT
+=============================== WIRE ==============================
+
+    YOU              server                 ... ... ... 
+     |               |    admin 
+     |    START()    |         |
+     | ------------> | start() |
+     |               | ------> |
+     |               | &lt;====== |
+     | &lt;============ |         |
+     |               |         |
+
+START: choose an appropriate message format
+</font></code></pre>
+
+<p>
+ Of course, it makes no sense to start a game unless enough players have
+ signed up for it. I suggest you display some information for each
+ registration message so that you know how many players are ready to play.
+</p>
+
+<p>
+ <font color="red">Hint: I recommend you use the <code>start</code> method
+ on the client side to run a thread that listens to the TCP connection and
+ dispatches to the proper player method. </font>
+</p>
+
+</li>
+
+<li>Use case: the player receives the first hand of cards
+
+<pre><code><font size="-1">
+   SERVER                                        CLIENT
+============================ WIRE ===========================
+
+ admin        remote-player          remote-admin      player 
+  |               |                       |               |    
+  | first-hand(h) |  FIRST-HAND(h)        | first-hand(h) |
+  | ------------> | --------------------> | ----------->  |
+  |               |                       |               |    
+  | &lt;============ | &lt;====================  | &lt;=========== |
+
+QoS: 5 seconds for handing over a hand 
+</font></code></pre>
+</li>
+
+<li>Use case: a player receives the turn from admin 
+
+<pre><code><font size="-1">
+   SERVER                                        CLIENT
+============================ WIRE ===========================
+
+ admin        remote-player          remote-admin      player 
+  |              |                       |              |    
+  | create()     |                       |              |    
+  | ----> turn   |                       |              |    
+  |         |    |                       |              |    
+  |         |    |                       |              |
+  | take(t) |    | TAKE(t)               |              |
+  | ------------>| --------------------> |              |
+  |         |    |                       | create()     |
+  |         |    |                     p | -----> remote-turn
+  |         |    |                       | take(p)|     |
+  |         |    |                       | -----------> |
+  |         |    |                       |        |     |
+  |         |    |                       |        |     |
+  .         .    .                       .        .     .
+  .         .    .                       .        .     .
+  .         .    .                       .        .     .
+  |         |    |                       |        |     |
+  | &lt;====== |&lt;== | &lt;===================  | &lt;===== |&lt;=== |
+
+QoS contract: a turn may not take more than 5 seconds 
+</font></code></pre>
+
+</li>
+
+<li>Use case: the player requests the top-most card from the deck or some
+  cards from the stack: 
+
+<pre><code><font size="-1">
+   SERVER                                        CLIENT
+=========================== WIRE =============================
+
+ admin  turn     remote-player         remote-turn player 
+  |      |            |                     |        |    
+  |      |   get(n)   |         GET(n)      | get(n) |
+  |      |&lt;---------- |&lt;-------------------- |&lt;----- |    
+  |      |            |                     |       |    
+  |      | ========== | ==================> |=====> |
+
+where
+ gafd() = get-a-card-from-deck() 
+        | get-cards-from-stack(int) 
+
+ <font color="red">QoS: NONE </font>
+</font></code></pre>
+
+</li>
+
+<li>Use case: the player is informed that one of its bomber squadrons was
+shot down
+
+<pre><code><font size="-1">
+   SERVER                                        CLIENT
+============================ WIRE ===========================
+
+ admin        remote-player          remote-admin      player 
+  |              |                       |              |    
+  | inform(m)    |       INFORM(m)       |   inform(m)  |    
+  | -----------> | --------------------> | -----------> |
+  |              |                       |              |    
+  | &lt;=========== | &lt;===================  | &lt;=========== |
+
+ <font color="red">QoS: 5 seconds </font>
+</font></code></pre>
+</li>
+
+<li>Use case: the player finds out that the game is over 
+
+<p>
+ You must equip your player with one more method: <code>tend</code>. The
+ method is called when the game is over, with a string that represents the
+ result. (Why is this not needed for the end of a battle?)
+</p>
+
+<pre><code><font size="-1">
+
+  ;; player-tend: String -> Void 
+
+
+   SERVER                                        CLIENT
+============================ WIRE ===========================
+
+ admin        remote-player          remote-admin      player 
+  |              |                       |              |    
+  | tend(s)      |       TEND(m)         |   tend(m)    |    
+  | -----------> | --------------------> | -----------> |
+  |              |                       |              |    
+
+QoS: NONE. (The server does <em>not</em> expect an acknowledgment for this
+method.) 
+</font></code></pre>
+
+</li>
+
+
+</ol>
+
+The format of the external XML-encoded messages are available in
+<a href="REMOTE.txt">a separate file.</a>
+
+</assignment>
+</week>
+

@@ -1,0 +1,126 @@
+<week>
+<assignment due="3/23 : NOON" points="??/???">
+
+<!-- center><font size="+4" color="red">Draft</font></center -->
+
+<h3>Running a Turn, Enforcing the Rules of the Game</h3>
+
+PROBLEM: a player may wish to discard a squadron with aircraft (A,1) plus
+ two wildcards even though some other player has already discarded (A,2)
+ (A,3) plus a wildcard as a squadron. This is not allowed. BUT players
+ don't know what others have discarded, so how can they check? 
+
+Project 12? 
+
+<p>The goal of this Project is to implement a rule checker for Squadron
+ Scramble. The rule checker is called by <code>play-one-turn</code>. It
+ consumes a player's representation and the result of playing one turn. It
+ determines whether the actions during the turn and the results of the turn
+ are consistent with the rules of the game.
+</p>
+
+<p>
+<font color="red">
+Your rule checker is <em>not</em> to enforce the rule that a player cannot
+discard/attack with a squadron if the same airplane type has been used to
+form a squadron before. Since the player doesn't receive all the necessary
+information, it is unfair to enforce the rule. 
+</font>
+A player shouldn't use the same aircraft in two separate turns with
+different wildcards for this purpose, and the player does have enough
+information to play by this portion of the rule. For simplicity though, we
+ignore this part, too. 
+</p>
+
+<p><b>Task 1:</b> [POINTS: 10] Design the rule checking function.</p>
+
+<pre>
+<code>
+<font size="-1">
+SEQUENCE DIAGRAM
+
+               TESTER      
+                |
+&lt; - I/O : 1 --->| 
+                |  create()
+           pp = |-----------------------------------> ProxyPlayer 
+                |                                         |
+                |           first-hand(hand)              |
+                |---------------------------------------->|
+                |                                         |
+                |                                         |
+                |  create / run-one-turn()                |
+                |----------> Administrator                |
+                |              |                          |
+                |              | create()                 |
+                |          t = |----------> Turn          |
+                |              |              |           |
+                |              |------------------------->|  take-turn(t)
+                |              |              |           |  
+                |              |              |           | &lt; --- I/O : 2 --->
+                |              |              |           |  
+                |              |              |&lt;----------| get-a-card-from-deck() 
+                |              |              |&lt;----------| get-cards-from-stack(n)
+                |              |              |           |  
+                |              |&lt;=========================| done 
+                |              |              |        ======
+                |              |              |        ======
+                               |------------->|             end()
+                               |            =====
+                               |            =====
+&lt; - I/O : 3 --->|
+  
+                
+I/O 1: TESTER reads an _xtrn_ <em>and</em> a _hand_ with all the necessary items
+       for the Administrator from standard input. 
+I/O 2: ProxyPlayer reads as many _mesg_ from standard input as there are
+       and then one _done_. 
+       The _mesg_s are turned into appropriate method calls. After
+       it reads _done_, the ProxyPlayer finishes its turn and returns the
+       specified information to <code>play-one-turn</code>. 
+I/O 3: TESTER writes one of the following to standard output and then
+       closes the port: 
+       -- a CONTRACT _resp_, if a <a href="contracts.html">contract</a> is violated;
+       -- a TIMING _resp_, if a <a href="contracts.html">timing contract</a> is violated;
+       -- a CHEATING _resp_, if a rule of the game is violated;
+       -- or the following five XML elements if the turn worked out okay: 
+         bool  %% is this the end of the battle?
+         borc  %% the return card (or false)
+         slst  %% the discards 
+         from  %% did the player take the cards from the stack or the deck?
+         atta  %% (possibly empty) series of attacks
+</font></code></pre>
+For your convenience, the message formats and the formats of test cases are
+collected <a href="MESSAGES4.txt">in one file (MESSAGES4).</a>
+
+<p><b>Task 2:</b> [POINTS: 10-50] The above diagram modifies the
+ interaction protocol of Projects 6 and 7 so that your test harness first
+ calls the proxy-players's <code>first-hand</code> method (basically a
+ non-empty list of cards) and then plays one turn.</p>
+
+<p>
+ Modify your test harness so that it plays according to the above protocol.
+</p>
+
+<p>
+ Also develop a test suite for your rule checker according to the
+ specifications. As for Projects 7 and 9 we will run all test cases against
+ all revisions of <code>play-one-turn</code>. For each of your tests that
+ discovers an error in some other rule checker, you will get an extra
+ point. If two (or more) of your test cases discover the same flaw, you
+ will receive <em>one</em> extra credit point, not two. You may receive at
+ most 40 extra credit points this way. 
+</p>
+
+<p><b>Task 3:</b> [POINTS: 5] Your third task is to design and implement a
+ test case administrator. It reads a test case, starts up your test
+ harness, and writes XML messages to standard output and listens for
+ transmissions on standard input. It compares the received input against
+ the specified output and decides whether <code>play-one-turn</code>
+ passed.
+</p>
+
+
+</assignment>
+</week>
+

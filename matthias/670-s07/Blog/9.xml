@@ -1,0 +1,19 @@
+<div time="1173575871">
+
+As of Project 9 your XML facilities must deal with two common elements: 
+<ol>
+<li>
+  COMMENTS. The test cases from Projects 6 and 7 have shown that people
+  need comments in their test cases so that they can create a pattern with
+  comments and fill in the gaps for the specific cases. 
+</li>
+
+<li>
+ ABBREVIATIONS. Your XML readers and parsers must tolerate both forms of
+ elements without sub-elements, i.e., both &lt;LIST&gt; &lt;/LIST&gt; as
+ well as &lt;LIST /&gt; must work for the XML representation of the empty
+ list. 
+</li>
+</ol>
+
+</div>

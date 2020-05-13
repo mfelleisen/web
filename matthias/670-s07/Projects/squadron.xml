@@ -1,0 +1,162 @@
+<div>
+
+<scheme>(red-title "The Game")</scheme>
+
+<p>
+ Squadron Scramble is a card game from the World War II era. <em>Restoration
+ Hardware</em> resurrected the game a couple of years ago, which is where I
+ bought it for my sons.
+</p>
+
+<p>
+ The objective of the game is to conduct an "air war" with the Axis and
+ Allies fighters and bombers depicted on the playing card. Naturally, each
+ "war" consists of "battles." A player earns points in each battle until some
+ player has won the "war." 
+</p>
+
+<p>
+ Note: I modified the rules of the game a bit for this course. My purpose is
+ to drive home some points concerning interactions among software
+ components. You may want to consult the rules for the original game and even
+ play it to get a feeling for the process but keep in mind that the rules
+ differ.
+</p>
+
+<scheme>(red-title "The Cards")</scheme>
+
+<p>
+ The deck includes airplane types from all major Axis and Allies
+ nations [see "Aircrafts" tab on the left], e.g., 
+
+<blockquote>
+<table align="center">
+<tr>
+<td align="center" valign="bottom">
+ <img src="SquadronScramble/Northrop A-17a.jpg" width="50" alt="[a17]" />
+</td>
+<td align="center" valign="bottom">
+ <img src="SquadronScramble/Dornier Do 26.jpg" width="50" alt="[do26]" />
+</td>
+<td align="center" valign="bottom">
+ <img src="SquadronScramble/Mitsubishi 96.jpg" width="50" alt="[p47]" />
+</td>
+</tr>
+<tr>
+<td align="center">Northrop A-17a (US)</td>
+<td align="center">Do 26 (German)</td>
+<td align="center">Mitsubishi 96 (Japan)</td>
+</tr>
+</table>
+</blockquote>
+ There are three cards for each airplane type in the deck. 
+</p>
+
+<p>
+ In addition to airplane cards, the deck contains one "Victory" card and
+ six "Keep'em Flying" cards: 
+<blockquote>
+<table align="center">
+<tr>
+<td align="center">
+ <img src="SquadronScramble/victory.jpg" width="50" alt="[Victory Card]" />
+</td>
+<td width="200" />
+<td align="center">
+ <img src="SquadronScramble/keepem.jpg" width="50" alt="[Kee'em Flying Card]" />
+</td>
+</tr>
+<tr>
+<td align="center">Victory Card</td>
+<td width="200" />
+<td align="center">Keep'em Flying Card</td>
+</tr>
+</table>
+</blockquote>
+ All seven of them may be used as wild cards. 
+</p>
+
+<scheme>(red-title "How to Conduct a Battle")</scheme>
+
+<p> 
+ At the beginning of a <font color="purple">battle</font>, the dealer
+ shuffles, the deck and then hands each player seven cards. The rest of the
+ deck is placed faced-down. The top-most card is turned over (face-up),
+ visible to all.
+</p>
+
+<p>
+ A randomly chosen player starts the battle. The remaining player get turns
+ in a clock-wise fashion. 
+</p>
+
+<p>
+ When it is a player's turn, the player must take exactly one card from the
+ face-down deck or at least one card from the face-up
+ <font color="purple">stack</font>. At the end of the turn, the player must
+ return one card, face-up to the top of the face-up deck, unless the player
+ has put <em>all</em> cards on his hand on the table and has thus finished
+ the battle.
+</p>
+
+<scheme>(question "What happens when the deck or discard pile runs out during play?"
+"The \"return one card\" rule implies that there is always at least one card
+ on the stack. It is possible, however, that the deck is exhausted after
+ some number of turns. In this case, your game administrator will turn the
+ discard stack into a deck, shuffle it, and use the top-most card as the new
+ stack. Question: is it still possible for a battle to run forever? Is this
+ question decidable? [What does this mean?]")
+</scheme>
+
+<p>
+ A squadron consists of three cards for the same airplane type or two cards
+ for the same type plus one wild card <font color="purple">or of one
+ aircraft card plus two wild cards.</font> If a player has
+ <font color="purple">complete squadrons</font> on his hand, he may put
+ <font color="purple">them all down</font> (face-up).
+ <font color="purple">As the player discards squadrons, he may use a
+ complete Axis [Allies] squadron of fighters to shoot down exactly one
+ Allies [Axis] squadron of bombers that some other player has already put
+ on the table.</font> The cards become his and can't change owner anymore.
+</p>
+
+<p>
+ When a player has put down all cards in his possession, the battle is
+ over. <font color="red">A battle is also over if the deck is empty and
+ there are fewer than three cards left on the stack.</font>
+</p>
+
+<scheme>(red-title "Scoring a Battle, ...")</scheme>
+
+<p>
+ When a battle has ended, each player receives fifteen (15) points for a
+ fighter squadron on the table and thirty (30) points for a bomber squadron,
+ including those shot down from other players. Every player must then 
+ subtract five points (5) per fighter card and ten (10) points per bomber
+ card on his hand. <font color="purple">The wild cards on a player's hand
+ cause no penalty.</font> 
+</p>
+
+<scheme>
+ (question "Can a player have a negative score?" "Yes.")
+</scheme>
+
+<scheme>(red-title "..., Winning a War")</scheme>
+
+<scheme>
+ (question "How many players may participate? When may they start participation?"
+ "
+ For a physical game, the rules recommend two to six players. For a virtual
+ game, you shouldn't set such arbitrary limits. [Or should you?] Naturally,
+ once a game has started, no additional players may join.")
+</scheme>
+
+<p>
+ The war is over when at least one player has collected at least 250 points
+ at the end of some battle. The player with the most points is the
+ winner. [A mathematician would ask at this point whether anything in this
+ set-up guarantees that there is a winner; a software engineer should ask
+ similar questions.]
+</p>
+
+</div>

@@ -1,0 +1,105 @@
+%% ------------------------------------------------------------------
+%%  a test case for play-one-turn (Project 9)
+
+esac = <ESAC>  %% a standard case 
+         xtrn  %% a turn
+         mesg  %% the get message from the proxy player to admin
+         done  %% the done message that the proxy player sends 
+
+               %% the expected result: 
+         bool  %% is this the end of the battle?
+         borc  %% the return card (or false)
+         slst  %% the discards 
+         from  %% did the player take the cards from the stack or the deck?
+         atta  %% (possibly empty) list of attacks       
+       </ESAC>
+
+     | <CONTRACT msg=String>  %% A CASE THAT CAUSES A BEHAVIORAL CONTRACT ERROR
+         xtrn  %% a turn
+         mesg  %% the get message from the proxy player to admin
+         done  %% the done message that the proxy player sends 
+       </CONTRACT>
+
+     | <TIMING msg=String>  %% A CASE THAT CAUSES A TIMING CONTRACT ERROR
+         xtrn  %% a turn
+         done  %% the done message that the proxy player sends 
+         mesg ...
+               %% a sequence of messages from the proxy player to admin
+       </TIMING>
+
+resp = <TIMING msg=String />
+     | <CONTRACT msg=String />
+
+%% ------------------------------------------------------------------
+%% a turn (for testing "turn playing")
+
+xtrn = <TURN name=String>
+        stck   %% the deck 
+        stck   %% the stack 
+        slst   %% ALLIES bombers, attackable by AXIS fighters
+        slst   %% AXIS bombers, attackable by ALLIES fighters
+       </TURN>
+
+%% ------------------------------------------------------------------
+%% STACK
+
+stck = <STACK> card ... </STACK>
+
+%% ------------------------------------------------------------------
+%% CARDS
+
+card = <AIRCRAFT NAME=String TAG=String />
+     | <KEEPEM TAG=String />
+     | <VICTORY />
+
+%% ------------------------------------------------------------------
+%% MESSAGES
+
+mesg = <TURN-GET-CARDS-FROM-STACK no=String />
+     | <TURN-GET-A-CARD-FROM-DECK />
+
+okay = <OKAY />
+
+%% ------------------------------------------------------------------
+%% FINAL MESSAGE
+ 
+done = <END> borc slst atck ... </END>
+     | <RET> card slst atck ... </RET>
+
+atck = <ATTACK> 
+        squd %% the fighters and ...
+        squd %% ... the bombers that they attack 
+       </ATTACK>
+
+%% ------------------------------------------------------------------
+%% SQUADRONs
+
+squd = <SQUADRON> card ... </SQUADRON> 
+
+%% ------------------------------------------------------------------
+%% BOOLEAN 
+
+bool = <TRUE /> 
+     | <FALSE />
+
+borc = <FALSE /> 
+     | card 
+
+%% ------------------------------------------------------------------
+%% LIST OF SQUADRONS
+
+slst = <LIST> squd ... </LIST>
+
+
+%% ------------------------------------------------------------------
+%%  the FROM format 
+
+from = <STACK NO=NumberString />
+     | <DECK />
+
+%% ------------------------------------------------------------------
+%%  a list of attacks 
+
+atta = <ATTACKS>
+        atck ...
+       </ATTACKS

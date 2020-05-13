@@ -1,0 +1,66 @@
+<div>
+
+<li>
+ Introduce cheating after they have seen contracts. Some cheating can be
+ discovered with contracts. For others, you may need checks inside of
+ functions. 
+</li>
+
+<li>
+ add the rule that a wildcard in discards can be replaced with the actual
+ card 
+</li>
+
+<li>
+ The technical part of software development is about managing the numerous
+ invariants and connections between code points and invariants. 
+
+ To this end, we use (1) the PL's type systems, which you know at this
+ point in your education; (2) a test suite system; and (3) software
+ contracts.
+</li>
+
+<li>
+ unit testing: white box (internal) testing, black box (external) testing; 
+ regression testing 
+ integration testing 
+</li>
+
+<li>
+ ...
+</li>
+
+<li>
+<p>
+ teach testing and run the testing competition after they have a player; 
+</p>
+
+<p>
+ then teach contract checking as a generalization of 
+ testing that removes "protection" clutter from functions 
+ and clarifies in an interface (signature) what methods 
+ do and don't do. re-run testing competition 
+</p>
+
+<p>
+ then introduce cheating and re-run the testing competition 
+</p>
+
+</li>
+
+<li>
+ AFTER they have implemented three kinds of players, ... 
+ <p></p>
+ integrate a player (and only player) from some other pair after the
+ contracts have been worked out; record the integration problems; that
+ annotate the problems that contracts caught; 
+
+ <p> 
+  That way they have a variety of players. Can they encounter the
+  behavioral subtyping problems that Robby and I did?  
+ </p>
+
+</li>
+
+
+</div>

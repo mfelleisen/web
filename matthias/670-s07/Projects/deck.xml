@@ -1,0 +1,27 @@
+
+<div>
+  <p>
+    This table is available as a tar bundle with an XML index file:
+    <a href="SquadronScramble/aircrafts.tar.gz">
+      aircrafts.tar.gz
+    </a>
+  </p>
+  <table align="center">
+    <quasiquote>
+      <tr>
+        <td>
+          Name of Aircraft
+        </td>
+        <td>
+          Type
+        </td>
+        <td>
+          Nation
+        </td>
+        <td>
+          Image
+        </td>
+      </tr>
+    </quasiquote>
+    <tr>
+      <td>

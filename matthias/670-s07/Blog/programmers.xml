@@ -1,0 +1,56 @@
+<div time="1172685016">
+
+Ventz P. sent me this blog entry on <a href="http://www.codinghorror.com/blog/archives/000781.html">Why
+ Programmers Can't Program</a>. This shouldn't happen to you, but just in case, I have included
+ FizzBuzz in first-year coding style: 
+
+<p>CS U 211, assignment 6/7/8:</p>
+<font size="-1">
+<code>
+<pre>
+  (define hundred (build-list 100 add1))
+  
+  ;; Nat Nat -> Boolean 
+  ;; is n a multiple of m? 
+  (define (multiple? n m) 
+    (zero? (remainder n m)))
+  
+  (map (lambda (n) 
+         (cond
+           [(and (multiple? n 3) (multiple? n 5)) "FizzBuzz"]
+           [(multiple? n 3) "Fizz"]
+           [(multiple? n 5) "Buzz"]
+           [else n]))
+       hundred)
+</pre>
+</code>
+</font>
+
+<p>CS U 213:</p>
+<font size="-1">
+<code>
+<pre>
+  class Main {
+      public static void main(String argv[]) {
+	  for(int i = 1; i &lte; 100; i++) { 
+	      if (multiple(i,3) &amp;&amp; multiple(i,5))
+		  System.out.println("FizzBuzz");
+	      else if (multiple(i,3)) 
+		  System.out.println("Fizz");
+	      else if (multiple(i,5)) 
+		  System.out.println("Buzz");
+	      else 
+		  System.out.println(i);
+	  }
+      }
+
+      // is m a multiple of n? 
+      public static boolean multiple(int m, int n) { 
+	  return (m % n) == 0; 
+      }
+  }
+</pre>
+</code>
+</font>
+
+</div>

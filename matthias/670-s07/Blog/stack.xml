@@ -1,0 +1,14 @@
+<div time="1169914559">
+
+<p>
+ Ventz Petkov pointed out a mistake in the signature of <code>pop</code> for
+ <a href="Projects/4.html#stack">Stacks in Project 4</a>, which I have fixed
+ now. (This just shows again the dangers of manually porting code to html.)
+</p>
+
+<p>
+ I have also noticed a missing requirement in <code>Squadron</code>, so
+ please take a second look. 
+</p>
+
+</div>

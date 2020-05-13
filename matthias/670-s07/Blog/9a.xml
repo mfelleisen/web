@@ -1,0 +1,44 @@
+<div time="1173835714">
+
+Four remarks on Project 9: 
+<ol>
+<li>
+  Ventz discovered an incomplete sentence in the problem statement. That's
+  fixed.
+</li>
+<li>
+  I have fixed the IO3 part, as discussed in class. For a regular
+  <code>esac</code> case, your harness for the administrator must produce
+  the specified outputs. For a <code>TIMING</code> case, it must send back
+  a <code>TIMING</code> response and for a <code>CONTRACT</code> it must
+  send back a <code>CONTRACT</code> response. 
+</li>
+<li>
+  I contemplated the requested change to <code>TIMING</code> cases, i.e.,
+  dropping the <code>done</code> part. I have decided against it. There is
+  no harm in specifying a <em>random</em> result for the turn, but I do
+  recommend keeping it short. 
+</li>
+<li>
+ Robyn asked an interesting question after class. Suppose you are
+ specifying a <code>TIMING</code> case, but your second message is a
+ request for too many cards from the stack. Which of these two violations
+ should we expect? There are two answers: 
+<ol>
+<li>
+ A timing error can only be discovered if the execution of a second request
+ for cards is about to execute. Before your program can do this, however,
+ your contract system must determine that the second call is
+ legitimate. During this phase, it will discover a problem with the "entry"
+ part of the behavioral contract (too many cards requested) and signal a
+ <code>CONTRACT</code> error. The timing error will never be discovered. 
+</li>
+<li>
+ You should ponder the following question then: Is the testing language of
+ Project 9 rich enough to express this case? 
+</li>
+</ol>
+</li>
+</ol>
+
+</div>

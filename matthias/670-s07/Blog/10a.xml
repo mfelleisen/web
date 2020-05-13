@@ -1,0 +1,18 @@
+<div time="1174437500">
+
+Several pairs have emailed me with the following question: 
+<blockquote>
+ Does <code>play-one-turn</code> know about the first hand that the player
+ is handed? Doesn't it need the information to determine whether the player
+ is cheating? 
+</blockquote>
+ As you may have noticed, by this time in the semester, I leave it to you
+ to organize your classes and methods. In a sense this is 213/370 material
+ and you're capable of designing/implementing it. As you do so, keep in
+ mind today's hint, i.e., Tester and Administrator are really one
+ conceptual unit. So you can create one huge method, but then it becomes
+ difficult to create internal unit tests. Or you can create two methods
+ plus one that combines them; in this case, you need to figure out where to
+ keep all the state. Choose wisely. 
+
+</div>

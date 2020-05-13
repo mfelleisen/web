@@ -1,0 +1,21 @@
+<div time="1172516184">
+
+<p>Brian G. points out that last week's "fiasco" is possibly an instance of Joel's
+<a href="http://www.joelonsoftware.com/articles/LeakyAbstractions.html">Law of
+Leaky Abstractions</a>. Well, I admit that abstractions over physical things are
+often "leaky"; the underlying hardware shows through in some ways or others. But at
+the same time, I also think that what Joel really perceives here is a fact that
+some of us call the "51%" solution: the fact that working programmers are
+undereducated and produce software that just barely performs and then think that
+this is "okay."</p>
+
+<p>In the spirit of testing, contracts and fighter planes: Slashdot has a great
+story today on the <a href="http://it.slashdot.org/it/07/02/25/2038217.shtml">
+Raptor (F22)'s first flight south</a>. Sadly enough this problem plagued the
+development of previous fighter planes, as you may recall from a lecture on bugs
+and testing etc a short while back.
+</p>
+
+<p>Three blog posts in one day is enough. Really.</p>
+
+</div>

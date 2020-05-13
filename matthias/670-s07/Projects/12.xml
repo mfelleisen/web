@@ -1,0 +1,75 @@
+<week>
+<assignment due="4/09 : 6pm" points="??/???">
+
+<!-- center><font size="+4" color="red">Draft</font></center -->
+
+<h3>Maintenance</h3>
+
+<p>
+ As promised, software doesn't exist in a vacuum. Customers change their
+ minds; rule designers alter their games. Software developers have no
+ choice but to follow their customers and adapt their software to the new
+ conditions. 
+</p>
+
+<p>
+ In our case, the rules of Squadron Scramble are changing.  Specifically,
+ the game designers have decided that players can exchange wildcards from
+ discarded squadrons. If a player discards any squadron using a wildcard
+ (or two), then during a later turn any player who has a corresponding
+ aircraft card in his possession may exchange the aircraft card for one of
+ the wildcards. 
+</p>
+
+<p>
+ For this rule interpret "discard" as "discarded fighter or bomber
+ squadron" or a "fighter squadron used to attack some bomber
+ squadron". Once a bomber squadron with wildcards is shot down, the
+ wildcards are lost for the rest of the battle. 
+</p>
+
+<p><b>Task 1:</b> [POINTS: 15] Design changes to the interfaces,
+  classes/modules, contracts, cheating detectors, and unit tests. Use
+  class diagrams, sequence diagrams, interface statements with contracts,
+  and prose to describe those pieces. 
+</p>
+
+<p><b>Task 2:</b> [POINTS: 10] Implement a "tracer bullet" (see "The
+  Pragmatic Programmer") version of your design.
+</p>
+
+<blockquote>
+<p><b>Note:</b>
+
+ What you have so far in your svn repository is "tracer bullet" code. [BTW,
+ the analogy isn't just violent, it's also broken---at least for someone 
+ like me, who has served in the military and shot machine guns.] It
+ demonstrates the working of the entire game system, end to end, for both
+ sides of the coin ("dealer" and "player"). It is missing some
+ functionality, but it's right on target. 
+</p>
+
+<p>
+ This part of the assignment suggests that you extend your "tracer bullet"
+ code to design without forgetting to create the design. Put differently,
+ consider parts 1 and 2 of the project as co-dependent, even though you
+ can do them separately and even though you are to deliver distinct
+ products. 
+</p>
+
+<p>
+ Recall from your readings in "Pragmatic Programmer" that "tracer bullet"
+ code evolves into the "real thing" but that portions of it could go
+ wrong. You must be prepared to back out of portions of your project, and
+ this is a warning that this specific piece of code could be just one of
+ those. 
+</p>
+</blockquote>
+
+<p><b>Task 3:</b> [POINTS: 5] Revise the XML-based protocol from Project 10
+  for testing your new interaction routines.
+</p>
+
+</assignment>
+</week>
+

@@ -1,0 +1,78 @@
+<div time="1174952901">
+
+On Mar 26, 2007, at 7:33 PM, someone wrote:
+
+<blockquote>
+<p>
+1. Are there any restrictions to what our player implementations are
+allowed to know about the game? I know the specified interfaces are
+intentionally limited but shouldn't our players be able to know things like
+scores, size of other player's hands, and any card that is discarded to the
+Stack? More specifically, can they keep track of anything that they would
+be able to if the game was played in real life?  
+</p>
+
+<p><font color="red">
+These sound like great suggestions for future extensions. For now, your
+player should know what it can find out through the functions/methods in
+the given interface. For everything else, you would need more guarantees.
+</font></p>
+
+<p>
+2. Related to 1, can our player keep track of every card placed on the
+discard stack? Once again, this is limited by the interface but it's
+something that could conceivably happen in real life.
+</p>
+
+<p><font color="red">
+Since the player can inspect the entire stack during a turn, the answer is
+yes. Can it see cards that are played and disappear between turn n and turn
+n+1? No. 
+</font></p>
+
+<p>
+3. What happens when a player requests to register in the middle of the game? 
+</p>
+
+<p><font color="red">
+Impossible. 
+</font></p>
+
+<p>
+Are they queued for a turn (and dealt a fresh 7 once they're reached) or
+are they forced to wait for the next battle before entering? I could make
+arguments for either approach. 
+</p>
+
+<p><font color="red">
+No.
+</font></p>
+
+<p>
+4. When a player is caught cheating what happens to their hand? Placed
+aside before the nextBattle/newDeck? 
+</p>
+
+<p><font color="red">
+Their hand is ignored. But again, this sounds like a great idea for a future change request. 
+</font></p>
+
+On Mar 26, 2007, at 6:24 PM, someone else wrote:
+
+<p>
+ For task 3, you want the optimal strategy, is this for a human player,
+ knowing everything ... or ... is it for a squadron scramble computer
+ player, where all they know about is ...
+</p>
+
+<p><font color="red"> 
+This should be "describe your best strategy" meaning the automated player
+that does best in your tournaments. Keep in mind that the interfaces are
+given. You may not assume any additional knowledge on the side of the
+player. 
+</font></p>
+
+</blockquote>
+Just in case: my answers are in red. 
+
+</div>

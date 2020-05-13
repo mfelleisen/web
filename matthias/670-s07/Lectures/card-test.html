@@ -1,0 +1,81 @@
+<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--
+
+Generated from card-test.tex by tex2page, v 2003-08-16
+(running on MzScheme 369.6, unix), 
+(c) Dorai Sitaram, 
+http://www.ccs.neu.edu/~dorai/tex2page/tex2page-doc.html
+
+-->
+<head>
+<title>
+card-test
+</title>
+<link rel="stylesheet" type="text/css" href="card-test-Z-S.css" title=default>
+<meta name=robots content="index,follow">
+</head>
+<body>
+<p>
+</p>
+<p>
+</p>
+<div align=left><pre class=scheme>(<span class=variable>module</span> <span class=variable>cards-test</span> <span class=variable>mzscheme</span>
+  (<span class=variable>require</span> <span class=selfeval>&quot;cards.scm&quot;</span>)
+  (<span class=variable>require</span> <span class=selfeval>&quot;testing.scm&quot;</span>)
+  
+  <span class=comment>;; --- cards</span>
+  
+  (<span class=variable>check-expect</span> (<span class=variable>card&lt;=?</span> (<span class=variable>make-victory</span> <span class=selfeval>&quot;image&quot;</span>) (<span class=variable>make-keepem</span> <span class=selfeval>&quot;image&quot;</span> <span class=selfeval>1</span>))
+                <span class=selfeval>#t</span>)
+  (<span class=variable>check-expect</span> (<span class=variable>card&lt;=?</span> (<span class=variable>make-keepem</span> <span class=selfeval>&quot;image&quot;</span> <span class=selfeval>1</span>) (<span class=variable>make-victory</span> <span class=selfeval>&quot;image&quot;</span>))
+                <span class=selfeval>#f</span>)
+  (<span class=variable>check-expect</span> (<span class=variable>card&lt;=?</span> (<span class=variable>make-keepem</span> <span class=selfeval>&quot;image&quot;</span> <span class=selfeval>1</span>) (<span class=variable>make-keepem</span> <span class=selfeval>&quot;image&quot;</span> <span class=selfeval>2</span>))
+                <span class=selfeval>#t</span>)
+  (<span class=variable>check-expect</span> (<span class=variable>card&lt;=?</span> (<span class=variable>make-keepem</span> <span class=selfeval>&quot;image&quot;</span> <span class=selfeval>2</span>) (<span class=variable>make-keepem</span> <span class=selfeval>&quot;image&quot;</span> <span class=selfeval>1</span>))
+                <span class=selfeval>#f</span>)
+  (<span class=variable>check-expect</span> (<span class=variable>card&lt;=?</span> (<span class=variable>make-aircraft</span> <span class=selfeval>&quot;image&quot;</span> <span class=selfeval>&quot;a&quot;</span> <span class=selfeval>2</span> <span class=variable>FIGHTER</span> <span class=variable>ALLIES</span>)
+                         (<span class=variable>make-aircraft</span> <span class=selfeval>&quot;image&quot;</span> <span class=selfeval>&quot;a&quot;</span> <span class=selfeval>1</span> <span class=variable>FIGHTER</span> <span class=variable>ALLIES</span>))
+                <span class=selfeval>#f</span>)
+  (<span class=variable>check-expect</span> (<span class=variable>card&lt;=?</span> (<span class=variable>make-aircraft</span> <span class=selfeval>&quot;image&quot;</span> <span class=selfeval>&quot;a&quot;</span> <span class=selfeval>1</span> <span class=variable>FIGHTER</span> <span class=variable>ALLIES</span>)
+                         (<span class=variable>make-aircraft</span> <span class=selfeval>&quot;image&quot;</span> <span class=selfeval>&quot;a&quot;</span> <span class=selfeval>2</span> <span class=variable>FIGHTER</span> <span class=variable>ALLIES</span>))
+                <span class=selfeval>#t</span>)
+  (<span class=variable>check-expect</span> (<span class=variable>card&lt;=?</span> (<span class=variable>make-aircraft</span> <span class=selfeval>&quot;image&quot;</span> <span class=selfeval>&quot;a&quot;</span> <span class=selfeval>1</span> <span class=variable>FIGHTER</span> <span class=variable>ALLIES</span>)
+                         (<span class=variable>make-aircraft</span> <span class=selfeval>&quot;image&quot;</span> <span class=selfeval>&quot;b&quot;</span> <span class=selfeval>2</span> <span class=variable>FIGHTER</span> <span class=variable>ALLIES</span>))
+                <span class=selfeval>#t</span>)
+  (<span class=variable>check-expect</span> (<span class=variable>card&lt;=?</span> (<span class=variable>make-aircraft</span> <span class=selfeval>&quot;image&quot;</span> <span class=selfeval>&quot;a&quot;</span> <span class=selfeval>1</span> <span class=variable>FIGHTER</span> <span class=variable>ALLIES</span>)
+                         (<span class=variable>make-victory</span> <span class=selfeval>&quot;image&quot;</span>))
+                <span class=selfeval>#f</span>)
+  
+  <span class=comment>;; --- card-same-name</span>
+  
+  (<span class=variable>check-expect</span> 
+   (<span class=variable>card-same-name?</span> (<span class=variable>make-aircraft</span> <span class=selfeval>&quot;image&quot;</span> <span class=selfeval>&quot;a&quot;</span> <span class=selfeval>1</span> <span class=variable>FIGHTER</span> <span class=variable>ALLIES</span>)
+                    (<span class=variable>make-aircraft</span> <span class=selfeval>&quot;image&quot;</span> <span class=selfeval>&quot;a&quot;</span> <span class=selfeval>1</span> <span class=variable>FIGHTER</span> <span class=variable>ALLIES</span>))
+   <span class=selfeval>#t</span>)
+  
+  (<span class=variable>check-expect</span> 
+   (<span class=variable>card-same-name?</span> (<span class=variable>make-aircraft</span> <span class=selfeval>&quot;image&quot;</span> <span class=selfeval>&quot;a&quot;</span> <span class=selfeval>1</span> <span class=variable>FIGHTER</span> <span class=variable>ALLIES</span>)
+                    (<span class=variable>make-aircraft</span> <span class=selfeval>&quot;image&quot;</span> <span class=selfeval>&quot;b&quot;</span> <span class=selfeval>1</span> <span class=variable>FIGHTER</span> <span class=variable>ALLIES</span>))
+   <span class=selfeval>#f</span>)
+  
+  (<span class=variable>check-expect</span> 
+   (<span class=variable>card-same-name?</span> (<span class=variable>make-keepem</span> <span class=selfeval>&quot;image&quot;</span> <span class=selfeval>1</span>) (<span class=variable>make-keepem</span> <span class=selfeval>&quot;image&quot;</span> <span class=selfeval>1</span>))
+   <span class=selfeval>#t</span>)
+  
+  (<span class=variable>check-expect</span> 
+   (<span class=variable>card-same-name?</span> (<span class=variable>make-keepem</span> <span class=selfeval>&quot;image&quot;</span> <span class=selfeval>1</span>) (<span class=variable>make-victory</span> <span class=selfeval>&quot;image&quot;</span>))
+   <span class=selfeval>#t</span>)
+  
+  (<span class=variable>generate-report</span>)
+  )
+
+</pre></div><p></p>
+<p>
+</p>
+<div align=right class=colophon>
+<i>Last modified: Friday, January 26th, 2007<br>
+HTML conversion by <a href="http://www.ccs.neu.edu/~dorai/tex2page/tex2page-doc.html">TeX2page 2003-08-16</a></i>
+</div>
+</body>
+</html>

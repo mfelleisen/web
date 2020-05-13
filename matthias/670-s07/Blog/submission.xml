@@ -1,0 +1,65 @@
+<div time="1169590285">
+<b>SVN Project Structure:</b>
+
+<p>
+ If we specify a directory name or filename in the SVN repository, your
+ turnin tree must match that name *exactly* -- including case and
+ punctuation.
+</p>
+
+<p>
+  In the notes for lecture 3, we stated that each project statement would
+  contain the name of the directory that you are to create within the
+  <code>turnin</code> directory.  For simplicity, we will simply use the
+  pattern established by the previous assignment: <code>Project2</code>,
+  <code>Project3</code>, <code>Project4</code>, and so on.
+</p>
+
+<p>
+  For project 3 and forwards, your <code>README</code> file and the
+  required scripts (<code>compile</code>, etc.) must appear at top-level
+  within the project directory.  You may structure your code any way you
+  like within the project directory, but your <code>README</code> file must
+  contain a roadmap, as discussed in lecture 3.  So, if you choose to use
+  Java, you may create the directory structure corresponding to your code's
+  packages.
+</p>
+
+<p>
+  Any memos should appear within a <code>Memos/Project<i>N</i></code>
+  directory.  The <code>Memos</code> directory must appear at top-level
+  within the main project directory.  (Rationale: we specify that the
+  project name must appear twice within the path so that you can keep all
+  of the memos you write to us in your <code>work</code> directory, and
+  keep them well-organized, and we can find the memos easily when we
+  grade.)
+</p>
+
+<p>
+  Finally: In lecture 3, we asked that your <code>README</code> file
+  include a list of which parts you attempted.  Since this is information
+  is to be included on the cover page that you submit, you do not need to
+  include this in your <code>README</code>.
+</p>
+
+<p>
+  To summarize:
+<pre>
+<code>
+  ProjectN
+   |
+   +---- Memos
+   |     |
+   |     +---- ProjectN
+   |            |
+   |            +---- memos here as necessary
+   |
+   +---- README
+   +---- compile
+   +---- run
+   +---- run-tests
+   +---- code, in subdirectories as appropriate.
+</code>
+</pre>
+</p>
+</div>

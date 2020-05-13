@@ -1,0 +1,107 @@
+\documentstyle{article}
+
+\setkeyword{define-enumerate provide def/prov require provide/contract}
+
+\begin{document}
+
+\subsection*{Assertions and Proofs: Minimums in Arrays}
+
+\begin{schemedisplay}
+class Min {
+    
+    static int min(int a[]) { 
+	// assert: a.length > 0 
+	int m = a[0]; 
+	for(int elmnt : a) 
+	    m = smaller(elmnt,m);
+	// assert: forall(i in [0,a.length){ m <= a[i] }
+	//       & exists(i in [0,a.length){ m == a[i] }
+	return m; 
+    }
+
+    static int smaller(int x, int y) {
+	// assert: true
+	if (x < y)
+	    // assert: x < y 
+	    return x; 
+	else 
+	    // assert: y <= x
+	    return y; 
+    }
+
+    public static void main(String argv[]) { 
+	int a[] = {-3,2,-8};
+	int b[] = {-19};
+	int c[] = {};
+	System.out.println(min(a) + " == -8");
+	System.out.println(min(b) + " == -19");
+	try {
+	    System.out.println(min(c)); 
+	}
+	catch (ArrayIndexOutOfBoundsException e) {
+	    System.out.println("contract!"); 
+	}
+    }
+
+}
+
+\end{schemedisplay}
+
+\subsection*{Assertions and Proofs: Minimums in Lists}
+
+\begin{schemedisplay}
+class Cons {
+    private int  fst; 
+    private Cons rst; 
+    public Cons(int fst, Cons rst) { 
+	this.fst = fst; 
+	this.rst = rst; 
+    }
+
+    // find the minimum number on this list 
+    public int min() { 
+	int m; 
+	if (null != this.rst)
+	    m = smaller(this.fst,this.rst.min()); 
+	else 
+	    m = this.fst; 
+	// assert: forall(i in Nat) { m <= this.rest^i().first() }
+	//       & exists(i in Nat) { m = this.rest^i().first() }
+	return m; 
+    }
+
+    private static int smaller(int x, int y) {
+	if (x < y)
+	    return x; 
+	else 
+	    return y; 
+    }
+    
+    // effect: strange 
+    public void set(Cons nxt) {
+	this.rst = nxt; 
+    }
+}
+
+class Main2 {
+    public static void main(String argv[]) { 
+	Cons mt = null; 
+	Cons c1 = new Cons(+1,mt); 
+	Cons c2 = new Cons(-1,c1); 
+
+	System.out.println(c2.min() + " == -1");
+
+	try {
+	    c2.set(c2);
+	    System.out.println(c2.min() + " == -1");
+	}
+	catch (StackOverflowError e) { 
+	    System.out.println("contract!");
+	}
+    }
+}
+
+
+\end{schemedisplay}
+
+\end{document}

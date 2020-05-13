@@ -1,0 +1,37 @@
+%% ------------------------------------------------------------------
+%% a turn (for testing "turn playing")
+
+xtrn = <TURN name=String>
+        stck   %% the deck 
+        stck   %% the stack 
+        slst   %% ALLIES bombers, attackable by AXIS fighters
+        slst   %% AXIS bombers, attackable by ALLIES fighters
+       </TURN>
+
+%% ------------------------------------------------------------------
+%%  a list of attacks 
+
+atta = <ATTACKS>
+        atck ...
+       </ATTACKS
+
+%% ------------------------------------------------------------------
+%%  a test case for play-one-turn 
+
+esac = <ESAC>
+         xtrn  %% a turn
+         mesg  %% the get message that the proxy player sends 
+	 done  %% the done message that the proxy player sends 
+               %% the expected result: 
+         bool  %% is this the end of the battle?
+         borc  %% the return card (or false)
+         slst  %% the discards 
+         from  %% did the player take the cards from the stack or the deck?
+         atta  %% (possibly empty) list of attacks       
+       </ESAC>
+
+%% ------------------------------------------------------------------
+%%  the FROM format 
+
+from = <STACK NO=NumberString />
+     | <DECK />

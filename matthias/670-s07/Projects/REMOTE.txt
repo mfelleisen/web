@@ -1,0 +1,123 @@
+%% ==================================================================
+%%  REMOTE MESSAGES FOR PROJECT 13
+
+%% ------------------------------------------------------------------
+%% USE CASE: a player registers with the administrator  
+
+REGISTER(n) = <REGISTER name=String />
+
+response = bool
+  <TRUE />  : the server has successfully registered the player
+  <FALSE /> : the registration failed 
+
+%% ------------------------------------------------------------------
+%% USE CASE: the player receives the first hand of cards
+
+FIRST-HAND(h) = fsth 
+
+response = <TRUE />
+  message arrived 
+
+%% ------------------------------------------------------------------
+%% USE CASE: a player receives the turn from admin 
+
+TAKE(t) = turn 
+
+response = done 
+ the player's actions (besides card access)
+
+%% ------------------------------------------------------------------
+%% USE CASE: the player requests the top-most card from the deck 
+
+GET() = mesg 
+
+response = card
+	 | okay 
+
+%% ------------------------------------------------------------------
+%% USE CASE: inform player that a bomber squadron was shot down
+
+INFORM(m) = <INFORM>
+               squd
+            </INFORM>
+
+response = <TRUE />
+
+%% ------------------------------------------------------------------
+%% Use case: the player finds out that the game is over 
+
+TEND(s) = <TEND msg=String />
+
+response: none 
+
+%% ==================================================================
+%% DATA DEFINITIONS
+
+
+%% ------------------------------------------------------------------
+%% BOOLEAN 
+
+bool = <TRUE /> 
+     | <FALSE />
+
+%% ------------------------------------------------------------------
+%% FIRST HAND
+
+fsth = squd
+
+%% ------------------------------------------------------------------
+%% TURN
+
+turn = <TURN>
+        bool     %% is card on deck?                                 
+        stck     %% the entire stack                                 
+        slst     %% the list of bomber squadrons attackable by AXIS  
+        slst     %% the list of bomber squadrons attackable by ALLIES
+       </TURN>
+
+%% ------------------------------------------------------------------
+%% TURN RESULT
+ 
+done = <END> borc slst atck ... </END>
+     | <RET> card slst atck ... </RET>
+
+atck = <ATTACK> 
+        squd %% the fighters and ...
+        squd %% ... the bombers that they attack 
+       </ATTACK>
+
+%% ------------------------------------------------------------------
+%% STACK
+
+stck = <STACK> card ... </STACK>
+
+%% ------------------------------------------------------------------
+%% LIST OF SQUADRONS
+
+slst = <LIST> squd ... </LIST>
+
+%% ------------------------------------------------------------------
+%% SQUADRONs
+
+squd = <SQUADRON> card ... </SQUADRON> 
+
+%% ------------------------------------------------------------------
+%% BOOLEAN or Card 
+
+borc = <FALSE /> 
+     | card 
+
+%% ------------------------------------------------------------------
+%% CARDS
+
+card = <AIRCRAFT NAME=String TAG=String />
+     | <KEEPEM TAG=String />
+     | <VICTORY />
+
+%% ------------------------------------------------------------------
+%% MESSAGES
+
+mesg = <TURN-GET-CARDS-FROM-STACK no=String />
+     | <TURN-GET-A-CARD-FROM-DECK />
+
+okay = <OKAY />

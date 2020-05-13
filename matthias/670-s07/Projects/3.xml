@@ -1,0 +1,79 @@
+<week>
+<assignment due="1/26 : NOON" points="11/31">
+
+<h3>Representing Basic Data</h3>
+
+<p>
+ The first task is always to design a data representation for the basic
+ pieces of information. To do so, you study the use cases and develop
+ interfaces for these first. If the problem is complex, you may wish to use
+ role-playing to check whether implementations of the interfaces
+ suffice. My own inclination is to prepare interfaces and classes for
+ modifications later and to modify them as needed. 
+</p>
+
+<p><b>Task 1:</b> [POINTS: 4] The representation of cards suggests the
+  following hierarchy of data and functions:
+<pre>
+<font size="-1">
+<code>
+                       +-----------------+                
+                       | Card            |
+                       +-----------------+                
+                       | Image file_name |  
+                       +-----------------+                
+                                |                   
+                               / \                  
+                               ---                  
+                                |                   
+                    ---------------------           
+                    |                   |           
+               +----------+    +-----------------+  
+               | WildCard |    | Aircraft        |  
+               +----------+    +-----------------+  
+               +----------+    | String name     |  
+                     |         | Alliance a      |  
+                    / \        | Category forb   |  
+                    ---        +-----------------+  
+                     |         +-----------------+  
+         ---------------------           
+         |                   |           
+  +--------------+     +--------------+
+  | Victory      |     | Keepem       |
+  +--------------+     +--------------+
+  +--------------+     | int index    |
+  +--------------+     +--------------+
+                       +--------------+
+</code>
+</font>
+</pre>
+ Use classes or modules (or some other grouping mechanism in your chosen
+ language) to represent this form of data.</p>
+
+<p>
+ You may wish to consider adding the following functions:
+ <code>card-value</code>, <code>card-&lt;</code>,
+ <code>cards-have-same-name</code>. [POINT 1]
+</p>
+
+<p><b>Task 2:</b> [POINTS: 4] Your second task is to write up three use
+  cases: 
+<ol>
+<li>"Players register with administrator"</li>
+<li>"Player takes turn"</li>
+<li>"Administrator plays a complete game"</li>
+</ol>
+ Note that the third case uses the second one. </p>
+
+<p><b>Task 3:</b> [POINTS: 3] One goal of writing up use cases (or
+  "stories") is to find out whether some (possibly important) piece of
+  information is missing. Often you meet your customer only for scheduled
+  meetings and to prepare these meetings you write down questions. Your
+  task is to formulate <em>three questions</em> concerning Squadron
+  Scramble. The questions must be about the game per se, not its
+  implementation, because you are still working out the problem (not its
+  solution). 
+ </p>
+
+</assignment>
+</week>

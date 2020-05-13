@@ -1,0 +1,10 @@
+<div time="1169664444">
+
+One task of Project 3 is to represent the basic data of Sqaudron Scramble and
+some basic functions on it, e.g., <code>cards-have-same-name</code>. These
+functions perform the tasks that their names suggest. For
+<code>card-&lt;</code> you are to implement a comparison that would help you
+order the cards on your hand (insert a new one at the proper place), just like
+in real life.
+
+</div>

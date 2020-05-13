@@ -1,0 +1,39 @@
+<div time="1170298477">
+
+<p>
+ Richard asked me to post <a href="Blog/zz-notes.html">some guidelines about
+ submitting code. </a>
+</p>
+
+<p>Here are answers to questions that we are receiving repeatedly: </p>
+
+<blockquote>
+<ol>
+<li>Does the completes function take into account wildcards when determining complete squadrons?</li>
+
+<li>... but a squadron must be at least 2 aircraft cards and at most 1 wildcard
+  from the game rules.  Which spec should we follow?</li>
+
+<li>For the deck constructor, by directory order of cards, do you mean that
+  we actually import from the xml file and then just use the order of cards
+  as they are in the index.xml file?</li>
+</ol>
+</blockquote>
+The answer is that a squadron is a collection of three cards: at least one
+is an airplane and one or two others are wildcards. Yes, the specs
+contradict the original rules, i.e., your customer has changed his
+(absent-mineded) mind. Oh, and all aircraft cards in a
+squadron must have the same name.  
+
+<p>Someone else also asked: 
+<blockquote>For the deck constructor, by directory order of cards, do you
+  mean that we actually import from the xml file and then just use the
+  order of cards as they are in the index.xml file?
+</blockquote>
+And yes, you are to use the directory with an XML index file and images to
+create the collection of <em>all</em> cards. You may consider this your
+first deck, but recall that you also must provide a function for shuffling
+the deck. 
+</p>
+
+</div>

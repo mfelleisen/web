@@ -1,0 +1,25 @@
+<week>
+<assignment due="3/30 : NOON" points="??/???">
+
+<center><font size="+4" color="red">Draft</font></center>
+
+<h3>Maintenance, Part 2</h3>
+
+<p>
+ It is time to implement the rule change for real. 
+</p>
+
+functional specs, test fest, 
+
+<p>
+ In our case, the rules of Squadron Scramble are changing.  Specifically,
+ the game designers have decided that players can exchange wildcards from
+ discarded squadrons. If a player discards any squadron using a wildcard
+ (or two), then during a later turn any player who has a corresponding
+ aircraft card in his possession may exchange the aircraft card for one of
+ the wildcards. 
+</p>
+
+</assignment>
+</week>
+

@@ -1,0 +1,78 @@
+<week>
+<assignment due="1/23 : NOON" points="20/20">
+
+<h3>Double or Nothing</h3>
+
+<p>
+ <b>Objective:</b> to get a first taste of <em>pair collaborations</em> and
+ the <em>svn server</em>
+</p>
+
+<p>
+ <b>Mechanism:</b> re-do homework 1 using the svn server. Create a
+ directory titled "Project2" with the following structure: 
+<pre>
+<code>
+  Project2
+   |
+   +---------------- Memos 
+   |                  |
+   |                  +------> task1.html
+   |                  +------> task2.html
+   |                  +------> task2a.html
+   |
+   |
+   |
+   +---------------- Script
+                      |
+                      +------> README.txt (how to run, docs)
+                      +------> code.EXTENSION 
+</code>
+</pre>
+ You may assume that we supplement a copy of the "aircraft" directory for
+ testing. 
+</p>
+
+<p>
+ You may obtain credit only for the first <em>or</em> second homework. 
+</p>
+
+<hr />
+
+<p>
+ <b>Task 1:</b> Describe in a memo the process of buying gas for a passenger
+ car. You may wish to visit a near-by gas station and watch several
+ transactions at some pump, especially if you haven't bought gas in a
+ while. Limit: one printed page formatted using
+ <a href="document.html">HTML in this style.</a> [POINTS: 4]
+</p>
+
+<p>
+ <b>Task 2:</b> Your second task is to analyze the story from the software
+ perspective. Describe the major concepts; then identify and describe the
+ use case[s]. Limit: one printed page formatted using
+ <a href="document.html">HTML in this style.</a> [POINTS: 4]
+</p>
+
+<p>
+ <b>Task 2a:</b> Consider the following problems that may occur during a
+ "refill" trip: (1) rejection of credit card; (2) the driver decides to
+ drive away <em>after</em> getting his credit card authorized and
+ <em>before</em> lifting the handle; or (3) the driver fills his tank and
+ then forgets to press YES or NO for the usual "do you want a receipt
+ question." [POINTS: 4] Can you think of an additional problem situation?
+ [POINTS: 2]
+</p>
+
+<p>
+ <b>Task 3:</b> Download the tar bundle from the "Aircrafts" page (see tab on the
+ left). Design a program/script that changes the <code>index.xml</code>
+ file as follows: (1) it changes the nation attribute to "allies" or "axis"
+ as appropriate; (2) for an aircraft without image attribute, it creates an
+ image attribute of the shape `<code>image =
+ "question.jpg"</code>'. [POINTS: 6]
+</p>
+
+<p></p>
+</assignment>
+</week>

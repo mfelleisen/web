@@ -1,0 +1,40 @@
+<div time="1175193693">
+
+People have asked how the run-script should work for Project 11. There are
+two parts to the answer: 
+
+<ol>
+<li>
+ Do *not*, by default, display the player UIs from project 8.
+ We will <em>penalize</em> people for opening windows. 
+</li>
+
+<li>
+After each <em>game</em>, print out a brief report that contains the
+(cumulative) score for each player and also indicates whether players were
+removed for cheating, contract violations, or other problems.  All reports
+should be written to stdout and look something like this for a successful
+game:
+<pre><code>  the war took 2 battles
+
+  Matthew : 465
+  Robby : 300
+  Shriram : 10</code></pre>
+and more like that when bad things happen: 
+<pre><code>  the war took 2 battles
+
+  Robby: CHEATED
+  Matthias: BROKE CONTRACT
+  Shriram : 0</code></pre>
+Your run-script should use between three and six players to run two or
+three games.  
+
+<p>
+ Optionally, you may also print such reports after each <em>battle.</em>
+ [No credit!] 
+</p>
+
+</li>
+</ol>
+
+</div>

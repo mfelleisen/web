@@ -1,0 +1,35 @@
+<div time="1175083171">
+
+<h3>On Trusting Players</h3>
+
+<p>
+ After watching the code walks yesterday and after receiving several
+ inquiries on "trusting players", I have decided to provide some 
+ additional design suggestions. 
+</p>
+
+<p>
+ When a Project specification requests that you check the player's
+ actions for attempted cheating, you definitely may <em>not</em> assume
+ that players are trustworthy. You can't trust the player's hand; its
+ designer may have added code to add cards in between turns. You can't
+ trust the player's scoring of course; why not add a few points here and
+ there while the "dealer" isn't looking. So no, don't trust the player for
+ anything. Just imagine an open competition where friends and classmates
+ program to the same interface and plug in players with the only goal of
+ winning the Squadron Scramble tournament at all costs. 
+</p>
+
+<p>
+ When a Project specification requests that you develop an automated
+ Squadron Scramble player with a decent strategy, then imagine yourself
+ playing the game -- with the information that you get through the 
+ specified interface. Is it useful to keep track of your score? Is it
+ useful to keep track of your discards? Your attacks? The discards of the
+ rest of the players? In other words, does it help your planning efforts if
+ you know that almost all cards have been discarded, i.e., you're nearing
+ the end of a battle? Well, if it is, your automated player should keep
+ track of these items. 
+</p>
+
+</div>

@@ -1,0 +1,14 @@
+<div time="1171577534">
+
+<p>
+ As most of you remember from lecture or are discovering on your own, the
+ special-purpose programming language for testing the player allows only a
+ limited range of scenarios. 
+</p>
+
+<p>
+ It isn't as inflexible as some of you may think though. In particular, it
+ is legal to place the <em>same</em> card on the stack, on the deck, and in
+ the player's hand.
+</p>
+</div>

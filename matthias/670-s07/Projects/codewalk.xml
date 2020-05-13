@@ -1,0 +1,121 @@
+<div>
+
+<scheme>(red-title "Presenter")</scheme>
+
+<p>For a presentation of your designs or a code walk, please proceed as
+follows:
+<ol>
+
+ <li>Concisely restate the task, which points you chose to pursue, and
+ which ones you chose to ignore.</li>
+
+ <li>Provide an overview of your solution. For code walks, this should include
+ two parts:  
+   <ol>
+
+   <li>a (UML class) diagram of the major components and their
+    relationships;</li>
+
+   <li>a (UML interaction) diagram that explains the major interactions
+    during a program execution.</li>
+   </ol>
+
+ In addition, you may have to explain other aspects of the design with
+ diagrams, pictures, etc. 
+</li>
+
+ <li>Present the components and their functionality in a top-down fashion,
+ no matter how you designed and implemented them. Refine as requested. Be
+ prepared to defend your code organization, why it matches or doesn't match
+ your design. </li>
+</ol>
+ In general, be prepared to figure out in real time how changes to your
+ information/data specification are translated into changes in your program
+ organization. 
+</p>
+
+<p>When we evaluate the quality of a code walk, we are looking at three
+ different aspects: 
+<ol>
+ <li>the presentation order (see above)</li>
+ <li>your ability to focus from the context to specific lines of code</li>
+ <li>your ability to think through issues that the panel, the class, or the
+ course staff brings up. If you haven't written the code or if you haven't
+ written the code as a pair, you will have serious problems with this
+ part.</li>
+</ol>
+ At this point, I don't know how to teach you these skills other than
+ having you present several code walks and watch a lot of them. 
+</p>
+
+
+<scheme>(generalp "Listener")</scheme>
+
+<p>As a listener, you will play three different roles: 
+
+<ul>
+<li>a manager, who is the first "reader" (analyst) and who has the
+  responsibility that the presentation stays on track;</li>
+
+<li>an assistant reader, who is the second "code reader";</li>
+
+<li>secretary, who keeps track of the questions that the readers ask, notes
+  discoveries of weak spots, and takes notes as needed.</li>
+</ul>
+When you are "secretary" you are responsible to get a copy of the written
+notes to Richard C. within 8 hours. If the report is acceptable, we will
+forward it to the reviewed pair; if not, we will request edits. 
+</p>
+
+<p>When we evaluate the quality of a panel, we are focusing on the two
+  readers:
+<ol>
+ <li>OK+ means the reader discovers solid problems and articulates them
+ well. This appears to depend on the quality of the code basis. Because all
+ code bases are somewhat flawed, however, the quality of the presented code
+ doesn't really affect your ability to get this grade. 
+ </li>
+
+ <li>OK means the reader asks pertinent questions and discovers some problems.</li>
+
+ <li>OK- means the reader asks questions and some of them are pertinent.</li>
+
+ <li>ZERO means the reader didn't ask any questions or asked too few
+ questions pertinent to the code/design at hand.</li>
+</ol>
+ At this point, I don't know how to teach you these skills other than
+ having you watch a lot of code walks. A secretary who asks pertinent
+ questions receives bonus points.
+</p>
+
+<hr />
+
+<p>The HTML memo from the secretary to the presenters must include the following
+  information: 
+<ol>
+ <li>the presenters</li>
+ <li>the panelists</li>
+ <li>the title of the project presented</li>
+ <li>the date and time</li>
+ <li>a bullet list of problems discovered. Describes those problems in
+ enough details so that the presenters can reconstruct it and fix it from
+ the information specified. 
+ </li>
+ <li>If the panel discussed potential solutions with the presenters,
+ include these suggestions with the appropriate bullet. 
+ </li>
+</ol>
+ Recall that panels do not usually discuss solutions, however, with the
+ presenters. 
+</p>
+
+<p>
+ The evaluation of a memo will take into account the timely delivery of the
+ first draft, its format, its information content, and basic English
+ writing (typos, grammar mistakes). The latter will affect your grade in a
+ serious manner if the mistake allows a misinterpretation of a sentence or
+ if the mistake makes an interpretation extremely difficult. 
+</p>
+
+
+</div>
