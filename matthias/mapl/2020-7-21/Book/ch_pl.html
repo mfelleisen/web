@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"/><meta name="viewport" content="width=device-width, initial-scale=0.8"/><title>1&nbsp;Programming Languages</title><link rel="stylesheet" type="text/css" href="scribble.css" title="default"/><link rel="stylesheet" type="text/css" href="shared.css" title="default"/><link rel="stylesheet" type="text/css" href="racket.css" title="default"/><link rel="stylesheet" type="text/css" href="figure.css" title="default"/><link rel="stylesheet" type="text/css" href="manual-style.css" title="default"/><link rel="stylesheet" type="text/css" href="manual-racket.css" title="default"/><script type="text/javascript" src="scribble-common.js"></script><script type="text/javascript" src="figure.js"></script><script type="text/javascript" src="manual-racket.js"></script><!--[if IE 6]><style type="text/css">.SIEHidden { overflow: hidden; }</style><![endif]--></head><body id="scribble-racket-lang-org"><div class="tocset"><div class="tocview"><div class="tocviewlist tocviewlisttopspace"><div class="tocviewtitle"><table cellspacing="0" cellpadding="0"><tr><td style="width: 1em;"><a href="javascript:void(0);" title="Expand/Collapse" class="tocviewtoggle" onclick="TocviewToggle(this,&quot;tocview_0&quot;);">&#9660;</a></td><td></td><td><a href="index.html" class="tocviewlink" data-pltdoc="x">Machines and Programming Languages</a></td></tr></table></div><div class="tocviewsublisttop" style="display: block;" id="tocview_0"><table cellspacing="0" cellpadding="0"><tr><td align="right"></td><td><a href="part_preface.html" class="tocviewlink" data-pltdoc="x">Preface</a></td></tr><tr><td align="right"></td><td><a href="part_prologue.html" class="tocviewlink" data-pltdoc="x">Prologue</a></td></tr><tr><td align="right">1&nbsp;</td><td><a href="" class="tocviewselflink" data-pltdoc="x">Programming Languages</a></td></tr><tr><td align="right">2&nbsp;</td><td><a href="ch_arith.html" class="tocviewlink" data-pltdoc="x">Arithmetic,
+Your First Programming Language</a></td></tr><tr><td align="right">3&nbsp;</td><td><a href="ch_algebra.html" class="tocviewlink" data-pltdoc="x">Algebra, Your Second Programming
+Language</a></td></tr><tr><td align="right">4&nbsp;</td><td><a href="ch_lambda.html" class="tocviewlink" data-pltdoc="x">First-<wbr></wbr>Class Functions</a></td></tr><tr><td align="right">5&nbsp;</td><td><a href="ch_mutation.html" class="tocviewlink" data-pltdoc="x">Mutable Objects</a></td></tr><tr><td align="right">6&nbsp;</td><td><a href="ch_cc.html" class="tocviewlink" data-pltdoc="x">Full Control</a></td></tr><tr><td align="right">7&nbsp;</td><td><a href="ch_express.html" class="tocviewlink" data-pltdoc="x">The Dimensions</a></td></tr><tr><td align="right">8&nbsp;</td><td><a href="ch_space.html" class="tocviewlink" data-pltdoc="x">Space</a></td></tr><tr><td align="right">9&nbsp;</td><td><a href="ch_types.html" class="tocviewlink" data-pltdoc="x">Types</a></td></tr><tr><td align="right">10&nbsp;</td><td><a href="ch_futures.html" class="tocviewlink" data-pltdoc="x">Futures</a></td></tr><tr><td align="right"></td><td><a href="part_epilogue.html" class="tocviewlink" data-pltdoc="x">Epilogue</a></td></tr></table></div></div><div class="tocviewlist"><table cellspacing="0" cellpadding="0"><tr><td style="width: 1em;"><a href="javascript:void(0);" title="Expand/Collapse" class="tocviewtoggle" onclick="TocviewToggle(this,&quot;tocview_1&quot;);">&#9658;</a></td><td>1&nbsp;</td><td><a href="" class="tocviewselflink" data-pltdoc="x">Programming Languages</a></td></tr></table><div class="tocviewsublistbottom" style="display: none;" id="tocview_1"><table cellspacing="0" cellpadding="0"><tr><td align="right">1.1&nbsp;</td><td><a href="#%28part._.Vocabulary__.Reading%29" class="tocviewlink" data-pltdoc="x">Vocabulary, Reading</a></td></tr><tr><td align="right">1.2&nbsp;</td><td><a href="#%28part._.Grammar__.Parsing%29" class="tocviewlink" data-pltdoc="x">Grammar, Parsing</a></td></tr><tr><td align="right">1.3&nbsp;</td><td><a href="#%28part._.Idioms__.Pragmatics%29" class="tocviewlink" data-pltdoc="x">Idioms, Pragmatics</a></td></tr><tr><td align="right">1.4&nbsp;</td><td><a href="#%28part._.Meaning__.Execution%29" class="tocviewlink" data-pltdoc="x">Meaning, Execution</a></td></tr><tr><td align="right">1.5&nbsp;</td><td><a href="#%28part._.Conversational_.Context__.Static_.Checking%29" class="tocviewlink" data-pltdoc="x">Conversational Context, Static Checking</a></td></tr><tr><td align="right">1.6&nbsp;</td><td><a href="#%28part._models%29" class="tocviewlink" data-pltdoc="x">Models:<span class="mywbr"> &nbsp;</span> Science and Engineering in Programming Languages</a></td></tr><tr><td align="right">1.7&nbsp;</td><td><a href="#%28part._1summary%29" class="tocviewlink" data-pltdoc="x">Summary</a></td></tr></table></div></div></div></div><div class="maincolumn"><div class="main"><div class="versionbox"><span class="version">7.8.0.1</span></div><div class="navsettop"><span class="navleft"><div class="nosearchform"></div>&nbsp;&nbsp;</span><span class="navright">&nbsp;&nbsp;<a href="part_prologue.html" title="backward to &quot;Prologue&quot;" data-pltdoc="x">&larr; prev</a>&nbsp;&nbsp;<a href="index.html" title="up to &quot;Machines and Programming Languages&quot;" data-pltdoc="x">up</a>&nbsp;&nbsp;<a href="ch_arith.html" title="forward to &quot;2 Arithmetic,
+Your First Programming Language&quot;" data-pltdoc="x">next &rarr;</a></span>&nbsp;</div><h3>1<tt>&nbsp;</tt><a name="(part._ch~3apl)"></a>Programming Languages</h3><p>Many colleges require some knowledge of a foreign language from their students.
+Acquiring a foreign language starts with learning about some basic words, then
+simple phrases. Later we may learn how to compose complex sentences. Indeed,
+many of us have studied our native language from this perspective, answering
+questions such as where words come from, what a grammatical sentence is, how
+idioms involved.</p><p>Acquiring a programming languages is just like acquiring a foreign spoken
+language. It takes an understanding of what its words are, how to form simple
+programs, and so on. Conversely, the designers of programming languages rely on
+these ideas. They know that they have to explain these concepts for newcomers.</p><p>Hence, these notions form the focus of programming language research. This
+chapter explains these notions abstractly. The remaining chapters exemplify them
+with well-known examples. Your work on exercises and projects is the way to
+solidify your understanding with hands-on work and at the same time provides
+some insight into the work of programming language researchers.</p><table cellspacing="0" cellpadding="0"><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="#%28part._.Vocabulary__.Reading%29" class="toclink" data-pltdoc="x">1.1<span class="hspace">&nbsp;</span>Vocabulary, Reading</a></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="#%28part._.Grammar__.Parsing%29" class="toclink" data-pltdoc="x">1.2<span class="hspace">&nbsp;</span>Grammar, Parsing</a></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="#%28part._.Idioms__.Pragmatics%29" class="toclink" data-pltdoc="x">1.3<span class="hspace">&nbsp;</span>Idioms, Pragmatics</a></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="#%28part._.Meaning__.Execution%29" class="toclink" data-pltdoc="x">1.4<span class="hspace">&nbsp;</span>Meaning, Execution</a></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="#%28part._.Conversational_.Context__.Static_.Checking%29" class="toclink" data-pltdoc="x">1.5<span class="hspace">&nbsp;</span>Conversational Context, Static Checking</a></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="#%28part._models%29" class="toclink" data-pltdoc="x">1.6<span class="hspace">&nbsp;</span>Models: Science and Engineering in Programming Languages</a></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="#%28part._1summary%29" class="toclink" data-pltdoc="x">1.7<span class="hspace">&nbsp;</span>Summary</a></p></td></tr></table><h4>1.1<tt>&nbsp;</tt><a name="(part._.Vocabulary__.Reading)"></a>Vocabulary, Reading</h4><p>English uses 26 letters to make up words. Some European languages add in letters
+with accents and umlauts. The Thai alphabet is a huge superset. Hebrew and
+Arabic letters look totally different.</p><p>In the context of programming languages, &ldquo;word&rdquo; usually means identifier,
+keyword, label, number, variable, and so on. To this day, many languages
+restrict which &ldquo;letters&rdquo; may be used for which class of words; for example,
+many languages do not permit the use of a hyphen &ldquo;-&rdquo; or a greater-than sign
+&ldquo;&gt;&rdquo; in an identifier, though Racket does. Until a couple of decades ago, ASCII
+was the dominant &ldquo;alphabet&rdquo; from which letters were drawn; now most use (a
+subset of) Unicode.</p><p><div class="SIntrapara">When we feed a sequence of characters from a programming language&rsquo;s alphabet to
+its implementation, the first task is to separate the various words from each
+other. We use a number of different, closely related words for this process:
+</div><div class="SIntrapara"><blockquote><p><span style="font-style: italic">lexing</span>, <span style="font-style: italic">reading</span>, and <span style="font-style: italic">tokeninzing</span>.</p></blockquote></div><div class="SIntrapara">The process is well understood, so language implementors use off-the-shelf
+components for this part of any implementation. We stick to the ordinary
+division of labor and leave this topic to books on compiler construction and
+theory of computation.</div></p><p>This book choose <span class="emph">read</span> for this act and <span class="emph">reader</span> for the software
+component.  Because of the choice of JSON as the language for representing our
+programs in text, read	is a bit more than the other two; precisely put, it
+involves a little bit of parsing already.</p><h4>1.2<tt>&nbsp;</tt><a name="(part._.Grammar__.Parsing)"></a>Grammar, Parsing</h4><p>Not all sequences of words make up valid English sentences. While some of these
+sequences may make sense, we (try to) fall back on grammatically correct English
+if conversations get stuck because of this problem.</p><p>Similarly, only some arrangements of identifiers, keywords, numbers, and so on
+make up valid expressions, statements, declarations, and complete programs. For
+a programming language, getting this arrangement right is far more important
+than for a natural language because code is not only a message from one
+programmer to another but also an instruction to the language implementation,
+which is a rather inflexible algorithm compared to the human brain.</p><p><div class="SIntrapara">Hence programming languages come with a
+</div><div class="SIntrapara"><blockquote><p><span style="font-style: italic">grammar</span></p></blockquote></div><div class="SIntrapara">Typically the grammar comprises both the specification of words and rules that
+compose words into programs. We refer to the combination as
+</div><div class="SIntrapara"><blockquote><p><span style="font-style: italic">syntax</span></p></blockquote></div></p><p><div class="SIntrapara">Once a reader has turned a sequence of letters into a sequence of words, a
+</div><div class="SIntrapara"><blockquote><p><span style="font-style: italic">parser</span></p></blockquote></div><div class="SIntrapara">determines whether this sequence of words satisfies the grammatical rules of the
+language. If it doesn&rsquo;t, we speak of <span style="font-style: italic">syntax errors</span>.</div></p><p><div class="SIntrapara">At first glance, a parser has the signature
+</div><div class="SIntrapara"><table cellspacing="0" cellpadding="0" class="SVerbatim"><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="stt">Sequence[ Word ] --&gt; Boolean</span></p></td></tr></table></div><div class="SIntrapara">return <span class="RktSym">true</span><span class="RktMeta"></span> if the &ldquo;sentence&rdquo; is a well-formed program and <span class="RktSym">false</span><span class="RktMeta"></span>
+otherwise. For the working programmer, however, a response of <span class="RktSym">false</span><span class="RktMeta"></span> from
+the parser would be rather unhelpful. And all of us who program know that the
+parser actually produces helpful messages when we violate the grammar of the
+chosen language, which our interactive development environment turns into pretty
+highlights, warnings, etc. <span class="refelem"><span class="refcolumn"><span class="refcontent">To this day, generating good
+syntax-error messages poses somewhat of a problem. Although language
+implementations are mostly &ldquo;good enough,&rdquo; every language still suffers from
+(some) obscure error messages that are definitely puzzling to beginners and
+occasionally even throw off an expert programmer.</span></span></span></div></p><p>Furthermore, a Boolean response is also unhelpful for thinking through the
+computations that a program demands. Or, as programming language people put it
+for determining the meaning of a program.</p><p><div class="SIntrapara">The common solution is to have the parser create a tree of words for
+grammatically correct sequences of programming-language words:
+</div><div class="SIntrapara"><table cellspacing="0" cellpadding="0" class="SVerbatim"><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="stt">SequenceOf[ Word ] --&gt; TreeOf [ Word , String ]</span></p></td></tr></table></div><div class="SIntrapara">Here the tree mirrors the rules of the language grammar. For the part of the
+sequence that violates a grammatical rule, the parser injects an error message
+in the form of a string. The IDE then relates these strings to positions in the
+visible program texts and turns them into signals to the programmer.</div></p><p>Although parsing is also reasonably well understood and realized with standard
+components, this book will introduce its most rudimentary ideas. Foremost is the
+idea of <span style="font-style: italic">abstract syntax</span>, which is the generated tree is called. Most
+researchers do not view a programming language in terms of its concrete syntax,
+but from the viewpoint of abstract syntax. Hence it is critical to understand
+what it represents and how it comes about.</p><h4>1.3<tt>&nbsp;</tt><a name="(part._.Idioms__.Pragmatics)"></a>Idioms, Pragmatics</h4><p>Once you know how to arrange &ldquo;please&rdquo;, &ldquo;thank you,&rdquo; &ldquo;food,&rdquo; and &ldquo;drink&rdquo;
+into short phrases in a foreign language, you may think it is time to travel to
+foreign countries. If you have done this and tried to listen to native speakers
+of converse in your new language, you have discovered that languages don&rsquo;t work
+this way. Native speakers use <span style="font-style: italic">idioms</span> to talk to each others and to
+foreigners. They may understand your replies but if you want to have interesting
+conversations, you will eventually have to understand then use idioms.</p><p>In this regard, a programming language is again extremely similar to a natural
+language. It is simply not true that you can program in a language once you know
+only how to form words and sentences. What you can do then is write code that
+performs computations. Experts in this language may shake their head, however,
+when they read your code.</p><p><div class="SIntrapara">Programming Languages refers to this idea with the words
+</div><div class="SIntrapara"><blockquote><p><span style="font-style: italic">pragmatics</span> and <span style="font-style: italic">idiomatic style</span>.</p></blockquote></div><div class="SIntrapara">They encompass a large number of conventions, arrangements, and knowledge:
+</div><div class="SIntrapara"><ul><li><p>how to form identifiers: camel cap style (capital letters) vs snake case (underscores)</p></li><li><p>how to separate sentences and how to break lines;</p></li><li><p>how to use classes, methods, functions;</p></li><li><p>where to place interfaces, dependencies, and implementations; or</p></li><li><p>which JSON libraries are best for a given task.</p></li></ul></div></p><p>Even though all of us acknowledge the importance of pragmatics and language
+idioms, none study these elements in any depth. To some extent, many of these
+elements are considered langauge-specific and therefore only of interest to the
+people who program in a specific language&#8212;<wbr></wbr>meaning they are not common to many
+languages and therefore not a principle of programming languages. Truthfully,
+though, some elements are of critical importance to proper programming and
+software development. The actual problem is that programming language researchers
+do not know how to understand and study this area.</p><h4>1.4<tt>&nbsp;</tt><a name="(part._.Meaning__.Execution)"></a>Meaning, Execution</h4><p>When you first learn a language, your parents and friends relate words to concrete
+objects. Their meaning is totally clear.  As we grow older, we encounter unknown
+words, some of which denote concrete objects and some just abstract concepts.
+<span class="refelem"><span class="refcolumn"><span class="refcontent">At that point, a natural language becomes a programming language
+for minds. Since we don&rsquo;t really understand minds, we also don&rsquo;t really
+understand how meaning is transported from one mind to another.</span></span></span>  The meaning of
+sentences, paragraphs, chapters, and books is even more difficult to figure out.</p><p><div class="SIntrapara">At one level, programming languages are much simpler than natural languages with
+regards to meaning. Every programmer instinctively knows that the execution of a
+program <span class="emph">is</span> its meaning. On one hand, this statement is correct, because a
+programmer has only the implementation to go by. On the other hand, it is rather
+unsatisfactory, raising many questions:
+</div><div class="SIntrapara"><ul><li><p>two implementations of the same language may return two different answers
+(outputs, final results) for the same program. How can we decide which one is
+correct?</p></li><li><p>if there is only one implementation of the language, a program execution
+may still produce a strange answer. How can a programmer decide whether the
+implementation is buggy?</p></li><li><p>in many cases, the designers of a language and its implementors are two
+different groups. For some languages they are possibly identical or overlap; for
+widely implemented languages, the two teams almost never intersect. How can a
+language designer communicate the meaning of a language to a language
+implementor?</p></li><li><p>when a software developer introduces an intern to a code base and a new
+(to the latter) programming language,  part of the communication problem
+concerns the subtly different meaning of constructs in different languages. How
+can software developers effectively communicate about programming languages and
+the meaning of programs?</p></li><li><p>every introductory course on <span style="font-style: italic">Programming</span> must get students to learn a new
+foreign language. Beginners barely know enough about computers, so explaining
+the meaning of programs in terms of an implementation (and its execution) is
+clearly a non-starter.  How should instructors of beginning students convey the
+meaning of &ldquo;first&rdquo; programs?</p></li></ul></div><div class="SIntrapara">Stop! Think of other questions that demand an execution-independent view of
+meaning.</div></p><p><div class="SIntrapara"><span class="refelem"><span class="refcolumn"><span class="refcontent">The sentence &ldquo;this is just semantics&rdquo; is often used in
+conversational English to dismiss fine distinction. It is completely meaningless
+to a programming language researcher.</span></span></span>
+Programming language researchers use the word
+</div><div class="SIntrapara"><blockquote><p><span style="font-style: italic">semantics</span></p></blockquote></div><div class="SIntrapara">when they speak of the meaning of a programming language.  Semantics is one of
+small number of topics that has dominated the area for decades, while many other
+topics went in and out of fashion. Over time a number of approaches emerged and
+were discarded: <span style="font-style: italic">axiomatic semantics</span>, which describes program
+executions in terms of logical assertions about the state of the machine;
+<span style="font-style: italic">denotational semantics</span>, which is a strictly mathematical-logic
+approach that seeks to map all syntactic constructs to spaces of mathematical
+meaning; and <span style="font-style: italic">operational semantics</span>, which uses a mix of mathematics
+and notions of software. Indeed, each of these approaches has many different
+flavors.</div></p><p><div class="SIntrapara">This book mostly presents an operational view of the semantics, mixing two major
+tools. As already mentioned in <a href="part_prologue.html" data-pltdoc="x">Prologue</a>,
+</div><div class="SIntrapara"><blockquote><p><span style="font-style: italic">abstract machines</span>, which explain programs execution in terms of
+ high-level data structures and relations between data structures that resemble
+ machine instructions.</p></blockquote></div><div class="SIntrapara">On occasion, the book also brings in the older tool of
+</div><div class="SIntrapara"><blockquote><p><span style="font-style: italic">interpreters</span>, which are programs written in a so-called
+meta-language that compute the meaning of the object programs.</p></blockquote></div><div class="SIntrapara">In practical terms, both of these notions are useful to future developers and
+researchers alike. A student who is interested in programming language research
+may also wish to read up on other forms of semantics.</div></p><h4>1.5<tt>&nbsp;</tt><a name="(part._.Conversational_.Context__.Static_.Checking)"></a>Conversational Context, Static Checking</h4><p>As you progress from beginner to proficient and perhaps fluent speaker of a
+foreign language, you get engaged in increasingly sophisticated, long-running
+conversations. One outstanding feature of such conversations is context, that
+is, conversational context builds up over time and the participants refer to it
+implicitly. You can even think of a scientific area as a long-standing
+conversation among the participating scientists (dead and alive)  that has built
+up a tremendous context. A novice in this world can easily say correct sentences
+that do not connect to, or are even wrong, in this conversational context.</p><p>Programming languages are no different. A program consists of many paragraphs,
+think packages and modules, and those consist of many sentences, think methods
+and functions; and then there are expressions and statements within methods and
+functions. Identifiers in these expressions refer to methods that may originate
+in far-away packages. Using such identifiers correctly is critical because the
+creator of the method may have had certain constraints in mind. The worst part
+is that if a method is used incorrectly, it may not enforce the constraints and,
+during program execution, the error may manifest itself in a totally different
+place.</p><p><div class="SIntrapara">To prevent such problems, programming language researchers developed the idea of
+checking contextual constraints, that is, constraints due to the
+&ldquo;conversations&rdquo; among many software components.  In general, this idea is
+known as
+</div><div class="SIntrapara"><blockquote><p><span style="font-style: italic">static checking</span>, which means ensuring that certain constraints are
+satisfied <span class="emph">before</span> the program is run and, by implication, preventing
+certain errors of meaning during program execution.</p></blockquote></div><div class="SIntrapara">The most prominent examples are
+</div><div class="SIntrapara"><blockquote><p><span style="font-style: italic">identifier checking</span> and  <span style="font-style: italic">type checking</span>.</p></blockquote></div><div class="SIntrapara">The first means checking that every identifier mentioned is defined; is a
+simplistic but effective check that prevents many typo-level mistakes. The
+second generalizes this checking to additional constraints that a programmer
+may impose on identifiers at their definition site; it catches
+complicated&#8212;<wbr></wbr>that is, context-sensitive&#8212;<wbr></wbr>typos in programs and guarantees in
+some ways that programs may report only a well-specified number of run-time
+problems.</div></p><p>Over the past couple of decades, this area of programming languages has gotten
+by far the most attention. Researchers have come to embrace the idea that static
+type checking can almost guarantee the <span class="emph">correct</span> working of software. In
+support of this idea, they have developed increasingly sophisticated ways of
+expression type constraints&#8212;<wbr></wbr>all the while the software development world has
+moved in the opposite direction, building vast software systems with  languages
+that lack any type notation.</p><p>This book provides a basic introduction to this area. A reader will understand
+what types do contribute to software safety, and the complexities they inject
+into the developer&rsquo;s world. Scientifically inclined readers will have a
+reasonable basis to read article and books that dive deep into this vast area.</p><h4>1.6<tt>&nbsp;</tt><a name="(part._models)"></a>Models: Science and Engineering in Programming Languages</h4><p>How do researchers study programming language? How do designers create them?</p><blockquote class="Figure"><blockquote class="Centerfigure"><blockquote class="FigureInside"><p><img style="vertical-align: -0.0px; margin: -3px -3px -3px -3px;" src="pict_3.png" alt="image" width="846.0" height="258.0"/></p></blockquote></blockquote><p class="Centertext"><span class="Legend"><span class="FigureTarget"><a name="(counter._(figure._fig~3amodel-reality))" x-target-lift="Figure"></a>Figure&nbsp;8: </span>Programming languages and their models and blueprints</span></p></blockquote><p><div class="SIntrapara"><a href="#%28counter._%28figure._fig~3amodel-reality%29%29" data-pltdoc="x">Figure&nbsp;<span class="FigureRef">8</span></a> shows a diagram that succinctly distills the
+working methods of people who work in the programming language area:
+</div><div class="SIntrapara"><ul><li><p>On one side, we have a science-based style of investigation. Like natural
+scientists, researchers &ldquo;find&rdquo; programming languages in &ldquo;nature&rdquo; and attempt
+to understand how they relate to the common principles of the field.</p><p>To this end, they build a model of the aspects in which they are interested.
+A model is <span class="emph">not</span> the real &ldquo;thing.&rdquo;  It is an approximation. It is smaller
+than the actual language. But it permits researchers to predict how the actual
+language behaves.</p><p>Once people have a model&#8212;<wbr></wbr>perhaps not theirs&#8212;<wbr></wbr>they occasionally study models
+for the sake of models. Then they turn into logicians and mathematicians, and
+they need to work hard not to lose touch with the underlying language.</p></li><li><p>On the other side we have an engineering-oriented style of construction. Like
+civil engineers, language creators who build actual programming languages from
+blueprints.</p><p>A brand-new language is drawn up like a blueprint. The designers start from
+their basic idea of what their new language is all about, which results in a
+design document. Different &ldquo;chapters&rdquo; describe different parts of the
+language: the vocabulary, the grammar, the semantics, the type system, and so
+on. The designers translate these design chapters into a language
+implementation, they learn from this translation, and they may change some
+aspects on the fly. So the finished language resembles the design documents the
+way an actual house resembles a blueprint.</p><p>Once the language exists, people continue to develop the code of the
+implementation. They then turn into programmers, and they need to remind
+themselves routinely of the ideas that started the design process. </p></li></ul></div></p><p>In the ideal world, the blueprints of the engineers and the models of scientists
+should be made from the same material. But, often they are not. Design documents
+still tend to use a mix of formal presentations (for vocabularies and grammars)
+and informal English for the parts that go beyond syntax, supplemented by
+interpreters.  For some of the recent major language design efforts, people have
+started to use abstract machines, virtual machines, and some elements from
+modeling. Still, models are almost exclusively formulated in a style of
+mathematics that have evolved over decades. More recently, these mathematical
+models are formulated in programming languages that look and feel almost like
+mathematics. In turn, these programs make the model a basis for experimentation
+and exploration via ordinary program execution. Over the long haul, we may yet
+see a convergence.</p><p>This book will use a mix of simple techniques to create models and blueprints.
+The goal is to explain the principles of programming languages and to
+demonstrate some of the methods used in this area. One chapter will relate the
+models to your favorite programming language, closing the cycle from
+<a href="#%28counter._%28figure._fig~3amodel-reality%29%29" data-pltdoc="x">figure&nbsp;<span class="FigureRef">8</span></a>.</p><h4>1.7<tt>&nbsp;</tt><a name="(part._1summary)"></a>Summary</h4><p><div class="SIntrapara">Acquiring a programming language means understanding
+</div><div class="SIntrapara"><ul><li><p>its <span style="font-weight: bold">syntax</span>, which spells out how to form words and how to compose
+words into expressions, definitions, statements, programs and other
+&ldquo;sentences;&rdquo;</p></li><li><p>its <span style="font-weight: bold">semantics</span>, which assigns meaning to words and sentences and
+is a complete prediction of how a program executes;</p></li><li><p>its <span style="font-weight: bold">context-sensitive constraints</span>, which may simply require that
+all identifiers are defined or impose a complex type system; and</p></li><li><p>its <span style="font-weight: bold">pragmatics</span>, mostly the idioms &ldquo;native&rdquo; programmers use.</p></li></ul></div><div class="SIntrapara">Programming language research has focused on the first three, and the book does,
+too.</div></p><p>Studying the principles of programming language calls for two views due to the
+dual nature of this artifact. One view focuses on the language as a physical
+product whose programs makes bits flow on hardware. The other view emphasizes
+the Platonic &ldquo;idea&rdquo; of the artifact, for which researchers tend to use a mix
+of mathematics and programming. This book demonstrates how this views are
+related and how they are used to study the basics.</p><p>The above notions are just the basics, however. First the list isn&rsquo;t exhaustive
+as far as technical issues are concerned. Only several years of graduate studies
+in just programming languages can fill this gap. Second, a full-fledged
+acquisition also demands an understanding of its psychology and sociology
+(community reception and communication), its software engineering practice (best
+practices, patterns that fill gaps), its management context (value to a
+business), and many more.  Although nobody denies the importance of these
+extra-technical ideas and their relationship to technical ones, experts know too
+little to include material on them in an undergraduate text book.</p><div class="navsetbottom"><span class="navleft"><div class="nosearchform"></div>&nbsp;&nbsp;</span><span class="navright">&nbsp;&nbsp;<a href="part_prologue.html" title="backward to &quot;Prologue&quot;" data-pltdoc="x">&larr; prev</a>&nbsp;&nbsp;<a href="index.html" title="up to &quot;Machines and Programming Languages&quot;" data-pltdoc="x">up</a>&nbsp;&nbsp;<a href="ch_arith.html" title="forward to &quot;2 Arithmetic,
+Your First Programming Language&quot;" data-pltdoc="x">next &rarr;</a></span>&nbsp;</div></div></div><div id="contextindicator">&nbsp;</div></body></html>
