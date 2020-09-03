@@ -1,0 +1,272 @@
+<html>
+ <head><title>Course Rationale: A C++ Course with some Material on C</title></head>
+<body>
+<h2>Course Rationale: A C++ Course with some Material on C</h2>
+
+<blockquote>
+  
+<hr>
+<p><strong>CLIENTS</strong>
+
+ In general, all students will benefit from C/C++ knowledge. Most of the
+ existing software infrastructure uses C and/or C++ (or equivalent
+ languages such as Objective C, Fortran, and Cobol), and people build
+ layers of new software on top of this infrastructure. Hence our graduates
+ should have an idea on new software should interact with the existing
+ infrastructure and what the presence of unsafe layers of software implies
+ for new components, even if they are written in safe languages.
+
+<p>The <em>primary purpose</em> of the course is to support students who
+ major in game design (Game Engine Programming) and students who wish to
+ pursue a systems-oriented career with course on operating, networking
+ systems, and distributed systems (CS 3650, CS 3700). --- As of 2014, the
+ only direct client will be networking/systems. Students will take game
+ engines after taking networking/systems.
+
+<p>Specific requirements: 
+
+<p>The course on game engine design calls for an understanding of memory
+ lifetimes, memory lifelines, and memory fragmentation. Ideally students
+ should encounter debugging tools as well as performance measurement tools
+ (time, space).
+
+<p>Since game engine design requires mostly knowledge of C++ with some knowledge
+ of C and networking/os calls for conceptual understanding of C/C++ level
+ mechanisms, the course should primarily teach C++ and contrast it with C so
+ that students understand where C++ came from. 
+
+<p>The courses on Computer Organization and Operating Systems and Networks
+ and Distributed Systems assume that students understand how types specify
+ bits and bytes, how basic operations manipulate these bits and bytes, how
+ they move bits and bytes between memory locations, and that programs at
+ these levels rely on stacks and heaps for memory allocation. Finally,
+ students must be aware that function<strike>al</strike> returns may deallocate stack memory
+ regardless of whether the result points into stacks and that 'free'
+ operations deallocate heap memory regardless of whether other parts of the
+ program still point to these locations. This set of goals is teachable in
+ C++ especially if we supplement it with a section on plain C.
+
+<hr>
+<p><strong>NO-NO</strong>
+
+It is unacceptable that the course becomes a plain course on 'programming
+ in C++' as it used to exist at the introductory level at many universities. 
+ The course must build on what students know and must expose students to
+ the pitfalls and dangers of programming in this world. 
+
+<hr>
+<p><strong>PLACEMENT in CURRICULUM</strong>
+
+To teach C++ properly and effectively, we should offer the course after
+ the first co-op, i.e., semesters 4 or 5. Since this is too late for some
+ courses of study, we accept the compromise of the current curriculum
+ proposal, which places this  course in the third semester, in parallel to
+ Fundamentals III (OOD).
+
+<hr>
+<p><strong>STATUS</strong>
+ Optional, meaning Computer Organization and Operating Systems may not
+ assume the course
+
+<hr>
+<p><strong>SUMMARY</strong>
+
+C++ is an <em>unsafe</em> programming language, meaning each programmer --
+ not the programming language -- must enforce basic invariants concerning
+ abstractions and modularity. In particular, a programmer may not rely on
+ the type system to prove the absence of misuses of operations (unsound
+ types), and a programmer must reason about the program as a whole to
+ establish safe memory access (no gc).
+
+<p>These facts are in stark contrast to the languages that students
+ encounter in year I (the Racket teaching languages, ACL2, Java). 
+
+<p>The <em>purpose of this course</em> is to introduce students to the
+ programming in C++ <em>and its pitfalls</em>; how standard libraries try
+ to eliminate these pitfalls and fail; and what kind of tools programmers
+ use to overcome the pitfalls. The list of pitfalls must include: getting
+ bad values because of the type system unsoundness plus experiencing core
+ dumps and bus errors. The standard libraries include iostream, vector,
+ string, etc. 
+<em>
+ The tools should include a unit testing framework of the instructor's
+ choice (comparable to jUnit); a low-level debugger (comparable to gdb);
+ and a memory debugger (comparable to valgrind).
+</em>
+<hr>
+<p><strong>APPROACH</strong>
+
+The course <em>must</em> assume that students can design and debug programs
+ in several different, safe programming languages. In particular, the
+ course must assume that students can read and write reasonably large Java
+ programs (i.e., programs that consists of several dozen interconnected
+ classes); and that they can design such programs according to the design
+ recipe of Fundamentals I and II. 
+
+<p>Based on this prerequisite, the course will present the material in three
+ parts: 
+<blockquote>
+<table align="center" border="1">
+<tr><th> phase <th> suggested duration <th> goal <th> book <th> tools </tr>
+<tr><td> I     
+    <td> 3 weeks
+    <td> programming in C++ as if it were a different syntax for Java 
+    <td> chapters 1 - 4
+    <td> unit testing</tr>
+<tr><td> &nbsp; 
+    <td colspan="4">
+    <em>
+    Homework assignments in week 1 should be a reminder of basic Java programming:
+    classes, methods, arrays, loops; cmp Fundamentals II.
+    </em>
+<tr><td> &nbsp; 
+    <td colspan="4">
+    <em>
+     It should also remind students of the process component of the design recipe.
+    </em>
+<tr><td> II 
+    <td> 3 weeks
+    <td> safe programming in C++ with standard libraries 
+    <td> chapters 5 - 7 
+    <td> gdb, valgrind </tr>
+<tr><td> III 
+    <td> 4 weeks
+    <td> creation of "safe" generic data types in C++, smart pointers in C++11
+    <td> chapters 8 - 13 ++ <a href="http://amzn.com/B0091I7FEQ">ch. 12 in Lippman and Moo</a>
+    <td> </tr>
+<tr><td> &nbsp; 
+    <td colspan="4">
+    <em>
+    Instructors should cherry-pick from these chapters, with an emphasis on
+    memory [de]allocation. 
+    </em>
+<tr><td> &nbsp; 
+    <td colspan="4">
+    <em>
+      The material on smart pointers in C++11 should definitely be
+      included. 
+    </em>
+<tr><td> IV
+    <td> 2 weeks 
+    <td> C++11 innovations and/or programming in C
+    <td> K & R: up to malloc and friends
+    <td> &nbsp; </tr>
+</table>
+</blockquote>
+
+<p>ad I: The purpose of this part is to teach basic syntax, including
+ arrays and allocation of data without deallocation. Then ask students to
+ "port" and extend Java program with flaws, written in Fundamentals II
+ style, to C++. The program should use 'plain' C++ and should involve the
+ use of arrays, the return of stack-allocated memory, etc. Students must
+ learn that such programs print arbitrary "numbers" or terminate with a
+ segmentation fault that usually does not correlate with the place where
+ a C++ operation misinterprets bits and butes. 
+
+<p>Here is sample exercise: 
+<blockquote>
+<table align="center" border="1">
+<tr><td><p>
+<p>Exercise 1: <a href="Code/simple.java" alt="simple Java code">Multiplying 
+    the elements of a vector in Java.</a> Compile and run this program once. 
+
+<p>
+ <a href="Code/simple.cpp" alt="simple C++ code">Translate the Java program
+ into C++.</a> Compile and run this program 10 times. 
+
+<p> 
+ Here is  <a href="Code/simple-vector.cpp" alt="simple C++ code">a version
+ that uses the "vector" library.</a>
+
+<p> 
+ Describe and explain your observation. Use at most 27 words. 
+</table>
+</blockquote>
+ I would expect some 10-20 exercises like this over the course of weeks 2
+ and 3. They should grow in size, hide the bugs under layers of calls and
+ allocation, and range bugs from simple memory mistakes to complicated
+ ones, involving heap allocating stack-allocated memory. 
+
+<p>The above schedule is aggressive, guaranteed to weed out weak students. 
+
+<hr>
+<p><strong>BOOKS</strong>
+
+<li> Koenig and Moo, Accelerated C++
+
+<li> Lippman and Moo, C++ Primer
+
+<!-- ================================================================== --> 
+<p><strong>On-line Readings</strong>
+
+<blockquote>
+<p>John Regehr (University of Utah) on "undefined behavior" in C++: 
+<ol>
+ <li> <a href="http://blog.regehr.org/archives/213">
+ A Guide to Undefined Behavior in C and C++, Part 1
+ </a>
+ <p> <tt>http://blog.regehr.org/archives/213</tt>
+
+ <li> <a href="http://blog.regehr.org/archives/226">
+ A Guide to Undefined Behavior in C and C++, Part 2
+ </a>
+ <p> <tt>http://blog.regehr.org/archives/226</tt>
+
+ <li> <a href="http://blog.regehr.org/archives/232">
+ A Guide to Undefined Behavior in C and C++, Part 3
+ </a>
+ <p> <tt>http://blog.regehr.org/archives/232</tt>
+</ol>
+
+<p>Chris Lattner (LLVM group) on "undefined behavior" in C++: 
+<ol>
+ <li> <a href="http://blog.llvm.org/2011/05/what-every-c-programmer-should-know.html">
+ What Every C Programmer Should Know About Undefined Behavior #1/3
+ </a>
+ <p> <tt>http://blog.llvm.org/2011/05/what-every-c-programmer-should-know.html</tt>
+
+ <li> <a href="http://blog.llvm.org/2011/05/what-every-c-programmer-should-know_14.html">
+ What Every C Programmer Should Know About Undefined Behavior #2/3
+ </a>
+ <p> <tt>http://blog.llvm.org/2011/05/what-every-c-programmer-should-know_14.html</tt>
+
+ <li> <a href="http://blog.llvm.org/2011/05/what-every-c-programmer-should-know_21.html">
+ What Every C Programmer Should Know About Undefined Behavior #3/3
+ </a>
+ <p> <tt>http://blog.llvm.org/2011/05/what-every-c-programmer-should-know_21.html</tt>
+</ol>
+</blockquote>
+
+<hr>
+<p><strong>TOOLS</strong> The instructor should choose the platform and
+  tools that s/he is most familiar with but the tools should cover the
+  following representation range (in the sense of "like" not "such as"): 
+<ol>
+<li> unit testing framework 
+<li> gdb-style debugging 
+<li> Valgrind memory debugging 
+</ol>
+ Ideally, the tool set should also cover a performance profiler but given
+ the amount of material covered this is entirely optional. 
+
+<hr>
+<p><strong>DESIGN:</strong> Magy S-N. and Matthias F. will hand over the
+  rationale to the first instructor and explain the key ideas and
+  parameters. 
+
+<hr>
+<p><strong>EVALUATION:</strong> Magy S-N. and Matthias F. will evaluate the
+  course rationale after the first semester (December or January) to
+  understand what tweaks are needed. If the coverage is too much for the
+  student audience, we may drop Part IV (on plain C) from this course. We
+  may also narrow down the choice of "cherries" for part III. 
+
+<p> Ideally we should revisit the course after the first generation of
+  graduates has gone through the follow-up game course. 
+
+</blockquote>
+
+
+
+</body>
+</html>

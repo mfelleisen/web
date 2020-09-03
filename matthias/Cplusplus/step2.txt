@@ -1,0 +1,130 @@
+Designing a C/C++ Course
+------------------------
+
+CURRICULUM
+ To teach C/C++ properly and effectively, we should offer the course after
+ the first co-op, i.e., semesters 4 or 5. 
+
+ The current version of the curriculum proposes that students take this
+ course in the third semester, in parallel to Fundamentals III. 
+
+STATUS
+ Optional 
+
+CLIENTS
+ In general, all students will benefit from C/C++ knowledge. Most of the
+ existing software infrastructure uses C and/or C++ (or equivalent languages
+ such as Objective C and Fortran), and people build layers on top of this
+ infrastructure. Hence our graduates should have an idea on new software
+ should interact with the existing infrastructure and what the presence of
+ unsafe layers of software implies for new components, even if they are
+ written in safe languages. 
+
+ The primary purpose of the course is to support students who major in game
+ design (programming) and students who wish to purse a systems-oriented
+ career (os, networking, embedded systems). The actual clients are courses
+ that need familiarity with C/C++ programming such as Game Engine
+ Programming, 360? Operating Systems, and 360? Networking.
+
+ As of 2014, the only direct client will be networking/systems. Students
+ will take game engines after taking networking/systems. 
+
+ Specific requirements: 
+
+ A course on networking/systems assumes that students understand how types
+ specify bits and bytes, how basic operations manipulate these bits and bytes,
+ how they move bits and bytes between memory locations, and that programs at
+ these levels rely on stacks and heaps for memory allocation. Finally,
+ students must be aware that functional returns may deallocate stack memory
+ regardless of whether the result points into stacks and that 'free'
+ operations deallocate heap memory regardless of whether other parts of the
+ program still point to these locations. 
+
+ In addition to these basic concepts, the course on game engine design calls
+ for an understanding of memory lifetimes, memory lifelines, and memory
+ fragmentation. Ideally students should encounter debugging tools as well as
+ performance measurement tools (time, space). 
+
+ Since game engine design requires mostly knowledge of C++ with some knowledge
+ of C and networking/os calls for conceptual understanding of C/C++ level
+ mechanisms, the course should primarily teach C++ and contrast it with C so
+ that students understand where C++ came from. 
+
+SUMMARY
+ C/C++ are unsafe programming languages, meaning each programmer -- not the
+ programming language -- must enforce basic invariants concerning abstractions
+ and modularity. In particular, a programmer may not rely on the type system
+ to prove the absence of misuses of operations (unsound types), and a
+ programmer must think program-globally to establish safe memory access (no gc).
+
+ These facts are in stark contrast to the languages that students encounter in
+ year I (teaching languages, ACL2, Java). In machine organization, students
+ encounter the machine-level and machine-oriented notion of program execution
+ but the course does not have the time to address programming in the large in
+ such languages (reasoning in the presence of unsoundness, reasoning about
+ global resources at module boundaries).
+
+ In this context, the course will introduce students to programming in
+ C/C++, pitfalls such as computing with bad values, core dumps, seg faults,
+ and bus errors. Then the course will expose students to defensive
+ programming techniques (e.g., smart pointers, arrays), debugging in this
+ world, and tool support (what are the currently used tools for discovering
+ problematic C/C++). 
+
+APPROACH
+ The course assumes that students can design and debug programs in several
+ different, safe programming languages. Specifically, the course assumes that
+ students can write a reasonably large Java program that consists of several
+ dozen interconnected classes. 
+
+ Based on this prerequisite, the course will present the material in three
+ parts: 
+
+ I Programming in C++ as if it were a different syntax for Java 
+
+ duration: 3 weeks
+
+ goal: let students discover 'empirically' that C++ lacks certain safety
+ harnesses, supplement it with exercises that intentionally breaks programs 
+
+ mechanism: teach basic syntax, teach allocation w/o deallocation, ask
+ students to "port" and extend some reasonably large Java program written in
+ Fundamentals II style to C++. The program should use 'plain' C++ and should
+ involve the use of arrays, the return of pointer allocated memory, etc.
+
+ tools: expose students to gdb? 
+
+ II Safe Programming in C++
+
+ duration: 6 weeks 
+
+ goal: introduce students to safe programming techniques in C++ 
+
+ mechanism: Accelerated C++ ?
+
+ tools: valgrind ? performance measurements? 
+
+ III Programming in C
+
+ duration: 3 weeks 
+
+ goal: expose students to malloc version of allocation, 
+ show them where C++ comes from, possibly even some OS-level 
+ features 
+
+ The above schedule is aggressive, guaranteed to weed out weak students. 
+
+BOOKS
+ Accelerated C++
+
+TOOLS
+ Valgrind
+ performance? 
+ memory? 
+
+NO-NO
+ It is unacceptable that the course becomes a plain course on 'programming
+ in C++' as it used to exist at the introductory level at many universities. 
+ The course must build on what students know and must expose students to
+ the pitfalls and dangers of programming in this world. 
+ 

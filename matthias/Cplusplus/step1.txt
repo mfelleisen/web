@@ -1,0 +1,89 @@
+
+Designing a C/C++ Course
+------------------------
+
+CURRICULUM
+ To teach C/C++ properly and effectively, we should offer the course after
+ the first co-op, i.e., semesters 4 or 5. This guarantees that students have
+ some programming maturity and that they see it early enough for the 'client'
+ courses. In particular, students have seen the three basic programming
+ courses plus machine organization.
+
+STATUS
+ Optional 
+
+CLIENTS
+ To support students who major in game design (programming) and students who
+ wish to purse a systems-oriented career (os, networking, embedded
+ systems). The actual clients are courses that need familiarity with C/C++
+ programming such as ??? Game Engine Programming, 360? Operating Systems, and
+ 360? Networking. 
+
+ In general, all students will benefit from C/C++ knowledge. Most of the
+ existing software infrastructure uses C and/or C++ (or equivalent languages
+ such as Objective C and Fortran), and people build layers on top of this
+ infrastructure. Hence our graduates should have an idea on new software
+ should interact with the existing infrastructure and what the presence of
+ unsafe layers of software implies for new components, even if they are
+ written in safe languages. 
+
+SUMMARY
+ C/C++ are unsafe programming languages, meaning each programmer -- not the
+ programming language -- must enforce basic invariants concerning
+ abstractions and modularity. In particular, a programmer may not rely on the
+ type system to prove the absence of misuses of operations (unsound types),
+ and a programmer must think program-globally to establish safe memory access
+ (no gc). 
+
+ These facts are in stark contrast to the languages that students encounter
+ in year I (teaching languages, ACL2, Java). In machine organization,
+ students encounter the machine-level and machine-oriented notion of program
+ execution but the course does not have the time to address programming in
+ the large in such languages (reasoning in the presence of unsoundness,
+ reasoning about global resources at module boundaries).
+
+ In this context, the course will introduce students to programming in
+ C/C++, pitfalls such as computing with bad values, core dumps, seg faults,
+ and bus errors. Then the course will expose students to defensive
+ programming techniques (e.g., smart pointers, arrays), debugging in this
+ world, and tool support (what are the currently used tools for discovering
+ problematic C/C++). 
+
+APPROACH
+ The course assumes that students can design and debug programs in several
+ different, safe programming languages. 
+
+ I Programming in the Small [3 weeks]
+ C programming, a ton of small, function-level finger exercises
+ repeat of basic design techniques (data, purpose, types, outline, tests)
+ IDE ?
+ Make
+ programming problems (computing with 'irrelevant' bits, bad access, etc)
+ gdb 
+  
+ II Programming in the Large [4 weeks]
+ C++ classes: some small class-oriented projects 
+ abstractions aren't abstractions 
+ problems, more gdb 
+
+ III Tools [3 weeks]
+ ???
+
+ IV Connecting to Safe Layers and/or Studio Project [2 weeks]
+ calling safe scripting languages from C/C++ and back 
+ ???
+
+ The above schedule is aggressive, guaranteed to weed out weak students. 
+
+BOOKS
+ ?
+
+TOOLS
+ ?
+
+NO-NO
+ It is unacceptable that the course becomes a plain course on 'programming
+ in C++' as it used to exist at the introductory level at many universities. 
+ The course must build on what students know and must expose students to
+ the pitfalls and dangers of programming in this world. 
+ 

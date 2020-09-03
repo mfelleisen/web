@@ -1,0 +1,52 @@
+
+
+
+
+
+
+
+;; -----------------------------------------------------------------------------
+
+John Carmack, Functional programming in C++ 
+http://gamasutra.com/view/news/169296/Indepth_Functional_programming_in_C.php
+
+tools: 
+
+valgrind 
+
+;; -----------------------------------------------------------------------------
+	
+Note sent to Richard: 
+
+The vital difference between Java and C++ is that the former is safe and the
+latter is not. In particular, C++'s type system is unsound (in these of
+logic: it proves statements about programs that don't hold at run time) and
+its memory system is unsafe (it is possible to access deallocated or never
+allocated memory cells). Both problems mean that programs can process random
+bit strings from memory and interpret them in a seemingly meaningful way.  
+
+The pragmatic consequences are twofold: 
+(1) programmers cannot rely on type information during debugging. 
+	Just because x is declared to be of type int does not mean that
+	during execution it contains only bits intended to represent
+	integers.  
+(2) lack of memory safety means that C++ programs aren't modular. 
+	An interface must state assumptions about (de)allocation of memory 
+	and sadly nobody can check these assumptions statically 
+	and checking them dynamically is prohibitive. 
+
+Naturally you know this but our students don't and I think it is vital that
+(1) the abstract for the course (2) the learning goals and (3) the course
+itself bring these points across *before* we show some of the tools that help
+programmers avoid this pitfalls but don't eliminate them. C++ programmers
+must always be aware of them. They must never forget them because if they do,
+they will be in trouble.  
+
+I therefore recommend a two-paragraph description: 
+para 1: state the above 
+para 2: re-teaching the basics of data structures covered in year 1, we will
+show how to use smart pointers, tools, etc. to avoid these pitfalls.  
+
+If the course description is left alone, I expect disasters as this course
+grows and is handed over from one person to another and to some random
+off-the-street instructor one day. Let's fix it before it misses the intent.  
