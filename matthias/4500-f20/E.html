@@ -19,9 +19,9 @@ via a pipe. Specifically it sends the content of the <span class="stt">1-in.json
 file to <span class="stt">nc</span>, which in turn transmits it via TCP to the computer
 with the IP address <span class="stt">login-faculty.ccs.neu.edu</span> at port <span class="stt">45678</span>
 (if all of you use <span class="stt">8004567</span> on the same computer, bad things will happen).</div></p><p><span style="color: red"><span style="font-weight: bold">Hint</span> The <span class="stt">netcat</span> program is likely not pre-installed
-on modern Windows systems. Windows users should download and install
-<a href="https://nmap.org/dist/nmap-7.80-setup.exe">this executable</a>,
-and add it to your path.</span></p><p><div class="SIntrapara">The following screen shot shows how you can launch <span class="stt">xtcp</span> on one machine (here <span class="stt">antarctica</span>):
+on modern Windows systems. Windows users <span class="strike" style="text-decoration:line-through">should</span> <span style="color: purple">may wish to visit</span> <span class="strike" style="text-decoration:line-through">download and install</span>
+<a href="https://nmap.org/"><span style="color: purple">the nmap site</span></a>,
+download the <span style="color: purple">ncat</span> executable, and add it to their path.</span></p><p><div class="SIntrapara">The following screen shot shows how you can launch <span class="stt">xtcp</span> on one machine (here <span class="stt">antarctica</span>):
 </div><div class="SIntrapara"><blockquote><p><img src="nc2.png" alt="" width="643" height="289"/></p></blockquote></div><div class="SIntrapara">On a separate machine, you can then run the <span class="stt">netcat</span> command to connect to the first machine:
 </div><div class="SIntrapara"><blockquote><p><img src="nc1.png" alt="" width="645" height="251"/></p></blockquote></div><div class="SIntrapara">Here the second <span class="stt">nc</span> command sends JSON from <span class="stt">login-students</span> to
 <span class="stt">antarctica</span>, also on the <span class="stt">ccs.neu.edu</span> network. Note how the two
