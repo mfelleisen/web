@@ -5,7 +5,7 @@ make sure that on every git-push all unit tests are run. If unit tests
 fail, the framework alerts the responsible parties with emails or other
 status messages.</p><p>For this course, we will <span class="emph">not</span> use a continuous testing framework.</p><p>Instead, we will maintain a script for our project that can run all unit
 tests.</p><ul><li><p>Write it as a shell script or as a short program in your favorite
-language.</p></li><li><p>Document how to run the script in your <a href="readme.html" data-pltdoc="x">&#8212;<wbr></wbr>Read Me</a>.</p></li><li><p>Run the script every time before you git-push.</p></li><li><p>It is acceptable for test cases to fail. Hence the basic output of
+language. <span style="color: purple">Name it <span class="stt">xtest</span> and place it in your top-level project directory (<span class="stt">Fish/</span>.)</span></p></li><li><p>Document how to run the script in your <a href="readme.html" data-pltdoc="x">&#8212;<wbr></wbr>Read Me</a>.</p></li><li><p>Run the script every time before you git-push.</p></li><li><p>It is acceptable for unit test cases to fail. Hence the basic output of
 the script is just a line or two of how many tests cases it ran, how many
 passed, how many failed.</p><p>Developers often add failing test cases when they have to interrupt
 work. It is a standard technique that reminds them where to resume the
