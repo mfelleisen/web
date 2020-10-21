@@ -44,7 +44,7 @@ An AI player may use the state
 
 The interface of a game state must accommodate both referees and players.
 
-A `fishes` combines data about the current state of the `board` (see
+A `state` combines data about the current state of the `board` (see
 previous assignment) and knowledge about `internal players`.
 
 An `internal player` combines data about the current `score` (a
