@@ -11,8 +11,8 @@ starting from some state. For each state it connects to all legal successor
 states. Each transition corresponds to a legal action of the player whose turn
 it is in this state.</p><p><div class="SIntrapara">The game representation should come with these pieces of functionality:
 </div><div class="SIntrapara"><ul><li><p>creating a complete tree for a state to which players will not add any
-more penguins;</p></li><li><p>a query facility that for a given state and action <span class="stt">A</span> either signals
-that <span class="stt">A</span> is illegal or returns the state that would result from taking action <span class="stt">A</span>;</p></li><li><p>a query facility that for a given state <span class="stt">S</span> and function applies this
+more penguins;</p></li><li><p>a query facility that for a given <span class="strike" style="text-decoration:line-through">state</span> <span style="color: purple">tree node</span> and action <span class="stt">A</span> either signals
+that <span class="stt">A</span> is illegal or returns the state that would result from taking action <span class="stt">A</span>;</p></li><li><p>a query facility that for a given <span class="strike" style="text-decoration:line-through">state</span> <span style="color: purple">tree node</span> <span class="stt">S</span> and function applies this
 function to all states directly reachable from <span class="stt">S</span>.</p></li></ul></div><div class="SIntrapara">The phrase &ldquo;piece of functionality&rdquo; may not directly translate into
 &ldquo;function&rdquo; or &ldquo;method&rdquo; in your chosen language.</div></p><p><span style="font-weight: bold">Pedagogy</span> Software systems often deal with large data structures that do
 not fit into memory all at once. A complete game tree for Fish is an example. It
