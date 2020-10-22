@@ -19,10 +19,14 @@ not fit into memory all at once. A complete game tree for Fish is an example. It
 is large, too large to create all at once. Your data structure should therefore
 use laziness, generators, and similar features to generate more of the tree as
 needed. So this aspect of the project illustrates the idea of an active window
-&ldquo;scanning&rdquo; over a large data structure.</p><p><span style="color: blue">Design Task</span> The player components must communicate with the referee.
+&ldquo;scanning&rdquo; over a large data structure.</p><p><span class="refelem"><span class="refcolumn"><span class="refcontent"><span style="color: purple">The player will also communicate with the tournament
+manager. See <a href="plan.html" data-pltdoc="x"><span style="color: red">Fish</span><span class="stt">.</span><span style="color: red">Com</span>, <span style="color: red">a Plan</span></a>. You do not need to address this aspect.</span></span></span></span></p><p><span style="color: blue">Design Task</span> The player components must communicate with the referee.
 This communication involves both function/method calls and orderings of those,
 i.e., a protocol. Since outsiders will program to this interface, it must be
-spelled out precisely and in detail.</p><p>Write two documents: (1) the API for a player component in your chosen language
+spelled out precisely and in detail.</p><p><span class="refelem"><span class="refcolumn"><span class="refcontent"><span style="color: purple">An API is a documentation of a logical interface to a code
+library and its calling conventions. It is often supplemented by protocol
+conventions. In the context of an API with many functions/methods, ``protocol''
+means calling sequences and dependencies among calls.</span></span></span></span></p><p>Write two documents: (1) the API for a player component in your chosen language
 and (2) the protocol for this API.  The first document (<span class="stt">player-interface.PP</span>)
 should be a module in your language enriched with the usual descriptions
 (interpretations, purpose statements). The second document
