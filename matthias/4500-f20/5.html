@@ -5,11 +5,14 @@ component that takes care of two decisions:
 </div><div class="SIntrapara"><ul><li><p>penguin placements</p><p>It places a penguin in the next available free spot followning a zig zag pattern
 that starts at the top left corner. That is, the search goes from left to right
 in each row and moves down to the next row when one is filled up.</p><p>This piece of functionality may assume that the referee will set up a game board
-that is large enough to accommodate all the penguins of all the players.</p></li><li><p>a choice of action for the player whose turn it is</p><p>It picks the action that realizes the minimal maximum gain after looking ahead
-<span style="font-style: italic">N &gt; </span>0<span style="font-style: italic"></span> turns for this player in the game tree for the current state.</p><p>The minimal maximum<span class="refelem"><span class="refcolumn"><span class="refcontent">Wikipedia has a lengthy <a href="https://en.wikipedia.org/wiki/Minimax">entry on
-minimax optimizations</a>. It should not be necessary to read this article
-but it provides some background and examples for those interested in
-the idea.</span></span></span> gain after <span style="font-style: italic">N</span> turns is the highest score a player
+that is large enough to accommodate all the penguins of all the players.</p></li><li><p>a choice of action for the player whose turn it is</p><p><span class="refelem"><span class="refcolumn"><span class="refcontent"><span style="color: purple">Julia B. suggests that the name "minimal maxium"
+is backwards for the specified algorithm, so I have struck it. The
+specification stands, however.</span> &#8212;<wbr></wbr> Wikipedia has a lengthy
+<a href="https://en.wikipedia.org/wiki/Minimax">entry on minimax <span style="color: purple">and maximin</span>
+optimizations</a>. It should not be necessary to read this article but it
+provides some background and examples for those interested in the
+idea.</span></span></span></p><p>It picks the action that realizes the <span class="strike" style="text-decoration:line-through">minimal maximum</span> <span style="color: purple">best</span> gain after looking ahead
+<span style="font-style: italic">N &gt; </span>0<span style="font-style: italic"></span> turns for this player in the game tree for the current state.</p><p>The <span class="strike" style="text-decoration:line-through">minimal maximum</span> <span style="color: purple">best</span> gain after <span style="font-style: italic">N</span> turns is the highest score a player
 can make after playing the specified number of turns&#8212;<wbr></wbr>assuming that all
 opponents pick one of the moves that minimizes the player&rsquo;s gain.</p><p><span style="font-weight: bold">Tie Breaker</span> If several different actions can realize the same gain, the
 strategy moves the penguin that has the lowest row number for the place from
