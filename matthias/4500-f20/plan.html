@@ -14,7 +14,7 @@ one-semester project.</span></span></span></p><p>The description of Fish suggest
  to place their avatars on the initial board; how to take turns; and how/whether
  to receive information about the end of a game and tournament.  Given the goal,
  this must come be formulated in both logical and communication terms.</p><p>A <span class="emph">player</span> implementation to validate the interface.</p><p>A <span style="font-style: italic">referee</span> supervises an individual game after being handed a
-number of players. The referee sets up a board and interacts with the
+number of players. The referee sets up a board <span class="refelem"><span class="refcolumn"><span class="refcontent"><span style="color: purple">Remember from <a href="fish.html" data-pltdoc="x"><span style="color: red">Fish</span></a> that some other component may be in charge of specifying the dimensions.</span></span></span></span> and interacts with the
 players according to the interface protocol. It removes a
 player&#8212;<wbr></wbr>really its penguins&#8212;<wbr></wbr>that fails or cheats. When the game is
 over, it reports the outcome of the game and the failing and cheating
@@ -31,7 +31,11 @@ the player component legally allowed to perform?).</p><p>The player interface an
 players and referees use to communicate. The communication between a tournament
 manager and players rests on a simple exchange of texts.</p><p>Beyond the game logic, the system will also need components for dealing with
 remote-player communications. These components will be based on the logical
-interfaces.</p><p><span style="font-weight: bold">Building It</span></p><p>Our build plan consists of three phases, each ending in a product that
+interfaces.</p><p><span style="color: purple">The server component will perform the communication-sign-ups for remote
+players but will leave the logical-sign-up to the tournament manager. You may
+wish to think of the communication sign-up as a "registration" step, which may
+result in actually being signed up or ending up on a wait list.</span></p><p><span style="color: purple">The client component will perform the communication-sign-up for players
+on remote machines, connecting them to a remote server.</span></p><p><span style="font-weight: bold">Building It</span></p><p>Our build plan consists of three phases, each ending in a product that
 illustrates the basics of our eventual product. The first two phases
 concern the logic, the last one with communication.</p><p>The goal of the first phase is to build a complete game implementation,
 including game observers and possibly GUI-based players. This phase will thus
