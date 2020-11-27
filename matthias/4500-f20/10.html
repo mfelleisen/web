@@ -21,7 +21,7 @@ system undisturbed and to inject a separate remote-communication layer
 instead.<span class="refelem"><span class="refcolumn"><span class="refcontent">When you touch software, you <span class="emph">enbug</span> it.</span></span></span></p><p><span style="color: blue">Programming Task</span> You will implement a client and a server component.</p><p>The <span class="emph">client</span> TCP-connects a player to a server according to
 <a href="remote.html" data-pltdoc="x"><span style="color: red">Remote Interactions</span></a>.</p><p>The <span class="emph">server</span> awaits TCP connections according to <a href="remote.html" data-pltdoc="x"><span style="color: red">Remote Interactions</span></a>. It waits
 for some time (here, 30s) for at least a minimum number (here, five) of remote
-clients to connect. As long as there isn&rsquo;t this minimum number of clients
+clients to connect <span style="color: purple">and be represented as remote players</span>. As long as there isn&rsquo;t this minimum number of clients
 connected at the end of a waiting period, the server re-enters the waiting state
 (here, exactly once). The waiting period ends if the server has accepted a
 maximal number (here, ten) of client connections; this keeps the overall
