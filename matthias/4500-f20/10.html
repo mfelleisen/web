@@ -38,7 +38,7 @@ with two natural numbers to <span class="stt">STDOUT</span>: <span class="stt">[
 of tournament winners and <span class="stt">cf</span> is the number of players that were caught
 <span class="stt">c</span>heating or that <span class="stt">f</span>ailed during the tournament run.</p><p>To make a test fest feasible, impose a one second limit on each call from the
 server side to the client side. This suffices for local-host TCP transactions.
-Our test harness will limit each tournament to about three  minutes, <span style="color: purple">which means a maximum of .4s per interaction between referee and player</span>.</p><p>Second, <span class="stt">xclients n p ip</span> launches <span class="stt">n</span> clients, which all
+Our test harness will limit each tournament to about three  minutes, <span style="color: purple">which means a maximum of <span class="strike" style="text-decoration:line-through">.4s</span> 1s per interaction between referee and player</span>.</p><p>Second, <span class="stt">xclients n p ip</span> launches <span class="stt">n</span> clients, which all
 connect to the server on port <span class="stt">p</span> at <span class="stt">ip</span> address. If <span class="stt">ip</span> is
 ommitted, the client connects to "local host" (<span class="stt">127.0.0.1</span>). Each
 client employs a standard player, that is, a player that uses the
