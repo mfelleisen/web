@@ -1,0 +1,23 @@
+#! /bin/sh
+#|
+exec racket -tm "$0" ${1+"$@"}
+|#
+
+#lang racket 
+
+(provide
+ ;; usage: ./xsubmit server-as-specified-on-piazza port-as-specified-on-piazza email natural ... 
+ main)
+
+(require json)
+
+(define (main server port email . scores)
+  (define vote `[,email ,(map string->number scores)])
+  (define-values (in out)
+    (let loop ()
+      (with-handlers ([exn:fail:network? (λ (_) (sleep 3) (loop))])
+        (tcp-connect server (string->number port)))))
+  (write-json vote out)
+  (flush-output out)
+  (close-output-port out)
+  (close-input-port in))  
