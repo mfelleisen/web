@@ -5,14 +5,17 @@ visit this page once per 24 hours.</p><p><img style="vertical-align: 0px; margin
 out of 120 base points. Keep in mind that we drop one homework score
 to maximize your average.</p><p>The more important part is what the scenario explanations mean. Less
 than half the test scenarios focus on tournaments with normal
-players. To start, when <span class="emph">your</span> clients connected to our server,
-they got 10s per call (more than 3x what was announced). They could
-<span class="emph">not</span> rely on the server running first.  Most of <span class="emph">our</span>
-clients were broken and to be kicked. Their faults ranged from sending
-no name, a no-JSON name, ill-formed JSON, to invalid JSON; some also
-took a very long time to respond. As announced, the goal was to make
-sure your <span class="stt">Remote/</span> code was robust and could withstand the most
-basic connection and I/O problems.</p><p>The <span style="color: red">final code walk</span> does <span class="emph">not</span> depend on the correctness of
+players. To start, <span style="color: purple">for two scenarios</span>, <span class="emph">your</span> clients
+connected to our server; they got 10s per call (more than 3x what was
+announced). They could <span class="emph">not</span> rely on the server running first.
+<span style="color: purple">For eight scenarios</span>, <span class="emph">our</span> clients <span style="color: purple">connected to
+your server, meaning there was no time limit per call to be satisfied
+on your side (though we timed out after about 3 minutes per
+tournament).</span>  Most of our clients were broken and to be kicked. Their
+faults ranged from sending no name, a no-JSON name, ill-formed JSON,
+to invalid JSON; some also took a very long time to respond. As
+announced, the goal was to make sure your <span class="stt">Remote/</span> code was robust
+and could withstand the most basic connection and I/O problems.</p><p>The <span style="color: red">final code walk</span> does <span class="emph">not</span> depend on the correctness of
 the client-server. It is much more important that you can explain, and
 reason about, your design decisions with the two panelists.</p><p><img style="vertical-align: 0px; margin: -3px -3px -3px -3px;" src="pict_2.png" alt="image" width="707" height="7"/></p><p><span style="font-weight: bold">Monday, December 7th, 2020 6:41:59am</span></p><p><span style="color: red">Voting</span> The vote server is up. The revised vote announcement
 below includes a link to submission script. It runs at the command
