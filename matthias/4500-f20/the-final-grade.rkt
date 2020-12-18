@@ -4,6 +4,10 @@
 (provide final-grade %)
 
 ;; -----------------------------------------------------------------------------
+(module+ test
+  (require typed/rackunit))
+
+;; -----------------------------------------------------------------------------
 (define-type Final         (U 0 1 2 3 4 5 6 7 8 9 10))
 
 (define-type Projects      [Listof Assignment])
@@ -26,6 +30,9 @@
 (define PANEL        (% 20))
 (define LAB          (%  5))
 (define FINAL        (% 14))
+(module+ test 
+  (define TOTAL        (+ HOMEWORK PRESENTATION PANEL LAB FINAL))
+  (check-= TOTAL .99 .001 "assert:: percentage total"))
 
 (define ASSIGNMENTS  (% 80))
 
@@ -74,8 +81,6 @@
 ;; -----------------------------------------------------------------------------
 
 (module+ test
-  (require typed/rackunit)
-
   ;; The Perfect Student
   (: perfect-projects Projects)
   (: perfect-final-walk Ten)
