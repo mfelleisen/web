@@ -1,0 +1,150 @@
+<lecture title="Uses Cases Again; Working in Pairs">
+
+<h3>Use Cases Revisited</h3>
+
+Study this simple story, tease out the concepts, sketch a graph, write use
+cases: 
+<blockquote>
+<hr />
+<b>A Silly Game: 21</b>
+
+<p>The players meet at a table and roll a dice. Every player rolls the dice
+once per round. They add up their scores.  A player can skip a turn or
+declare that he is done. A player is eliminated if/when his score surpasses
+21.  The game is over when all players are eliminated or done. </p>
+
+<p>Scoring: The winners are those players with the maximum score.</p>
+
+<p>Your customer would like to sell this game on-line. He would like to run
+ one automated player per game. </p>
+<hr />
+</blockquote>
+
+<p>Compare your use cases with the graphs of other people. Map the
+  concepts in your use cases to those of the graph. Are any concepts
+  missing in the graph? Are relations missing? Are your use cases
+  overlooking concepts from the graph? 
+</p>
+
+<hr />
+
+<h3>Working in Pairs</h3>
+
+<p>Working in pairs means working together. It does <em>not</em> working
+  separately and combining the results of the separate work into one
+  product.</p>
+
+<p>At any moment, one person is the <em>driver</em> and the other one is
+  the <em>navigator.</em> The terms are borrowed from driving cars; you may
+  also find pilot and co-pilot. Furthermore, partners may switch roles
+  while they work together on a task, though they don't have to.
+</p>
+
+<p>Some pairs designate drivers for entire tasks. Sometimes they just
+  switch during tasks. It depends on the emphasis and the organization of
+  the surrounding team. 
+</p>
+
+<p>Examples of how you should work together in this class: 
+<ul>
+
+<li>When you analyze a problem statement and tease out the first list of
+  concepts, your pair work is probably a form of brain storming. In this
+  case, it is probably acceptable if you work on an equal footing, without
+  specific roles. If you have difficulties working together, assign roles. 
+</li>
+
+<li>When you write up use cases, designated one person per case as the
+  writer and the editor. For other cases, switch the roles. Separate the
+  writing and the editing phases, but go through at least two cycles of
+  writing and editing per case. 
+</li>
+
+<li>When you program, you may wish to dedicate a class, a module, or a sub
+  as owned by one person, which means the person is the driver for this
+  piece of code. Naturally the other person is the navigator. A different
+  but also effective allocation of work is based on use cases. 
+</li>
+</ul>
+</p>
+
+<h3>Perceived Problems of Pair Programming</h3>
+
+Pair programming comes with several perceived and true
+disadvantages. Williams and Kessler (see end) call them "myths". Here are
+the ones that you need to know about both for this course and for working
+in industry later: 
+<ol>
+<li>The most obvious objection is that pair programming reduces the work
+  force in half. Anecdotes from industry and controlled experiments show,
+  however, that this is not the case. Pairs typically complete their tasks
+  faster than solo programmers, and their products exhibit fewer defects
+  than those of solo workers. 
+</li>
+
+
+<li>The second most frequent objection is that people need time and space
+  of their own to work. This is true, and nobody says that people work with
+  partners all the time. Instead, people continue to think about their work
+  after meetings and come back to the next working session with additional
+  thoughts. The critical point is that people produce artifacts together
+  and correct each other's work frequently in joint working sessions.
+</li>
+
+<li>A similar object is that the partners have dissimilar backgrounds. In
+  a course context, this just means that one of them teaches the other
+  person and thus benefits from deepening his knowledge. The other person
+  picks up knowledge and skills. In an industrial context, knowledge
+  transfer happens and the company benefits from dispersing knowledge
+  among the members of its team. 
+</li>
+
+<li>An important objection is that it becomes incredibly difficult to
+  evaluate individuals and to pay them according to their
+  contributions. In a course context, this problem can be overcome in many
+  ways. In the industrial world, this is a true problem without an obvious
+  solution. 
+</li>
+</ol>
+
+<p>Sometimes people report that a partner discovers nothing but syntax
+  errors during programming sessions. This is an easily overcome problem
+  with pair programming. Give your driver time to find mistakes on his
+  own. Instead focus on the larger picture. Don't look for the pot holes on
+  the road; look for rail road crossings, forks, and other markers on the
+  road map. Once you figure out this part your collaboration is likely to
+  be smooth. 
+</p>
+
+<h3>Teams</h3>
+
+<p>Many companies use programming teams. Typically a programming team
+  consists of a chief programmer and his co-pilot; a tools person who knows
+  the chosen language, its libraries, and the chosen IDE really well; the
+  archive person who manages the code archive and the version control
+  system; the programmers who take on specific components; and sometimes
+  other support staff, including testers, technical writers, and customer
+  representatives (literal or virtual). 
+</p>
+
+<p>The chief programmer and his co-pilot tend to design components and
+ their interfaces. The rest of the team implements these components. At
+ some point, the chief programmer and his co-pilot begin the integration
+ work. This last step is often full of surprises and requires deep and
+ broad changes to the product. Don't ever believe that integration is a
+ one-shot activity. 
+</p>
+
+<p>In this course, we will not practice team programming. Your projects
+  are pieces that are usually assigned to solo programmers in a team. Do
+  not distribute the work and integrate it later. Integrating causes such
+  a huge overhead that you are likely to fail. Work in pairs. 
+</p>
+
+<h3>Bibliography</h3>
+
+<li>Williams and Kessler. Pair Programming Illuminated. Addison-Wesley,
+  2003.</li> 
+
+
+</lecture>

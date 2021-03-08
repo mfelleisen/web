@@ -1,0 +1,47 @@
+<week>
+<assignment due="3/24 @ 3pm">
+
+<p><b>Objective:</b> to learn to find appropriate patterns</p>
+
+<hr />
+
+<p><b>Task:</b> The goal is to groom some Carcassonne players. Clearly,
+every player implements the same general game strategy:
+
+<ol>
+<li>find out what the currently available "locations" for the chosen index
+  are;</li> 
+<li>pick one of those locations;</li>
+<li>determine whether to place a follower at all and, if so, where to place
+  it</li> 
+</ol>
+
+Points 2 and 3 call for "intelligence" that is, for algorithms that
+evaluate the chosen locations for tiles and followers. 
+</p>
+
+<p>You are to develop at least two such algorithms for steps 2 and 3,
+  respectively. This gives you four different kind of players. Naturally,
+  you are not allowed to replicate the code in all four players. Instead
+  you need to find design patterns in your "dictionary" that help you
+  organize these pieces of software properly. [POINTS: 12]
+</p>
+
+<p><b>Optional:</b> If you figure out a good organization, it becomes easy
+  to "groom" a good player, mixing and matching and even evolving
+  strategies as the game proceeds. [POINTS: 5]
+</p>
+
+<hr />
+
+<p><b>Product:</b> Mail a tar bundle with a a single subdirectory labeled
+  <code>YourName_Project10</code>. The subdirectory must contain your entire
+  project. The README file must contain instructions for running and
+  visualizing the game [POINTS: 3]; it must also give a brief high-level
+  overview of the design patterns you used to arrange your code. If you
+  chose to go for the optional points, describe how you did it. 
+</p>
+
+</assignment>
+</week>
+

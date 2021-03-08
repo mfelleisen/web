@@ -1,0 +1,322 @@
+<week>
+<assignment due="2/11 @ noon">
+
+<p><b>Objective:</b> to create a test suite; to implement a testing
+  framework if needed</p>
+
+<hr />
+
+<p>The following table displays 11 graphs and their construction:</p>
+
+<table>
+<tr><th>image of graph</th><th>construction of graph</th></tr>
+<tr><td width="200"><img src="Tiles/comp-abbey1.jpg" alt="image" w="1" /></td><td>
+  <br /><a href="abbey1.ss">abbey1.ss</a>
+  <br />add tile "11" at (-1,0) with orientation 180 
+  <br />add tile "14" at (-1,1) with orientation 270 
+  <br />add tile "9" at (-1,2) with orientation 90 
+  <br />add tile "9" at (0,2) with orientation 180 
+  <br />add tile "9" at (1,2) with orientation 90 
+  <br />add tile "8" at (1,1) with orientation 0 
+  <br />add tile "6" at (1,0) with orientation 90 
+  <br />add tile "1" at (0,1) with orientation 0 
+</td></tr>
+<tr><td width="200"><img src="Tiles/comp-abbey2.jpg" alt="image" w="1" /></td><td> 
+  <br /><a href="abbey2.ss">abbey2.ss</a>
+  <br />add tile "1" at (1,1) with orientation 90 
+  <br />add tile "9" at (2,0) with orientation 0 
+  <br />add tile "9" at (2,1) with orientation 90 
+  <br />add tile "9" at (2,2) with orientation 0 
+  <br />add tile "8" at (1,2) with orientation 180 
+  <br />add tile "8" at (0,2) with orientation 90 
+  <br />add tile "6" at (-1,0) with orientation 270 
+  <br />add tile "5" at (-1,2) with orientation 270 
+  <br />add tile "4" at (-1,1) with orientation 270 
+  <br />add tile "2" at (1,0) with orientation 90 
+  <br />add tile "1" at (0,1) with orientation 0 
+ </td></tr>
+<tr><td width="200"><img src="Tiles/comp-abbey3.jpg" alt="image" w="1" /></td><td>
+  <br /><a href="abbey3.ss">abbey3.ss</a>
+  <br />add tile "16" at (2,1) with orientation 90 
+  <br />add tile "2" at (2,2) with orientation 0 
+  <br />add tile "2" at (2,0) with orientation 270 
+  <br />add tile "2" at (1,0) with orientation 90 
+  <br />add tile "1" at (0,2) with orientation 270 
+  <br />add tile "1" at (1,2) with orientation 180 
+  <br />add tile "1" at (1,1) with orientation 90 
+  <br />add tile "1" at (0,1) with orientation 0  </td></tr>
+<tr><td width="200"><img src="Tiles/comp-castle1.jpg" alt="image" w="1" /></td><td>
+  <br /><a href="castle1.ss">castle1.ss</a>
+  <br />add tile "10" at (0,-1) with orientation 180 
+</td></tr>
+<tr><td width="200"><img src="Tiles/comp-castle2.jpg" alt="image" w="1" /></td><td>
+  <br /><a href="castle2.ss">castle2.ss</a>
+  <br />add tile "14" at (1,-1) with orientation 180 
+  <br />add tile "14" at (0,-2) with orientation 90 
+  <br />add tile "14" at (-1,-1) with orientation 0 
+  <br />add tile "3" at (0,-1) with orientation 0 
+  <br />add tile "1" at (0,1) with orientation 0 
+</td></tr>
+<tr><td width="200"><img src="Tiles/comp-castle3.jpg" alt="image" w="1" /></td><td> 
+  <br /><a href="castle3.ss">castle3.ss</a>
+  <br />add tile "14" at (1,-1) with orientation 180 
+  <br />add tile "10" at (1,0) with orientation 0 
+  <br />add tile "8" at (0,-1) with orientation 90 
+</td></tr>
+<tr><td width="200"><img src="Tiles/comp-castle5.jpg" alt="image" w="1" /></td><td>
+  <br /><a href="castle5.ss">castle5.ss</a>
+  <br />add tile "14" at (2,-2) with orientation 180 
+  <br />add tile "8" at (2,-1) with orientation 270 
+  <br />add tile "8" at (1,-2) with orientation 90 
+  <br />add tile "4" at (1,-1) with orientation 0 
+  <br />add tile "8" at (0,-1) with orientation 90 
+</td></tr>
+<tr><td width="200"><img src="Tiles/comp-road0.jpg" alt="image" w="1" /></td><td> 
+  <br /><a href="road0.ss">road0.ss</a>
+  <br />add tile "21" at (1,0) with orientation 90 
+  <br />add tile "2" at (2,0) with orientation 90 
+  <br />add tile "8" at (2,1) with orientation 180 
+  <br />add tile "8" at (1,1) with orientation 90 
+  <br />add tile "1" at (0,1) with orientation 0 
+  <br />add tile "2" at (-1,0) with orientation 270 
+ </td></tr>
+<tr><td width="200"><img src="Tiles/comp-road1.jpg" alt="image" w="1" /></td><td>
+  <br /><a href="road1.ss">road1.ss</a>
+  <br />add tile "19" at (1,0) with orientation 0 
+  <br />add tile "2" at (-1,0) with orientation 270 
+  <br />add tile "1" at (0,1) with orientation 90 
+ </td></tr>
+<tr><td width="200"><img src="Tiles/comp-road2.jpg" alt="image" w="1" /></td><td> 
+  <br /><a href="road2.ss">road2.ss</a>
+  <br />add tile "19" at (2,0) with orientation 0 
+  <br />add tile "17" at (2,1) with orientation 180 
+  <br />add tile "7" at (1,3) with orientation 180 
+  <br />add tile "20" at (1,2) with orientation 270 
+  <br />add tile "22" at (1,1) with orientation 0 
+  <br />add tile "20" at (1,0) with orientation 0 
+  <br />add tile "14" at (0,2) with orientation 90 
+  <br />add tile "1" at (0,1) with orientation 0 
+  <br />add tile "2" at (-1,0) with orientation 270 
+ </td></tr>
+<tr><td width="200"><img src="Tiles/comp-road3.jpg" alt="image" w="1" /></td><td>
+  <br /><a href="road3.ss">road3.ss</a>
+  <br />add tile "22" at (0,2) with orientation 270 
+  <br />add tile "22" at (1,2) with orientation 180 
+  <br />add tile "22" at (1,1) with orientation 90 
+  <br />add tile "22" at (0,1) with orientation 0 
+ </td></tr>
+</table>
+
+<p><b>Task 1:</b> Each of these graphs contains regions, some counting as
+complete, some as incomplete. Turn each of these cases into a test case for
+<code>complete-region</code>. You will naturally use <code>insert-tile</code> to
+construct these graphs, so you will test this function implicitly. [POINTS: 6]
+</p>
+
+<p><b>Task 2:</b> Next turn each of the completed regions of these graphs into a
+test case for <code>score</code>. [POINTS: 6]</p>
+
+<p><b>Task 3:</b> Finally, use the graphs to test
+<code>potential-locations-for-tile</code>. [POINTS: 6]</p>
+
+<hr />
+
+<p>In order to test the functions that find followers in a
+completed region and find places where players can place followers, I have found
+it convenient to develop a function that adds followers to graphs, regardless of
+whether it is legal or not to place them there at the moment: </p>
+
+<pre>
+<code>
+<font  size="-1">
+   (define graph-tile&lt;%&gt;
+    (interface (tile&lt;%&gt;) ;; the interface for the graph 
+      ...  
+      place-follower ;; Position Follower -> Void
+      ;; effect: occupy the specified position on _this_ tile with the follower
+      ;; ASSUME: the tile position is available 
+      ... 
+      ))
+</font>
+</code>
+</pre>
+
+<p>Using this function/method, you can modify the above graphs as follows: </p>
+<table>
+<tr><th>image of graph</th><th>construction of graph</th></tr>
+  <tr>
+    <td width="200">
+      <img src="Tiles/finding-followers-abbey1.jpg" w="1" alt="img" />
+    </td>
+    <td>
+      place RED follower at (0,1) INNER
+    </td>
+  </tr>
+  <tr>
+    <td width="200">
+      <img src="Tiles/finding-followers-abbey2.jpg" w="1" alt="img" />
+    </td>
+    <td>
+      place RED follower at (0,1) INNER
+    </td>
+  </tr>
+  <tr>
+    <td width="200">
+      <img src="Tiles/finding-followers-caste2-1.jpg" w="1" alt="img" />
+    </td>
+    <td>
+      place BLUE follower at (0,-1) INNER
+    </td>
+  </tr>
+  <tr>
+    <td width="200">
+      <img src="Tiles/finding-followers-castle1.jpg" w="1" alt="img" />
+    </td>
+    <td>
+      place RED follower at (0,0) NORTH
+    </td>
+  </tr>
+  <tr>
+    <td width="200">
+      <img src="Tiles/finding-followers-castle2-2.jpg" w="1" alt="img" />
+    </td>
+    <td>
+      place BLUE follower at (0,-1) INNER <br />
+      place BLUE follower at (0,-2) SOUTH
+    </td>
+  </tr>
+  <tr>
+    <td width="200">
+      <img src="Tiles/finding-followers-castle3.jpg" w="1" alt="img" />
+    </td>
+    <td>
+      place RED follower at (0,0) NORTH <br />
+      place RED follower at (1,0) NORTH <br />
+      place blue follower at (0,-1) INNER
+    </td>
+  </tr>
+  <tr>
+    <td width="200">
+      <img src="Tiles/finding-followers-castle5.jpg" w="1" alt="img" />
+    </td>
+    <td>
+      place RED follower at (0,0) NORTH<br />
+      place RED follower at (2,-1) INNER
+    </td>
+  </tr>
+  <tr>
+    <td width="200">
+      <img src="Tiles/finding-followers-road0-1.jpg" w="1" alt="img" />
+    </td>
+    <td>
+      place BLUE follower at (-1,0) EAST
+    </td>
+  </tr>
+  <tr>
+    <td width="200">
+      <img src="Tiles/finding-followers-road0-2.jpg" w="1" alt="img" />
+    </td>
+    <td>
+      place BLUE follower at (-1,0) EAST<br />
+      place RED follower at (1,0) EAST
+    </td>
+  </tr>
+  <tr>
+    <td width="200">
+      <img src="Tiles/finding-followers-road0-3.jpg" w="1" alt="img" />
+    </td>
+    <td>
+      place BLUE follower at (-1,0) EAST<br />
+      place RED follower at (1,0) EAST<br />
+      place RED follower at (2,0) WEST
+    </td>
+  </tr>
+  <tr>
+    <td width="200">
+      <img src="Tiles/finding-followers-road1-0.jpg" w="1" alt="img" />
+    </td>
+    <td>
+      place BLUE follower at (0,0) EAST
+    </td>
+  </tr>
+  <tr>
+    <td width="200">
+      <img src="Tiles/finding-followers-road2.jpg" w="1" alt="img" />
+    </td>
+    <td>
+      place BLUE follower at (0,0) EAST<br />
+      place BLUE follower at (2,0) EAST<br />
+      place RED follower at (2,0) WEST<br />
+      place BLACK follower at (2,0) SOUTH
+    </td>
+  </tr>
+  <tr>
+    <td width="200">
+      <img src="Tiles/finding-followers-road3.jpg" w="1" alt="img" />
+    </td>
+    <td>
+      place BLUE follower at (0,+1) EAST
+    </td>
+  </tr>
+</table>
+
+<p><b>Task 4:</b> Use the first set of graphs and the above to test the function
+that finds all the followers on the given region. That is, first extract the
+recently completed regions, then find all the followers on these
+regions. [POINTS: 6]
+</p>
+
+<p>For <code>potential-locations-for-followers</code>, you can reuse the
+above, making sure that your methods don't reuse positions. Also, use generate
+the graphs below for additional scenarios: 
+</p>
+
+<table>
+  <tr>
+    <td width="200">
+      <img src="Tiles/places-for-followers-castle1.jpg" w="1" alt="img" />
+    </td>
+    <td>
+      place RED follower at (0,0) EAST
+    </td>
+  </tr>
+  <tr>
+    <td width="200">
+      <img src="Tiles/places-for-followers-castle3-2.jpg" w="1" alt="img" />
+    </td>
+    <td>
+      place RED follower at (0,0) EAST
+    </td>
+  </tr>
+  <tr>
+    <td width="200">
+      <img src="Tiles/places-for-followers-road0-1.jpg" w="1" alt="img" />
+    </td>
+    <td>
+      place BLUE follower at (2,1) INNER
+    </td>
+  </tr>
+  <tr>
+    <td width="200">
+      <img src="Tiles/places-for-followers-road1.jpg" w="1" alt="img" />
+    </td>
+    <td>
+      place RED follower at (1,0) NORTH
+    </td>
+  </tr>
+</table>
+
+<p><b>Task 5:</b> Use these last two sets of graphs above to test the function 
+<code>potential-locations-for-followers</code>, which figures out where
+followers can be placed. [POINTS: 6]</p>
+
+<hr />
+
+<p><b>Product:</b> Mail a tar bundle with your revised implementation and the
+client test in a single directory. Formulate one test suite per method or
+function; document the test suites and test cases so that readers know what they
+test. -- Explain in a README file whether the construction of the client test
+discovered any errors, and if so, what kind.</p>
+
+</assignment>
+</week>

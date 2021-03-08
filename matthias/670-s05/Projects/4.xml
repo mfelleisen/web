@@ -1,0 +1,229 @@
+<week>
+<assignment due="2/4 @ noon">
+
+<p><b>Objective:</b> to implement interfaces; to develop additional
+  interfaces</p>
+
+<hr />
+
+<p>Your first task is to translate other use cases for Carcassonne into
+  refinements of the graph interface and additional, new interfaces.</p>
+
+<p><b>Task 1:</b> Specifically, exploit the take-a-turn use case to develop an
+  interface for the game administrator and the player. [POINTS: 4]</p>
+
+<p><b>Task 2:</b> Your second task is to study the end-of-game use
+  case. Develop new interfaces, if needed, and refine existing interfaces
+  with new entries. [POINTS: 4] </p>
+
+<hr />
+
+<p>My description of the "take a turn" use case follows: 
+
+<pre>
+<font  size="-1">
+  start turn
+    administrator grants player a turn 
+     including a placeable tile 
+    player requests possible places for tile 
+    player chooses one of these feasible places 
+
+    administrator evaluates a player's tile placement: 
+    did the placement of the tile complete any regions? 
+    if so, score each region (how many of whose followers 
+     are in each newly compeleted region)
+    if so, return followers to players
+
+    player may receive call-back returning followers 
+    player may also be informed of a score 
+
+    player now checks whether a follower is available 
+    if so, request places where follower could be placed 
+      then decide whether/where to place follower 
+    player chooses one of these feasible places or skips
+  end of turn
+</font>
+</pre>
+</p>
+
+<p>Here is a collection of Scheme class interfaces and data definitions for
+  the representation of the central classes of data of this game: 
+<pre>
+<code>
+<font  size="-1">
+  (define player-graph&lt;%&gt; ;; [POINTS: 10]
+    (interface () 
+      
+      potential-locations-for-tile ;; Index -> Listof[tile&lt;%&gt;]
+      ;; given an index for a potential tile, compute a list of tiles
+      ;; that could be placed into the graph
+      ;; ASSUME: all tiles produced have the given index      
+
+
+      insert-tile ;; tile&lt;%&gt; -> graph&lt;%&gt;
+      ;; add the given tile to _this_ graph 
+      ;; ASSUME: the given tile is placable in _this_ graph,
+      ;; in the sense of _potential-locations-for-tile_
+      
+      potential-locations-for-followers	
+      ;;              -> Listof[(list tile&lt;%&gt; Position)]
+      ;; compute the potential tile locations and positions 
+      ;; on these tiles in _this_ graph where a follower 
+      ;; could be placed 
+      
+      place-follower ;; tile&lt;%&gt; Position Follower -> graph&lt;%&gt;
+      ;; create graph from this Follower at (x,y) on Position
+      ;; ASSUME: the given coordinates and position are legal 
+      ;; in the sense of potential-locations-for-followers
+      ))
+  
+  (define admin-graph&lt;%&gt; ;; [POINTS: 10]
+    (interface () ;; this creates a single interface from two 
+      complete-regions ;; -> Listof[completed&lt;%&gt;]
+      ;; the list of regions that were completed 
+      ;; by the last insertion of a tile 
+      ))
+  
+  (define graph&lt;%&gt;  ;; [POINTS: 0]
+    (interface (admin-graph&lt;%&gt; player-graph&lt;%&gt;)))
+  
+  (define completed&lt;%&gt; ;; [POINTS: 6]
+    (interface ()
+      followers ;; -> Listof[(list Follower Number)]
+      ;; how many followers of each kind exist occupy 
+      ;; _this_ completed region; note: this result can 
+      ;; be used for both scoring and returning followers 
+      ;; to players
+      
+      score ;; -> PositiveNumber
+      ;; what is the value of _this_ completed region, 
+      ;; independent of the followers on the tiles
+      
+      remove-followers ;; -> completed&lt;%&gt; 
+      ;; effect: remove all followers from _this_ region 
+      ;; return _this_ region 
+      ;; ASSUME: afterwards _followers_ produces the empty list 
+      
+      equal ;; completed&lt;%&gt; -> Boolean 
+      ;; are _this_ and the given instance equal? 
+      ))
+
+  ;; represent the tiles inside a graph 
+  (define tile&lt;%&gt; ;; [POINTS: 2]
+    (interface () 
+      equal ;; tile&lt;%&gt; -> Boolean 
+      ;; compare _this_ tile with the given tile 
+
+      index ;; -> Index 
+      ;; the index from which _this_ tile was built 
+      ))
+
+  ;; a Position is one of:
+  ;; -- Direction
+  ;; -- INNER
+  
+  ;; interpretation: 
+  ;; NORTH :: road or castle w/o interior connection 
+  ;; SOUTH :: road or castle w/o interior connection 
+  ;; EAST  :: road or castle w/o interior connection 
+  ;; WEST  :: road or castle w/o interior connection 
+  ;; INNER :: abbey or castle with interior connection
+  
+  (define INNER -100)
+
+  ;; a Direction is one of:
+  ;; -- NORTH
+  ;; -- EAST
+  ;; -- SOUTH
+  ;; -- WEST
+
+  (define NORTH   0)
+  (define EAST   90)
+  (define SOUTH 180)
+  (define WEST  270) 
+  
+  ;; functions for moving in these cardinal directions 
+  ;; x :: the east-west coordinate 
+  ;; y :: the north-south coordinate 
+  (define north sub1)
+  (define east  add1)
+  (define south add1)
+  (define west  sub1)
+ 
+  ;; a Follower is one of: 
+  ;; -- RED
+  ;; -- WHITE
+  ;; -- BLUE
+  ;; -- BLACK
+
+  (define RED   "red")
+  (define WHITE "white")
+  (define BLUE  "blue")
+  (define BLACK "black")
+  
+  ;; represent the unplaced tiles 
+  ;; an Index is one of: 
+  ;; -- "00"
+  ;; -- "1"
+  ;; -- ...
+  ;; -- "24"
+
+  ;; a Listof[X] is one of:
+  ;; -- Empty
+  ;; -- (cons X Listof[X])
+
+  ;; (list X Y) is
+  ;; -- (cons X (cons Y empty))
+
+  ;; Note: Java and C++ programmers should use Vector instead of List. 
+</font>
+</code>
+</pre>
+I chose Scheme because it is a neutral language for most of you and because
+ most of the signatures (contracts, purposes) are actually expressed
+ informally. That means those of you who choose a scripting language see
+ how to use the design recipe, and those of you who choose a typed language
+ can still translate these statements into typed method signatures and
+ interface-like expressions. 
+</p>
+
+<p><b>Task 3:</b> Your task is to implement classes in <a
+  href="programming.html"> your chosen programming language.</a> Your
+  implementation must be faithful. In particular, we must be able to plug
+  someone else's class into your program, and your program should at
+  least compile and mostly run. NOTE 1: There is no question that the
+  informal purpose statements are open to interpretation or that the
+  plugged-in class is faulty. Still, it should be possible to plug in other
+  people's code and get things to run. That's the real world. NOTE 2: The
+  POINT comments with the interfaces tell you how much the implementation of
+  each interface counts. You will need all of them eventually but if you are
+  running out of time, you may restrict the scope of the project with trivial
+  implementations of peripheral things and focus on the others instead. Of, vice
+  versa, you can try to get as many points from the easy interfaces, and get the
+  rest done later.</p>
+
+<p><b>Task 4:</b> Your last task is to ponder the following question: 
+
+<blockquote>Why do the methods <code>insert-tile</code> and
+<code>place-follower</code> return a new graph rather than just modify the
+graph? If yes, describe a scenario (within the game) where this might be
+useful. If no, argue why this is extraneous overhead and should probably be
+changed for the final product.
+</blockquote>
+
+As you may know, I am a (non-radical) "functional programmer" who prefers to
+return values rather than modifying them where possible. It is thus possible
+that I just went too far here. [POINTS: 3]
+</p>
+
+<hr />
+
+<p><b>Product:</b> Mail a tar bundle with two subdirectories labeled Interfaces
+  (tasks 1 and 2) and Carcassonne (task 3). Place the relevant pieces
+  into the subdirectories and add a README file to make sure your graders can
+  compile and run the program. If you answer the question in task 4, include the
+  answer in the README file and specify as such. 
+</p>
+
+</assignment>
+</week>

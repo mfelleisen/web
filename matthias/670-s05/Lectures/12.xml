@@ -1,0 +1,758 @@
+<lecture title="Assertions and Contracts">
+
+<h3>Types are Your Friends</h3>
+
+<p>A type checker is a theorem prover. As it crawls over your program, it
+  confirms your claims about your functions and variables once and for
+  all. Example: 
+</p>
+
+<pre><code>
+ ...
+ int f(long x) { 
+  return ... x ...; 
+ }
+ ...
+</code></pre>
+
+<p>When the Java type checker checks the program that contains this code
+  fragment, it confirms two of your claims:
+<ol>
+<li>when <code>f</code> receives a value for <code>x</code>, it is an
+
+<li>if <code>f</code> produces a value, it is an element of the class of
+<code>int</code> integers.</li>
+</li>
+</ol>
+While these facts don't represent much of the knowledge that went into the
+production of the program, it is still more than testing could ever
+establish. After all, testing can only confirm a finite number of facts
+about <code>f</code>.</p>
+
+<p>Knowledge like this comes in handy when you are looking for errors in
+  your program. As you inspect your program for potential problems, you do
+  not have to re-confirm that <code>f</code> maps <code>long</code>s to
+  <code>int</code>s; you may assume it as a given.</p>
+
+<p><b>WARNING:</b> The above is only true for program languages with sound
+  type systems. Examples of such languages are Java, ML, and Haskell. In
+  contrast, C and C++ do not have sound type systems; a function such as
+  <code>f</code> can always consume a bit pattern that corresponds to a
+  (portion of a string) and produce a (portion of a) bit pattern from a
+  structure. Hence, when a C/C++ program breaks, you may not assume
+  anything is correct. 
+</p>
+
+<p>In the ideal world, we should therefore express everything we know about
+  our program in the type system. Then, as the type checker blesses the
+  program, it would confirm that the program runs correctly for
+  ever. Unfortunately, this is impossible in the abstract (if we wish to
+  have terminating type checkers) and in the concrete; the type languages
+  of programming languages are just not expressive enough. 
+</p>
+
+<p>Consider this example:
+
+<pre><code>
+ prime h(prime x) { 
+  return ... x ...
+ }
+</code></pre>
+This code fragment specifies that <code>h</code> consumes and produces
+prime numbers. No current type language supports a <code>prime</code> type
+at the moment, and including it in a type language would soon run into
+problems with the undecidable theory of arithmetic. Thus, even though such
+function signatures would be highly useful in, say, the realm of
+cryptography, it is impossible to state such facts and to have them
+confirmed by the type checker.
+</p>
+
+<h3>Assertions</h3>
+
+<b>(Types are not friendly enough)</b>
+
+<p>To overcome this deficiency, we need to generalize the language of types
+  to a language of arbitrary assertions. Roughly speaking, an assertion is
+  a claim about the values in our computer programs as the (abstract)
+  computer executes them. Historically, people have associated stated
+  assertions about program variables. Examples: 
+
+<pre><code>
+ int p; // p is a prime number
+</code></pre>
+
+or
+
+<pre><code>
+ int x; 
+ ...
+ x = x * x; // x is now positive 
+ ...  
+</code></pre>
+
+or 
+
+<pre><code>
+ Process current; 
+ Queue[Process] q; 
+ ... 
+ q.enq(current); 
+ // q is not empty 
+ runProcess(q.deq()); 
+ // warning: q might be empty now 
+ ...
+</code></pre>
+
+The last two examples also show that assertions are established as the
+result of executing a statement, and using assertions, we can argue that
+code fragments will execute properly. Due to this role, assertions are
+often referred to as pre-conditions and post-conditions (of statements). 
+</p>
+
+<p>Since English is ambiguous and since assertions (claims of truth) are
+  the elements that logic deals with, computer scientists quickly adopted
+  the language of logic to express facts. Thus, instead of the above,
+  people write: 
+
+<pre><code>
+ // forall i such that 2 &le; i &lt; p, 
+ // &nbsp; &nbsp; &nbsp; not[(p modulo i) = 0]
+ int p; 
+</code></pre>
+
+and
+
+<pre><code>
+ int x; 
+ ...
+ x = x * x; // x >= 0
+ ...  
+</code></pre>
+
+or 
+
+<pre><code>
+ Process current; 
+ Queue[Process] q; 
+ ... 
+ q.enq(current); 
+ // not[q.empty()]
+ runProcess(q.deq()); 
+ // WARNING: q.empty() v not[q.empty()]
+ ...
+</code></pre>
+</p>
+
+<p>Next people formulated rules for reasoning about program statements,
+  especially assignment statements, if statements, and loops. 
+</p>
+
+<h3>Assertions Describe the Behavior of Programs</h3>
+
+<p>Take a look at this program fragment: 
+<pre><code>
+int x = 0; 
+// 1: x = 0 
+x = x + 1; 
+// 2: x = 1 
+</code></pre>
+The comments are logical assertions about the state of the program. Indeed,
+they actually describe the execution of the program. Specifically, the
+first assertion describes the entire state after initialization and the
+second one the state after the assignment statement. 
+</p>
+
+<p>For if-statements, we need to take into account a case split: 
+<pre><code>
+int x = ...; 
+int y = ...; 
+... 
+int max = 0; 
+// 1: max = 0 
+if (x > y) { 
+ // 2a: (x &gt; y) 
+ max = x; 
+ // 3a: x &gt; y => max = y
+ } 
+else {
+ // 2b: not(x > y)
+ // 2b: x &le; y
+ max = y; 
+ // 3b: x &le; y => max = y
+ }
+// 4: (x &gt; y => max = x) ^ (x &le; y => max = y) 
+</code></pre>
+
+In each branch, we can add the condition that succeeded (and calculate with
+it: see 2b). Then, at the end of the if-statement, we can combine the two
+branches with a logical conjunction. In this example, we may conclude that
+no matter what <code>x</code> and <code>y</code> are, <code>max</code> is
+equal to the larger of the two.
+</p>
+
+<p>Last but not least, we can also use assertions to describe the execution
+ of loops: 
+<pre><code>
+int a[];
+...
+int i = 0; 
+int sum = 0; 
+// 1: i = 0 ^ sum = 0 
+...
+// 2: sum = &Sigma; { a[j] | 0 &le; j &lt; i } ^ i = 0
+for(i = 1; i &lt; a.length; i++) {
+ sum = sum + a[i]; 
+ // 3: sum = &Sigma; { a[j] | 0 &le; j &lt; i }
+ }
+// 4: sum = &Sigma; { a[j] | 0 &le; j &lt; i = a.length }
+</code></pre>
+
+Here we see that one and the same assertion holds before the loop starts
+(2), at the end of each loop body (3), and after the loop stops. The
+conclusion is then that <code>sum</code> is the sum of all numbers in the
+array <code>a</code>. Because this assertion holds at all these places, it
+is also called a loop invariant (i.e., an assertion that is true across
+several statements). 
+</p>
+
+<p>(Note: the assertion is false at the entry of the loop body. At that
+  point <code>i</code> was just increased by 1, yet <code>sum</code> is
+  still the old value.)
+</p>
+
+<p>For years (1960's through the early 1980's), the holy grail of
+  programming language research was the development of a calculus that
+  would empower programmers to specify the initial state and the final
+  state, and to create the program from these statements. Alternatively,
+  the programmers would code something and an automatic theorem proofer
+  would verify the result. (See Dijkstra's monograph.)
+</p>
+
+<p>The effort collapsed when people couldn't figure out how to easily scale
+  this kind of reasoning to programming languages with procedure
+  definitions and procedure calls (and beyond). The idea of programming
+  triples, however, survived. To this day, it is a good idea to describe
+  small code fragments as Hoare triples: 
+
+<center><code>PRE { programStatement } POST</code></center>
+
+where <code>PRE</code> and <code>POST</code> are logical statements
+describing the state of the abstract machine. Since people couldn't reason
+about several procedures, it is also natural that they started describing
+the behavior of procedures with triples. 
+</p>
+
+<h3>Assertions for Method Boundaries</h3>
+
+<p>Although research on program correctness per se failed, the primary use
+  of <code>PRE</code> and <code>POST</code> assertions is to enhance the
+  type signature of a method. In other words, if these descriptions are
+  added in an interface, they become a powerful tool to specify those
+  obligations of callers and callees that go beyond types. Even if such
+  assertions no longer describe the entire behavior of a method's body,
+  they can still notice basic mistakes that can pollute software for a long
+  time. 
+</p>
+
+<p>Let us look at a canonical example:
+<pre><code>
+interface Queue {
+ // is this queue empty? 
+ boolean empty();
+
+ // add Item x to the end of this queue
+ Queue enq(Item x); 
+
+ // produce and remove the first Item from the queue
+ Item deq(); 
+
+ // how many items are in this queue 
+ int size();
+}
+</code></pre>
+
+This Java interface specifies a collection of data structures with four
+methods. At first a newly created queue is empty. With <code>enq</code>, we can
+add an item; with <code>deq</code> we can retrieve the item. The descriptions of
+the two actions imply that they increase and decrease the <code>size</code> of
+the queue. Their names and the name of the data structure finally suggest that
+<code>deq</code> retrieves the item that has been in the queue the longest. In
+short, our historical knowledge suggests a first-in/first-out data
+structure.</p>
+
+<p>In principle, it is possible to supplement the signatures and purpose
+statements of this interface with assertions in an equational logic that
+describe the behavior we just described informally. Here are just some sample
+equations: 
+
+<pre><code>
+&forall; X: new Queue().enq(X).deq() = X 
+&forall; X, Y: new Queue().enq(X).enq(Y).deq() = X  
+
+new Queue().size() = 0 
+&forall; X: new Queue().enq(X).size() = 1
+</code></pre>
+
+Given the stateful specification of the queue interface, however, it is
+impossible to formulate a simple set of equations or logical assertions that
+describe the complete behavior of <code>Queue</code>.
+</p>
+
+<p>Still, many aspects of our informal descriptions can be translated into
+logical assertions, specifically into pre- and postconditions. Let's practice
+this idea with two questions: 
+<ol>
+<li>Can the method be called in all situations? If not, describe when it can be
+called.</li>
+<li>Is there anything special about the result value or the result state of each
+method?</li>
+</ol>
+Applied to our four methods we get these answers: 
+<ol>
+<li>It is always possible to call <code>empty</code>. Its result is either true
+or false, and there is nothing more specific that we can say now.</li>
+<li>It is always possible to call <code>enq</code>. Its result is a queue that
+is not empty. Furthermore, the size after the call is one more than the size
+before the call. 
+</li>
+<li>It is only possible to call <code>deq</code> when the queue contains at
+least one item. Otherwise it makes no sense to call it. Furthermore, at the end
+of the call the queue contains one item less than before the call. 
+</li>
+<li>Finally, it is always possible to call <code>size</code>. Its result is
+always an integer, though it is also true that this integer is always greater or
+equal than 0. 
+</li>
+</ol>
+</p>
+
+<p>Here is a rewrite of the same interface with <code>PRE</code> and
+  <code>POST</code> conditions: 
+<pre><code>
+interface Queue {
+ // is this queue empty? 
+ boolean empty();
+ 
+ // add Item x to the end of this queue
+ Queue enq(Item x); 
+ // POST: !(empty()) &amp;&amp; size() = OLD[size()] + 1
+
+ // produce and remove the first Item from the queue
+ Item deq(); 
+ // PRE: !(empty()) 
+ // POST: size() = OLD[size()] - 1
+
+ // how many items are in this queue 
+ int size();
+ // POST: RESULT &ge; 0
+}
+</code></pre>
+The conditions contain two special notations. The first is
+ <code>OLD[...]</code>. It denotes the value of the expression <em>before</em>
+ the method call took place. The second one is <code>RESULT</code>. It is the
+ value that the method produces. Given these explanations, the pre- and
+ postconditions in the revised interface express all those conditions that we
+ mentioned above, except for those that provide a full-fledged formal
+ description of the methods' behavior. Still, experience shows that such
+ additional conditions quickly catch mistakes in the general logic, especially
+ in conjunction with other pre- and postconditions. 
+</p>
+
+<p>Let us look at a second example, the conversions of dollar amounts into
+strings and vice versa. Since money amounts require precise calculations, it is
+a good practice to develop a separate class of <code>Amount</code>s for business
+applications. Naturally, in addition to basic arithmetic operations on an
+<code>Amount</code> we also need an operation that converts an instance to a
+<code>String</code>:
+<pre><code>
+interface IAmount {
+  // convert the amount into a check-style string 
+  // with dollars and cents separated by a dot 
+  String print() 
+}
+</code></pre>
+
+Furthermore, we may also want to provide a static factory method that reads a
+<code>String</code> into an <code>Amount:</code>
+<pre><code>
+class Amount implements IAmount {
+  ...
+  // convert the given check-style string into an amount
+  // assume the string separates the dollar amount from 
+  // the cents via a dot 
+  public static Amount read(String s) { ... }
+  ...
+}
+</code></pre>
+
+In either case, it makes sense to describe the obligation of <code>print</code>
+or the obligation of <code>read</code>'s client with assertions that catch basic
+mistakes.
+</p>
+
+<p>The informal purpose statement implies two major characteristics about the
+string so far: 
+<ol>
+<li>the string consists of digits except ...</li>
+<li>... for the third spot from the right, which is a dot.</li>
+</ol>
+Using a forall quantifier, we can express these two constraints as follows: 
+<pre><code>
+  RESULT[RESULT.length() - 3] = '.' 
+  &amp;&amp;
+  &forall; i in [0..RESULT.length] : i != RESULT.length() - 3 
+   => RESULT[i] in ['0'..'9']
+</code></pre>
+
+As before, the assertion uses both program variables and even programming
+notation to express basic ideas but also mathematical symbols, e.g.,
+&forall;. Furthermore, it does not express the complete behavior of either
+<code>print</code> or <code>read</code> but it expresses essential
+characteristics. In particular, it clarifies what it means to supply or receive
+a check-style string. 
+</p>
+
+<p>If this condition fails, something is seriously wrong with the method or its
+caller. Hence monitoring conditions such as these helps us defend ourselves
+against miscommunication among programmers. The key is then to not only add such
+statements but to turn them into a part of the running code.
+</p>
+
+<h3>From Assertions to Contracts</h3>
+
+<p>In the business world, a contract is a document that spells out the
+obligations of two (or more) participants in a joint activity. For example, a
+contract may specify that an oil company delivers oil to a residence and that
+the owner in turn pays for the oil. If either of the two parties doesn't live up
+to its obligations, the other one will go to a neutral arbiter who decides
+whether the claim is correct. If so, we say that one of the two parties got
+blamed. 
+</p>
+
+<p>This scenario suggests that turning assertions into useful program monitoring
+tools requires three things: 
+<ol>
+<li>the assertions must become executable;</li>
+<li>a neutral arbiter must monitor the assertions;</li>
+<li>if an assertion goes wrong, the monitor must assign blame to the party that
+fails to live up to its obligations.</li>
+</ol>
+
+In short, assertions convey knowledge and you can be blamed for what you
+knowingly violate; converting assertions into contracts does just that. 
+</p>
+
+<p>We can go about making assertions executable in two ways. On one hand, we can
+create a notation for assertions, have programmers express their thoughts in
+this notation, and translate it into code. On the other hand, we can simply say
+that all boolean expressions of the underlying programming language are
+assertions and that the monitor just executes them at opportune moments.</p>
+
+<p>The boolean-expression approach is dominant in industrial languages though
+only Eiffel treats these assertions as contracts. Meyer chose to equate boolean
+expressions with assertions because of pragmatic reasons, even though he was
+keenly aware of the problems. The major problem is of course that a call to a
+boolean-value function is an assertion but the execution of this assertion may
+have side-effects. That is, it may diverge, raise an exception, or change the
+state of a variable. </p>
+
+<p>Research projects tend to use separate languages for contracts and
+assertions. Two prominent examples are the ESC/Java project at the former DEC
+SRC lab (short for extended static checking), which uses the Java Modeling
+Language (JML), and the SPEC# project at Microsoft research, which uses its own
+notation. The latter provides a programming language, a run-time monitoring
+system, and a theorem proofer. If the theorem proofer can verify that a party
+always meets its obligations, it can inform the compiler, which will then
+disable the corresponding monitoring code. Conversely, if the theorem prover
+cannot establish that the party lives up to the contract in all situations, the
+compiler will issue appropriate code. 
+</p>
+
+<p>No matter how contract violations are found, it is important that the guilty
+party is blamed and that the error message is a good explanation for the
+problem. After all, the purpose of contracts is to protect programmers against
+miscommunication and to help them eliminate problems. 
+</p>
+
+<p><b>Note 1:</b> Unfortunately, most contract systems for Java and Eiffel lack
+a semantic foundation. As a result, they may not notice a contract violation at
+all, blame the wrong party, or blame the proper party with an incorrect
+explanation. Furthermore, the pun between assertion variables and program
+variables has prevented programmers from expressing and monitoring assertions
+about objects (rather than just plain values).(See Findler's dissertation and
+research for detailed explanations.)
+</p>
+
+<p><b>Note 2:</b> Monitoring contracts can get expensive. It is therefore
+important to think about what you want your contract system to check. The goal
+is to find the proper compromise between checking basic properties and checking
+them without much overhead in time, space, and energy. A basic property of a
+method is an assertion whose violation suggests something fundamental went
+wrong. For example, if there is no dot at the proper position in the result of
+<code>print</code> in <code>Amount</code>, it is not the desired print
+representation of a dollar amount. Checking this one character in the string is
+relatively cheap; it adds a constant to the running time. Checking that every
+other character is a digit requires a loop. The cost is now linear in the length
+of the resulting string but that is acceptable because the routine itself is
+probably linear. Adding more than a linear cost would definitely be
+questionable.
+</p>
+
+<h3>Sequence Contracts</h3>
+
+<p>In addition to types (signatures) and basic conditions about the
+before and after state of the world, we often also want to ensure
+that methods are called in the proper order.</p>
+
+<p>Take a look at this simple integer file interface:</p>
+
+<pre><code>
+interface IPort {
+    // connect port to file
+    void open(); 
+
+    // read one integer from file, <font color="blue">if the file isn't exhausted</font>
+    int read(); 
+    <font color="blue">// @pre: !out_of_intsP()</font>
+
+    // is the file content exhausted? 
+    boolean out_of_intsP(); 
+
+    // disconnect the port from the file 
+    void close();     
+
+    <font color="red">// sequence contract: open . {read | out_of_intsP}* . close</font>
+}
+</code></pre>
+
+<p>Presumably, we create an IPort with a name and then work with it: </p>
+
+<pre><code>
+class PortTest {
+    public static void main(String argv[]) {
+	int sum; 
+	int silly[] = {1,2,3}; 
+	IPort ip = new PortState(silly);
+     
+	// ip.open();
+	sum = 0; 
+	while (!ip.out_of_intsP() || true)
+	    sum += ip.read(); 
+	ip.close(); 
+	System.out.println("6 == " + sum); 
+    }
+}
+</code></pre>
+
+<p>Clearly, the intention is that consumers call the methods of IPort in a
+particular sequence, namely, one call to <code>open</code>, followed by calls to
+<code>read</code> and <code>out_of_intsP</code>, followed by one (optional) call
+to <code> close</code>.</p>
+
+<p>We call this a sequence contract and write something like the
+above as</p>
+
+<pre><code>
+ open . { read | out_of_intsP }* . close
+</code></pre>
+
+<p>The notation:
+<ul>
+<li>The braces group things.</li>
+<li>The brackets make things optional.</li>
+<li>a . b means a followed by b.</li>
+<li>a | b means a or b. </li>
+<li>a* means 0 or more actions a. </li>
+<li>a+ means 1 or more actions a. </li>
+</ul>
+</p>
+
+<p>An alternative (but equivalent) notation is that of finite state machines:</p>
+
+<pre><code>
+  port :
+
+                open()	                          read(), 
+       +------------------------------------+     out_of_intsP()
+       |                                    |   +---------+
+       |                                    v   |         |
+ +------------+                          +----------+     |
+ | ClosedPort |                          | OpenPort |     |
+ +------------+                          +----------+     |
+       ^                                    |   ^         |
+       |                                    |   |         |       
+       +------------------------------------+   +---------+
+                close()
+</code></pre>
+
+<p>This notation suggests an implementation via the state pattern [GoF]:</p>
+
+<font size="-1">
+<pre>
+<code>
+// Checking sequence contracts via the state pattern. 
+
+// Each class of states is represented with a single instance from a 
+// private class. Each state implements the full repertoire of method 
+// calls; the Port class itself just forwards each message to the current 
+// state. 
+
+class PortState implements IPort {
+
+    // -------------------------------------------------------------------------
+    // fields: 
+
+    private int values[]; 
+
+    private IPort state; 
+
+    private OpenPort theOpenPort = new OpenPort(); 
+
+    private ClosedPort theClosedPort = new ClosedPort(); 
+
+    PortState(int values[]) { 
+	this.values = values; 
+	state = theClosedPort;
+    }
+
+    // -------------------------------------------------------------------------
+    // the public interface 
+
+    public void open() { 
+	state.open(); 
+    }
+
+    public int read() {
+	return state.read();
+    }
+
+    public boolean out_of_intsP() {
+	return state.out_of_intsP(); 
+    }
+
+    public void close() {
+	state.close();
+    }	
+
+    // -------------------------------------------------------------------------
+    // the private classes 
+
+    private class OpenPort implements IPort {
+
+	private int ptr = 0; 
+
+	public void open() { 
+	    System.out.println("can't call open on open file"); 
+	    System.exit(-1); 
+	}
+
+	public int read() {
+	    preRead();          
+	    int r = values[ptr]; 
+	    ptr++; 
+	    return r; 
+	}
+
+	public boolean out_of_intsP() {
+	    return (ptr >= values.length); 
+	}
+
+	public void close() {
+	    state = theClosedPort; 
+	}	
+
+	// checking the precondition for read
+	private boolean preRead() { 
+	    if (ptr &lt; values.length)
+		return true; 
+	    System.out.println("precondition violation"); 
+	    System.exit(-1); 
+	    return false; 
+	}
+    }
+
+    private class ClosedPort implements IPort {
+
+	public void open() { 
+	    state = theOpenPort; 
+	}
+
+	public int read() {
+	    Ouch(); return -1; 
+	}
+
+	public boolean out_of_intsP() {
+	    Ouch(); return false; 
+	}
+
+	public void close() {
+	    Ouch(); 
+	}	
+
+	private void Ouch() {
+	    System.out.println("sequence contract violation");
+	    System.exit(-1); 
+	}
+    }
+}
+</code>
+</pre>
+</font>
+
+<h3>Contract Violations and Fault-Tolerant Programming</h3>
+
+<p>When contracts go wrong, the system is in trouble. Contracts monitor basic
+properties that should never go wrong. At the same time, however, the purpose of
+contracts is to check on the communication between disjoint parts of the
+system, and in common cases, the various parts of a system are not equals. If a
+lesser part fails, the overall system might just work at acceptable levels
+without the failing part. </p>
+
+<p>This reasoning suggests a natural combination of contracts with techniques
+from fault-tolerant systems. Specifically, imagine that the composition of the
+system is flexible. While it runs, various components can join or leave the
+system. Naturally, the system contains essential components for which this is
+not true, but it might be true for peripheral or for redundant parts. Then, when
+one of those redundant or peripheral subsystems fails, the kernel of the system
+can "unplug" the failing part and inform the rest of the components to work
+without it. Indeed, depending on how the system is configured, the remaining
+components don't ever need to know. 
+</p>
+
+<p>Consider a system that is playing the games. The game administrator is
+obviously an essential component. If it fails, nothing else can replace it. In
+contrast, if one of the player fails---perhaps due to a bad connection or
+perhaps due to cheating---the game system can obviously do without the player.</p>
+
+<p>The internet is another example of a fault-tolerant system. When computers
+notice that some other computer no longer responds with acknowledgments, they
+route network traffic around the failing computer. If the failing computer is a
+mail server, they may hold the mail for several days and attempt to redeliver it
+on a regular basis.</p>
+
+<p>In general, the use of assertions (invariants) and contracts has led to a
+number of recent attempts to produce self-healing or self-repairing
+systems. While some ideas have already appeared in industrial contexts, for many
+it is too early to tell whether they will make it out of the research lab.</p>
+
+<h3>Bibliography</h3>
+
+<ul>
+<li>Dijkstra. A Discipline of Programming. Prentice Hall. 1974.</li>
+
+<li>Findler. Behavioral Software Contracts. Dissertation, Rice University,
+2001.</li> 
+
+<li>Flanagan, Leino, Lillibridge, Nelson, Saxe, and Stata.
+ Extended static checking for Java. PLDI 2002.
+</li>
+
+<li>Meyer. Applying "Design by Contract". IEEE Computer, Oct 1992.</li>
+
+<li>
+Barnett, Leino, Schulte. <a href="http://research.microsoft.com/SpecSharp/">
+The Spec# programming system: An overview.</a> CASSIS 2004.
+</li> 
+</ul>
+
+</lecture>

@@ -1,0 +1,300 @@
+<html><head><title>Lecture 5: Examples and Tests</title></head><body bgcolor="white"><br /><hr width="80%" height="3" /><table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="15%" valign="top" align="left" rowspan="2"><table border="0"><tr><td><a href="../../index.html" style="text-decoration: none"><font color="grey"><b>Teaching</b></font></a></td></tr><tr><td><a href="../index.html" style="text-decoration: none"><font color="grey"><b>670 S '05</b></font></a></td></tr><tr><td><font color="black"><b>&nbsp;</b></font></td></tr><tr><td><a href="index.html" style="text-decoration: none"><font color="grey"><b>Lectures</b></font></a></td></tr><tr><td><a href="1.html" style="text-decoration: none"><font color="grey"><b>Lecture 1</b></font></a></td></tr><tr><td><a href="2.html" style="text-decoration: none"><font color="grey"><b>Lecture 2</b></font></a></td></tr><tr><td><a href="3.html" style="text-decoration: none"><font color="grey"><b>Lecture 3</b></font></a></td></tr><tr><td><a href="4.html" style="text-decoration: none"><font color="grey"><b>Lecture 4</b></font></a></td></tr><tr><td><font color="black"><b>Lecture 5</b></font></td></tr><tr><td><a href="6.html" style="text-decoration: none"><font color="grey"><b>Lecture 6</b></font></a></td></tr><tr><td><a href="7.html" style="text-decoration: none"><font color="grey"><b>Lecture 7</b></font></a></td></tr><tr><td><a href="8.html" style="text-decoration: none"><font color="grey"><b>Lecture 8</b></font></a></td></tr><tr><td><a href="9.html" style="text-decoration: none"><font color="grey"><b>Lecture 9</b></font></a></td></tr><tr><td><a href="10.html" style="text-decoration: none"><font color="grey"><b>Lecture 10</b></font></a></td></tr><tr><td><a href="11.html" style="text-decoration: none"><font color="grey"><b>Lecture 11</b></font></a></td></tr><tr><td><a href="12.html" style="text-decoration: none"><font color="grey"><b>Lecture 12</b></font></a></td></tr><tr><td><a href="13.html" style="text-decoration: none"><font color="grey"><b>Lecture 13</b></font></a></td></tr></table></td><td width="3%" /><td valign="top" align="left"><h3>Lecture 5: Examples and Tests</h3></td>&nbsp;</tr><tr><td /><td valign="top" align="left" colspan="3"><div><div><h3>Interfaces: Purpose and Contract</h3>
+
+Thus far, we have learned how to scale up the first two steps of the design
+recipe to larger projects. First, we analyze the problem with concept graphs and
+use cases. Second, we excerpt interfaces from these. An interface is a
+description of some actor or piece of data (what it represents) and what kind of
+actions we expect to happen on them. Each action consumes inputs and produces
+outputs. 
+
+<p>For example, we may be working on a piece of software that deals with orders: 
+
+<pre>
+<font size="-2">
+<code> 
+ +----------+
+ | Customer |
+ +----------+
+    | 1 
+    |
+ ----------------------------------------
+    |
+    |
+    v *
+ +-------+ 1    * +-----------+
+ | Order | -----&gt; | OrderLine |
+ +-------+ --+    +-----------+
+             |    
+             |    +-----------+
+             +--&gt; | TotalCost |
+                  +-----------+
+</code>
+</font>
+</pre>
+ The little excerpt here identifies four concepts: a customer, an order, an
+ orderline, and the total cost of an order. </p>
+
+<p>A simple use case may proceed like this. The customer opens an order, adds
+several "lines" to the order, and then demands to know the total cost of the
+order.</p>
+
+<p>The use case suggests that Orders are an important class of data in our
+program. Furthermore, we can see three important actions: opening an order,
+adding a line to the order, and adding up the total. Without even committing to
+a programming language, we can write down what this means in some reasonably
+rigorous way: 
+
+<pre>
+<code>
+ interface for Order: 
+  ___ open(...) 
+  // creates a unique order, fills in details about the customer 
+  
+  ___ addOrderLine(this Order, ProductCode, Quantity)
+  // add a line to this order 
+  // this may also add a product description
+  // and other information from a catalog 
+
+  Amount getTotal(this Order)
+  // compute the total cost of the order
+  // w/o taking tax or shipping into account 
+</code>
+</pre>
+
+We can take this as an English description for a piece of code in a procedural,
+untyped language such as Scheme or we can easily turn into a piece of Java
+code. In either case, we have names for functionality we must implement, and we
+can finally begin to code. </p>
+
+<h3>Examples</h3>
+
+Well, almost. If you remember the design recipe, you know that we really need to
+formulate examples and turn them into tests. To formulate examples, we still
+don't need to choose a language; it is doable at the conceptual level. 
+
+<p><underline>Example 1:</underline>
+<blockquote>
+ Given: an empty order <br />
+ Expected: 0 <br />
+ The customer may request the total cost of the order right after opening the
+ order. 
+</blockquote>
+</p>
+
+<p><underline>Example 2:</underline>
+<blockquote>
+ Given: an order with one line, for a single product with price $99.99 <br />
+ Expected: $99.99 <br />
+</blockquote>
+</p>
+
+<p>Making up examples for programs, small or large, helps us understand how the
+software is supposed to work and helps us formulate criteria for when we want to
+accept/reject code. Ideally, we make this process as automatic as possible so
+that we can apply it repeatedly and to intermediate solutions, just to conduct a
+reality check. </p>
+
+<h3>Tests First</h3>
+
+For this reason, we translate the examples into executable tests. A <em>unit
+test</em> is a piece of code that exercises a unit of code and reports how the
+actual behavior of the code compares with the expected behavior. It is therefore
+imperative that a test specifies the expected result, the piece of program to be
+run (with input and proper setup), and a mechanism for comparing the expected
+outcome with the actual outcome. 
+
+<p>A <em>customer test</em> (blackbox test) runs a complete program without any
+knowledge about its interior construction and ensures that an entire use case
+works as expected.</p>
+
+<h3>Testing Frameworks</h3>
+
+In this day, most programming languages come with testing frameworks that help
+programmers formulate tests before they work on the code. For example, Java
+comes with jUnit, PLT Scheme comes with SchemeUnit (see planet.plt-scheme.org).
+
+<p>For illustrative purposes, let us look at how a "design recipe programmer"
+would develop the code for <code>getTotal</code>, the function that computes the
+total of an order. In Scheme, we may have expressed its signature as follows: 
+
+<pre>
+<code>
+  ;; Order     = Listof[Orderline]
+  ;; OrderLine = Amount 
+  ;; Amount    = Number 
+
+  ;; compute the total of this order
+  ;; Order -&gt; Amount
+  (define (getTotal o) ...)
+</code>
+</pre>
+</p>
+
+<p>Using SchemeUnit, we can then express the above examples as follows: 
+<pre>
+<code>
+  (define testcase1
+    (make-test-case "testing basic getTotal"
+                    (assert = (getTotal '()) 0)
+                    ))
+  
+  (define testcase2
+    (make-test-case "testing one book getTotal"
+                    (assert = (getTotal '(99.99))
+                            99.99)))
+</code>
+</pre>
+</p>
+
+<p>Later when we want to run the test cases, we form a test suite (a collection
+of independent test cases) and ask for a report: 
+  
+<pre>
+<code>
+  (test/text-ui 
+   (make-test-suite "tests for getTotal"
+                    testcase2
+                    testcase1))
+</code>
+</pre>
+Of course, we can't run this test suite without completing the definition of
+   <code>getTotal</code> but at least we are now ready to do so. 
+</p>
+
+<p>Here is what happens when we complete the definition in a bad way and run the
+test suite:
+
+<pre>
+<code>
+Failure:
+-------- testing one book
+getTotal#struct:object:...:89:8:18:4
+name: "assert"
+location: (#struct:object:...:89:8 18 4 468 129 #module-path-index)
+expression: (assert = (gettotal '(99.99)) 99.99)
+params: (#primitive:= 0 99.99)
+
+1 success(es)  0 error(s)  1 failure(s) 
+</code>
+</pre>
+We see that one test case succeeded, one failed and where/why it failed. 
+</p>
+
+<h3>Tests for Imperative Programming</h3>
+
+When someone has designed the functions or methods of our interfaces such that
+they interact via effects on variables, testing becomes more complicated but it
+is still imperative to do so. 
+
+<p>Consider the example of a queue whose interfaces demands changes to its
+internal state: 
+
+<pre>
+<code>
+  ;; a queue of Xs
+  (define queue&lt;%&gt;
+    (interface ()
+      enq ;; X -&gt; Void
+      ;; adds one X element to this queue
+
+      deq ;; -&gt; X
+      ;; removes and returns one X element from this queue
+
+      sze ;; -&gt; Int
+      ;; returns the number of Xs currently in this queue
+      ))
+
+  (define queue% 
+    (class* object% (queue&lt;%&gt;) ...))
+</code>
+</pre>
+
+In particular, <code>enq</code> puts some item away and <code>deq</code>
+retrieves it and removes it from that secret place. Also, <code>sze</code> is a
+function that makes an observation about this hidden piece of data, but doesn't
+reveal its exact nature. </p>
+
+<p>A test of these methods should, for example, ensure that <code>enq</code>ing
+one item into an empty queue changes what <code>sze</code> observes: 
+
+<pre>
+<code>
+  (define the-queue (new queue%))
+
+  (define tc0-a
+    (make-test-case "size of a empty queue"
+                    (assert = 0 (send the-queue sze))))
+
+  (define tc0-b
+    (make-test-case "size of a one-enq queue"
+                    (assert = 1 (send the-queue sze))
+                    setup (send the-queue enq 11)
+                    teardown (set! the-queue (new queue%))))
+</code>
+</pre>
+
+To accomplish this second goal, we need to add <code>setup</code> code that
+performs the <code>enq</code> operation and that happens before the assertion is
+evaluated. To make sure that other test cases work independently of this one, we
+also add <code>teardown</code> code that undoes the effects of the
+<code>setup</code> code. </p>
+
+<p>A final consideration concerns the testing of exceptional behavior. A queue,
+for example, may raise an exception when a client tries to <code>deq</code> an
+item from an empty queue: 
+
+<pre>
+<code>
+  (define-struct (exn:queue-mt exn) ())
+  
+  (define queue% 
+    (class* object% (queue&lt;%&gt;)
+      (super-new)
+      ;; represents all the currently enq'ed elements
+      (define state '())
+      (define/public (enq x) (set! state (cons x state)))
+      (define/public (deq) 
+        (when (null? state)
+          (raise (make-exn:queue-mt "Q is mt" 'stuff)))
+        (let* ([rev (reverse state)]
+               [head (car rev)]
+               [tail (cdr rev)])
+          (begin0 head
+                  (set! state (reverse! tail)))))
+               
+      (define/public (sze) (length state))))
+</code>
+</pre>
+ This implementation of <code>queue&lt;%&gt;</code> stores its items in a list, and if
+ this list is empty when <code>deq</code> is called, the method throws an
+ exception. 
+</p>
+
+<p>To test this behavior requires a slightly different setup: 
+
+<pre>
+<code>
+  (define tc2
+    (make-test-case "deq an mt queue"
+                    (assert-exn exn:queue-mt? 
+                                (lambda ()
+				  (send the-queue deq)))))
+</code>
+</pre>
+ More precisely, the test case must specify that an exception is expected, and
+ when none is thrown, it will report this behavior as erroneous. </p>
+
+
+<p>In summary, before you program find out what your language supports in terms
+of test suite languages and read up on its capabilities. If it doesn't, take the
+time to implement a minial framework yourself. The two references show that this
+isn't really difficult.</p>
+
+<h3>Bibliography</h3>
+
+<li>Beck. Test-Driven Development. Addison-Wesley, 2002.</li>
+
+<li>Welsh and Culpepper. <a href="http://planet.plt-scheme.org/docs/schematics/schemeunit.plt/1/0/doc.txt">SchemeUnit:
+Unit Testing in Scheme.</a></li>
+
+</div></div></td></tr></table><hr width="80%" height="3" /><table width="80%" align="center"><tr><td align="left"><font size="-2">last updated on Tue Jun  9 22:03:19 EDT 2009</font></td><td align="right"><font size="-2">generated with <a href="http://www.plt-scheme.org/">PLT Scheme</a></font></td></tr></table></body></html>

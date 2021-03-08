@@ -1,0 +1,172 @@
+<div>
+
+<scheme>(red-title "The Game")</scheme>
+
+<p>
+Carcassonne is a tile-laying game. The objective of the game is to build regions
+and to occupy regions. When a region is completed, the players with the most
+followers in the region receive an appropriate number of points. The game is
+over when there are no more tiles available. The player with the most points
+wins.</p>
+
+<p>Note: This version of Carcassonne is mostly simpler than the original
+but has been changed at a few points to drive home some points on the
+interaction among software components. You may want to consult the rules
+for the original game and even play it to get a feeling for the process but
+beware that the rules differ.</p>
+
+<scheme>(generalp "The Tiles")</scheme>
+
+Every tile depicts some theme: an abbey, a castle, a road, or a combination of
+these. Here are three examples: 
+<blockquote>
+<img src="Tiles/0tile00.jpg" /> &nbsp; &nbsp; &nbsp;
+<img src="Tiles/0tile1.jpg" />  &nbsp; &nbsp; &nbsp;
+<img src="Tiles/tile11.jpg" />  &nbsp; &nbsp; &nbsp;
+</blockquote>
+
+The leftmost tile with the red boundary is the unique starter tile. At the
+northern end it depicts a fragment of a castle, the white line running from left
+to right is a road fragment. The center tile is an abbey. The rightmost tile
+depicts the fragment of a castle that borders the northern as well as the
+eastern side of the tile. 
+
+<p>Before you read on, take a look at <a href="tiles.html">the
+collection of all tiles.</a> </p>
+
+<scheme>(generalp "Turns, Part I")</scheme>
+
+At each turn, a player obtains a tile at random from a heap of tiles that
+are arranged face-down, turns it over, and adds it at some matching place
+to the map. Matching means that the border of each neighboring tile is the
+same as the border of the newly placed tile. Furthermore, the newly placed
+tile <em>must</em> share a border with at least one existing tile. To
+create a match, a player may rotate a tile by 90, 180, or 270 degrees.
+
+<p>Placing a tile may thus involve
+<ol>
+ <li>one neighboring tile: 
+  <table border="0">
+   <tr><td>&nbsp;</td><td>0</td><td>1</td></tr>
+   <tr><td>0</td><td><img src="Tiles/0tile00.jpg" /></td></tr>
+   <tr><td>1</td><td><img src="Tiles/0tile1.jpg" /></td></tr>
+   </table>
+
+   Here the player placed tile 1 without rotating it to the south of the starter
+   tile, matching grass to grass.  </li>
+
+ <li>two neighboring tiles: 
+  <table border="0">
+   <tr><td>&nbsp;</td><td>-1</td><td>0</td></tr>
+   <tr><td>0</td><td><img src="Tiles/270tile2.jpg" /></td><td><img src="Tiles/0tile00.jpg" /></td></tr>
+   <tr><td>1</td><td><img src="Tiles/0tile1.jpg" /></td><td><img src="Tiles/0tile1.jpg" /></td></tr>
+   </table>
+
+   This time the player rotated tile 2 by 270 degrees into the (-1,0)
+   spot. On its eastern border the tile matches two roads (with grass); on
+   the southern border it matches grass.</li>
+
+ <li>three neighboring tiles: </li>
+  <table border="0">
+   <tr><td>&nbsp;</td><td>-1</td><td>0</td></tr>
+   <tr><td>-1</td><td><img src="Tiles/0tile1.jpg" /></td><td><img src="Tiles/90tile4.jpg" /></td></tr>
+   <tr><td> 0</td><td><img src="Tiles/270tile2.jpg" /></td><td><img src="Tiles/0tile00.jpg" /></td></tr>
+   <tr><td> 1</td><td><img src="Tiles/0tile1.jpg" /></td><td><img src="Tiles/0tile1.jpg" /></td></tr>
+   </table>
+ 
+   If the player places the tile into spot (-1,0) in this situation, the turn
+   requires three matches for the tile: on its southern, eastern, and northern
+   border. 
+ <li>or even four neighbors. Make an example where placing a tile requires four
+   matches. 
+ </li>
+</ol>
+</p>
+
+<p>Over the course of a game, this map of tiles evolves. The map is usually not
+densely connected, like the four examples might suggest. The ultimate shape
+depends on the strategy of the players and how they operate to build regions.</p>
+ 
+<p>Note: If it is impossible to add a tile to the map, the player may return the
+tile to the heap and pick up another tile.</p>
+
+<scheme>(generalp "Regions")</scheme>
+
+A region is a collection of connected tiles with the same theme (roads, castles)
+or an abbey with its surrounding neighbors. A region is complete if it meets the
+following conditions: 
+
+<ul>
+<li>A road is complete if it has an end piece at either end. End pieces are:
+farms; forks in the road; and castles and abbeys:
+<blockquote>
+2: <img src="Tiles/0tile2.jpg" /> &nbsp; &nbsp;
+6: <img src="Tiles/0tile6.jpg" /> &nbsp; &nbsp;
+7: <img src="Tiles/0tile7.jpg" /> &nbsp; &nbsp;
+19: <img src="Tiles/0tile19.jpg" /> &nbsp; &nbsp;
+23: <img src="Tiles/0tile23.jpg" /> &nbsp; &nbsp;
+24: <img src="Tiles/0tile24.jpg" /> &nbsp; &nbsp;
+</blockquote>
+
+<p>Example: <blockquote><img src="Tiles/comp-road0.jpg" /></blockquote></p>
+
+</li>
+
+<li>An abbey is complete if it is surrounded by eight (8) pieces.
+
+<p>Example: <blockquote><img src="Tiles/comp-abbey1.jpg" /></blockquote></p>
+</li>
+
+<li>A castle is complete if it its walls form a continuous line.
+
+<p>Example: <blockquote><img src="Tiles/comp-castle1.jpg" /></blockquote></p>
+</li> 
+
+</ul>
+
+<scheme>(generalp "Turns, Part II")</scheme>
+
+After placing a piece, a player may also place a follower on a region if the
+region is incomplete and if no other follower already occupies the
+region. Placing a follower is optional and should follow strategic
+considerations because a player has only seven followers. 
+
+<p>When the placement of a tile completes a region, the follower(s) are
+immediately returned to their respective player. This implies that the player
+who just placed the tile may use a returned follower to end his turn.</p>
+
+<p>It is permissible to connect two distinct regions with followers, and this
+kind of move is indeed an important part of the game.</p>
+
+<scheme>(generalp "Scoring")</scheme>
+
+Players receive points when regions are completed. If a region is populated by
+the followers of several players, the player with the most followers in the
+region receives the points. Sometimes several players have the same number of
+followers in the region. In this case all players with the highest number of
+followers receive the points. 
+
+<p>Points correspond to the number of pieces in a region. Thus a completed abbey
+always yields nine (9) points. A completed road produces as many points as there
+are participating tiles, including the end pieces. Each castle tile accounts for
+two (2) points, unless it also contains a flag, in which case it accounts for
+four (4) points. </p>
+
+<scheme>(generalp "The End")</scheme>
+
+A game consists of 70 to 75 turns, depending on the number of players. That is,
+there are 70 to 75 cards (1 through 24) in the heap. You may assume that the
+chances of picking any one of the 24 cards are the same. 
+
+<p>At the end of the game, players receive additional points for followers
+that occupy abbeys. The score for an incomplete abbey region consists of
+one point for the abbey tile plus the number of tiles that touch the
+abbey, i.e., a player may obtain up to eight (8) points for an abbey at the
+end of the game. The followers on incomplete roads and incomplete castles
+are ignored.</p>
+
+<scheme>(generalp "Bibliography")</scheme>
+
+Dan Becker, <a href="http://www.io.com/~beckerdo/games/reviews/CarcassonneReview.html">Carcassonne</a>, Game Review.
+
+</div>

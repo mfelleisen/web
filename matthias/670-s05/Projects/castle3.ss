@@ -1,0 +1,6 @@
+(define (castle3)
+  (let* ((graph0 (new graph%))
+         (graph0 (send graph0 insert-tile (make-tile "8" 0 -1 90)))
+         (graph0 (send graph0 insert-tile (make-tile "10" 1 0 0)))
+         (graph0 (send graph0 insert-tile (make-tile "14" 1 -1 180))))
+    graph0))

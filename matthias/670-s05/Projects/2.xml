@@ -1,0 +1,61 @@
+<week>
+<assignment due="1/21 @ noon">
+
+<p><b>Objective:</b> to work in pairs on use cases and stories</p>
+
+<hr /> 
+
+<p><b>Task 1:</b> Your task is to synthesize your efforts from the previous
+  week. Compare your analyses, your data descriptions, and your uses
+  cases. Then jointly produce a draft. Designated one person as the primary
+  author; the other partner should edit the draft alone. Switch
+  roles. [POINTS: 3]
+</p>
+
+<hr />
+
+<p><b>The Story, Amended:</b> Check your analyses and use cases in light of
+  the following three questions: 
+<ol>
+<li>What happens if your system's computer goes down during the afternoon?
+  Assume someone knows how to re-start it later. </li>
+
+<li>What happens if your system's input or output files get corrupted?
+  Assume someone edits them by hand before, while, or after your program
+  runs.</li>
+
+<li>How does your system interact with the office's billing system?</li>
+</ol>
+ Determine whether these scenarios require revisions of your existing use
+ cases or whether they require entirely new use cases. 
+</p>
+
+<p><b>Task 2:</b> Your second task is to consider what changes when you
+  consider the amended story. [POINTS: 2]
+</p>
+
+<hr />
+
+<p><b>Task 3:</b> Your third task is to analyze the story of Carcassonne
+  and to write up the use cases for this project. Complete tasks 1 and 2
+  first and use what you learned about working out uses cases for this last
+  task. [POINTS: 5]
+</p>
+
+<hr />
+
+<p><b>Product:</b> Turn in a tar bundle with three subdirectories labeled
+  1, 2, and 3. The first one (1) should contain the result and intermediate
+  products for task 1. Specifically it should contain a plain text file
+  called <code>final.txt</code> and the earlier drafts labeled
+  <code>1.txt</code>, <code>2.txt</code>, etc. The second directory (2)
+  should contain the result of task 2. The third directory (3) should
+  contain a file for the concept graph (as a jpeg) and one file per use
+  case of task 3. You may use any of your favorite drawing tools to draw a
+  concept graph. If you have access to a professional programming
+  environment, you may use its tools, too, but don't think it will impress
+  us. 
+</p>
+
+</assignment>
+</week>

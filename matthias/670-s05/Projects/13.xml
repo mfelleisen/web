@@ -1,0 +1,40 @@
+<week>
+<assignment due="4/09 @ 10pm">
+
+<p><b>Objective:</b> to have a bit of fun with the game </p>
+
+<hr />
+
+<p><b>Task:</b> Set up your client running your designated automated player
+  on Saturday morning (April 9) <font color="red">by 11am</font> to look
+  for my server on <code>america.ccs.neu.edu</code> at port
+  <code>7000</code>. The basic goal is to make it through the first round
+  alive. If your player wins this first round, ready it again for a final
+  round at noon.</p>
+
+<p>The winning player will get 100 POINTS, the second pair 50, the
+  surviving participants of the final round 30, and the surviving
+  participants of the first round 20.</p>
+
+<p>Your client should attempt to register with my server on a regular
+  basis. <font color="red">The server will gather between two and six
+  players (on an almost random basis) and then start one round of the
+  game. Each round may last up to 30 minutes, so be prepared that
+  your player won't be able to register for a while. You will not get a
+  negative answer after the game starts because the server will no longer
+  accept connections.</font>
+</p>
+
+<p>The final timing specifications are: 
+<pre>
+  (define max-turn-time         30) ;; seconds 
+  (define MAX-REGISTRATION-TIME 3)  ;; seconds 
+  (define MAX-RETURN-TIME       3)  ;; seconds 
+  ;; signup interval for the player-collecting server 
+  (define REG-WAIT              (* 60 10)) ;; 10 minutes
+</pre>
+</p>
+
+</assignment>
+</week>
+

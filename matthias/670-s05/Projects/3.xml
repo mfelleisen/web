@@ -1,0 +1,51 @@
+<week>
+<assignment due="1/28 @ noon">
+
+<p><b>Objective:</b> to work with someone else's code base and to develop a
+  story for a central data structure 
+</p>
+
+<hr />
+
+<p>Your first programming project is to modify <a href="Game/"> a program
+that comes with comments and test suites</a>. The program implements the
+"silly" 21 game that we discussed in <a href="../Lectures/3.html">lecture
+3.</a></p>
+
+<p>The given program allows players to roll the die, to skip a turn, or to
+declare that they are done. It implements both an automated machine player
+and a plain graphical interface to a human player. </p>
+
+<p><b>Task 1:</b> With the given program, a game may last forever. Design and
+implement a strategy that guarantees that a game ends. Don't forget to
+modify the documentation and the test suites. [POINTS: 5]</p>
+
+<p><b>Task 2:</b> Modify the given program so that a player can optionally roll
+the die a second time per turn. Don't forget to modify the documentation
+and the test suites. [POINTS: 2]</p>
+
+<hr />
+
+<p>The second half of the assignment is to prepare the term project. The
+goal of the project is to implement and maintain <a
+href="carcassonne.html">Carcassonne,</a> a board game. As you ponder the
+project, keep in mind that eventually we will run the game via a server
+into which independent programmers can plug in automated players.</p>
+
+<p><b>Task 3:</b> Identify the central data structure from your use cases
+ and write up an interface for this data structure. The interface must
+ include interfaces for all arguments and results of functions, and
+ definitions for those interfaces. [POINTS: 6] </p>
+
+<p><b>Task 4:</b> Finally, develop a simplistic algorithmic strategy for
+ playing the game automatically. Write it up in English. [POINTS: 2] </p>
+
+<hr />
+
+<p><b>Product:</b> Mail a tar bundle with two subdirectories labeled 21 and
+  Carcassonne, respectively. Place the relevant pieces into the
+  subdirectories and add a README file. 
+</p>
+
+</assignment>
+</week>

@@ -1,0 +1,279 @@
+<lecture title="Sequence Diagrams, The Observer Pattern">
+
+<h3>Sequence Diagrams</h3>
+
+<p>
+When you describe a story (use case), you often need to discuss
+the creation of objects, a sequence of method calls, call backs,
+and so on.  So far we have used plain English to do that, with
+lists when needed.</p>
+
+<p>
+If you need to discuss such things with customers or
+co-developers, you should use a graphical notation, because it is
+good for illustrating the sequencing of creations and method
+calls.</p>
+
+<p>
+UML provides several notations for this purpose. Collectively,
+they are called Interaction Diagrams. We will use sequence
+diagrams.</p>
+
+<h3>The Basics of Sequence Diagrams</h3>
+
+The first concept of a sequence diagram is a vertical line, called an
+object life line:
+
+A sequence diagram consists of objects and object life lines:
+
+<pre>
+<font  size="-1">
+         Die      GameAdmin                       Player 
+          |           |                              |
+          |           |                              |
+          |           |                Turn          |
+          |           |                 |            |
+          |           |                 |            |
+          |           |                 _            |
+          |           |                              |
+</font>
+</pre>
+
+These vertical placement often indicate when objects come about and when
+they cease to be relevant. That is, the lines represent the life spans of
+objects.
+
+<p>Calling a method---also known as sending a message---is represeted with
+a horizontal arrow plus appropriate annotations:</p>
+
+<pre>
+<font  size="-1">
+         Die      GameAdmin                       Player 
+          |           |                              |
+          |           |  t = new                     |
+          |           | ------------> Turn           |
+          |           |                 |            |
+                                       ...          ...
+          |           |                 |    roll()  |
+          |           |                 | &lt;--------- |
+          |           |                 _            |
+          |           |                              |
+</font>
+</pre>
+
+The first arrow, labeled with "t = new", denotes the act of creating an
+instance of <code>Turn</code>. The <code>GameAdmin</code> uses
+<code>new</code> to do so and the result is labeled <code>t</code>. The
+second arrow, labeled with "roll()", indicates that <code>Player</code>
+may call the <code>roll</code> method during an interaction with a
+<code>Turn</code>. 
+
+<p>An interaction may also specify that an object hands over a reference to
+another object. For example, before the <code>Player</code> can access the
+<code>Turn</code>, the <code>GameAdmin</code> must actually hand over the
+<code>Turn</code> to the <code>Player</code>:</p>
+
+<pre>
+<font  size="-1">
+         Die      GameAdmin                       Player 
+          |           |                              |
+          |           |  t = new                     |
+          |           | ------------> Turn           |
+          |           |                 |            |
+          |           | takeTurn(t)     |            |
+          |           | ---------------------------> |
+          |           |                 |            |
+                                       ...          ...
+          |           |                 |    roll()  |
+          |           |                 | &lt;--------- |
+          |           |                 _            |
+          |           |                              |
+</font>
+</pre>
+
+<h3>A First Example: The Story of Silly</h3>
+
+Let's look at the stories in the "Silly Game":
+
+<p><b>Story 1: Registering players</b></p>
+
+<p>Main creates and then registers players with the server. </p>
+
+<pre>
+<font  size="-1">
+ player registration: 
+ --------------------
+
+   Main                Server 
+    |                   |
+    | p = new()         |
+    | ------------------------------->  Player 
+    |                   |                |
+    | registerPlayer(p) |                |
+    | ----------------> |                |
+    |                   |                |
+</font>
+</pre>
+
+<p><b>Story 2:  Taking a turn</b></p>
+
+<p>The server plays rounds until there are no more active players. </p>
+
+<p>For each round, the server grants each player a turn. The player
+can tell the turn to roll the dice or to skip, but only one of
+three actions is valid. If the player object does more with this
+turn, it is recorded as a cheater and eliminated from the
+tournament.</p>
+
+<p>Here is one scenario: the player rolls the die.</p>
+
+<pre>
+<font  size="-1">
+ playing a turn (1) 
+ ------------------
+
+  Server               Player                           Die
+    |                   |                               |
+    | t = new()         |                               |
+    | ------------------------------> Turn              |
+    |                   |               |               |
+    | takeTurn(t)       |               |               |
+    | ----------------> |               |               |
+    |                   |  roll()       |               |
+    |                   | ------------> |               |
+    |                   |               | d = roll()    | 
+    |                   |               | ------------> |
+    |               record(d)           |               |
+    | &lt;-------------------------------- |               |
+    |                   |               |               |
+    |  return           |               |               |
+    | &lt; - - - - - - - - |              --- the turn ceases
+    |                   |                   to matter   |
+    |                   |                               |
+    |                   |                               |
+
+</font>
+</pre>
+
+<p>The player can also just skip a turn. </p>
+
+<pre>
+<font  size="-1">
+ playing a turn (2) 
+ ------------------
+
+  Server               Player                          
+    |                   |                              
+    | t = new()         |                              
+    | ------------------------------> Turn             
+    |                   |               |              
+    | takeTurn(t)       |               |              
+    | ----------------> |               |              
+    |                   |  skip()       |              
+    |                   | ------------> |              
+    |               record(0)           |              
+    | &lt;-------------------------------- |           
+    |                   |               |              
+    |  return           |               |              
+    | &lt; - - - - - - - - |              --- the turn ceases
+    |                   |                   to matter   
+    |                   |                               
+    |                   |                               
+</font>
+</pre>
+
+
+<p><b>Story 3:  Game's up</b></p>
+
+<p>When there is at most one player left, the <code>GameAdmin</code>
+  ends with the administrator informing everyone who the winner was.</p>
+
+<pre>
+<font  size="-1">
+ the end of the game
+ -------------------
+
+  Server               Player                          
+    |                   |                              
+    |                   | 
+    | inform(winner)    | 
+    | ----------------> | 
+    |                   |
+    |                   |
+   ---                 ---
+</font>
+</pre>
+
+Note that both the server and the player cease to be relevant. 
+
+<h3>The Observer Pattern </h3>
+
+<p>Suppose we wish to inform the other players of the decisions and actions
+that a player takes during a turn. Clearly the <code>GameAdmin</code> is in
+the proper position to do so. The <code>Turn</code> informs the
+<code>GameAdmin</code> of all actions, and thus the <code>GameAdmin</code>
+knows when things change and when the other players need to be
+informed.</p>
+
+<p>A look in GoF suggests the Observer pattern. The players are the
+observers here and the administrator is the subject. Every time when one
+player rolls the die or skips a turn, the administrator can notify the
+remaining players of this action.</p>
+
+<p>Here is a picture:</p>
+
+<pre>
+<font  size="-1">
+ playing a turn (1) 
+ ------------------
+
+  Server               Player                          Die   OtherPlayer
+    |                   |                               |     |     
+    | t = new()         |                               |     |     
+    | ------------------------------> Turn              |     |     
+    |                   |               |               |     |     
+    | takeTurn(t)       |               |               |     |     
+    | ----------------> |               |               |     |     
+    |                   |  roll()       |               |     |     
+    |                   | ------------> |               |     |     
+    |                   |               | d = roll()    |     |     
+    |                   |               | ------------> |     |     
+    |               record(d)           |               |     |     
+    | &lt;-------------------------------- |               |     |  
+    |                   |               |               |     |     
+    |  return           |               |               |     |     
+    | &lt; - - - - - - - - |              --- the turn ceases |
+    |                   |                   to matter   |     |     
+    |                   |                               |     |     
+    | notify(String result)                             |     |     
+    x ------------------------------------------------------->|
+    |                   |                               |     |     
+    |                   |                               |     |     
+</font>
+</pre>
+
+<p>The notification happens after the turn is over. Alternatively, the
+  administrator could also inform <code>OtherPlayer</code> while the turn
+  is still going on. Since observers may launch additional inquiries, it is
+  important to make sure that the notification goes out when the internal
+  data structures are stable.</p>
+
+<h3>Bibliography</h3>
+
+<li>Fowler, Scott. UML Distilled. Addison-Wesley, 1997.</li>
+
+<li>Gamma, Helm, Johnson, Vlissides: Design Patterns: Elements of Reusable
+ Object-Oriented Software. Addison-Wesley, Reading MA 1995.</li>
+
+<h3>Presentation</h3>
+
+<p><b>Presenters:</b> 
+John V., Dan S. 
+</p>
+
+<p><b>Readers:</b> 
+Tung (moderator), Chris Lambert (second reader), Eric B. (secretary)
+</p>
+
+
+</lecture>

@@ -1,0 +1,307 @@
+This is TeX, Version 3.14159 (Web2C 7.4.5) (format=latex 2004.1.20)  24 FEB 2005 17:29
+**12.tex
+(./12.tex
+LaTeX2e <2001/06/01>
+Babel <v3.7h> and hyphenation patterns for american, french, german, ngerman, n
+ohyphenation, loaded.
+(/sw/share/texmf/tex/latex/base/article.cls
+Document Class: article 2001/04/21 v1.4e Standard LaTeX document class
+(/sw/share/texmf/tex/latex/base/size11.clo
+File: size11.clo 2001/04/21 v1.4e Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+) (./preamble.tex
+(/Users/matthias/HtDP/a210.sty) (/sw/share/texmf/tex/latex/psnfss/palatino.sty
+Package: palatino 2002/09/08 PSNFSS-v9.0a (SPQR) 
+) (/Users/matthias/plt/collects/slatex/slatex.sty
+\tabs=\box26
+\tabsyet=\box27
+\tabsdone=\box28
+\par@nlen=\skip43
+\brack@tlen=\skip44
+\quot@len=\skip45
+\h@lflambda=\skip46
+\garb@ge=\box29
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <10.95> on input line 131.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 131.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 131.
+\abovecodeskip=\skip47
+\belowcodeskip=\skip48
+\leftcodeskip=\skip49
+\rightcodeskip=\skip50
+\sch@mefilenamecount=\count87
+
+*** Check: Are you sure you called SLaTeX 2.4z2 or later? ***)
+(/Users/matthias/Packages/TrashyTeXTools/texinputs/epsf.sty
+\epsffilein=\read1
+\epsfxsize=\dimen103
+\epsfysize=\dimen104
+\epsftsize=\dimen105
+\epsfrsize=\dimen106
+\epsftmp=\dimen107
+\pspoints=\dimen108
+)
+(/Users/matthias/Packages/TrashyTeXTools/texinputs/mztp.sty
+\mztpOUT=\write3
+\mztpBOX=\box30
+\openout3 = `12.mztp'.
+
+)
+(/Users/matthias/Packages/TrashyTeXTools/texinputs/html.sty
+Package: html 1996/02/01 v1.0 hypertext commands for latex2html (nd, hs)
+\c@lpart=\count88
+\c@lchapter=\count89
+\c@lsection=\count90
+\c@lsubsection=\count91
+\c@lsubsubsection=\count92
+\c@lparagraph=\count93
+\c@lsubparagraph=\count94
+\c@lsubsubparagraph=\count95
+\c@lequation=\count96
+)
+\c@foops=\count97
+
+(/Users/matthias/HtDP/rs-config.tex)
+\c@exercise=\count98
+\exwidth=\dimen109
+\invcnt=\count99
+\invcnt=\count100
+\numwidth=\dimen110
+) (./12.aux)
+\openout1 = `12.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 2.
+LaTeX Font Info:    ... okay on input line 2.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 2.
+LaTeX Font Info:    ... okay on input line 2.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 2.
+LaTeX Font Info:    ... okay on input line 2.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 2.
+LaTeX Font Info:    ... okay on input line 2.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 2.
+LaTeX Font Info:    ... okay on input line 2.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 2.
+LaTeX Font Info:    ... okay on input line 2.
+LaTeX Font Info:    Try loading font information for OT1+ppl on input line 2.
+
+(/sw/share/texmf/tex/latex/psnfss/ot1ppl.fd
+File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
+)
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <14.4> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 3.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <20.74> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 3.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 13.
+
+(/sw/share/texmf/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <10.95> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 40.
+ [1
+
+]
+Overfull \hbox (0.25626pt too wide) in paragraph at lines 77--82
+[]\OT1/ppl/m/n/10.95 To over-come this de-fi-ciency, we need to gen-er-al-ize t
+he lan-guage of types
+ []
+
+[2] [3] [4]
+Overfull \hbox (7.91956pt too wide) in paragraph at lines 211--211
+[]\OT1/pcr/m/n/10.95 // 4: sum = &Sigma; { a[j] | 0 $\leq$ j < i = a.length }[]
+ 
+ []
+
+[5] [6] [7]
+Overfull \hbox (7.91956pt too wide) in paragraph at lines 389--389
+[]  \OT1/pcr/m/n/10.95 // convert the given check-style string into an amount[]
+ 
+ []
+
+
+Overfull \hbox (1.34956pt too wide) in paragraph at lines 389--389
+[]  \OT1/pcr/m/n/10.95 // assume the string separates the dollar amount from[] 
+
+ []
+
+[8]
+Overfull \hbox (47.33951pt too wide) in paragraph at lines 408--408
+[]  \OT1/pcr/m/n/10.95 $\forall$ i in [0..RESULT.length] : i != RESULT.length()
+ - 3[] 
+ []
+
+[9]
+Overfull \hbox (2.47324pt too wide) in paragraph at lines 454--461
+\OT1/ppl/m/n/10.95 though only Eif-fel treats these as-ser-tions as con-tracts.
+ Meyer chose to equate
+ []
+
+[10]
+Overfull \hbox (47.33951pt too wide) in paragraph at lines 529--529
+[]    \OT1/pcr/m/n/10.95 // read one integer from file, if the file isn't exhau
+sted[] 
+ []
+
+
+Overfull \hbox (67.04948pt too wide) in paragraph at lines 529--529
+[]    \OT1/pcr/m/n/10.95 // sequence contract: open . {read | out\_of\_intsP}* 
+. close[] 
+ []
+
+[11]
+LaTeX Font Info:    Try loading font information for OMS+ppl on input line 564.
+
+ (/sw/share/texmf/tex/latex/psnfss/omsppl.fd
+File: omsppl.fd 
+)
+LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 564.
+
+Overfull \hbox (7.91956pt too wide) in paragraph at lines 589--589
+[]                \OT1/pcr/m/n/10.95 open()                           read(),[]
+ 
+ []
+
+
+Overfull \hbox (73.61948pt too wide) in paragraph at lines 589--589
+[]       \OT1/pcr/m/n/10.95 +------------------------------------+     out\_of\
+_intsP()[] 
+ []
+
+
+Overfull \hbox (27.62953pt too wide) in paragraph at lines 589--589
+[]       \OT1/pcr/m/n/10.95 |                                    |   +---------
++[] 
+ []
+
+
+Overfull \hbox (27.62953pt too wide) in paragraph at lines 589--589
+[]       \OT1/pcr/m/n/10.95 |                                    v   |         
+|[] 
+ []
+
+
+Overfull \hbox (27.62953pt too wide) in paragraph at lines 589--589
+[] \OT1/pcr/m/n/10.95 +------------+                          +----------+     
+|[] 
+ []
+
+
+Overfull \hbox (27.62953pt too wide) in paragraph at lines 589--589
+[] \OT1/pcr/m/n/10.95 | ClosedPort |                          | OpenPort |     
+|[] 
+ []
+
+
+Overfull \hbox (27.62953pt too wide) in paragraph at lines 589--589
+[] \OT1/pcr/m/n/10.95 +------------+                          +----------+     
+|[] 
+ []
+
+
+Overfull \hbox (27.62953pt too wide) in paragraph at lines 589--589
+[]       \OT1/pcr/m/n/10.95 ^                                    |   ^         
+|[] 
+ []
+
+
+Overfull \hbox (27.62953pt too wide) in paragraph at lines 589--589
+[]       \OT1/pcr/m/n/10.95 |                                    |   |         
+|[] 
+ []
+
+
+Overfull \hbox (27.62953pt too wide) in paragraph at lines 589--589
+[]       \OT1/pcr/m/n/10.95 +------------------------------------+   +---------
++[] 
+ []
+
+[12]
+Overfull \hbox (86.75946pt too wide) in paragraph at lines 702--702
+[]\OT1/pcr/m/n/10.95 // Each class of states is represented with a single insta
+nce from a[] 
+ []
+
+
+Overfull \hbox (93.32945pt too wide) in paragraph at lines 702--702
+[]\OT1/pcr/m/n/10.95 // private class. Each state implements the full repertoir
+e of method[] 
+ []
+
+
+Overfull \hbox (119.60942pt too wide) in paragraph at lines 702--702
+[]\OT1/pcr/m/n/10.95 // calls; the Port class itself just forwards each message
+ to the current[] 
+ []
+
+
+Overfull \hbox (165.59937pt too wide) in paragraph at lines 702--702
+[]    \OT1/pcr/m/n/10.95 // ---------------------------------------------------
+----------------------[] 
+ []
+
+
+Overfull \hbox (7.91956pt too wide) in paragraph at lines 702--702
+[]    \OT1/pcr/m/n/10.95 private ClosedPort theClosedPort = new ClosedPort();[]
+ 
+ []
+
+
+Overfull \hbox (165.59937pt too wide) in paragraph at lines 702--702
+[]    \OT1/pcr/m/n/10.95 // ---------------------------------------------------
+----------------------[] 
+ []
+
+[13]
+Overfull \hbox (165.59937pt too wide) in paragraph at lines 702--702
+[]    \OT1/pcr/m/n/10.95 // ---------------------------------------------------
+----------------------[] 
+ []
+
+
+Overfull \hbox (1.34956pt too wide) in paragraph at lines 702--702
+[]    \OT1/pcr/m/n/10.95 System.out.println("can't call open on open file");[] 
+
+ []
+
+[14]
+Overfull \hbox (4.53299pt too wide) in paragraph at lines 705--705
+[]\OT1/ppl/b/n/14.4 Contract Vi-o-la-tions and Fault-Tolerant Pro-gram-ming 
+ []
+
+
+Overfull \hbox (19.4226pt too wide) has occurred while \output is active
+\OT1/ppl/m/sl/10.95 7 CONTRACT VIOLATIONS AND FAULT-TOLERANT PROGRAMMING \OT1/p
+pl/m/n/10.95 15
+ []
+
+[15]
+Overfull \hbox (5.38655pt too wide) in paragraph at lines 756--758
+[]\OT1/ppl/m/n/10.95 Barnett, Leino, Schulte. The Spec# pro-gram-ming sys-tem: 
+An overview.
+ []
+
+[16] [17] (./12.aux) ) 
+Here is how much of TeX's memory you used:
+ 804 strings out of 95847
+ 9585 string characters out of 1196009
+ 58935 words of memory out of 1000001
+ 3770 multiletter control sequences out of 10000+50000
+ 9447 words of font info for 31 fonts, out of 500000 for 1000
+ 14 hyphenation exceptions out of 1000
+ 29i,4n,19p,164b,325s stack positions out of 1500i,500n,5000p,200000b,5000s
+
+Output written on 12.dvi (17 pages, 32200 bytes).

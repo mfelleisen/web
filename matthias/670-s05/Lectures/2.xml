@@ -1,0 +1,353 @@
+
+<lecture title="Models of Software Development">
+
+<p>
+How do people develop software? Don't ask. A recently published book says
+ that making software reminds him of what Bismarck (some old German
+ politician) said about sausages: You want to eat them but you don't want
+ to know how they are made.
+</p>
+
+<p>
+How do people think other people should develop software? For a long time,
+people developed software in an ad hoc manner. Eventually they realized
+that finding and eliminating errors late in the game is extremely
+expensive (see Barry Boehm's influential article) and that they should
+create a systematic process. 
+</p>
+
+<h3>The waterfall model</h3>
+
+What they came up with is the <em>waterfall model</em> of software
+development. According to this model, software companies 
+<ol>
+ <li> determine the needs and requirements for the software </li>
+ <li> translate the requirements into specifications </li>
+ <li> code implementations for the specifications </li>
+ <li> test the code: find mistakes </li>
+ <li> debug: eliminate the mistakes </li>
+ <li> deploy: insert the software into the context 
+     where it is supposed to work, which implies installing hardware and
+     software, testing in context, training users, assisting users (help
+     desk), etc.
+ </li> 
+ <li> maintain the code: port to new hardware, to new operating systems,
+ fix errors, add functionality, and more </li>
+</ol>
+In its pure form, the process is linear. One stage concludes, the other
+one starts, though coders may move into the debugging stage and
+requirements engineer may be involved in the deployment process. 
+
+<p>People have tried to develop according to this model, but they now
+understand that this model doesn't work. Can you imagine why?
+</p>
+
+<p>To this day, large companies stick to some variant of this process. In
+  detail, however, the process is much more feedback oriented and is
+  close to the scientific process of discovering the proper (in the sense
+  of predictive) scientific model of the world. 
+</p>
+
+<h3>The iterative refinement model</h3>
+
+This iterative process works roughly like that: 
+<ol>
+ <li> write up the story of the software </li>
+ 
+ <li> find the use cases end to end interactions between the desired system and
+   users and other contexts </li>
+
+ <li> pick a central/important use case and implement it to the
+   point where it is useful </li>
+
+ <li> deploy and observe consumers/clients' reactions </li>
+
+ <li> go back to the first or second step; check whether the preliminary product
+   affects your customer's story; or find the next use cases to extend the
+   product </li>
+</ol>
+For a company, the customer is the paying entity or a representative
+example of some segment of the mass market consumer. For you, the customer
+is your boss and in reality the person to whom your boss delivers the
+software in a working context. 
+
+<h3>Where do all the requirement engineering, specification writing, etc.
+go?</h3>
+
+It is still there, but it is a part of a cycle. Specifically: 
+
+<li>
+ "writing up the story of software" means writing up what the
+ customer tells you so that the customer understands what you
+ wrote and you can use your story to guide your efforts -- this is
+ informal communication about requirements and specifications;
+</li>
+
+<li>
+ "extracting/writing use cases" from the stories means to break up
+ your story into small doable tasks, which are specifications of what you
+ want, <em>not</em> how you want them solved with a program;
+</li>
+
+<li>
+ "implementing" in (2) means that not just writing some code and
+ hoping for the best; it means
+<ol>
+<li> to lay out the concepts of the story and the use case </li>
+<li> to formulate the kind of data this involves </li>
+<li> to illustrate the desired use case with behavioral examples </li>
+<li> to turn the examples into tests (code)</li>
+<li> to design and write code that passes all these tests </li>
+</ol>
+ One big difference between "waterfall" and "iterative refinement" is that
+ you get to code much sooner and that you have a much closer interaction
+ with your customer. 
+
+<p>
+ Please compare this with the design recipe process advocated in <a
+ href="../readings.html">How to Design Programs.</a>
+</p>
+</li> 
+
+<p>One recent evolution of iterative refinement is <em>extreme
+   programming</em>, a sellable buzzword-compliant version of the
+   idea. While "iterative refinement" has evolved in the prototype-oriented
+   academic community -- think Scheme and Prolog and similar languages --
+   the extreme programming community evolved in the academic fringe of
+   industry, again fostered in an interactive language community
+   (Smalltalk, now known as Squeak). 
+ </p>
+
+<p>In this course, I want to practice iterative refinement with you and
+  some people-based techniques that make it feasible. Let's start with
+  reading stories and teasing out the essential elements. 
+</p>
+
+<h3>From Stories to Concepts</h3>
+
+Consider this story: 
+<blockquote>
+<hr />
+<b>A Homework Submission Server</b>  
+  
+<p>A professor would like to have a homework submission server for his
+  courses. He expects to assign weekly projects to his classes during a
+  semester. For each project, he would like his students to upload a text
+  file as th solution. Indeed, since students can make mistakes, they
+  should be able to upload solution files up to the time of the deadline,
+  but not afterwards.</p>
+
+<p>To provide some basic protection against malicious users and abuse, the
+  professor expects that each submitter has an account on the submission
+  server. His TA will enter the names and student id numbers of all
+  enrolled students and will send the students an initial password for
+  accessing their submission account. Naturaly the students are expected to
+  change their password early and often.</p>
+
+<p>The professor would like to specify the titles and deadlines for each
+  project himself. He is willing to enter this information into some text
+  file; naturally your professor can't program.</p>
+<hr />
+</blockquote>
+
+<p>Let's identify the concepts that show up. To do so, look out for actors
+  and information: 
+<blockquote>
+ TA (= professor), course <p />
+ homework assignment, deadline, homework solution <p />
+ student, name, id <p />
+ account, password  <p />
+ storage on computer 
+</blockquote>
+ The students, the TA, and the storage are actors; the remaining concepts
+ are pieces of information. 
+</p>
+
+<p>Draw lines between the concepts that are related. Here is an excerpt
+  for the above concepts: 
+<pre>
+          +--------------------+
+          | TEACHING ASSISTANT |
+          +--------------------+
+                   |
+          +------------+         +----------+
+          | assignment | ------- | deadline |
+          +------------+         +----------+
+              |          \-----\     |
+           +----------+        +---------+
+           | solution | ------ | STORAGE |
+           +----------+        +---------+
+</pre>
+  It does show two actors and three pieces of information. It omits such
+  things as students, student accounts, etc. </p>
+
+<p>
+  To check your thinking, consider adding numeric quantities on each end of
+  a link that show how a pair of concepts relates to each other: 
+<pre>
+            +--------------------+
+            | TEACHING ASSISTANT |
+            +--------------------+
+                     |1
+                     |
+                     |n
+            +------------+ 1     1 +----------+
+            | assignment | ------- | deadline |
+            +------------+         +----------+
+                | 1        \n        | n
+                |           \        |
+                |            \       |
+                | n           \1     | 1
+             +----------+ n    1 +---------+
+             | solution | ------ | STORAGE |
+             +----------+        +---------+
+</pre>
+ Here we see that one TA controls many assignments, but each assignment
+ comes with a unique deadline. 
+</p>
+
+<p>Identify the system and the outside. This may actually identify several
+  systems and several "outsides":
+<pre>
+            +--------------------+
+            | TEACHING ASSISTANT |
+            +--------------------+
+                     |1
+                 ====|===================================
+                     |n
+            +------------+ 1     1 +----------+
+            | assignment | ------- | deadline |
+            +------------+         +----------+
+                | 1        \n        | n
+                |           ============================ 
+                |          # \       |
+                | n        #   \1     | 1
+             +----------+ n#   1 +---------+
+             | solution | -#---- | STORAGE |
+             +----------+  #     +---------+
+</pre>
+ The redrawn picture identifies the two actors as being outside the system
+ and the information as being a part of the system. This doesn't have to
+ be the case as the next example shows. 
+</p>
+
+<blockquote>
+<hr />
+<b>The Monopoly Game</b>  
+<center>
+  <img height="60" src="monop1.jpg" /><img height="60" src="monop2.jpg" />
+</center>
+<p>The Hasbro Company would like to create an on-line version of
+  Monopoly. The idea is that players can sign up for a game and play a game
+  against others over the Web. When enough players have signed up for a
+  game, they play for a set amount of time with equal time slices per
+  player. At the end the company's game program totals up the score and
+  identifies the winner. Every game also comes with one automated player
+  from the company.</p>
+<hr />
+</blockquote>
+
+<p>Some of the concepts of this "story" are: 
+<blockquote>
+player, token <p />
+gameboard, properties, houses and hotels, chance cards, dice <p />
+money, banker 
+</blockquote>
+  Identify the remaining concepts, draw a concept graph, and draw a line
+  around the system to identify the interface between it and the world.</p>
+
+<h3>Stories Change, Promised!</h3>
+
+<p>When the story changes, you can identify the changes in concepts, their
+  relationships, and even the system boundaries. 
+</p>
+
+<blockquote>
+<hr />
+
+<b>Postscript: A Homework Submission Server</b>  
+  
+<p>Your professor has recently discovered <em>pair programming</em> so he
+  introduces it in some of his courses. Specifically, he would like to
+  enforce pair programming by not allowing individuals to submit projects
+  at all. Instead, each submitter account must relate to at least two
+  individual students who can only jointly submit a project file. The
+  professor can count, and he will therefore allow students to submit work
+  in triples. 
+</p>
+<hr />
+</blockquote>
+
+<p>Naturally this leads to new concepts and new and modified relationships:
+<pre>
+     +---------+ 2,3     1 +---------+ 1    n +----------+
+     | STUDENT | --------- | account | ------ | solution |
+     +---------+           +---------+        +----------+
+       | 1
+       |
+       | 1
+     +----------+
+     | password |
+     +----------+
+</pre>
+Here we see that 2 or 3 students relate to an account now, yet each student
+still has one password. Furthermore, students are no longer directly
+related to homework solutions; instead, the account has become an
+important intermediary. 
+</p>
+
+<h3>From Concepts to Use Cases</h3>
+
+<p>Drawing the system boundary identifies events and triggers that cause
+  the pieces of the world to interact. Imagine those interactions and write
+  them down. Turn the big story into little stories. Describe <em>what</em>
+  happens <em>not how.</em> 
+</p>
+
+<p>The descriptions of use cases are like the descriptions of dialogs in
+  novels. You identify a dialog by an entry point into the system and an
+  exit point. </p>
+
+<p>Example: 
+
+<table>
+<tr><td>
+the TA sets a deadline for a homework: 
+<ol>
+<li>TA logs on</li>
+<li>TA chooses a course</li>
+<li>TA specifies new assignment and its deadline</li>
+<li>system checks that the title is new and the deadline in the future</li>
+<li>system stores the assignment/deadline pair</li>
+</ol>
+</td>
+<td>
+a title for the use case<br /><br />
+the TA is on the outside<br />
+<font color="red">we need TA accounts (new concept!)</font><br />
+<br />
+the system is on the outside again<br />
+<br />
+</td>
+</tr>
+</table>
+Note working our way through potential interactions identifies new
+concepts. We had overlooked that we needed to give the TA a special form of
+access to the homework submission server because not everyone should be
+able to add homework assignments and set deadlines. Even if in the end we
+re-use accounts and privileges from the underlying system, we now know that
+we need some form of separation. 
+</p>
+
+<p>Practice writing use cases with both examples. Can you identify concepts
+  in the monopoly game that are not needed in a game that only people play? 
+</p>
+
+<h3>Bibliography</h3>
+
+<li>Beck. Extreme Programming Explained. Addison-Wesley, 2000.</li>
+
+<li>Fowler, Scott. UML Distilled. Addison-Wesley, 1997.</li>
+
+<li>Larman, Applying UML and Patterns. Prentice Hall, 1998.</li>
+</lecture>

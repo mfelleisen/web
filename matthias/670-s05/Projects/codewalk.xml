@@ -1,0 +1,56 @@
+<div>
+
+<scheme>(red-title "Presenter")</scheme>
+
+<p>For a presentation of your designs or a code walk, please proceed as
+follows:
+<ol>
+
+ <li>Concisely restate the task, which points you chose to pursue, and
+ which ones you chose to ignore.</li>
+
+ <li>Provide an overview of your solution. For code walks, this includes
+ two parts:  
+   <ol>
+
+   <li>a (UML class) diagram of the major components and their
+    relationships;</li>
+
+   <li>a (UML interaction) diagram that explains the major interactions
+    during a program execution.</li>
+   </ol>
+
+ In addition, you may have to explain other aspects of the design. 
+ 
+</li>
+
+ <li>Present the components and their functionality in a top-down fashion,
+ no matter how you designed and implemented them. Refine as requested. Be
+ prepared to defend your code organization, why it matches or doesn't match
+ your design. </li>
+</ol>
+
+ In general, be prepared to figure out in real time how changes to your
+ information/data specification are translated into changes in your program
+ organization. 
+</p>
+
+<scheme>(generalp "Listener")</scheme>
+
+<p>As a listener, you will play three different roles: 
+
+<ul>
+<li>a manager, who is the first "reader" (analyst) and who has the
+  responsibility that the presentation stays on track;</li>
+
+<li>an assistant reader, who is the second "code reader";</li>
+
+<li>secretary, who keeps track of the questions that the readers ask, notes
+  discoveries of weak spots, and takes notes as needed.</li>
+</ul>
+When you play "secretary" you are responsible to get a copy of the written
+notes to Sam T-H. and the pair within 48 hours. 
+
+</p>
+
+</div>

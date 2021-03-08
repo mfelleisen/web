@@ -1,0 +1,6 @@
+(define (road1)
+  (let* ((graph0 (new graph%))
+         (graph0 (send graph0 insert-tile (make-tile "1" 0 1 90)))
+         (graph0 (send graph0 insert-tile (make-tile "2" -1 0 270)))
+         (graph0 (send graph0 insert-tile (make-tile "19" 1 0 0))))
+    graph0))

@@ -1,0 +1,26 @@
+<week>
+<assignment due="3/31 @ 3pm">
+
+<p><b>Objective:</b>to learn about refactoring</p>
+
+<hr />
+
+
+<p><b>Task:</b> Find code duplications in your code and test base and eliminate
+them. To do so: create auxiliary functions, private methods, common
+superclasses, and so on. [POINTS: 20]</p>
+
+<hr />
+
+<p><b>Product:</b> Mail a tar bundle with two subdirectories labeled
+  <code>YourName_Project9</code> and <code>YourName_Project11</code>. Each
+  subdirectory must contain the entire project. The README file for 11 must contain
+  one descriptive section per code duplication that you have eliminated from
+  your project 8 code base. Your project 9 subdirectory must be identical to the
+  one you submitted on 3/17. If it isn't, you can't get any points for this
+  assignment.
+</p>
+
+</assignment>
+</week>
+

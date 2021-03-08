@@ -1,0 +1,23 @@
+<div>
+
+ These lecture notes are provided on an ad-hoc basis. I will write them
+ when (or if) I have time. My goal is for you to compare these notes with
+ your own so that you can determine the quality of your note taking
+ abilities. 
+
+<blockquote>
+<table>
+<splice>
+(let ([counter 0]
+      [number->file (lambda (x) (format "~a.html" x))])
+  (map (lambda (x)
+	 (set! counter (+ counter 1))
+	 `(tr (td ([align "right"]) ,(number->string counter))
+	      (td ([align "left"])
+		  (a ([href ,(number->file counter)]) ,x))))
+       titles*))
+</splice>
+</table>
+</blockquote>
+
+</div>

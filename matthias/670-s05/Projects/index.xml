@@ -1,0 +1,65 @@
+<div>
+
+  <p>The goal is to assign approximately one project per week. The projects
+  will include writing assignments, modifications of Java programs,
+  designing and implementing a project from scratch, and
+  maintaining/modifying code. Like in the real world, the project
+  descriptions will become available only a short time (typically a week or
+  so) before they are due. This simulates the time pressure you will
+  experience in industry. As you rush to complete your projects, don't
+  forget, however, that looking ahead often makes life much easier in the
+  long run than doing short-term tasks only. 
+  </p>
+
+  <p>The main project of the course is to implement the board game
+  <em>Carcassonne</em>. For your orientation, a description of the game is
+  available through the tabs on the left. 
+  </p>
+
+<scheme>(generalp "Pair Programming")</scheme>
+
+<p>You must work on (almost) all projects in pairs. <font color="red">Pair
+  programming means that you do all things together.</font> You may switch
+  partners only after a consultation with the course staff.
+</p>
+
+<p>Start searching for a partner now. You must submit your partner's name
+  to Sam T-H. by <font color="red">on Friday January 14</font>. Use the
+  format of a project title page to do so. In return, you will be granted
+  access to the submission server. 
+</p>
+
+<scheme>(generalp "Submission")</scheme>
+
+<p>You will submit your projects by the specified time in two pieces. For
+  every project you will turn in a cover page in the first class following
+  the due date. The cover page contains these pieces:
+  the project title, 
+  the date, 
+  the names of the partners, 
+  the signatures of the two partners, 
+  the list of points you chose not to pursue.
+ The signatures guarantee that you completed the task without any outside
+ assistance. 
+</p>
+
+<p>For every project, you will also email a tar bundle to Sam T-H. before the
+due time. The bundle must contain
+
+<ol>
+<li>a README file with instructions for
+       compiling,
+       linking,
+       executing,
+       running the test suite.
+ your code on the department's Windows or Unix boxes. Following these
+ pieces the file may contain additional documentation. 
+</li> 
+
+<li>all header and code files needed to test and to run the program</li>
+</ol>
+Sam will not accept any emails that arrive with a time stamp after the due time,
+but will save them instead for documentation of tardiness. 
+</p>
+
+</div>

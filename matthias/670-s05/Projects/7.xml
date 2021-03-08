@@ -1,0 +1,194 @@
+<week>
+<assignment due="2/25 @ noon">
+
+<p><b>Objective:</b> to add simple assertion checking for the major interfaces
+in your game; to deal with assertion failures in the player in a fault-tolerant
+manner</p>
+
+<hr />
+
+<p><b>Background:</b> Here is a set of revised interfaces for Carcassonne: 
+
+<pre>
+<code>
+<font  size="-1">
+   (define admin&lt;%&gt;
+    (interface ()
+      register ;; player&lt;%&gt; -> (union false Follower)
+      ;; sign up a player for game, assign Follower, if possible; #f otherwise
+      
+      run-game ;; -> String 
+      ;; run the game and produce final message
+
+      ;; ASSUME: (register+ . run-game)
+      ))
+
+  (define player&lt;%&gt;
+    (interface ()
+      take-turn ;; turn&lt;%&gt; -> Void
+      ;; it's the player's turn 
+      
+      score-and-token ;; Number Number -> Void 
+      ;; the player has scored a point and receives some of the tokens back
+      ;; ASSUME: the first number is the score assigned with one of the recently 
+      ;; completed regions; the second one is the number of followers of _this_ 
+      ;; player that occupided this region 
+      
+      ;; The following help a player keep track of the graph as it evolves:
+      placed-tile ;; tile&lt;%&gt; -> Void 
+      ;; some other player placed t during a turn 
+      ;; ASSUME: it is legal to place the tile in the current graph 
+      ;; ASSUME: placed-tile is not called while take-turn is active 
+      
+      placed-follower ;; tile&lt;%&gt; Follower Position -> Void 
+      ;; some other player placed f on t at p 
+      ;; ASSUME: it is legal to place f on t at ap in the current graph 
+      ;; ASSUME: placed-follower is not called while take-turn is active 
+      
+      inform ;; String -> Void 
+      ;; accept message 
+      ))
+  
+  (define turn&lt;%&gt;
+    (interface ()      
+      get-index ;; -> Index
+      ;; the index of the tile that you're allowed to place 
+      
+      potential-locations-for-tile ;; -> Listof[tile&lt;%&gt;]
+      ;; given an index for a potential tile, compute a list of tiles
+      ;; that could be placed into the graph
+      
+      place-tile ;; tile&lt;%&gt; -> Void
+      ;; _this_ turn places the given tile into the graph 
+      ;; ASSUME: the given tile is placable in _this_ graph,
+      ;; in the sense of _potential-locations-for-tile_      
+      
+      potential-locations-for-followers	;; -> Listof[(list tile&lt;%&gt; Position)]
+      ;; compute the potential tile locations and positions on these tiles
+      ;; in _this_ graph where a follower could be placed 
+      
+      place-follower ;; tile&lt;%&gt; Position -> Void
+      ;; this turn places the player's follower on t at p
+      ;; ASSUME: the player has a follower to place 
+      ;; ASSUME: the given tile and position are legal in the
+      ;; sense of potential-locations-for-followers      
+
+      ;; ASSUME: 
+      ;;  (others* . place-tile . others* [ . place-follower ] . others*)
+      ))
+
+  (define player-graph&lt;%&gt;
+    (interface () 
+      
+      potential-locations-for-tile ;; Index -> Listof[tile&lt;%&gt;]
+      ;; given an index for a potential tile, compute a list of tiles
+      ;; that could be placed into the graph
+      ;; ASSUME: for each tile in the resulting list: 
+      ;; it can be legally added to the graph 
+      
+      insert-tile ;; tile&lt;%&gt; -> graph&lt;%&gt;
+      ;; add the given tile to _this_ graph 
+      ;; ASSUME: the given tile is placable in _this_ graph,
+      ;; in the sense of _potential-locations-for-tile_
+      ;; ASSUME: the new graph contains the given tile 
+      
+      potential-locations-for-followers	;; -> Listof[(list tile&lt;%&gt; Position)]
+      ;; compute the potential tile locations and positions on these tiles
+      ;; in _this_ graph where a follower could be placed 
+      ;; ASSUME: for each item (t,p) on the resulting list: 
+      ;; placing any follower f on t at p is legal 
+      
+      place-follower ;; tile&lt;%&gt; Position Follower -> graph&lt;%&gt;
+      ;; create graph from this Follower on Position at Tile 
+      ;; ASSUME: the given coordinates and position are legal in the
+      ;; sense of potential-locations-for-followers 
+      ;; ASSUME: it is no longer possible to place a follower 
+      ;; at this position on the given tile
+      ))
+  
+  (define admin-graph&lt;%&gt;
+    (interface ()
+      complete-regions ;; -> Listof[completed&lt;%&gt;]
+      ;; the list of regions that were completed by the last insert    
+      ))
+  
+  (define graph&lt;%&gt;
+    (interface (admin-graph&lt;%&gt; player-graph&lt;%&gt;) ))
+  
+  (define completed&lt;%&gt;
+    (interface ()
+      followers ;; -> Listof[(list Follower PositiveNumber)]
+      ;; how many followers of each kind exist occupy _this_ completed region 
+      ;; this can be used for both scoring and returning followers to players
+      
+      score ;; -> PositiveNumber
+      ;; what is the value of _this_ completed region, independent of the 
+      ;; followers on the tiles
+      
+      remove-followers ;; -> completed&lt;%&gt; 
+      ;; effect: remove all followers from _this_ region 
+      ;; return _this_ region 
+      ;; ASSUME: (send this followers) is empty now 
+      
+      equal ;; completed&lt;%&gt; -> Boolean 
+      ;; are _this_ and the given instance equal? 
+      ))
+
+  (define tile&lt;%&gt;
+    (interface () 
+      equal ;; tile&lt;%&gt; -> Boolean 
+      ;; compare _this_ tile with the given tile 
+      ))
+</font>
+</code>
+</pre>
+
+All the changes concern the purpose statements of the methods and
+interfaces. Specifically, I have added assumptions concerning functional
+contracts and sequence contracts. Look for the word "ASSUME" and study these
+assumptions carefully. </p>
+
+<hr />
+
+<p><b>Task 1:</b> Identify those assumptions in these interfaces that you can
+formulate as contracts. Also identify all those assumptions in these interfaces
+that you cannot formulate as contracts; explain in a single sentence (for each
+case) why you can't translate the English statement into a contract. [POINTS:
+10]</p>
+
+<hr />
+
+<p><b>Task 2:</b> For all those assumptions that you have identified as
+contracts, implement them via assertion checking in the classes that implement
+the interfaces. You do not have to implement blame assignment. Hint: Use your
+language's exception mechanism if it provides one. [POINTS: 20]</p>
+
+<hr />
+
+<p><b>Task 3:</b> Revise your administrator so that it monitors all interactions
+with players and eliminates all those players that violate a contract. If a
+player crashes for other reasons, it is acceptable for your game playing program
+to crash, too. [POINTS: 10]</p>
+
+<hr />
+
+<p><b>Task 4:</b> Identify those contracts that may incur a severe performance
+penalty. Explain why you believe they cause performance problems. [OPTIONAL
+POINTS: 5] If you believe you can fix those problems easily, implement and
+document your solution. [OPTIONAL POINTS: 5] </p>
+
+<hr />
+
+<p><b>Product:</b> Mail a tar bundle with one README file
+(<code>YourName_README</code>) and one subdirectory
+(<code>YourName_Contract</code>). The README file should have two subsections
+labeled Task1 and Task4a. (If you choose not to go after the optional points of
+Task 4, just write n/a in the section for Task4a.) The subdirectory should
+contain the revised code base. It should also come with a README file that
+explains how to run a complete tournament with your program. Ideally your code
+should point out the contract implementations via comments and cross-references
+to the Task1 section in the top-level README file.
+</p>
+
+</assignment>
+</week>

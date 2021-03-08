@@ -1,0 +1,90 @@
+<lecture title="Inspections &amp; Design Review: Carcassonne (1)">
+
+Formal inspections of design documents and code emerged in the 1970s as an
+important technique for discovering flaws in software. A driving person
+behind the movement was Michael Fagan at IBM. Many people have since
+investigated the effectiveness of the technique and its variations. In this
+course, we follow the now well-established format as much as possible,
+except that we also use the inspections to learn how to construct
+software. 
+
+<h3>Inspections</h3>
+
+<p>People identify two different types of inspections: one concerning
+  design documents (e.g., requirements, specifications, documentations)
+  and the other one concerning programs.</p>
+
+<p>In both cases, an inspection proceeds in at least three phases:
+  preparation, the actual inspection followed by feedback, and a follow-up
+  meeting. In a business context, you need to <em>prepare</em> for an
+  inspection. You have your own work to do, and you don't know what others
+  are doing. In this course, you have solved a similar problem or written a
+  similar document. So you know what is going on.
+</p>
+
+<p>The actual inspection is an presentation of the code to a team
+  of readers. The goal of the presentation is to uncover
+  mistakes and to point out omissions. The panel may engage in a dialog
+  but only as long as they are trying to confirm a problem. Once the
+  problem is confirmed they stop and move on. 
+</p>
+
+<p>At the end, the "coder" receives a list of feedback points. Someone is
+  put in charge to follow up on this list. A follow-up session may
+  involved another presentation. </p>
+
+<p>Studies have found that the effectiveness of reviews directly depends
+  on the size of the team. Two readers in addition to the coder are much
+  less effective than three readers. Ideally, these three readers assume
+  the role of a moderator, who leads and directs the presentation; a second
+  reader, and a secretary who takes notes for the feedback report. </p>
+
+<p>The degree preparation of preparation also plays a role in the
+  effectiveness of code walks but to a much smaller degree than the number
+  of people. For more information, see the papers in the bibliography. </p>
+
+<h3>Bibliography</h3>
+
+The literature on the inspection of software artifacts is huge. Here are
+some early, historical entry points. If you need to have more recent
+evidence that it works, conduct a literature search before you present
+those papers alone to your manager. 
+
+<li>Fagan. Design and code inspections to reduce errors in program
+  development. IBM Syst. J. 3. 1976</li>
+
+<li>Fagan. Advances in software inspection. IEEE ToSE 12(7). 1986</li>
+
+<li>Russel. Experience with inspection in ultralarge-scale
+  developments. IEEE Software. Jan 1991.</li>
+
+<li>Weller. Lessons from three years of inspection data. IEEE Software. Sep
+  1993.</li>
+
+<li>NASA. Software Formal Inspections Guidebook.</li>
+
+<hr />
+
+<p><b>Presenters:</b> 
+BinH T Le, Juan Flores
+</p>
+
+<p><b>Readers:</b> 
+Martin Fowler (moderator), 
+Zach Joress (secretary), 
+Chris Barthle (second reader)
+</p>
+
+<hr />
+<p><b>Presenters:</b> 
+John Vulner,
+Daniel Suchy
+</p>
+
+<p><b>Readers:</b> 
+Andreas Tejeda (moderator), 
+John Sullivan (secretary),
+Eric Bloomquist (second reader)
+</p>
+
+</lecture>

@@ -1,0 +1,40 @@
+<lecture title="Refactoring">
+
+<h3>Code gets Bad! Don't Live with it, Fix it!</h3>
+
+Code easily gets out of hand. The goal is then to stop adding functonality,
+fixing bugs, and subtracting old functionality. Instead, you re-consider
+your design, eliminate duplications, and focus on creating a single point
+of control for each current functionality. For <em>every</em> change, you
+run the test suite. It is critical that your changes do not affect the test
+suite. If you "accidentally" fix a bug, make sure you take a note and test
+it properly. 
+
+<h3>Setting Goals</h3>
+
+Refactoring with a goal in mind is the best thing. It helps you find the
+bad spots in the code that might get in your way. So imagine that your
+"Carcassonne boss" 
+
+<ul>
+<li>adds the method <code>my-color</code> to <code>turn&lt;%></code> 
+so that a player program can determine the color of its followers;</li> 
+
+<li>adds an observer call-back <code>sign-up</code> (of color and name) so
+that observers find out who else is playing; 
+</li>
+
+<li>changes the distribution of tiles so that it corresponds to those found
+in "paper versions" of Carcassonne.</li>
+</ul>
+
+<h3>Bibliography</h3>
+
+<ul>
+<li>Martin Fowler. Refactoring. Improving the Design of Existing
+  Code. Addison-Wesley. 2002. 
+</li>
+</ul>
+
+</lecture>
+

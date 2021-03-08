@@ -1,0 +1,139 @@
+<html><head><title>Project 9</title></head><body bgcolor="white"><br /><hr width="80%" height="3" /><table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="15%" valign="top" align="left" rowspan="2"><table border="0"><tr><td><a href="../../index.html" style="text-decoration: none"><font color="grey"><b>Teaching</b></font></a></td></tr><tr><td><a href="../index.html" style="text-decoration: none"><font color="grey"><b>670 S '05</b></font></a></td></tr><tr><td><font color="black"><b>&nbsp;</b></font></td></tr><tr><td><a href="index.html" style="text-decoration: none"><font color="grey"><b>Projects</b></font></a></td></tr><tr><td><a href="presentations.html" style="text-decoration: none"><font color="grey"><b>Presentations</b></font></a></td></tr><tr><td><a href="programming.html" style="text-decoration: none"><font color="grey"><b>Programming</b></font></a></td></tr><tr><td><font color="black"><b>&nbsp;</b></font></td></tr><tr><td><a href="carcassonne.html" style="text-decoration: none"><font color="grey"><b>Carcassonne</b></font></a></td></tr><tr><td><a href="tiles.html" style="text-decoration: none"><font color="grey"><b>Tiles</b></font></a></td></tr><tr><td><a href="1.html" style="text-decoration: none"><font color="grey"><b>Project 1</b></font></a></td></tr><tr><td><a href="2.html" style="text-decoration: none"><font color="grey"><b>Project 2</b></font></a></td></tr><tr><td><a href="3.html" style="text-decoration: none"><font color="grey"><b>Project 3</b></font></a></td></tr><tr><td><a href="4.html" style="text-decoration: none"><font color="grey"><b>Project 4</b></font></a></td></tr><tr><td><a href="5.html" style="text-decoration: none"><font color="grey"><b>Project 5</b></font></a></td></tr><tr><td><a href="6.html" style="text-decoration: none"><font color="grey"><b>Project 6</b></font></a></td></tr><tr><td><a href="7.html" style="text-decoration: none"><font color="grey"><b>Project 7</b></font></a></td></tr><tr><td><a href="8.html" style="text-decoration: none"><font color="grey"><b>Project 8</b></font></a></td></tr><tr><td><font color="black"><b>Project 9</b></font></td></tr><tr><td><a href="10.html" style="text-decoration: none"><font color="grey"><b>Project 10</b></font></a></td></tr><tr><td><a href="11.html" style="text-decoration: none"><font color="grey"><b>Project 11</b></font></a></td></tr><tr><td><a href="12.html" style="text-decoration: none"><font color="grey"><b>Project 12</b></font></a></td></tr><tr><td><a href="13.html" style="text-decoration: none"><font color="grey"><b>Project 13</b></font></a></td></tr></table></td><td width="3%" /><td valign="top" align="left"><h3>Project 9</h3></td>&nbsp;</tr><tr><td /><td valign="top" align="left" colspan="3"><div><div><p><font color="red">Due date: </font>3/17 @ 3pm</p>
+
+<p><b>Objective:</b> to gain experience with a passive model-view separation
+  and to deepen your understanding of the observer pattern</p>
+
+<p><b>Note:</b>Thus far, the assignments concerned the model of the game
+  only. If you already made an attempt to visualize the game, you probably
+  tried to "test via looking." This is a bad idea, which is why I strictly
+  design in a "model-first" manner. This is also what we teach now in
+  CSU211. -Even if you have tried to implement a visualization, you will --
+  still have to reorganize your code to fit the observer protocol. See
+  below. </p>
+
+<hr />
+
+<p><b>The Observer Interface:</b> The model-view architecture assumes that
+  you have strictly separated your system into components that implement
+  the actual data manipulation and those that visualize (and often allow
+  interaction with) the model. A visualization component is naturally an
+  observer, just like the player. This suggests the refactoring of the
+  interface hierarchy: 
+
+<pre>
+<code>
+<font size="-1">
+  (define observer&lt;%&gt;
+    (interface ()
+      other-score-and-token ;; Follower Number Number -&gt; Void 
+
+      placed-follower ;; tile&lt;%&gt; Follower Position -&gt; Void 
+      ;; some player placed f on t at position p 
+
+      placed-tile ;; tile&lt;%&gt; -&gt; Void 
+      ;; some player placed t during a turn 
+      ))
+
+  (define player&lt;%&gt;
+    (interface (observer&lt;%&gt;)
+      take-turn ;; turn&lt;%&gt; -&gt; Void
+      
+      score-and-token ;; Number Number -&gt; Void 
+
+      inform ;; String -&gt; Void 
+      ))
+</font>
+</code>
+</pre>
+
+  Now the player consists of two pieces: a player proper and an observer
+  that watches other players as they play. 
+</p>
+
+<p><b>Task 1:</b> Implement this reorganization with a separation of player
+  proper and observer. [POINTS: 5]
+</p>
+
+<p><b>Additional Information:</b> Implementing the visualization observer
+  requires a modification of the server:
+
+<pre>
+<code>
+<font size="-1">
+   (define admin&lt;%&gt;
+    (interface ()
+      ... 
+      
+      register-observer ;; observer&lt;%&gt; -&gt; Void 
+      ;; sign up an observer for the game
+      
+      get-graph ;; -&gt; drawable-graph&lt;%&gt;
+      ;; get the drawable graph from the admin 
+      ))
+
+  (define drawable-graph&lt;%&gt;
+    (interface ()
+      left ;; -&gt; Number
+      ;; the left-most x coordinate
+
+      top ;; -&gt; Number
+      ;; the top-most y coordinate
+
+      list-of-tiles ;; -&gt; Listof[tile&lt;%&gt;]
+      ;; the list of tiles that make up the graph
+      ))
+</font>
+</code>
+</pre>
+
+  That is, the administrator must now accept an additional kind of observer
+  and it must allow this observer access to the graph (in a controlled
+  manner via <code>drawable-graph&lt;%&gt;</code>). To make the tiles
+  drawable, you will need to extend their interface, too (or add a drawable
+  interface):
+
+<pre>
+<code>
+<font size="-1">
+  (define tile&lt;%&gt;
+    (interface () 
+      get-x ;; tile&lt;%&gt; -&gt; Number
+      get-y ;; tile&lt;%&gt; -&gt; Number
+      index ;; tile&lt;%&gt; -&gt; Index
+      
+      snip  ;; tile&lt;%&gt; -&gt; snip&lt;%&gt;
+      ;; a drawable version of the tile
+      ))
+</font>
+</code>
+</pre>
+
+ The first three are definitely needed. The last one is useful in a
+ graphical context; if you choose others (say html, text), you will need
+ alternative methods. 
+</p>
+
+<p><b>Task 2:</b> Implement an observer that visualizes the game. You may
+  choose your favorite visualization context. I have used a GUI context and
+  display the state of the game as follows: 
+
+<blockquote>
+<center><img alt="" src="view.jpg" width="350" /></center>
+</blockquote>
+
+  On the left, you see a scrolling text field that displays the actions; on
+  the right you see a visual presentation of the graph. - No matter what
+  visualization medium you choose, use the above interfaces to implement
+  it. [POINTS: 12]
+</p>
+
+<hr />
+
+<p><b>Product:</b> Mail a tar bundle with a a single subdirectory labeled
+  <code>YourName_Project8</code>. The subdirectory must contain your entire
+  project. The README file must contain instructions for running and
+  visualizing the game [POINTS: 3]; it must also give a brief high-level
+  overview of the visualuzation context you chose to use.
+</p>
+
+</div></div></td></tr></table><hr width="80%" height="3" /><table width="80%" align="center"><tr><td align="left"><font size="-2">last updated on Tue Jun  9 22:03:19 EDT 2009</font></td><td align="right"><font size="-2">generated with <a href="http://www.plt-scheme.org/">PLT Scheme</a></font></td></tr></table></body></html>

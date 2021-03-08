@@ -1,0 +1,70 @@
+Specification Model of the Game 
+-----------------------------------------------------------------------------
+
+// run the game, administrate the players and the die, play all turns
++-----------------------+        
+| Server                |                            // represent the player
++-----------------------+ 1                        * +-----------------------+ 
+| SPlayer players       | -------------------------> | SPlayer               | 
++-----------------------+                            +-----------------------+ 
+| void register(Player) |                            | void inform(String)   | 
+| // add a player       |                            | // accept information | 
+| // for new game       |                            | // from server        | 
+|                       |                            |                       | 
+| String play()         |                            | boolean turn(Turn)    | 
+| // run game, construct|                            | // play turn, done?   | 
+| // msg about result   |                            |                       | 
++-----------------------+                            | void record(int)      | 
+            | 1                                      | // record result      | 
+            |                                      1 |                       | 
+            |                     +----------------> | void cheat()          | 
+            |                     |                  | // record attempt to  | 
+            |                     | *                | // cheat              | 
+            v 1			  v                  +-----------------------+
+			   // one turn for player               |	  
+      // a single die      +-------------+			|
+      +-------------+ 1  1 | Turn        |                      | 1
+      | Die         | <--- +-------------+                      |
+      +-------------+      |		 |			| 
+      |	            |      | int roll()  |                      v 1
+      | int roll()  |      | // roll die |           // the actual player code 
+      |             |      |             |	     +-----------------------+ 
+      +-------------+      | void skip() |	     | APlayer               | 
+			   | // skip turn|	     +-----------------------+ 
+			   +-------------+	     | String name	     |
+			          ^ *		     |			     |
+				  | 		     | void inform(String)   | 
+				  |		  1  | // accept information | 
+				  +----------------> | // from server        | 
+						     |                       | 
+						     | boolean turn(Turn)    | 
+						     | // play turn, done?   | 
+						     +-----------------------+ 
+						                /|\
+							       / | \
+							         |
+							         |
+							         |
+				 +-------------------------------+------------+
+				 |                                            |
+				 |                                            |
+				 |                                            |
+			// a machine player			// a human player
+			+------------------+			+------------------+
+			| MPlayer          |			| HPlayer          |
+			+------------------+			+------------------+
+			|		   |			|		   |
+			+------------------+			+------------------+
+				^ 1					^ 1
+				|					|
+				|					|
+				|					| 
+				v 1					v 1
+			// a machine view			// a human player
+			+------------------+			+------------------+
+			| MView            |			| HView            |
+			+------------------+			+------------------+
+			| 		   |			|		   |
+			+------------------+			+------------------+
+
+									

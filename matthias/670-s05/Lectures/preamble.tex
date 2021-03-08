@@ -1,0 +1,995 @@
+\usepackage{a210}
+\usepackage{palatino}
+\usepackage{slatex}
+\usepackage{epsf}
+\usepackage{mztp}
+\usepackage{html}
+
+% ---------------------------------------------------------------
+% special slatex symbols
+
+\setspecialsymbol{fst}{{\it first\/}} % otherwise we get bad first
+
+\setspecialsymbol{newline}{\relax}
+\setspecialsymbol{anewline}{\relax}
+
+\setspecialsymbol{<-ir}{$<_{ir}$}
+
+\setspecialsymbol{Celsius->Fahrenheit}{{\arrowname{\it Celsius\/}{\it Fahrenheit\/}}}
+\setspecialsymbol{Fahrenheit->Celsius}{{\arrowname{\it Fahrenheit\/}{\it Celsius\/}}}
+\setspecialsymbol{dollar->euro}{{\arrowname{\it dollar\/}{\it euro\/}}}
+
+\setspecialsymbol{inches->cm}{\arrowname{{\it inches\/}}{{\it cm\/}}}
+\setspecialsymbol{feet->inches}{\arrowname{{\it feet\/}}{{\it inches\/}}}
+\setspecialsymbol{yards->feet}{\arrowname{{\it yards\/}}{{\it feet\/}}}
+\setspecialsymbol{rods->yards}{\arrowname{{\it rods\/}}{{\it yards\/}}}
+\setspecialsymbol{furlongs->rods}{\arrowname{{\it furlongs\/}}{{\it rods\/}}}
+\setspecialsymbol{miles->furlongs}{\arrowname{{\it miles\/}}{{\it furlongs\/}}}
+
+\setspecialsymbol{feet->cm}{\arrowname{{\it feet\/}}{{\it cm\/}}}
+\setspecialsymbol{yards->cm}{\arrowname{{\it yards\/}}{{\it cm\/}}}
+\setspecialsymbol{rods->inches}{\arrowname{{\it rods\/}}{{\it inches\/}}}
+\setspecialsymbol{miles->feet}{\arrowname{{\it miles\/}}{{\it feet\/}}}
+
+\setspecialsymbol{time->seconds}{\arrowname{\it time\/}{\it seconds\/}}
+
+\setspecialsymbol{hours->wages}{\arrowname{\it hours\/}{\it wages\/}} 
+
+\setspecialsymbol{boxed:rel-op}{\fbox{{\it rel-op\/}}}
+\setspecialsymbol{boxed:op1}{\fbox{{\it op1\/}}}
+\setspecialsymbol{boxed:op2}{\fbox{{\it op2\/}}}
+\setspecialsymbol{boxed:doll}{\fbox{{\sf 'doll}}}
+\setspecialsymbol{boxed:car}{\fbox{{\sf 'car}}}
+\setspecialsymbol{boxed:s}{\fbox{$s$}}
+\setspecialsymbol{boxed:lt}{\fbox{$<$}}
+\setspecialsymbol{boxed:gt}{\fbox{$>$}}
+\setspecialsymbol{boxedRO}{\fbox{{\it rel-op}}}
+\setspecialsymbol{boxed:ltir}{\fbox{$<_{ir}$}}
+\setspecialsymbol{<-ir}{$<_{ir}$}
+\setspecialsymbol{C->F}{\arrowname{\it C\/}{\it F\/}}
+\setspecialsymbol{boxed:C->F}{\fbox{{\arrowname{\it C\/}{\it F\/}}}}
+\setspecialsymbol{boxed:IR-name}{\fbox{{\it IR-name}}}
+\setspecialsymbol{boxed:f}{\fbox{{\it f}}}
+
+\setspecialsymbol{number->string}{{\arrowname{{\it number\/}}{{\it string\/}}}}
+\setspecialsymbol{string->symbol}{\arrowname{{\it string\/}}{{\it symbol\/}}}
+\setspecialsymbol{string->number}{\arrowname{{\it string\/}}{{\it number\/}}}
+\setspecialsymbol{pad->gui}{\arrowname{{\it pad\/}}{{\it gui\/}}}
+
+\setspecialsymbol{hours->wages}{\arrowname{\it hours\/}{\it wages\/}} 
+\setspecialsymbol{hours->wages2}{\arrowname{\it hours\/}{\it wages2\/}} 
+\setspecialsymbol{hours->wages3}{\arrowname{\it hours\/}{\it wages3\/}} 
+
+\setspecialsymbol{test-hours->wages}{\arrowname{\it test-hours\/}{\it wages\/}} 
+
+\setspecialsymbol{file->list-of-lines}{\arrowname{{\it file\/}}{{\it list-of-lines}}}
+\setspecialsymbol{file->list-of-checks}{\arrowname{{\it file\/}}{{\it list-of-checks}}}
+
+
+\setconstant{
+make-posn posn-x posn-y set-posn-x! set-posn-y! posn?
+make-aaa aaa-xx aaa-yy set-aaa-xx! set-aaa-yy! aaa?
+make-bbb bbb-zz bbb-ww set-bbb-zz! set-bbb-ww! bbb?
+make-node node-name node-to set-node-name! set-node-to! node?
+  node-visited set-node-visited!
+make-person person-name person-social person-father person-mother person-children
+  set-person-father! set-person-mother! set-person-children!
+  person?
+make-entry entry-name entry-number set-entry-name! set-entry-number! entry? 
+make-cheerleader
+make-circle circle-center circle-radius circle? 
+make-square square-nw square-length square? 
+make-hand hand-rank hand-suit hand-next hand? set-hand-next! 
+}
+
+
+\setconstant{
+make-mail
+make-file file-name file-size file-content file?
+make-dir dir-name dir-dirs dir-files file-content dir?
+make-node node-ssn node-name node-left node-right node?
+make-child child-father child-mother child-name child-date child-eyes child?
+make-posn posn-x posn-y posn?
+make-add add-left add-right add? 
+make-mul mul-left mul-right mul? 
+make-prim prim-name prim-left prim-right prim? 
+make-parent parent-children parent-name parent-eyes parent-date parent?
+make-roman roman-grp roman?
+make-italics italics-grp italics?
+make-bold-face bold-face-grp bold-face?
+make-wp wp-header wp-body wp?
+make-phone-record phone-record-name phone-record-number phone-record?
+}
+
+
+\setconstant{
+make-vec vec-x vec-y vec?
+make-posn posn-x posn-y posn?
+make-point point-x point-y point-z point? 
+make-movie movie-title movie-producer movie? 
+make-star star-name star-first star-instrument star-sales star? 
+make-student student-last student-first student-teacher
+make-airplane airplane? 
+make-circle circle-center circle-radius circle? 
+make-square square-nw square-length square? 
+make-word make-time
+make-entry entry-name entry-zip entry-phone
+make-ball ball-posn
+}
+
+\setconstant{
+make-check-box
+make-radio-box
+make-vec vec-x vec-y vec?
+make-posn posn-x posn-y posn?
+make-point point-x point-y point-z point? 
+make-movie movie-title movie-producer movie? 
+make-star star-last star-first star-instrument star-sales star? 
+make-student student-last student-first student-teacher
+make-airplane airplane? 
+make-circle circle-center circle-radius circle? 
+make-square square-nw square-length square? 
+make-word make-time
+make-entry entry-name entry-zip entry-phone
+make-ball ball-posn
+make-pair pair-left pair-right pair? 
+make-ir ir-name ir-price ir?
+make-er er-name er-rate er?
+}
+
+
+\setconstant{
+make-posn posn-x posn-y posn? 
+make-ball ball-x ball-y ball-delta-x ball-delta-y ball? 
+make-rr
+}
+
+
+\setconstant{
+make-hide hide-it hide?
+make-loc loc-con loc?
+}
+
+% ---------------------------------------------------------------
+% for dependence.tex 
+\newcounter{foops}
+
+
+% ---------------------------------------------------------------
+% for prologue and epilogue
+
+%% #1: quote
+%% #2: title 
+%% #3: toc line 
+\def\ppart#1{\noindent {\Large #1}\\
+  \noindent \rule{\textwidth}{4pt}\\
+  \vskip 20ex}
+
+\def\psect#1{\subsection*{#1}}
+
+\htmlonly
+\def\ppart#1{\part{#1}}
+\def\psect#1{\subsection{#1}}
+\endhtmlonly
+
+% ---------------------------------------------------------------
+% html coversion of little things
+\def\ul#1{\underline{#1}}
+
+\htmlonly
+\def\ul#1{%
+ \begin{rawhtml}<u>\end{rawhtml}#1\begin{rawhtml}</u>\end{rawhtml}%
+}
+\endhtmlonly
+
+\def\anote#1{\medskip\noindent{\bf #1}:\ }
+
+% ---------------------------------------------------------------
+%% engl
+
+\def\hints{\noindent{\bf Hints:} }
+\def\hint{\noindent{\bf Hint:} }
+
+% ---------------------------------------------------------------
+% FIGURES
+\def\beginfig{\begin{figure*}[htbp]{\noindent\hrulefill\par}\small}
+\def\endfig{{\noindent\hrulefill\par}\end{figure*}}
+
+\renewcommand{\topfraction}{1}
+\renewcommand{\dbltopfraction}{1}
+\renewcommand{\bottomfraction}{1}
+\renewcommand{\textfraction}{0}
+
+\renewcommand{\floatpagefraction}{.90} % for one-column
+\renewcommand{\dblfloatpagefraction}{.99} % for two-.
+
+% ---------------------------------------------------------------
+% LABELS
+
+\pagestyle{headings}
+
+\def\intermezzo#1#2{%
+ \refstepcounter{section}
+ \setcounter{subsection}{0} 
+ \section*{#1:~#2}
+ \addcontentsline{toc}{part}{#1:~#2}
+ \markboth{{\footnotesize #1}}{{\footnotesize #2}}
+ }
+\def\subintermezzo#1{%
+ \refstepcounter{subsection}\subsection*{#1} 
+ \addcontentsline{toc}{subsection}{#1}
+ \setcounter{exercise}{0}}
+
+\htmlonly
+\def\intermezzo#1#2{%
+ \part{#1~#2}
+ \section{#1~#2}
+ }
+\def\subintermezzo#1{%
+ \subsection{#1}}
+\endhtmlonly
+
+% ---------------------------------------------------------------
+% NOTES, CROSS REFERENCES
+
+% #1: text for marginal para
+\def\mp#1{\marginpar{\footnotesize \raggedright #1}}
+
+\def\plt#1{\marginpar{\footnotesize \raggedright {\sc PLT}: #1}}
+
+\def\teacher{\epsfbox{icons/teacher1.ps}}
+\def\drscheme{\epsfxsize=.5in\epsfbox{icons/plt.ps}}
+
+\def\drstuff#1{{\footnotesize
+{\sf
+\begin{flushright}
+#1
+\end{flushright}}}}
+
+\def\drhint#1#2{% 
+ \marginpar{\hfill\drscheme}
+ \marginpar{\drstuff{#2}}}
+
+\long\def\note#1{\relax}    %%{\marginpar[\hfill\teacher]{\teacher}}
+
+\def\hand{\epsfbox{icons/hand.right.ps}}
+\def\solution#1{\relax}
+
+\htmlonly 
+\def\plt#1{\relax}
+\def\teacher{\htmladdimg{../icons/teacher1.gif}}
+\def\drscheme{\htmladdimg{../icons/plt.gif}}
+\def\drhint#1#2{\htmlref{\drscheme}{#1}}
+
+\long\def\note#1{\\ \teacher \\ }  %% Don't forget the space!!!
+
+\def\hand{
+\begin{rawhtml}
+<img src="../icons/hand.right.gif">
+\end{rawhtml}
+}
+
+\def\solution#1{\htmladdnormallink{Solution}{../Solutions/#1.html}}
+% {\hand}
+\endhtmlonly
+
+% ---------------------------------------------------------------
+\def\achild#1#2#3{\begin{picture}(75,30)
+\put(00,00){\line(+1,+0){70}}
+\put(70,00){\line(+0,+1){30}}
+\put(70,30){\line(-1,+0){70}}
+\put(00,30){\line(+0,-1){30}}
+\put(00,19){\mbox{~#1~~(#2)}}
+\put(00,05){\mbox{~Eyes:~~ #3}}
+\end{picture}}
+
+% ---------------------------------------------------------------
+% PS FILES FOR CROSS REFERENCES
+\def\spades{\epsfbox{icons/spades.ps}}
+\def\clubs{\epsfbox{icons/clubs.ps}}
+
+\def\planets{\centerline{\epsfxsize=5in\epsfbox{icons/planets0.ps}}}
+\def\cards{\centerline{\epsfxsize=5in\epsfbox{icons/cards.ps}}}
+\def\ricetour{\centerline{\epsfxsize=5in\epsfbox{icons/rice-tour.ps}}}
+\def\morerice{\centerline{\epsfxsize=5in\epsfbox{icons/rice-tour2.ps}}}
+\def\intersection{\centerline{\epsfxsize=1in\epsfbox{icons/traffic.ps}}}
+\def\multiTL{\centerline{\epsfysize=1in\epsfbox{icons/multiple-traffic.ps}}}
+
+\def\drawfigpic{
+ \begin{center}
+ \hbox to \textwidth{
+  \hfill
+  \epsfxsize=1.5in \epsfbox{icons/hang0.ps} 
+  \hfill
+  \epsfxsize=1.5in \epsfbox{icons/hang1.ps}
+  \hfill
+  \epsfxsize=1.5in \epsfbox{icons/hang2.ps}
+  \hfill}
+  \end{center}}
+\def\lookuppic{
+ \begin{center}
+ \hbox to \textwidth{
+  \hfill
+  \epsfxsize=1.5in \epsfbox{icons/lookup-gui0.ps} 
+  \hfill
+  \epsfxsize=1.5in \epsfbox{icons/lookup-gui1.ps}
+  \hfill
+  \epsfxsize=1.5in \epsfbox{icons/lookup-gui2.ps}
+  \hfill}
+  \end{center}}
+\def\pbpic{\smallskip
+ \centerline{\epsfxsize=2.5in \epsfbox{icons/phonebook.ps}}
+}
+
+\def\hmguipic{\smallskip
+ \centerline{\epsfxsize=2.5in \epsfbox{icons/hang-gui.ps}}
+}
+
+\def\riotpic{\smallskip
+ \centerline{\epsfxsize=1.in \epsfbox{icons/riot.ps}}
+}
+
+\def\guipad{
+ \begin{center}
+ \hbox to \textwidth{
+  \hfill
+  \epsfysize=1.5in 
+  \epsfbox{icons/vp.ps} 
+  \hspace{2in}
+  \epsfysize=1.5in 
+  \epsfbox{icons/cal.ps}
+  \hfill}
+  \end{center}}
+
+\def\toytable{
+ \begin{center}
+ \begin{tabular}{l|r|c}\hline
+  \hbox to 1.2in{Symbol} & \hbox to 1.2in{Price} & \hbox to 1.2in{Image} \\ \hline 
+  && \\
+  robot  & 11.95 & \epsfbox{icons/robot.ps} \\
+  && \\
+   doll  & 19.95 & \epsfbox{icons/doll.ps} \\
+  && \\
+ rocket  & 29.95 & \epsfbox{icons/rocket.ps} \\
+  \vdots & \vdots & \vdots \\
+  \end{tabular}
+ \end{center}}
+
+\def\bezierpic{
+ \begin{center}
+ \hbox to \textwidth{
+  \hfill
+  \epsfxsize=1.5in \epsfbox{icons/bezier1.ps} 
+  \hfill
+  \epsfxsize=1.5in \epsfbox{icons/bezier2.ps}
+  \hfill
+  \epsfxsize=1.5in \epsfbox{icons/bezier3.ps}
+  \hfill}
+  \end{center}}
+\def\taskqpic{
+ \begin{center}
+ \hbox to \textwidth{
+  \hfill
+  \epsfxsize=1.5in \epsfbox{icons/taskq1.ps} 
+  \hfill
+  \epsfxsize=1.5in \epsfbox{icons/taskq2.ps}
+  \hfill
+  \epsfxsize=1.5in \epsfbox{icons/taskq3.ps}
+  \hfill}
+  \end{center}}
+\def\movingpic{ %% DONT COPY!!!!!!!!!
+  \smallskip
+  \centerline{\epsfxsize=\textwidth\epsfbox{icons/moving1.ps}}
+  \smallskip
+  \centerline{\epsfxsize=\textwidth\epsfbox{icons/moving2.ps}}}
+\def\treepic{
+ \begin{center}
+ \hbox to \textwidth{
+  \hfill
+  {\epsfxsize=1.5in\epsfbox{icons/tree1.ps}}
+  \hfill
+  {\epsfxsize=1.5in\epsfbox{icons/tree2.ps}}
+  \hfill}
+ \end{center}}
+\def\siepic{
+ \begin{center}
+ \hbox to \textwidth{  \hfill
+  \epsfxsize=1.5in \epsfbox{icons/sie1.ps} 
+  \hfill
+  \epsfxsize=1.5in \epsfbox{icons/sie2.ps} 
+  \hfill
+  \epsfxsize=1.5in \epsfbox{icons/sie3.ps}
+  \hfill}
+  \end{center}}
+\def\trafficpic{
+ \begin{center}
+ \hbox to \textwidth{  \hfill
+  \epsfysize=.5in 
+  \epsfbox{icons/next.ps} 
+  \hfill
+  \epsfysize=1in 
+  \epsfbox{icons/green.ps} 
+  \hfill
+  \epsfysize=1in 
+  \epsfbox{icons/yellow.ps} 
+  \hfill
+  \epsfysize=1in 
+  \epsfbox{icons/red.ps}
+  \hfill}
+  \end{center}}
+
+\def\siepicB{
+  \begin{center}
+  \hbox to \textwidth{\hfill \epsfxsize=1.5in \epsfbox{icons/sie2.ps} \hfill}
+  \end{center}}
+\def\diffpic{\centerline{\epsfxsize=4in \epsfbox{icons/differentiate.eps}}}
+\def\integratepic{\centerline{\epsfxsize=4in \epsfbox{icons/integrate.eps}}}
+\def\machinepic{\centerline{\epsfxsize=4in \epsfbox{icons/computer-pic.ps}}}
+
+\htmlonly 
+\def\spades{
+  \begin{rawhtml}
+  <img src=../icons/spades.gif alt="[spades]">
+  \end{rawhtml}}
+\def\clubs{
+  \begin{rawhtml}
+  <img src=../icons/clubs.gif alt="[clubs]">
+  \end{rawhtml}}
+
+\def\planets{
+ \begin{rawhtml}
+  <center><img src=../icons/planets0.gif alt="[planets in DrScheme]"></center>
+ \end{rawhtml}}
+\def\cards{
+ \begin{rawhtml}
+  <center><img src=../icons/cards.gif alt="[cards in DrScheme]"></center>
+ \end{rawhtml}}
+\def\ricetour{
+ \begin{rawhtml}
+  <center><img src=../icons/rice-tour.gif alt="[A Rice University Tour in DrScheme]"></center>
+ \end{rawhtml}}
+\def\morerice{
+ \begin{rawhtml}
+  <center><img src=../icons/rice-tour2.gif alt="[A Rice University Tour in DrScheme]"></center>
+ \end{rawhtml}}
+\def\intersection{
+ \begin{rawhtml}
+  <center><img src=../icons/traffic.gif alt="[An intersection]"></center>
+ \end{rawhtml}}
+\def\multiTL{
+ \begin{rawhtml}
+  <center><img src=../icons/multiple-traffic.gif alt="[Multiple Traffic Lights]"></center>
+ \end{rawhtml}}
+\def\drawfigpic{
+ \begin{rawhtml}
+ <table cellspacing=20 bgcolor=beige>
+ <tr> <td align=left>  <img src=../icons/hang0.gif></td>
+      <td align=center><img src=../icons/hang1.gif></td>
+      <td align=right> <img src=../icons/hang2.gif></td>
+ </tr>
+ </table>
+ \end{rawhtml}}
+\def\lookuppic{
+ \begin{rawhtml}
+ <table cellspacing=20 bgcolor=beige>
+ <tr> <td align=left>  <img src=../icons/lookup-gui0.gif></td>
+      <td align=center><img src=../icons/lookup-gui1.gif></td>
+      <td align=right> <img src=../icons/lookup-gui2.gif></td>
+ </tr>
+ </table>
+ \end{rawhtml}}
+\def\pbpic{
+ \begin{rawhtml}
+ <center><img src=../icons/phonebook.gif></td></center>
+ \end{rawhtml}}
+\def\hmguipic{
+ \begin{rawhtml}
+ <center><img src=../icons/hang-gui.gif></td></center>
+ \end{rawhtml}}
+\def\riotpic{
+ \begin{rawhtml}
+ <center><img src=../icons/riot.gif></td></center>
+ \end{rawhtml}}
+\def\guesspic{
+ \begin{rawhtml}
+ <table cellspacing=20 bgcolor=beige>
+ <tr> <td align=left>  <img src=../icons/guess-gui0.gif></td>
+      <td align=right> <img src=../icons/guess-gui1.gif></td>
+ </tr>
+ </table>
+ \end{rawhtml}}
+\def\guipad{
+ \begin{rawhtml}
+ <table cellspacing=20 bgcolor=beige>
+ <tr> <td align=left>  <img src=../icons/vp.gif></td>
+      <td align=right> <img src=../icons/cal.gif></td>
+ </tr>
+ </table>
+ \end{rawhtml}}
+\def\toytable{
+ \begin{rawhtml}
+ <center>
+ <table border=1 bgcolor=beige>
+ <tr>
+   <td align=center valign=bottom>Item</td>
+   <td align=center valign=bottom>Price</td> 
+   <td align=center valign=bottom>Image</td>
+ </tr>
+
+ <tr>
+   <td align=center valign=bottom>robot</td>
+   <td align=center valign=bottom>29.95</td> 
+   <td align=center valign=bottom><img src=../icons/robot.gif></td>
+ </tr>
+
+ <tr>
+   <td align=center valign=bottom>robot</td>
+   <td align=center valign=bottom>29.95</td> 
+   <td align=center valign=bottom><img src=../icons/doll.gif></td>
+ </tr>
+
+ <tr>
+   <td align=center valign=bottom>robot</td>
+   <td align=center valign=bottom>29.95</td> 
+   <td align=center valign=bottom><img src=../icons/rocket.gif></td>
+ </tr>
+ </table>
+ </center>
+ \end{rawhtml}}
+
+\def\bezierpic{
+ \begin{rawhtml}
+ <table  cellspacing=20 bgcolor=beige>
+ <tr> <td align=left><img src=../icons/bezier1.gif></td>
+      <td align=center><img src=../icons/bezier2.gif></td>
+      <td align=right><img src=../icons/bezier3.gif></td>
+ </tr>
+ </table>
+ \end{rawhtml}}
+\def\taskqpic{
+ \begin{rawhtml}
+ <table  cellspacing=20 bgcolor=beige>
+ <tr> <td align=left><img src=../icons/taskq1.gif></td>
+      <td align=center><img src=../icons/taskq2.gif></td>
+      <td align=right><img src=../icons/taskq3.gif></td>
+ </tr>
+ </table>
+ \end{rawhtml}}
+\def\movingpic{
+ \begin{rawhtml}
+ <center>
+ <table  cellspacing=20 bgcolor=beige>
+   <tr><td align=center><img src=../icons/moving1.gif></td></tr>
+   <tr><td align=center><img src=../icons/moving2.gif></td></tr>
+ </table>
+ </center>
+ \end{rawhtml}}
+
+\def\treepic{
+ \begin{rawhtml}
+ <table  cellspacing=20 bgcolor=beige>
+ <tr> <td align=left><img src=../icons/tree1.gif></td>
+      <td align=right><img src=../icons/tree2.gif></td>
+ </tr>
+ </table>
+ \end{rawhtml}}
+\def\siepic{
+ \begin{rawhtml}
+ <table  cellspacing=20 bgcolor=beige>
+ <tr> <td align=left><img src=../icons/sie1.gif></td>
+      <td align=center><img src=../icons/sie2.gif></td>
+      <td align=right><img src=../icons/sie3.gif></td>
+ </tr>
+ </table>
+ \end{rawhtml}}
+\def\trafficpic{
+ \begin{rawhtml}
+ <table  cellspacing=20 bgcolor=beige>
+ <tr> <td valign=top align=left><img src=../icons/next.gif></td>
+      <td align=left><img src=../icons/green.gif></td>
+      <td align=center><img src=../icons/yellow.gif></td>
+      <td align=right><img src=../icons/red.gif></td>
+ </tr>
+ </table>
+ \end{rawhtml}}
+\def\siepicB{ \begin{rawhtml} <img align=center src=../icons/sie2.gif> \end{rawhtml} }
+\def\datapic{ \begin{rawhtml} <img align=center src=../icons/data-collection.jpg> \end{rawhtml} }
+\def\machinepic{\ \ \ {\htmladdimg{../icons/computer-pic.jpg}}\\}
+\def\integratepic{\ \ \ {\htmladdimg{../icons/integrate.jpg}}\\}
+\def\diffpic{\ \ \ {\htmladdimg{../icons/differentiate.jpg}}\\}
+\endhtmlonly
+
+%% Should work!
+% \def\button#1{\textsf{\textbf{#1}}}
+% \def\path#1{\textsf{\textbf{#1}}}
+\newcommand{\path}[1]{{\tt\bf #1}}
+
+\newcommand{\button}[1]{{\tt #1}}
+\newcommand{\window}[1]{{\tt #1}}
+\newcommand{\drmode}[1]{{\tt #1}}
+\newcommand{\key}[1]{{\tt #1}}
+
+% ---------------------------------------------------------------
+% MACHINE INSTRUCTIONS
+\def\iimmediate{\mbox{$\pm d_7 \ldots d_2$}}
+\def\uimmediate{\mbox{$d_7 \ldots d_2$}}
+ \newcommand{\jam}[8]{\hbox{$#1$ $#2$ $#3$ $#4$ $#5$ $#6$ $#7$ $#8$}} %  to .9in
+ \newcommand{\jamIM}[2]{\hbox{$\iimmediate$ $#1$ $#2$}} %  to .9in
+
+% ---------------------------------------------------------------
+% SLATEX
+\input{rs-config.tex}
+\setspecialsymbol{natural-number}{{\bf N}} % this should be Bbb
+\htmlonly
+\def\anarrow{{}{\tt ->}{}}
+\endhtmlonly
+
+% ---------------------------------------------------------------
+% EXERCISES
+
+\newexercise{exercise}{Exercise}[subsection]
+
+%% beginning of exercise block 
+\def\exthick{1pt}
+\newdimen\exwidth
+\setlength\exwidth\textwidth
+\advance\exwidth by -2pt
+
+\def\exstrut{\rule{1pt}{5pt}}
+
+\def\beginex{%
+  \beginexline%
+  \nopagebreak%
+  \noindent{\large \bf Exercises}}
+
+%% end of exercise and end of block
+\def\beginexline{%
+  \noindent\raisebox{-4pt}{\exstrut}%
+	   \rule{\exwidth}{\exthick}%
+	   \raisebox{-4pt}{\exstrut}\\[1ex]%
+}
+
+%% end of exercise 
+\def\eoe{{\rule{3pt}{5pt}}}
+
+%% end of exercise and end of block
+\def\endex{\eoe\\\endexline}
+
+\def\endexline{%
+ \nopagebreak%
+ \noindent\exstrut\rule{\exwidth}{\exthick}\exstrut}
+
+\htmlonly
+\def\beginexline{%
+ \begin{rawhtml}
+   <hr />
+ \end{rawhtml}}
+
+\def\endexline{
+ \begin{rawhtml}
+   <hr />
+ \end{rawhtml}}
+\endhtmlonly
+
+% ---------------------------------------------------------------
+% GUIDELINES
+
+%% the width of guideline and dd boxes
+\def\boxln{4.5in}
+
+%% #1 : title of guideline (cap style)
+%% #2 : body (rule)
+\def\guideline#1#2{
+\medskip
+\fbox{\begin{minipage}{\boxln}
+\centerline{\sc Guideline on #1}
+\smallskip
+#2
+\end{minipage}}
+\bigskip}
+
+\htmlonly
+\newcommand{\guideline}[2]{
+  \begin{rawhtml}
+    <table bgcolor=red align=center> 
+     <tr><td><font align=center color=white size=+3>
+  \end{rawhtml}
+Guideline on #1
+  \begin{rawhtml}
+    </td></tr>
+    <tr><td><font color=white><p>
+  \end{rawhtml}
+#2 
+  \begin{rawhtml}
+    </p>
+   </td></tr>
+  </table>
+  \end{rawhtml}
+}
+\endhtmlonly
+
+% ---------------------------------------------------------------
+% DATA DEFINITIONS
+
+%% #1 : text for dd
+\long\def\dd#1{$$\mbox{\fbox{\begin{minipage}{\boxln}#1\end{minipage}}}$$}
+
+%% THIS NEEDS FIXING FOR FINAL VERSION. 
+\htmlonly
+\newcommand{\dd}[1]{
+\begin{rawhtml} 
+<blockquote>
+<table bgcolor="tan">
+<tr><td>
+\end{rawhtml}
+#1 
+\begin{rawhtml} 
+</table>
+</blockquote>
+\end{rawhtml}
+}
+\endhtmlonly
+
+% ---------------------------------------------------------------
+% MISC
+
+\def\alt{\,\,\vert\,\,}
+\def\lenalt{\newdimen\p\setbox4=\hbox{$\alt$}\p=\wd4\kern\p}
+\def\defined#1{{\sc {#1}}}
+\def\defdd#1{{\sl {#1}}}
+
+\def\geometry{In contrast to the usual Cartesian coordinate system, the
+world of computer screens labels the upper-left corner of a window as the
+origin.}
+
+\def\bnf#1{\mbox{$\langle\mbox{\sl #1\/}\rangle$}}
+\htmlonly
+\def\bnf#1{\mbox{{\tt <{#1}>}}}
+\endhtmlonly
+
+\def\oldxaxis#1{%%
+\begin{picture}(300,20)(.7,0)
+\put(0,0){\line(1,0){300}}
+\put(000,-5){\line(0,1){10}}
+\put(-03,#1){\mbox{$0$}}
+\put(025,-5){\line(0,1){10}}
+\put(050,-5){\line(0,1){10}}
+\put(075,-5){\line(0,1){10}}
+\put(100,-5){\line(0,1){10}}
+\put(125,-5){\line(0,1){10}}
+\put(122,#1){\mbox{$5$}}
+\put(150,-5){\line(0,1){10}}
+\put(175,-5){\line(0,1){10}}
+\put(200,-5){\line(0,1){10}}
+\put(225,-5){\line(0,1){10}}
+\put(250,-5){\line(0,1){10}}
+\put(245,#1){\mbox{$10$}}
+\put(275,-5){\line(0,1){10}}
+\put(300,-5){\line(0,1){10}}
+\end{picture}}
+
+\def\oldyaxis{%%
+\begin{picture}(20,200)(+.8,0) % x axis
+\put(-5,000){\line(1,0){10}}
+\put(-5,025){\line(1,0){10}}
+\put(-15,46){\mbox{$5$}}
+\put(-5,050){\line(1,0){10}}
+\put(-5,075){\line(1,0){10}}
+\put(-5,100){\line(1,0){10}}
+\put(-5,125){\line(1,0){10}}
+\put(-5,150){\line(1,0){10}}
+\put(-5,175){\line(1,0){10}}
+\put(-15,172){\mbox{$0$}}
+\put(+0,175){\line(0,-1){175}}
+\end{picture}}
+
+\newcount\invcnt \invcnt=20
+\def\intv#1#2#3{%
+\invcnt=#1 \advance\invcnt by +4
+\begin{picture}(\invcnt,5)\thicklines
+\invcnt=#1 \advance\invcnt by -2
+\put(0,0){\mbox{\Large#2}}
+\put(2,2.5){\line(1,0){\invcnt}}
+\put(2,3.0){\line(1,0){\invcnt}}
+\put(2,3.5){\line(1,0){\invcnt}}
+\invcnt=#1 \advance\invcnt by -3
+\put(\invcnt,0){\mbox{\Large#3}}
+\end{picture}}
+
+%% ------------------------------------------------------------------------
+%% NUMBER LINE
+
+%% #i : what to put at 0 (relax, 0), ``5'' and ``10''
+\def\xaxis#1#2#3{
+\put(0,0){\line(1,0){300}}
+\multiput(0,-5)(25,0){12}{\line(0,1){10}}
+\put(-03,-18){\mbox{#1}}
+\put(123,-18){\mbox{#2}}
+\put(245,-18){\mbox{#3}}}
+
+\def\yaxis{
+\put(0,0){\line(0,-1){175}}
+\multiput(-5,0)(0,-25){7}{\line(1,0){10}}
+\put(-18,+03){\mbox{$0$}}
+\put(-18,-123){\mbox{$5$}}}
+
+%% the four ``brackets'' for intervals (OLD)
+% \def\LOPEN#1{\put(#1,-4){\mbox{\hspace{-1pt}\LARGE(}}}
+% \def\ROPEN#1{\put(#1,-4){\mbox{\hspace{-4.5pt}\LARGE)}}}
+% \def\LCLSD#1{\put(#1,-4){\mbox{\hspace{-1.5pt}\LARGE[}}}
+% \def\RCLSD#1{\put(#1,-4){\mbox{\hspace{-4pt}\LARGE]}}}
+
+%% the four ``brackets'' for intervals
+%% the maker is like apply so that dlatex can expaned properly 
+%% #1 : a backet
+%% #2 : a number
+\def\mkbracket#1#2{\put(#2,-4){#1}}
+\def\LOPEN{{\mbox{\hspace{-1pt}\LARGE(}}}
+\def\ROPEN{{\mbox{\hspace{-4.5pt}\LARGE)}}}
+\def\LCLSD{{\mbox{\hspace{-1.5pt}\LARGE[}}}
+\def\RCLSD{{\mbox{\hspace{-4pt}\LARGE]}}}
+
+%% intervals: 
+%% bidirectional infinity (paras, see left/right infinity)
+%% #4 : direction +/- 1
+\def\INFI#1#2#3#4{\mkbracket{#3}{#1}\multiput(#1,1)(0,-.1){25}{\vector(#4,0){#2}}}
+
+%% left-bounded infinity
+%% to draw a big, bold arrow pointing right 
+%% #1 : left boundary, 0, 25, 50, ...
+%% #2 : length, multiples of 25
+%% #3 : the left bracket (LOPEN or LCLSD)
+\def\LINFI#1#2#3{\INFI{#1}{#2}{#3}{+1}}
+
+%% right-bounded infinity
+%% to draw a big, bold arrow pointing left
+%% #1 : left boundary, 0, 25, 50, ...
+%% #2 : length, multiples of 25
+%% #3 : the left bracket (ROPEN or RCLSD)
+\def\RINFI#1#2#3{\INFI{#1}{#2}{#3}{-1}}
+
+%% bounded
+%% to draw an interval between #1 and #2
+%% #1 : left boundary, 0, 25, 50, ...
+%% #2 : length, multiples of 25
+%% #3 : the left bracket
+%% #4 : the right bracket
+\newcount\invcnt \invcnt=25
+\def\INTVL#1#2#3#4{
+ \mkbracket{#3}{#1} % left bracket
+ \multiput(#1,1)(0,-.1){25}{\line(1,0){#2}} % lines 
+ \invcnt=#1 \advance \invcnt by #2 
+ \mkbracket{#4}{\invcnt} % right bracket
+}
+
+%% to draw a general numberline with things (#4) superimposed (intervals)
+%% #1 - #3 : labels for x axis
+%% #4 : \put's 
+\def\gennumberln#1#2#3#4{
+\par\smallskip
+\hspace{.2cm}{\framebox[\numwidth]{
+\begin{picture}(300,30)(0,-20)
+\xaxis{#1}{#2}{#3}
+%% ---
+#4
+\end{picture}}}}
+
+%% to draw a numberline with things (#1) superimposed (intervals)
+%% #1 : \put's 
+\def\numberln#1{\gennumberln{$0$}{$5$}{$10$}{#1}}
+
+%% CONSTANTS:
+\newdimen\numwidth \numwidth=\textwidth \advance\numwidth by -40pt
+
+%% ------------------------------------------------------------------------
+%% PART
+\def\newpart#1{
+ \part{#1}
+ \thispagestyle{empty}
+}
+
+\def\endpart{
+%%\typeout{-- \thepage --}
+ ~\newpage%
+%%\typeout{-- \thepage --}
+ \ifodd\thepage
+%%   ``this is odd''
+   \thispagestyle{empty}~\newpage ~\thispagestyle{empty}\newpage
+ \else 
+   \thispagestyle{empty}~\newpage
+ \fi
+}
+
+%% ------------------------------------------------------------------------
+%% DESIGN RECIPES in TABLES
+
+\def\astrut{\raisebox{-10pt}{\mbox{}}}
+\def\anex#1{\begin{minipage}[t]{1.0in}#1 \astrut\end{minipage}}
+\def\ahin#1{\begin{minipage}[t]{1.6in}#1 \astrut\end{minipage}}
+\def\agoal#1{\begin{minipage}[t]{1.6in}\raggedright #1 \astrut\end{minipage}}
+\def\anactivity#1{\begin{minipage}[t]{2.2in}\raggedright {#1}\astrut\end{minipage}}
+\def\act{$\bullet$\ }
+
+\def\datagoal{\agoal{to formulate a data definition}}
+\def\congoal{
+  \agoal{to name the function;\\ 
+	 to specify its classes of\\~~input data and its\\~~class of output data;\\
+	 to describe its purpose;\\
+	 to formulate a header
+}}
+\def\exgoal{\agoal{to characterize the input-\\ output relationship via examples}}
+\def\tegoal{\agoal{to formulate an outline}}
+\def\rlgoal{\agoal{to define the function}}
+\def\testgoal{\agoal{to discover mistakes\\~~(``typos'' and logic)}}
+
+\def\recipe#1#2#3#4#5#6#7{%% merged header and contract w/o moving paras
+\begin{center}
+\begin{tabular}{|l|l|l|}\hline
+Phase            &  Goal 		& Activity \\ \hline\hline
+\begin{minipage}[t]{.60in}
+Data\\~~Analysis\\~~and Design
+\end{minipage}  & \datagoal & #1   \\ \hline
+\begin{minipage}[t]{.60in}
+Contract\\
+Purpose and\\
+Header\\
+\end{minipage}
+	& \congoal  & #2 \\ \hline
+Examples 	& \exgoal   & #3   \\ \hline
+Template        & \tegoal   & #5   \\ \hline
+Body	 	& \rlgoal   & #6   \\ \hline
+Test		& \testgoal & #7   \\ \hline
+\end{tabular}
+\end{center}}
+
+\def\shortrecipe#1#2#3#4#5{%%
+\begin{center}
+\begin{tabular}{|l|l|l|}\hline
+Phase            &  Goal 		& Activity \\ \hline\hline
+\begin{minipage}[t]{.60in}
+Contract\\
+Purpose and\\
+Header\\
+\end{minipage} 	& \congoal  & #1 \\ \hline
+%Header   	& \hdgoal   & #3   \\ \hline
+Examples 	& \exgoal   & #2   \\ \hline
+Body	 	& \rlgoal   & #4   \\ \hline
+Test		& \testgoal & #5 \\ \hline
+\end{tabular}
+\end{center}}
+
+\def\asbefore#1{\multicolumn{2}{c|}{see figure~{#1}\raisebox{-10pt}{\rule{0pt}{15pt}}}}
+
+% For dlatex:
+\newcommand{\TabSpace}[0]{\makebox[1ex][l]{}} 
+\htmlonly 
+\newcommand{\TabSpace}[0]{\ } 
+
+\def\beginfig{%
+ \begin{rawhtml}
+   <hr />
+   <blockquote>
+   <table bgcolor="beige">
+   <tr><td>
+ \end{rawhtml}
+}
+\def\caption#1{\center{Figure: #1}}
+
+\def\endfig{%
+ \begin{rawhtml}
+   </td></tr>
+   </table>
+   </blockquote>
+   <hr />
+ \end{rawhtml}
+}
+
+\def\notinhtml{%
+ \begin{rawhtml}
+  <center>
+    <font color=red>The figure is not yet translated into HTML.</font>
+  </center>
+ \end{rawhtml}
+}
+
+\endhtmlonly

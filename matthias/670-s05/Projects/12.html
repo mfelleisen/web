@@ -1,0 +1,416 @@
+<html><head><title>Project 12</title></head><body bgcolor="white"><br /><hr width="80%" height="3" /><table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="15%" valign="top" align="left" rowspan="2"><table border="0"><tr><td><a href="../../index.html" style="text-decoration: none"><font color="grey"><b>Teaching</b></font></a></td></tr><tr><td><a href="../index.html" style="text-decoration: none"><font color="grey"><b>670 S '05</b></font></a></td></tr><tr><td><font color="black"><b>&nbsp;</b></font></td></tr><tr><td><a href="index.html" style="text-decoration: none"><font color="grey"><b>Projects</b></font></a></td></tr><tr><td><a href="presentations.html" style="text-decoration: none"><font color="grey"><b>Presentations</b></font></a></td></tr><tr><td><a href="programming.html" style="text-decoration: none"><font color="grey"><b>Programming</b></font></a></td></tr><tr><td><font color="black"><b>&nbsp;</b></font></td></tr><tr><td><a href="carcassonne.html" style="text-decoration: none"><font color="grey"><b>Carcassonne</b></font></a></td></tr><tr><td><a href="tiles.html" style="text-decoration: none"><font color="grey"><b>Tiles</b></font></a></td></tr><tr><td><a href="1.html" style="text-decoration: none"><font color="grey"><b>Project 1</b></font></a></td></tr><tr><td><a href="2.html" style="text-decoration: none"><font color="grey"><b>Project 2</b></font></a></td></tr><tr><td><a href="3.html" style="text-decoration: none"><font color="grey"><b>Project 3</b></font></a></td></tr><tr><td><a href="4.html" style="text-decoration: none"><font color="grey"><b>Project 4</b></font></a></td></tr><tr><td><a href="5.html" style="text-decoration: none"><font color="grey"><b>Project 5</b></font></a></td></tr><tr><td><a href="6.html" style="text-decoration: none"><font color="grey"><b>Project 6</b></font></a></td></tr><tr><td><a href="7.html" style="text-decoration: none"><font color="grey"><b>Project 7</b></font></a></td></tr><tr><td><a href="8.html" style="text-decoration: none"><font color="grey"><b>Project 8</b></font></a></td></tr><tr><td><a href="9.html" style="text-decoration: none"><font color="grey"><b>Project 9</b></font></a></td></tr><tr><td><a href="10.html" style="text-decoration: none"><font color="grey"><b>Project 10</b></font></a></td></tr><tr><td><a href="11.html" style="text-decoration: none"><font color="grey"><b>Project 11</b></font></a></td></tr><tr><td><font color="black"><b>Project 12</b></font></td></tr><tr><td><a href="13.html" style="text-decoration: none"><font color="grey"><b>Project 13</b></font></a></td></tr></table></td><td width="3%" /><td valign="top" align="left"><h3>Project 12</h3></td>&nbsp;</tr><tr><td /><td valign="top" align="left" colspan="3"><div><div><p><font color="red">Due date: </font>4/08 @ 5pm</p>
+
+<p><b>Objective:</b> to develop some basic understanding of distributed
+  programming via the remote proxy pattern</p>
+
+<hr />
+
+<p><b>Background:</b> The modern world needs distributed computing. In this
+world, a system consists of many components that communicate via message
+exchanges, which typically correspond to method calls and returns. People tend
+to call ordering and formatting of these message exchanges a "protocol". 
+</p>
+
+<p>Over the past few years, XML has emerged as the dominant format for these
+messages. You can find abbreviations such as SOAP, XML RPC, etc. when you look
+for distributed protocols. Not all languages have bindings for libraries that
+support these protocols so I have decided to have you implement one from
+scratch. 
+</p>
+
+<hr />
+
+<p><b>Protocol:</b> (interaction diagrams for remote proxy communication) The
+following suggestive interaction diagrams show how the game administrator might
+communicate with the players. The diagrams are refinements of your game (or what
+yours should have looked like) that include hints on how the distributed game
+works. Do <em>not</em> take these diagrams as accurate dedscriptions of how my
+server works or how your server should work.
+</p>
+
+<p>Each diagram comes with a definition of the format th
+</p>
+
+<ol>
+<li>Use case: a player registers with the administrator  
+
+<p>This diagram specifies how players register with the game administrator
+  in the local case:</p>
+
+<pre>
+<code>
+<font size="-1">
+ admin                                          player 
+  |                             register(name)    |    
+  | &lt;-------------------------------------------- |    
+  |                                               |    
+  |  ret:follower or false                        |    
+  | --------------------------------------------&gt; |    
+  |                                               |    
+</font>
+</code>
+</pre>
+
+<p>The player sends a message to the administrator and receives either a
+  follower (a string denoting a color) or false in return. </p>
+
+<p>Using the remote proxy pattern the interplay looks slightly different:</p>
+
+<pre>
+<code>
+<font size="-1">
+   SERVER                                        CLIENT
+==============================================================
+
+ admin                   server             proxy-admin player 
+  |                        |                      |    |    
+  |                        |                      |    |    
+  |    proxy-player new(p) |    register(name)    |    |    
+  |              | &lt;------ | &lt;------------------- | &lt;- |    
+  |              |         |                      |    |    
+  |              | register|                      |    |    
+  |              | &lt;-----  |                      |    |    
+  |              |         |                      |    |    
+  |              |         |                      |    |    
+  | ret:tesult   | ret:resu|t                     |    |    
+  | -----------&gt; | --------|--------------------&gt; | -&gt; |    
+  |                        |                      |    |    
+
+the proxy-admin sends
+  &lt;call name="register"&gt;
+    &lt;li&gt;&lt;string value="... words ..." /&gt;&lt;/li&gt;
+  &lt;/call&gt;
+to the server  
+
+the proxy-player sends a Result to the proxy-admin 
+
+Result  = &lt;return&gt;&lt;string value="ColorString" /&gt;&lt;/return&gt; 
+        | &lt;return&gt;&lt;boolean value="false"&gt;&lt;/return&gt; 
+ColorString = red | yellow | cyan | black | green | magenta 
+</font>
+</code>
+</pre>
+
+<p>The diagram contains several new objects: 
+ a server that listens for tcp/ip requests;
+ a proxy-player, which is created from the new tcp/ip port 
+  and plays the role of a player to the administrator; and
+ a proxy-admin, which is created in parallel with 
+  the player on the client side and plays the role 
+  of the administrator there. It implies that the server and
+ proxy-administrator exist from the very beginning. The proxy-player comes
+ about when the server receives a request to register another player. 
+</p>
+</li>
+
+<li>Use case: the administrator grants a player a turn
+
+<pre>
+<code>
+<font size="-1">               
+   SERVER                                        CLIENT
+==============================================================
+
+ admin        proxy-player          proxy-admin      player 
+  |              |                       |              |    
+  | t=new() turn |                       |              |    
+  | ------&gt; |    |                       |              |    
+  |         |    |                       |              |    
+  | take(t) |    |                       | p=new()      |
+  |         |    | take()                |  proxy-turn  |
+  | ------------&gt;| --------------------&gt; | -----&gt; |     |           
+  |         |    |                       |        |     |
+  |         |    |                       | take(p)|     |
+  |         |    |                       | ----------&gt;  |
+  |         |    |                       |        |     |
+  |         |    |                       |        |     |
+  .         .    .                       .        .     .
+  .         .    .                       .        .     .
+  .         .    .                       .        .     .
+  |         |    |                       |        |     |
+  | &lt;------ |&lt;-- | &lt;-------------------  | &lt;----- |&lt;--- |
+
+the proxy-player sends 
+  &lt;call name="take-turn" /&gt;
+to the proxy-admin
+
+the proxy-admin sends back
+  &lt;return&gt;&lt;void /&gt;&lt;/return&gt;
+to the proxy-player 
+
+QoS contract: a turn may not take more than 10 seconds 
+</font>
+</code>
+</pre>
+
+<p>Again, we need one new class of objects: proxy-turns. They play the role
+of a turn on the client side. That is, they only represent the turn on the
+  remote machine but actually just communicate their method calls to the
+  proxy player on the server side. The following diagrams explain how the
+  proxy-turn interacts with the proxy-player. 
+</p>
+</li>
+
+<li>Use case: the player requests the index of the turn's tile
+<pre>
+<code>
+<font size="-1">
+   SERVER                                        CLIENT
+==============================================================
+
+ admin          turn     proxy-player      proxy-turn player 
+  |              |            |                  |       |    
+  |              |            |                  |  g-i  |    
+  |              |&lt;---------- |&lt;---------------- |&lt;----- |    
+  |              | ---------- | ---------------&gt; |-----&gt; | 
+
+proxy-turn sends 
+  &lt;call name="get-index" /&gt; 
+to proxy-player 
+
+proxy-player sends 
+  &lt;return&gt;&lt;number value="Index" /&gt;&lt;return&gt; 
+to proxy-turn 
+Index       = 00 | 1 | ... | 24
+</font>  
+</code>
+</pre>
+</li>
+
+<li>Use case: the player requests the list of potential tile locations from
+  the turn 
+               
+<pre>
+<code>
+<font size="-1">
+   SERVER                                        CLIENT
+==============================================================
+
+ admin          turn     proxy-player      proxy-turn player 
+  |              |            |                  |       |    
+  |              |            |                  |  plt  |    
+  |              |&lt;---------- |&lt;---------------- |&lt;----- |    
+  |              | ---------- | ---------------&gt; |-----&gt; | 
+
+proxy-turn sends 
+  &lt;call name="potential-locations-for-tile" /&gt; 
+to proxy-player 
+
+proxy-player sends 
+  &lt;return&gt;ListOfTile&lt;return&gt; 
+to proxy-turn 
+
+ListOfTile = &lt;list&gt;TileItem+&lt;/list&gt;
+TileItem   = &lt;li&gt;Tile&lt;li /&gt;
+Tile       = &lt;tile index="Index" 
+                      x="Number" 
+                      y="Number"
+                      orientation="Orientation" /&gt;
+
+Orientation = 0 | 90 | 180 | 270 
+Number      = Integer 
+</font>  
+</code>
+</pre>
+</li>
+
+<li>Use case: the player places a tile 
+
+<pre>
+<code>
+<font size="-1">
+   SERVER                                        CLIENT
+==============================================================
+
+ admin          turn     proxy-player      proxy-turn player 
+  |              |            |                  |       |    
+  |              |            |                  |  pt   |    
+  |              |&lt;---------- |&lt;---------------- |&lt;----- |    
+  |   chgGraph   |            |                  |       |    
+  | &lt;----------  |            |                  |       |    
+  |              | ---------- | ---------------&gt; |-----&gt; | 
+
+proxy-turn sends
+  &lt;call name="place-tile"&gt;
+    &lt;li&gt;Tile&lt;/li&gt;
+  &lt;/call&gt;
+to proxy-player 
+
+proxy-player sends 
+  &lt;return&gt;&lt;void /&gt;&lt;/return&gt; 
+back to proxy-turn 
+</font>
+</code>
+</pre>
+</li>
+
+<li>Use case: the player requests the potential locations for followers
+               
+<pre>
+<code>
+<font size="-1">
+   SERVER                                        CLIENT
+==============================================================
+
+ admin          turn     proxy-player      proxy-turn player 
+  |              |            |                  |       |    
+  |              |            |                  |  plf  |    
+  |              |&lt;---------- |&lt;---------------- |&lt;----- |    
+  |              | ---------- | ---------------&gt; |-----&gt; | 
+
+proxy-turn sends
+  &lt;call name="potential-locaions-for-followers" /&gt; 
+to proxy-player 
+
+proxy-player sends 
+  &lt;return&gt;
+   ListOfPos
+  &lt;return&gt; 
+to proxy-turn
+
+ListOfPos = &lt;list&gt;PosItem*&lt;/list&gt;
+PosItem   = 
+  &lt;li&gt;
+    &lt;list&gt;
+      &lt;li&gt;Tile&lt;li /&gt;
+      &lt;li&gt;&lt;number value="Position" /&gt;&lt;li /&gt;
+    &lt;/list&gt;
+  &lt;li /&gt;
+
+Position  = 0 | 90 | 180 | 270 | -100
+</font>
+</code>
+</pre>
+
+<p>The Place values 
+<code>0</code>,
+<code>90</code>,
+<code>180</code>,
+<code>270</code>, and 
+<code>-100</code> 
+represent
+the northern edge, 
+the eastern edge, 
+the southern edge, 
+the western edge, and the inside of the tile. 
+</p>
+</li>
+
+<li>Use case: the player places a follower
+               
+<pre>
+<code>
+<font size="-1">
+   SERVER                                        CLIENT
+==============================================================
+
+ admin          turn     proxy-player      proxy-turn player 
+  |              |            |                  |       |    
+  |              |            |                  |  pf   |    
+  |              |&lt;---------- |&lt;---------------- |&lt;----- |    
+  |   chgGraph   |            |                  |       |    
+  | &lt;----------  |            |                  |       |    
+  |              | ---------- | ---------------&gt; |-----&gt; | 
+
+proxy-turn sends 
+  &lt;call name="place-follower"&gt;
+    &lt;li&gt;Tile&lt;/li&gt;
+    &lt;li&gt;&lt;number value="Position" /&gt;&lt;/li&gt;
+  &lt;/call&gt; 
+to proxy-player
+
+proxy-player sends 
+  &lt;return&gt;&lt;void /&gt;&lt;/return&gt; 
+back to proxy-turn 
+</font>
+</code>
+</pre>
+</li>
+
+<li>Use case: the turn sends the player a score and returns some followers 
+
+<pre>
+<code>
+<font size="-1">
+   SERVER                                        CLIENT
+==============================================================
+
+ admin          turn     proxy-player      proxy-turn player 
+  |              |            |                  |       |    
+  |              | score_token|                  |       |    
+  |              | ---------&gt; | ---------------&gt; | ----&gt; |    
+  |              | &lt;--------- | ---------------  | &lt;---- | 
+
+proxy-player sends 
+  &lt;call name="score-and-token"&gt;
+    &lt;li&gt;&lt;number value="Number"&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;number value="Number"&gt;&lt;/li&gt;
+  &lt;/call&gt;
+to proxy-turn 
+
+proxy-turn sends 
+  &lt;return&gt;&lt;void /&gt;&lt;/return&gt; 
+back
+</font>
+</code>
+</pre>
+</li>
+
+<li>Use case: the administrator sends a message to the player
+               
+<pre>
+<code>
+<font size="-1">
+   SERVER                                        CLIENT
+==============================================================
+
+ admin        proxy-player          proxy-admin      player
+  |              |                       |              |    
+  | inform       |                       |              |     
+  | ------------&gt;| --------------------&gt; | -----------&gt; |
+  |              |                       |              |    
+  |              |                       |              |    
+
+the proxy-player sends 
+  &lt;call name="inform"&gt;
+    &lt;li&gt;&lt;string value="... words ..." /&gt;&lt;/li&gt;
+  &lt;/call&gt; 
+to the proxy-admin
+
+the proxy-admin sends 
+  &lt;return&gt;&lt;void /&gt;&lt;/return&gt;
+back 
+</font>
+</code>
+</pre>
+</li>
+</ol>
+
+You may infer the proper XML messages for the observer methods:
+<code>placed-tile</code>, <code>placed-follower</code>, and
+<code>other-score-and-token</code>. The <code>get-graph</code> method is
+<em>not</em> implemented. 
+
+<hr />
+
+<p><b>Task:</b> Your task is to implement a distributed version of your
+Carcassonne project so that the player and the administrator run on different
+computers. They will communicate according to the specified protocol over tcp/ip
+sockets. [POINTS: 60]
+</p>
+
+<p>As you do so, you may not touch your code base. Instead, you must create
+remote "proxies" that play the role of the administrator on the CLIENT machine
+and the role of the player on the SERVER machine. The proxies only know how to
+forward method calls and returns to the other side of the world. </p>
+
+<hr />
+
+<p><b>Product:</b> Mail a tar bundle with a two subdirectories labeled
+  <code>YourName_Project12</code> and <code>YourName_Project11</code>. Each
+  subdirectory must contain a README file and a file RUN. The former contains
+  the require documentation; the latter runs the project in a standard or
+  conventional fashion. [POINTS: 5]
+</p>
+
+</div></div></td></tr></table><hr width="80%" height="3" /><table width="80%" align="center"><tr><td align="left"><font size="-2">last updated on Tue Jun  9 22:03:19 EDT 2009</font></td><td align="right"><font size="-2">generated with <a href="http://www.plt-scheme.org/">PLT Scheme</a></font></td></tr></table></body></html>

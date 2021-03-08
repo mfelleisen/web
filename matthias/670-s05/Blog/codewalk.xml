@@ -1,0 +1,40 @@
+<div>
+
+<center><font color="red">The Final Code Walk</font></center>
+
+<p><b>Final submission:</b> The code that you submit on Friday at 5:00pm is
+  the code that you will present in your final code walk. You will present
+  it on either a lab-style Windows computer or a lab-style Solaris (Unix)
+  computer. To ensure that you can present and run your code, you must 
+<ul>
+<li>CC Alex on your final submission (see Web page for email address)</li>
+
+<li>Specify in your email on which machine you want to present and run your
+code</li>
+
+<li>Plead your case with Alex to install software other than the one on the
+ lab machines. If you really need such software, you should meet with Alex
+ as soon as you can do prepare this installation. 
+</li>
+</ul></p>
+
+<p><b>Final presentation:</b> Over the weekend you should prepare your
+  final presentation of your entire project. The presentations will proceed
+  as follows: 
+<ul>
+<li>You will demo your game. You will run your server; I will connect my
+  players to your server.</li>
+
+<li>You will give an overview of the project's goals, the software
+  organization that you chose, the data representations, and how the pieces
+  interact with each other.</li>
+
+<li>During the Q&amp;A period, we will ask you specific questions about (i) the
+  proxy architecture of your project and (ii) anything else that we might
+  become interested in.
+</li>
+</ul>
+ So come prepared to explain every aspect of the project.  
+</p>
+
+</div>

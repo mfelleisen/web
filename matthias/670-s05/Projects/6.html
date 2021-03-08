@@ -1,0 +1,182 @@
+<html><head><title>Project 6</title></head><body bgcolor="white"><br /><hr width="80%" height="3" /><table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="15%" valign="top" align="left" rowspan="2"><table border="0"><tr><td><a href="../../index.html" style="text-decoration: none"><font color="grey"><b>Teaching</b></font></a></td></tr><tr><td><a href="../index.html" style="text-decoration: none"><font color="grey"><b>670 S '05</b></font></a></td></tr><tr><td><font color="black"><b>&nbsp;</b></font></td></tr><tr><td><a href="index.html" style="text-decoration: none"><font color="grey"><b>Projects</b></font></a></td></tr><tr><td><a href="presentations.html" style="text-decoration: none"><font color="grey"><b>Presentations</b></font></a></td></tr><tr><td><a href="programming.html" style="text-decoration: none"><font color="grey"><b>Programming</b></font></a></td></tr><tr><td><font color="black"><b>&nbsp;</b></font></td></tr><tr><td><a href="carcassonne.html" style="text-decoration: none"><font color="grey"><b>Carcassonne</b></font></a></td></tr><tr><td><a href="tiles.html" style="text-decoration: none"><font color="grey"><b>Tiles</b></font></a></td></tr><tr><td><a href="1.html" style="text-decoration: none"><font color="grey"><b>Project 1</b></font></a></td></tr><tr><td><a href="2.html" style="text-decoration: none"><font color="grey"><b>Project 2</b></font></a></td></tr><tr><td><a href="3.html" style="text-decoration: none"><font color="grey"><b>Project 3</b></font></a></td></tr><tr><td><a href="4.html" style="text-decoration: none"><font color="grey"><b>Project 4</b></font></a></td></tr><tr><td><a href="5.html" style="text-decoration: none"><font color="grey"><b>Project 5</b></font></a></td></tr><tr><td><font color="black"><b>Project 6</b></font></td></tr><tr><td><a href="7.html" style="text-decoration: none"><font color="grey"><b>Project 7</b></font></a></td></tr><tr><td><a href="8.html" style="text-decoration: none"><font color="grey"><b>Project 8</b></font></a></td></tr><tr><td><a href="9.html" style="text-decoration: none"><font color="grey"><b>Project 9</b></font></a></td></tr><tr><td><a href="10.html" style="text-decoration: none"><font color="grey"><b>Project 10</b></font></a></td></tr><tr><td><a href="11.html" style="text-decoration: none"><font color="grey"><b>Project 11</b></font></a></td></tr><tr><td><a href="12.html" style="text-decoration: none"><font color="grey"><b>Project 12</b></font></a></td></tr><tr><td><a href="13.html" style="text-decoration: none"><font color="grey"><b>Project 13</b></font></a></td></tr></table></td><td width="3%" /><td valign="top" align="left"><h3>Project 6</h3></td>&nbsp;</tr><tr><td /><td valign="top" align="left" colspan="3"><div><div><p><font color="red">Due date: </font>2/18 @ noon</p>
+
+<p><b>Objective:</b> to add components to an application via implementing
+  interfaces; additional practice with the translation of use cases into
+  the creation and modification of interfaces
+</p>
+
+<p><b>Task 1:</b> Your first task is to translate the end-of-game use case into
+modification to the existing interfaces:
+
+<pre>
+<font size="-1">
+use case: administrator ends the game 
+
+ condition: there is no more turn, either because
+ the administrator is out of tiles or because all
+ players have dropped out;
+
+ administrator requests all incomplete abbeys 
+  from graph,
+ determines the followers on them, and 
+ scores them in the usual manner 
+
+ administrator computes the ranking of the
+ players and then constructs individualized 
+ announcements for each player 
+
+ administrator informs all (surviving) players 
+ of final scores
+
+ players and administrators end game 
+</font>
+</pre>
+What else would have to change if the final scoring included incomplete roads?
+[POINTS: 4]
+</p>
+
+<hr />
+
+<p>Here are two more use cases for Carcassonne: 
+
+<pre>
+<font size="-1">
+use case: player registers with administrator 
+
+ player requests to play a game with the administrator 
+ administrator checks that there are followers left
+ if so, administrator assigns a follower to the player 
+ if not, administrator declines the player's request. 
+</font>
+</pre>
+
+<pre>
+<font size="-1">
+use case: initiate game 
+
+ when enough players have signed up or
+ when an external human supervisor signals 
+ the beginning of the game
+
+ run the game 
+</font>
+</pre>
+</p>
+
+<p>These use cases give rise to three interface specifications:</p>
+
+<pre>
+<code>
+<font size="-1">
+   ;; this game administrator runs a single game of Carcassonne 
+   ;; [POINTS: 10]
+   (define admin&lt;%&gt;
+    (interface ()
+      register ;; player&lt;%&gt; -&gt; (union false Follower)
+      ;; sign up a player for game, assign color, if possible 
+      
+      run-game ;; -&gt; String 
+      ;; run the game and produce final message
+
+      ;; ASSUME: (register* . run-game)
+      ))
+
+  ;; a player is in a subscribe-notify relation with admin&lt;%&gt;
+  ;; (listener or observer pattern) 
+  ;; [POINTS: 10]
+  (define player&lt;%&gt;
+    (interface ()
+      take-turn ;; turn&lt;%&gt; -&gt; Void
+      ;; it's the player's turn 
+      
+      score-and-token ;; Number Number -&gt; Void 
+      ;; the player has scored a point and receives some 
+      ;; of the tokens back
+      
+      ;; Implementing the following callbacks in the relevant classes:
+      ;; [POINTS: 6]
+
+      ;; They help a player keep track of the graph as it evolves:
+      placed-tile ;; tile&lt;%&gt; -&gt; Void 
+      ;; some other player placed t during a turn 
+ 
+      placed-follower ;; tile&lt;%&gt; Follower Position -&gt; Void 
+      ;; some other player placed f on t at p 
+      
+      inform ;; String -&gt; Void 
+      ;; accept a message for the player 
+      ))
+  
+  ;; a turn provides temporary access to the administrator's internal 
+  ;; state and thus mediates between players and administrators 
+  ;; [POINTS: 10]
+  (define turn&lt;%&gt;
+    (interface ()      
+      get-index ;; -&gt; Index
+      ;; the index of the tile that you're allowed to place 
+      
+      potential-locations-for-tile ;; -&gt; Listof[tile&lt;%&gt;]
+      ;; given an index for a potential tile, compute a list of tiles
+      ;; that could be placed into the graph
+      ;; ASSUME: the result is a non-empty list 
+      
+      place-tile ;; tile&lt;%&gt; -&gt; Void
+      ;; _this_ turn places the given tile into the graph 
+      ;; ASSUME: the given tile is placable in _this_ graph,
+      ;; in the sense of _potential-locations-for-tile_      
+      
+      potential-locations-for-followers	
+      ;;      -&gt; Listof[(list tile&lt;%&gt; Position)]
+      ;; compute the potential tile locations and positions on these tiles
+      ;; in _this_ graph where a follower could be placed 
+      
+      place-follower ;; tile&lt;%&gt; Position -&gt; Void
+      ;; this turn places the player's follower on t at p
+      ;; ASSUME: the given coordinates and position are legal in the
+      ;; sense of potential-locations-for-followers; the player has followers
+      ))
+</font>
+</code>
+</pre>
+
+<p>I have modified some of project 4's interfaces and encourage you to do so,
+too: 
+
+<pre>
+<code>
+<font size="-1">
+  ;; represent the tiles inside a graph 
+  (define tile&lt;%&gt; ;; [POINTS: 2]
+    (interface () 
+      equal ;; tile&lt;%&gt; -&gt; Boolean 
+      ;; compare _this_ tile with the given tile 
+
+      index ;; -&gt; Index 
+      ;; the index from which _this_ tile was built 
+      ))
+</font>
+</code>
+</pre>
+
+</p>
+
+<p><b>Task 2:</b> Draw an interaction diagram for the observer system of
+  players and administrator here. [POINTS: 4]</p>
+
+
+<p><b>Task 3:</b> Your second task is to modify and extend your implementation
+of <a href="4.html">project 4.</a> Specifically, implement the administrator,
+player, and turn classes based on the above interfaces; also modify the
+classes from project 4 as appropriate. Don't forget to keep up your test suite
+from <a href="5.html">project 5</a> if you do so. [POINTS: 45]</p>
+
+<hr />
+
+<p><b>Product:</b> Mail a tar bundle with three subdirectories labeled
+  <code>YourName_Interfaces6</code>,
+  <code>YourName_Carcassonne6</code>, and
+  <code>YourName_Diagram6</code>. Place the relevant pieces into the
+  subdirectories and add a README file to make sure your graders can compile
+  and run the program.</p>
+
+</div></div></td></tr></table><hr width="80%" height="3" /><table width="80%" align="center"><tr><td align="left"><font size="-2">last updated on Tue Jun  9 22:03:19 EDT 2009</font></td><td align="right"><font size="-2">generated with <a href="http://www.plt-scheme.org/">PLT Scheme</a></font></td></tr></table></body></html>

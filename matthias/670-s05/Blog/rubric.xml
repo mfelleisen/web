@@ -1,0 +1,86 @@
+<div>
+
+<p>The grading rubric for Project 4: </p>
+
+<b>Task 1:</b> Here are the minimal answers:
+
+<pre>
+<font size="-1">
+<code>
+  (define admin&lt;%&gt; (interface () ))
+  ;; because the admin doesn't have external 
+  ;; stimuli for this task!
+
+  (define player&lt;%&gt;
+    (interface ()
+      take-turn ;; turn&lt;%&gt; -> Void
+      ;; it's the player's turn
+
+      score-and-token ;; Number Number -> Void
+      ;; the player has scored a point 
+      ;; and receives some of the tokens back
+      ))
+
+  (define turn&lt;%&gt;
+    (interface ()
+      potential-locations-for-tile ;; -> Listof[tile&lt;%&gt;]
+      ;; given an index for a potential tile,
+      ;;  compute a list of tiles
+      ;; that could be placed into the graph
+
+      place-tile ;; tile&lt;%&gt; -> Void
+      ;; _this_ turn places the given tile into the graph
+
+      potential-locations-for-followers
+	;; -> Listof[(list tile&lt;%&gt; Position)]
+
+      ;; compute the potential tile locations
+      ;; and positions on these tiles
+      ;; in _this_ graph where a follower could be placed
+
+      place-follower ;; tile&lt;%&gt; Position -> Void
+      ;; this turn places the player's follower on t at p
+      ))
+</code>
+</font>
+</pre>
+
+<p>If they deliver less, take off points in proportion. If they deliver
+ more, take off points in proportion, unless they justify the extra entry
+ points really well.</p>
+
+<b>Task 2:</b> The only modification I could think of is this one:
+
+<pre>
+<font size="-1">
+<code>
+  (define admin-graph&lt;%&gt;
+    (interface ()
+      ...
+      abbey-regions 
+      ;; -> Listof[(list Follower Number)]
+      ;; compute who gets how many points 
+      ;; for incomplete abbey regions
+      ))
+</code>
+</font>
+</pre>
+
+<p>More and less is punished as above.</p>
+
+<b>Task 3:</b> The 28 points are already distributed over the interfaces. 0 means
+ they should recognize that the graph must implement _both_ interfaces.
+
+<ul>
+ <li>subtract 9 points if the code doesn't compile
+ </li><li>otherwise subtract points for (1) missing methods that are specified in
+ the interface 
+ </li><li>for (2) badly implemented methods: missing purpose statement included
+ </li><li>high-light but don't subtract points for missing tests for public
+ methods</li>
+</ul>
+
+<p>
+<b>Task 4:</b> If they describe the idea of "place and investigate for strategy"
+ [i.e., backtracking] they get 3 points; otherwise 0. </p>
+</div>

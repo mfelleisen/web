@@ -1,0 +1,32 @@
+<div>
+ <scheme>(red-title "Choice of Language")</scheme>
+
+ <p>For in-class demonstrations and discussions, I will use UML diagrams,
+ mainstream object-oriented languages such as C# and Java and possibly some
+ OO concepts from research languages such as Scheme or scripting languages
+ such as Python. </p>
+
+ <p>For projects, you are free to choose whatever language you wish to
+ use. You may also switch your language of choice over the course of the
+ semester.</p>
+
+
+
+ <scheme>(generalp "Language references")</scheme>
+
+ <p>If you use Java, please consult the 
+
+   <li> <a href="http://java.sun.com/j2se/1.3/docs/index.html">Java SDK docs</a>
+        for basic information on Java and its libraries;</li>
+
+   <li> <a href="http://www.mindview.net/Books/TIJ/">Thinking in Java</a>
+        for a set of examples;</li>
+ </p>
+
+ <p>If you use PLT Scheme, please consult <a href="http://www.htus.org/">
+    <cite>How to Use Scheme</cite></a> (or <a
+    href="/home/matthias/HtUS/Book/howto.html"><cite>its revised version</cite></a>) for
+    basic information on using Scheme; use the Help Desk extensivley for
+    specific topics.
+ </p>
+</div>

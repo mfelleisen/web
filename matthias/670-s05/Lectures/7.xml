@@ -1,0 +1,48 @@
+<lecture title="Design Review: Carcassonne (2)">
+
+<h3>Egoless Programming</h3>
+
+<p>Creators naturally invest some of their ego into their
+products. Programmers are creators; this is precisely why we are attracted
+to this discipline and its professions. Investing an ego, however, often
+prevents us from accepting flaws. Criticism of our product is confused with
+personal criticism of our person. </p>
+
+<p>People have recognized and understood this problem for a long
+  time. Weinberger has suggested considering the notion of "egoless
+  programming", i.e., creating programs as if they weren't yours. While
+  this is a demanding standard, I request that you divest yourself from
+  your product during code walks and that you use this chance to free your
+  product from potentially harmful flaws. Keep in mind that this temporary
+  "suspension of ego" helps you produce a better product than blind belief
+  in yourself. 
+</p>
+
+<h3>Bibliography</h3>
+
+<li>Weinberg. The Psychology of Programming. Van Nostrand, 1971.</li>
+
+<hr />
+
+<p><b>Presenters:</b> 
+William McCarthy, Peter Markowsky
+</p>
+
+<p><b>Readers:</b> 
+Mike ?? (moderator), 
+Reuben Taube (secretary), 
+Ian Langworth (second reader)
+</p>
+
+<hr />
+<p><b>Presenters:</b> 
+Andrew Nutter-Upham, Martin Fowler
+</p>
+
+<p><b>Readers:</b> 
+??,
+Andrew Sward (secretary),
+??
+</p>
+
+</lecture>

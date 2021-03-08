@@ -1,0 +1,37 @@
+<html><head><title>Lecture 13: Refactoring</title></head><body bgcolor="white"><br /><hr width="80%" height="3" /><table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="15%" valign="top" align="left" rowspan="2"><table border="0"><tr><td><a href="../../index.html" style="text-decoration: none"><font color="grey"><b>Teaching</b></font></a></td></tr><tr><td><a href="../index.html" style="text-decoration: none"><font color="grey"><b>670 S '05</b></font></a></td></tr><tr><td><font color="black"><b>&nbsp;</b></font></td></tr><tr><td><a href="index.html" style="text-decoration: none"><font color="grey"><b>Lectures</b></font></a></td></tr><tr><td><a href="1.html" style="text-decoration: none"><font color="grey"><b>Lecture 1</b></font></a></td></tr><tr><td><a href="2.html" style="text-decoration: none"><font color="grey"><b>Lecture 2</b></font></a></td></tr><tr><td><a href="3.html" style="text-decoration: none"><font color="grey"><b>Lecture 3</b></font></a></td></tr><tr><td><a href="4.html" style="text-decoration: none"><font color="grey"><b>Lecture 4</b></font></a></td></tr><tr><td><a href="5.html" style="text-decoration: none"><font color="grey"><b>Lecture 5</b></font></a></td></tr><tr><td><a href="6.html" style="text-decoration: none"><font color="grey"><b>Lecture 6</b></font></a></td></tr><tr><td><a href="7.html" style="text-decoration: none"><font color="grey"><b>Lecture 7</b></font></a></td></tr><tr><td><a href="8.html" style="text-decoration: none"><font color="grey"><b>Lecture 8</b></font></a></td></tr><tr><td><a href="9.html" style="text-decoration: none"><font color="grey"><b>Lecture 9</b></font></a></td></tr><tr><td><a href="10.html" style="text-decoration: none"><font color="grey"><b>Lecture 10</b></font></a></td></tr><tr><td><a href="11.html" style="text-decoration: none"><font color="grey"><b>Lecture 11</b></font></a></td></tr><tr><td><a href="12.html" style="text-decoration: none"><font color="grey"><b>Lecture 12</b></font></a></td></tr><tr><td><font color="black"><b>Lecture 13</b></font></td></tr></table></td><td width="3%" /><td valign="top" align="left"><h3>Lecture 13: Refactoring</h3></td>&nbsp;</tr><tr><td /><td valign="top" align="left" colspan="3"><div><div><h3>Code gets Bad! Don't Live with it, Fix it!</h3>
+
+Code easily gets out of hand. The goal is then to stop adding functonality,
+fixing bugs, and subtracting old functionality. Instead, you re-consider
+your design, eliminate duplications, and focus on creating a single point
+of control for each current functionality. For <em>every</em> change, you
+run the test suite. It is critical that your changes do not affect the test
+suite. If you "accidentally" fix a bug, make sure you take a note and test
+it properly. 
+
+<h3>Setting Goals</h3>
+
+Refactoring with a goal in mind is the best thing. It helps you find the
+bad spots in the code that might get in your way. So imagine that your
+"Carcassonne boss" 
+
+<ul>
+<li>adds the method <code>my-color</code> to <code>turn&lt;%&gt;</code> 
+so that a player program can determine the color of its followers;</li> 
+
+<li>adds an observer call-back <code>sign-up</code> (of color and name) so
+that observers find out who else is playing; 
+</li>
+
+<li>changes the distribution of tiles so that it corresponds to those found
+in "paper versions" of Carcassonne.</li>
+</ul>
+
+<h3>Bibliography</h3>
+
+<ul>
+<li>Martin Fowler. Refactoring. Improving the Design of Existing
+  Code. Addison-Wesley. 2002. 
+</li>
+</ul>
+
+</div></div></td></tr></table><hr width="80%" height="3" /><table width="80%" align="center"><tr><td align="left"><font size="-2">last updated on Tue Jun  9 22:03:19 EDT 2009</font></td><td align="right"><font size="-2">generated with <a href="http://www.plt-scheme.org/">PLT Scheme</a></font></td></tr></table></body></html>

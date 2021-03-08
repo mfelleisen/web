@@ -1,0 +1,233 @@
+-----------------------------------------------------------------------------
+1. Marc & Eric 
+
+   XML reading: 
+
+   Marc: XML reading fails, doesn't provide overview, doesn't see problem;
+   switch to Marc
+
+   Eric takes over: no diagram but understands the code tries to explain
+   XMLReader but fails to grasp purpose of individual methods; regains control
+   by showing rest 
+
+   code: XMLreader is mingled with threads and 
+
+   Client: 
+   Marc mumbles something about the client starting a new server 
+   main class 
+   Marc doesn't know when connect gets called, Marc tells him 
+   
+   Eric issues with proxyTurn, evasive 
+   doesn't understand proxy concept 
+
+   sequence diagram: okay
+
+Marc: F
+Eric: C
+
+12: 10/60
+
+-----------------------------------------------------------------------------
+2. Dan and JP 
+
+   code doesn't work 
+
+   JP: class purpose statement, listens to wire 
+   switches to ProxyPlayer, no overview, jumps in the middle 
+   
+   Dan: explains the proxy classes 
+
+code: 30/60 
+
+Dan: B-
+JP: B-  
+
+
+-----------------------------------------------------------------------------
+3. Rock and Elyes 
+
+   code works all the way 
+
+   Rock presents XMLTools, no overview, okay at details 
+   Elyes intervenes and explains code 
+
+   Elyes on players, provides overview, knows how to check this 
+
+
+100 for protocol 
+
+code: 50/60
+Rock: B
+Elyes: B+
+
+
+-----------------------------------------------------------------------------
+4. Billy and Martin 
+
+   code doesn't run 
+
+   Martin gives overview: twisted, dom, parsestring 
+   BUT, fails to bring across that the server is a central listener
+
+   Billy gives overview: (Martin interrupts with irrelevant details)
+   
+   overview of SPlayer with help
+
+Billy: B+
+Martin: B+
+
+code: 40/60
+
+-----------------------------------------------------------------------------
+5. Andy and Ian 
+
+   code broke
+
+   Andy provides overview of organization 
+   callback architecture 
+   Ian takes "back and forth"
+
+Andy: A 
+Ian: A 
+
+code: 50/60
+
+
+-----------------------------------------------------------------------------
+6. 
+
+-----------------------------------------------------------------------------
+7. Elevnio and Bill
+   
+   code: don't know where name is sent in register message 
+   didn't get XML to work 
+   
+   E tries to give overview 
+   B takes over 
+   takeTurn E takes over, explains sequ diagram on prompting 
+   then admits that the project is incomplete 
+
+   E evasive again about specs 
+   
+   for(i = 0; i < 75; i++) {
+     if (endOfGame(playerQ,tileQ))
+       break;
+     // now we know there is at least one player and one placeable tile 
+     nextPlayer = playerQ.deq();
+     nextTile   = tileQ.deq(); 
+     ...
+
+     playerQ.enq(nextPlayer); 
+   }
+
+Elevino: C-
+Bill: C+ 
+
+code: 10/60
+
+-----------------------------------------------------------------------------
+8. Stan and Paul 
+
+   server takes nothing, clients play two rounds 
+
+   Stan just jumps in middle of Graph and focuses on insert.tile 
+
+   XML module explained bottom up, each pair of functions
+   Paul: don't change the source code 
+
+   Paul presents proxy, Stan jumps in for ProxyPlayer, but explains a lot of
+   "what we got and how it all went wrong" 
+
+   defers too much to us 
+
+   proud of Graph rewrite (matrix, hash)
+
+Stan: B+
+Paul: B+
+
+code: 40/60
+
+-----------------------------------------------------------------------------
+9. John and Reuben 
+
+   Reuben on XML reading/writing 
+
+   John on proxies
+
+John: B+
+Reuben: A-
+
+code: 45/60
+
+-----------------------------------------------------------------------------
+10. Jason and Andrew 
+
+    code: played two rounds, server hits firewall 
+    
+    Andrew proxy: no overview, has to ask about pp, diagram on prodding 
+
+    Jason xml: no overview, doesn't understand nesting structure of call xml
+
+Jason: C 
+Andrew: C
+
+code: 20/60
+
+-----------------------------------------------------------------------------
+11. Mike and Peter 
+
+    Mike: no true overview but background, details okay 
+    Peter: takes over on send/receive, proxy
+
+    no overview, only when prompted 
+
+Mike: B
+Peter: B
+
+code: 35/60
+
+-----------------------------------------------------------------------------
+12. David and Chris 
+
+    players can register, but not play 
+
+    David: overview on prompt, but shallow; callRegister (Chris jumps in) 
+    no overview for reading either, just jumps into char reading 
+
+    Chris: picks up midstream w/o anything else; 
+
+David: C+
+Chris: C+
+
+code: 10/60
+
+-----------------------------------------------------------------------------
+13. Ed and Josiah 
+
+    code: doesn't work 
+
+    Joshia: the client (no overview, enumerates details)
+    pAdmin is a no-op 
+
+    Ed: Server, no overview, no comments 
+    Joshia resumes 
+
+
+Ed: C-
+Joshia: C-
+
+code: 0
+
+-----------------------------------------------------------------------------
+14. Chris and John 
+
+    John on XML: package diagram, how to abstract, interfaces, details
+
+    Chris on Proxies: no overview, but great details 
+
+100 
+
+code: 60/60
+
+Chris: A-
+John: A

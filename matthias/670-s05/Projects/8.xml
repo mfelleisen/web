@@ -1,0 +1,80 @@
+<week>
+<assignment due="3/10 @ noon">
+
+<p><b>Objective:</b> (1) to expand your horizons and (2) to modify the code
+  base</p>
+
+<hr />
+
+<p>Remember that you must work on this project with your new partner and
+  the chosen code base.</p>
+
+<p>Here is the final modification of the graph interface:
+<font size="-1">
+<pre><code>
+ abbey-regions ;; -> Listof[(list Follower Number)]
+ ;; compute which follower gets how many points 
+ ;; for incomplete abbey regions
+ ;; ASSUME: for each (f,n) on the resulting list: 
+ ;; 0 &lt; n &lt; 9 [the max score you can get for an abbey]
+</code></pre>
+</font>
+Using this method, the administrator can implement the end-of-game scoring
+functionality. </p>
+
+<p><b>Task 1a:</b> Modify your code base to implement this new
+  method. [POINTS: 5]
+</p>
+
+<p><b>Task 1b:</b> Make sure your program can now run complete games with
+up to six instances of your player. Randomize your player in how it selects
+the next tile to place and where/whether to place a follower during a
+ turn. You should should now be able to observe non-trivial outcomes. [POINTS: 5]
+</p>
+
+<hr />
+
+<p><b>Background: </b> Some 12 years ago, Christa Lopes (a PhD student then) and
+Karl Lieberherr (on the faculty here) came up with a new idea for controlling
+the interactions between different parts of a program. At Xerox Parc, where
+Christa did an internship with Gregor Kiczales, the idea evolved into a new
+programming paradigm: aspect-oriented programming. His team then created
+AspectJ, a dialect of Java. This new language has gained tremendous industry
+attention over the past six years and, for better or worse, you should know
+about the basic ideas and what researchers now think about it. Your boss may
+confront you with this idea one day.</p>
+
+<hr />
+
+<p><b>Task 2:</b> In the spirit of the <cite>Pragmatic Programmer</cite>, you will
+do something for yourself this week. On Tuesday (March 8), you will attend two
+of the four talks in the joint Northeastern-Brown symposium (see <a
+href="../blog.html">blog</a> for details). For your homework, you will write two
+short memos, one per talk. Each memo should specify a from, to, and subject
+line. The body of the memo must contain at most 100 words.</p>
+
+<p>Each of you should write one memo. Then switch the memos and play editor for
+your partner. Go through at least two editing cycles. Ideally, leave one night
+in between. [POINTS: 20 (up to 10 per essay)] </p>
+
+<p><b>Note:</b> We will score your essays with 6 points for "syntactic
+  correctness" and 4 point for "content". The former includes spelling,
+  sentence-level construction, paragraph-level connections, and thesis
+  statements. The latter is a check whether you understood the basic
+  idea of the chosen talk. 
+</p>
+
+<hr />
+
+<p><b>Product:</b> Mail a tar bundle with three subdirectories labeled
+  <code>YourName_Project</code>, <code>YourName_Memo1</code> and
+  <code>YourName_Memo2</code>. The first subdirectory must contain all your
+  project files both code and documentation. Place all versions of the
+  memos into the two directories. Label the final one in each directory
+  <code>final.txt</code>. Make sure it is plain text (no pdf, no doc, no
+  postscript, etc).
+</p>
+
+</assignment>
+</week>
+

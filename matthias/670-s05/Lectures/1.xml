@@ -1,0 +1,214 @@
+<lecture title="Software Development">
+
+<h3>What?</h3>
+
+<p>
+ What is the purpose of this course? What are the goals? 
+<ol>
+ <li> to consolidate your programming skills </li>
+ <li> to expose you to proven techniques of industrial and academic
+   software construction </li>
+ <li> to help you develop quality control techniques </li>
+</ol>
+</p>
+
+<p>
+<ol>
+ What is a non-goal of the course?
+ <li> to teach purely academic ideas on software development </li>
+ <li> to teach purely industrial (vocational) technologies </li>
+ <li> to use special academic or industrial tools </li>
+</ol>
+</p>
+
+<h3>Why?</h3>
+
+<p>
+ Everyone can write a <em>program</em> that eventually does something
+ useful for the programmer and his friends. A program becomes
+ truly useful, however, when your grandmother can use it. Put
+ differently, it has evolved into an <em>application</em> that you can
+ sell or at least give away to uninitiated people.  Or, your
+ program has become a part of a large system of interacting
+ pieces; in this case people tend to call it or a <em>component</em>.
+</p>
+
+<p>
+ Above and beyond addition to applications and components,
+ companies often produce entire <em>programming systems</em>. Examples
+ are operating systems, productivity suites, etc. These systems
+ combine the qualities of applications with those of components.
+</p>
+
+<p>
+ In summar, there are four classes of programs: 
+<ol>
+ <li> programs </li>
+ <li> applications </li>
+ <li> components </li>
+ <li> systems </li>
+</ol>
+</p>
+
+<p>
+ The differences between the first and the remaining three are
+ huge. While you, the super-duper hacker, can create a program
+ after a couple of years of programming in your parents' garage
+ while you're supposed to attend boring high school courses, you
+ can't get away with that kind of activity if you want to create
+ an application, a component, or a system. These things require
+ documentation for external users (people other than yourself and
+ your close friends who can read your programs to run them),
+ continuous maintenance, port to new operating systems, adjustment
+ to new user interaction modes, and so on. You can only achieve
+ this goal if you construct this kind of software with a
+ systematic process and leave behind code that truly, honestly
+ works. 
+</p>
+
+<p>
+ So, the real problem is this: 
+</p>
+
+<blockquote>
+<p>
+ (Social) Theorem: No interesting software system is ever finished. 
+</p>
+
+<p>
+ Corollary: Someone is always working on this software. 
+</p>
+</blockquote>
+
+<p>
+ This someone could be a person that takes over the code from you.
+ Or this someone could be a person who picks up your code long
+ after you have left the project.  Or this someone could be you,
+ because your boss asked you to fix a bug or add a piece of
+ functionality or whatever long after you had initially worked on
+ it. You are a different person now; you have forgotten what you
+ thought about and you can't possibly remember everything.
+</p>
+
+<p>
+<blockquote>
+ Corollary: Develop the program so that you can read and modify it
+ a day later, a month later, or a year later.
+</blockquote>
+</p> 
+
+<p>
+ See my Web page. 
+</p>
+
+<p>
+ Brooks, The Tar Pit 
+</p>
+
+<h3>How?</h3>
+
+<p>
+ How does the course help you develop these skills? 
+<ol>
+ <li> study and understand the essential elements of development
+   processes </li>
+ <li> continuous quality control </li> 
+ <li> hands-on practice </li>
+</ol>
+</p>
+
+<p>
+ I use the idea of a studio course, which I have imported from the
+ fine arts. You will
+<ol>
+ <li> develop a program in pairs </li>
+ <li> show and tell in class [private sessions] </li>
+ <li> maintain and improve the program </li> 
+ <li> repeat </li> 
+</ol>
+</p>
+
+<p>
+ You will learn from your following our advice, your own
+ activities, your presentations, and from watching others
+ present. 
+</p>
+
+<h3>When do you get the advice?</h3>
+
+<p>
+ Some meetings will be plain lectures.  Initially I will present
+ some basic ideas and principles of software design and
+ development. This will be followed with a discussion of some
+ so-called software patterns in a specific context.
+</p>
+
+<p>
+ Later on, I will also present specific programming knowledge for
+ specific tasks. For example, one of the projects will involve
+ wiring together two components of a project via tcp sockets.
+</p>
+
+<p>
+ Some projects may require <em>domain knowledge</em>. I may present this
+ as needed in lectures. 
+</p>
+
+<p>
+ NOTE: In this course, I will attempt to keep the domain knowledge
+ to a minimum so that we can focus on the development of
+ software. Still, we cannot possibly write interesting software in
+ a vacuum, and we cannot learn to develop software well with
+ completely boring domains. So, you must be prepared to know
+ something about the domain of application. In the real world, you
+ will probably find out far more about domains than you ever
+ wanted to know.
+</p>
+
+<h3>What kind of advice will I present?</h3>
+
+<p>
+<ol>
+ <li> analyzing problems, modeling domains </li>
+ <li> data design and documentation </li>
+ <li> testing </li>
+ <li> interaction design and documentation </li>
+ <li> coding follows data and documentation </li>
+ <li> safe guards (contracts) </li>
+ <li> reuse of proven patterns of code </li>
+</ol> 
+</p>
+
+<h3>Why all this partner stuff?</h3>
+
+<p>
+ Designing code means thinking. By its very nature, thinking is a
+ private activity. It is nearly impossible to debug thinking while
+ it is private. Translating thoughts into code is one way to make
+ them public, and the compiler and the test cases do expose some
+ problems with your thinking. But they don't check whether you
+ have truly understood the requirements, the interface or whether
+ your thinking is completely off-base. If, however, you need to
+ continuously discuss your thoughts with your partner, chances are
+ high that mistaken assumptions are exposed quickly. The benefits
+ are reductions in errors, debugging time, mistaken assumptions,
+ mismatched interfaces and many more. 
+</p>
+
+<h3>Why all this code review stuff?</h3>
+
+<p>
+ Make no mistake, even two people can go wrong for a long
+ time. And they hardly ever act as more than a single programmer
+ with two brains and two mouths. A review panel on the other hand
+ ensures that the two think of their audience: the customer, the
+ current team members, and their future replacements (including
+ older versions of themselves).
+</p>
+
+<h3>Overview of course pages; basic policies</h3>
+
+<h3>Bibliography</h3>
+
+<li>F. Brooks. The Mythical Man-Month. Prentice Hall, 1975; reissued 1995.</li>
+</lecture>

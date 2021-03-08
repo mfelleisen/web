@@ -1,0 +1,163 @@
+Sequence Diagrams
+
+When you describe a story (use case), you often need to discuss
+the creation of objects, a sequence of method calls, call backs,
+and so on.  So far we have used plain English to do that, with
+lists when needed.
+
+If you need to discuss such things with customers or
+co-developers, you should use a graphical notation, because it is
+good for illustrating the sequencing of creations and method
+calls.
+
+UML provides several notations for this purpose. Collectively,
+they are called Interaction Diagrams. We will use sequence
+diagrams.
+
+
+
+The Basics of Sequence Diagrams 
+----------------------------------------
+
+A sequence diagram consists of objects and object life lines:
+
+<pre>
+<font  size="-1">
+       a View     result: JList      Controller     theGraph
+          |           |                   |             |
+          |           |                   |             |
+          |           |                   |             |
+          |           |                   |             |
+</font>
+</pre>
+
+
+The vertical placement (often) indicates when the object comes
+about, and the line represents the life span of the object.
+
+A method call is just an arrow with appropriate annotations:
+
+<pre>
+<font  size="-1">
+ actionPerfomed()
+ --------------->
+
+a View     result: JList    Controller     theGraph
+ |         |                 |                 |
+ |         |                 |                 |
+ |        r = notify(from,to)|                 |
+ |-------------------------> | search(from,to) |
+ |         |                 | --------------> |
+ |         |                 |                 |
+ |         |                 |                 | ---+
+ |         |                 |                 |    | search(from,to)
+ |         |                 |                 |    | (Node,Node)
+ |         |                 |                 | <--+
+ |         |                 |                 |
+</font>
+</pre>
+
+This picture conveys the (one and only) sequence of actions that
+we need to understand how the T program works. Something invokes
+the actionPerformed() method on View. It notifies its listener
+that something has happened. The controller translates this call
+into a call to search(String,String) for theGraph. Finally,
+theGraph calls itself, after translating the strings into Nodes.
+
+<pre>
+<font  size="-1">
+ actionPerfomed()
+ --------------->
+
+a View     result: JList    Controller     theGraph
+ |               |           |                 |
+ |               |           |                 |
+ |        r = notify(from,to)|                 |
+ |-------------------------> | search(from,to) |
+ |               |           | --------------> |
+ |               |           |                 |
+ |               |           |                 | ---+
+ |               |           |                 |    | search(from,to)
+ |m =            |           |                 |    | (Node,Node)
+ |createModel()  |           |                 | <--+
+ |---> JListModel|           |                 |
+ |       |       |           |                 |
+ |       |       |           |                 |
+ |       |       |           |                 |
+ | setModel(m)   |           |                 |
+ |-------------> |           |                 |
+ |       |       |           |                 |
+ |       |       |           |                 |
+</font>
+</pre>
+
+This extension shows how to create a new object, which is then
+handed to a component of the layout.
+
+Exercise: write up the diagram for XController. 
+
+An Example from Project 3
+----------------------------------------
+
+Let's look at the stories in the "Silly Game":
+
+Story 1: Registering players:
+
+Main creates and then registers players with the server. 
+
+ player registration: 
+ --------------------
+
+   Main                Server 
+    |                   |
+    | p = new()         |
+    | ------------------------------->  Player 
+    |                   |                |
+    | registerPlayer(p) |                |
+    | ----------------> |                |
+    |                   |                |
+
+Story 2:  Playing a turn: 
+
+The server plays rounds until there are no more active players. 
+
+For each round, the server grants each player a turn. The player
+can tell the turn to roll the dice or to skip, but only one of
+three actions is valid. If the player object does more with this
+turn, it is recorded as a cheater and eliminated from the
+tournament.
+
+Here is the plainest scenario: the player just rolls the die. 
+
+ playing a turn (1) 
+ ------------------
+
+  Server               Player                           Die
+    |                   |                               |
+    | t = new()         |                               |
+    | ------------------------------> Turn              |
+    |                   |               |               |
+    | takeTurn(t)       |               |               |
+    | ----------------> |               |               |
+    |                   |  roll()       |               |
+    |                   | ------------> |               |
+    |                   |               | d = roll()    | 
+    |                   |               | ------------> |
+    |               record(d)           |               |
+    | <-------------------------------- |               |
+    |                   |               |               |
+    |  return           |               |               |
+    | < - - - - - - - - |              --- the turn ceases
+    |                   |                   to matter   |
+    |                   |                               |
+    |                   |                               |
+
+</font>
+</pre>
+
+
+This picture shows a callback interaction between a server, a
+turn, a die, and a player.
+
+
+
