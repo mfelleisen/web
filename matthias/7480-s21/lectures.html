@@ -408,7 +408,42 @@ performance. Those measurements were wrong<span class="Autobibref">&nbsp;[<a hre
 experiment. Those metrics were wrong<span class="Autobibref">&nbsp;[<a href="#%28autobib._.Andy._.Georges%2C._.Dries._.Buytaert%2C._and._.Lieven._.Eeckhout.Statistically._rigorous._java._performance._evaluation.In._.Proc..._.A.C.M._.Conference._on._.Object-.Oriented._.Programming%2C._.Systems%2C._.Languages._and._.Applications%2C._pp..._57--762007https~3a%2F%2Fdoi..org%2F10..1145%2F1297027..1297033%29" class="AutobibLink" data-pltdoc="x">Georges et al<span class="Sendabbrev">.</span></a> <a href="#%28autobib._.Andy._.Georges%2C._.Dries._.Buytaert%2C._and._.Lieven._.Eeckhout.Statistically._rigorous._java._performance._evaluation.In._.Proc..._.A.C.M._.Conference._on._.Object-.Oriented._.Programming%2C._.Systems%2C._.Languages._and._.Applications%2C._pp..._57--762007https~3a%2F%2Fdoi..org%2F10..1145%2F1297027..1297033%29" class="AutobibLink" data-pltdoc="x">2007</a>]</span>.</p></li><li><p>People made fundamental assumptions about the properties of run-time systems
 and baked those into experiments. Those assumptions were wrong<span class="Autobibref">&nbsp;[<a href="#%28autobib._.Edd._.Barrett%2C._.Carl._.Friedrich._.Bolz-.Tereick%2C._.Rebecca._.Killick%2C._.Sarah._.Mount%2C._and._.Laurence._.Tratt.Virtual._machine._warmup._blows._hot._and._cold.In._.Proc..._.A.C.M._.Conference._on._.Object-.Oriented._.Programming%2C._.Systems%2C._.Languages._and._.Applications%2C._pp..._1--272017https~3a%2F%2Fdoi..org%2F10..1145%2F3133876%29" class="AutobibLink" data-pltdoc="x">Barrett et al<span class="Sendabbrev">.</span></a> <a href="#%28autobib._.Edd._.Barrett%2C._.Carl._.Friedrich._.Bolz-.Tereick%2C._.Rebecca._.Killick%2C._.Sarah._.Mount%2C._and._.Laurence._.Tratt.Virtual._machine._warmup._blows._hot._and._cold.In._.Proc..._.A.C.M._.Conference._on._.Object-.Oriented._.Programming%2C._.Systems%2C._.Languages._and._.Applications%2C._pp..._1--272017https~3a%2F%2Fdoi..org%2F10..1145%2F3133876%29" class="AutobibLink" data-pltdoc="x">2017</a>]</span>.</p></li></ul></div><div class="SIntrapara">The first step toward accurate performance evaluation is understanding and
 rectifying past mistakes, with an understanding that there are surely more to
-correct in the future.</div></p><h3><a name="(part._22)"></a>Logical Relations</h3><div class="SAuthorListBox"><span class="SAuthorList"><p class="author">Olek Gierczak		</p></span></div><p><div class="SIntrapara"><blockquote class="refpara"><blockquote class="refcolumn"><blockquote class="refcontent"><p> 2 Apr 2021</p></blockquote></blockquote></blockquote></div><div class="SIntrapara"></div></p><p>abstract and citations needed</p><h3><a name="(part._23)"></a>Designing Multi-Language Systems</h3><div class="SAuthorListBox"><span class="SAuthorList"><p class="author">Andrew Wagner</p></span></div><p><div class="SIntrapara"><blockquote class="refpara"><blockquote class="refcolumn"><blockquote class="refcontent"><p> 6 Apr 2021</p></blockquote></blockquote></blockquote></div><div class="SIntrapara"></div></p><p>Cross-language interoperability comes in many shapes and sizes; e.g., FFIs,
+correct in the future.</div></p><h3><a name="(part._22)"></a>Logical Relations</h3><div class="SAuthorListBox"><span class="SAuthorList"><p class="author">Olek Gierczak		</p></span></div><p><div class="SIntrapara"><blockquote class="refpara"><blockquote class="refcolumn"><blockquote class="refcontent"><p> 2 Apr 2021</p></blockquote></blockquote></blockquote></div><div class="SIntrapara"></div></p><p>Proof by logical relations is a technique with roots in proof theory for
+strengthening induction hypotheses when proving properties about programming
+languages. The idea is to 1) define a relation (unary or binary) on terms in
+your language or their denotations that is inductive over types, 2) prove that
+the relation contains all relevant terms or denotations of terms in your
+language, and 3) show your relation implies the property desired.</p><p>The earliest days of logical relations for programming languages involved
+proving normalization of STLC (Tait &#8217;67) and System F (Girard &#8217;72). While these
+properties are of concern in some contexts, we often times reason about and
+program in non terminating languages. Not long after, Potkin in 1975 began
+examining what is today one of the more useful applications of logical
+relations: reasoning about program equivalence. Plotkin used a logical relation
+to prove computational adequacy for a domain theoretic model of
+PCF. Computational Adequacy implies soundness, or that denotationally equivalent
+terms are operationally equivalent. Notably, PCF includes the Y combinator,
+making this relation among the earliest to deal with non terminating languages
+using logical relations, and the &#8220;step indexing&#8221; technique partially applied in
+Plotkin&#8217;s relation ends up being foundational.</p><p>While these early results were informative, they dealt with simply typed
+languages with only one effect: non termination. In the subsequent years,
+various papers came out with attempts at incorporating some amount of reference
+(Pitts, Stark &#8217;93), quantified (Pitts &#8217;98), or recursive types (Birkedal-Harper
+&#8217;99).  The next fundamental breakthrough came in Appel, McAllester &#8217;01: a step
+indexed unary logical relation for type soundness for a lambda calculus with
+recursive types. The paper was concerned with providing a relatively simple and
+widely applicable model for Foundational Proof Carrying Code, but the lasting
+breakthrough with respect to logical relations was bringing this idea of step
+indexing, which comes up in the LCF paper and in proof theory and set theory,
+into reasoning about the behavior of non terminating programs.</p><p>One of the major missing pieces to the technique was being able to apply it for
+languages with mutable references. Type invariant systems with mutable
+references suffered from a problem of circularity in the definition of the
+logical relation, particularly in the possible worlds model used in modeling the
+store. Ahmed &#8217;04, among many other contributions, solved this circularity by
+applying the step indexing approach to the possible worlds model for mutable
+references. More generally, Ahmed&#8217;s thesis made the logical relations technique
+more accessible by developing new notation for and a thorough explanation of the
+technique and how it can be applied beyond &#8220;toy&#8221; languages, ie languages with
+multiple effects.</p><h3><a name="(part._23)"></a>Designing Multi-Language Systems</h3><div class="SAuthorListBox"><span class="SAuthorList"><p class="author">Andrew Wagner</p></span></div><p><div class="SIntrapara"><blockquote class="refpara"><blockquote class="refcolumn"><blockquote class="refcontent"><p> 6 Apr 2021</p></blockquote></blockquote></blockquote></div><div class="SIntrapara"></div></p><p>Cross-language interoperability comes in many shapes and sizes; e.g., FFIs,
 frameworks like .NET, and interop-first languages like Scala. As of the early
 2000s, research on these multi-language systems had largely focused on the "bits
 and bytes" of building efficient implementations, while the semantic
