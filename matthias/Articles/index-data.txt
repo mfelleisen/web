@@ -22,6 +22,13 @@ https://techcrunch.com/2018/12/09/jira-is-an-antipattern/
 feature/issue/bug tracking tools have unintended consequences, or let's do principles, not industry
 
 -----------
+Dollar Amounts: Precision vs Size
+WSJ 5 May 2021
+dollar-amounts.pdf
+https://www.wsj.com/articles/berkshire-hathaways-stock-price-is-too-much-for-computers-11620168548?st=1puht5owz7rgkv1&reflink=desktopwebshare_permalink
+the most flunked interview question, and it is real
+
+-----------
 JPL Institutional Coding Standard for the C Programming Language 
 NASA Jet Propulsion Lab (CalTech)
 jpl-coding-standard-for-c.pdf 
