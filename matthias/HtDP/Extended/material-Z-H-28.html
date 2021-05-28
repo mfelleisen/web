@@ -1,0 +1,299 @@
+<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--
+
+Generated from material.tex by tex2page, v 20070609
+(running on MzScheme 370.6, unix), 
+(c) Dorai Sitaram, 
+http://www.ccs.neu.edu/~dorai/tex2page/tex2page-doc.html
+
+-->
+<head>
+<title>
+material
+</title>
+<link rel="stylesheet" type="text/css" href="material-Z-S.css" title=default>
+<meta name=robots content="noindex,follow">
+</head>
+<body>
+<div id=slidecontent>
+<div align=right class=navigation>[Go to <span><a href="material.html">first</a>, <a href="material-Z-H-27.html">previous</a></span><span>, <a href="material-Z-H-29.html">next</a></span> page<span>; &nbsp;&nbsp;</span><span><a href="material-Z-H-2.html#node_toc_start">contents</a></span>]</div>
+<p></p>
+<a name="node_sec_9"></a>
+<h1 class=section><a href="material-Z-H-2.html#node_toc_node_sec_9">9&nbsp;&nbsp;Friday Morning: Games</a></h1>
+<p><table align=left border=2><tr><td><span class=scriptsize>See &#8217;net, HtDP+</span></td></tr></table></p>
+<p>
+</p>
+<a name="node_sec_9.1"></a>
+<h2 class=section><a href="material-Z-H-2.html#node_toc_node_sec_9.1">9.1&nbsp;&nbsp;Goal</a></h2>
+<p>to understand the world of reactive programming in the <tt><strong>draw.ss</strong></tt>
+teachpack </p>
+<p>
+</p>
+<a name="node_sec_9.2"></a>
+<h2 class=section><a href="material-Z-H-2.html#node_toc_node_sec_9.2">9.2&nbsp;&nbsp;Calling Functions on Events</a></h2>
+<p>
+</p>
+
+<p class=noindent><br>
+
+</p>
+
+<p class=noindent></p>
+<p></p>
+<div align=left>
+World
+</div><p></p>
+<p></p>
+<div align=left>
+A <code class=scheme><span class=variable>World</span></code> is a collection of things, which can also be
+displayed on a canvas. Usually we represent a world as struct.
+</div><p></p>
+<p></p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p></p>
+<p>
+
+</p>
+
+<p class=noindent><br>
+
+</p>
+
+<p class=noindent></p>
+<p></p>
+<div align=left>
+Show and tell: <code class=scheme>(<span class=variable>start</span> <span class=variable>Number</span> <span class=variable>Number</span>)</code>
+</div><p></p>
+<p></p>
+<div align=left>
+Display the canvas for
+the world.
+</div><p></p>
+<p></p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p></p>
+<p>
+
+</p>
+
+<p class=noindent><br>
+
+</p>
+
+<p class=noindent></p>
+<p></p>
+<div align=left>
+<code class=scheme>(<span class=variable>big-bang</span> <span class=variable>Number</span> <span class=variable>World</span>)</code>
+</div><p></p>
+<p></p>
+<div align=left>
+The function <code class=scheme><span class=variable>big-bang</span></code>
+&#8220;creates&#8221; the world. The number tells it how fast to tick the real clock;
+the given world is the first world. Every tick of the clock can update the
+world.
+</div><p></p>
+<p></p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p></p>
+<p>
+
+</p>
+
+<p class=noindent><br>
+
+</p>
+
+<p class=noindent></p>
+<p></p>
+<div align=left>
+tick, <code class=scheme>(<span class=variable>on-tick-event</span> <span class=variable>tock</span>)</code>
+</div><p></p>
+<p></p>
+<div align=left>
+DrScheme calls the function
+<code class=scheme><span class=variable>tock</span></code> for every tick of the clock.
+</div><p></p>
+<p></p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p></p>
+<p>
+
+</p>
+
+<p class=noindent><br>
+
+</p>
+
+<p class=noindent></p>
+<p></p>
+<div align=left>
+click, <code class=scheme>(<span class=variable>on-key-event</span> <span class=variable>react</span>)</code>
+</div><p></p>
+<p></p>
+<div align=left>
+DrScheme calls the function
+<code class=scheme><span class=variable>react</span></code> for every key stroke on the keyboard.
+</div><p></p>
+<p></p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p></p>
+<p>
+
+</p>
+
+<p class=noindent><br>
+
+</p>
+
+<p class=noindent></p>
+<p></p>
+<div align=left>
+<div align=left><pre class=scheme>(<span class=keyword>draw</span> (<span class=variable>draw-solid-rect</span> (<span class=builtin>make-posn</span> <span class=selfeval>0</span> <span class=selfeval>0</span>)
+                       <span class=selfeval>100</span> <span class=selfeval>100</span>
+                       <span class=keyword>'</span><span class=variable>blue</span>)
+      <span class=keyword>produce</span> 
+      <span class=selfeval>1</span>)
+</pre></div>
+</div><p></p>
+<p></p>
+<div align=left>
+draw something, then return a value (note:
+<code class=scheme><span class=keyword>produce</span></code> is a new keyword)
+</div><p></p>
+<p></p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p></p>
+<p>
+</p>
+<a name="node_sec_9.3"></a>
+<h2 class=section><a href="material-Z-H-2.html#node_toc_node_sec_9.3">9.3&nbsp;&nbsp;Example: Flying a Rocket</a></h2>
+<p>Rockets:
+</p>
+<div align=left><pre class=scheme>(<span class=keyword>define</span> <span class=variable>RKT-WD</span> <span class=selfeval>3</span>)
+(<span class=keyword>define</span> <span class=variable>RKT-HT</span> <span class=selfeval>8</span>)
+(<span class=keyword>define</span> <span class=variable>RKT-X</span> <span class=selfeval>16</span>)
+(<span class=keyword>define</span> <span class=variable>FLM</span> <span class=selfeval>20</span>)
+
+<span class=comment>;; <code class=scheme><strong> N</strong> &nbsp;&rarr;&nbsp; <span class=variable>Number</span></code></span>
+<span class=comment>;; the height of the rocket at <code class=scheme><span class=variable>t</span></code></span>
+(<span class=keyword>define</span> (<span class=variable>rocket-y</span> <span class=variable>t</span>) (<span class=builtin>-</span> <span class=variable>HEIGHT</span> (<span class=builtin>*</span> <span class=selfeval>1/2</span> <span class=variable>G</span> (<span class=builtin>sqr</span> <span class=variable>t</span>))))
+
+<span class=comment>;; <code class=scheme><strong> N</strong> &nbsp;&rarr;&nbsp; <span class=builtin>true</span></code></span>
+<span class=comment>;; draw a rocket </span>
+(<span class=keyword>define</span> (<span class=variable>rocket-draw</span> <span class=variable>t</span>)
+  (<span class=keyword>local</span> ((<span class=keyword>define</span> <span class=variable>y</span> (<span class=variable>rocket-y</span> <span class=variable>t</span>)))
+    (<span class=keyword>and</span>
+     (<span class=variable>draw-solid-rect</span> (<span class=builtin>make-posn</span> <span class=variable>RKT-X</span> <span class=variable>y</span>) <span class=variable>RKT-WD</span> <span class=variable>RKT-HT</span> <span class=keyword>'</span><span class=variable>blue</span>)
+     (<span class=variable>draw-solid-rect</span>
+       (<span class=builtin>make-posn</span> <span class=variable>RKT-X</span> (<span class=builtin>+</span> <span class=variable>y</span> <span class=variable>RKT-HT</span>)) <span class=variable>RKT-WD</span> <span class=variable>FLM</span> <span class=keyword>'</span><span class=variable>red</span>))))
+</pre></div><p></p>
+<p>
+</p>
+
+<p class=noindent>World is: a natural number (time in ticks)
+</p>
+<div align=left><pre class=scheme>(<span class=keyword>define</span> <span class=variable>G</span> <span class=selfeval>3</span>)
+(<span class=keyword>define</span> <span class=variable>WIDTH</span> <span class=selfeval>100</span>)
+(<span class=keyword>define</span> <span class=variable>HEIGHT</span> <span class=selfeval>300</span>)
+
+<span class=comment>;; <code class=scheme><span class=variable>World</span> &nbsp;&rarr;&nbsp; <span class=builtin>true</span></code></span>
+(<span class=keyword>define</span> (<span class=variable>world-draw</span> <span class=variable>w</span>) (<span class=variable>rocket-draw</span> <span class=variable>w</span>))
+
+<span class=comment>;; <code class=scheme><span class=variable>World</span> &nbsp;&rarr;&nbsp; <span class=builtin>true</span></code></span>
+(<span class=keyword>define</span> (<span class=variable>world-clear</span> <span class=variable>w</span>) 
+  (<span class=variable>draw-solid-rect</span> (<span class=builtin>make-posn</span> <span class=selfeval>0</span> <span class=selfeval>0</span>) <span class=variable>WIDTH</span> <span class=variable>HEIGHT</span> <span class=keyword>'</span><span class=variable>white</span>))
+
+<span class=comment>;; <code class=scheme><span class=variable>World</span> &nbsp;&rarr;&nbsp; <span class=variable>World</span></code></span>
+<span class=comment>;; erase old world, draw new one, return new one </span>
+(<span class=keyword>define</span> (<span class=variable>tock</span> <span class=variable>w</span>)
+  (<span class=keyword>local</span> ((<span class=keyword>define</span> <span class=variable>new-w</span> (<span class=builtin>+</span> <span class=variable>w</span> <span class=selfeval>1</span>)))
+    (<span class=keyword>draw</span> (<span class=variable>world-clear</span> <span class=variable>w</span>) (<span class=variable>world-draw</span> <span class=variable>w</span>) <span class=keyword>produce</span> <span class=variable>new-w</span>)))
+</pre></div><p></p>
+<p>
+</p>
+
+<p class=noindent>Run, program run!
+</p>
+<div align=left><pre class=scheme>(<span class=variable>start</span> <span class=variable>WIDTH</span> <span class=variable>HEIGHT</span>) <span class=comment>;; show the canvas</span>
+(<span class=variable>big-bang</span> <span class=selfeval>.2</span> <span class=selfeval>0</span>) <span class=comment>;; create the world, start the clock</span>
+(<span class=variable>on-tick-event</span> <span class=variable>tock</span>)
+</pre></div><p></p>
+<p>
+</p>
+<a name="node_sec_9.4"></a>
+<h2 class=section><a href="material-Z-H-2.html#node_toc_node_sec_9.4">9.4&nbsp;&nbsp;The Nature of Keystroke Events</a></h2>
+<p>Data definition: 
+</p>
+<div align=left><pre class=scheme><span class=comment>;; The <code class=scheme><span class=variable>KeyEvent</span></code> is one of: </span>
+<span class=comment>;; --- <code class=scheme><span class=variable>Character</span></code> </span>
+<span class=comment>;; --- <code class=scheme><span class=variable>Symbol</span></code></span>
+<span class=comment>;; Interpretation: a character denotes an ordinary alpha-numeric key</span>
+<span class=comment>;; a symbol denotes arrow keys (<code class=scheme><span class=keyword>'</span><span class=variable>left</span></code>, <code class=scheme><span class=keyword>'</span><span class=variable>right</span></code>, <code class=scheme><span class=keyword>'</span><span class=variable>up</span></code>, <code class=scheme><span class=keyword>'</span><span class=variable>down</span></code>) or other events.  </span>
+</pre></div><p></p>
+<p>
+</p>
+
+<p class=noindent>Data examples: <code class=scheme><span class=selfeval>#\a</span></code>, <code class=scheme><span class=selfeval>#\-</span></code>, <code class=scheme><span class=keyword>'</span><span class=variable>up</span></code></p>
+<p>
+</p>
+
+<p class=noindent>Template: 
+</p>
+<div align=left><pre class=scheme><span class=comment>;; <code class=scheme><span class=variable>KeyEvent</span> &nbsp;&rarr;&nbsp; <span class=variable>???</span></code></span>
+(<span class=keyword>define</span> (<span class=variable>process-event</span> <span class=variable>ke</span>)
+  (<span class=keyword>cond</span>
+    [(<span class=builtin>char?</span> <span class=variable>ke</span>) ...]
+    [(<span class=builtin>symbol?</span> <span class=variable>ke</span>) ...]))
+</pre></div><p></p>
+<p>
+</p>
+
+<p class=noindent>Example:
+</p>
+<div align=left><pre class=scheme>(<span class=keyword>define-struct</span> <span class=variable>kc</span> (<span class=variable>l</span> <span class=variable>r</span> <span class=variable>u</span> <span class=variable>d</span>))
+<span class=comment>;; Kc = <code class=scheme>(<span class=variable>make-kc</span> <span class=variable>N</span> <span class=variable>N</span> <span class=variable>N</span> <span class=variable>N</span>)</code></span>
+
+<span class=comment>;; <code class=scheme><span class=variable>KeyEvent</span> <span class=variable>Kc</span> &nbsp;&rarr;&nbsp; <span class=variable>Kc</span></code></span>
+<span class=comment>;; add 1 to the appropriate part of <code class=scheme><span class=variable>ct</span></code></span>
+(<span class=keyword>define</span> (<span class=variable>arrow-key-counting</span> <span class=variable>ke</span> <span class=variable>ct</span>)
+  (<span class=keyword>cond</span>
+    [(<span class=builtin>char?</span> <span class=variable>ke</span>) <span class=variable>ct</span>]
+    [(<span class=builtin>symbol?</span> <span class=variable>ke</span>) 
+     (<span class=keyword>cond</span>
+       [(<span class=builtin>symbol=?</span> <span class=keyword>'</span><span class=variable>left</span> <span class=variable>ke</span>)
+	(<span class=variable>make-kc</span> (<span class=builtin>+</span> (<span class=variable>kc-l</span> <span class=variable>ct</span>) <span class=selfeval>1</span>) (<span class=variable>kc-r</span> <span class=variable>ct</span>) (<span class=variable>kc-u</span> <span class=variable>ct</span>) (<span class=variable>kc-d</span> <span class=variable>ct</span>))]
+       [(<span class=builtin>symbol=?</span> <span class=keyword>'</span><span class=variable>right</span> <span class=variable>ke</span>)
+	(<span class=variable>make-kc</span> (<span class=variable>kc-l</span> <span class=variable>ct</span>) (<span class=builtin>+</span> (<span class=variable>kc-r</span> <span class=variable>ct</span>) <span class=selfeval>1</span>) (<span class=variable>kc-u</span> <span class=variable>ct</span>) (<span class=variable>kc-d</span> <span class=variable>ct</span>))]	
+       [(<span class=builtin>symbol=?</span> <span class=keyword>'</span><span class=variable>down</span> <span class=variable>ke</span>)
+	(<span class=variable>make-kc</span> (<span class=variable>kc-l</span> <span class=variable>ct</span>) (<span class=variable>kc-r</span> <span class=variable>ct</span>) (<span class=builtin>+</span> (<span class=variable>kc-u</span> <span class=variable>ct</span>) <span class=selfeval>1</span>) (<span class=variable>kc-d</span> <span class=variable>ct</span>))]	
+       [(<span class=builtin>symbol=?</span> <span class=keyword>'</span><span class=variable>up</span> <span class=variable>ke</span>)
+	(<span class=variable>make-kc</span> (<span class=variable>kc-l</span> <span class=variable>ct</span>) (<span class=variable>kc-r</span> <span class=variable>ct</span>) (<span class=variable>kc-u</span> <span class=variable>ct</span>) (<span class=builtin>+</span> (<span class=variable>kc-d</span> <span class=variable>ct</span>) <span class=selfeval>1</span>))]
+       [<span class=keyword>else</span> <span class=variable>ct</span>])]))
+
+<span class=comment>;; test:</span>
+(<span class=builtin>equal?</span> (<span class=variable>arrow-key-counting</span> <span class=keyword>'</span><span class=variable>left</span> (<span class=variable>make-kc</span> <span class=selfeval>1</span> <span class=selfeval>0</span> <span class=selfeval>2</span> <span class=selfeval>9</span>))
+        (<span class=variable>make-kc</span> <span class=selfeval>2</span> <span class=selfeval>0</span> <span class=selfeval>2</span> <span class=selfeval>9</span>))
+</pre></div><p></p>
+<p>
+</p>
+<div class=smallskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+<div align=right class=navigation>[Go to <span><a href="material.html">first</a>, <a href="material-Z-H-27.html">previous</a></span><span>, <a href="material-Z-H-29.html">next</a></span> page<span>; &nbsp;&nbsp;</span><span><a href="material-Z-H-2.html#node_toc_start">contents</a></span>]</div>
+</p>
+<p></p>
+</div>
+</body>
+</html>

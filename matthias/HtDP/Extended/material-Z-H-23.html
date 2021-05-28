@@ -1,0 +1,269 @@
+<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--
+
+Generated from material.tex by tex2page, v 20070609
+(running on MzScheme 370.6, unix), 
+(c) Dorai Sitaram, 
+http://www.ccs.neu.edu/~dorai/tex2page/tex2page-doc.html
+
+-->
+<head>
+<title>
+material
+</title>
+<link rel="stylesheet" type="text/css" href="material-Z-S.css" title=default>
+<meta name=robots content="noindex,follow">
+</head>
+<body>
+<div id=slidecontent>
+<div align=right class=navigation>[Go to <span><a href="material.html">first</a>, <a href="material-Z-H-22.html">previous</a></span><span>, <a href="material-Z-H-24.html">next</a></span> page<span>; &nbsp;&nbsp;</span><span><a href="material-Z-H-2.html#node_toc_start">contents</a></span>]</div>
+<p></p>
+<a name="node_sec_7"></a>
+<h1 class=section><a href="material-Z-H-2.html#node_toc_node_sec_7">7&nbsp;&nbsp;Thursday Morning: Some Basic I/O</a></h1>
+<p></p>
+<a name="node_sec_7.1"></a>
+<h2 class=section><a href="material-Z-H-2.html#node_toc_node_sec_7.1">7.1&nbsp;&nbsp;Goal: Shriram&#8217;s Day of Networking</a></h2>
+<p>to understand how Scheme programs can communicate with the rest of the
+world via sequential reading and writing </p>
+<p>
+</p>
+<a name="node_sec_7.2"></a>
+<h2 class=section><a href="material-Z-H-2.html#node_toc_node_sec_7.2">7.2&nbsp;&nbsp;apply, another powerful loop</a></h2>
+<p>
+</p>
+
+<p class=noindent><br>
+
+</p>
+
+<p class=noindent></p>
+<p></p>
+<div align=left>
+<code class=scheme>(<span class=builtin>+</span> <span class=selfeval>2</span> <span class=selfeval>3</span>)</code>
+</div><p></p>
+<p></p>
+<div align=left>
+add <code class=scheme><span class=selfeval>2</span></code> and <code class=scheme><span class=selfeval>3</span></code>
+</div><p></p>
+<p></p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p></p>
+<p>
+
+</p>
+
+<p class=noindent><br>
+
+</p>
+
+<p class=noindent></p>
+<p></p>
+<div align=left>
+<code class=scheme>(<span class=builtin>+</span> <span class=selfeval>2</span> <span class=selfeval>3</span> <span class=selfeval>4</span> <span class=selfeval>5</span> <span class=selfeval>6</span> <span class=selfeval>7</span>)</code>
+</div><p></p>
+<p></p>
+<div align=left>
+add <code class=scheme><span class=selfeval>2</span></code>, <tt>...</tt>, and <code class=scheme><span class=selfeval>7</span></code>,
+because prefix syntax is <strong>good</strong>
+</div><p></p>
+<p></p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p></p>
+<p>
+
+</p>
+
+<p class=noindent><br>
+
+</p>
+
+<p class=noindent></p>
+<p></p>
+<div align=left>
+<code class=scheme>(<span class=builtin>+</span> (<span class=builtin>list</span> <span class=selfeval>2</span> <span class=selfeval>3</span> <span class=selfeval>4</span> <span class=selfeval>5</span> <span class=selfeval>6</span> <span class=selfeval>7</span>))</code>
+</div><p></p>
+<p></p>
+<div align=left>
+error. Even though <code class=scheme><span class=builtin>+</span></code> can
+&#8220;do&#8221; a sequence of numbers, it can&#8217;t deal with lists.
+</div><p></p>
+<p></p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p></p>
+<p>
+
+</p>
+
+<p class=noindent><br>
+
+</p>
+
+<p class=noindent></p>
+<p></p>
+<div align=left>
+<div align=left><pre class=scheme><span class=comment>;; <code class=scheme><span class=variable>sum</span> <span class=selfeval>:</span> (<span class=keyword>Listof</span> <span class=variable>Number</span>) &nbsp;&rarr;&nbsp; <span class=variable>Number</span></code></span>
+<span class=comment>;; add up the numbers in a list </span>
+(<span class=keyword>define</span> (<span class=variable>sum</span> <span class=variable>l</span>) 
+  (<span class=builtin>apply</span> <span class=builtin>+</span> <span class=variable>l</span>))
+
+<span class=comment>;; tests</span>
+(<span class=builtin>=</span> (<span class=variable>sum</span> (<span class=builtin>list</span> <span class=selfeval>1</span> <span class=selfeval>2</span> <span class=selfeval>3</span>)) <span class=selfeval>6</span>)
+</pre></div>
+</div><p></p>
+<p></p>
+<div align=left>
+With <code class=scheme><span class=builtin>apply</span></code>, we can do it anyway. Say we
+&#8220;launch&#8221; the <code class=scheme><span class=variable>sum</span></code> application on <code class=scheme>(<span class=builtin>list</span> <span class=selfeval>1</span> <span class=selfeval>2</span> <span class=selfeval>3</span>)</code>, <p>
+</p>
+<div align=left><pre class=scheme>  (<span class=variable>sum</span> (<span class=builtin>list</span> <span class=selfeval>1</span> <span class=selfeval>2</span> <span class=selfeval>3</span>))
+<span class=builtin>=</span> (<span class=builtin>apply</span> <span class=builtin>+</span> (<span class=builtin>list</span> <span class=selfeval>1</span> <span class=selfeval>2</span> <span class=selfeval>3</span>))
+<span class=builtin>=</span> (<span class=builtin>+</span> <span class=selfeval>1</span> <span class=selfeval>2</span> <span class=selfeval>3</span>)
+</pre></div><p>
+So <code class=scheme><span class=builtin>apply</span></code> does &#8220;the right thing.&#8221;
+</p>
+</div><p></p>
+<p></p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p></p>
+<p>
+
+</p>
+
+<p class=noindent><br>
+
+</p>
+
+<p class=noindent></p>
+<p></p>
+<div align=left>
+<div align=left><pre class=scheme><span class=comment>;; <code class=scheme><span class=variable>average</span> <span class=selfeval>:</span> (<span class=keyword>Listof</span> <span class=variable>Number</span>) &nbsp;&rarr;&nbsp; <span class=variable>Number</span></code></span>
+<span class=comment>;; the average for a non-empty list,</span>
+<span class=comment>;; error otherwise</span>
+(<span class=keyword>define</span> (<span class=variable>average</span> <span class=variable>l</span>)
+  (<span class=keyword>cond</span>
+    [(<span class=builtin>empty?</span> <span class=variable>l</span>) (<span class=builtin>error</span> ...)]
+    [<span class=keyword>else</span> (<span class=builtin>/</span> (<span class=builtin>apply</span> <span class=builtin>+</span> <span class=variable>l</span>) (<span class=builtin>length</span> <span class=variable>l</span>))]))
+</pre></div>
+</div><p></p>
+<p></p>
+<div align=left>
+Yes, this is the two-line expert version of average.
+</div><p></p>
+<p></p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p></p>
+<p>
+
+</p>
+
+<p class=noindent><br>
+
+</p>
+
+<p class=noindent></p>
+<p></p>
+<div align=left>
+<div align=left><pre class=scheme><span class=comment>;; <code class=scheme><span class=variable>largest</span> <span class=selfeval>:</span></code></span>
+<span class=comment>;; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <code class=scheme>(<span class=variable>NEListof</span> <span class=variable>Number</span>) &nbsp;&rarr;&nbsp; <span class=variable>Number</span></code></span>
+<span class=comment>;; the largest item on the list </span>
+(<span class=keyword>define</span> (<span class=variable>largest</span> <span class=variable>l</span>) (<span class=builtin>apply</span> <span class=variable>max</span> <span class=variable>l</span>))
+</pre></div>
+</div><p></p>
+<p></p>
+<div align=left>
+Yes, it&#8217;s one line long.
+</div><p></p>
+<p></p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p></p>
+<p>
+
+</p>
+
+<p class=noindent><br>
+
+</p>
+
+<p class=noindent></p>
+<p></p>
+<div align=left>
+<div align=left><pre class=scheme><span class=comment>;; <code class=scheme><span class=variable>sentence</span> <span class=selfeval>:</span></code></span>
+<span class=comment>;; &nbsp;&nbsp;&nbsp;&nbsp; <code class=scheme>(<span class=keyword>Listof</span> <span class=variable>String</span>) <span class=variable>String</span> &nbsp;&rarr;&nbsp; <span class=variable>String</span></code></span>
+<span class=comment>;; separate the words</span>
+<span class=comment>;; &nbsp;&nbsp;&nbsp;&nbsp; with a leading space,</span>
+<span class=comment>;; add a <code class=scheme><span class=selfeval>&quot;.&quot;</span></code> at the end</span>
+(<span class=keyword>define</span> (<span class=variable>sentence</span> <span class=variable>l</span> <span class=variable>end</span>)
+  (<span class=builtin>string-append</span> 
+    (<span class=builtin>apply</span> <span class=builtin>string-append</span> 
+           (<span class=builtin>map</span> (<span class=keyword>lambda</span> (<span class=variable>word</span>)
+		  (<span class=builtin>string-append</span>
+		    <span class=selfeval>&quot; &quot;</span> <span class=variable>word</span>))
+	        <span class=variable>l</span>))
+    <span class=variable>end</span>))
+
+<span class=comment>;; tests:</span>
+(<span class=builtin>string=?</span>
+  (<span class=variable>sentence</span>
+    (<span class=builtin>list</span> <span class=selfeval>&quot;hello&quot;</span> <span class=selfeval>&quot;world&quot;</span>) <span class=selfeval>&quot;!&quot;</span>)
+  <span class=selfeval>&quot; hello world!&quot;</span>)
+(<span class=builtin>string=?</span>
+  (<span class=variable>sentence</span>
+    (<span class=builtin>list</span> <span class=selfeval>&quot;how&quot;</span> <span class=selfeval>&quot;are&quot;</span> <span class=selfeval>&quot;you&quot;</span>) <span class=selfeval>&quot;?&quot;</span>)
+  <span class=selfeval>&quot; how are you?&quot;</span>)
+</pre></div>
+</div><p></p>
+<p></p>
+<div align=left>
+Imagine doing this without <code class=scheme><span class=builtin>apply</span></code> and <code class=scheme><span class=keyword>lambda</span></code>.
+</div><p></p>
+<p></p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p></p>
+<p>
+
+</p>
+
+<p class=noindent><br>
+
+</p>
+
+<p class=noindent></p>
+<p></p>
+<div align=left>
+But, always remember, you don&#8217;t really ever need loops.
+</div><p></p>
+<p></p>
+<div align=left>
+You can
+always design a function instead of using a loop.
+</div><p></p>
+<p></p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p></p>
+<p>
+</p>
+<div class=smallskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+<div align=right class=navigation>[Go to <span><a href="material.html">first</a>, <a href="material-Z-H-22.html">previous</a></span><span>, <a href="material-Z-H-24.html">next</a></span> page<span>; &nbsp;&nbsp;</span><span><a href="material-Z-H-2.html#node_toc_start">contents</a></span>]</div>
+</p>
+<p></p>
+</div>
+</body>
+</html>

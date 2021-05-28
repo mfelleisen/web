@@ -1,0 +1,158 @@
+<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--
+
+Generated from material.tex by tex2page, v 20070609
+(running on MzScheme 370.6, unix), 
+(c) Dorai Sitaram, 
+http://www.ccs.neu.edu/~dorai/tex2page/tex2page-doc.html
+
+-->
+<head>
+<title>
+material
+</title>
+<link rel="stylesheet" type="text/css" href="material-Z-S.css" title=default>
+<meta name=robots content="noindex,follow">
+</head>
+<body>
+<div id=slidecontent>
+<div align=right class=navigation>[Go to <span><a href="material.html">first</a>, <a href="material-Z-H-29.html">previous</a></span><span>, <a href="material-Z-H-31.html">next</a></span> page<span>; &nbsp;&nbsp;</span><span><a href="material-Z-H-2.html#node_toc_start">contents</a></span>]</div>
+<p></p>
+<p>
+</p>
+<p></p>
+<hr>
+<p></p>
+<p><strong>Exercise</strong>
+</p>
+<p> 
+</p>
+<div align=center><table><tr><td>
+
+<i>Star Money, Star Thalers</i> by the Grimm Brothers 
+</td></tr></table></div>
+
+<blockquote><span class=footnotesize>There was once upon a time a little girl whose father and mother were dead,
+and she was so poor that she no longer had a room to live in, or bed to
+sleep in, and at last she had nothing else but the clothes she was wearing
+and a little bit of bread in her hand which some charitable soul had given
+her. She was good and pious, however. And as she was thus forsaken by all
+the world, she went forth into the open country, trusting in the good God. <p>
+Then a poor man met her, who said, &#8220;Ah, give me something to eat, I am so
+hungry.&#8221; </p>
+<p>
+She handed him the whole of her piece of bread, and said, &#8220;May God bless
+you,&#8221; and went onwards. </p>
+<p>
+Then came a child who moaned and said, &#8220;My head is so cold, give me
+something to cover it with.&#8221;</p>
+<p>
+So she took off her hood and gave it to him. And when she had walked a
+little farther, she met another child who had no jacket and was frozen with
+cold. Then she gave it her own, and a little farther on one begged for a
+frock, and she gave away that also. </p>
+<p>
+At length she got into a forest and it had already become dark, and there
+came yet another child, and asked for a shirt, and the good little girl
+thought to herself, &#8220;It is a dark night and no one sees you, you can very
+well give your shirt away,&#8221; and took it off, and gave away that also. </p>
+<p>
+And as she so stood, and had not one single thing left, suddenly some stars
+from heaven fell down, and they were nothing else but hard smooth pieces of
+money, and although she had just given her shirt away, she had a new one
+which was of the very finest linen. Then she put the money into it, and was
+rich all the days of her life. 
+</p>
+</span></blockquote><p>
+</p>
+<p><a name="node_thm_9.1"></a>
+<b>Exercise 9.1.</b>&nbsp;&nbsp;
+Develop a game program based on the story of &#8220;Star Money, Star Thalers.&#8221;
+<table align=left border=2><tr><td><span class=scriptsize> <strong>Add the
+teachpack</strong><br>
+<tt>draw.ss</tt></span></td></tr></table>
+The <code class=scheme><span class=variable>main</span></code> function of the program should consume a natural number
+and drop that many thalers (from the top of the world) on the girl (at the
+bottom of the world), <em>one at a time</em>. The thaler should move
+randomly to the left or right and downwards, but should always stay within
+the boundaries of the world (canvas). The girl should react to
+<code class=scheme><span class=keyword>'</span><span class=variable>left</span></code> and <code class=scheme><span class=keyword>'</span><span class=variable>right</span></code> keystrokes, moving a moderate number of
+pixels in reaction but always staying completely within the boundaries of
+the world. </p>
+<p>
+</p>
+
+<p class=noindent>Hints and suggestions: 
+</p>
+<ol>
+<li><p>Represent the girl visually as a container that is open at the top
+(the outline of a rectangle without top boundary). Show the number of
+thalers it has caught inside of the container. </p>
+<p>
+Design a function for drawing the girl. </p>
+<p>
+</p>
+<li><p>Represent the thaler visually as a yellow disk. </p>
+<p>
+Design a function for drawing the thaler. </p>
+<p>
+</p>
+<li><p>The world of StarThalers contains two physical objects: the girl and
+one flying thaler. It also contains two abstract objects: the number of
+thalers yet to come and the number of thalers that the girl caught so far. </p>
+<p>
+Pick physical dimensions of the world (width, height, background color).</p>
+<p>
+Design a function for drawing the world, assuming that the world&#8217;s canvas
+is visible. </p>
+<p>
+</p>
+<li><p>Define the function <code class=scheme><span class=variable>tock</span></code>, which refreshes the visible world in
+reaction to time events: 
+</p>
+<div align=left><pre class=scheme>(<span class=variable>start</span> <span class=variable>WORLD-WIDTH</span> <span class=variable>WORLD-HEIGHT</span>)
+(<span class=variable>big-bang</span> <span class=selfeval>.1</span> ... <span class=variable>some</span> <span class=variable>initial</span> <span class=variable>world</span> ...)
+(<span class=variable>on-tick-event</span> <span class=variable>tock</span>)
+</pre></div><p></p>
+<p>
+</p>
+<li><p>Design a function for moving the world and another one for moving a
+thaler. Then modify <code class=scheme><span class=variable>tock</span></code> so it too can move the world. </p>
+<p>
+</p>
+<li><p>Design a function for moving the girl in reaction to a keystroke. The
+function consumes a girl and a keystroke. Its result is the girl in the new
+position. </p>
+<p>
+Define the function <code class=scheme><span class=variable>react</span></code>, which uses this new function to move
+the girl in the world: 
+</p>
+<div align=left><pre class=scheme>(<span class=variable>start</span> <span class=variable>WORLD-WIDTH</span> <span class=variable>WORLD-HEIGHT</span>)
+(<span class=variable>big-bang</span> <span class=selfeval>.1</span> ... <span class=variable>some</span> <span class=variable>initial</span> <span class=variable>world</span> ...)
+(<span class=variable>on-tick-event</span> <span class=variable>tock</span>)
+(<span class=variable>on-key-event</span> <span class=variable>react</span>)
+</pre></div><p></p>
+<p>
+</p>
+<li><p>Make sure that the world reacts (at tick events) to the landing of a
+thaler, to the girl catching a thaler, and to the world running out of
+thalers in addition to moving the thaler as needed.
+</p>
+</ol><p>
+Good luck and enjoy!&nbsp;</p>
+<p></p>
+<hr>
+<p></p>
+<p></p>
+<p></p>
+<p>
+&nbsp;</p>
+<div class=smallskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+<div align=right class=navigation>[Go to <span><a href="material.html">first</a>, <a href="material-Z-H-29.html">previous</a></span><span>, <a href="material-Z-H-31.html">next</a></span> page<span>; &nbsp;&nbsp;</span><span><a href="material-Z-H-2.html#node_toc_start">contents</a></span>]</div>
+</p>
+<p></p>
+</div>
+</body>
+</html>

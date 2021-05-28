@@ -1,0 +1,261 @@
+<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--
+
+Generated from material.tex by tex2page, v 20070609
+(running on MzScheme 370.6, unix), 
+(c) Dorai Sitaram, 
+http://www.ccs.neu.edu/~dorai/tex2page/tex2page-doc.html
+
+-->
+<head>
+<title>
+material
+</title>
+<link rel="stylesheet" type="text/css" href="material-Z-S.css" title=default>
+<meta name=robots content="noindex,follow">
+</head>
+<body>
+<div id=slidecontent>
+<div align=right class=navigation>[Go to <span><a href="material.html">first</a>, <a href="material-Z-H-26.html">previous</a></span><span>, <a href="material-Z-H-28.html">next</a></span> page<span>; &nbsp;&nbsp;</span><span><a href="material-Z-H-2.html#node_toc_start">contents</a></span>]</div>
+<p></p>
+<a name="node_sec_8"></a>
+<h1 class=section><a href="material-Z-H-2.html#node_toc_node_sec_8">8&nbsp;&nbsp;Thursday Afternoon: A Networking Application</a></h1>
+<p></p>
+<div align=center><table><tr><td>
+
+Whose Line is It, Anyway?<br>
+By Shriram 
+</td></tr></table></div>
+<p>
+</p>
+<div class=smallskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p>
+Say, you are part of a group of Shakespeare fans who &#8220;read&#8221; the Bard&#8217;s
+plays over the Internet.  You like reading Shakespeare (who doesn&#8217;t?), but
+you hate typing in all those &#8220;quothe&#8221;s and &#8220;thine&#8221;s and what not (who
+doesn&#8217;t?).  Being a Seasoned Schemer, you&#8217;re too smart to get suckered into
+typing all that text.  Instead, you want to write an Internet agent that
+does the work for you.  Let&#8217;s assume there are only three roles in the
+dialogs we want to read: yours and two others.</p>
+<p>
+</p>
+<p></p>
+<hr>
+<p></p>
+<p><strong>Exercise</strong>
+</p>
+<p></p>
+<p>
+</p>
+<p><a name="node_thm_8.1"></a>
+<b>Exercise 8.1.</b>&nbsp;&nbsp;
+To wit, you will write a procedure with the following contract:
+</p>
+<div align=left><pre class=scheme><span class=comment>;; <code class=scheme><span class=variable>serve</span> <span class=selfeval>:</span> <span class=variable>Symbol</span> <span class=variable>Number</span> <span class=variable>Dialog</span> <span class=variable>String</span> <span class=variable>Number</span> <span class=variable>String</span> <span class=variable>Number</span> &nbsp;&rarr;&nbsp; <span class=builtin>true</span></code></span>
+</pre></div><p>
+The arguments to <code class=scheme><span class=variable>serve</span></code> have the following meaning: 
+</p>
+<ul>
+<li><p>The first argument, a symbol, specifies which of the roles <code class=scheme><span class=variable>serve</span></code>
+will play. </p>
+<p>
+</p>
+<li><p>The second argument, a port number, specifies on which port
+<code class=scheme><span class=variable>serve</span></code> will receive messages.</p>
+<p>
+</p>
+<li><p>The third argument is the dialog, which <code class=scheme><span class=variable>serve</span></code> reads from the
+file that you created in exercise&nbsp;<a href="material-Z-H-26.html#node_thm_7.6">7.6</a>.</p>
+<p>
+</p>
+<li><p>The fourth and fifth arguments designate the port number and machine
+name for an agent playing one of the other two characters. Which character
+this other agent plays doesn&#8217;t matter.</p>
+<p>
+</p>
+<li><p>The sixth and seventh arguments designate the port number and machine
+name for an agent playing the remaining character.
+</p>
+</ul><p></p>
+<p>
+The supplementary teachpack provides two functions: <table align=left border=2><tr><td><span class=scriptsize> <strong>Add the
+teachpack</strong><br>
+<tt>hamsup.scm</tt></span></td></tr></table>
+</p>
+<div align=left><pre class=scheme><span class=comment>;; <code class=scheme><span class=variable>install-listener</span> <span class=selfeval>:</span> <span class=variable>Number</span> (<span class=variable>Sexpr</span> &nbsp;&rarr;&nbsp; <span class=builtin>true</span>) &nbsp;&rarr;&nbsp; <span class=builtin>true</span></code></span>
+<span class=comment>;; installs a procedure that is invoked <em>each time</em> when a</span>
+<span class=comment>;; message shows up on a specific port number</span>
+(<span class=keyword>define</span> (<span class=variable>install-listener</span> <span class=variable>listener</span>) ...)
+
+<span class=comment>;; <code class=scheme><span class=variable>send-message</span> <span class=selfeval>:</span> <span class=variable>String</span> <span class=variable>Number</span> <span class=variable>Sexpr</span> &nbsp;&rarr;&nbsp; <span class=builtin>true</span></code></span>
+<span class=comment>;; send a message to a machine at a certain port </span>
+(<span class=keyword>define</span> (<span class=variable>send-message</span> <span class=variable>machine</span> <span class=variable>port</span> <span class=variable>msg</span>) ...)
+</pre></div><p></p>
+<p>
+Here are some more specifics on <code class=scheme><span class=variable>install-listener</span></code>. The procedure
+given to <code class=scheme><span class=variable>install-listener</span></code> receives the content of the message,
+which can be any S-expression.  To standardize, we will use the following
+packet format:
+</p>
+<div align=left><pre class=scheme>  (<span class=builtin>list</span> <span class=variable>symbol</span> 
+        (<span class=builtin>list</span> <span class=variable>string</span>) 
+        <span class=variable>number</span>)
+</pre></div><p>
+The first component is the name of a character; the second is a list
+of strings indicating the lines in a part for that character; and the
+third is a counter, which we will discuss below.  When your agent
+receives a message, it should print the name and dialog that your
+Internet buddies sent.  </p>
+<p>
+Hint: The functions <code class=scheme><span class=builtin>display</span></code> and <code class=scheme></code>, available in the
+<code class=scheme><span class=variable>io</span></code> teachpack, which we installed for
+exercise&nbsp;<a href="material-Z-H-26.html#node_thm_7.6">7.6</a>. The first writes an S-expression to a port and
+produces <code class=scheme><span class=builtin>true</span></code>; the second writes a new line to a port and produces
+<code class=scheme><span class=builtin>true</span></code>, too. A TA will help you put these together.</p>
+<p>
+The number dictates which part of the dialog (assumed to be shared by
+all three agents) comes <em>next</em>&#8212;indices begin at 0.  Therefore,
+your agent needs to look up the dialog to determine who is supposed to
+say that part.  If it&#8217;s someone else, do nothing (the agent can just
+return a dummy value, like <code class=scheme><span class=keyword>'</span><span class=variable>do-nothing</span></code>).  Otherwise, your
+agent needs to transmit the Bard&#8217;s eternal words.  It does this by
+using the library procedure
+</p>
+<div align=left><pre class=scheme>  <span class=variable>send-message</span> <span class=selfeval>:</span> <span class=variable>machine-name</span> <span class=variable>port-number</span> <span class=variable>s-expression</span> &nbsp;&rarr;&nbsp; <span class=variable>&lt;ignore&gt;</span>
+</pre></div><p>
+It needs to send a message to each of the other two machine/port
+combinations that were given as arguments to <code class=scheme><span class=variable>serve</span></code>.  The
+s-expression in this case is a packet in the format specified above.
+<strong>Important</strong>: The number your agent specifies in the packet it
+transmits must be one bigger than the number it received!</p>
+<p>
+This process works well once initiated, but it&#8217;s impossible to
+initiate!  (A message only gets sent in response to an incoming one,
+so if you never receive a message<tt>...</tt>.)  Therefore, we shall designate
+one kind of packet as special: ones of the form
+</p>
+<div align=left><pre class=scheme>  (<span class=variable>fake</span> () <span class=selfeval>0</span>)
+</pre></div><p>
+If the number field is 0, that means the message is being sent only to
+initiate the dialog.  Ideally, you should not bother printing out the
+character&#8217;s name and dialog in this case (since they are nonsensical
+values), but don&#8217;t worry about this initially.</p>
+<p>
+As an example, a dialog using the Hamlet prose might look like this:</p>
+<p>
+</p>
+
+<p class=noindent>machineG: running
+</p>
+<div align=left><pre class=scheme>(<span class=variable>serve</span>
+ <span class=keyword>'</span><span class=variable>GUILDENSTERN</span> <span class=selfeval>7000</span> <span class=variable>dialog</span> <span class=selfeval>&quot;machineR&quot;</span> <span class=selfeval>7001</span> <span class=selfeval>&quot;machineH&quot;</span> <span class=selfeval>7002</span>)
+</pre></div><p></p>
+<p>
+</p>
+
+<p class=noindent>machineR: running
+</p>
+<div align=left><pre class=scheme>(<span class=variable>serve</span>
+ <span class=keyword>'</span><span class=variable>ROSENCRANTZ</span> <span class=selfeval>7001</span> <span class=variable>dialog</span> <span class=selfeval>&quot;machineG&quot;</span> <span class=selfeval>7000</span> <span class=selfeval>&quot;machineH&quot;</span> <span class=selfeval>7002</span>)
+</pre></div><p></p>
+<p>
+</p>
+
+<p class=noindent>machineH: running
+</p>
+<div align=left><pre class=scheme>(<span class=variable>serve</span> <span class=keyword>'</span><span class=variable>HAMLET</span> <span class=selfeval>7002</span> <span class=variable>dialog</span> <span class=selfeval>&quot;machineR&quot;</span> <span class=selfeval>7001</span> <span class=selfeval>&quot;machineG&quot;</span> <span class=selfeval>7000</span>)
+</pre></div><p></p>
+<p>
+Someone executes
+</p>
+<div align=left><pre class=scheme>(<span class=variable>send-message</span> <span class=selfeval>&quot;machineG&quot;</span> <span class=selfeval>7000</span> <span class=keyword>'</span>(<span class=variable>fake</span> () <span class=selfeval>0</span>))
+</pre></div><p>
+(sending the same message to the other two should have no effect).  </p>
+<p>
+On receiving this, machineG transmits
+</p>
+<div align=left><pre class=scheme>(<span class=builtin>list</span> <span class=keyword>'</span><span class=variable>GUILDENSTERN</span> <span class=keyword>'</span>(<span class=selfeval>&quot;My honoured lord!&quot;</span>) <span class=selfeval>1</span>)
+</pre></div><p>
+to the other two; machineR then transmits
+</p>
+<div align=left><pre class=scheme>(<span class=builtin>list</span> <span class=keyword>'</span><span class=variable>ROSENCRANTZ</span> <span class=keyword>'</span>(<span class=selfeval>&quot;My most dear lord!&quot;</span>) <span class=selfeval>2</span>)
+</pre></div><p>
+to the other two;
+machineH then transmits
+</p>
+<div align=left><pre class=scheme>(<span class=builtin>list</span> <span class=keyword>'</span><span class=variable>HAMLET</span> 
+      <span class=keyword>'</span>(<span class=selfeval>&quot;My excellent good friends! How dost thou,&quot;</span>
+         <span class=selfeval>&quot;Guildenstern? Ah, Rosencrantz! Good lads, how do ye both?&quot;</span>)
+      <span class=selfeval>3</span>)
+</pre></div><p>
+to the other two;
+machineG then transmits
+</p>
+<div align=left><pre class=scheme>(<span class=builtin>list</span> <span class=keyword>'</span><span class=variable>ROSENCRANTZ</span> 
+      <span class=keyword>'</span>(<span class=selfeval>&quot;As the indifferent children of the earth.&quot;</span>)
+      <span class=selfeval>4</span>)
+</pre></div><p>
+to the other two; 
+and so forth.&nbsp;</p>
+<p></p>
+<hr>
+<p></p>
+<p></p>
+<p></p>
+<p>
+</p>
+<a name="node_sec_Temp_8"></a>
+<h2 class=section><a href="material-Z-H-2.html#node_toc_node_sec_Temp_8">Notes on Machines, Ports and Debugging</a></h2>
+<p></p>
+<ul><p>
+</p>
+<li><p>Your own machine always has the name <code class=scheme><span class=selfeval>&quot;localhost&quot;</span></code>.  You can
+actually run more than one agent on your own machine, just by using
+different port numbers (therefore, in the example above, you could
+replace <code class=scheme><span class=selfeval>&quot;machineH&quot;</span></code>, <code class=scheme><span class=selfeval>&quot;machineG&quot;</span></code> and
+<code class=scheme><span class=selfeval>&quot;machineR&quot;</span></code> with <code class=scheme><span class=selfeval>&quot;localhost&quot;</span></code>).</p>
+<p>
+</p>
+<li><p>Port numbers below 1024 are reserved for those with administrative
+privilege.  In general, the lower the port number, the more programs
+likely to be vying for it.  Choose large numbers below 65536.</p>
+<p>
+</p>
+<li><p>Don&#8217;t try to write your agent all in one go!  First write a very
+simple listener that receives any kind of packet at all, and prints a
+simple message.  Use <code class=scheme><span class=variable>send-message</span></code> to test it.  Make sure you
+get a feel for how the two library procedures work.  Add functionality
+little-by-little.</p>
+<p>
+</p>
+<li><p>Eventually, we&#8217;d like you to &#8220;play Hamlet&#8221; with two other people in
+the class.  To test, however, you will want to play all three roles
+yourself.  Once you&#8217;ve written your version of <code class=scheme><span class=variable>serve</span></code>, you
+might be inclined to run it three times from the Interactions window
+of DrScheme.  If the main body of <code class=scheme><span class=variable>serve</span></code> invokes
+<code class=scheme><span class=variable>install-listener</span></code>, you&#8217;re in luck: <code class=scheme><span class=variable>install-listener</span></code>
+creates a new <code class=scheme><span class=variable>thread</span></code>, so when you run <code class=scheme><span class=variable>serve</span></code> you
+ought to see a response like this:
+</p>
+<div align=left><pre class=scheme>  <span class=builtin>&gt;</span> (<span class=variable>serve</span>
+     <span class=keyword>'</span><span class=variable>HAMLET</span> <span class=selfeval>7002</span> <span class=variable>dialog</span> <span class=selfeval>&quot;machineR&quot;</span> <span class=selfeval>7001</span> <span class=selfeval>&quot;machineG&quot;</span> <span class=selfeval>7000</span>)
+  <span class=builtin>true</span>
+  <span class=builtin>&gt;</span> 
+</pre></div><p>
+with a fresh prompt awaiting your input.</p>
+<p>
+</p>
+</ul><p></p>
+<p>
+&nbsp;</p>
+<div class=smallskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+<div align=right class=navigation>[Go to <span><a href="material.html">first</a>, <a href="material-Z-H-26.html">previous</a></span><span>, <a href="material-Z-H-28.html">next</a></span> page<span>; &nbsp;&nbsp;</span><span><a href="material-Z-H-2.html#node_toc_start">contents</a></span>]</div>
+</p>
+<p></p>
+</div>
+</body>
+</html>

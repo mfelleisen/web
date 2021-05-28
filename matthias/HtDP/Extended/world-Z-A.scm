@@ -1,0 +1,5 @@
+(!definitely-latex)
+(!last-page-number 1)
+(!last-modification-time 1090503698)
+(!head-line "")
+(!foot-line "\\folio")

@@ -1,0 +1,277 @@
+<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--
+
+Generated from material.tex by tex2page, v 20070609
+(running on MzScheme 370.6, unix), 
+(c) Dorai Sitaram, 
+http://www.ccs.neu.edu/~dorai/tex2page/tex2page-doc.html
+
+-->
+<head>
+<title>
+material
+</title>
+<link rel="stylesheet" type="text/css" href="material-Z-S.css" title=default>
+<meta name=robots content="noindex,follow">
+</head>
+<body>
+<div id=slidecontent>
+<div align=right class=navigation>[Go to <span><a href="material.html">first</a>, <a href="material-Z-H-24.html">previous</a></span><span>, <a href="material-Z-H-26.html">next</a></span> page<span>; &nbsp;&nbsp;</span><span><a href="material-Z-H-2.html#node_toc_start">contents</a></span>]</div>
+<p></p>
+<p>
+</p>
+<a name="node_sec_7.4"></a>
+<h2 class=section><a href="material-Z-H-2.html#node_toc_node_sec_7.4">7.4&nbsp;&nbsp;Input and Output: S-expressions</a></h2>
+<p>
+</p>
+
+<p class=noindent><br>
+
+</p>
+
+<p class=noindent></p>
+<p></p>
+<div align=left>
+<code class=scheme><span class=builtin>read</span> <span class=selfeval>:</span> <span class=variable>IPort</span> &nbsp;&rarr;&nbsp; <span class=variable>S-expression</span></code>
+</div><p></p>
+<p></p>
+<div align=left>
+Given an <code class=scheme><span class=variable>IPort</span></code>, read
+those characters from the port that form an S-expression and produce it.
+</div><p></p>
+<p></p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p></p>
+<p>
+
+</p>
+
+<p class=noindent><br>
+
+</p>
+
+<p class=noindent></p>
+<p></p>
+<div align=left>
+If the file is looks like this<p>
+</p>
+<div align=left><pre class=scheme><span class=selfeval>10</span>
+</pre></div>
+</div><p></p>
+<p></p>
+<div align=left>
+the S-expression is <code class=scheme><span class=selfeval>10</span></code>.
+</div><p></p>
+<p></p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p></p>
+<p>
+
+</p>
+
+<p class=noindent><br>
+
+</p>
+
+<p class=noindent></p>
+<p></p>
+<div align=left>
+If the file looks like this<p>
+</p>
+<div align=left><pre class=scheme><span class=variable>hello</span>
+</pre></div>
+</div><p></p>
+<p></p>
+<div align=left>
+the S-expression is <code class=scheme><span class=keyword>'</span><span class=variable>hello</span></code>.
+</div><p></p>
+<p></p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p></p>
+<p>
+
+</p>
+
+<p class=noindent><br>
+
+</p>
+
+<p class=noindent></p>
+<p></p>
+<div align=left>
+If the file looks like this<p>
+</p>
+<div align=left><pre class=scheme>(<span class=variable>hello</span> <span class=variable>world</span>)
+</pre></div>
+</div><p></p>
+<p></p>
+<div align=left>
+the result is <code class=scheme>(<span class=builtin>list</span> <span class=keyword>'</span><span class=variable>hello</span> <span class=keyword>'</span><span class=variable>world</span>)</code>.
+</div><p></p>
+<p></p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p></p>
+<p>
+
+</p>
+
+<p class=noindent><br>
+
+</p>
+
+<p class=noindent></p>
+<p></p>
+<div align=left>
+If the file looks like this<p>
+</p>
+<div align=left><pre class=scheme>
+((<span class=variable>ALICE</span> <span class=selfeval>1</span>)
+ (<span class=variable>BOB</span> <span class=selfeval>2</span>)
+ (<span class=variable>CARL</span> <span class=selfeval>3</span>))
+</pre></div>
+</div><p></p>
+<p></p>
+<div align=left>
+the S-expression is<p>
+</p>
+<div align=left><pre class=scheme>
+(<span class=builtin>list</span> (<span class=builtin>list</span> <span class=keyword>'</span><span class=variable>ALICE</span> <span class=selfeval>1</span>)
+      (<span class=builtin>list</span> <span class=keyword>'</span><span class=variable>BOB</span> <span class=selfeval>2</span>)
+      (<span class=builtin>list</span> <span class=keyword>'</span><span class=variable>CARL</span> <span class=selfeval>3</span>))
+</pre></div>
+</div><p></p>
+<p></p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p></p>
+<p>
+
+</p>
+
+<p class=noindent><br>
+
+</p>
+
+<p class=noindent></p>
+<p></p>
+<div align=left>
+In short, <code class=scheme><span class=builtin>read</span></code> adds <code class=scheme><span class=builtin>list</span></code> and <code class=scheme><span class=keyword>quote</span></code> (&#8217;)
+where needed.
+</div><p></p>
+<p></p>
+<div align=left>
+But where do you get an input port from?
+</div><p></p>
+<p></p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p></p>
+<p>
+
+</p>
+
+<p class=noindent><br>
+
+</p>
+
+<p class=noindent></p>
+<p></p>
+<div align=left>
+Like this: <p>
+</p>
+<div align=left><pre class=scheme><span class=builtin>open-input-file</span> <span class=selfeval>:</span> <span class=variable>String</span> &nbsp;&rarr;&nbsp; <span class=variable>IPort</span>
+<span class=variable>\end</span><span class=variable>{</span><span class=variable>minipage</span><span class=variable>}</span><span class=variable>\hfil</span><span class=variable>\begin</span>{<span class=variable>minipage</span>}[<span class=variable>b</span>]{<span class=variable>2.2in</span>}
+<span class=variable>\end</span>
+<span class=variable>\end</span><span class=variable>{</span><span class=variable>minipage</span><span class=variable>}</span><span class=variable>\par</span><span class=variable>\bigskip</span><span class=variable>\par</span>{<span class=variable>schemebox</span>}}{<span class=variable>Find</span> <span class=variable>a</span> <span class=variable>file</span> <span class=variable>by</span> <span class=variable>name</span>
+(<span class=variable>string</span>)<span class=keyword>,</span> <span class=variable>open</span> <span class=variable>it</span><span class=keyword>,</span> <span class=keyword>and</span> <span class=variable>make</span> <span class=variable>it</span> <span class=variable>available</span> <span class=variable>as</span> <span class=variable>an</span> (<span class=variable>input</span>) <span class=variable>\scheme</span>{<span class=variable>Port</span>}.}
+
+<span class=variable>\lll</span>{<span class=variable>So</span> <span class=variable>composing</span> <span class=variable>the</span> <span class=variable>two</span> <span class=variable>functions</span> <span class=variable>is</span> <span class=variable>useful:</span>
+
+<span class=variable>\begin</span>{<span class=variable>schemebox</span>}
+(<span class=builtin>read</span> (<span class=builtin>open-input-file</span> <span class=selfeval>&quot;gradebook.txt&quot;</span>))
+</pre></div>If the name of your gradebook file is
+<code class=scheme><span class=selfeval>&quot;gradebook.txt&quot;</span></code>, then this reads an entire grade book. <p>
+
+</p>
+
+<p class=noindent><br>
+
+</p>
+
+<p class=noindent></p>
+<p></p>
+<div align=left>
+If <tt>&quot;gradebook.txt&quot;</tt> contains this:<p>
+</p>
+<div align=left><pre class=scheme>
+((<span class=variable>ALICE</span> <span class=selfeval>49</span> <span class=selfeval>81</span> <span class=selfeval>64</span>)
+ (<span class=variable>BOB</span>   <span class=selfeval>16</span> <span class=selfeval>31</span> <span class=selfeval>27</span>)
+ (<span class=variable>CARL</span>  <span class=selfeval>27</span> <span class=selfeval>64</span> <span class=selfeval>8</span>))
+</pre></div>
+</div><p></p>
+<p></p>
+<div align=left>
+<tt>...</tt>then the expression produces: 
+<div align=left><pre class=scheme>
+  (<span class=builtin>list</span> (<span class=builtin>list</span> <span class=keyword>'</span><span class=variable>ALICE</span> <span class=selfeval>49</span> <span class=selfeval>81</span> <span class=selfeval>64</span>)
+        (<span class=builtin>list</span> <span class=keyword>'</span><span class=variable>BOB</span>   <span class=selfeval>16</span> <span class=selfeval>31</span> <span class=selfeval>27</span>)
+        (<span class=builtin>list</span> <span class=keyword>'</span><span class=variable>CARL</span>  <span class=selfeval>27</span> <span class=selfeval>64</span> <span class=selfeval>8</span>))
+</pre></div>
+</div><p></p>
+<p></p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p></p>
+<p>
+
+</p>
+
+<p class=noindent><br>
+
+</p>
+
+<p class=noindent></p>
+<p></p>
+<div align=left>
+Of course, this isn&#8217;t quite what our data definition says.
+</div><p></p>
+<p></p>
+<div align=left><p>
+</p>
+<div align=left><pre class=scheme>(<span class=keyword>define</span> <span class=variable>gradebook</span>
+  (<span class=builtin>map</span> (<span class=keyword>lambda</span> (<span class=variable>raw-gbe</span>)
+         (<span class=builtin>make-gbe</span>
+	   (<span class=builtin>first</span> <span class=variable>raw-gbe</span>)
+	   (<span class=builtin>rest</span> <span class=variable>raw-gbe</span>)))
+       (<span class=builtin>read</span> 
+         (<span class=builtin>open-input-file</span> 
+           <span class=selfeval>&quot;gradebook.txt&quot;</span>))))
+</pre></div>
+</div><p></p>
+<p></p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p></p>
+<p>
+</p>
+<div class=smallskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+<div align=right class=navigation>[Go to <span><a href="material.html">first</a>, <a href="material-Z-H-24.html">previous</a></span><span>, <a href="material-Z-H-26.html">next</a></span> page<span>; &nbsp;&nbsp;</span><span><a href="material-Z-H-2.html#node_toc_start">contents</a></span>]</div>
+</p>
+<p></p>
+</div>
+</body>
+</html>

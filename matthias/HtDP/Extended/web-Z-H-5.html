@@ -1,0 +1,113 @@
+<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--
+
+Generated from web.tex by tex2page, v 20070609
+(running on MzScheme 370.6, unix), 
+(c) Dorai Sitaram, 
+http://www.ccs.neu.edu/~dorai/tex2page/tex2page-doc.html
+
+-->
+<head>
+<title>
+web
+</title>
+<link rel="stylesheet" type="text/css" href="web-Z-S.css" title=default>
+<meta name=robots content="noindex,follow">
+</head>
+<body>
+<div id=slidecontent>
+<div align=right class=navigation>[Go to <span><a href="web.html">first</a>, <a href="web-Z-H-4.html">previous</a></span><span class=disable>, next</span> page]</div>
+<p></p>
+<a name="node_sec_3.1"></a>
+<h2 class=section>3.1&nbsp;&nbsp;Photo Descriptions and Lists</h2>
+<p>Study the program in figure&nbsp;<a href="#node_fig_Temp_6">4</a>.</p>
+<p>
+</p>
+<p>
+
+</p>
+<p>
+
+<blockquote><table bgcolor="beige"><tr><td>
+
+</p>
+<a name="node_fig_Temp_6"></a>
+<div class=figure align=center><table width=100%><tr><td align=center><div class=smallskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p>
+
+
+<img  width="700"  src=Images/web3.jpg alt="[WEB]">
+<p></p>
+<a href="Code/web3.ss">File: web3.ss</a>
+</p>
+<p>
+</p>
+</td></tr>
+<tr><td align=center><b>Figure 4:</b>&nbsp;&nbsp;Making a photo gallery</td></tr>
+<tr><td> 
+</td></tr></table></div><p>
+
+</td></tr></table></blockquote>
+</p>
+<p>
+Now let&#8217;s modify it so that we can improve it. </p>
+<p>
+</p>
+<p><a name="node_thm_3.1.1"></a>
+<b>Exercise 3.1.1.</b>&nbsp;&nbsp; 
+If you ignore the file extensions (.html, .gif, .jpg)
+the file, the src and the alt fields of a PD are
+the same. The common part is called the <em>stem</em>. 
+Use the following PD instead: 
+</p>
+<div align=left><pre class=scheme>(<span class=keyword>define-struct</span> <span class=variable>pd</span> (<span class=variable>stem</span> <span class=variable>title</span>))
+</pre></div><p>
+Modify the program accordingly. 
+&nbsp;<a href="../Solutions/html3.html">Solution</a></p>
+<p></p>
+<p>
+</p>
+<p><a name="node_thm_3.1.2"></a>
+<b>Exercise 3.1.2.</b>&nbsp;&nbsp; 
+Design a function that consumes the list of 
+picture descriptions and produces an index file
+for the gallery. 
+To create an index for three pictures, use <tt>&lt;ul&gt;</tt> <tt>...</tt><tt>&lt;/ul&gt;</tt>
+for making an HTML enumeration and <tt>&lt;li&gt;</tt> <tt>...</tt><tt>&lt;li&gt;</tt> for making
+items in an enumeration:
+</p>
+<pre class=verbatim>&lt;ul&gt;
+ &lt;li&gt;&lt;a href=&quot;picture1.html&quot;&gt;Picture 1&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href=&quot;picture2.html&quot;&gt;Picture 2&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href=&quot;picture3.html&quot;&gt;Picture 3&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</pre><p>
+Design a program to produce the a list of enumeration items from a list of
+photo descriptions and another one for making wrapping this list with <tt>&lt;ul&gt;</tt> and <tt>&lt;/ul&gt;</tt> tags. </p>
+<p>
+Now modify the Web pages for each picture so that they display a
+link that takes viewers back to the index page.&nbsp;<a href="../Solutions/html4.html">Solution</a></p>
+<p></p>
+<p>
+</p>
+<p><a name="node_thm_3.1.3"></a>
+<b>Exercise 3.1.3.</b>&nbsp;&nbsp; 
+Challenge: Modify the program so that a viewer can also walk through the
+gallery in a circular way. That is, the viewer starts with the index and
+then goes to a picture and from there to all the other pictures, one after
+another.&nbsp;<a href="../Solutions/html5.html">Solution</a></p>
+<p></p>
+<p>
+</p>
+
+<div class=smallskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+<div align=right class=navigation>[Go to <span><a href="web.html">first</a>, <a href="web-Z-H-4.html">previous</a></span><span class=disable>, next</span> page]</div>
+</p>
+<p></p>
+</div>
+</body>
+</html>

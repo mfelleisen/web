@@ -1,0 +1,207 @@
+<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--
+
+Generated from material.tex by tex2page, v 20070609
+(running on MzScheme 370.6, unix), 
+(c) Dorai Sitaram, 
+http://www.ccs.neu.edu/~dorai/tex2page/tex2page-doc.html
+
+-->
+<head>
+<title>
+material
+</title>
+<link rel="stylesheet" type="text/css" href="material-Z-S.css" title=default>
+<meta name=robots content="noindex,follow">
+</head>
+<body>
+<div id=slidecontent>
+<div align=right class=navigation>[Go to <span><a href="material.html">first</a>, <a href="material-Z-H-4.html">previous</a></span><span>, <a href="material-Z-H-6.html">next</a></span> page<span>; &nbsp;&nbsp;</span><span><a href="material-Z-H-2.html#node_toc_start">contents</a></span>]</div>
+<p></p>
+<a name="node_sec_1"></a>
+<h1 class=section><a href="material-Z-H-2.html#node_toc_node_sec_1">1&nbsp;&nbsp;Monday Morning: Welcome Back</a></h1>
+<p></p>
+
+<p class=noindent><strong>Related material in <em>How to Design Programs</em></strong>: parts I, II </p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p>
+</p>
+<a name="node_sec_1.1"></a>
+<h2 class=section><a href="material-Z-H-2.html#node_toc_node_sec_1.1">1.1&nbsp;&nbsp;Goals</a></h2>
+<p>(1) recall basic Scheme data: numbers, images, structures, lists</p>
+<p>
+</p>
+
+<p class=noindent>(2) recall basic Scheme mechanics: defining functions,
+structures, variables</p>
+<p>
+</p>
+
+<p class=noindent>(3) recall the design recipes for structural data:</p>
+<p>
+</p>
+<ol>
+<li><p>analyze the problem &amp; identify the classes of data (with examples)
+</p>
+<li><p>formulate a purpose statement and a contract 
+</p>
+<li><p>make up &#8220;functional&#8221; examples 
+</p>
+<li><p>create the template: what information exists to compute the desired
+result? 
+</p>
+<li><p>program 
+</p>
+<li><p>turn the examples into a test suite 
+</p>
+</ol><p></p>
+<p>
+</p>
+
+<p class=noindent>(4) over the week, see iterative refinement at work </p>
+<p>
+</p>
+<a name="node_sec_1.2"></a>
+<h2 class=section><a href="material-Z-H-2.html#node_toc_node_sec_1.2">1.2&nbsp;&nbsp;Example: Functions on Numbers</a></h2>
+<p></p>
+<p>
+
+</p>
+<p>
+</p>
+<div align=center><table><tr><td>
+
+
+
+<img src=Images/ufo-down.jpg width="200" alt="[A UFO gliding down]">
+</td></tr></table></div>
+<p>
+</p>
+
+<p class=noindent>Translate into a function from numbers to numbers: 
+</p>
+<div align=center><table><tr><td>
+
+<table border=1><tr><td valign=top ><em>t</em>  =   </td><td valign=top >0         </td><td valign=top >1         </td><td valign=top >2          </td><td valign=top >3          </td><td valign=top >4          </td><td valign=top ><tt>...</tt></td><td valign=top >7 </td><td valign=top ></td></tr>
+<tr><td valign=top ><em>X</em>  =   </td><td valign=top >20</td><td valign=top >30</td><td valign=top >40 </td><td valign=top >50 </td><td valign=top >60 </td><td valign=top ><tt>...</tt></td><td valign=top >? </td><td valign=top ></td></tr>
+<tr><td valign=top ></td></tr></table>
+</td></tr></table></div>
+<p>
+</p>
+<div align=left><pre class=scheme><span class=comment>;; <code class=scheme><span class=variable>ufo-x</span> <span class=selfeval>:</span> <span class=variable>Number</span> &nbsp;&rarr;&nbsp; <span class=variable>Number</span></code></span>
+<span class=comment>;; where is the UFO at t (horizontally)?</span>
+<span class=comment>;; examples: see table </span>
+(<span class=keyword>define</span> (<span class=variable>ufo-x</span> <span class=variable>t</span>) 
+  (<span class=builtin>+</span> <span class=selfeval>20</span> (<span class=builtin>*</span> <span class=selfeval>10</span> <span class=variable>t</span>)))
+
+<span class=comment>;; Tests:</span>
+(<span class=builtin>=</span> (<span class=variable>ufo-x</span> <span class=selfeval>0</span>) <span class=selfeval>20</span>)
+(<span class=builtin>=</span> (<span class=variable>ufo-x</span> <span class=selfeval>1</span>) <span class=selfeval>30</span>)
+(<span class=builtin>=</span> (<span class=variable>ufo-x</span> <span class=selfeval>2</span>) <span class=selfeval>40</span>)
+
+<span class=comment>;; Run program run: </span>
+(<span class=variable>ufo-x</span> <span class=selfeval>2345</span>)
+</pre></div><p></p>
+<p>
+</p>
+<a name="node_sec_1.3"></a>
+<h2 class=section><a href="material-Z-H-2.html#node_toc_node_sec_1.3">1.3&nbsp;&nbsp;Example: Images</a></h2>
+<p></p>
+<div align=left><pre class=scheme>(<span class=keyword>define</span> <span class=variable>an-image</span> (<span class=builtin>rectangle</span> <span class=selfeval>3</span> <span class=selfeval>4</span> <span class=keyword>'</span><span class=variable>blue</span>))
+
+<span class=comment>;; <code class=scheme><span class=variable>area</span> <span class=selfeval>:</span> <span class=variable>Image</span> &nbsp;&rarr;&nbsp; <span class=variable>Number</span></code></span>
+<span class=comment>;; compute the number of pixels in an image</span>
+<span class=comment>;; example: <code class=scheme>(<span class=variable>area</span> <span class=variable>an-image</span>)</code> should be 12</span>
+(<span class=keyword>define</span> (<span class=variable>area</span> <span class=variable>i</span>)
+  (<span class=builtin>*</span> (<span class=variable>image-width</span> <span class=variable>i</span>) (<span class=variable>image-height</span> <span class=variable>i</span>)))
+
+<span class=comment>;; Tests:</span>
+(<span class=builtin>=</span> (<span class=variable>area</span> <span class=variable>an-image</span>) <span class=selfeval>12</span>)
+
+<span class=comment>;; Run program run: (demo matthias demo)</span>
+(<span class=variable>area</span> ... <span class=variable>an</span> <span class=variable>image</span> <span class=variable>of</span> <span class=variable>your</span> <span class=variable>favorite</span> <span class=variable>teach-scheme</span> <span class=variable>instructor</span> ...)
+</pre></div><p></p>
+<p>
+</p>
+<a name="node_sec_1.4"></a>
+<h2 class=section><a href="material-Z-H-2.html#node_toc_node_sec_1.4">1.4&nbsp;&nbsp;Example: Structures and Functions on Structures</a></h2>
+<p></p>
+<div align=left><pre class=scheme>(<span class=keyword>define-struct</span> <span class=variable>color</span> (<span class=variable>red</span> <span class=variable>green</span> <span class=variable>blue</span>)) <span class=comment>;; <code class=scheme><span class=variable>color</span></code> occurs in nature</span>
+<span class=comment>;; Color = <code class=scheme>(<span class=builtin>make-color</span> <span class=variable>Number</span> <span class=variable>Number</span> <span class=variable>Number</span>)</code></span>
+
+<span class=comment>;; <code class=scheme><span class=builtin>make-color</span></code>; <code class=scheme><span class=builtin>color?</span></code>; <code class=scheme><span class=builtin>color-red</span></code>, <code class=scheme><span class=builtin>color-green</span></code>, <code class=scheme><span class=builtin>color-blue</span></code> </span>
+
+<span class=comment>#| Template: 
+;; \scheme{Color -&gt; ???}
+(define (process-rgb c)
+  ... (color-red c) ...
+  ... (color-green c) ...
+  ... (color-blue c) ... )
+|#</span>
+
+<span class=comment>;; Program: </span>
+<span class=comment>;; <code class=scheme><span class=variable>Color</span> &nbsp;&rarr;&nbsp; <span class=variable>Color</span></code></span>
+<span class=comment>;; produce a color like <code class=scheme><span class=variable>c</span></code>, but without any green </span>
+<span class=comment>;; example: <code class=scheme>(<span class=variable>remove-green</span> (<span class=builtin>make-color</span> <span class=selfeval>200</span> <span class=selfeval>100</span> <span class=selfeval>0</span>))</code> should be </span>
+<span class=comment>;; <code class=scheme>(<span class=variable>remove-green</span> (<span class=builtin>make-color</span> <span class=selfeval>200</span> <span class=selfeval>0</span> <span class=selfeval>0</span>))</code></span>
+(<span class=keyword>define</span> (<span class=variable>remove-green</span> <span class=variable>c</span>)
+  (<span class=builtin>make-color</span> (<span class=builtin>color-red</span> <span class=variable>c</span>) <span class=selfeval>0</span> (<span class=builtin>color-blue</span> <span class=variable>c</span>)))
+
+<span class=comment>;; Tests: </span>
+(<span class=builtin>equal?</span> (<span class=variable>remove-green</span> (<span class=builtin>make-color</span> <span class=selfeval>200</span> <span class=selfeval>100</span> <span class=selfeval>0</span>))
+        (<span class=builtin>make-color</span> <span class=selfeval>200</span> <span class=selfeval>0</span> <span class=selfeval>0</span>))
+</pre></div><p></p>
+<p>
+</p>
+<a name="node_sec_1.5"></a>
+<h2 class=section><a href="material-Z-H-2.html#node_toc_node_sec_1.5">1.5&nbsp;&nbsp;Example: Lists and Functions on Lists</a></h2>
+<p></p>
+<p>
+</p>
+<div align=left><pre class=scheme><span class=comment>;; A ColorList is either</span>
+<span class=comment>;; --- <code class=scheme><span class=builtin>empty</span></code></span>
+<span class=comment>;; --- <code class=scheme>(<span class=builtin>cons</span> <span class=variable>Color</span> <span class=variable>ColorList</span>)</code></span>
+
+<span class=comment>#| Template: 
+;; \scheme{ColorList -&gt; ???}
+(define (process-cl cl)
+  (cond
+    [(empty? cl) ...]
+    [else ... (first cl) ... (process-cl (rest cl)) ...]))
+|#</span>
+
+<span class=comment>;; <code class=scheme><span class=variable>ColorList</span> &nbsp;&rarr;&nbsp; <span class=variable>ColorList</span></code></span>
+<span class=comment>;; remove green from every color on <code class=scheme><span class=variable>cl</span></code></span>
+<span class=comment>;; examples: see tests</span>
+(<span class=keyword>define</span> (<span class=variable>remove-all-green</span> <span class=variable>cl</span>)
+  (<span class=keyword>cond</span>
+    [(<span class=builtin>empty?</span> <span class=variable>cl</span>) <span class=builtin>empty</span>]
+    [<span class=keyword>else</span> (<span class=builtin>cons</span> (<span class=variable>remove-green</span> (<span class=builtin>first</span> <span class=variable>cl</span>)) (<span class=variable>remove-all-green</span> (<span class=builtin>rest</span> <span class=variable>cl</span>)))]))
+
+<span class=comment>;; Tests: </span>
+(<span class=builtin>equal?</span> (<span class=variable>remove-all-green</span> (<span class=builtin>cons</span> (<span class=builtin>make-color</span> <span class=selfeval>100</span> <span class=selfeval>100</span> <span class=selfeval>100</span>) 
+                                (<span class=builtin>cons</span> (<span class=builtin>make-color</span> <span class=selfeval>200</span> <span class=selfeval>100</span> <span class=selfeval>0</span>)
+                                      <span class=builtin>empty</span>)))
+        (<span class=builtin>cons</span> (<span class=builtin>make-color</span> <span class=selfeval>100</span> <span class=selfeval>0</span> <span class=selfeval>100</span>) 
+              (<span class=builtin>cons</span> (<span class=builtin>make-color</span> <span class=selfeval>200</span> <span class=selfeval>0</span> <span class=selfeval>0</span>)
+                    <span class=builtin>empty</span>)))
+
+<span class=comment>;; Run program run:</span>
+(<span style="font-family: sans-serif"> color-list</span>&rarr;<span style="font-family: sans-serif"> image</span> 
+  (<span class=variable>remove-all-green</span>
+    (<span style="font-family: sans-serif"> image</span>&rarr;<span style="font-family: sans-serif"> color-list</span>
+      ... <span class=variable>an</span> <span class=variable>image</span> <span class=variable>of</span> <span class=variable>your</span> <span class=variable>favorite</span> <span class=variable>teach-scheme</span> <span class=variable>instructor</span> ...)))
+</pre></div><p></p>
+<p>
+</p>
+<div class=smallskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+<div align=right class=navigation>[Go to <span><a href="material.html">first</a>, <a href="material-Z-H-4.html">previous</a></span><span>, <a href="material-Z-H-6.html">next</a></span> page<span>; &nbsp;&nbsp;</span><span><a href="material-Z-H-2.html#node_toc_start">contents</a></span>]</div>
+</p>
+<p></p>
+</div>
+</body>
+</html>

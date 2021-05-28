@@ -1,0 +1,82 @@
+<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--
+
+Generated from material.tex by tex2page, v 20070609
+(running on MzScheme 370.6, unix), 
+(c) Dorai Sitaram, 
+http://www.ccs.neu.edu/~dorai/tex2page/tex2page-doc.html
+
+-->
+<head>
+<title>
+material
+</title>
+<link rel="stylesheet" type="text/css" href="material-Z-S.css" title=default>
+<meta name=robots content="noindex,follow">
+</head>
+<body>
+<div id=slidecontent>
+<div align=right class=navigation>[Go to <span><a href="material.html">first</a>, <a href="material-Z-H-17.html">previous</a></span><span>, <a href="material-Z-H-19.html">next</a></span> page<span>; &nbsp;&nbsp;</span><span><a href="material-Z-H-2.html#node_toc_start">contents</a></span>]</div>
+<p></p>
+<p>
+</p>
+<a name="node_sec_6.2"></a>
+<h2 class=section><a href="material-Z-H-2.html#node_toc_node_sec_6.2">6.2&nbsp;&nbsp;Examples: Mapping</a></h2>
+<p>Given: 
+</p>
+<div align=left><pre class=scheme><span class=comment>;; <code class=scheme><span class=variable>ColorList</span> &nbsp;&rarr;&nbsp; <span class=variable>ColorList</span></code></span>
+<span class=comment>;; remove green from every color on <code class=scheme><span class=variable>cl</span></code></span>
+(<span class=keyword>define</span> (<span class=variable>remove-all-green</span> <span class=variable>cl</span>)
+  (<span class=keyword>cond</span>
+    [(<span class=builtin>empty?</span> <span class=variable>cl</span>) <span class=builtin>empty</span>]
+    [<span class=keyword>else</span> (<span class=builtin>cons</span> (<span class=variable>remove-green</span> (<span class=builtin>first</span> <span class=variable>cl</span>)) (<span class=variable>remove-all-green</span> (<span class=builtin>rest</span> <span class=variable>cl</span>)))]))
+
+<span class=comment>;; <code class=scheme><span class=variable>Color</span> &nbsp;&rarr;&nbsp; <span class=variable>Color</span></code></span>
+<span class=comment>;; produce a color like <code class=scheme><span class=variable>c</span></code>, but without any green </span>
+(<span class=keyword>define</span> (<span class=variable>remove-green</span> <span class=variable>c</span>)
+  (<span class=builtin>make-color</span> (<span class=builtin>color-red</span> <span class=variable>c</span>) <span class=selfeval>0</span> (<span class=builtin>color-blue</span> <span class=variable>c</span>)))
+
+<span class=comment>;; Tests: </span>
+(<span class=builtin>equal?</span> (<span class=variable>remove-all-green</span> (<span class=builtin>cons</span> (<span class=builtin>make-color</span> <span class=selfeval>100</span> <span class=selfeval>100</span> <span class=selfeval>100</span>) 
+                                (<span class=builtin>cons</span> (<span class=builtin>make-color</span> <span class=selfeval>200</span> <span class=selfeval>100</span> <span class=selfeval>0</span>)
+                                      <span class=builtin>empty</span>)))
+        (<span class=builtin>cons</span> (<span class=builtin>make-color</span> <span class=selfeval>100</span> <span class=selfeval>0</span> <span class=selfeval>100</span>) 
+              (<span class=builtin>cons</span> (<span class=builtin>make-color</span> <span class=selfeval>200</span> <span class=selfeval>0</span> <span class=selfeval>0</span>)
+                    <span class=builtin>empty</span>)))
+</pre></div><p></p>
+<p>
+</p>
+
+<p class=noindent>Better: 
+</p>
+<div align=left><pre class=scheme><span class=comment>;; <code class=scheme><span class=variable>ColorList</span> &nbsp;&rarr;&nbsp; <span class=variable>ColorList</span></code></span>
+<span class=comment>;; remove green from every color on <code class=scheme><span class=variable>cl</span></code></span>
+(<span class=keyword>define</span> (<span class=variable>remove-all-green</span> <span class=variable>cl</span>) 
+  (<span class=keyword>local</span> ((<span class=keyword>define</span> (<span class=variable>remove-green</span> <span class=variable>c</span>)
+	    (<span class=builtin>make-color</span> (<span class=builtin>color-red</span> <span class=variable>c</span>) <span class=selfeval>0</span> (<span class=builtin>color-blue</span> <span class=variable>c</span>))))
+    (<span class=builtin>map</span> <span class=variable>remove-green</span> <span class=variable>cl</span>)))
+</pre></div><p></p>
+<p>
+</p>
+<a name="node_sec_6.3"></a>
+<h2 class=section><a href="material-Z-H-2.html#node_toc_node_sec_6.3">6.3&nbsp;&nbsp;mapping with lambda, the Ultimate</a></h2>
+<p></p>
+
+<p class=noindent>Best:
+</p>
+<div align=left><pre class=scheme><span class=comment>;; <code class=scheme><span class=variable>ColorList</span> &nbsp;&rarr;&nbsp; <span class=variable>ColorList</span></code></span>
+<span class=comment>;; remove green from every color on <code class=scheme><span class=variable>cl</span></code></span>
+(<span class=keyword>define</span> (<span class=variable>remove-all-green</span> <span class=variable>cl</span>) 
+  (<span class=builtin>map</span> (<span class=keyword>lambda</span> (<span class=variable>c</span>) (<span class=builtin>make-color</span> (<span class=builtin>color-red</span> <span class=variable>c</span>) <span class=selfeval>0</span> (<span class=builtin>color-blue</span> <span class=variable>c</span>))) <span class=variable>cl</span>))
+</pre></div><p></p>
+<p>
+</p>
+<div class=smallskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+<div align=right class=navigation>[Go to <span><a href="material.html">first</a>, <a href="material-Z-H-17.html">previous</a></span><span>, <a href="material-Z-H-19.html">next</a></span> page<span>; &nbsp;&nbsp;</span><span><a href="material-Z-H-2.html#node_toc_start">contents</a></span>]</div>
+</p>
+<p></p>
+</div>
+</body>
+</html>

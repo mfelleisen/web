@@ -1,0 +1,29 @@
+Sample exercises for the fabric teachpack
+
+1. Using the functions in the teachpack, define three fabrics sized to
+fit a tshirt.  Each fabric should involve at least two calls to
+functions that create fabric.  Be creative!
+
+2. Write a function create-from-fabric that consumes an image for a
+white clothing item and fabric sized to fit that item and produces an
+image of the clothing item in the given fabric.
+
+3. Write a function add-center-logo that consumes an image for a logo
+and an image for a clothing item and produces an image of the clothing
+item with the logo centered on it.  The given clothing item may
+already be printed in fabric.
+
+4. Write a function stack-logos that consumes images of two logos and
+returns an image with the first logo just above the second logo. You
+do not need to center the logos, but you may if you wish.  (Note that
+Scheme has a function max that consumes two numbers and produces the
+larger of the numbers.)
+
+5. Write a function side-by-side-logos that consumes images of two
+logos and returns an image with the first logo to the left of the
+second logo. You do not need to center the logos, but you may if you
+wish.  
+
+6. Define three pieces of clothing using a combination of the
+teachpack functions and your definitions.  You should use each of the
+functions you defined at least once.  Again, be creative!

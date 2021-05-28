@@ -1,0 +1,158 @@
+<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--
+
+Generated from material.tex by tex2page, v 20070609
+(running on MzScheme 370.6, unix), 
+(c) Dorai Sitaram, 
+http://www.ccs.neu.edu/~dorai/tex2page/tex2page-doc.html
+
+-->
+<head>
+<title>
+material
+</title>
+<link rel="stylesheet" type="text/css" href="material-Z-S.css" title=default>
+<meta name=robots content="noindex,follow">
+</head>
+<body>
+<div id=slidecontent>
+<div align=right class=navigation>[Go to <span><a href="material.html">first</a>, <a href="material-Z-H-13.html">previous</a></span><span>, <a href="material-Z-H-15.html">next</a></span> page<span>; &nbsp;&nbsp;</span><span><a href="material-Z-H-2.html#node_toc_start">contents</a></span>]</div>
+<p></p>
+<p>
+</p>
+<p></p>
+<hr>
+<p></p>
+<p><strong>Exercises</strong>
+</p>
+<p></p>
+<p>
+</p>
+<p><a name="node_thm_4.1"></a>
+<b>Exercise 4.1.</b>&nbsp;&nbsp; [*] 
+Develop the function <code class=scheme><span class=variable>random-interval</span></code>. It consumes a number
+(<code class=scheme><span class=variable>MIN</span></code>) and produces an interval: 
+</p>
+<div align=left><pre class=scheme>(<span class=keyword>define-struct</span> <span class=variable>interval</span> (<span class=variable>left</span> <span class=variable>right</span>))
+<span class=comment>;; An <code class=scheme><span class=variable>Interval</span></code> is: </span>
+<span class=comment>;; --- <code class=scheme>(<span class=variable>make-interval</span> <span class=variable>L</span> <span class=variable>R</span>)</code></span>
+<span class=comment>;; if <code class=scheme>(<span class=builtin>&lt;</span> <span class=variable>L</span> <span class=variable>R</span>)</code> is true</span>
+</pre></div><p>
+The function returns an interval whose distance is less than <code class=scheme><span class=variable>MIN</span></code>.&nbsp;</p>
+<p></p>
+<p>
+</p>
+<p><a name="node_thm_4.2"></a>
+<b>Exercise 4.2.</b>&nbsp;&nbsp; [*]
+Assume DrScheme&#8217;s Definitions Window contains the definition for a
+mathematically continuous function <code class=scheme><span class=variable>f</span></code>: 
+</p>
+<div align=left><pre class=scheme><span class=comment>;; <code class=scheme><span class=variable>f</span> <span class=selfeval>:</span> <span class=variable>Number</span> &nbsp;&rarr;&nbsp; <span class=variable>Number</span></code></span>
+(<span class=keyword>define</span> (<span class=variable>f</span> <span class=variable>x</span>) ...)
+</pre></div><p>
+Just a reminder: continuous means for us &#8220;has no gaps.&#8221;</p>
+<p>
+Design the function <code class=scheme><span class=variable>find0</span></code>, which consumes an interval and
+determines a small interval (smaller than 1.0) where some top-level function
+<code class=scheme><span class=variable>f</span></code> from <code class=scheme><span class=variable>Number</span></code> to <code class=scheme><span class=variable>Number</span></code> crosses the <i>x</i>-axis in this interval.</p>
+<p>
+Hint 1: If <code class=scheme><span class=variable>f</span></code> values at the two ends of the interval are at
+opposite sides of the <i>x</i>-axis, <code class=scheme><span class=variable>f</span></code> is <code class=scheme><span class=selfeval>0</span></code> somewhere
+in between. Take a look at the middle of the interval.</p>
+<p>
+Hint 2: Your problem and data analysis may benefit from drawing a picture. </p>
+<p>
+Note: The solution of this problem is the basis of binary search in vectors
+and similar data structures.&nbsp;</p>
+<p></p>
+<p>
+
+
+</p>
+<p>
+
+
+</p>
+<p>
+</p>
+<p><a name="node_thm_4.3"></a>
+<b>Exercise 4.3.</b>&nbsp;&nbsp; (*)
+Develop a program that draw nested circles like these:
+</p>
+<div align=center><table><tr><td>
+
+
+
+<img src=Images/circles2.jpg width="200" alt="[lexical scope]">
+</td></tr></table></div>
+
+The program consumes the center and radius of a circle. Place the initial
+circle in the center of the canvas created with <code class=scheme>(<span class=variable>start</span> <span class=selfeval>300</span> <span class=selfeval>300</span>)</code>.<p>
+Hint: Use the following picture to figure out the mathematics for finding
+the center of the next nested circle: 
+</p>
+<div align=center><table><tr><td>
+
+
+
+<img src=Images/circles.jpg width="200" alt="[lexical scope]">
+</td></tr></table></div>
+
+<p></p>
+<p>
+</p>
+<p><a name="node_thm_4.4"></a>
+<b>Exercise 4.4.</b>&nbsp;&nbsp;   
+Develop the function <code class=scheme><span class=variable>merge-sort</span></code>, which sorts a list of numbers in
+ascending order using the following insight. 
+</p>
+<ol>
+<li><p>Construct a list of one-item lists from the given list of
+numbers. For example,  
+</p>
+<div align=left><pre class=scheme>(<span class=builtin>list</span> <span class=selfeval>2</span> <span class=selfeval>5</span> <span class=selfeval>9</span> <span class=selfeval>3</span>)
+<span class=comment>turns into </span>
+(<span class=builtin>list</span> (<span class=builtin>list</span> <span class=selfeval>2</span>) (<span class=builtin>list</span> <span class=selfeval>5</span>) (<span class=builtin>list</span> <span class=selfeval>9</span>) (<span class=builtin>list</span> <span class=selfeval>3</span>))
+</pre></div><p></p>
+<p>
+</p>
+<li><p>Merge pairs of neighboring, sorted lists in the list of list so that
+the result is sorted. For example, 
+</p>
+<div align=left><pre class=scheme>(<span class=builtin>list</span> (<span class=builtin>list</span> <span class=selfeval>2</span>) (<span class=builtin>list</span> <span class=selfeval>5</span>) (<span class=builtin>list</span> <span class=selfeval>9</span>) (<span class=builtin>list</span> <span class=selfeval>3</span>))
+<span class=comment>turns into </span>
+(<span class=builtin>list</span> (<span class=builtin>list</span> <span class=selfeval>2</span> <span class=selfeval>5</span>) (<span class=builtin>list</span> <span class=selfeval>3</span> <span class=selfeval>9</span>))
+<span class=comment>and</span>
+(<span class=builtin>list</span> (<span class=builtin>list</span> <span class=selfeval>2</span> <span class=selfeval>5</span>) (<span class=builtin>list</span> <span class=selfeval>3</span> <span class=selfeval>9</span>))
+<span class=comment>turns into </span>
+(<span class=builtin>list</span> (<span class=builtin>list</span> <span class=selfeval>2</span> <span class=selfeval>3</span> <span class=selfeval>5</span> <span class=selfeval>9</span>))
+</pre></div><p></p>
+<p>
+In general, this step yields a list that is approximately half as long as
+the input. Why is the output not always half as long as the input? </p>
+<p>
+</p>
+<li><p>Stop when the list of lists contains a single list. For example, for
+the above starting point, we should get 
+</p>
+<div align=left><pre class=scheme>(<span class=builtin>list</span> (<span class=builtin>list</span> <span class=selfeval>2</span> <span class=selfeval>3</span> <span class=selfeval>5</span> <span class=selfeval>9</span>))
+</pre></div><p>
+</p>
+</ol><p>
+Develop all necessary functions independently.&nbsp;</p>
+<p></p>
+<hr>
+<p></p>
+<p></p>
+<p></p>
+<p>
+&nbsp;</p>
+<div class=smallskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+<div align=right class=navigation>[Go to <span><a href="material.html">first</a>, <a href="material-Z-H-13.html">previous</a></span><span>, <a href="material-Z-H-15.html">next</a></span> page<span>; &nbsp;&nbsp;</span><span><a href="material-Z-H-2.html#node_toc_start">contents</a></span>]</div>
+</p>
+<p></p>
+</div>
+</body>
+</html>

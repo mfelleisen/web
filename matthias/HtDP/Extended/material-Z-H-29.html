@@ -1,0 +1,77 @@
+<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--
+
+Generated from material.tex by tex2page, v 20070609
+(running on MzScheme 370.6, unix), 
+(c) Dorai Sitaram, 
+http://www.ccs.neu.edu/~dorai/tex2page/tex2page-doc.html
+
+-->
+<head>
+<title>
+material
+</title>
+<link rel="stylesheet" type="text/css" href="material-Z-S.css" title=default>
+<meta name=robots content="noindex,follow">
+</head>
+<body>
+<div id=slidecontent>
+<div align=right class=navigation>[Go to <span><a href="material.html">first</a>, <a href="material-Z-H-28.html">previous</a></span><span>, <a href="material-Z-H-30.html">next</a></span> page<span>; &nbsp;&nbsp;</span><span><a href="material-Z-H-2.html#node_toc_start">contents</a></span>]</div>
+<p></p>
+<p>
+</p>
+<a name="node_sec_9.5"></a>
+<h2 class=section><a href="material-Z-H-2.html#node_toc_node_sec_9.5">9.5&nbsp;&nbsp;Example: Launching a Rocket</a></h2>
+<p>Say we want to launch the rocket with a keystroke on <code class=scheme><span class=keyword>'</span><span class=variable>up</span></code>
+</p>
+<div align=left><pre class=scheme><span class=comment>;; The world is one of: </span>
+<span class=comment>;; --- <code class=scheme><span class=builtin>false</span></code> </span>
+<span class=comment>;; --- <code class=scheme><span class=variable>N</span></code></span>
+<span class=comment>;; Interpretation: <code class=scheme><span class=builtin>false</span></code> says no rocket has been launched; a</span>
+<span class=comment>;; natural number says the rocket has been flying for that many ticks</span>
+
+(<span class=keyword>define</span> <span class=variable>G</span> <span class=selfeval>3</span>)
+(<span class=keyword>define</span> <span class=variable>WIDTH</span> <span class=selfeval>100</span>)
+(<span class=keyword>define</span> <span class=variable>HEIGHT</span> <span class=selfeval>300</span>)
+
+<span class=comment>;; <code class=scheme><span class=variable>World</span> &nbsp;&rarr;&nbsp; <span class=builtin>true</span></code></span>
+(<span class=keyword>define</span> (<span class=variable>world-draw</span> <span class=variable>w</span>) (<span class=variable>rocket-draw</span> <span class=variable>w</span>))
+
+<span class=comment>;; <code class=scheme><span class=variable>World</span> &nbsp;&rarr;&nbsp; <span class=builtin>true</span></code></span>
+(<span class=keyword>define</span> (<span class=variable>world-clear</span> <span class=variable>w</span>)
+  (<span class=variable>draw-solid-rect</span> (<span class=builtin>make-posn</span> <span class=selfeval>0</span> <span class=selfeval>0</span>) <span class=variable>WIDTH</span> <span class=variable>HEIGHT</span> <span class=keyword>'</span><span class=variable>white</span>))
+
+<span class=comment>;; <code class=scheme><span class=variable>World</span> &nbsp;&rarr;&nbsp; <span class=variable>World</span></code></span>
+<span class=comment>;; erase old world, draw new one, return new one </span>
+(<span class=keyword>define</span> (<span class=variable>tock</span> <span class=variable>w</span>)
+  (<span class=keyword>cond</span>
+    [(<span class=builtin>boolean?</span> <span class=variable>w</span>) <span class=variable>w</span>]
+    [<span class=keyword>else</span> (<span class=keyword>local</span> ((<span class=keyword>define</span> <span class=variable>new-w</span> (<span class=builtin>+</span> <span class=variable>w</span> <span class=selfeval>1</span>)))
+            (<span class=keyword>draw</span> (<span class=variable>world-clear</span> <span class=variable>w</span>) (<span class=variable>world-draw</span> <span class=variable>w</span>) <span class=keyword>produce</span> <span class=variable>new-w</span>))]))
+
+<span class=comment>;; <code class=scheme><span class=variable>KeyEvent</span> <span class=variable>World</span> &nbsp;&rarr;&nbsp; <span class=variable>World</span></code></span>
+<span class=comment>;; change the world to a rocket </span>
+(<span class=keyword>define</span> (<span class=variable>react</span> <span class=variable>ke</span> <span class=variable>w</span>)
+  (<span class=keyword>cond</span>
+    [(<span class=builtin>char?</span> <span class=variable>ke</span>) <span class=variable>w</span>]
+    <span class=comment>;; now we know it&#8217;s a symbol </span>
+    [(<span class=builtin>symbol=?</span> <span class=keyword>'</span><span class=variable>up</span> <span class=variable>ke</span>) <span class=selfeval>0</span>]
+    [<span class=keyword>else</span> <span class=variable>w</span>]))
+
+<span class=comment>;; --- run program run</span>
+(<span class=variable>start</span> <span class=variable>WIDTH</span> <span class=variable>HEIGHT</span>) <span class=comment>;; show the canvas</span>
+(<span class=variable>big-bang</span> <span class=selfeval>.2</span> <span class=builtin>false</span>) <span class=comment>;; create the world, start the clock</span>
+(<span class=variable>on-tick-event</span> <span class=variable>tock</span>)
+(<span class=variable>on-key-event</span> <span class=variable>react</span>)
+</pre></div><p></p>
+<p>
+</p>
+<div class=smallskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+<div align=right class=navigation>[Go to <span><a href="material.html">first</a>, <a href="material-Z-H-28.html">previous</a></span><span>, <a href="material-Z-H-30.html">next</a></span> page<span>; &nbsp;&nbsp;</span><span><a href="material-Z-H-2.html#node_toc_start">contents</a></span>]</div>
+</p>
+<p></p>
+</div>
+</body>
+</html>

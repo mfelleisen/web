@@ -1,0 +1,147 @@
+<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--
+
+Generated from material.tex by tex2page, v 20070609
+(running on MzScheme 370.6, unix), 
+(c) Dorai Sitaram, 
+http://www.ccs.neu.edu/~dorai/tex2page/tex2page-doc.html
+
+-->
+<head>
+<title>
+material
+</title>
+<link rel="stylesheet" type="text/css" href="material-Z-S.css" title=default>
+<meta name=robots content="noindex,follow">
+</head>
+<body>
+<div id=slidecontent>
+<div align=right class=navigation>[Go to <span><a href="material.html">first</a>, <a href="material-Z-H-6.html">previous</a></span><span>, <a href="material-Z-H-8.html">next</a></span> page<span>; &nbsp;&nbsp;</span><span><a href="material-Z-H-2.html#node_toc_start">contents</a></span>]</div>
+<p></p>
+<a name="node_sec_2"></a>
+<h1 class=section><a href="material-Z-H-2.html#node_toc_node_sec_2">2&nbsp;&nbsp;Monday Afternoon: Images, Lists, <strong>N</strong></a></h1>
+<p></p>
+
+<p class=noindent><strong>Related material in <em>How to Design Programs</em></strong>: intermezzo 2, part II[11] </p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p>
+</p>
+<a name="node_sec_2.1"></a>
+<h2 class=section><a href="material-Z-H-2.html#node_toc_node_sec_2.1">2.1&nbsp;&nbsp;Goals</a></h2>
+<p>(1) to make working with lists and S-expressions easier </p>
+<p>
+</p>
+
+<p class=noindent>(2) to get to know the class of image values </p>
+<p>
+</p>
+
+<p class=noindent>(3) to understand functions on <em>natural numbers</em></p>
+<p>
+</p>
+<a name="node_sec_2.2"></a>
+<h2 class=section><a href="material-Z-H-2.html#node_toc_node_sec_2.2">2.2&nbsp;&nbsp;A Notation for Lists</a></h2>
+<p></p>
+<p>
+
+</p>
+
+<p class=noindent><br>
+
+</p>
+
+<p class=noindent></p>
+<p></p>
+<div align=left>
+<div align=left><pre class=scheme>(<span class=builtin>cons</span> <span class=selfeval>1</span>
+  (<span class=builtin>cons</span> <span class=selfeval>2</span>
+    (<span class=builtin>cons</span> <span class=selfeval>3</span> <span class=builtin>empty</span>)))
+</pre></div>
+</div><p></p>
+<p></p>
+<div align=left>
+<div align=left><pre class=scheme>(<span class=builtin>list</span> <span class=selfeval>1</span> <span class=selfeval>2</span> <span class=selfeval>3</span>)
+</pre></div>
+</div><p></p>
+<p></p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p></p>
+<p>
+
+</p>
+
+<p class=noindent><br>
+
+</p>
+
+<p class=noindent></p>
+<p></p>
+<div align=left>
+<div align=left><pre class=scheme>(<span class=builtin>cons</span>
+  (<span class=builtin>cons</span> <span class=keyword>'</span><span class=variable>a</span> (<span class=builtin>cons</span> <span class=keyword>'</span><span class=variable>b</span> <span class=builtin>empty</span>))
+  (<span class=builtin>cons</span>
+    (<span class=builtin>cons</span> <span class=selfeval>1</span> (<span class=builtin>cons</span> <span class=selfeval>2</span> <span class=builtin>empty</span>))
+    (<span class=builtin>cons</span>
+      (<span class=builtin>cons</span> <span class=builtin>true</span> (<span class=builtin>cons</span> <span class=builtin>false</span> <span class=builtin>empty</span>))
+      (<span class=builtin>cons</span>
+	(<span class=builtin>cons</span> <span class=selfeval>&quot;a&quot;</span> (<span class=builtin>cons</span> <span class=selfeval>&quot;b&quot;</span> <span class=builtin>empty</span>))
+	<span class=builtin>empty</span>))))
+</pre></div>
+</div><p></p>
+<p></p>
+<div align=left>
+<div align=left><pre class=scheme>(<span class=builtin>list</span> (<span class=builtin>list</span> <span class=keyword>'</span><span class=variable>a</span> <span class=keyword>'</span><span class=variable>b</span>)
+      (<span class=builtin>list</span> <span class=selfeval>1</span> <span class=selfeval>2</span>)
+      (<span class=builtin>list</span> <span class=builtin>true</span> <span class=builtin>false</span>)
+      (<span class=builtin>list</span> <span class=selfeval>&quot;a&quot;</span> <span class=selfeval>&quot;b&quot;</span>))
+</pre></div>
+</div><p></p>
+<p></p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p></p>
+<p>
+
+</p>
+
+<p class=noindent><br>
+
+</p>
+
+<p class=noindent></p>
+<p></p>
+<div align=left>
+<div align=left><pre class=scheme>(<span class=builtin>cons</span> (<span class=builtin>make-color</span> <span class=selfeval>0</span> <span class=selfeval>0</span> <span class=selfeval>0</span>)
+  (<span class=builtin>cons</span> (<span class=builtin>make-color</span> <span class=selfeval>255</span> <span class=selfeval>255</span> <span class=selfeval>255</span>)
+    (<span class=builtin>cons</span> (<span class=builtin>make-color</span> <span class=selfeval>200</span> <span class=selfeval>100</span> <span class=selfeval>0</span>)
+      <span class=builtin>empty</span>)))
+</pre></div>
+</div><p></p>
+<p></p>
+<div align=left>
+<div align=left><pre class=scheme>(<span class=builtin>list</span> (<span class=builtin>make-color</span> <span class=selfeval>0</span> <span class=selfeval>0</span> <span class=selfeval>0</span>)
+      (<span class=builtin>make-color</span> <span class=selfeval>255</span> <span class=selfeval>255</span> <span class=selfeval>255</span>)
+      (<span class=builtin>make-color</span> <span class=selfeval>200</span> <span class=selfeval>100</span> <span class=selfeval>0</span>))
+</pre></div>
+</div><p></p>
+<p></p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p></p>
+<p>
+</p>
+<div class=smallskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+<div align=right class=navigation>[Go to <span><a href="material.html">first</a>, <a href="material-Z-H-6.html">previous</a></span><span>, <a href="material-Z-H-8.html">next</a></span> page<span>; &nbsp;&nbsp;</span><span><a href="material-Z-H-2.html#node_toc_start">contents</a></span>]</div>
+</p>
+<p></p>
+</div>
+</body>
+</html>

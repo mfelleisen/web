@@ -1,0 +1,141 @@
+<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--
+
+Generated from material.tex by tex2page, v 20070609
+(running on MzScheme 370.6, unix), 
+(c) Dorai Sitaram, 
+http://www.ccs.neu.edu/~dorai/tex2page/tex2page-doc.html
+
+-->
+<head>
+<title>
+material
+</title>
+<link rel="stylesheet" type="text/css" href="material-Z-S.css" title=default>
+<meta name=robots content="noindex,follow">
+</head>
+<body>
+<div id=slidecontent>
+<div align=right class=navigation>[Go to <span><a href="material.html">first</a>, <a href="material-Z-H-10.html">previous</a></span><span>, <a href="material-Z-H-12.html">next</a></span> page<span>; &nbsp;&nbsp;</span><span><a href="material-Z-H-2.html#node_toc_start">contents</a></span>]</div>
+<p></p>
+<p>
+</p>
+<a name="node_sec_3.4"></a>
+<h2 class=section><a href="material-Z-H-2.html#node_toc_node_sec_3.4">3.4&nbsp;&nbsp;Local Definitions: Go fast!</a></h2>
+<p></p>
+<div align=left><pre class=scheme><span class=comment>;; A <code class=scheme><span class=variable>NEL</span></code> is one of: </span>
+<span class=comment>;; --- <code class=scheme>(<span class=builtin>cons</span> <span class=variable>Number</span> <span class=builtin>empty</span>)</code></span>
+<span class=comment>;; --- <code class=scheme>(<span class=builtin>cons</span> <span class=variable>Number</span> <span class=variable>NEL</span>)</code></span>
+
+<span class=comment>;; <code class=scheme><span class=variable>NEL</span> &nbsp;&rarr;&nbsp; <span class=variable>Number</span></code></span>
+<span class=comment>;; find the largest number in <code class=scheme><span class=variable>l</span></code></span>
+<span class=comment>;; examples: <code class=scheme>(<span class=builtin>list</span> <span class=selfeval>1</span> <span class=selfeval>2</span> <span class=selfeval>3</span>)</code> produces <code class=scheme><span class=selfeval>3</span></code></span>
+(<span class=keyword>define</span> (<span class=variable>largest</span> <span class=variable>l</span>)
+  (<span class=keyword>cond</span>
+    [(<span class=builtin>empty?</span> (<span class=builtin>rest</span> <span class=variable>l</span>)) (<span class=builtin>first</span> <span class=variable>l</span>)]
+    [<span class=keyword>else</span> (<span class=keyword>cond</span>
+	    [(<span class=builtin>&gt;</span> (<span class=builtin>first</span> <span class=variable>l</span>) (<span class=variable>largest</span> (<span class=builtin>rest</span> <span class=variable>l</span>))) (<span class=builtin>first</span> <span class=variable>l</span>)]
+	    [<span class=keyword>else</span> (<span class=variable>largest</span> (<span class=builtin>rest</span> <span class=variable>l</span>))])]))
+
+<span class=comment>;; test: </span>
+(<span class=builtin>=</span> (<span class=variable>largest</span> (<span class=builtin>list</span> <span class=selfeval>1</span> <span class=selfeval>2</span> <span class=selfeval>3</span>)) <span class=selfeval>3</span>)
+
+<span class=comment>;; run program run </span>
+
+(<span class=variable>largest</span> (<span class=builtin>list</span> <span class=selfeval>1</span> <span class=selfeval>2</span> <span class=selfeval>3</span> <span class=selfeval>4</span> <span class=selfeval>5</span> <span class=selfeval>6</span> <span class=selfeval>7</span> <span class=selfeval>8</span> <span class=selfeval>9</span> <span class=selfeval>10</span> <span class=selfeval>11</span> <span class=selfeval>12</span> <span class=selfeval>13</span> <span class=selfeval>14</span> <span class=selfeval>15</span> <span class=selfeval>16</span> <span class=selfeval>17</span>)) <span class=comment>; produces</span>
+<span class=selfeval>17</span>
+
+(<span class=variable>largest</span>
+ (<span class=builtin>list</span> <span class=selfeval>1</span> <span class=selfeval>2</span> <span class=selfeval>3</span> <span class=selfeval>4</span> <span class=selfeval>5</span> <span class=selfeval>6</span> <span class=selfeval>7</span> <span class=selfeval>8</span> <span class=selfeval>9</span> <span class=selfeval>10</span> <span class=selfeval>11</span> <span class=selfeval>12</span> <span class=selfeval>13</span> <span class=selfeval>14</span> <span class=selfeval>15</span> <span class=selfeval>16</span> <span class=selfeval>17</span> <span class=selfeval>18</span> <span class=selfeval>19</span> <span class=selfeval>20</span> <span class=selfeval>21</span> <span class=selfeval>22</span> <span class=selfeval>23</span>)) 
+</pre></div><p></p>
+<p>
+Use <code class=scheme><span class=keyword>local</span></code> definitions instead: 
+</p>
+<div align=left><pre class=scheme><span class=comment>;; <code class=scheme><span class=variable>NEL</span> &nbsp;&rarr;&nbsp; <span class=variable>Number</span></code></span>
+<span class=comment>;; find the largest number in <code class=scheme><span class=variable>l</span></code></span>
+<span class=comment>;; examples: <code class=scheme>(<span class=builtin>list</span> <span class=selfeval>1</span> <span class=selfeval>2</span> <span class=selfeval>3</span>)</code> produces <code class=scheme><span class=selfeval>3</span></code></span>
+(<span class=keyword>define</span> (<span class=variable>largest</span> <span class=variable>l</span>)
+  (<span class=keyword>cond</span>
+    [(<span class=builtin>empty?</span> (<span class=builtin>rest</span> <span class=variable>l</span>)) (<span class=builtin>first</span> <span class=variable>l</span>)]
+    [<span class=keyword>else</span> (<span class=keyword>local</span> ((<span class=keyword>define</span> <span class=variable>max-in-rest</span> (<span class=variable>largest</span> (<span class=builtin>rest</span> <span class=variable>l</span>))))
+	    (<span class=keyword>cond</span> [(<span class=builtin>&gt;</span> (<span class=builtin>first</span> <span class=variable>l</span>) <span class=variable>max-in-rest</span>) (<span class=builtin>first</span> <span class=variable>l</span>)]
+	          [<span class=keyword>else</span> <span class=variable>max-in-rest</span>])])))
+</pre></div><p></p>
+<p>
+</p>
+<a name="node_sec_3.5"></a>
+<h2 class=section><a href="material-Z-H-2.html#node_toc_node_sec_3.5">3.5&nbsp;&nbsp;Local Definitions: Just Do It</a></h2>
+<p></p>
+<div align=left><pre class=scheme><span class=comment>;; <code class=scheme><strong> N</strong> &nbsp;&rarr;&nbsp;  <span class=variable>Matrix</span></code></span>
+<span class=comment>;; create a 1 diagonal in an n x n square</span>
+(<span class=keyword>define</span> (<span class=variable>diagonal</span> <span class=variable>n</span>)
+  (<span class=keyword>local</span> (<span class=comment>;; <code class=scheme><strong> N</strong> &nbsp;&rarr;&nbsp; <span class=variable>Matrix</span></code></span>
+          <span class=comment>;; produce i rows of width n with 1&#8217;s in the diagonal positions</span>
+          <span class=comment>;; example: <code class=scheme>(<span class=variable>aux</span> <span class=variable>n</span>)</code> produces (list (list 0 0 ... 1))</span>
+          (<span class=keyword>define</span> (<span class=variable>aux</span> <span class=variable>i</span>)
+            (<span class=keyword>cond</span>
+              [(<span class=builtin>zero?</span> <span class=variable>i</span>) <span class=builtin>empty</span>]
+              [<span class=keyword>else</span> (<span class=builtin>cons</span> (<span class=variable>row</span> <span class=variable>n</span> <span class=variable>i</span>) (<span class=variable>aux</span> (<span class=builtin>sub1</span> <span class=variable>i</span>)))]))
+          <span class=comment>;; <code class=scheme><strong> N</strong> &nbsp;&rarr;&nbsp; <span class=variable>NumberList</span></code></span>
+          <span class=comment>;; produce one row of width <code class=scheme><span class=variable>n</span></code> with a 1 in position i</span>
+          <span class=comment>;; example: <code class=scheme>(<span class=variable>row</span> <span class=selfeval>3</span> <span class=selfeval>1</span>)</code> produces <code class=scheme>(<span class=builtin>list</span> <span class=selfeval>1</span> <span class=selfeval>0</span> <span class=selfeval>0</span>)</code></span>
+          (<span class=keyword>define</span> (<span class=variable>row</span> <span class=variable>n</span> <span class=variable>i</span>)
+            (<span class=keyword>cond</span>
+              [(<span class=builtin>zero?</span> <span class=variable>n</span>) <span class=builtin>empty</span>]
+              [<span class=keyword>else</span> (<span class=keyword>cond</span> [(<span class=builtin>=</span> <span class=variable>i</span> <span class=variable>n</span>) (<span class=builtin>cons</span> <span class=selfeval>1</span> (<span class=variable>row</span> (<span class=builtin>sub1</span> <span class=variable>n</span>) <span class=variable>i</span>))]
+                          [<span class=keyword>else</span> (<span class=builtin>cons</span> <span class=selfeval>0</span> (<span class=variable>row</span> (<span class=builtin>sub1</span> <span class=variable>n</span>) <span class=variable>i</span>))])])))
+    (<span class=variable>aux</span> <span class=variable>n</span>)))
+
+<span class=comment>;; tests: </span>
+(<span class=builtin>equal?</span> (<span class=variable>diagonal</span> <span class=selfeval>3</span>)
+        (<span class=builtin>list</span> (<span class=builtin>list</span> <span class=selfeval>1</span> <span class=selfeval>0</span> <span class=selfeval>0</span>)
+              (<span class=builtin>list</span> <span class=selfeval>0</span> <span class=selfeval>1</span> <span class=selfeval>0</span>)
+              (<span class=builtin>list</span> <span class=selfeval>0</span> <span class=selfeval>0</span> <span class=selfeval>1</span>)))
+
+(<span class=builtin>equal?</span> (<span class=variable>diagonal</span> <span class=selfeval>1</span>)
+        (<span class=builtin>list</span> (<span class=builtin>list</span> <span class=selfeval>1</span>)))
+
+(<span class=builtin>equal?</span> (<span class=variable>diagonal</span> <span class=selfeval>0</span>)
+        <span class=builtin>empty</span>)
+</pre></div><p></p>
+<p>
+</p>
+<a name="node_sec_3.6"></a>
+<h2 class=section><a href="material-Z-H-2.html#node_toc_node_sec_3.6">3.6&nbsp;&nbsp;Lexical Scope</a></h2>
+<p></p>
+<p>
+
+</p>
+<p>
+</p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p>
+</p>
+<div align=center><table><tr><td>
+
+
+
+<center>
+<img src=Images/lexscope2.jpg width="400" alt="[lexical scope]">
+<img src=Images/lexscope1.jpg width="400" alt="[lexical scope]">
+<center>
+</td></tr></table></div>
+<p>
+</p>
+<div class=smallskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+<div align=right class=navigation>[Go to <span><a href="material.html">first</a>, <a href="material-Z-H-10.html">previous</a></span><span>, <a href="material-Z-H-12.html">next</a></span> page<span>; &nbsp;&nbsp;</span><span><a href="material-Z-H-2.html#node_toc_start">contents</a></span>]</div>
+</p>
+<p></p>
+</div>
+</body>
+</html>

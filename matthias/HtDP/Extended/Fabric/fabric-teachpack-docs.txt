@@ -1,0 +1,42 @@
+The fabric teachpack provides the following images and functions.  The
+color arguments should be symbols of color names (such as 'red or
+'teal).  The list of known colors is huge and includes all the
+standard color names.
+
+IMAGES (use the names given here to refer to the images)
+
+  tshirt
+  hat 
+  worm 
+  chili
+  flower
+  
+
+FUNCTIONS
+
+  ;; white-image : number number -> image
+  ;; produces a white (blank) image with given width and height
+  
+  ;; create-solid-fabric : color image -> image
+  ;; produces solid color image of same size as given image
+  
+  ;; create-print-fabric : image image -> image
+  ;; produces tiles of first image to match size of second image 
+ 
+  ;; create-horiz-stripe-fabric : color number image -> image
+  ;; produces image with horiz stripes of given color and width of given image size
+  
+  ;; create-vertical-stripe-fabric : color number image -> image
+  ;; produces image with vertical stripes of given color and width of given image size
+  
+  ;; add-print : image image -> image
+  ;; overlays tiles of first image onto second image 
+  
+  ;; add-horiz-stripe : color number image -> image
+  ;; overlays horizontal stripe of given color and height on given image
+  
+  ;; add-vertical-stripe : color number image -> image
+  ;; overlays vertical stripe of given color and width on given image 
+  
+  ;; dye-fabric : image color -> image
+  ;; produces image with all white parts of original image in given color

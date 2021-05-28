@@ -1,0 +1,19 @@
+\documentclass{article}
+\usepackage{epsf}
+\def\alt{ | }
+
+\def\apicture#1{\epsfbox{Images/#1.ps}}
+\def\rect#1#2{
+\begin{picture}(#1,#2)
+%% the panel
+\put(00,00){\line(0,1){#2}}
+\put(#1,00){\line(0,1){#2}}
+\put(00,00){\line(1,0){#1}}
+\put(00,#2){\line(1,0){#1}}
+\end{picture}}
+
+
+
+\thispagestyle{empty}
+\begin{document}
+\epsfbox{Images/xhtml.ps}\end{document}

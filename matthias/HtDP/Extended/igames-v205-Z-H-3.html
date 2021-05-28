@@ -1,0 +1,179 @@
+<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--
+
+Generated from igames.tex by tex2page, v 2003-07-17
+(running on MzScheme 204.10, unix), 
+(c) Dorai Sitaram, 
+http://www.ccs.neu.edu/~dorai/tex2page/tex2page-doc.html
+
+-->
+<head>
+<title>
+igames
+</title>
+<link rel="stylesheet" type="text/css" href="igames-v205-Z-S.css" title=default>
+<meta name=robots content="noindex,follow">
+</head>
+<body>
+<div align=right class=navigation><i>[Go to <span><a href="igames-v205.html">first</a>, <a href="igames-Z-H-2.html">previous</a></span><span class=disable>, next</span> page]</i></div><p></p>
+<a name="node_sec_4"></a>
+<h1>4&nbsp;&nbsp;Falling Rocks</h1>
+<p></p>
+<div align=left><pre class=scheme><span class=comment>;; Evading Falling Rocks</span>
+
+<span class=comment>;; Author: Matthias Felleisen</span>
+<span class=comment>;; Date: 12/11/2002</span>
+<span class=comment>;; DrScheme v203</span>
+<span class=comment>;; Language: Intermediate</span>
+<span class=comment>;; Teachpack: draw.ss</span>
+
+<span class=comment>;; Data Definition:</span>
+(<span class=keyword>define-struct</span> <span class=variable>shape</span> (<span class=variable>posn</span> <span class=variable>vel</span>))
+<span class=comment>;; Shape = (make-shape Posn Posn)</span>
+
+<span class=comment>;; A Key is one of: -- from draw.ss docs</span>
+<span class=comment>;; - Boolean</span>
+<span class=comment>;; - Character</span>
+<span class=comment>;; - Symbol ('up, 'down, 'left, 'right)</span>
+
+<span class=comment>;; <code class=scheme><span class=variable>Posn</span> (<span class=keyword>Listof</span> <span class=variable>Shape</span>) &nbsp;-->&nbsp; <span class=variable>Boolean</span></code></span>
+<span class=comment>;; to drop rocks on the player for n rounds </span>
+<span class=comment>;; or until there are no more rocks or the player is hit</span>
+<span class=comment>;; generative recursion: update player's position and rocks for each iteration</span>
+(<span class=keyword>define</span> (<span class=variable>evade-rocks</span> <span class=variable>player</span> <span class=variable>rocks</span> <span class=variable>n</span>)
+  (<span class=keyword>cond</span>
+    [(<span class=builtin>empty?</span> <span class=variable>rocks</span>) <span class=builtin>true</span>]
+    [(<span class=builtin>zero?</span> <span class=variable>n</span>) <span class=builtin>true</span>]
+    [(<span class=variable>hit-any?</span> <span class=variable>player</span> <span class=variable>rocks</span>) <span class=builtin>false</span>]
+    [<span class=keyword>else</span>
+     (<span class=keyword>local</span> ([<span class=keyword>define</span> <span class=builtin>floor</span> (<span class=variable>draw-solid-line</span> (<span class=builtin>make-posn</span> <span class=selfeval>0</span> <span class=builtin>FLOOR</span>) (<span class=builtin>make-posn</span> <span class=variable>WIDTH</span> <span class=builtin>FLOOR</span>) <span class=keyword>'</span><span class=variable>blue</span>)])
+       (<span class=variable>evade-rocks</span> (<span class=variable>move-player</span> <span class=variable>player</span> (<span class=variable>get-key-event</span>)) (<span class=variable>add-a-rock</span> (<span class=variable>move-rocks</span> <span class=variable>rocks</span>)) (<span class=builtin>sub1</span> <span class=variable>n</span>)))]))
+
+<span class=comment>;; <code class=scheme><span class=variable>Posn</span> (<span class=keyword>Listof</span> <span class=variable>Shape</span>) &nbsp;-->&nbsp; <span class=variable>Boolean</span></code></span>
+<span class=comment>;; is any of the rocks close enough to the player? </span>
+(<span class=keyword>define</span> (<span class=variable>hit-any?</span> <span class=variable>player</span> <span class=variable>rocks</span>)
+  (<span class=keyword>local</span> ((<span class=keyword>define</span> (<span class=variable>hit?</span> <span class=variable>r</span>)
+            (<span class=builtin>&lt;=</span> (<span class=variable>distance</span> <span class=variable>player</span> (<span class=variable>shape-posn</span> <span class=variable>r</span>)) <span class=variable>MAN</span>)))
+    (<span class=builtin>ormap</span> <span class=variable>hit?</span> <span class=variable>rocks</span>)))
+
+<span class=comment>;; <code class=scheme><span class=variable>Posn</span> <span class=variable>Posn</span> &nbsp;-->&nbsp; <span class=variable>Number</span></code></span>
+<span class=comment>;; to compute the distance between two positions </span>
+(<span class=keyword>define</span> (<span class=variable>distance</span> <span class=variable>p</span> <span class=variable>q</span>)
+  (<span class=builtin>sqrt</span>
+   (<span class=builtin>+</span> (<span class=builtin>sqr</span> (<span class=builtin>-</span> (<span class=builtin>posn-x</span> <span class=variable>p</span>) (<span class=builtin>posn-x</span> <span class=variable>q</span>)))
+      (<span class=builtin>sqr</span> (<span class=builtin>-</span> (<span class=builtin>posn-y</span> <span class=variable>p</span>) (<span class=builtin>posn-y</span> <span class=variable>q</span>))))))
+
+<span class=comment>;; <code class=scheme><span class=variable>Posn</span> <span class=variable>Key</span> &nbsp;-->&nbsp; <span class=variable>Posn</span></code></span>
+<span class=comment>;; to move a player according to the key stroke </span>
+<span class=comment>;; effect: clear old one, draw new one</span>
+(<span class=keyword>define</span> (<span class=variable>move-player</span> <span class=variable>p</span> <span class=variable>a-key</span>)
+  (<span class=keyword>local</span> ([<span class=keyword>define</span> <span class=variable>new-player</span> (<span class=variable>translate-player</span> <span class=variable>p</span> <span class=variable>a-key</span>)]
+          [<span class=keyword>define</span> <span class=variable>clearing</span> (<span class=variable>clear-solid-disk</span> <span class=variable>p</span> <span class=variable>MAN</span> <span class=keyword>'</span><span class=variable>red</span>)]
+          [<span class=keyword>define</span> <span class=variable>drawing</span> (<span class=variable>draw-solid-disk</span> <span class=variable>new-player</span> <span class=variable>MAN</span> <span class=keyword>'</span><span class=variable>red</span>)])
+    <span class=variable>new-player</span>))
+
+<span class=comment>;; <code class=scheme><span class=variable>Posn</span> <span class=variable>Key</span> &nbsp;-->&nbsp; <span class=variable>Posn</span></code></span>
+<span class=comment>;; to compute the new position of the player according to keystroke</span>
+(<span class=keyword>define</span> (<span class=variable>translate-player</span> <span class=variable>p</span> <span class=variable>a-key</span>)
+  (<span class=keyword>cond</span>
+    [(<span class=builtin>boolean?</span> <span class=variable>a-key</span>) <span class=variable>p</span>]
+    [(<span class=builtin>char?</span> <span class=variable>a-key</span>) <span class=variable>p</span>]
+    [(<span class=builtin>symbol?</span> <span class=variable>a-key</span>) 
+     (<span class=keyword>cond</span>
+       [(<span class=builtin>symbol=?</span> <span class=keyword>'</span><span class=variable>left</span> <span class=variable>a-key</span>) (<span class=variable>posn+</span> <span class=variable>p</span> <span class=variable>LEFT</span>)] 
+       [(<span class=builtin>symbol=?</span> <span class=keyword>'</span><span class=variable>right</span> <span class=variable>a-key</span>) (<span class=variable>posn+</span> <span class=variable>p</span> <span class=variable>RIGHT</span>)] 
+       [<span class=keyword>else</span> <span class=variable>p</span>])]))
+
+<span class=comment>;; <code class=scheme>(<span class=keyword>Listof</span> <span class=variable>Shape</span>) &nbsp;-->&nbsp; (<span class=keyword>Listof</span> <span class=variable>Shape</span>)</code></span>
+<span class=comment>;; to move all the rocks according to their velocity property</span>
+(<span class=keyword>define</span> (<span class=variable>move-rocks</span> <span class=variable>rocks</span>)
+  (<span class=keyword>local</span> ([<span class=keyword>define</span> <span class=variable>new-rocks</span> (<span class=variable>translate-rocks</span> <span class=variable>rocks</span>)]
+          [<span class=keyword>define</span> <span class=variable>clearing</span> 
+            (<span class=builtin>andmap</span> (<span class=keyword>lambda</span> (<span class=variable>r</span>) (<span class=variable>clear-solid-disk</span> (<span class=variable>shape-posn</span> <span class=variable>r</span>) <span class=selfeval>3</span> <span class=keyword>'</span><span class=variable>black</span>))
+                    <span class=variable>rocks</span>)]
+          [<span class=keyword>define</span> <span class=variable>drawing</span> 
+            (<span class=builtin>andmap</span> (<span class=keyword>lambda</span> (<span class=variable>r</span>) (<span class=variable>draw-solid-disk</span> (<span class=variable>shape-posn</span> <span class=variable>r</span>) <span class=selfeval>3</span> <span class=keyword>'</span><span class=variable>black</span>))
+                    <span class=variable>new-rocks</span>)]
+          [<span class=keyword>define</span> <span class=variable>_</span> (<span class=variable>sleep-for-a-while</span> <span class=selfeval>.1</span>)])
+    <span class=variable>new-rocks</span>))
+
+<span class=comment>;; <code class=scheme>(<span class=keyword>Listof</span> <span class=variable>Shape</span>) &nbsp;-->&nbsp; (<span class=keyword>Listof</span> <span class=variable>Shape</span>)</code></span>
+<span class=comment>;; to compute the new positions of the rocks according to their velocity</span>
+<span class=comment>;; and to throw away all those that are no longer above the floor </span>
+(<span class=keyword>define</span> (<span class=variable>translate-rocks</span> <span class=variable>rocks</span>)
+  (<span class=builtin>filter</span> <span class=variable>in-bounds?</span> 
+          (<span class=builtin>map</span> (<span class=keyword>lambda</span> (<span class=variable>r</span>)
+                 (<span class=keyword>local</span> ([<span class=keyword>define</span> <span class=variable>vel</span> (<span class=variable>shape-vel</span> <span class=variable>r</span>)])
+                   (<span class=variable>make-shape</span> (<span class=variable>posn+</span> (<span class=variable>shape-posn</span> <span class=variable>r</span>) <span class=variable>vel</span>) <span class=variable>vel</span>)))
+               <span class=variable>rocks</span>)))
+
+<span class=comment>;; <code class=scheme><span class=variable>Shape</span> &nbsp;-->&nbsp; <span class=variable>Boolean</span></code></span>
+<span class=comment>;; is a rock above the floor still? </span>
+(<span class=keyword>define</span> (<span class=variable>in-bounds?</span> <span class=variable>r</span>)
+  (<span class=builtin>&lt;=</span> (<span class=builtin>posn-x</span> (<span class=variable>shape-posn</span> <span class=variable>r</span>)) <span class=builtin>FLOOR</span>))
+
+<span class=comment>;; <code class=scheme>(<span class=keyword>Listof</span> <span class=variable>Shape</span>) &nbsp;-->&nbsp; (<span class=keyword>Listof</span> <span class=variable>Shape</span>)</code></span>
+<span class=comment>;; flip a coin and, if okay, add a rock</span>
+(<span class=keyword>define</span> (<span class=variable>add-a-rock</span> <span class=variable>rocks</span>)
+  (<span class=keyword>cond</span> <span class=comment>; throw a die</span>
+    [(<span class=builtin>&lt;=</span> (<span class=builtin>random</span> <span class=selfeval>100</span>) <span class=variable>CHANCES</span>) (<span class=builtin>cons</span> (<span class=variable>make-rock</span> <span class=keyword>'</span><span class=variable>go</span>) <span class=variable>rocks</span>)]
+    [<span class=keyword>else</span> <span class=variable>rocks</span>]))
+
+<span class=comment>;; <code class=scheme><span class=variable>_</span> &nbsp;-->&nbsp; <span class=variable>Shape</span></code></span>
+<span class=comment>;; create a random rock</span>
+(<span class=keyword>define</span> (<span class=variable>make-rock</span> <span class=variable>go</span>)
+  (<span class=variable>make-shape</span> (<span class=builtin>make-posn</span> (<span class=builtin>random</span> <span class=variable>WIDTH</span>) (<span class=builtin>-</span> (<span class=builtin>random</span> <span class=variable>HEIGHT</span>) <span class=variable>MIN-H</span>)) 
+              (<span class=builtin>make-posn</span> <span class=selfeval>0</span> (<span class=builtin>+</span> <span class=variable>MIN-DOWN</span> (<span class=builtin>random</span> <span class=selfeval>10</span>)))))
+
+<span class=comment>;; <code class=scheme><span class=variable>Posn</span> <span class=variable>Posn</span> &nbsp;-->&nbsp; <span class=variable>Posn</span></code></span>
+<span class=comment>;; add two positions pointwise </span>
+(<span class=keyword>define</span> (<span class=variable>posn+</span> <span class=variable>p</span> <span class=variable>q</span>)
+  (<span class=builtin>make-posn</span> (<span class=builtin>+</span> (<span class=builtin>posn-x</span> <span class=variable>p</span>) (<span class=builtin>posn-x</span> <span class=variable>q</span>)) (<span class=builtin>+</span> (<span class=builtin>posn-y</span> <span class=variable>p</span>) (<span class=builtin>posn-y</span> <span class=variable>q</span>))))
+
+<span class=comment>;; Constants </span>
+(<span class=keyword>define</span> <span class=variable>HEIGHT</span> <span class=selfeval>300</span>)
+(<span class=keyword>define</span> <span class=variable>WIDTH</span>  <span class=selfeval>300</span>) 
+(<span class=keyword>define</span> <span class=builtin>FLOOR</span>  <span class=selfeval>250</span>)
+
+(<span class=keyword>define</span> <span class=variable>MAN</span>     <span class=selfeval>10</span>)
+(<span class=keyword>define</span> <span class=variable>MIN-H</span>   <span class=selfeval>50</span>)
+(<span class=keyword>define</span> <span class=variable>MIN-DOWN</span> <span class=selfeval>3</span>)
+
+(<span class=keyword>define</span> <span class=variable>LEFT</span> (<span class=builtin>make-posn</span> <span class=selfeval>-3</span> <span class=selfeval>0</span>))
+(<span class=keyword>define</span> <span class=variable>RIGHT</span> (<span class=builtin>make-posn</span> <span class=selfeval>+3</span> <span class=selfeval>0</span>))
+
+(<span class=keyword>define</span> <span class=variable>CHANCES</span> <span class=selfeval>10</span>) <span class=comment>; </span>
+
+<span class=comment>#| Tests:
+
+(equal? (make-posn 212 104)
+        (posn+ (make-posn 10 101) (make-posn 202 3)))
+
+(equal? LEFT
+        (translate-player (make-posn 0 0) 'left))
+
+(equal? RIGHT
+        (translate-player (make-posn 0 0) 'right))
+
+(equal? (make-posn 10 10)
+        (translate-player (make-posn 10 10) #\c))
+
+(equal? (list (make-shape (make-posn 0 20) (make-posn 0 20)))
+        (translate-rocks (list (make-shape (make-posn 0 0) (make-posn 0 20)) 
+                               (make-shape (make-posn HEIGHT 0) (make-posn 10 10)))))
+ |#</span>
+
+
+<span class=comment>;; --- run, program, run ---</span>
+(<span class=variable>start</span> <span class=variable>HEIGHT</span> <span class=variable>WIDTH</span>)
+
+(<span class=variable>evade-rocks</span> (<span class=builtin>make-posn</span> (<span class=builtin>/</span> <span class=variable>WIDTH</span> <span class=selfeval>2</span>) <span class=builtin>FLOOR</span>) (<span class=builtin>list</span> (<span class=variable>make-rock</span> <span class=keyword>'</span><span class=variable>go</span>)) <span class=selfeval>10000</span>)
+
+</pre></div><p></p>
+<p>
+</p>
+
+<div align=right class=navigation><i>[Go to <span><a href="igames-v205.html">first</a>, <a href="igames-Z-H-2.html">previous</a></span><span class=disable>, next</span> page]</i></div><p></p>
+</body>
+</html>

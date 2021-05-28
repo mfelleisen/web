@@ -1,0 +1,34 @@
+<html>
+<head>
+<title>Documentation: image.ss</title>
+</head>
+<body>
+<h1>Documentation: image.ss</h1>
+
+<pre>
+<code>
+;; forall(World):
+   start         ;; Number Number -> true
+   big-bang      ;; Number World -> true 
+   on-tick-event ;; (World -> World) -> true
+   on-key-event  ;; (KeyEvent World -> World) -> true 
+   end-of-time   ;; -> World
+
+   rectangle   ;; Number Number Color -> Image
+   frame       ;; Number Number Color -> Image
+   circle      ;; Number Color -> Image 
+   disk        ;; Number Color -> Image 
+   place-image ;; Image Number Number Scence -> Scene
+   empty-scene ;; Number Number -> Scene 
+   run-movie   ;; (Listof Image) -> true 
+
+;; New syntax: 
+   (<b>update</b> &langle;expression&rangle; <b>produce</b?> <expression>)
+</code>
+</pre>
+</body>
+</html>
+
+
+  
+

@@ -1,0 +1,127 @@
+<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--
+
+Generated from material.tex by tex2page, v 20070609
+(running on MzScheme 370.6, unix), 
+(c) Dorai Sitaram, 
+http://www.ccs.neu.edu/~dorai/tex2page/tex2page-doc.html
+
+-->
+<head>
+<title>
+material
+</title>
+<link rel="stylesheet" type="text/css" href="material-Z-S.css" title=default>
+<meta name=robots content="noindex,follow">
+</head>
+<body>
+<div id=slidecontent>
+<div align=right class=navigation>[Go to <span><a href="material.html">first</a>, <a href="material-Z-H-23.html">previous</a></span><span>, <a href="material-Z-H-25.html">next</a></span> page<span>; &nbsp;&nbsp;</span><span><a href="material-Z-H-2.html#node_toc_start">contents</a></span>]</div>
+<p></p>
+<p>
+</p>
+<a name="node_sec_7.3"></a>
+<h2 class=section><a href="material-Z-H-2.html#node_toc_node_sec_7.3">7.3&nbsp;&nbsp;Example: Keeping Track of Grades</a></h2>
+<p>Data definitions: 
+</p>
+<div align=left><pre class=scheme><span class=comment>;; A <code class=scheme><span class=variable>gradebook</span></code> (<code class=scheme><span class=variable>gb</span></code>) is: <code class=scheme>(<span class=keyword>Listof</span> <span class=variable>GBE</span>)</code>.</span>
+
+(<span class=keyword>define-struct</span> <span class=variable>gbe</span> (<span class=variable>name</span> <span class=variable>grades</span>))
+<span class=comment>;; A <code class=scheme><span class=variable>GBE</span></code> (grade-book entry) is: </span>
+<span class=comment>;; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <code class=scheme>(<span class=builtin>make-gbe</span> <span class=variable>symbol</span> (<span class=keyword>Listof</span> <span class=variable>Number</span>))</code></span>
+
+<span class=comment>;; Example:</span>
+(<span class=keyword>define</span> <span class=variable>gradebook</span>
+  (<span class=builtin>list</span> (<span class=builtin>make-gbe</span> <span class=keyword>'</span><span class=variable>ALICE</span> (<span class=builtin>list</span> <span class=selfeval>49</span> <span class=selfeval>81</span> <span class=selfeval>64</span>))
+        (<span class=builtin>make-gbe</span> <span class=keyword>'</span><span class=variable>BOB</span>   (<span class=builtin>list</span> <span class=selfeval>16</span> <span class=selfeval>31</span> <span class=selfeval>27</span>))
+        (<span class=builtin>make-gbe</span> <span class=keyword>'</span><span class=variable>CARL</span>  (<span class=builtin>list</span> <span class=selfeval>27</span> <span class=selfeval>64</span> <span class=selfeval>8</span>))))
+</pre></div><p></p>
+<p>
+</p>
+<p></p>
+<hr>
+<p></p>
+<p><strong>Exercise</strong>
+</p>
+<p></p>
+<p>
+</p>
+<p><a name="node_thm_7.1"></a>
+<b>Exercise 7.1.</b>&nbsp;&nbsp;
+Design 
+</p>
+<div align=left><pre class=scheme><span class=comment>;; <code class=scheme><span class=variable>students-in</span> <span class=selfeval>:</span> <span class=variable>GB</span> &nbsp;&rarr;&nbsp; (<span class=keyword>Listof</span> <span class=variable>Symbol</span>)</code></span>
+</pre></div><p>
+which enumerates the students in the course (duplicates are okay).&nbsp;</p>
+<p></p>
+<p>
+</p>
+<p><a name="node_thm_7.2"></a>
+<b>Exercise 7.2.</b>&nbsp;&nbsp;
+Design 
+</p>
+<div align=left><pre class=scheme><span class=comment>;; <code class=scheme><span class=variable>grades-of</span> <span class=selfeval>:</span> <span class=variable>GB</span> <span class=variable>Symbol</span> &nbsp;&rarr;&nbsp; (<span class=keyword>Listof</span> <span class=variable>Number</span>)</code></span>
+</pre></div><p>
+which extracts the grades for a given student from the given <code class=scheme><span class=variable>GB</span></code>.&nbsp;</p>
+<p></p>
+<p>
+</p>
+<p><a name="node_thm_7.3"></a>
+<b>Exercise 7.3.</b>&nbsp;&nbsp;
+Design 
+</p>
+<div align=left><pre class=scheme><span class=comment>;; <code class=scheme><span class=variable>total-of</span> <span class=selfeval>:</span> <span class=variable>GB</span> <span class=variable>Symbol</span> &nbsp;&rarr;&nbsp; <span class=variable>Number</span></code></span>
+</pre></div><p>
+computes the total score for a given student from the given <code class=scheme><span class=variable>GB</span></code>.&nbsp;</p>
+<p></p>
+<p>
+</p>
+<p><a name="node_thm_7.4"></a>
+<b>Exercise 7.4.</b>&nbsp;&nbsp;
+Design 
+</p>
+<div align=left><pre class=scheme><span class=comment>;; <code class=scheme><span class=variable>highest-total</span> <span class=selfeval>:</span> <span class=variable>GB</span> &nbsp;&rarr;&nbsp; <span class=variable>Number</span></code></span>
+</pre></div><p>
+which determines who has the highest total score in the class.&nbsp;</p>
+<p></p>
+<p>
+</p>
+<p><a name="node_thm_7.5"></a>
+<b>Exercise 7.5.</b>&nbsp;&nbsp;
+Design 
+</p>
+<div align=left><pre class=scheme><span class=comment>;; <code class=scheme><span class=variable>chart-grades</span> <span class=selfeval>:</span> <span class=variable>GB</span> &nbsp;&rarr;&nbsp; <span class=variable>Histogram</span></code></span>
+</pre></div><p>
+which consumes a gradebook and generates a histogram. </p>
+<p>
+</p>
+<div align=left><pre class=scheme><span class=comment>;; A <code class=scheme><span class=variable>Histogram</span></code> is: <code class=scheme>(<span class=keyword>Listof</span> <span class=variable>HistoLine</span>)</code>.</span>
+
+(<span class=keyword>define-struct</span> <span class=variable>histoline</span> (<span class=variable>name</span> <span class=variable>result</span>))
+<span class=comment>;; A <code class=scheme><span class=variable>HistoLine</span></code> is:  <code class=scheme>(<span class=variable>make-histoline</span> <span class=variable>Symbol</span> <span class=variable>String</span>)</code></span>
+<span class=comment>;; Note: the <code class=scheme><span class=variable>result</span></code> string is at most 60 characters long. </span>
+</pre></div><p></p>
+<p>
+Each item of the generated list is a name combined with a string
+representing the histogram entry.  The longest string, representing the
+person with the highest grade, should be 60 characters long.  Every other
+string should be proportionally shorter.  You may need some math functions
+to help you compute the lengths of strings; once you&#8217;ve determined what
+functions you need, ask the TAs for help finding these in Scheme or
+experiment or use the HelpDesk.&nbsp;</p>
+<p></p>
+<hr>
+<p></p>
+<p></p>
+<p></p>
+<p>
+</p>
+<div class=smallskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+<div align=right class=navigation>[Go to <span><a href="material.html">first</a>, <a href="material-Z-H-23.html">previous</a></span><span>, <a href="material-Z-H-25.html">next</a></span> page<span>; &nbsp;&nbsp;</span><span><a href="material-Z-H-2.html#node_toc_start">contents</a></span>]</div>
+</p>
+<p></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--
+
+Generated from material.tex by tex2page, v 20070609
+(running on MzScheme 370.6, unix), 
+(c) Dorai Sitaram, 
+http://www.ccs.neu.edu/~dorai/tex2page/tex2page-doc.html
+
+-->
+<head>
+<title>
+material
+</title>
+<link rel="stylesheet" type="text/css" href="material-Z-S.css" title=default>
+<meta name=robots content="noindex,follow">
+</head>
+<body>
+<div id=slidecontent>
+<div align=right class=navigation>[Go to <span><a href="material.html">first</a>, <a href="material-Z-H-15.html">previous</a></span><span>, <a href="material-Z-H-17.html">next</a></span> page<span>; &nbsp;&nbsp;</span><span><a href="material-Z-H-2.html#node_toc_start">contents</a></span>]</div>
+<p></p>
+<p>
+</p>
+<p></p>
+<hr>
+<p></p>
+<p><strong>Exercises</strong>
+</p>
+<p></p>
+<p>
+</p>
+<p><a name="node_thm_5.1"></a>
+<b>Exercise 5.1.</b>&nbsp;&nbsp; [*] 
+Develop the function <code class=scheme><span class=variable>allergic</span></code>. The function consumes a
+<code class=scheme><span class=variable>Request</span></code> (see exercise&nbsp;<a href="material-Z-H-6.html#node_thm_1.3">1.3</a> and produces the list of
+strings that are associated with <code class=scheme><span class=builtin>false</span></code> in the <code class=scheme><span class=variable>Request</span></code>.</p>
+<p>
+</p>
+
+<p class=noindent>Compare <code class=scheme><span class=variable>allergic</span></code> with <code class=scheme><span class=variable>toppings</span></code> (also see
+exercise&nbsp;<a href="material-Z-H-6.html#node_thm_1.3">1.3</a>). Abstract the two functions into a single
+function.</p>
+<p>
+</p>
+
+<p class=noindent>Optional: Can you use the new function to extract all positive
+numbers from a list of numbers? If not, can you create a common
+abstraction?&nbsp;</p>
+<p></p>
+<p>
+</p>
+<p><a name="node_thm_5.2"></a>
+<b>Exercise 5.2.</b>&nbsp;&nbsp; [challenging!]
+Compare these two functions: 
+</p>
+<div align=center><table><tr><td>
+
+</td><td><div align=left><pre class=scheme><span class=comment>;; <code class=scheme><strong> N</strong> &nbsp;&rarr;&nbsp; <span class=variable>Image</span></code></span>
+<span class=comment>;; add <code class=scheme><span class=variable>n</span></code> squares to a </span>
+<span class=comment>;; 100 x 100 empty canvas</span>
+(<span class=keyword>define</span> (<span class=variable>add-boxes</span> <span class=variable>n</span>)
+  (<span class=keyword>cond</span>
+    [(<span class=builtin>zero?</span> <span class=variable>n</span>) (<span class=builtin>empty-scene</span> <span class=selfeval>100</span> <span class=selfeval>100</span>)]
+    [<span class=keyword>else</span>
+      (<span class=builtin>place-image</span>
+	(<span class=builtin>rectangle</span> <span class=selfeval>1</span> <span class=selfeval>1</span> <span class=keyword>'</span><span class=variable>green</span>)
+	(<span class=builtin>random</span> <span class=selfeval>100</span>)
+	(<span class=builtin>random</span> <span class=selfeval>100</span>)
+	(<span class=variable>add-boxes</span> (<span class=builtin>sub1</span> <span class=variable>n</span>)))]))
+
+<span class=comment>;; tests: </span>
+(<span class=builtin>image=?</span> (<span class=variable>add-boxes</span> <span class=selfeval>0</span>) 
+         (<span class=builtin>empty-scene</span> <span class=selfeval>100</span> <span class=selfeval>100</span>))
+(<span class=variable>image?</span> (<span class=variable>add-boxes</span> <span class=selfeval>10</span>))
+</pre></div></td><td></td><td><div align=left><pre class=scheme><span class=comment>;; <code class=scheme><strong> N</strong> &nbsp;&rarr;&nbsp; <span class=variable>Number</span></code></span>
+<span class=comment>;; to add <code class=scheme><span class=variable>n</span></code> to <code class=scheme><span class=variable>pi</span></code> without using <code class=scheme><span class=builtin>+</span></code></span>
+
+(<span class=keyword>define</span> (<span class=variable>add-to-pi</span> <span class=variable>n</span>)
+  (<span class=keyword>cond</span>
+    [(<span class=builtin>zero?</span> <span class=variable>n</span>) <span class=variable>pi</span>]
+    [<span class=keyword>else</span>
+      (<span class=builtin>add1</span> 
+	(<span class=variable>add-to-pi</span> (<span class=builtin>sub1</span> <span class=variable>n</span>)))]))
+
+
+
+
+<span class=comment>;; tests: </span>
+(<span class=builtin>=</span> (<span class=variable>add-to-pi</span> <span class=selfeval>0</span>) <span class=variable>pi</span>)
+(<span class=builtin>=</span> (<span class=variable>add-to-pi</span> <span class=selfeval>3</span>) (<span class=builtin>+</span> <span class=variable>pi</span> <span class=selfeval>3</span>))
+(<span class=builtin>=</span> (<span class=variable>add-to-pi</span> <span class=selfeval>10</span>) (<span class=builtin>+</span> <span class=variable>pi</span> <span class=selfeval>10</span>))
+</pre></div></td><td>
+</td></tr></table></div>
+
+Abstract the two functions into one.&nbsp;<p></p>
+<p>
+</p>
+<p><a name="node_thm_5.3"></a>
+<b>Exercise 5.3.</b>&nbsp;&nbsp; 
+Develop the function <code class=scheme><span class=variable>blink</span></code>. It consumes a natural number <i>n</i>
+and a position and draws and clears a blinking rectangle at that position
+<code class=scheme><span class=variable>n</span></code> times. <table align=left border=2><tr><td><span class=scriptsize> <strong>Add the
+teachpack</strong><br>
+<tt>draw.ss</tt></span></td></tr></table></p>
+<p>
+Hint 1: Use <code class=scheme><span class=variable>sleep-for-a-while</span></code>. </p>
+<p>
+Hint 2: Develop two auxiliary functions: one for drawing an object and one
+for clearing it.</p>
+<p>
+Design a common abstraction for the two auxiliary functions. Then change
+the function so that it draws/clears a &#8220;lunar lander.&#8221; Approximate the
+lander with one small rectangle atop a large rectangle and two short,
+rectangular legs sticking out from the large rectangle.&nbsp;</p>
+<p> </p>
+<p>
+</p>
+<p><a name="node_thm_5.4"></a>
+<b>Exercise 5.4.</b>&nbsp;&nbsp;
+Design <code class=scheme><span class=variable>all-numbers</span></code>. The function determines whether all 
+items in a list (of arbitrary values) are numbers. </p>
+<p>
+Develop the function <code class=scheme><span class=variable>all-symbols</span></code>, which determines whether all 
+items in a list are symbols. </p>
+<p>
+Abstract the two functions into a single function. Use the new function to
+define a function that determines whether all numbers on a list of numbers
+are positive.&nbsp;</p>
+<p> </p>
+<p>
+</p>
+<p><a name="node_thm_5.5"></a>
+<b>Exercise 5.5.</b>&nbsp;&nbsp; [*]
+Compare the following two data definitions: 
+</p>
+<div align=center><table><tr><td>
+
+</td><td><div align=left><pre class=scheme><span class=comment>;; A <code class=scheme><span class=variable>NumberBT</span></code> is one of: </span>
+<span class=comment>;; --- <code class=scheme>(<span class=variable>make-leaf</span> <span class=variable>Number</span>)</code></span>
+<span class=comment>;; --- <code class=scheme>(<span class=builtin>make-node</span> <span class=variable>NumberBT</span> <span class=variable>NumberBT</span>)</code></span>
+</pre></div></td><td>
+</td><td><div align=left><pre class=scheme><span class=comment>;; A <code class=scheme><span class=variable>StringBT</span></code> is one of: </span>
+<span class=comment>;; --- <code class=scheme>(<span class=variable>make-leaf</span> <span class=variable>String</span>)</code></span>
+<span class=comment>;; --- <code class=scheme>(<span class=builtin>make-node</span> <span class=variable>StringBT</span> <span class=variable>NumberBT</span>)</code></span>
+</pre></div></td><td>
+</td></tr></table></div>
+
+Abstract them into a single data definition for binary trees.&nbsp;<p></p>
+<p>
+</p>
+<p><a name="node_thm_5.6"></a>
+<b>Exercise 5.6.</b>&nbsp;&nbsp; 
+Use <code class=scheme><span class=variable>every</span></code> to define <code class=scheme><span class=variable>numbers-to-strings</span></code> from
+exercise&nbsp;<a href="material-Z-H-6.html#node_thm_1.2">1.2</a>.&nbsp;</p>
+<p></p>
+<hr>
+<p></p>
+<p></p>
+<p></p>
+<p>
+&nbsp;</p>
+<div class=smallskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+<div align=right class=navigation>[Go to <span><a href="material.html">first</a>, <a href="material-Z-H-15.html">previous</a></span><span>, <a href="material-Z-H-17.html">next</a></span> page<span>; &nbsp;&nbsp;</span><span><a href="material-Z-H-2.html#node_toc_start">contents</a></span>]</div>
+</p>
+<p></p>
+</div>
+</body>
+</html>

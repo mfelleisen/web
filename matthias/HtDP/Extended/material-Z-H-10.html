@@ -1,0 +1,151 @@
+<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--
+
+Generated from material.tex by tex2page, v 20070609
+(running on MzScheme 370.6, unix), 
+(c) Dorai Sitaram, 
+http://www.ccs.neu.edu/~dorai/tex2page/tex2page-doc.html
+
+-->
+<head>
+<title>
+material
+</title>
+<link rel="stylesheet" type="text/css" href="material-Z-S.css" title=default>
+<meta name=robots content="noindex,follow">
+</head>
+<body>
+<div id=slidecontent>
+<div align=right class=navigation>[Go to <span><a href="material.html">first</a>, <a href="material-Z-H-9.html">previous</a></span><span>, <a href="material-Z-H-11.html">next</a></span> page<span>; &nbsp;&nbsp;</span><span><a href="material-Z-H-2.html#node_toc_start">contents</a></span>]</div>
+<p></p>
+<a name="node_sec_3"></a>
+<h1 class=section><a href="material-Z-H-2.html#node_toc_node_sec_3">3&nbsp;&nbsp;Tuesday Morning: Local Definitions</a></h1>
+<p></p>
+
+<p class=noindent><strong>Related material in <em>How to Design Programs</em></strong>: intermezzo 3 </p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p>
+</p>
+<a name="node_sec_3.1"></a>
+<h2 class=section><a href="material-Z-H-2.html#node_toc_node_sec_3.1">3.1&nbsp;&nbsp;Goals</a></h2>
+<p>(1) to study:</p>
+<p>
+</p>
+
+<p class=noindent>(1a) a new programming construct, <code class=scheme><span class=keyword>local</span></code> definitions, </p>
+<p>
+</p>
+
+<p class=noindent>(1b) and a related programming concept, lexical scope;</p>
+<p>
+</p>
+
+<p class=noindent>(2) how to approach new constructs:
+syntax, semantics, pragmatics</p>
+<p>
+</p>
+<a name="node_sec_3.2"></a>
+<h2 class=section><a href="material-Z-H-2.html#node_toc_node_sec_3.2">3.2&nbsp;&nbsp;Local Definitions: Syntax and Semantics</a></h2>
+<p></p>
+
+<p class=noindent>Syntax (aka Grammar):
+</p>
+<div align=left><pre class=scheme>(<span class=keyword>local</span> ((<span class=keyword>define</span> <span class=variable>a-name</span> <span class=variable>rhs-expression</span>)
+	...
+	(<span class=keyword>define</span> <span class=variable>another-name</span> <span class=variable>another-rhs-expression</span>))
+  <span class=variable>the-expression</span>)
+</pre></div><p></p>
+<p>
+</p>
+
+<p class=noindent>Syntax example:
+</p>
+<div align=left><pre class=scheme>(<span class=keyword>local</span> ((<span class=keyword>define</span> <span class=variable>x</span> <span class=selfeval>10</span>)
+	(<span class=keyword>define</span> <span class=variable>y</span> (<span class=builtin>+</span> <span class=variable>x</span> <span class=selfeval>10</span>)))
+  (<span class=builtin>+</span> <span class=variable>x</span> (<span class=builtin>*</span> <span class=selfeval>10</span> <span class=variable>y</span>)))
+</pre></div><p></p>
+<p>
+</p>
+
+<p class=noindent>Semantics (aka meaning):
+The evaluation of a <code class=scheme><span class=keyword>local</span></code> expression proceeds in stages. 
+It begins with the evaluation of the first definition. The evaluation
+proceeds just like for a normal, aka top-level, definition. Once we know
+the value of the <code class=scheme><span class=variable>rhs-expression</span></code>, <code class=scheme><span class=variable>a-name</span></code> stands for this
+value <em>inside the <code class=scheme><span class=keyword>local</span></code> expression</em>. After all definitions
+are evaluated, the evaluator reduces <code class=scheme><span class=variable>the-expression</span></code> to a
+value. This last value is the result of the <code class=scheme><span class=keyword>local</span></code> expression. </p>
+<p>
+</p>
+
+<p class=noindent>Semantics example:
+</p>
+<div align=left><pre class=scheme>(<span class=keyword>local</span> ((<span class=keyword>define</span> <span class=variable>x</span> <span class=selfeval>10</span>)
+	(<span class=keyword>define</span> <span class=variable>y</span> (<span class=builtin>+</span> <span class=variable>x</span> <span class=selfeval>10</span>)))
+  (<span class=builtin>+</span> <span class=variable>x</span> (<span class=builtin>*</span> <span class=selfeval>10</span> <span class=variable>y</span>)))
+</pre></div><p>
+First, <code class=scheme><span class=selfeval>10</span></code> is a value, so <code class=scheme><span class=variable>x</span></code> stands for
+<code class=scheme><span class=selfeval>10</span></code>. Second, <code class=scheme>(<span class=builtin>+</span> <span class=variable>x</span> <span class=selfeval>10</span>)</code> accordingly evaluates to
+<code class=scheme><span class=selfeval>20</span></code>, and <code class=scheme><span class=variable>y</span></code> represents <code class=scheme><span class=selfeval>20</span></code>. Finally, <code class=scheme>(<span class=builtin>+</span> <span class=variable>x</span>
+ (<span class=builtin>*</span> <span class=selfeval>10</span> <span class=variable>y</span>))</code> evaluates to <code class=scheme><span class=selfeval>210</span></code> because <code class=scheme><span class=variable>x</span></code> is <code class=scheme><span class=selfeval>10</span></code> and
+<code class=scheme><span class=variable>y</span></code> is <code class=scheme><span class=selfeval>20</span></code> inside this <code class=scheme><span class=keyword>local</span></code> expression. Hence, the
+result of the <code class=scheme><span class=keyword>local</span></code> expression is <code class=scheme><span class=selfeval>210</span></code>. </p>
+<p>
+On to pragmatics. </p>
+<p>
+</p>
+<a name="node_sec_3.3"></a>
+<h2 class=section><a href="material-Z-H-2.html#node_toc_node_sec_3.3">3.3&nbsp;&nbsp;Local Definitions: Go slow!</a></h2>
+<p></p>
+<div align=left><pre class=scheme><span class=comment>;; <code class=scheme><span class=variable>Posn</span> &nbsp;&rarr;&nbsp; <span class=variable>Number</span></code> </span>
+<span class=comment>;; determine the distance of <code class=scheme><span class=variable>p</span></code> to the origin: &radic;((<em>p</em><sub><em>x</em></sub>)<sup>2</sup>  +  (<em>p</em><sub><em>y</em></sub>)<sup>2</sup>)</span>
+<span class=comment>;; example: <code class=scheme>(<span class=variable>distance0</span> (<span class=builtin>make-posn</span> <span class=selfeval>3</span> <span class=selfeval>4</span>))</code> is <code class=scheme><span class=selfeval>5</span></code></span>
+(<span class=keyword>define</span> (<span class=variable>distance0</span> <span class=variable>p</span>)
+  (<span class=builtin>sqrt</span> (<span class=builtin>+</span> (<span class=builtin>sqr</span> (<span class=builtin>posn-x</span> <span class=variable>p</span>)) (<span class=builtin>sqr</span> (<span class=builtin>posn-y</span> <span class=variable>p</span>)))))
+
+<span class=comment>;; tests:</span>
+(<span class=builtin>=</span> (<span class=variable>distance0</span> (<span class=builtin>make-posn</span> <span class=selfeval>3</span> <span class=selfeval>4</span>)) <span class=selfeval>5</span>)
+(<span class=builtin>=</span> (<span class=variable>distance0</span> (<span class=builtin>make-posn</span> <span class=selfeval>12</span> <span class=selfeval>5</span>)) <span class=selfeval>13</span>)
+</pre></div><p></p>
+<p>
+</p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p>
+Here is a &#8220;slower&#8221; version: 
+</p>
+<div align=left><pre class=scheme><span class=comment>;; <code class=scheme><span class=variable>Posn</span> &nbsp;&rarr;&nbsp; <span class=variable>Number</span></code> </span>
+<span class=comment>;; determine the distance of <code class=scheme><span class=variable>p</span></code> to the origin: &radic;((<em>p</em><sub><em>x</em></sub>)<sup>2</sup>  +  (<em>p</em><sub><em>y</em></sub>)<sup>2</sup>)</span>
+<span class=comment>;; example: <code class=scheme>(<span class=variable>distance0</span> (<span class=builtin>make-posn</span> <span class=selfeval>3</span> <span class=selfeval>4</span>))</code> is <code class=scheme><span class=selfeval>5</span></code></span>
+(<span class=keyword>define</span> (<span class=variable>distance0</span> <span class=variable>p</span>)
+  (<span class=keyword>local</span> ((<span class=keyword>define</span> <span class=variable>x</span> (<span class=builtin>posn-x</span> <span class=variable>p</span>))
+	  (<span class=keyword>define</span> <span class=variable>y</span> (<span class=builtin>posn-y</span> <span class=variable>p</span>))
+	  (<span class=keyword>define</span> <span class=variable>sqrx</span> (<span class=builtin>sqr</span> <span class=variable>x</span>))
+	  (<span class=keyword>define</span> <span class=variable>sqry</span> (<span class=builtin>sqr</span> <span class=variable>y</span>))
+	  (<span class=keyword>define</span> <span class=variable>sum</span> (<span class=builtin>+</span> <span class=variable>sqrx</span> <span class=variable>sqry</span>)))
+    (<span class=builtin>sqrt</span> <span class=variable>sum</span>)))
+
+<span class=comment>;; tests:</span>
+(<span class=builtin>=</span> (<span class=variable>distance0</span> (<span class=builtin>make-posn</span> <span class=selfeval>3</span> <span class=selfeval>4</span>)) <span class=selfeval>5</span>)
+(<span class=builtin>=</span> (<span class=variable>distance0</span> (<span class=builtin>make-posn</span> <span class=selfeval>12</span> <span class=selfeval>5</span>)) <span class=selfeval>13</span>)
+</pre></div><p></p>
+<p>
+</p>
+<div class=smallskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+<div align=right class=navigation>[Go to <span><a href="material.html">first</a>, <a href="material-Z-H-9.html">previous</a></span><span>, <a href="material-Z-H-11.html">next</a></span> page<span>; &nbsp;&nbsp;</span><span><a href="material-Z-H-2.html#node_toc_start">contents</a></span>]</div>
+</p>
+<p></p>
+</div>
+</body>
+</html>

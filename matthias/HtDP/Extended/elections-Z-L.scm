@@ -1,0 +1,8 @@
+(!label "ex:election1a" 0 "node_thm_1.1.1" "1.1.1")
+(!label "ex:election0" 0 "node_thm_1.1.2" "1.1.2")
+(!label "ex:election2" 0 "node_thm_1.1.3" "1.1.3")
+(!label "ex:election1" 0 "node_thm_1.1.4" "1.1.4")
+(!label "ex:election3" 0 "node_thm_1.1.5" "1.1.5")
+(!label "ex:election4" 0 "node_thm_1.2.1" "1.2.1")
+(!label "ex:election5" 0 "node_thm_1.2.2" "1.2.2")
+(!label "ex:election6" 0 "node_thm_1.2.3" "1.2.3")

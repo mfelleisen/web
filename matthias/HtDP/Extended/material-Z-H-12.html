@@ -1,0 +1,148 @@
+<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--
+
+Generated from material.tex by tex2page, v 20070609
+(running on MzScheme 370.6, unix), 
+(c) Dorai Sitaram, 
+http://www.ccs.neu.edu/~dorai/tex2page/tex2page-doc.html
+
+-->
+<head>
+<title>
+material
+</title>
+<link rel="stylesheet" type="text/css" href="material-Z-S.css" title=default>
+<meta name=robots content="noindex,follow">
+</head>
+<body>
+<div id=slidecontent>
+<div align=right class=navigation>[Go to <span><a href="material.html">first</a>, <a href="material-Z-H-11.html">previous</a></span><span>, <a href="material-Z-H-13.html">next</a></span> page<span>; &nbsp;&nbsp;</span><span><a href="material-Z-H-2.html#node_toc_start">contents</a></span>]</div>
+<p></p>
+<p>
+</p>
+<p></p>
+<hr>
+<p></p>
+<p><strong>Exercises</strong>
+</p>
+<p></p>
+<p>
+</p>
+<p><a name="node_thm_3.1"></a>
+<b>Exercise 3.1.</b>&nbsp;&nbsp; [*]
+Take a look at this function definition: 
+<table align=left border=2><tr><td><span class=scriptsize><strong>Use the language
+level</strong><br>
+Intermediate Student</span></td></tr></table>
+</p>
+<div align=left><pre class=scheme><span class=comment>;; <code class=scheme><span class=variable>Number</span> &nbsp;&rarr;&nbsp; <span class=variable>Number</span></code></span>
+<span class=comment>;; compute the after-tax weekly wage from the hours someone worked</span>
+<span class=comment>;; pay-per-hour: $12.55</span>
+<span class=comment>;; tax rate: 15%</span>
+<span class=comment>;; social security: 5.5%</span>
+<span class=comment>;; insurance cost: $100</span>
+(<span class=keyword>define</span> (<span class=variable>after-tax-income</span> <span class=variable>hours</span>)
+  (<span class=builtin>-</span> <span class=comment>; gross income:</span>
+     (<span class=builtin>*</span> <span class=variable>hours</span> <span class=selfeval>12.55</span>)
+     <span class=comment>; taxes:</span>
+     (<span class=builtin>*</span> (<span class=builtin>*</span> <span class=variable>hours</span> <span class=selfeval>12.55</span>) <span class=selfeval>.15</span>)
+     <span class=comment>; social security:</span>
+     (<span class=builtin>*</span> (<span class=builtin>*</span> <span class=variable>hours</span> <span class=selfeval>12.55</span>) <span class=selfeval>.055</span>)
+     <span class=comment>; insurance</span>
+     <span class=selfeval>100</span>))
+
+<span class=comment>;; example/test:</span>
+(<span class=builtin>=</span> (<span class=variable>after-tax-income</span> <span class=selfeval>40</span>) <span class=selfeval>299.09</span>)
+</pre></div><p>
+Use <code class=scheme><span class=keyword>local</span></code> to simplify the function body (&#8220;go slow!&#8221;).&nbsp;</p>
+<p></p>
+<p>
+</p>
+<p><a name="node_thm_3.2"></a>
+<b>Exercise 3.2.</b>&nbsp;&nbsp; [*]
+Developing  the program <code class=scheme><span class=variable>strings-to-numbers*</span></code> in
+exercise&nbsp;<a href="material-Z-H-6.html#node_thm_1.2">1.2</a> required the definition of several
+functions. It is good practice to reorganize programs such as those with
+<code class=scheme><span class=keyword>local</span></code> into a single function definition.&nbsp;</p>
+<p></p>
+<p>
+</p>
+<p><a name="node_thm_3.3"></a>
+<b>Exercise 3.3.</b>&nbsp;&nbsp; 
+Develop the program <code class=scheme><span class=variable>numeric-matrix?</span></code>. The function consumes a
+string matrix. It produces <code class=scheme><span class=builtin>true</span></code> if all strings represent a
+number; otherwise its return value is <code class=scheme><span class=builtin>false</span></code>.</p>
+<p>
+Here are the data definitions:
+</p>
+<div align=left><pre class=scheme><span class=comment>;; A <code class=scheme><span class=variable>Matrix</span></code> is one of:</span>
+<span class=comment>;; --- <code class=scheme><span class=builtin>empty</span></code></span>
+<span class=comment>;; --- <code class=scheme>(<span class=builtin>cons</span> <span class=variable>LOS</span> <span class=variable>Matrix</span>)</code></span>
+<span class=comment>;; Constraint: In a matrix, the length of all <code class=scheme><span class=variable>LOS</span></code> is the same. </span>
+
+<span class=comment>;; A <code class=scheme><span class=variable>LOS</span></code> is one of: </span>
+<span class=comment>;; --- <code class=scheme><span class=builtin>empty</span></code></span>
+<span class=comment>;; --- <code class=scheme>(<span class=builtin>cons</span> <span class=variable>String</span> <span class=variable>LON</span>)</code></span>
+</pre></div><p></p>
+<p>
+Hint: The program requires several function definitions. </p>
+<p>
+Constraint: Develop the program in two stages. First design all functions
+at the top-level. Second organize them using <code class=scheme><span class=keyword>local</span></code> so that there
+is only one top-level function.&nbsp;</p>
+<p></p>
+<p>
+</p>
+<p><a name="node_thm_3.4"></a>
+<b>Exercise 3.4.</b>&nbsp;&nbsp;
+Design <code class=scheme><span class=variable>make-spread</span></code>.  The function consumes two natural
+numbers: <code class=scheme><span class=variable>n</span></code> and <code class=scheme><span class=variable>m</span></code>. Its result is a rectangular list: 
+rectangle 
+S-expression such as this:
+</p>
+<div align=left><pre class=scheme>(<span class=builtin>list</span>
+  (<span class=builtin>list</span> (<span class=builtin>list</span> <span class=keyword>'</span><span class=variable>td</span> <span class=selfeval>&quot;cell00&quot;</span>) (<span class=builtin>list</span> <span class=keyword>'</span><span class=variable>td</span> <span class=selfeval>&quot;cell01&quot;</span>))
+  (<span class=builtin>list</span> (<span class=builtin>list</span> <span class=keyword>'</span><span class=variable>td</span> <span class=selfeval>&quot;cell10&quot;</span>) (<span class=builtin>list</span> <span class=keyword>'</span><span class=variable>td</span> <span class=selfeval>&quot;cell11&quot;</span>))
+  (<span class=builtin>list</span> (<span class=builtin>list</span> <span class=keyword>'</span><span class=variable>td</span> <span class=selfeval>&quot;cell20&quot;</span>) (<span class=builtin>list</span> <span class=keyword>'</span><span class=variable>td</span> <span class=selfeval>&quot;cell21&quot;</span>))
+  (<span class=builtin>list</span> (<span class=builtin>list</span> <span class=keyword>'</span><span class=variable>td</span> <span class=selfeval>&quot;cell30&quot;</span>) (<span class=builtin>list</span> <span class=keyword>'</span><span class=variable>td</span> <span class=selfeval>&quot;cell31&quot;</span>)))
+</pre></div><p>
+with <code class=scheme><span class=selfeval>4</span></code> rows and <code class=scheme><span class=selfeval>2</span></code> columns.</p>
+<p>
+Hint: Use the function <code class=scheme><span class=builtin>string-append</span></code>, which performs the obvious
+operation on strings. </p>
+<p>
+Use the function to develop the function <code class=scheme><span class=variable>make-table</span></code>, which
+consumes two natural numbers and creates the following S-expression for
+<em>n</em> = 3 and <em>m</em> = 2:
+</p>
+<div align=left><pre class=scheme>(<span class=builtin>list</span> <span class=keyword>'</span><span class=variable>table</span>
+  (<span class=builtin>list</span> <span class=keyword>'</span><span class=variable>tr</span> (<span class=builtin>list</span> <span class=keyword>'</span><span class=variable>td</span> <span class=selfeval>&quot;cell00&quot;</span>) (<span class=builtin>list</span> <span class=keyword>'</span><span class=variable>td</span> <span class=selfeval>&quot;cell01&quot;</span>))
+  (<span class=builtin>list</span> <span class=keyword>'</span><span class=variable>tr</span> (<span class=builtin>list</span> <span class=keyword>'</span><span class=variable>td</span> <span class=selfeval>&quot;cell10&quot;</span>) (<span class=builtin>list</span> <span class=keyword>'</span><span class=variable>td</span> <span class=selfeval>&quot;cell11&quot;</span>))
+  (<span class=builtin>list</span> <span class=keyword>'</span><span class=variable>tr</span> (<span class=builtin>list</span> <span class=keyword>'</span><span class=variable>td</span> <span class=selfeval>&quot;cell20&quot;</span>) (<span class=builtin>list</span> <span class=keyword>'</span><span class=variable>td</span> <span class=selfeval>&quot;cell21&quot;</span>)))
+</pre></div><p></p>
+<p>
+<table align=left border=2><tr><td><span class=scriptsize> <strong>Add the
+teachpack</strong><br>
+<tt>servlet2.ss</tt></span></td></tr></table> When the function is properly designed, use the function
+<code class=scheme><span class=variable>inform/html</span></code> (from the teachpack) to display the result of the
+function in a browser.&nbsp;</p>
+<p></p>
+<hr>
+<p></p>
+<p></p>
+<p></p>
+<p>
+</p>
+<div align=left><pre class=scheme>
+</pre></div><p></p>
+<p>
+&nbsp;</p>
+<div class=smallskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+<div align=right class=navigation>[Go to <span><a href="material.html">first</a>, <a href="material-Z-H-11.html">previous</a></span><span>, <a href="material-Z-H-13.html">next</a></span> page<span>; &nbsp;&nbsp;</span><span><a href="material-Z-H-2.html#node_toc_start">contents</a></span>]</div>
+</p>
+<p></p>
+</div>
+</body>
+</html>

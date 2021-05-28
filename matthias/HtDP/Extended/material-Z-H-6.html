@@ -1,0 +1,99 @@
+<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--
+
+Generated from material.tex by tex2page, v 20070609
+(running on MzScheme 370.6, unix), 
+(c) Dorai Sitaram, 
+http://www.ccs.neu.edu/~dorai/tex2page/tex2page-doc.html
+
+-->
+<head>
+<title>
+material
+</title>
+<link rel="stylesheet" type="text/css" href="material-Z-S.css" title=default>
+<meta name=robots content="noindex,follow">
+</head>
+<body>
+<div id=slidecontent>
+<div align=right class=navigation>[Go to <span><a href="material.html">first</a>, <a href="material-Z-H-5.html">previous</a></span><span>, <a href="material-Z-H-7.html">next</a></span> page<span>; &nbsp;&nbsp;</span><span><a href="material-Z-H-2.html#node_toc_start">contents</a></span>]</div>
+<p></p>
+<p>
+</p>
+<p></p>
+<hr>
+<p></p>
+<p><strong>Exercises</strong>
+</p>
+<p></p>
+<p>
+</p>
+<p><a name="node_thm_1.1"></a>
+<b>Exercise 1.1.</b>&nbsp;&nbsp; [*] 
+Locate the Web page for the workshop (see cover). Bookmark it. Copy and
+paste
+<table align=left border=2><tr><td><span class=scriptsize><strong>Use the language
+level</strong><br>
+<em>Beginning Student</em></span></td></tr></table>
+the program for removing green (section&nbsp;<a href="material-Z-H-5.html#node_sec_1.5">1.5</a>) from a picture and run
+the tests. Then get the expression at the bottom of the program to run. Hint:
+Use DrScheme&#8217;s help desk to find out how the primitives on images work. Yes, you
+may use any picture that you like and you have access to the Web.&nbsp;</p>
+<p></p>
+<p>
+</p>
+<p><a name="node_thm_1.2"></a>
+<b>Exercise 1.2.</b>&nbsp;&nbsp; [*] 
+Strings are another important class of data that most programming languages
+offer. With <code class=scheme><span style="font-family: sans-serif">number</span>&rarr;<span style="font-family: sans-serif">string</span></code>, you can even convert any number into
+a string, and with <code class=scheme><span style="font-family: sans-serif">string</span>&rarr;<span style="font-family: sans-serif">number</span></code> you can convert a string into a
+number, if the string represents one. Experiment with the two functions in
+DrScheme&#8217;s Interactions window. </p>
+<p>
+Develop the function <code class=scheme><span class=variable>numbers-to-strings</span></code>, which consumes a list of
+numbers and produces a list of strings that represent these numbers. For
+example, <code class=scheme>(<span class=builtin>cons</span> <span class=selfeval>1</span> (<span class=builtin>cons</span> <span class=selfeval>2</span> (<span class=builtin>cons</span> <span class=selfeval>3</span> <span class=builtin>empty</span>)))</code> produces <code class=scheme><span class=keyword>'</span>(<span class=selfeval>&quot;1&quot;</span> <span class=selfeval>&quot;2&quot;</span> <span class=selfeval>&quot;3&quot;</span>)</code>.</p>
+<p>
+Also develop the function <code class=scheme><span class=variable>strings-to-numbers</span></code>, which consumes a
+list of strings and converts them to numbers, if possible. In other words,
+it uses <code class=scheme><span style="font-family: sans-serif">string</span>&rarr;<span style="font-family: sans-serif">number</span></code> on each item on the list. </p>
+<p>
+Finally, develop the program <code class=scheme><span class=variable>strings-to-numbers*</span></code>. It consumes a
+list of strings and converts them to numbers. If a string doesn&#8217;t
+represent a number, it drops the item from the list.&nbsp;</p>
+<p></p>
+<p>
+</p>
+<p><a name="node_thm_1.3"></a>
+<b>Exercise 1.3.</b>&nbsp;&nbsp; 
+Networks send requests. Servers process these requests and send responses
+back. </p>
+<p>
+One way to represent a class of requests is to form a list where each item
+is a list of two items: a string and a boolean: 
+</p>
+<div align=left><pre class=scheme><span class=comment>;; <code class=scheme><span class=variable>Request</span></code> is either </span>
+<span class=comment>;; --- <code class=scheme><span class=builtin>empty</span></code></span>
+<span class=comment>;; --- <code class=scheme>(<span class=builtin>cons</span> <span class=variable>Line</span> <span class=variable>Request</span>)</code></span>
+<span class=comment>;; <code class=scheme><span class=variable>Line</span></code> is <code class=scheme>(<span class=builtin>cons</span> <span class=variable>String</span> (<span class=builtin>cons</span> <span class=variable>Boolean</span> <span class=builtin>empty</span>))</code></span>
+</pre></div><p></p>
+<p>
+Develop the function <code class=scheme><span class=variable>which-toppings</span></code>. The function consumes a
+<code class=scheme><span class=variable>Request</span></code> and produces the list of strings that come with
+<code class=scheme><span class=builtin>true</span></code> in the given request.&nbsp;</p>
+<p></p>
+<hr>
+<p></p>
+<p></p>
+<p></p>
+<p>
+&nbsp;</p>
+<div class=smallskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+<div align=right class=navigation>[Go to <span><a href="material.html">first</a>, <a href="material-Z-H-5.html">previous</a></span><span>, <a href="material-Z-H-7.html">next</a></span> page<span>; &nbsp;&nbsp;</span><span><a href="material-Z-H-2.html#node_toc_start">contents</a></span>]</div>
+</p>
+<p></p>
+</div>
+</body>
+</html>

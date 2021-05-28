@@ -1,0 +1,52 @@
+<html>
+<head>
+<title>Documentation: simple-draw.ss</title>
+</head>
+<body>
+<h1>Documentation: simple-draw.ss</h1>
+
+The <code>simple-draw.ss</code> teachpack exports the following functions:
+<pre>
+<code>
+   start            ; Number Number -> true
+   ;; (start width height)
+   ;; create a canvas with the given dimension (width x height)
+
+   big-bang         ; Number X -> true
+   ;; (big-bang n x)				 
+   ;; start the clock ticking every n seconds and set the world to x
+
+   on-tick-event    ; (X -> X) -> true
+   ;; (on-tick-event tock)
+   ;; set the tick handler to tock, which is used for every tick of the clock
+   ;; tock consumes the current world and produces a new one 
+
+   end-of-time      ; -> X 
+   ;; (end-of-time)			
+   ;; stop the clock and produce the current world
+
+   on-key-event     ; (KeyEvent X -> X) -> true
+   ;; (on-key-event click)
+   ;; set the key event handler to click, which is used for every click of
+   ;; a keyboard key
+   ;; click consumes a KeyEvent (a Char or a Symbol) and the current world,
+   ;; and produces a new world 
+
+   draw-solid-disk0 ; Number Number Number Color -> true
+   ;; (draw-solid-disk0 x y r c)
+   ;; draw a colored disk at (x,y) with radius r and color c
+
+   draw-solid-rect0 ; Number Number Number Number Color -> true
+   ;; (draw-solid-rect0 x y w h c)
+   ;; draw a colored rectangle at (x,y) of width w, height h, and color c
+
+   draw-solid-line0 ; Number Number Number Number Color -> true
+   ;; (draw-solid-line0 x0 y0 x1 y1 c)
+   ;; draw a colored line from (x0,y0) to (x1,y1) of color c
+</code>
+</pre>
+
+
+</body>
+</html>
+

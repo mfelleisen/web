@@ -1,0 +1,184 @@
+<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--
+
+Generated from material.tex by tex2page, v 20070609
+(running on MzScheme 370.6, unix), 
+(c) Dorai Sitaram, 
+http://www.ccs.neu.edu/~dorai/tex2page/tex2page-doc.html
+
+-->
+<head>
+<title>
+material
+</title>
+<link rel="stylesheet" type="text/css" href="material-Z-S.css" title=default>
+<meta name=robots content="noindex,follow">
+</head>
+<body>
+<div id=slidecontent>
+<div align=right class=navigation>[Go to <span><a href="material.html">first</a>, <a href="material-Z-H-25.html">previous</a></span><span>, <a href="material-Z-H-27.html">next</a></span> page<span>; &nbsp;&nbsp;</span><span><a href="material-Z-H-2.html#node_toc_start">contents</a></span>]</div>
+<p></p>
+<p>
+</p>
+<p></p>
+<hr>
+<p></p>
+<p><strong>Exercise</strong>
+</p>
+<p>
+Download the data file 
+</p>
+<pre class=verbatim>  hamlet.txt
+</pre><p>
+Study it to ascertain its structure. (Does it remind you of a gradebook?)</p>
+<p>
+</p>
+<p><a name="node_thm_7.6"></a>
+<b>Exercise 7.6.</b>&nbsp;&nbsp; 
+Develop a data definition for representing a dialog with lists and
+<table align=left border=2><tr><td><span class=scriptsize> <strong>Add the
+teachpack</strong><br>
+<tt>io.ss</tt></span></td></tr></table>
+structures. Here are some guidelines: 
+</p>
+<ul>
+<li><p>The entire list is a <em>dialog</em>.</p>
+<p>
+</p>
+<li><p>Each element of a dialog is a <em>part</em>.  A part consists of a
+symbol, indicating which character is speaking, and a list of strings.</p>
+<p>
+</p>
+<li><p>Each string in the list of strings is called a <em>line</em>.
+</p>
+</ul><p></p>
+<p>
+For instance,
+</p>
+<pre class=verbatim>((HAMLET 
+   &quot;My excellent good friends! How dost thou,&quot;
+   &quot;Guildenstern? Ah, Rosencrantz! 
+     Good lads, how do ye both?&quot;)
+ (ROSENCRANTZ 
+   &quot;As the indifferent children of the earth.&quot;)
+ (GUILDENSTERN 
+   &quot;Happy, in that we are not over-happy;&quot;
+   &quot;On fortune's cap we are not the very button.&quot;)
+ (HAMLET
+   &quot;Nor the soles of her shoe?&quot;))
+</pre><p>
+is a dialog with four parts.  <code class=scheme><span class=variable>HAMLET</span></code> speaks two parts, while
+his comrades speak one each.  The first and third part each have two
+lines, while the second and fourth have one line each.  In all,
+<code class=scheme><span class=variable>HAMLET</span></code> speaks three lines spread over two parts in this
+dialog.</p>
+<p>
+Note: in keeping with tradition, the names of the characters are in
+UPPERCASE.  Thus, you must refer to the Prince of Denmark as
+<code class=scheme><span class=keyword>'</span><span class=variable>HAMLET</span></code>, not as <code class=scheme><span class=keyword>'</span><span class=variable>Hamlet</span></code> or <code class=scheme><span class=keyword>'</span><span class=variable>hamlet</span></code>.</p>
+<p>
+Use <code class=scheme><span class=builtin>read</span></code> and <code class=scheme><span class=builtin>open-input-file</span></code> to read the file from disk.
+Also traverse the resulting S-expression to create instances of
+<code class=scheme><span class=variable>Dialog</span></code> so that the remaining functions can process the dialog
+easily. </p>
+<p>
+Hint: See how we read the gradebook and converted into a list of
+structures.&nbsp;</p>
+<p></p>
+<p>
+</p>
+<p><a name="node_thm_7.7"></a>
+<b>Exercise 7.7.</b>&nbsp;&nbsp; 
+Use <em>your</em> data definitions from exercise&nbsp;<a href="#node_thm_7.6">7.6</a> to 
+design
+</p>
+<div align=left><pre class=scheme><span class=comment>;; <code class=scheme><span class=variable>speakers</span> <span class=selfeval>:</span> <span class=variable>Dialog</span> &nbsp;&rarr;&nbsp; (<span class=keyword>Listof</span> <span class=variable>Symbol</span>)</code></span>
+</pre></div><p>
+which computes the names of the speakers who contribute to a dialog.
+Each speaker&#8217;s name must appear exactly once (though the order does not
+matter). </p>
+<p>
+Hint: Design the helper function
+</p>
+<div align=left><pre class=scheme><span class=comment>;; <code class=scheme><span class=variable>eliminate-duplicates</span> <span class=selfeval>:</span> (<span class=keyword>Listof</span> <span class=variable>Symbol</span>) &nbsp;&rarr;&nbsp; (<span class=keyword>Listof</span> <span class=variable>Symbol</span>)</code></span>
+</pre></div><p>
+which consumes a list of symbols and produces one without duplicates. More
+precisely, a symbol should only be on the result list if it is <em>not</em>
+in the rest of the list.&nbsp;</p>
+<p></p>
+<p>
+</p>
+<p><a name="node_thm_7.8"></a>
+<b>Exercise 7.8.</b>&nbsp;&nbsp; 
+Use <em>your</em> data definitions from exercise&nbsp;<a href="#node_thm_7.6">7.6</a> to 
+design
+</p>
+<div align=left><pre class=scheme><span class=comment>;; <code class=scheme><span class=variable>lines-of</span> <span class=selfeval>:</span> <span class=variable>Symbol</span> <span class=variable>Dialog</span> &nbsp;&rarr;&nbsp; (<span class=keyword>Listof</span> <span class=variable>String</span>)</code></span>
+</pre></div><p>
+which generates a single list of all the lines spoken by the character
+named by the first argument.&nbsp;</p>
+<p></p>
+<p>
+</p>
+<p><a name="node_thm_7.9"></a>
+<b>Exercise 7.9.</b>&nbsp;&nbsp; 
+Use <em>your</em> data definitions from exercise&nbsp;<a href="#node_thm_7.6">7.6</a> to 
+design
+</p>
+<div align=left><pre class=scheme><span class=comment>;; <code class=scheme><span class=variable>most-parts</span> <span class=selfeval>:</span> <span class=variable>Dialog</span> &nbsp;&rarr;&nbsp; <span class=variable>Symbol</span></code></span>
+</pre></div><p>
+which computes which speaker has the most parts in the dialog.&nbsp;</p>
+<p></p>
+<p>
+</p>
+<p><a name="node_thm_7.10"></a>
+<b>Exercise 7.10.</b>&nbsp;&nbsp;
+Use <em>your</em> data definitions from exercise&nbsp;<a href="#node_thm_7.6">7.6</a> to 
+design
+</p>
+<div align=left><pre class=scheme><span class=comment>;;  <code class=scheme><span class=variable>most-lines</span> <span class=selfeval>:</span> <span class=variable>Dialog</span> &nbsp;&rarr;&nbsp; <span class=variable>Symbol</span></code></span>
+</pre></div><p>
+which computes which speaker has the most lines in the dialog.&nbsp;</p>
+<p></p>
+<p>
+</p>
+<p><a name="node_thm_7.11"></a>
+<b>Exercise 7.11.</b>&nbsp;&nbsp;
+Use <em>your</em> data definitions from exercise&nbsp;<a href="#node_thm_7.6">7.6</a> to 
+design
+</p>
+<div align=left><pre class=scheme><span class=comment>;; <code class=scheme><span class=variable>abbreviate-for</span> <span class=selfeval>:</span> <span class=variable>Symbol</span> <span class=variable>Dialog</span> &nbsp;&rarr;&nbsp; <span class=variable>Dialog</span></code></span>
+</pre></div><p>
+which extracts a given actor&#8217;s part from a dialog.&nbsp;</p>
+<p>
+Rationale: When rehearsing for a play, it&#8217;s useful to have a list of just
+your parts, with only an indication of when someone else is going to
+speak, not what they say.  For the actor playing <code class=scheme><span class=variable>HAMLET</span></code>, for
+instance, the function would yield
+</p>
+<pre class=verbatim>((HAMLET 
+  &quot;My excellent good friends! How dost thou,&quot;
+  &quot;Guildenstern? Ah, Rosencrantz! 
+     Good lads, how do ye both?&quot;)
+ (ROSENCRANTZ)
+ (GUILDENSTERN)
+ (HAMLET
+  &quot;Nor the soles of her shoe?&quot;))
+</pre><p>
+for the example in exercise&nbsp;<a href="#node_thm_7.6">7.6</a>.&nbsp;</p>
+<p></p>
+<hr>
+<p></p>
+<p></p>
+<p></p>
+<p>
+&nbsp;</p>
+<div class=smallskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+<div align=right class=navigation>[Go to <span><a href="material.html">first</a>, <a href="material-Z-H-25.html">previous</a></span><span>, <a href="material-Z-H-27.html">next</a></span> page<span>; &nbsp;&nbsp;</span><span><a href="material-Z-H-2.html#node_toc_start">contents</a></span>]</div>
+</p>
+<p></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--
+
+Generated from igames.tex by tex2page, v 2003-07-17
+(running on MzScheme 204.10, unix), 
+(c) Dorai Sitaram, 
+http://www.ccs.neu.edu/~dorai/tex2page/tex2page-doc.html
+
+-->
+<head>
+<title>
+igames
+</title>
+<link rel="stylesheet" type="text/css" href="igames-v205-Z-S.css" title=default>
+<meta name=robots content="noindex,follow">
+</head>
+<body>
+<div align=right class=navigation><i>[Go to <span><a href="igames-v205.html">first</a>, <a href="igames-Z-H-1.html">previous</a></span><span>, <a href="igames-Z-H-3.html">next</a></span> page]</i></div><p></p>
+<p>
+</p>
+<a name="node_sec_3"></a>
+<h1>3&nbsp;&nbsp;A Moon Lander</h1>
+<p></p>
+<div align=left><pre class=scheme><span class=comment>;; Flying a Moon Lander</span>
+
+<span class=comment>;; Author: Matthias Felleisen</span>
+<span class=comment>;; Date: 12/03/2002</span>
+<span class=comment>;; DrScheme v203</span>
+<span class=comment>;; Language: Intermediate</span>
+<span class=comment>;; Teachpack: draw.ss</span>
+
+<span class=comment>;; Data Definitions: </span>
+(<span class=keyword>define-struct</span> <span class=variable>shape</span> (<span class=variable>posn</span> <span class=variable>vel</span>))
+<span class=comment>;; Shape = (make-shape Posn Posn)</span>
+
+<span class=comment>;; A Key is one of: -- from draw.ss docs </span>
+<span class=comment>;; - Boolean</span>
+<span class=comment>;; - Character</span>
+<span class=comment>;; - Symbol ('up, 'down, 'left, 'right)</span>
+
+<span class=comment>;; <code class=scheme><span class=variable>Shape</span> &nbsp;-->&nbsp; <span class=variable>Boolean</span></code></span>
+<span class=comment>;; to move the lander until it lands, determine whether the landing was soft</span>
+<span class=comment>;; generative recursion: update the velocity (vector) at each iteration </span>
+(<span class=keyword>define</span> (<span class=variable>moon-lander</span> <span class=variable>a-shape</span>)
+  (<span class=keyword>cond</span>
+    [(<span class=variable>landed?</span> <span class=variable>a-shape</span>) (<span class=variable>soft-landing?</span> <span class=variable>a-shape</span>)]
+    [<span class=keyword>else</span> (<span class=variable>moon-lander</span> (<span class=variable>update-direction</span> (<span class=variable>move-once</span> <span class=variable>a-shape</span>) (<span class=variable>get-key-event</span>)))]))
+
+<span class=comment>;; <code class=scheme><span class=variable>Shape</span> &nbsp;-->&nbsp; <span class=variable>Boolean</span></code></span>
+<span class=comment>;; determine whether the lander has reached the bottom of the screen </span>
+(<span class=keyword>define</span> (<span class=variable>landed?</span> <span class=variable>a-shape</span>)
+  (<span class=builtin>&gt;=</span> (<span class=builtin>posn-y</span> (<span class=variable>shape-posn</span> <span class=variable>a-shape</span>)) <span class=variable>HEIGHT</span>))
+
+<span class=comment>;; <code class=scheme><span class=variable>Shape</span> &nbsp;-->&nbsp; <span class=variable>Boolean</span></code></span>
+<span class=comment>;; determine whether the landing was soft (slope below 1/10)</span>
+(<span class=keyword>define</span> (<span class=variable>soft-landing?</span> <span class=variable>a-shape</span>)
+  (<span class=keyword>local</span> ([<span class=keyword>define</span> <span class=variable>vel</span> (<span class=variable>shape-vel</span> <span class=variable>a-shape</span>)])
+    (<span class=builtin>&lt;=</span> (<span class=builtin>/</span> (<span class=builtin>posn-y</span> <span class=variable>vel</span>) (<span class=builtin>posn-x</span> <span class=variable>vel</span>)) <span class=selfeval>1/10</span>)))
+
+<span class=comment>;; <code class=scheme><span class=variable>Shape</span> &nbsp;-->&nbsp; <span class=variable>Shape</span></code></span>
+<span class=comment>;; move the shape for one time unit </span>
+<span class=comment>;; effect: clear current, draw new </span>
+(<span class=keyword>define</span> (<span class=variable>move-once</span> <span class=variable>a-shape</span>)
+  (<span class=keyword>local</span> ([<span class=keyword>define</span> <span class=variable>old-posn</span> (<span class=variable>shape-posn</span> <span class=variable>a-shape</span>)]
+          [<span class=keyword>define</span> <span class=variable>vel</span> (<span class=variable>shape-vel</span> <span class=variable>a-shape</span>)]
+          [<span class=keyword>define</span> <span class=variable>new-posn</span> (<span class=variable>posn+</span> <span class=variable>old-posn</span> <span class=variable>vel</span>)]
+          [<span class=keyword>define</span> <span class=variable>clear1</span> (<span class=variable>clear-solid-disk</span> <span class=variable>old-posn</span> <span class=selfeval>3</span> <span class=keyword>'</span><span class=variable>red</span>)]
+          [<span class=keyword>define</span> <span class=variable>draw1</span> (<span class=variable>draw-solid-disk</span> <span class=variable>new-posn</span> <span class=selfeval>3</span> <span class=keyword>'</span><span class=variable>red</span>)]
+          [<span class=keyword>define</span> <span class=variable>sleep1</span> (<span class=variable>sleep-for-a-while</span> <span class=selfeval>.1</span>)])
+    (<span class=variable>make-shape</span> <span class=variable>new-posn</span> <span class=variable>vel</span>)))
+
+<span class=comment>;; <code class=scheme><span class=variable>Shape</span> <span class=variable>Key</span> &nbsp;-->&nbsp; <span class=variable>Shape</span></code></span>
+<span class=comment>;; check for key event and compute a new velocity based on the event </span>
+(<span class=keyword>define</span> (<span class=variable>update-direction</span> <span class=variable>x</span> <span class=variable>key</span>) 
+  (<span class=keyword>cond</span>
+    [(<span class=builtin>boolean?</span> <span class=variable>key</span>) <span class=variable>x</span>]
+    [(<span class=builtin>char?</span> <span class=variable>key</span>) <span class=variable>x</span>]
+    [<span class=keyword>else</span> (<span class=variable>make-shape</span> (<span class=variable>shape-posn</span> <span class=variable>x</span>) (<span class=variable>posn+</span> (<span class=variable>shape-vel</span> <span class=variable>x</span>) (<span class=variable>delta</span> <span class=variable>key</span>)))]))
+
+<span class=comment>;; <code class=scheme><span class=variable>Key</span> &nbsp;-->&nbsp; <span class=variable>Posn</span></code></span>
+<span class=comment>;; translate a key into a delta velocity (vector)</span>
+(<span class=keyword>define</span> (<span class=variable>delta</span> <span class=variable>key</span>)
+  (<span class=keyword>cond</span>
+    [(<span class=builtin>symbol=?</span> <span class=variable>key</span> <span class=keyword>'</span><span class=variable>up</span>) (<span class=builtin>make-posn</span> <span class=selfeval>0</span> <span class=selfeval>-1</span>)]
+    [(<span class=builtin>symbol=?</span> <span class=variable>key</span> <span class=keyword>'</span><span class=variable>down</span>) (<span class=builtin>make-posn</span> <span class=selfeval>0</span> <span class=selfeval>+1</span>)]
+    [(<span class=builtin>symbol=?</span> <span class=variable>key</span> <span class=keyword>'</span><span class=variable>left</span>) (<span class=builtin>make-posn</span> <span class=selfeval>-1</span> <span class=selfeval>0</span>)]
+    [(<span class=builtin>symbol=?</span> <span class=variable>key</span> <span class=keyword>'</span><span class=variable>right</span>) (<span class=builtin>make-posn</span> <span class=selfeval>+1</span> <span class=selfeval>0</span>)]))
+
+<span class=comment>;; <code class=scheme><span class=variable>Posn</span> <span class=variable>Posn</span> &nbsp;-->&nbsp; <span class=variable>Posn</span></code></span>
+(<span class=keyword>define</span> (<span class=variable>posn+</span> <span class=variable>p1</span> <span class=variable>p2</span>)
+  (<span class=builtin>make-posn</span> (<span class=builtin>+</span> (<span class=builtin>posn-x</span> <span class=variable>p1</span>) (<span class=builtin>posn-x</span> <span class=variable>p2</span>)) (<span class=builtin>+</span> (<span class=builtin>posn-y</span> <span class=variable>p1</span>) (<span class=builtin>posn-y</span> <span class=variable>p2</span>))))
+
+<span class=comment>;; Constants: </span>
+(<span class=keyword>define</span> <span class=variable>HEIGHT</span> <span class=selfeval>400</span>)
+(<span class=keyword>define</span> <span class=variable>WIDTH</span>  <span class=selfeval>400</span>)
+
+<span class=comment>#| Tests:
+
+(equal? (make-posn 212 104)
+        (posn+ (make-posn 10 101) (make-posn 202 3)))
+
+(equal? (make-posn 0 -1)
+        (delta 'up))
+
+(define some-shape (make-shape (make-posn 20 30) (make-posn -7 +13)))
+
+(equal? (make-shape (make-posn 20 30) (make-posn -7 +12)) 
+        (update-direction some-shape 'up))
+|#</span>
+
+<span class=comment>;; --- run program run --- </span>
+(<span class=variable>start</span> <span class=variable>WIDTH</span> <span class=variable>HEIGHT</span>)
+
+(<span class=variable>moon-lander</span> (<span class=variable>make-shape</span> (<span class=builtin>make-posn</span> <span class=selfeval>0</span> <span class=selfeval>0</span>) (<span class=builtin>make-posn</span> <span class=selfeval>+1</span> <span class=selfeval>+1</span>)))
+
+</pre></div><p></p>
+<p>
+</p>
+<div align=right class=navigation><i>[Go to <span><a href="igames-v205.html">first</a>, <a href="igames-Z-H-1.html">previous</a></span><span>, <a href="igames-Z-H-3.html">next</a></span> page]</i></div><p></p>
+</body>
+</html>

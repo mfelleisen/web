@@ -1,0 +1,36 @@
+
+<html>
+<head>
+<title>Documentation: webpages.ss</title>
+</head>
+<body>
+<h1>Documentation: webpages.ss</h1>
+
+The webpages.ss teachpack exports the following functions: 
+<pre>
+<code>
+   write-page ; String Xexpr -> true
+   ;; given a file name and an X-expression, create an HTML file
+   ;; produce <code> true </code> if successful
+
+   ul         ; (Listof Xexpr) -> Xexpr[ul]
+   ;; create an HTML list from a list of X-expressions
+
+   li         ; Xexpr -> Xexpr[li]
+   ;; create an HTML item from an X-expression
+
+   table      ; (Listof (Listof Xexpr)) -> Xexpr[table]
+   ;; create an HTML table from a table of X-expressions
+
+   tr         ; (Listof Xexpr[td]) -> Xexpr[tr]
+   ;; create an HTML table row from a X-expression cells
+
+   td         ; Xexpr -> Xexpr[td]    
+   ;; create an HTML table cell from an X-expression
+</code>
+</pre>
+
+
+</body>
+</html>
+

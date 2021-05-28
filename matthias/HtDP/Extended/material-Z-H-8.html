@@ -1,0 +1,352 @@
+<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--
+
+Generated from material.tex by tex2page, v 20070609
+(running on MzScheme 370.6, unix), 
+(c) Dorai Sitaram, 
+http://www.ccs.neu.edu/~dorai/tex2page/tex2page-doc.html
+
+-->
+<head>
+<title>
+material
+</title>
+<link rel="stylesheet" type="text/css" href="material-Z-S.css" title=default>
+<meta name=robots content="noindex,follow">
+</head>
+<body>
+<div id=slidecontent>
+<div align=right class=navigation>[Go to <span><a href="material.html">first</a>, <a href="material-Z-H-7.html">previous</a></span><span>, <a href="material-Z-H-9.html">next</a></span> page<span>; &nbsp;&nbsp;</span><span><a href="material-Z-H-2.html#node_toc_start">contents</a></span>]</div>
+<p></p>
+<p>
+</p>
+<a name="node_sec_2.3"></a>
+<h2 class=section><a href="material-Z-H-2.html#node_toc_node_sec_2.3">2.3&nbsp;&nbsp;Example: <strong>N</strong></a></h2>
+<p></p>
+<div align=left><pre class=scheme><span class=comment>;; An <code class=scheme><strong> N</strong></code> (natural number) is either</span>
+<span class=comment>;; --- <code class=scheme><span class=selfeval>0</span></code></span>
+<span class=comment>;; --- <code class=scheme>(<span class=builtin>add1</span> <strong> N</strong>)</code></span>
+</pre></div><p>
+Recognize <code class=scheme><span class=selfeval>0</span></code> with <code class=scheme><span class=builtin>zero?</span></code>. Given <code class=scheme><span class=variable>n</span></code> and assuming
+<code class=scheme>(<span class=builtin>zero?</span> <span class=variable>n</span>)</code> is <code class=scheme><span class=builtin>false</span></code>, then <code class=scheme><span class=variable>n</span></code> is <code class=scheme>(<span class=builtin>add1</span> <span class=variable>m</span>)</code>
+for some <code class=scheme><span class=variable>m</span></code>, which belongs to <strong>N</strong>. We get <code class=scheme><span class=variable>m</span></code> via
+<code class=scheme>(<span class=builtin>sub1</span> <span class=variable>n</span>)</code>. </p>
+<p>
+</p>
+<div align=left><pre class=scheme><span class=comment>#| Template: 
+;; \scheme{natural-number -&gt; ???}
+(define (process-n k)
+  (cond
+    [(zero? k) ...]
+    [else ... (process-n (sub1 k)) ...]))
+|#</span>
+
+<span class=comment>;; <code class=scheme><span class=variable>N</span> <span class=variable>Symbol</span> &nbsp;&rarr;&nbsp; <span class=variable>ListOfSymbols</span></code> </span>
+<span class=comment>;; make a list with <code class=scheme><span class=variable>k</span></code> copies of <code class=scheme><span class=variable>a</span></code></span>
+<span class=comment>;; examples: </span>
+<span class=comment>;; --- given <code class=scheme><span class=selfeval>0</span></code> and <code class=scheme><span class=keyword>'</span><span class=variable>z</span></code>, produce <code class=scheme><span class=builtin>empty</span></code></span>
+<span class=comment>;; --- given <code class=scheme><span class=selfeval>2</span></code> and <code class=scheme><span class=keyword>'</span><span class=variable>z</span></code>, produce <code class=scheme>(<span class=builtin>list</span> <span class=keyword>'</span><span class=variable>z</span> <span class=keyword>'</span><span class=variable>z</span>)</code></span>
+(<span class=keyword>define</span> (<span class=variable>copies</span> <span class=variable>n</span> <span class=variable>a</span>)
+  (<span class=keyword>cond</span>
+    [(<span class=builtin>zero?</span> <span class=variable>n</span>) <span class=builtin>empty</span>]
+    [<span class=keyword>else</span> (<span class=builtin>cons</span> <span class=variable>a</span> (<span class=variable>copies</span> (<span class=builtin>sub1</span> <span class=variable>n</span>) <span class=variable>a</span>))]))
+
+<span class=comment>;; Tests: </span>
+(<span class=builtin>equal?</span> (<span class=variable>copies</span> <span class=selfeval>0</span> <span class=keyword>'</span><span class=variable>z</span>) <span class=builtin>empty</span>)
+(<span class=builtin>equal?</span> (<span class=variable>copies</span> <span class=selfeval>2</span> <span class=keyword>'</span><span class=variable>z</span>) (<span class=builtin>list</span> <span class=keyword>'</span><span class=variable>z</span> <span class=keyword>'</span><span class=variable>z</span>))
+
+<span class=comment>;; <code class=scheme><strong> N</strong> &nbsp;&rarr;&nbsp; <span class=variable>ListOfString</span></code></span>
+<span class=comment>;; create a list of strings <code class=scheme><span class=selfeval>&quot;k&quot;</span></code>, <tt>...</tt>, <code class=scheme><span class=selfeval>&quot;0&quot;</span></code></span>
+(<span class=keyword>define</span> (<span class=variable>cells</span> <span class=variable>k</span>)
+  (<span class=keyword>cond</span>
+    [(<span class=builtin>zero?</span> <span class=variable>k</span>) (<span class=builtin>list</span> <span class=selfeval>&quot;0&quot;</span>)]
+    [<span class=keyword>else</span> (<span class=builtin>cons</span> (<span style="font-family: sans-serif"> number</span>&rarr;<span style="font-family: sans-serif"> string</span> <span class=variable>k</span>) (<span class=variable>cells</span> (<span class=builtin>sub1</span> <span class=variable>k</span>)))]))
+
+<span class=comment>;; Tests:</span>
+(<span class=builtin>equal?</span> (<span class=variable>cells</span> <span class=selfeval>0</span>) (<span class=builtin>list</span> <span class=selfeval>&quot;0&quot;</span>))
+(<span class=builtin>equal?</span> (<span class=variable>cells</span> <span class=selfeval>2</span>) (<span class=builtin>list</span> <span class=selfeval>&quot;2&quot;</span> <span class=selfeval>&quot;1&quot;</span> <span class=selfeval>&quot;0&quot;</span>))
+</pre></div><p></p>
+<p>
+</p>
+<a name="node_sec_2.4"></a>
+<h2 class=section><a href="material-Z-H-2.html#node_toc_node_sec_2.4">2.4&nbsp;&nbsp;Example: More on Images</a></h2>
+<p>Images have always been values in DrScheme. All we had, however, were
+constants. Now we also have functions for creating images:</p>
+<p></p>
+<p>
+
+</p>
+
+<p class=noindent><br>
+
+</p>
+
+<p class=noindent></p>
+<p></p>
+<div align=left>
+<code class=scheme>(<span class=builtin>rectangle</span> <span class=selfeval>10</span> <span class=selfeval>20</span> <span class=keyword>'</span><span class=variable>red</span>)</code>
+</div><p></p>
+<p></p>
+<div align=left>
+create a red, 10 x 20 rectangle
+</div><p></p>
+<p></p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p></p>
+<p>
+
+</p>
+
+<p class=noindent><br>
+
+</p>
+
+<p class=noindent></p>
+<p></p>
+<div align=left>
+<code class=scheme>(<span class=builtin>circle</span> <span class=selfeval>10</span> <span class=keyword>'</span><span class=variable>red</span>)</code>
+</div><p></p>
+<p></p>
+<div align=left>
+create a red circle with radius 10
+</div><p></p>
+<p></p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p></p>
+<p>
+
+</p>
+
+<p class=noindent><br>
+
+</p>
+
+<p class=noindent></p>
+<p></p>
+<div align=left>
+<code class=scheme>(<span class=builtin>disk</span> <span class=selfeval>10</span> <span class=keyword>'</span><span class=variable>red</span>)</code>
+</div><p></p>
+<p></p>
+<div align=left>
+create a red disk of radius 10
+</div><p></p>
+<p></p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p></p>
+<p>
+
+</p>
+
+<p class=noindent><br>
+
+</p>
+
+<p class=noindent></p>
+<p></p>
+<div align=left>
+<code class=scheme>(<span class=builtin>empty-scene</span> <span class=selfeval>100</span> <span class=selfeval>200</span>)</code>
+</div><p></p>
+<p></p>
+<div align=left>
+create an empty 100 x 200 scene
+</div><p></p>
+<p></p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p></p>
+<p>
+
+</p>
+
+<p class=noindent><br>
+
+</p>
+
+<p class=noindent></p>
+<p></p>
+<div align=left>
+<div align=left><pre class=scheme>(<span class=builtin>place-image</span> (<span class=builtin>rectangle</span> <span class=selfeval>5</span> <span class=selfeval>5</span> <span class=keyword>'</span><span class=variable>red</span>) 
+             <span class=selfeval>10</span> <span class=selfeval>20</span> 
+             (<span class=builtin>empty-scene</span> <span class=selfeval>100</span> <span class=selfeval>200</span>))
+</pre></div>
+</div><p></p>
+<p></p>
+<div align=left>
+place a red, 5 x 5 square at (10,20) into an empty scene
+</div><p></p>
+<p></p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p></p>
+<p>
+
+</p>
+
+<p class=noindent><br>
+
+</p>
+
+<p class=noindent></p>
+<p></p>
+<div align=left>
+<div align=left><pre class=scheme>(<span style="font-family: sans-serif"> image</span>&rarr;<span style="font-family: sans-serif"> color-list</span> 
+  (<span class=builtin>rectangle</span> <span class=selfeval>3</span> <span class=selfeval>4</span> <span class=keyword>'</span><span class=variable>green</span>))
+</pre></div>
+</div><p></p>
+<p></p>
+<div align=left>
+turn the green, 3 x 4
+reactangle into a list of 12 copies of <code class=scheme>(<span class=builtin>make-color</span> <span class=selfeval>60</span> <span class=selfeval>248</span> <span class=selfeval>52</span>)</code>
+</div><p></p>
+<p></p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p></p>
+<p>
+
+</p>
+
+<p class=noindent><br>
+
+</p>
+
+<p class=noindent></p>
+<p></p>
+<div align=left>
+<div align=left><pre class=scheme>(<span style="font-family: sans-serif"> color-list</span>&rarr;<span style="font-family: sans-serif"> image</span>
+  (<span class=builtin>list</span>
+    (<span class=builtin>make-color</span> <span class=selfeval>60</span> <span class=selfeval>248</span> <span class=selfeval>52</span>)
+    (<span class=builtin>make-color</span> <span class=selfeval>60</span> <span class=selfeval>248</span> <span class=selfeval>52</span>)
+    (<span class=builtin>make-color</span> <span class=selfeval>60</span> <span class=selfeval>248</span> <span class=selfeval>52</span>)
+    (<span class=builtin>make-color</span> <span class=selfeval>60</span> <span class=selfeval>248</span> <span class=selfeval>52</span>)
+    (<span class=builtin>make-color</span> <span class=selfeval>60</span> <span class=selfeval>248</span> <span class=selfeval>52</span>)
+    (<span class=builtin>make-color</span> <span class=selfeval>60</span> <span class=selfeval>248</span> <span class=selfeval>52</span>)
+    (<span class=builtin>make-color</span> <span class=selfeval>60</span> <span class=selfeval>248</span> <span class=selfeval>52</span>)
+    (<span class=builtin>make-color</span> <span class=selfeval>60</span> <span class=selfeval>248</span> <span class=selfeval>52</span>)
+    (<span class=builtin>make-color</span> <span class=selfeval>60</span> <span class=selfeval>248</span> <span class=selfeval>52</span>)
+    (<span class=builtin>make-color</span> <span class=selfeval>60</span> <span class=selfeval>248</span> <span class=selfeval>52</span>)
+    (<span class=builtin>make-color</span> <span class=selfeval>60</span> <span class=selfeval>248</span> <span class=selfeval>52</span>)
+    (<span class=builtin>make-color</span> <span class=selfeval>60</span> <span class=selfeval>248</span> <span class=selfeval>52</span>))
+  <span class=selfeval>1</span> <span class=selfeval>12</span>)
+</pre></div>
+</div><p></p>
+<p></p>
+<div align=left>
+turn a list of 12 copies of <code class=scheme>(<span class=builtin>make-color</span> <span class=selfeval>60</span> <span class=selfeval>248</span> <span class=selfeval>52</span>)</code>
+into a horizontal line of 12 green pixels
+</div><p></p>
+<p></p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p></p>
+<p>
+
+</p>
+
+<p class=noindent><br>
+
+</p>
+
+<p class=noindent></p>
+<p></p>
+<div align=left>
+<div align=left><pre class=scheme>(<span style="font-family: sans-serif"> color-list</span>&rarr;<span style="font-family: sans-serif"> image</span>
+  (<span class=builtin>list</span>
+    (<span class=builtin>make-color</span> <span class=selfeval>60</span> <span class=selfeval>248</span> <span class=selfeval>52</span>)
+    (<span class=builtin>make-color</span> <span class=selfeval>60</span> <span class=selfeval>248</span> <span class=selfeval>52</span>)
+    (<span class=builtin>make-color</span> <span class=selfeval>60</span> <span class=selfeval>248</span> <span class=selfeval>52</span>)
+    (<span class=builtin>make-color</span> <span class=selfeval>60</span> <span class=selfeval>248</span> <span class=selfeval>52</span>)
+    (<span class=builtin>make-color</span> <span class=selfeval>60</span> <span class=selfeval>248</span> <span class=selfeval>52</span>)
+    (<span class=builtin>make-color</span> <span class=selfeval>60</span> <span class=selfeval>248</span> <span class=selfeval>52</span>)
+    (<span class=builtin>make-color</span> <span class=selfeval>60</span> <span class=selfeval>248</span> <span class=selfeval>52</span>)
+    (<span class=builtin>make-color</span> <span class=selfeval>60</span> <span class=selfeval>248</span> <span class=selfeval>52</span>)
+    (<span class=builtin>make-color</span> <span class=selfeval>60</span> <span class=selfeval>248</span> <span class=selfeval>52</span>)
+    (<span class=builtin>make-color</span> <span class=selfeval>60</span> <span class=selfeval>248</span> <span class=selfeval>52</span>)
+    (<span class=builtin>make-color</span> <span class=selfeval>60</span> <span class=selfeval>248</span> <span class=selfeval>52</span>)
+    (<span class=builtin>make-color</span> <span class=selfeval>60</span> <span class=selfeval>248</span> <span class=selfeval>52</span>))
+  <span class=selfeval>3</span> <span class=selfeval>4</span>)
+</pre></div>
+</div><p></p>
+<p></p>
+<div align=left>
+turn a list of 12 copies of <code class=scheme>(<span class=builtin>make-color</span> <span class=selfeval>60</span> <span class=selfeval>248</span> <span class=selfeval>52</span>)</code>
+into a horizontal line of 12 green pixels
+</div><p></p>
+<p></p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p></p>
+<p>
+
+</p>
+
+<p class=noindent><br>
+
+</p>
+
+<p class=noindent></p>
+<p></p>
+<div align=left>
+<div align=left><pre class=scheme>(<span class=builtin>offset-image+</span> 
+  (<span class=builtin>rectangle</span> <span class=selfeval>1</span> <span class=selfeval>11</span> <span class=keyword>'</span><span class=variable>red</span>)
+  <span class=selfeval>-5</span> <span class=selfeval>5</span>
+  (<span class=builtin>rectangle</span> <span class=selfeval>11</span> <span class=selfeval>1</span> <span class=keyword>'</span><span class=variable>red</span>))
+</pre></div>
+</div><p></p>
+<p></p>
+<div align=left>
+create two thin rectangles, then combine them into a red cross
+</div><p></p>
+<p></p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p></p>
+<p>
+</p>
+<a name="node_sec_2.5"></a>
+<h2 class=section><a href="material-Z-H-2.html#node_toc_node_sec_2.5">2.5&nbsp;&nbsp;Example: Image Functions</a></h2>
+<p></p>
+<p>
+</p>
+<div align=left><pre class=scheme>(<span class=keyword>define</span> <span class=variable>UFO</span> ...) <span class=comment>;; some shape that resembles a green saucer </span>
+
+<span class=comment>;; <code class=scheme><span class=variable>Number</span> &nbsp;&rarr;&nbsp; <span class=variable>Number</span></code></span>
+<span class=comment>;; determine the UFO&#8217;s <code class=scheme><span class=variable>x</span></code> coordinate at time <code class=scheme><span class=variable>t</span></code></span>
+(<span class=keyword>define</span> (<span class=variable>ufo-x</span> <span class=variable>t</span>) <span class=selfeval>10</span>)
+
+<span class=comment>;; <code class=scheme><span class=variable>Number</span> &nbsp;&rarr;&nbsp; <span class=variable>Number</span></code></span>
+<span class=comment>;; determine the UFO&#8217;s <code class=scheme><span class=variable>y</span></code> coordinate at time <code class=scheme><span class=variable>t</span></code></span>
+(<span class=keyword>define</span> (<span class=variable>ufo-y</span> <span class=variable>t</span>) (<span class=builtin>+</span> <span class=selfeval>20</span> <span class=variable>t</span>))
+
+<span class=comment>;; <code class=scheme><span class=variable>Number</span> <span class=variable>Scene</span> &nbsp;&rarr;&nbsp; <span class=variable>Scene</span></code></span>
+<span class=comment>;; place the UFO into <code class=scheme><span class=variable>s</span></code> at time <code class=scheme><span class=variable>t</span></code></span>
+(<span class=keyword>define</span> (<span class=variable>place-ufo</span> <span class=variable>t</span> <span class=variable>s</span>) (<span class=builtin>place-image</span> <span class=variable>UFO</span> (<span class=variable>ufo-x</span> <span class=variable>t</span>) (<span class=variable>ufo-y</span> <span class=variable>t</span>) <span class=variable>s</span>))
+
+<span class=comment>;; Tests:</span>
+(<span class=builtin>=</span> (<span class=variable>ufo-x</span> (<span class=builtin>random</span> <span class=selfeval>100</span>)) <span class=selfeval>10</span>)
+(<span class=builtin>=</span> (<span class=variable>ufo-y</span> <span class=selfeval>10</span>) <span class=selfeval>30</span>)
+</pre></div><p>
+Use the stepper to see how things work. </p>
+<p>
+</p>
+<div class=smallskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+<div align=right class=navigation>[Go to <span><a href="material.html">first</a>, <a href="material-Z-H-7.html">previous</a></span><span>, <a href="material-Z-H-9.html">next</a></span> page<span>; &nbsp;&nbsp;</span><span><a href="material-Z-H-2.html#node_toc_start">contents</a></span>]</div>
+</p>
+<p></p>
+</div>
+</body>
+</html>

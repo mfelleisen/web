@@ -1,0 +1,156 @@
+<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--
+
+Generated from material.tex by tex2page, v 20070609
+(running on MzScheme 370.6, unix), 
+(c) Dorai Sitaram, 
+http://www.ccs.neu.edu/~dorai/tex2page/tex2page-doc.html
+
+-->
+<head>
+<title>
+material
+</title>
+<link rel="stylesheet" type="text/css" href="material-Z-S.css" title=default>
+<meta name=robots content="noindex,follow">
+</head>
+<body>
+<div id=slidecontent>
+<div align=right class=navigation>[Go to <span><a href="material.html">first</a>, <a href="material-Z-H-20.html">previous</a></span><span>, <a href="material-Z-H-22.html">next</a></span> page<span>; &nbsp;&nbsp;</span><span><a href="material-Z-H-2.html#node_toc_start">contents</a></span>]</div>
+<p></p>
+<p>
+</p>
+<a name="node_sec_6.7"></a>
+<h2 class=section><a href="material-Z-H-2.html#node_toc_node_sec_6.7">6.7&nbsp;&nbsp;Example: Building Lists, with lambda</a></h2>
+<p>
+</p>
+
+<p class=noindent><br>
+
+</p>
+
+<p class=noindent></p>
+<p></p>
+<div align=left>
+I want lists like <code class=scheme>(<span class=builtin>list</span> <span class=selfeval>0</span> <span class=selfeval>1</span> <span class=selfeval>2</span> ...)</code>
+</div><p></p>
+<p></p>
+<div align=left>
+(build-list n (lambda (i) i))
+</div><p></p>
+<p></p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p></p>
+<p>
+
+</p>
+
+<p class=noindent><br>
+
+</p>
+
+<p class=noindent></p>
+<p></p>
+<div align=left>
+How about <code class=scheme>(<span class=builtin>list</span> <span class=selfeval>3</span> <span class=selfeval>4</span> <span class=selfeval>5</span> ...)</code>?
+</div><p></p>
+<p></p>
+<div align=left>
+<code class=scheme>(<span class=builtin>build-list</span> <span class=variable>n</span> (<span class=keyword>lambda</span> (<span class=variable>i</span>) (<span class=builtin>+</span> <span class=selfeval>3</span> <span class=variable>i</span>)))</code>
+</div><p></p>
+<p></p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p></p>
+<p>
+
+</p>
+
+<p class=noindent><br>
+
+</p>
+
+<p class=noindent></p>
+<p></p>
+<div align=left>
+And <code class=scheme>(<span class=builtin>list</span> <span class=selfeval>1</span> <span class=selfeval>4</span> <span class=selfeval>9</span> ...)</code>?
+</div><p></p>
+<p></p>
+<div align=left>
+(build-list n (lambda (i) (* i i)))
+</div><p></p>
+<p></p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p></p>
+<p>
+
+</p>
+
+<p class=noindent><br>
+
+</p>
+
+<p class=noindent></p>
+<p></p>
+<div align=left>
+Can I do more than numbers?
+</div><p></p>
+<p></p>
+<div align=left>
+<div align=left><pre class=scheme>(<span style="font-family: sans-serif"> color-list</span>&rarr;<span style="font-family: sans-serif"> image</span> 
+  (<span class=builtin>build-list</span>
+    <span class=selfeval>50</span> (<span class=keyword>lambda</span> (<span class=variable>i</span>)
+	 (<span class=builtin>make-color</span> (<span class=builtin>*</span> <span class=variable>i</span> <span class=selfeval>10</span>)
+	             (<span class=builtin>*</span> <span class=variable>i</span> <span class=selfeval>5</span>)
+		     (<span class=builtin>*</span> <span class=variable>i</span> <span class=selfeval>3</span>))))
+  <span class=selfeval>50</span> <span class=selfeval>1</span>)
+  </pre></div>
+</div><p></p>
+<p></p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p></p>
+<p>
+
+</p>
+
+<p class=noindent><br>
+
+</p>
+
+<p class=noindent></p>
+<p></p>
+<div align=left>
+And nested lists?
+</div><p></p>
+<p></p>
+<div align=left>
+<div align=left><pre class=scheme>(<span class=builtin>build-list</span>
+  <span class=selfeval>10</span> (<span class=keyword>lambda</span> (<span class=variable>i</span>)
+       (<span class=builtin>build-list</span>
+	 <span class=selfeval>10</span> (<span class=keyword>lambda</span> (<span class=variable>j</span>)
+	      (<span class=keyword>if</span> (<span class=builtin>=</span> <span class=variable>i</span> <span class=variable>j</span>) <span class=selfeval>1</span> <span class=selfeval>0</span>)))))
+  </pre></div>
+</div><p></p>
+<p></p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p></p>
+<p>
+</p>
+<div class=smallskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+<div align=right class=navigation>[Go to <span><a href="material.html">first</a>, <a href="material-Z-H-20.html">previous</a></span><span>, <a href="material-Z-H-22.html">next</a></span> page<span>; &nbsp;&nbsp;</span><span><a href="material-Z-H-2.html#node_toc_start">contents</a></span>]</div>
+</p>
+<p></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--
+
+Generated from material.tex by tex2page, v 20070609
+(running on MzScheme 370.6, unix), 
+(c) Dorai Sitaram, 
+http://www.ccs.neu.edu/~dorai/tex2page/tex2page-doc.html
+
+-->
+<head>
+<title>
+material
+</title>
+<link rel="stylesheet" type="text/css" href="material-Z-S.css" title=default>
+<meta name=robots content="noindex,follow">
+</head>
+<body>
+<div id=slidecontent>
+<div align=right class=navigation>[Go to <span><a href="material.html">first</a>, <a href="material-Z-H-12.html">previous</a></span><span>, <a href="material-Z-H-14.html">next</a></span> page<span>; &nbsp;&nbsp;</span><span><a href="material-Z-H-2.html#node_toc_start">contents</a></span>]</div>
+<p></p>
+<a name="node_sec_4"></a>
+<h1 class=section><a href="material-Z-H-2.html#node_toc_node_sec_4">4&nbsp;&nbsp;Tuesday Afternoon: Generative Recursion</a></h1>
+<p></p>
+
+<p class=noindent><strong>Related material in <em>How to Design Programs</em></strong>: part v </p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p>
+</p>
+<a name="node_sec_4.1"></a>
+<h2 class=section><a href="material-Z-H-2.html#node_toc_node_sec_4.1">4.1&nbsp;&nbsp;Goal</a></h2>
+<p>to study </p>
+<p>
+</p>
+
+<p class=noindent>(1) a new form of program organization and </p>
+<p>
+</p>
+
+<p class=noindent>(2) a design recipe for creating such programs</p>
+<p>
+</p>
+<a name="node_sec_4.2"></a>
+<h2 class=section><a href="material-Z-H-2.html#node_toc_node_sec_4.2">4.2&nbsp;&nbsp;Example: Generating Balloons</a></h2>
+<p>Problem: 
+</p>
+<blockquote>
+Develop a function that creates a blue background with <code class=scheme><span class=variable>n</span></code> randomly
+distributed balloons for an animated scene.
+</blockquote>
+Or, 
+<blockquote>
+Develop a function that creates a blue background with <code class=scheme><span class=variable>n</span></code> randomly
+distributed falling stars for the &#8220;Collect Star Thalers&#8221; fairy-tale game.
+</blockquote><p>
+</p>
+
+<p class=noindent>We clearly need <code class=scheme><span class=variable>n</span></code> distinct <code class=scheme><span class=variable>Posn</span></code>s: 
+</p>
+<div align=left><pre class=scheme><span class=comment>;; <code class=scheme><span class=variable>Number</span> &nbsp;&rarr;&nbsp; <span class=variable>PosnList</span></code></span>
+<span class=comment>;; create a list of <code class=scheme><span class=variable>n</span></code> distinct <code class=scheme><span class=variable>Posn</span></code>s </span>
+(<span class=keyword>define</span> (<span class=variable>background</span> <span class=variable>n</span>)
+  (<span class=keyword>cond</span>
+    [(<span class=builtin>zero?</span> <span class=variable>n</span>) <span class=builtin>empty</span>]
+    [<span class=keyword>else</span> (<span class=variable>add-distinct-posn</span> (<span class=variable>background</span> (<span class=builtin>sub1</span> <span class=variable>n</span>)))]))
+
+<span class=comment>;; <code class=scheme><span class=variable>PosnList</span> &nbsp;&rarr;&nbsp; <span class=variable>PosnList</span></code></span>
+<span class=comment>;; create and add a <code class=scheme><span class=variable>Posn</span></code> to <code class=scheme><span class=variable>l</span></code> that is distinct from all</span>
+<span class=comment>;; <code class=scheme><span class=variable>Posn</span></code>s on there</span>
+(<span class=keyword>define</span> (<span class=variable>add-distinct-posn</span> <span class=variable>l</span>)
+  (<span class=keyword>local</span> ((<span class=keyword>define</span> <span class=variable>new-x</span> (<span class=builtin>random</span> <span class=variable>WIDTH</span>))
+          (<span class=keyword>define</span> <span class=variable>new-y</span> (<span class=builtin>random</span> <span class=variable>HEIGHT</span>))
+          (<span class=keyword>define</span> <span class=variable>new-p</span> (<span class=builtin>make-posn</span> <span class=variable>new-x</span> <span class=variable>new-y</span>)))
+    (<span class=keyword>cond</span>
+      [(<span class=builtin>boolean?</span> (<span class=variable>member</span> <span class=variable>new-p</span> <span class=variable>l</span>)) (<span class=builtin>cons</span> <span class=variable>new-p</span> <span class=variable>l</span>)]
+      [<span class=keyword>else</span> <span class=variable><u><code class=scheme>(<span class=variable>add-distinct-posn</span> <span class=variable>l</span>)</code></u></span>])))
+</pre></div><p>
+What&#8217;s wrong with the underlined recursion? </p>
+<p>
+</p>
+<a name="node_sec_4.3"></a>
+<h2 class=section><a href="material-Z-H-2.html#node_toc_node_sec_4.3">4.3&nbsp;&nbsp;Example: Sorting Numbers</a></h2>
+<p>Problem: 
+</p>
+<blockquote>
+Sort a list of numbers via a divide-and-conquer strategy. That is, pick a
+pivot element; extract all those items that are smaller than the pivot and
+sort those;  extract all those items that are larger than the pivot and
+sort those; and finally juxtapose the two sequences to get a sorted
+sequence. 
+</blockquote><p>
+</p>
+<div align=left><pre class=scheme><span class=comment>;; <code class=scheme><span class=variable>NumberList</span> &nbsp;&rarr;&nbsp; <span class=variable>NumberList</span></code></span>
+<span class=comment>;; to create a sorted list of numbers from <code class=scheme><span class=variable>alon</span></code></span>
+(<span class=keyword>define</span> (<span class=variable>kwik-sort</span> <span class=variable>alon</span>)
+  (<span class=keyword>cond</span>
+    [(<span class=variable>sorted?</span> <span class=variable>alon</span>) <span class=variable>alon</span>]
+    [<span class=keyword>else</span> (<span class=builtin>append</span>
+	    <span class=variable><u><code class=scheme>(<span class=variable>kwik-sort</span> (<span class=variable>smaller</span> (<span class=builtin>first</span> <span class=variable>alon</span>) (<span class=builtin>rest</span> <span class=variable>alon</span>)))</code></u></span>
+	    (<span class=builtin>list</span> (<span class=builtin>first</span> <span class=variable>alon</span>))
+	    <span class=variable><u><code class=scheme>(<span class=variable>kwik-sort</span> (<span class=variable>larger</span> (<span class=builtin>first</span> <span class=variable>alon</span>) (<span class=builtin>rest</span> <span class=variable>alon</span>)))</code></u></span>)]))
+
+<span class=comment>;; <code class=scheme><span class=variable>NumberList</span> &nbsp;&rarr;&nbsp; <span class=variable>NumberList</span></code></span>
+<span class=comment>;; extract all items from <code class=scheme><span class=variable>l</span></code> that are smaller than <code class=scheme><span class=variable>pivot</span></code></span>
+(<span class=keyword>define</span> (<span class=variable>smaller</span> <span class=variable>pivot</span> <span class=variable>l</span>)
+  (<span class=keyword>cond</span>
+    [(<span class=builtin>empty?</span> <span class=variable>l</span>) <span class=builtin>empty</span>]
+    [<span class=keyword>else</span> (<span class=keyword>cond</span>
+	    [(<span class=builtin>&lt;</span> (<span class=builtin>first</span> <span class=variable>l</span>) <span class=variable>pivot</span>) (<span class=builtin>cons</span> (<span class=builtin>first</span> <span class=variable>l</span>) (<span class=variable>smaller</span> <span class=variable>pivot</span> (<span class=builtin>rest</span> <span class=variable>l</span>)))]
+	    [<span class=keyword>else</span> (<span class=variable>smaller</span> <span class=variable>pivot</span> (<span class=builtin>rest</span> <span class=variable>l</span>))])]))
+
+<span class=comment>;; <code class=scheme><span class=variable>NumberList</span> &nbsp;&rarr;&nbsp; <span class=variable>NumberList</span></code></span>
+<span class=comment>;; extract all items from <code class=scheme><span class=variable>l</span></code> that are larger than <code class=scheme><span class=variable>pivot</span></code></span>
+(<span class=keyword>define</span> (<span class=variable>larger</span> <span class=variable>pivot</span> <span class=variable>l</span>)
+  (<span class=keyword>cond</span>
+    [(<span class=builtin>empty?</span> <span class=variable>l</span>) <span class=builtin>empty</span>]
+    [<span class=keyword>else</span> (<span class=keyword>cond</span>
+	    [(<span class=builtin>&gt;</span> (<span class=builtin>first</span> <span class=variable>l</span>) <span class=variable>pivot</span>) (<span class=builtin>cons</span> (<span class=builtin>first</span> <span class=variable>l</span>) (<span class=variable>larger</span> <span class=variable>pivot</span> (<span class=builtin>rest</span> <span class=variable>l</span>)))]
+	    [<span class=keyword>else</span> (<span class=variable>larger</span> <span class=variable>pivot</span> (<span class=builtin>rest</span> <span class=variable>l</span>))])]))
+
+<span class=comment>;; test: </span>
+(<span class=builtin>equal?</span> (<span class=variable>kwik-sort</span> (<span class=builtin>list</span> <span class=selfeval>3</span> <span class=selfeval>8</span> <span class=selfeval>1</span> <span class=selfeval>2</span> <span class=selfeval>9</span> <span class=selfeval>7</span>)) (<span class=builtin>list</span> <span class=selfeval>1</span> <span class=selfeval>2</span> <span class=selfeval>3</span> <span class=selfeval>7</span> <span class=selfeval>8</span> <span class=selfeval>9</span>))
+</pre></div><p>
+What&#8217;s wrong with the underlined recursions? </p>
+<p>
+</p>
+<a name="node_sec_4.4"></a>
+<h2 class=section><a href="material-Z-H-2.html#node_toc_node_sec_4.4">4.4&nbsp;&nbsp;Example: Fractals</a></h2>
+<p></p>
+<p>
+Problem: 
+</p>
+<blockquote>
+Design a program that draws these triangles: 
+
+<div align=center><table><tr><td>
+
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="material-Z-G-1.gif" border="0" alt="[material-Z-G-1.gif]"> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="material-Z-G-2.gif" border="0" alt="[material-Z-G-2.gif]"> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="material-Z-G-3.gif" border="0" alt="[material-Z-G-3.gif]">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</td></tr></table></div>
+</blockquote><p>
+</p>
+<div align=left><pre class=scheme><span class=comment>;; <code class=scheme><span class=variable>Posn</span> <span class=variable>Posn</span> <span class=variable>Posn</span> &nbsp;&rarr;&nbsp; <span class=builtin>true</span></code></span>
+<span class=comment>;; to draw a Sierpinski triangle at <code class=scheme><span class=variable>a</span></code>, <code class=scheme><span class=variable>b</span></code>, and <code class=scheme><span class=variable>c</span></code>,</span>
+(<span class=keyword>define</span> (<span class=variable>sierpinski</span> <span class=variable>a</span> <span class=variable>b</span> <span class=variable>c</span>)
+  (<span class=keyword>cond</span>
+    [(<span class=variable>too-small?</span> <span class=variable>a</span> <span class=variable>b</span> <span class=variable>c</span>) <span class=selfeval>#t</span>]
+    [<span class=keyword>else</span> 
+      (<span class=keyword>local</span> ((<span class=keyword>define</span> <span class=variable>a-b</span> (<span class=variable>mid-point</span> <span class=variable>a</span> <span class=variable>b</span>))
+	      (<span class=keyword>define</span> <span class=variable>b-c</span> (<span class=variable>mid-point</span> <span class=variable>b</span> <span class=variable>c</span>))
+	      (<span class=keyword>define</span> <span class=variable>c-a</span> (<span class=variable>mid-point</span> <span class=variable>a</span> <span class=variable>c</span>)))
+	(<span class=keyword>and</span>
+	  (<span class=variable>draw-triangle</span> <span class=variable>a</span> <span class=variable>b</span> <span class=variable>c</span>)	    
+	  (<span class=variable>sierpinski</span> <span class=variable>a</span> <span class=variable>a-b</span> <span class=variable>c-a</span>)
+	  (<span class=variable>sierpinski</span> <span class=variable>b</span> <span class=variable>a-b</span> <span class=variable>b-c</span>)
+	  (<span class=variable>sierpinski</span> <span class=variable>c</span> <span class=variable>c-a</span> <span class=variable>b-c</span>)))]))
+
+<span class=comment>;; <code class=scheme><span class=variable>Posn</span> <span class=variable>Posn</span> &nbsp;&rarr;&nbsp; <span class=variable>Posn</span></code></span>
+<span class=comment>;; to compute the mid-point between <code class=scheme><span class=variable>a-posn</span></code> and <code class=scheme><span class=variable>b-posn</span></code></span>
+(<span class=keyword>define</span> (<span class=variable>mid-point</span> <span class=variable>a-posn</span> <span class=variable>b-posn</span>)
+  (<span class=builtin>make-posn</span> (<span class=variable>mid</span> (<span class=builtin>posn-x</span> <span class=variable>a-posn</span>) (<span class=builtin>posn-x</span> <span class=variable>b-posn</span>))
+             (<span class=variable>mid</span> (<span class=builtin>posn-y</span> <span class=variable>a-posn</span>) (<span class=builtin>posn-y</span> <span class=variable>b-posn</span>))))
+
+<span class=comment>;; <code class=scheme><span class=variable>Number</span> <span class=variable>Number</span> &nbsp;&rarr;&nbsp; <span class=variable>Number</span></code></span>
+<span class=comment>;; to compute the average of <code class=scheme><span class=variable>x</span></code> and <code class=scheme><span class=variable>y</span></code></span>
+(<span class=keyword>define</span> (<span class=variable>mid</span> <span class=variable>x</span> <span class=variable>y</span>) (<span class=builtin>/</span> (<span class=builtin>+</span> <span class=variable>x</span> <span class=variable>y</span>) <span class=selfeval>2</span>))
+</pre></div><p></p>
+<p>
+</p>
+<a name="node_sec_4.5"></a>
+<h2 class=section><a href="material-Z-H-2.html#node_toc_node_sec_4.5">4.5&nbsp;&nbsp;Generative Recursion: The Design Recipe</a></h2>
+<p></p>
+<ol>
+<li><p>The design recipe uses the basic six steps. <br>
+Question: if the ideas
+are <i>ad hoc</i>, how can we design a template systematically?</p>
+<p>
+</p>
+<li><p><em>All</em> functions based on generative recursion use the same basic
+outline. To find it, ask these four questions: 
+</p>
+<ol>
+<li><p>what are <em>trivial</em> solutions?</p>
+<p>
+</p>
+<li><p>how do you generate new, slightly different problems?</p>
+<p>
+</p>
+<li><p>how do you use the solutions to these problems?</p>
+<p>
+</p>
+<li><p>how do you <em>now</em> to get the solution for the original problem? 
+</p>
+</ol><p></p>
+<p>
+</p>
+<li><p>We need a seventh step. Does it terminate?
+</p>
+</ol><p></p>
+<p>
+</p>
+<div class=smallskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+<div align=right class=navigation>[Go to <span><a href="material.html">first</a>, <a href="material-Z-H-12.html">previous</a></span><span>, <a href="material-Z-H-14.html">next</a></span> page<span>; &nbsp;&nbsp;</span><span><a href="material-Z-H-2.html#node_toc_start">contents</a></span>]</div>
+</p>
+<p></p>
+</div>
+</body>
+</html>

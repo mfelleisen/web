@@ -1,0 +1,88 @@
+<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--
+
+Generated from material.tex by tex2page, v 20070609
+(running on MzScheme 370.6, unix), 
+(c) Dorai Sitaram, 
+http://www.ccs.neu.edu/~dorai/tex2page/tex2page-doc.html
+
+-->
+<head>
+<title>
+material
+</title>
+<link rel="stylesheet" type="text/css" href="material-Z-S.css" title=default>
+<meta name=robots content="noindex,follow">
+</head>
+<body>
+<div id=slidecontent>
+<div align=right class=navigation>[Go to <span><a href="material.html">first</a>, <a href="material-Z-H-16.html">previous</a></span><span>, <a href="material-Z-H-18.html">next</a></span> page<span>; &nbsp;&nbsp;</span><span><a href="material-Z-H-2.html#node_toc_start">contents</a></span>]</div>
+<p></p>
+<a name="node_sec_6"></a>
+<h1 class=section><a href="material-Z-H-2.html#node_toc_node_sec_6">6&nbsp;&nbsp;Wednesday Afternoon: Using Abstractions</a></h1>
+<p></p>
+
+<p class=noindent><strong>Related material in <em>How to Design Programs</em></strong>: section 21.1 </p>
+<div class=bigskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+</p>
+<p>
+</p>
+<a name="node_sec_6.1"></a>
+<h2 class=section><a href="material-Z-H-2.html#node_toc_node_sec_6.1">6.1&nbsp;&nbsp;Goals: 1001 Loops</a></h2>
+<p>(1) to iterate: to apply an <code class=scheme><span class=variable>action</span></code> to each item in a piece of
+compound data</p>
+<p>
+</p>
+
+<p class=noindent>(2) studying <code class=scheme><span class=keyword>lambda</span></code>: writing actions is easy with
+<code class=scheme><span class=keyword>lambda</span></code> </p>
+<p>
+
+<blockquote><table bgcolor="beige"><tr><td>
+
+</p>
+<a name="node_fig_Temp_7"></a>
+<div class=figure align=center><table width=100%><tr><td align=center><div align=left><pre class=scheme><span class=comment>;; <code class=scheme><span class=builtin>build-list</span> <span class=selfeval>:</span> <strong> N</strong> (<strong> N</strong> &nbsp;&rarr;&nbsp; <span class=variable>X</span>) &nbsp;&rarr;&nbsp; (<span class=keyword>listof</span> <span class=variable>X</span>)</code></span>
+<span class=comment>;; to construct <code class=scheme>(<span class=builtin>list</span> (<span class=variable>f</span> <span class=selfeval>0</span>) ... (<span class=variable>f</span> (<span class=builtin>-</span> <span class=variable>n</span> <span class=selfeval>1</span>)))</code></span>
+(<span class=keyword>define</span> (<span class=builtin>build-list</span> <span class=variable>n</span> <span class=variable>f</span>) ...)
+
+<span class=comment>;; <code class=scheme><span class=builtin>filter</span> <span class=selfeval>:</span> (<span class=variable>X</span> &nbsp;&rarr;&nbsp; <span class=variable>boolean</span>) (<span class=keyword>listof</span> <span class=variable>X</span>) &nbsp;&rarr;&nbsp; (<span class=keyword>listof</span> <span class=variable>X</span>)</code></span>
+<span class=comment>;; to construct a list from all those items on <code class=scheme><span class=variable>alox</span></code> for which <code class=scheme><span class=variable>p</span></code> holds </span>
+(<span class=keyword>define</span> (<span class=builtin>filter</span> <span class=variable>p</span> <span class=variable>alox</span>) ...)
+
+<span class=comment>;; <code class=scheme><span class=builtin>map</span> <span class=selfeval>:</span> (<span class=variable>X</span> &nbsp;&rarr;&nbsp; <span class=variable>Y</span>) (<span class=keyword>listof</span> <span class=variable>X</span>) &nbsp;&rarr;&nbsp; (<span class=keyword>listof</span> <span class=variable>Y</span>)</code></span>
+<span class=comment>;; to construct a list by applying <code class=scheme><span class=variable>f</span></code> to each item on <code class=scheme><span class=variable>alox</span></code></span>
+<span class=comment>;; that is, <code class=scheme>(<span class=builtin>map</span> <span class=variable>f</span> (<span class=builtin>list</span> <span class=variable>x-1</span> ... <span class=variable>x-n</span>))</code> = <code class=scheme>(<span class=builtin>list</span> (<span class=variable>f</span> <span class=variable>x-1</span>) ... (<span class=variable>f</span> <span class=variable>x-n</span>))</code></span>
+(<span class=keyword>define</span> (<span class=builtin>map</span> <span class=variable>f</span> <span class=variable>alox</span>) ...)
+
+<span class=comment>;; <code class=scheme><span class=builtin>andmap</span> <span class=selfeval>:</span> (<span class=variable>X</span> &nbsp;&rarr;&nbsp; <span class=variable>boolean</span>) (<span class=keyword>listof</span> <span class=variable>X</span>) &nbsp;&rarr;&nbsp; <span class=variable>boolean</span></code></span>
+<span class=comment>;; to determine whether <code class=scheme><span class=variable>p</span></code> holds for every item on <code class=scheme><span class=variable>alox</span></code></span>
+<span class=comment>;; that is, <code class=scheme>(<span class=builtin>andmap</span> <span class=variable>p</span> (<span class=builtin>list</span> <span class=variable>x-1</span> ... <span class=variable>x-n</span>))</code> = <code class=scheme>(<span class=keyword>and</span> (<span class=variable>p</span> <span class=variable>x-1</span>) (<span class=keyword>and</span> ... (<span class=variable>p</span> <span class=variable>x-n</span>)))</code></span>
+(<span class=keyword>define</span> (<span class=builtin>andmap</span> <span class=variable>p</span> <span class=variable>alox</span>) ...)
+
+<span class=comment>;; <code class=scheme><span class=builtin>ormap</span> <span class=selfeval>:</span> (<span class=variable>X</span> &nbsp;&rarr;&nbsp; <span class=variable>boolean</span>) (<span class=keyword>listof</span> <span class=variable>X</span>) &nbsp;&rarr;&nbsp; <span class=variable>boolean</span></code></span>
+<span class=comment>;; to determine whether <code class=scheme><span class=variable>p</span></code> holds for at least one item on <code class=scheme><span class=variable>alox</span></code></span>
+<span class=comment>;; that is, <code class=scheme>(<span class=builtin>ormap</span> <span class=variable>p</span> (<span class=builtin>list</span> <span class=variable>x-1</span> ... <span class=variable>x-n</span>))</code> = <code class=scheme>(<span class=keyword>or</span> (<span class=variable>p</span> <span class=variable>x-1</span>) (<span class=keyword>or</span> ... (<span class=variable>p</span> <span class=variable>x-n</span>)))</code></span>
+(<span class=keyword>define</span> (<span class=builtin>ormap</span> <span class=variable>p</span> <span class=variable>alox</span>) ...)
+</pre></div><p></p>
+<p>
+</p>
+</td></tr>
+<tr><td align=center><b>Figure 1:</b>&nbsp;&nbsp;Some of Scheme&#8217;s loops</td></tr>
+<tr><td>
+</td></tr></table></div><p>
+
+</td></tr></table></blockquote>
+</p>
+<p>
+</p>
+<div class=smallskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+<div align=right class=navigation>[Go to <span><a href="material.html">first</a>, <a href="material-Z-H-16.html">previous</a></span><span>, <a href="material-Z-H-18.html">next</a></span> page<span>; &nbsp;&nbsp;</span><span><a href="material-Z-H-2.html#node_toc_start">contents</a></span>]</div>
+</p>
+<p></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--
+
+Generated from material.tex by tex2page, v 20070609
+(running on MzScheme 370.6, unix), 
+(c) Dorai Sitaram, 
+http://www.ccs.neu.edu/~dorai/tex2page/tex2page-doc.html
+
+-->
+<head>
+<title>
+material
+</title>
+<link rel="stylesheet" type="text/css" href="material-Z-S.css" title=default>
+<meta name=robots content="noindex,follow">
+</head>
+<body>
+<div id=slidecontent>
+<div align=right class=navigation>[Go to <span><a href="material.html">first</a>, <a href="material-Z-H-8.html">previous</a></span><span>, <a href="material-Z-H-10.html">next</a></span> page<span>; &nbsp;&nbsp;</span><span><a href="material-Z-H-2.html#node_toc_start">contents</a></span>]</div>
+<p></p>
+<p>
+</p>
+<p></p>
+<hr>
+<p></p>
+<p><strong>Exercises</strong>
+</p>
+<p></p>
+<p>
+</p>
+<p><a name="node_thm_2.1"></a>
+<b>Exercise 2.1.</b>&nbsp;&nbsp; [*] 
+DrScheme doesn&#8217;t provide the function <code class=scheme><span class=variable>line</span></code> for drawing a
+<table align=left border=2><tr><td><span class=scriptsize><strong>Use the language
+level</strong><br>
+<em>BS w/ Lists</em></span></td></tr></table>
+line. Fortunately, this is not a problem because we have
+<code class=scheme><span style="font-family: sans-serif">color-list</span>&rarr;<span style="font-family: sans-serif">image</span></code>, which consumes a list of colors and produces an
+image.</p>
+<p>
+Develop the function <code class=scheme><span class=variable>make-line</span></code>, which creates a <code class=scheme><span class=variable>ColorList</span></code> that
+represents a horizontal line. The function consumes the width of the line (a
+natural number) and a color. It produces an appropriate list of colors.</p>
+<p>
+Also, even if DrScheme did not provide <code class=scheme><span class=builtin>rectangle</span></code>, we could
+still draw rectangles. Develop the function <code class=scheme><span class=variable>make-rectangle</span></code>. It
+consumes two natural numbers, <code class=scheme><span class=variable>width</span></code> and <code class=scheme><span class=variable>height</span></code>, and a
+color. Its result is a ColorList that represents the matching rectangle. </p>
+<p>
+Hint: <code class=scheme>(<span class=builtin>append</span> (<span class=builtin>list</span> <span class=selfeval>1</span> <span class=selfeval>2</span>) (<span class=builtin>list</span> <span class=selfeval>3</span> <span class=selfeval>4</span> <span class=selfeval>5</span>))</code> produces <code class=scheme>(<span class=builtin>list</span> <span class=selfeval>1</span> <span class=selfeval>2</span> <span class=selfeval>3</span> <span class=selfeval>4</span> <span class=selfeval>5</span>)</code>.</p>
+<p>
+<em>After</em> you have developed the functions, including automated tests, run
+them as follows: 
+</p>
+<div align=left><pre class=scheme>(<span style="font-family: sans-serif"> color-list</span>&rarr;<span style="font-family: sans-serif"> image</span> (<span class=variable>make-line</span> <span class=selfeval>100</span> (<span class=builtin>make-color</span> <span class=selfeval>100</span> <span class=selfeval>100</span> <span class=selfeval>100</span>)) <span class=selfeval>100</span> <span class=selfeval>1</span>)
+<span class=comment>or</span>
+(<span style="font-family: sans-serif"> color-list</span>&rarr;<span style="font-family: sans-serif"> image</span> (<span class=variable>make-rectangle</span> <span class=selfeval>2</span> <span class=selfeval>3</span> (<span class=builtin>make-color</span> <span class=selfeval>0</span> <span class=selfeval>0</span> <span class=selfeval>0</span>)) <span class=selfeval>2</span> <span class=selfeval>3</span>)
+</pre></div><p>
+Keep in mind that these are <em>not</em> tests.&nbsp;</p>
+<p></p>
+<p>
+</p>
+<p><a name="node_thm_2.2"></a>
+<b>Exercise 2.2.</b>&nbsp;&nbsp; [*] 
+Copy and paste the program from section&nbsp;<a href="material-Z-H-8.html#node_sec_2.5">2.5</a>. Provide a definition
+<table align=left border=2><tr><td><span class=scriptsize> <strong>Add the
+teachpack</strong><br>
+<tt>image.ss</tt></span></td></tr></table>
+for <code class=scheme><span class=variable>UFO</span></code> (in the lecture code) so that it shows up as a flying
+green saucer.&nbsp;</p>
+<p></p>
+<p>
+</p>
+<p><a name="node_thm_2.3"></a>
+<b>Exercise 2.3.</b>&nbsp;&nbsp; [<em>difficult, but entertaining</em>] 
+Develop <code class=scheme><span class=variable>place-blocks</span></code>. The program consumes a list of blocks:
+<table align=left border=2><tr><td><span class=scriptsize> <strong>Add the
+teachpack</strong><br>
+<tt>image.ss</tt></span></td></tr></table> 
+</p>
+<div align=left><pre class=scheme><span class=comment>;; A BlockList is either: </span>
+<span class=comment>;; --- <code class=scheme><span class=builtin>empty</span></code></span>
+<span class=comment>;; --- <code class=scheme>(<span class=builtin>cons</span> <span class=variable>N</span> <span class=variable>BlockList</span>)</code></span>
+</pre></div><p>
+Each number on a <code class=scheme><span class=variable>BlockList</span></code> represents the height of a stack of
+blocks.  The program produces an image, drawing a stack of blocks of the
+specified height starting in the <em>lower, right corner</em> of a 100 x 100
+canvas. </p>
+<p>
+Note: The program is a core piece of a Tetris-style game.</p>
+<p>
+Hint 1: Use these definitions for your basic constants: 
+</p>
+<div align=left><pre class=scheme>(<span class=keyword>define</span> <span class=variable>WIDTH</span> <span class=selfeval>100</span>)
+(<span class=keyword>define</span> <span class=variable>HEIGHT</span> <span class=selfeval>100</span>)
+(<span class=keyword>define</span> <span class=variable>CANVAS</span> (<span class=builtin>empty-scene</span> <span class=variable>WIDTH</span> <span class=variable>HEIGHT</span>))
+
+(<span class=keyword>define</span> <span class=variable>BLOCK-WIDTH</span> <span class=selfeval>10</span>)
+(<span class=keyword>define</span> <span class=variable>BLOCK</span>
+  (<span class=builtin>offset-image+</span>
+   (<span class=builtin>rectangle</span> <span class=variable>BLOCK-WIDTH</span>  <span class=variable>BLOCK-WIDTH</span> <span class=keyword>'</span><span class=variable>red</span>)
+   <span class=selfeval>0</span> <span class=selfeval>0</span>
+   (<span class=variable>outline-rect</span> <span class=variable>BLOCK-WIDTH</span>  <span class=variable>BLOCK-WIDTH</span> <span class=keyword>'</span><span class=variable>black</span>)))
+</pre></div><p></p>
+<p>
+Hint 2: Here is the image for <code class=scheme>(<span class=variable>place-blocks</span> (<span class=builtin>list</span> <span class=selfeval>1</span> <span class=selfeval>2</span>))</code>: </p>
+<p>
+
+
+</p>
+<p>
+</p>
+<p></p>
+<div align=left>
+
+
+<img src=Images/blocks.jpg width="100" alt="[blocks]">
+</div><p></p>
+<p></p>
+<div align=left>
+Produce the image by hand and then use it with <code class=scheme><span class=builtin>image=?</span></code> to <em>test</em> the program. The picture shows that the drawing starts at the
+right. The <code class=scheme><span class=builtin>length</span></code> of the list determines how far from the right
+a stack of blocks is drawn.&nbsp;</div><p>
+</p>
+<p></p>
+<p>
+</p>
+<p><a name="node_thm_2.4"></a>
+<b>Exercise 2.4.</b>&nbsp;&nbsp; [*] 
+Use the conventional <tt><strong>draw.ss</strong></tt> teachpack to draw and erase green
+flying saucers from a canvas. <table align=left border=2><tr><td><span class=scriptsize> <strong>Add the
+teachpack</strong><br>
+<tt>draw.ss</tt></span></td></tr></table> That is, develop the functions
+<code class=scheme><span class=variable>draw-ufo</span></code> and <code class=scheme><span class=variable>clear-ufo</span></code> for drawing and clearing a
+UFO-like shape from a canvas. Both functions consume a <code class=scheme><span class=variable>Posn</span></code>, which
+represents the anchor position of the UFO (e.g., the center of the disk or
+the northwest corner of the rectangle).&nbsp;</p>
+<p></p>
+<hr>
+<p></p>
+<p></p>
+<p></p>
+<p>
+&nbsp;</p>
+<div class=smallskip></div>
+<p style="margin-top: 0pt; margin-bottom: 0pt">
+<div align=right class=navigation>[Go to <span><a href="material.html">first</a>, <a href="material-Z-H-8.html">previous</a></span><span>, <a href="material-Z-H-10.html">next</a></span> page<span>; &nbsp;&nbsp;</span><span><a href="material-Z-H-2.html#node_toc_start">contents</a></span>]</div>
+</p>
+<p></p>
+</div>
+</body>
+</html>
