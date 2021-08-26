@@ -1,0 +1,326 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"/><meta name="viewport" content="width=device-width, initial-scale=0.8"/><title>II&nbsp;Principles</title><link rel="stylesheet" type="text/css" href="scribble.css" title="default"/><link rel="stylesheet" type="text/css" href="shared.css" title="default"/><link rel="stylesheet" type="text/css" href="figure.css" title="default"/><link rel="stylesheet" type="text/css" href="manual-style.css" title="default"/><link rel="stylesheet" type="text/css" href="manual-racket.css" title="default"/><script type="text/javascript" src="scribble-common.js"></script><script type="text/javascript" src="figure.js"></script><script type="text/javascript" src="manual-racket.js"></script><!--[if IE 6]><style type="text/css">.SIEHidden { overflow: hidden; }</style><![endif]--></head><body id="scribble-racket-lang-org"><div class="tocset"><div class="tocview"><div class="tocviewlist tocviewlisttopspace"><div class="tocviewtitle"><table cellspacing="0" cellpadding="0"><tr><td style="width: 1em;"><a href="javascript:void(0);" title="Expand/Collapse" class="tocviewtoggle" onclick="TocviewToggle(this,&quot;tocview_0&quot;);">&#9660;</a></td><td></td><td><a href="index.html" class="tocviewlink" data-pltdoc="x">Socially Responsible <br/> Software Development</a></td></tr></table></div><div class="tocviewsublisttop" style="display: block;" id="tocview_0"><table cellspacing="0" cellpadding="0"><tr><td align="right"></td><td><a href="part_preface.html" class="tocviewlink" data-pltdoc="x">Prelude</a></td></tr><tr><td align="right">I&nbsp;</td><td><a href="part_one.html" class="tocviewlink" data-pltdoc="x">Perspective</a></td></tr><tr><td align="right">II&nbsp;</td><td><a href="" class="tocviewselflink" data-pltdoc="x">Principles</a></td></tr><tr><td align="right">III&nbsp;</td><td><a href="part_four.html" class="tocviewlink" data-pltdoc="x">Project</a></td></tr><tr><td align="right">IV&nbsp;</td><td><a href="part_three.html" class="tocviewlink" data-pltdoc="x">Practice</a></td></tr><tr><td align="right"></td><td><a href="part_postlude.html" class="tocviewlink" data-pltdoc="x">Postlude</a></td></tr></table></div></div><div class="tocviewlist"><table cellspacing="0" cellpadding="0"><tr><td style="width: 1em;"><a href="javascript:void(0);" title="Expand/Collapse" class="tocviewtoggle" onclick="TocviewToggle(this,&quot;tocview_1&quot;);">&#9658;</a></td><td>II&nbsp;</td><td><a href="" class="tocviewselflink" data-pltdoc="x">Principles</a></td></tr></table><div class="tocviewsublistbottom" style="display: none;" id="tocview_1"><table cellspacing="0" cellpadding="0"><tr><td align="right">3&nbsp;</td><td><a href="#%28part._ch~3a3art%29" class="tocviewlink" data-pltdoc="x">The Nature of Software Development</a></td></tr><tr><td align="right">4&nbsp;</td><td><a href="#%28part._ch~3aego%29" class="tocviewlink" data-pltdoc="x">Egoless Programming</a></td></tr><tr><td align="right">5&nbsp;</td><td><a href="#%28part._ch~3apair%29" class="tocviewlink" data-pltdoc="x">Pair Programming</a></td></tr><tr><td align="right">6&nbsp;</td><td><a href="#%28part._ch~3a3review%29" class="tocviewlink" data-pltdoc="x">Code Inspections</a></td></tr></table></div></div></div></div><div class="maincolumn"><div class="main"><div class="versionbox"><span class="version">8.2.0.7</span></div><div class="navsettop"><span class="navleft"><div class="nosearchform"></div>&nbsp;&nbsp;</span><span class="navright">&nbsp;&nbsp;<a href="part_one.html" title="backward to &quot;I Perspective&quot;" data-pltdoc="x">&larr; prev</a>&nbsp;&nbsp;<a href="index.html" title="up to &quot;Socially Responsible  Software Development&quot;" data-pltdoc="x">up</a>&nbsp;&nbsp;<a href="part_four.html" title="forward to &quot;III Project&quot;" data-pltdoc="x">next &rarr;</a></span>&nbsp;</div><h3>II<tt>&nbsp;</tt><a name="(part._part~3atwo)"></a>Principles</h3><table cellspacing="0" cellpadding="0"><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="#%28part._ch~3a3art%29" class="toclink" data-pltdoc="x">3<span class="hspace">&nbsp;</span>The Nature of Software Development</a></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="#%28part._ch~3aego%29" class="toclink" data-pltdoc="x">4<span class="hspace">&nbsp;</span>Egoless Programming</a></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="#%28part._ch~3apair%29" class="toclink" data-pltdoc="x">5<span class="hspace">&nbsp;</span>Pair Programming</a></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="#%28part._ch~3a3review%29" class="toclink" data-pltdoc="x">6<span class="hspace">&nbsp;</span>Code Inspections</a></p></td></tr></table><p><table cellspacing="0" cellpadding="0"><tr><td><p>&#160;</p></td></tr><tr><td><p></p></td></tr><tr><td><p>&#160;</p></td></tr></table></p><p> What is software to its developer?</p><p>This question is at the heart of the conversation we must have about the
+software development process and its social context. Even if many future
+developers realize that they will end up coding &ldquo;for just money,&rdquo; in the end
+they will identify with their code to some extent&#8212;<wbr></wbr>and as a result, they may
+not take well to cell to intense criticism of this code.</p><p>Modern software shops recognize this dilemma and put an impersonal intermediary
+between the developers and the critique. It removes the necessity that the two
+look each other in the eye and makes the process less personal, less social, and
+certainly less responsible. So this part of the book argues that, while this
+reduction in direct communication may result in eliminating some conflict from
+software developer teams, it does so by imposing a significant cost on the code
+process and the long-term maintenance of surviving code.</p><p>Instead, software developers must learn to remove their ego from the process
+and, even better, embrace <span class="emph">negative</span> feedback. Although nobody is born
+ready for negative feedback, learning to deal with it and see it as a chance to
+improve one&rsquo;s creation is essential to a socially responsible software
+development process.</p><h3>3<tt>&nbsp;</tt><a name="(part._ch~3a3art)"></a>The Nature of Software Development</h3><p>Software developers are artists, creators, designers, and inventors. The
+software they create are like books, compositions, paintings, or poems. Like
+other creative people, developers labor and struggle to produce these artifacts.
+The work of developers is perhaps less mechanical, less physical than those of
+many artists, because most of it takes place in their minds.</p><p>When developers see other people use their software, they express a certain
+pride.  One developer may point out to her father which piece of an app&rsquo;s
+interface is heres, and another may explain to his mother how a database
+discovers patterns in patients with his algorithm. Similarly, developers are
+always happy to discuss the elegance and readability and efficiency of their
+code with other developers.</p><p>As a result, software developers invest a big part of their ego in their
+creation, that is, they identify themselves with their product&#8212;<wbr></wbr>just like other
+artist and creators do. This identification is neither surprising nor bad per
+se.  Whenever people are deeply invested in a task, they are motivated to give
+their best or at least do really well.</p><p>The problem is that all creative people must stomach criticism. Authors hate to
+read bad book reviews; composers don&rsquo;t want the audience to leave the premiere
+early; painters invite only good-willed people to their vernissages; and poets
+might be reluctant to read their works in public. Why? All creators fear
+negative critique because deep down they consider it a criticism of their ego.</p><p>Developers are no different in this respect. End users may criticize their
+software for being clunky, slow, or buggy. Worse, their colleagues may criticize
+them for style-guide violations, lack of elegance, a badly chosen data
+representation, and so on. While the former may hurt a bit, the latter may sting
+really hard because these colleagues are professionals whose opinion may count a
+lot, perhaps just within the team or perhaps even outside.</p><p>Poets, painters, and other artists can hide. Society will just ignore a
+composition if newspapers pan it. Readers don&rsquo;t buy a novel that consistently
+receives bad reviews. In short, the economic harm of such bad artistic creations
+is relatively small. None of this is true for software developers.</p><p>Bad software can inflict immediate harm on users. It may shut down an
+electricity grid, leaving millions stranded. It may cause financial harm. It may
+down an airplane. You name it, software can do it.  Badly written software
+affects current and future colleagues.  One colleague may have left yesterday
+for a better-paying job at a competing company, and another one is assigned to
+his code from his past few weeks&#8212;<wbr></wbr>and it turns out to be awful code. The newly
+assigned colleague will have to work extra hours to catch up with the rest of
+the team. Just think of the numerous programmers who had to dig through
+decades-old code in the 1990s to find all instances of two-digit dates that
+would become invalid in the year 2000 (also see <a href="part_one.html#%28part._ch~3alife%29" data-pltdoc="x">The Death of Software,
+The Life of Software</a>).</p><p>In contrast to most artistic creators, though, developers are paid a significant
+salary almost immediately after graduation. Furthermore, their software often
+has a potentially large value. So unlike artists, software developers &ldquo;owe&rdquo;
+their users and their colleagues. In particular, they owe them an attitude that
+welcomes criticism, welcomes negative feedback and turns those into positive
+changes to their products. Doing so, however, means letting go of some ego.</p><h3>4<tt>&nbsp;</tt><a name="(part._ch~3aego)"></a>Egoless Programming</h3><p><div class="SIntrapara">In 2018, the Wall Street Journal&rsquo;s Sue Shellenbarger wrote<span class="refelem"><span class="refcolumn"><span class="refcontent"><a href="https://www.wsj.com/articles/the-rare-workers-who-thrive-on-negative-feedback-1536672180">The Rare Workers Who Thrive on Negative Feedback</a></span></span></span>
+</div><div class="SIntrapara"><blockquote><p>Many people hate getting negative feedback and avoid dishing it out too,
+fearing it will spark anger, dejection or even tears.</p><p>But some people actually want and even seek out criticism at work. Who are these
+people?</p></blockquote></div><div class="SIntrapara">in a column on workplace and family affairs. Further along she reveals that
+</div><div class="SIntrapara"><blockquote class="SubFlow"><p>[e]xperts in their fields tend to be motivated by criticism,</p></blockquote></div><div class="SIntrapara">because they can use it as a way to improve themselves.</div></p><p><div class="SIntrapara">Decades before, Gerald Weinberg already noted how programmers benefited
+tremendously from honest and frank feedback&#8212;<wbr></wbr>if they could let go of the ego in
+their code. He coined the slogan <span class="emph">egoless programming</span>. The idea is rather
+simple and straightforward and is easily expressed with three bullets:
+</div><div class="SIntrapara"><ul><li><p>Show your code to other developers and ask for feedback.</p></li><li><p>Expect, embrace, and evaluate criticism.</p></li><li><p>React with improvements and draw your conclusions.</p></li></ul></div><div class="SIntrapara">Repeat, and never stop.</div></p><p>In essence, both of these authors just focus our mind on the essence of learning
+outside of school. Without sharing our work, without exposing ourselves to others,
+we cannot hope to discover problems with our thinking. This is especially true
+when this thinking turns into a message for current and future colleagues.</p><p><div class="SIntrapara">Implementing egoless programming is challenging.
+</div><div class="SIntrapara"><blockquote><p>Egoless programming requires a significant change in the mind set of
+people, so it must <span class="emph">start with yourself</span> and your desire to become an
+expert developer.</p></blockquote></div><div class="SIntrapara">That is, it can only be accomplished in a bottom-up manner, not via commands
+from managers, which might merely antagonize your team. Setting an example works
+well, and encouraging others to emulate the example helps spread the idea.</div></p><p>So, first you separate yourself from your code. Then you need to find others who
+are willing to listen and, ideally, reciprocate.  Some companies allow, and even
+encourage, pair programming; on occasion, you may have to bring up the idea with
+your team, because nobody has thought of just doing it. A few companies conduct
+rigorous code walks; again, this may take some initiative on your side to get it
+rolling. These changes are visible to the whole team and somewhat formal. The
+next two sections deal with how to set them up and make them productive.</p><p>If neither of these work, there are some old standbys: &ldquo;water cooler,&rdquo;
+&ldquo;vending machine,&rdquo; and &ldquo;printer. Now these words are just metaphors for &ldquo;a place where
+developers meet&rdquo; during a break, to chat, to exchange gossip, and so on. When
+programming meant exploring the limits of computers, operating systems, and
+languages, people congregated around card readers&#8212;<wbr></wbr>which read their
+programs&#8212;<wbr></wbr>and printers&#8212;<wbr></wbr>which produced the program&rsquo;s outputs&#8212;<wbr></wbr>and while they
+waited, they discussed programs, meaning they informally exchanged hints on
+basic programming problems.</p><p>In short, make a point of finding contemporary &ldquo;water coolers&rdquo; and &ldquo;vending
+machines.&rdquo; Or, if needed, create such places. Then use these gatherings to
+learn from experienced developers, to show people what you&rsquo;re working on, and to
+listen to advice and criticism.</p><p>Let&rsquo;s say you have found a partner and a review uncovers flaws. Your reaction is
+critical. Clarify to people that this is <span class="emph">good for the whole team</span>.  You
+can react to the flaw, evaluate your options, and improve your code.  The others
+on the team will benefit in one way or another.</p><p>Also take time to reflect and draw general conclusions for such
+mistakes. Sometimes it is possible to change habits based on a single
+example. Other times it may take several critical code reviews to figure out the
+general idea. In all cases, you will improve your skills.</p><p>Of course, you will also need to balance criticism with the ingrained perception
+of others that criticism reflects badly on you and your skills. It will take
+time to convince those skeptics, but if they are able to perceive changes, they
+will see how your skills improve at a <span class="emph">faster rate</span> than theirs. Then the
+time has come to suggest that they too can benefit from egoless programming and
+negative feedback.</p><p><div class="SIntrapara"><table cellspacing="0" cellpadding="0"><tr><td><p>&#160;</p></td></tr><tr><td><p></p></td></tr><tr><td><p>&#160;</p></td></tr></table></div><div class="SIntrapara"><span style="font-weight: bold">Reading</span></div></p><p>Gerald M. Weinberg. <span style="font-style: italic">The Psychology of Programming.</span> Van Nostrand
+Reinhold Company. 1971.&#8212;<wbr></wbr>The entire book is an excellent introduction to
+the topic, but if you don&rsquo;t have time for the whole book, focus on chapter 4. It
+directly addresses the idea of programming in a group, the principle egoless
+programming, and the importance of &ldquo;water cooler&rdquo; conversations.</p><h3>5<tt>&nbsp;</tt><a name="(part._ch~3apair)"></a>Pair Programming</h3><p>What happens when software developers program?</p><p>Obviously they write code. Before they can write code, they need to understand
+the purpose of their new code; the context in which it exists and how it
+interacts with this context; its minimal performance characteristics; and much
+more. &ldquo;Understanding&rdquo; means <span class="emph">thinking</span>, as in, thinking through a
+someone&rsquo;s instructions and specification. It also means thinking while coding.</p><p>Coding doesn&rsquo;t always start from a blank page though. It is equally common that
+developers must modify existing code. They must read and comprehend code. They
+have to reconstruct the design rationale from comments and commit messages,
+which means understanding the thinking of their predecessors.  When they finally
+edit the code, they must not change the functionality. They have to formulate
+new comments and new commit messages. And, if they wish to help their
+successors, they should leave behind comments about what they found out from
+reading the code. All of this just means more thinking.</p><p>Yet, coding isn&rsquo;t just thinking either. It requires a bunch of mechanical tasks,
+like typing on a keyboard; selecting one of the identifiers when a completion
+menu shows up; searching for descriptions of classes, functions, and methods;
+managing code repositories; run tests; and meet with people to discuss one thing
+or another. And this means that the developers&rsquo; thinking about code gets
+constantly interrupted.</p><p>We all know that thinking is hard and interrupted thinking is harder. Contrary to
+appearances, IDEs don&rsquo;t help (much) with thinking, though of course name
+completion, on-line parsing, type checking, and so on are helpful in some way.
+IDEs don&rsquo;t help with thinking because despite all the progress of artificial
+intelligence, software doesn&rsquo;t really think yet.  The only way to get immediate
+feedback for our thinking is to work with another person, which brings us to
+pair programming.</p><p><div class="SIntrapara">Ideally, <span class="emph">pair programming</span> works like
+this:
+</div><div class="SIntrapara"><ul><li><p>two people share one computer, one keyboard;</p></li><li><p>one of them becomes the designated driver, the other the co-pilot;</p></li><li><p>the driver creates codes, proposes ideas, and so on;</p></li><li><p>the co-pilot questions ideas, makes counter-proposals, and so on;</p></li><li><p>after completing a unit of work in this configuration, the two switch roles.</p></li></ul></div><div class="SIntrapara">In a team setting it is also common that one person rotates through team members
+over the course of a project, meaning everybody gets to work with everyone else
+as a partner.</div></p><p>In some settings, sharing a computer may not work. In some companies, the
+boundaries of coding are well-defined, including the commit to a version control
+system (e.g., git or mercury).  In others, developers pick them as they see
+fit. Regardless, keeping the roles in mind is the point.</p><p>The immediate purpose of a co-pilot is obvious. It is about checking the
+spoken-out thinking of the driver to provide immediate and direct feedback.  But,
+the co-pilot is also a representative of the rest of the team. In this light,
+it&rsquo;s the co-pilot&rsquo;s job to think &ldquo;if I don&rsquo;t understand it, I doubt that my
+colleagues will understand it.&rdquo; And if those colleagues don&rsquo;t understand it,
+they cannot fix the code when they find a bug and they cannot extend features if
+needed.</p><p>By extension, the co-pilot also represents those colleagues that aren&rsquo;t a part of
+the team yet. Those colleagues may still be in high school. They may not be born
+yet.  In short, the co-pilot makes sure that the driver acts in a socially
+responsible manner, toward team members, new hires, and people who will maintain
+the code in five, ten, or twenty years from now.</p><p>Pair programming has several benefits for developers, their teams, and their
+employer. Most importantly, one person&rsquo;s thinking is immediately checked by
+another person. Thinking happens in our mind, and our mind doesn&rsquo;t cross-check
+ideas easily. Hence, when we think for ourselves for a long time, we may build an
+complex construction of ideas on top of an some misconception. Forcing ourselves
+to explain an idea to someone else may reveal such misconceptions directly, or
+the partner may discover them. Either way is beneficial.</p><p>Joint work also has psychological benefits. While some complex mathematical
+problems may require long, hard solo work, most software development isn&rsquo;t of the
+complexity of a complex research problem. Yes, it requires thinking but some of
+the thinking is just tedious, it is not creative at the level of individual lines
+of code. Sharing makes it somewhat easier to perform such work.</p><p>Shared work also means shared knowledge. If a team member has to stay home one
+day due to sickness or a family emergency, past pair programming comes in
+handy. The other team members have partnered with the absent one and have thus
+acquired some understand of all his code.</p><p>This benefit of shared knowledge of the entire project is even more important
+when a team member quits. From the employer&rsquo;s perspective, this benefit might be
+the most important one, directly affecting the bottom line of this cost center.
+All the money &ldquo;sunk&rdquo; into the member who&rsquo;s leaving doesn&rsquo;t translate into lost
+knowledge that someone else has to figure out. It is distributed over the entire
+team. A new hire can be assigned to the team, and she can pair-program with
+others to acquire this shared understanding of the code base.</p><p><div class="SIntrapara">After reading all these positives, you would think that companies should race to
+implement pair programming across the board. Sadly, too many managers completely
+fail to understand the nature of programming and the benefits of pairing up. The
+most common objection is that &ldquo;two people are doing the work of one.&rdquo;  To
+counter this nonsense, takes careful and patient &ldquo;managing up&rdquo; with four
+effective arguments deployed and re-deployed time and again:
+</div><div class="SIntrapara"><ul><li><p>Pair programming is likely to get the software right faster than solo
+work. Looking for bugs is more costly than avoiding them.</p></li><li><p>The software is also likely to run faster and use less space and
+energy. Managers like performance arguments.</p></li><li><p>Shared knowledge about the code base reduces inefficiencies when someone
+leaves. It turns programmers into replaceable assembly-line workers. Managers
+love this idea even more than performance.</p></li><li><p>Continuous partnering ensures that the code will be accessible three or
+five year down the line after the product has become a profit center. The company
+will be able to add extensions quickly and cheaply. Profit arguments always work.</p></li></ul></div><div class="SIntrapara">The key is to learn a manager&rsquo;s language and to articulate advantages in those
+terms.</div></p><p><div class="SIntrapara"><table cellspacing="0" cellpadding="0"><tr><td><p>&#160;</p></td></tr><tr><td><p></p></td></tr><tr><td><p>&#160;</p></td></tr></table></div><div class="SIntrapara"><span style="font-weight: bold">Reading</span></div></p><p>Laurie Williams and Robert Kesler. <span style="font-style: italic">Pair Programming Illuminated.</span>
+Addison-Wesley. 2002. This short book collects in one place all that you need to
+know about pair programming: what works, what doesn&rsquo;t, and how to &ldquo;sell&rdquo; it to
+your team and manager.</p><h3>6<tt>&nbsp;</tt><a name="(part._ch~3a3review)"></a>Code Inspections</h3><p>When two people stare at, and discuss, the same complex code for long enough,
+they will convince each other that it is just fine. To fight this form of
+unintentional collusion, teams must conduct <span class="emph">design and code inspections</span>,
+also known as <span class="emph">code walks</span>. Colleagues with only peripheral involvement in
+the creation process will inspect the code and critique it.</p><p>Code inspections date back to the 1970s, a time when large software companies
+began to understand how much software engineering differed from regular
+engineering. While design reviews had been used in many engineering disciplines,
+adapting them to the engineering of software took some times. All forms of
+review meant face-to-face meetings, and many different forms emerged: code
+browsing, desk checking, peer review, and walk-through.</p><p>IBM&rsquo;s <span class="emph">formal code inspections</span> come in the form of a rigorously defined
+process. The goal is to make the results of these inspections measurable, with a
+focus on the rate at which errors are detected. IBM and others who adopted this
+most rigorous form of formal code inspection reported rather high error
+discovery rates, though everyone also admitted that the cost of following a
+strict protocol were high.</p><p>Over the past coupe of decades, especially with the emergence of commenting
+interfaces to code repository software such as github and gitlab for git, the
+mutual review of code has become common. These reviews rely on one set of
+developers to leave comments for another set of developers for a specific unit
+of code, often just a pull request. Not all, but many companies practice such
+platform-mediated reviews&#8212;<wbr></wbr>except that they leave behind many of the qualities
+of in-person consultations.</p><p>Since the various forms of inspection on this broad scale differ so much&#8212;<wbr></wbr>and
+don&rsquo;t aim for the exact same outcomes&#8212;<wbr></wbr>this book uses the phrases <span class="emph">code
+inspection</span> for the (informal) in-person version and <span class="emph">code review</span> for the
+on-line version. Keep in mind that &ldquo;inspections&rdquo; as used here is <span class="emph">not</span>
+IBM&rsquo;s formal code inspection process.</p><p>Let&rsquo;s take a close look at the basic ideas behind inspections and reviews. The
+original, face-to-face inspections make reviewers face developers, to look them
+in the eyes when they express criticism. Although this kind of situation can
+trigger stress in both parties, human nature renders inspections more gentle
+than the quasi-anonymous, platform-based reviews&#8212;<wbr></wbr>if properly managed.  They
+naturally generate teaching situations in which reviewers can learn from
+panelists and vice versa. The &ldquo;properly managed&rdquo; aspect, though, means
+developers must know how to conduct inspections properly. They must be
+trained. The pay-off seems to be rather large, though; studies show that this
+low-tech technique saves a tremendous amount of developer time.</p><p>By contrast, platform-mediate code reviews require nothing but the ability to
+read code and write comments. Reading allows a thorough analysis and reflection,
+if a reviewer has sufficient time. Distance also allows for thorough,
+well-thought-out comments. From the perspective of long-term social
+responsibility, reading without asking the developer questions in real time
+resembles the situation of a developer who years from now is asked to read,
+comprehend, and modify the code. And, at least at first glance, platform-based
+reviews come with the advantage that they remove the awkward personal encounter
+and thus avoid the stress that comes with directly critiquing a colleague.
+Experience with such platforms as well as social networks suggests, however,
+that this barrier can encourage rather aggressive commenting.</p><blockquote class="Figure"><blockquote class="Leftfigure"><blockquote class="FigureInside"><table cellspacing="0" cellpadding="0" style="border-collapse: collapse;"><tr><td style="border-bottom: 1px solid black;"><p></p></td><td style="border-bottom: 1px solid black;"><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span></p></td><td style="border-bottom: 1px solid black;"><p>platform-mediated reviews</p></td><td style="border-bottom: 1px solid black;"><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span></p></td><td style="border-bottom: 1px solid black;"><p>in-person inspection</p></td></tr><tr><td valign="top"><p>cost</p></td><td valign="top"><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span></p></td><td valign="top"><p>a moderator may be needed</p></td><td valign="top"><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span></p></td><td valign="top"><p>preparing the panelists</p></td></tr><tr><td valign="top"><p>efficiency</p></td><td valign="top"><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span></p></td><td valign="top"><p>time for analysis &amp; reflection</p></td><td valign="top"><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span></p></td><td valign="top"><p>real-time conversations</p></td></tr><tr><td valign="top"><p>stress</p></td><td valign="top"><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span></p></td><td valign="top"><p>from quasi-anonymous posting</p></td><td valign="top"><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span></p></td><td valign="top"><p>from face-to-face criticism</p></td></tr><tr><td valign="top"><p>benefit</p></td><td valign="top"><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span></p></td><td valign="top"><p>finds some bugs</p></td><td valign="top"><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span></p></td><td valign="top"><p>finds bugs,</p></td></tr><tr><td valign="top"><p></p></td><td valign="top"><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span></p></td><td valign="top"><p></p></td><td valign="top"><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span></p></td><td valign="top"><p>improves readability, and</p></td></tr><tr><td valign="top"><p></p></td><td valign="top"><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span></p></td><td valign="top"><p></p></td><td valign="top"><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span></p></td><td valign="top"><p>develops human resources</p></td></tr><tr><td valign="top" colspan="5"><p>it&rsquo;s like handing code over to a maintainer who ...</p></td></tr><tr><td valign="top"><p></p></td><td valign="top"><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span></p></td><td valign="top"><p>... joins in 10 years from now</p></td><td valign="top"><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span></p></td><td valign="top"><p>... is an immediate colleague</p></td></tr><tr><td valign="top" colspan="5"><p>teaching situations arise ...</p></td></tr><tr><td valign="top"><p></p></td><td valign="top"><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span></p></td><td valign="top"><p>N/A</p></td><td valign="top"><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span></p></td><td valign="top"><p>... naturally</p></td></tr><tr><td valign="top" colspan="5"><p>conversations develop the skill ... </p></td></tr><tr><td valign="top"><p></p></td><td valign="top"><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span></p></td><td valign="top"><p>N/A</p></td><td valign="top"><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span></p></td><td valign="top"><p>... to reason about code,</p></td></tr><tr><td valign="top"><p></p></td><td valign="top"><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span></p></td><td valign="top"><p></p></td><td valign="top"><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span></p></td><td valign="top"><p>which helps with coding</p></td></tr></table></blockquote></blockquote><p class="Centertext"><span class="Legend"><span class="FigureTarget"><a name="(counter._(figure._fig~3areviews))" x-target-lift="Figure"></a>Figure&nbsp;2: </span>A comparison of the two dominant code inspection modes</span></p></blockquote><p><span class="refelem"><span class="refcolumn"><span class="refcontent"><a href="../Notes/note_supervising-a-panel.html" data-pltdoc="x">Supervising and Evaluating a Review</a></span></span></span></p><p><span style="font-weight: bold">Code Inspections</span>
+The rest of this chapter focuses on the mechanics of inspections:
+their goals;
+the formation of a panel; and
+the mechanism of a code inspection.
+Not all setups work well; this one has proven its worth over a couple
+of decades. Also see readings below.</p><p>Inspections have two <span class="emph">goals</span>: understanding how the software implements the
+specified functionality and making sure that understanding the software is
+straightforward. The question is how they achieve these goals.
+The first goal, meeting expectations, is all about finding functionality and performance
+errors. Usually the reviewers and the developers can easily agree that some code
+will not behave in the specified manner, and they can also easily settle whether
+an algorithm performs the desired task in quadratic time (<span style="font-style: italic">O</span>(<span style="font-style: italic">n</span><span style="vertical-align: super; font-size: 80%"><span style="font-style: italic"></span>2<span style="font-style: italic"></span></span><span style="font-style: italic"></span>)<span style="font-style: italic"></span> where
+<span style="font-style: italic">n</span> is the size of the input) when it could easily be linear (<span style="font-style: italic">O</span>(<span style="font-style: italic">n</span>)<span style="font-style: italic"></span>,
+with <span style="font-style: italic">n</span> again the size of the input).</p><p><div class="SIntrapara">The second goal, being comprehensible, concerns amorphous questions. Here are some example:
+</div><div class="SIntrapara"><ul><li><p>Is the code organized into functionally coherent units (modules, classes)?
+Are those reasonably small?</p></li><li><p>Does each basic building block (function, method) have a clear purpose? A
+purposeful name? A reasonable size?</p></li><li><p>Are the expressions and statements clear?</p></li></ul></div><div class="SIntrapara">Each of these questions has an obvious negative variant, and those are the ones
+that reviewers will have in mind and the feedback will accordingly be about
+convoluted units of code, oversized functions, and too-clever expressions.
+In short, code inspections are about delivering <span class="emph">negative feedback</span>
+concerning functionality, performance, and clarity.</div></p><p><span class="refelem"><span class="refcolumn"><span class="refcontent">In his chapter on egoless programming, Weinberg tells the story of
+a developer who had a colleague inspect 13 lines of code and she found 17
+bugs. When she engaged a second colleague they found three more, for a total of
+20.</span></span></span>
+At some point in your life, you might have been told to deliver all negative
+feedback in a sandwiched manner: some nice feedback, the bad part, some more nice
+words. Don&rsquo;t! During an inspection the bad parts get lost because for any piece
+of code worth inspecting, you will find a lot of mistakes.  Packing every one of
+these in nice words drowns the message.</p><p>As for the formation of a panel and its workings, the goal here is to practice
+the discussion of technical ideas. Specifically, in a course context, pair
+programmers can learn to present code and their peers can learn to comprehend
+code, with the goal of finding mistakes and of putting themselves in the shoes of
+someone who continues to maintain this code.</p><p><div class="SIntrapara">A <span class="emph">panel</span> consists of three participants:
+</div><div class="SIntrapara"><ol><li><p>a <span class="emph">head reader</span>, who assumes the dual role of reader and
+leader-moderator of the review effort;</p></li><li><p>an <span class="emph">assistant reader</span>, who may exclusively focus on reading the code
+and posing questions about it; and</p></li><li><p>a <span class="emph">secretary</span>, who is primarily in charge of noting and describing the
+problems that the panel finds. The secretary notes must suffice to write a report
+on the problems in a short period of time.</p></li></ol></div><div class="SIntrapara">Experience with this arrangement and IBM&rsquo;s stringent protocol suggests that more
+people do not improve the quality of the code walk.</div></p><p>In general, the panelists should prepare themselves for an inspection session in
+two ways. First, they should study the problem and any existing specifications
+for the code to be inspected. Second, they should familiarize themselves with the
+inspection protocol. This second point is particularly important for panelists
+with little or no experience. Surprisingly, studies of code inspection have
+repeatedly found that reading the code in question ahead of an inspection session
+does not affect the outcome of reviews.</p><p>In a course context, the panelists are practicing code inspections after having
+been told about the principles. So their preparation should focus on how to run
+panels. By contrast, they do <span class="emph">not</span> need to prepare themselves otherwise.
+Since all students work on the same problem (with a partner), they are intimately
+familiar with the problem, its context, and the overall plan. Indeed, because all
+students have worked out their own solutions by the time a panel meets, the real
+danger is that panelists try to superimpose their own solution instead of
+comprehending the presenters&rsquo; code.</p><p><div class="SIntrapara">During a panel presentation, the head and assistant readers need to imagine
+themselves as developers who take over the presented code. When they do not
+understand any aspect of the code, they must ask how it relates. Although both
+can work with the presenter to figure out something, the head reader must assume
+the role of moderator. Specifically, the header reader must stop conversations
+that
+</div><div class="SIntrapara"><ul><li><p>cause cross-talk or pursue conflicting goals;</p></li><li><p>seem to go nowhere promising;</p></li><li><p>turn into defenses of design decisions both readers consider wrong;</p></li><li><p>discuss <span class="emph">solutions</span>.<span class="refelem"><span class="refcolumn"><span class="refcontent">If a solution is obvious, the secretary can add it to the notes.</span></span></span> Code inspections are about <span class="emph">problems</span>.</p></li></ul></div><div class="SIntrapara">In those cases, the head reader is responsible for getting the inspection back on
+track.</div></p><p>When either of the two readers ask questions, they need to keep in mind that the
+presenter may be stuck in ego-focused programming. It is thus imperative to ask
+<span class="emph">questions about code</span> not <span class="emph">questions in terms of &ldquo;you, the
+programmer.&rdquo;</span> Panelists can bring out the best in presenters by emphasizing
+egoless programming as much as presenters can do so by separating their ego from
+the presented code.</p><p>While the presenters come as a pair, the advantages of pair programming are
+realized only when both partners can explain any piece of the presented code.
+To check on this state of knowledge about the code base, only one partner at a
+time should present. The other partner should take notes, which will supplement
+what the pair receives from the secretary. It is also important to let the
+two partners know that they will need to switch at any moment during the
+code inspection.</p><p>Now that the mechanics of a code inspection are covered, it is also obvious that
+they are far more intense than platform-based code reviews and that they produce
+more interesting feedback. Like with pair programming, management may object to
+the seemingly high cost of spending a good portion of a team&rsquo;s time on mutual
+code inspections. The discussion with management has to address the same elements
+as the ones for pair programming and must use the same managerial
+language. Although formal code reviews come with large, measurable, and
+reproducible advantages concerning error discovery&#8212;<wbr></wbr>see readings below&#8212;<wbr></wbr>it is
+not obvious that informal inspections have the same attributes. Even if they do,
+it is also well-known that management rarely reacts to external results; the idea
+has to be to &ldquo;sneak&rdquo; mutual code inspections into the process and then to point
+to successes.</p><p><div class="SIntrapara"><table cellspacing="0" cellpadding="0"><tr><td><p>&#160;</p></td></tr><tr><td><p></p></td></tr><tr><td><p>&#160;</p></td></tr></table></div><div class="SIntrapara"><span style="font-weight: bold">Readings</span></div></p><p>The following articles are about <span class="emph">formal code inspections</span>. A formal code
+inspection differs from the code inspection described here. The first are even
+more labor-intense than the second, and they generally come with a high pay-off
+in error detection. Reading some of the original literature on the first may
+help clarify how much in-person inspections can accomplish and how to inject
+them into existing organizations. As with pair programming, organizations are
+often reluctant to spend resources until they experience the benefits.</p><p>Michael E. Fagan. Advances in software inspection. In <span style="font-style: italic">IEEE Transactions
+on Software Engineering</span>. <span style="font-weight: bold">12</span>(7). 1986.&#8212;<wbr></wbr>Code inspections are the brain
+child of Michael Fagan from IBM. He started investigating the idea in the 1970s
+and reported on his progress in several papers. This one is the most substantial
+report from this period.</p><p>Glen W. Russel. Experience with inspection in ultralarge-scale development. In
+<span style="font-style: italic">IEEE Software</span> <span style="font-weight: bold">8</span>(1). 1991. This magazine article presents the
+interesting claims that (1) code inspections may save up to 33 hours of
+developer time per bug found and (2) code inspections find twice as many bugs as
+integration testing. Both claims have to be understood in the specific context
+of this experience (telecom switches, understanding of software development
+processes). The article also comes with extensive hints on how to introduce
+formal code inspections into a reluctant organization, ideas that probably apply
+to all forms of code inspection.</p><p>Edward F. Weller. Lessons from three years of inspection data. In <span style="font-style: italic">IEEE
+Software</span>. <span style="font-weight: bold">10</span>(9).</p><p>NASA Office of Safety and Mission Assurance. <span style="font-style: italic">Software Formal Inspections
+Guidebook.</span> Technical Report OFFICE NASA-GB-A302. NASA has a large stake in
+getting all software correct: unmanned missions cost billions of dollars and
+for manned missions, lives depend on software as much as the surrounding
+hardware. This report is one of their first comprehensive guide on code
+inspections, though the agency and its contractors has had a long history of
+working in groups on mission software.</p><div class="navsetbottom"><span class="navleft"><div class="nosearchform"></div>&nbsp;&nbsp;</span><span class="navright">&nbsp;&nbsp;<a href="part_one.html" title="backward to &quot;I Perspective&quot;" data-pltdoc="x">&larr; prev</a>&nbsp;&nbsp;<a href="index.html" title="up to &quot;Socially Responsible  Software Development&quot;" data-pltdoc="x">up</a>&nbsp;&nbsp;<a href="part_four.html" title="forward to &quot;III Project&quot;" data-pltdoc="x">next &rarr;</a></span>&nbsp;</div></div></div><div id="contextindicator">&nbsp;</div></body></html>
