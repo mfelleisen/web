@@ -1,0 +1,104 @@
+<html><head><title>Problem Set 6: Standard Reduction for Flavors of ISWIM</title><link rel="stylesheet" type="text/css" href="all.css" title="all" /></head><body bgcolor="white"><br /><hr width="80%" height="3" /><table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="15%" valign="top" align="left" rowspan="2"><table border="0"><tr><td><a href="../../index.html">Teaching</a></td></tr><tr><td><a href="../index.html">G7400 F'11</a></td></tr><tr><td><font color="black"><b>&nbsp;</b></font></td></tr><tr><td><a href="index.html">Assignments</a></td></tr><tr><td><a href="1.html">Set 1</a></td></tr><tr><td><a href="2.html">Set 2</a></td></tr><tr><td><a href="3.html">Set 3</a></td></tr><tr><td><a href="4.html">Set 4</a></td></tr><tr><td><a href="5.html">Set 5</a></td></tr><tr><td><font color="black"><b>Set 6</b></font></td></tr><tr><td><a href="7.html">Set 7</a></td></tr><tr><td><a href="8.html">Set 8</a></td></tr><tr><td><a href="9.html">Set 9</a></td></tr></table></td><td width="3%" /><td valign="top" align="left"><h3>Problem Set 6: Standard Reduction for Flavors of ISWIM</h3></td><td valign="top" align="right" rowspan="2"><nbsp /></td></tr><tr><td /><td valign="top" align="left" colspan="2"><table width="85%"><tr><td><div><p><font color="red">Due date: </font>10/28<font color="red"> @ at the beginning of class</font></p>
+
+
+
+<blockquote>
+<p> 
+  The goal of this problem set is to understand abstract syntax machines,
+  i.e., standard reduction sequences. 
+</p>
+</blockquote>
+
+
+<p><b>Background</b>:</p>
+
+<blockquote>
+<p>
+ You should import <a href="6provided.rkt">"6provided.rkt"</a> It provides
+ large fragments of a solution for problem set 5. If you prefer your own,
+ you may copy the relevant parts of your solution.
+</p>
+</blockquote>
+
+
+<a name="one"><p><b>Problem 1</b>:</p></a>
+
+<blockquote>
+<p>
+ Develop a reduction model of the standard reduction semantics 
+ for call-by-value <code>ISWIM*</code> in Redex. 
+</p>
+
+<p>
+ Define the function <code>eval*-s</code>, which maps closed ISWIM*
+ expressions to the same kind of answers as <code>eval*-v</code> from 
+ <a href="5.html#three">problem set 5, problem 3.</a>
+</p>
+
+<p>
+ Show how to define the ISWIM* functions <code>sum</code> and
+ <code>product</code>. Both consume lists of numbers. The first one adds,
+ the second one multiplies the numbers in the list.
+</p>
+
+<p>
+ Formulate a conjecture about the relationship between <code>eval*-v</code>
+ and <code>eval*-s</code> as a metafunction.  Test the conjecture with
+ <code>redex-check</code>. 
+</p>
+
+<p>
+ If testing finds a counter-example to your conjecture, formulate the
+ counter-example as a failing test case and explain the failure with a
+ one-line (max 80 chars) comment. Then comment out your
+ <code>redex-check</code> line and the test case. Next, define new versions
+ of the two evaluator functions and the metafunction that formulates the
+ conjecture. (Append <code>.v2</code>, <code>.v3</code> and so on to the
+ names of the functions you need to redefine.) Do <em>not</em> edit
+ existing functions so that it is possible to reconstruct the failure. 
+</p>
+
+<p>
+ Repeat the above until <code>redex-check</code> succeeds for its default
+ number of test attempts <font color="blue">if it terminates. Explain why
+ this conditional is necessary in fewer than 43 words and how it hints at a
+ difference between the two evaluators.</font>
+</p>
+
+</blockquote>
+
+
+<p><b>Problem 2</b>:</p>
+
+<blockquote>
+<p>
+ Revise function application from problem 1 to accommodate multi-argument
+ functions in two different ways:
+<ol>
+<li>
+ First, introduce <code>lambda</code> expressions with an arbitrary number
+ of parameters and function applications with an arbitrary number of
+ arguments.
+</li>
+
+<li>
+ Second, introduce <code>mu-lambda</code> expressions, which have a single
+ non-parenthetical parameter. When applied to <code>n</code> values, a
+ <code>mu-lambda</code> consumes all of these values in an ISWIM* list. 
+</li>
+</ol>
+ Equip your revised model with a call-by-value notion of standard
+ reduction. (There is no need for a general one-step reduction.)
+ Also formulate an <code>eval</code> metafunction. 
+</p>
+
+<p>
+ A standard reduction fixes an order of evaluation. Is it possible to
+ discover which order is chosen (not counting precision of floating number
+ operations, which as you know from <a href="3.html">problem set 3</a> is
+ independent of the order of reduction for sub-expressions). If so, how. If
+ not, why not. Limit your answer to at most 65 words. 
+</p>
+</blockquote>
+
+</div></td></tr></table></td></tr></table><hr width="80%" height="3" /><table width="80%" align="center"><tr><td align="left"><font size="-2">last updated on Tue Nov 15 15:51:00 EST 2011</font></td><td align="right"><font size="-2">generated with <a href="http://www.racket-lang.org/">Racket</a></font></td></tr></table></body></html>

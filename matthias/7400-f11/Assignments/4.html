@@ -1,0 +1,161 @@
+<html><head><title>Problem Set 4: The Lambda Calculus as a Model of Computation</title><link rel="stylesheet" type="text/css" href="all.css" title="all" /></head><body bgcolor="white"><br /><hr width="80%" height="3" /><table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="15%" valign="top" align="left" rowspan="2"><table border="0"><tr><td><a href="../../index.html">Teaching</a></td></tr><tr><td><a href="../index.html">G7400 F'11</a></td></tr><tr><td><font color="black"><b>&nbsp;</b></font></td></tr><tr><td><a href="index.html">Assignments</a></td></tr><tr><td><a href="1.html">Set 1</a></td></tr><tr><td><a href="2.html">Set 2</a></td></tr><tr><td><a href="3.html">Set 3</a></td></tr><tr><td><font color="black"><b>Set 4</b></font></td></tr><tr><td><a href="5.html">Set 5</a></td></tr><tr><td><a href="6.html">Set 6</a></td></tr><tr><td><a href="7.html">Set 7</a></td></tr><tr><td><a href="8.html">Set 8</a></td></tr><tr><td><a href="9.html">Set 9</a></td></tr></table></td><td width="3%" /><td valign="top" align="left"><h3>Problem Set 4: The Lambda Calculus as a Model of Computation</h3></td><td valign="top" align="right" rowspan="2"><nbsp /></td></tr><tr><td /><td valign="top" align="left" colspan="2"><table width="85%"><tr><td><div><p><font color="red">Due date: </font>10/14<font color="red"> @ at the beginning of class</font></p>
+
+
+
+<blockquote>
+<p> 
+  The goal of this problem set is to understand the basics of the Lambda
+  calculus as a computing system and to increase your familiarity with
+  Redex's testing facilities. 
+</p>
+</blockquote>
+
+<p><b>Problem 1</b>:</p>
+<blockquote>
+
+ <p>
+  The goal of this exercise is to equip the calculational model of
+  arithmetic from class with three additional operations: <code>-</code>,
+  <code>*</code>, <code>if0</code>: 
+<pre><code>  (define-language Expressions
+    (e n
+       (e + e)
+       (e * e)
+       (e - e)
+       (e / e)
+       error
+       x
+       (if0 e e e))
+    (n number))
+</code></pre>
+ The interpretation of the operations is the obvious one. In particular, an
+ <code>if0</code> expression reduces to the second sub-expression if its
+  first one reduces to <code>0</code> and to the third sub-expression
+  otherwise. 
+</p>
+
+<p>
+  Also the model comes with <code>error</code> so that your model can deal
+  with division by 0. Specifically, your model should reduce expressions
+  such as <code>(1 / 0)</code> to <code>error</code>, and operations that
+  encounter <code>error</code> should propagate it, e.g., <code>(1 +
+  error)</code> should reduce to <code>error</code>. 
+</p>
+
+<p>
+  The variable <code>x</code> is to remain uninterpreted. It serves as a
+  reminder that this kind of expression language could appear as a part of
+  a full-fledged programming language. 
+ </p>
+
+<p>
+ Equip the model with a collection of test reductions that show that the terms
+ are reduced to normal form. Since testing reductions is a common activity
+ for semantics engineers, Redex comes with appropriate constructs. See
+ documentation. 
+</p>
+
+</blockquote>
+
+
+<p><b>Background for Problems 2 through 4</b>:</p>
+
+<blockquote>
+<p>
+All remaining problems in this assignment refer to this core grammar: 
+<pre><code>  (define-language Lambda0
+    (e x
+       (lambda (x) e)
+       (e e))
+    (x variable-not-otherwise-mentioned))
+</code></pre>
+
+ This language is defined and exported from the library module
+ <a href="4provided.rkt"><code>"4provided.rkt"</code></a>. In addition to the
+ language, the module provides a capture-avoiding substitution function, 
+ <code>subst-n</code>. 
+
+ Save the module under its given name and add 
+
+<pre><code>  (require "4provided.rkt")</code></pre> 
+ to your solution file. Do not modify the module. Program to its interface
+ only. 
+</p>
+</blockquote>
+
+
+
+<p><b>Problem 2</b>:</p>
+
+<blockquote>
+<p>
+ In contrast to the text book, this homework explores the lambda calculus
+ model modulo &alpha;-equivalence, an idea that is spelled out in chapter
+ I.4 of the text book.
+</p>
+
+<p>Here is a definition of a Racket function that determines whether two
+  terms in <code>Lambda0</code> are indeed &alpha;-equivalent: 
+<pre><code>  ;; e[Lambda0] e[Lambda0] -&gt; Boolean 
+  ;; are t1 and t2 alpha equivalent?
+  (define (alpha= t1 t2)
+    (define sd1 (term (sd ,t1)))
+    (define sd2 (term (sd ,t2)))
+    (equal? sd1 sd2))
+</code></pre>
+ It assumes the definition of the function <code>sd</code>, which
+ translates a <code>Lambda0</code> term into the so-called
+ "static distance" notation of <a href="1.html#five">problem set 1, problem
+ 5</a>. In class, this form is referred to as the "arrow" form of terms. 
+</p>
+
+<p>
+ Design the <code>sd</code> function and all necessary auxiliaries in
+ Redex. <emph>Do not escape to Racket for any reason.</emph>
+ In addition to replacing bound variables into static distance
+ numbers, the function must also change all parameters to <code>dummy</code>
+ or some other fixed name. Doing so is legitimate because parameter names
+ no longer play a role in static-distance notation. It enables the simple
+ comparison via <code>equal?</code> in <code>alpha=</code> above. 
+</p>
+</blockquote>
+
+
+<p><b>Problem 3</b>:</p>
+
+<blockquote>
+
+<p> 
+ Develop a Redex model of the lambda &beta; calculus. 
+ That is, the model should use &beta; as the only notion of reduction. 
+</p> 
+
+<p>
+ Demonstrate with three reduction tests that the model can reduce
+ <code>Lambda0</code> to normal form, i.e., to terms that do not contain a
+ &beta; redex. At least one of the tests must demonstrate that doing so may
+ require several steps. Another test must demonstrate that you can predict
+ the outcome only up to &alpha; equivalence.
+</p>
+</blockquote>
+
+
+<p><b>Problem 4</b>:</p>
+
+<blockquote>
+<p> 
+ Implement the stacks from <a href="2.html">problem set 2</a> via
+ <code>Lambda0</code> expressions. Do <em>not</em> use recursion, i.e., 
+ the Y combinator. Instead use the OO-encoding model. 
+</p>
+
+<p>
+ Demonstrate with reduction tests that the expressions implement the
+ reduction laws of stacks for concrete examples. Note: when I worked
+ through this exercise, I had to disable 'debugging' in DrRacket to get
+ decent performance. I only did so <em>after</em> debugging the model of course. 
+</p>
+
+</blockquote>
+
+</div></td></tr></table></td></tr></table><hr width="80%" height="3" /><table width="80%" align="center"><tr><td align="left"><font size="-2">last updated on Tue Nov 15 15:51:00 EST 2011</font></td><td align="right"><font size="-2">generated with <a href="http://www.racket-lang.org/">Racket</a></font></td></tr></table></body></html>

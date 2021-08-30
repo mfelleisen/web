@@ -1,0 +1,146 @@
+<html><head><title>Problem Set 2: Abstract Syntax, Evaluation via Reduction</title><link rel="stylesheet" type="text/css" href="all.css" title="all" /></head><body bgcolor="white"><br /><hr width="80%" height="3" /><table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="15%" valign="top" align="left" rowspan="2"><table border="0"><tr><td><a href="../../index.html">Teaching</a></td></tr><tr><td><a href="../index.html">G7400 F'11</a></td></tr><tr><td><font color="black"><b>&nbsp;</b></font></td></tr><tr><td><a href="index.html">Assignments</a></td></tr><tr><td><a href="1.html">Set 1</a></td></tr><tr><td><font color="black"><b>Set 2</b></font></td></tr><tr><td><a href="3.html">Set 3</a></td></tr><tr><td><a href="4.html">Set 4</a></td></tr><tr><td><a href="5.html">Set 5</a></td></tr><tr><td><a href="6.html">Set 6</a></td></tr><tr><td><a href="7.html">Set 7</a></td></tr><tr><td><a href="8.html">Set 8</a></td></tr><tr><td><a href="9.html">Set 9</a></td></tr></table></td><td width="3%" /><td valign="top" align="left"><h3>Problem Set 2: Abstract Syntax, Evaluation via Reduction</h3></td><td valign="top" align="right" rowspan="2"><nbsp /></td></tr><tr><td /><td valign="top" align="left" colspan="2"><table width="85%"><tr><td><div><p><font color="red">Due date: </font>9/30<font color="red"> @ at the beginning of class</font></p>
+
+
+
+<blockquote>
+<p>
+ The goal of this problem set is to understand reduction relations in
+ the spirit of chapter I.1 of the Redex book, both in theory and in
+ practice. The latter continues the introduction to systematic program
+ design.
+</p>
+
+</blockquote>
+
+
+<p><b>Finger Problems</b>:</p>
+
+<blockquote>
+<p> 
+ Solve exercises 1.2, 1.4, and 1.6. 
+</p>
+</blockquote>
+
+
+<p><b>Problem</b>:</p>
+
+<blockquote>
+<p>
+ A famous characterization of APIs (application programming interfaces) is
+ that they are languages waiting to be liberated. In this exercise, we deal
+ with one of these APIs, the language of stacks. 
+</p>
+
+<p> 
+ Here is a sketch of a stack API's syntax and its integration with some
+ expression language: 
+<pre>
+  S is one of:
+    -- mtS 
+    -- push(S,e)
+    -- pop(S)
+  e is one of: 
+    -- a number n 
+    -- add1(e)
+    -- depth(S)
+    -- top(S)
+</pre>
+  The interpretation is the usual one: 
+   <code>mtS</code> is the empty stack;
+   <code>push</code> places a number <code>n</code> onto an existing stack <code>S</code>;
+   <code>top</code> retrieves the last element that was pushed; 
+   <code>pop</code> retrieves the last stack onto which an element was pushed; 
+   and <code>depth</code> determines how many elements the stack contains. 
+   You may imagine that <tt>add1(e)</tt> is a placeholder for more complex
+   forms of expressions. 
+</p>
+
+<strong>Tasks</strong>
+
+<ol>
+<li>
+<p>
+ Develop a metalanguage representation for the stack language. 
+</p>
+</li>
+
+<li>
+<p>
+ Design a metafunction that counts the number of occurrences of
+ <tt>push</tt> in a stack expression. 
+</p>
+</li>
+
+<li>
+<p>
+ Design a metafunction that replaces all occurrences of numbers
+ in a stack expression with <tt>0</tt>. 
+</p>
+</li>
+
+<li>
+<p>
+ Design the metafunction <tt>evalS</tt>. The function maps stack
+ expressions to normalized stack expressions. This task demands that
+ you extend the stack language with a language of normalized stacks:
+<pre>
+  nS is one of:
+    -- mtS 
+    -- push(nS,n)
+</pre>
+</p>
+</li>
+
+<li>
+<p>
+ Develop a basic notion of reduction R for the stack expression
+ language. The notion of reduction should interpret all operations in the
+ specified manner.
+</p>
+
+<p>
+ This task demands that you extend the stack language with a collection of
+ S contexts.  
+</p>
+
+<p>
+ Implement your model in Redex via a language and a reduction system. 
+</p>
+</li>
+
+<li>
+<p>
+ Notions of reductions are relations. In contrast to a function, a relation
+ pairs up several "results" with a given "input". If this is true for your
+ notion of reduction for the stack language,  create an expression that has
+ at least two paths to a normalized stack using a <tt>traces</tt> expression. 
+</p>
+</li>
+
+<li>
+<p>
+ As the book explains, even relations can be used to define a mathematical
+ evaluation function. Design the metafunction <tt>eval-&gt;</tt>, which
+ uses your notion of reduction to map stack expressions to normalized stack
+ expressions.
+</p>
+</li>
+
+<li>
+<p>
+ At this point you may conjecture that <tt>eval-&gt;</tt> and
+ <tt>evalS</tt> will always produce the same result when given the same
+ stack expression. 
+
+ Formulate this conjecture with <tt> redex-check</tt>. Borrow
+ <tt>equal?</tt> from Racket to compare terms. Report the counter-example
+ that it finds via a failing test case at the bottom of your file. 
+ Finally make a suggestion as to how to eliminate the problem that
+ <tt>redex-check</tt> found. 
+</p>
+</li>
+</ol>
+
+</blockquote>
+
+</div></td></tr></table></td></tr></table><hr width="80%" height="3" /><table width="80%" align="center"><tr><td align="left"><font size="-2">last updated on Tue Nov 15 15:51:00 EST 2011</font></td><td align="right"><font size="-2">generated with <a href="http://www.racket-lang.org/">Racket</a></font></td></tr></table></body></html>

@@ -1,0 +1,211 @@
+<html><head><title>Problem Set 1: Designing Recursive Programs, Proof by Induction</title><link rel="stylesheet" type="text/css" href="all.css" title="all" /></head><body bgcolor="white"><br /><hr width="80%" height="3" /><table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="15%" valign="top" align="left" rowspan="2"><table border="0"><tr><td><a href="../../index.html">Teaching</a></td></tr><tr><td><a href="../index.html">G7400 F'11</a></td></tr><tr><td><font color="black"><b>&nbsp;</b></font></td></tr><tr><td><a href="index.html">Assignments</a></td></tr><tr><td><font color="black"><b>Set 1</b></font></td></tr><tr><td><a href="2.html">Set 2</a></td></tr><tr><td><a href="3.html">Set 3</a></td></tr><tr><td><a href="4.html">Set 4</a></td></tr><tr><td><a href="5.html">Set 5</a></td></tr><tr><td><a href="6.html">Set 6</a></td></tr><tr><td><a href="7.html">Set 7</a></td></tr><tr><td><a href="8.html">Set 8</a></td></tr><tr><td><a href="9.html">Set 9</a></td></tr></table></td><td width="3%" /><td valign="top" align="left"><h3>Problem Set 1: Designing Recursive Programs, Proof by Induction</h3></td><td valign="top" align="right" rowspan="2"><nbsp /></td></tr><tr><td /><td valign="top" align="left" colspan="2"><table width="85%"><tr><td><div><p><font color="red">Due date: </font>9/23<font color="red"> @ at the beginning of class</font></p>
+
+<blockquote>
+<p> 
+
+ The goal of this problem set is to practice structurally recursive
+ programming and using inductive proofs.  
+
+</p>
+
+<p>
+
+ Use the <strong> Redex</strong> programming language for all programming
+ problems. 
+
+</p>
+
+<p><b>WARNING:</b> This problem set is labor-intensive for those of you who
+  have little or no practice with structural programming. <em>Start early.</em>
+  Do not for one moment believe, however, that this problem set is
+  difficult because it requires you to solve the problems in a new
+  language. If you have this impression, solve the problem in your favorite
+  programming language and show me your solution. 
+</p>
+
+</blockquote>
+
+
+<a name="1"><p><b>Problem 1</b>:</p></a>
+
+<blockquote>
+<p>
+ Develop a data representation for a mobile. Wikipedia describes
+ a moible as follows: 
+   <blockquote>
+   A mobile is a type of kinetic sculpture constructed to take advantage of
+   the principle of equilibrium. It consists of a number of rods, from which
+   weighted objects or further rods hang. The objects hanging from the rods
+   balance each other, so that the rods remain more or less horizontal. Each
+   rod hangs from only one string, which gives it freedom to rotate about the
+   string. 
+</blockquote>
+ Here is a rigorous, structured description, similar to the grammars found
+ in the Java language specification: 
+ <blockquote>
+ A <em>Mobile</em> is one of: 
+  <ul>
+   <li>a Weight</li>
+   <li>a combination of two Mobiles and a weight. </li>
+  </ul>
+
+ A <em>Weight</em> is a natural number (0, 1, 2, ...). 
+ <br />
+ Interpretation: The weight in the first case represents an "atomic"
+ sculpture. You may represent a weight as a plain number, say the number of
+ "kg" that the sculpture weighs. The weight in the second case is a
+ pointwise approximation of the beam that connects the two Mobiles.
+
+ </blockquote>
+</p>
+
+<p> Design the following functions: 
+<ol>
+<li>
+ <tt>weights#</tt>, which consumes a mobile and counts the number of atomic
+ sculptures it contains;  
+</li>
+
+<li>
+ <tt>total-weight</tt>, which consumes a mobile and determines its total
+ weight;  
+</li>
+
+<li>
+ <tt>average-weight</tt>, which consumes a mobile and determines the
+ average of its weight over all the atomic sculptures it contains;  
+</li>
+
+<li>
+ <tt>depth</tt>, which consumes a mobile and determines the maximal number
+ of links from the top of the mobile to one of its atomic sculptures;
+</li>
+
+<li>
+ <tt>balanced?</tt>, which consumes a mobile and determines whether or not
+ it is balanced. A mobile is balanced if the weight of the mobile on one
+ end is equal to the weight of the mobile on the other end. The weight of a
+ mobile naturally includes the beams. 
+</li>
+</ol>
+</p>
+</blockquote>
+
+
+<a name="2"><p><b>Problem 2</b>:</p></a>
+
+<blockquote>
+ <p>
+ Recall the data definition for S-expressions over strings:
+  <blockquote>
+   <pre>
+   (define-language Sexpr
+     (s string
+	(s ...)))
+   </pre>
+  </blockquote>
+ For this problem, we ignore the interpretation of this data representation. 
+ </p>
+
+<p>Design the following functions: 
+ <ol>
+  <li><tt>count</tt>, which counts the number of <font color="red">string</font>s in an S-expression;</li>
+  <li><tt>flatten</tt>, which produces the list of all <font color="red">string</font>s in an
+    S-expression (duplicates allowed)</li> 
+  <li><tt>substitute</tt>, which replaces some <tt>old</tt> <font color="red">string</font> with a
+    <tt>new</tt> <font color="red">string</font> in the given S-expression.</li>
+ </ol>
+</p>
+</blockquote>
+
+
+<p><b>Problem 3</b>:</p>
+
+<blockquote>
+ Design the function <tt>silly</tt>. The function consumes a Mobile (see
+ Problem 1). It produces a Mobile, by adding to each sculpture <tt>S</tt>
+ (remember that it is represented by its weight) the depth of <tt>S</tt> in
+ the Mobile. 
+</blockquote>
+
+
+<p><b>Problem 4</b>:</p>
+
+<blockquote>Prove that
+ <ol>
+  <li>
+    for all mobiles <tt>m</tt>, <tt>total-weight(m) <font color="red">&ge;</font> average-weight(m)</tt>
+    <br /> (see <a href="./1.html#1">problem 1</a>)
+  </li> 
+  <li>
+    for all S-expressions <tt>s</tt> and strings <tt>o</tt> and <tt>n</tt>, 
+    <br /><tt>substitute(o,n,flatten(s)) = flatten(substitute(o,n,s))</tt>
+    <br /> (see <a href="./1.html#2">problem 2</a>)
+  </li>
+ </ol>
+</blockquote>
+
+
+<a name="five"><p><b>Problem 5</b>:</p></a>
+
+<blockquote>
+<p>
+ Design the function <tt>sd</tt>. It consumes an expression of the
+ following language
+ <blockquote>
+  An <em>XY</em> is one of: 
+  <ul>
+    <li><tt>Variable</tt></li>
+    <li><tt>(function Variable XY)</tt></li>
+    <li><tt>(XY XY)</tt></li>
+  </ul>
+ </blockquote>
+ and produces one this shape: 
+ <blockquote>
+  An <em>AB</em> is one of: 
+  <ul>
+    <li>a <tt>Number</tt></li>
+    <li>a <tt>Variable</tt></li>
+    <li><tt>(function Variable AB)</tt></li>
+    <li><tt>(AB AB)</tt></li>
+  </ul>
+ </blockquote>
+ In both cases, 
+ <blockquote>
+  A <em>Variable</em> is a name drawn from the set <tt>x</tt>, <tt>y</tt>, ...
+ </blockquote>
+ which is disjoint from the set of Numbers. 
+</p>
+
+<p>
+ For each variable introduced by the first clause in an <tt>XY</tt> expression, 
+ <tt>sd</tt> replaces it with the number of <tt>function</tt> nodes between 
+ it and the closest <tt>function</tt> node that comes the same variable. If 
+ there is no such node, the symbol is transferred to the output. 
+</p>
+
+ <p>For example, when given 
+<pre>
+        (function y
+	  ((function x 
+	     (x y))
+	    (x y)))
+</pre>
+  <tt>sd</tt> produces 
+<pre>
+        (function y
+	  ((function x 
+	     (0 1))
+	    (x 0)))
+</pre>
+ </p>
+
+<strong>Note</strong>: This problem is already a true exercise in modeling
+programming languages. It looks challenging and is the most complex
+exercise of this problem set, but given that you are PhD students, it
+should be well within reach. 
+
+</blockquote>
+
+
+</div></td></tr></table></td></tr></table><hr width="80%" height="3" /><table width="80%" align="center"><tr><td align="left"><font size="-2">last updated on Tue Nov 15 15:51:00 EST 2011</font></td><td align="right"><font size="-2">generated with <a href="http://www.racket-lang.org/">Racket</a></font></td></tr></table></body></html>

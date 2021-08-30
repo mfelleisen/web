@@ -1,0 +1,119 @@
+<html><head><title>Problem Set 5: From Lambda to ISWIM</title><link rel="stylesheet" type="text/css" href="all.css" title="all" /></head><body bgcolor="white"><br /><hr width="80%" height="3" /><table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="15%" valign="top" align="left" rowspan="2"><table border="0"><tr><td><a href="../../index.html">Teaching</a></td></tr><tr><td><a href="../index.html">G7400 F'11</a></td></tr><tr><td><font color="black"><b>&nbsp;</b></font></td></tr><tr><td><a href="index.html">Assignments</a></td></tr><tr><td><a href="1.html">Set 1</a></td></tr><tr><td><a href="2.html">Set 2</a></td></tr><tr><td><a href="3.html">Set 3</a></td></tr><tr><td><a href="4.html">Set 4</a></td></tr><tr><td><font color="black"><b>Set 5</b></font></td></tr><tr><td><a href="6.html">Set 6</a></td></tr><tr><td><a href="7.html">Set 7</a></td></tr><tr><td><a href="8.html">Set 8</a></td></tr><tr><td><a href="9.html">Set 9</a></td></tr></table></td><td width="3%" /><td valign="top" align="left"><h3>Problem Set 5: From Lambda to ISWIM</h3></td><td valign="top" align="right" rowspan="2"><nbsp /></td></tr><tr><td /><td valign="top" align="left" colspan="2"><table width="85%"><tr><td><div><p><font color="red">Due date: </font>10/21<font color="red"> @ at the beginning of class</font></p>
+
+
+
+<blockquote>
+<p> 
+  The goal of this problem set is to revisit representations in the lambda
+  calculus and to get acquainted with ISWIM.
+</p>
+</blockquote>
+
+
+<p><b>Background</b>:</p>
+
+<blockquote>
+<p>
+ The file <a href="5provided.rkt">"5provided.rkt"</a> provides all the
+ items that "4provided.rkt" provides, plus a reduction relation that implements
+ beta one-step, a Racket function that determines &alpha; equivalence, and
+ several useful <code>Lambda</code> terms (for booleans and pairs). The latter
+ come with verified equations. 
+</p>
+</blockquote>
+
+
+<p><b>Problem 1</b>:</p>
+<blockquote>
+<p>
+ An alternative way to encode numerals in <code>Lambda</code> is to say that
+ <code>0</code> corresponds to the identity function and that <code>n+1</code> is
+ represented by the pair of <code>ff</code> (false) and the representation of
+ <code>n</code>.
+</p>
+
+<p>
+ Your first task is to design a metafunction that maps Racket's natural
+ numbers to their numeral representation in <code>Lambda</code>. 
+</p>
+
+<p>
+ Your second task is to define <code>Lambda</code> representations of the
+ following functions on natural numbers: <code>succ</code>, which creates the
+ successor for a given numeral; <code>pred</code>, which extracts <code>n</code>
+ from the representation of <code>n+1</code>; and <code>iszero</code>, which
+ produces <code>tt</code> (true) for <code>0</code> and <code>ff</code> for all other
+ numerals. 
+</p>
+
+<p>
+ Third, formulate reduction tests that show that your functions satisfy or
+ falsify the following properties for numerals <code>n</code>: 
+<pre><code>  (iszero zero) =<sub>&beta;</sub> tt 
+  (iszero (succ n)) =<sub>&beta;</sub> ff 
+
+  (pred (succ n)) =<sub>&beta;</sub> n 
+  (succ (pred n)) =<sub>&beta;</sub> n 
+</code></pre>
+ Warning: do not use <code>redex-check</code>. Use <em>small</em> numbers
+ for which the tests terminate in a reasonable amount of time (less than 30s). 
+</p>
+
+<p>
+ Finally, prove the above properties unless you have falsified them. Each
+ line in your proof must either justify the step as "by def. of ..." or as
+ "by beta" or "by equation for ...". You may collapse several (un)foldings
+ of definitions or several beta steps into one line. Keep the proofs
+ concise.
+</p>
+</blockquote>
+
+
+<p><b>Problem 2</b>:</p>
+
+<blockquote>
+<p>
+ Develop a model of the numeric variant of ISWIM (chapter I.4 [page
+ 48]). The model should provide the &beta;<sub>v</sub> reduction relation
+ for ISWIM plus a &delta; reduction relation for the numerical primitives.
+ Also equip the language with an <code>if0</code> construct, though
+ introduce a <em>syntactic</em> reduction that just translates an <code>if0</code>
+ expression into an expression in the rest of the language. 
+</p>
+
+<p>
+ Define the <code>eval-v</code> function, which maps closed ISWIM expressions
+ to numbers if they are provably reducible to numbers and <code>'closure</code>
+ if the are provably reducible to <code>lambda</code> expressions. Recall that
+ our <code>eval-v</code> functions are partial on their domain. 
+</p>
+
+<p>
+ Use the imports from "5provided.rkt" to reduce your work load.
+</p>
+
+</blockquote>
+
+
+<a name="three"><p><b>Problem 3</b>:</p></a>
+
+<blockquote>
+<p>
+ Extend the language of problem 2 with a Racket-style lists data type. 
+ It should come with the following constants and functions:
+ <code>empty</code>, <code>empty?</code>, <code>cons</code>,
+ <code>cons?</code>, <code>first</code>, and <code>rest</code>.
+ Like in Racket, <code>cons</code> combines two values into one, and a list
+ is a tree of <code>cons</code>es (of values) whose right-most spine ends in
+ <code>empty</code>. We call the extended language ISWIM*.
+</p>
+
+<p>
+ Define the <code>eval*-v</code> function, which maps closed ISWIM* expressions
+ to numbers, <code>empty</code>, or <code>cons</code> trees of values if
+ they are provably reducible to those or <code>'closure</code>
+ if the are provably reducible to <code>lambda</code> expressions. 
+</p>
+</blockquote>
+
+</div></td></tr></table></td></tr></table><hr width="80%" height="3" /><table width="80%" align="center"><tr><td align="left"><font size="-2">last updated on Tue Nov 15 15:51:00 EST 2011</font></td><td align="right"><font size="-2">generated with <a href="http://www.racket-lang.org/">Racket</a></font></td></tr></table></body></html>

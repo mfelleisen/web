@@ -1,0 +1,75 @@
+<html><head><title>Problem Set 3: Reduction Relations Revisited</title><link rel="stylesheet" type="text/css" href="all.css" title="all" /></head><body bgcolor="white"><br /><hr width="80%" height="3" /><table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="15%" valign="top" align="left" rowspan="2"><table border="0"><tr><td><a href="../../index.html">Teaching</a></td></tr><tr><td><a href="../index.html">G7400 F'11</a></td></tr><tr><td><font color="black"><b>&nbsp;</b></font></td></tr><tr><td><a href="index.html">Assignments</a></td></tr><tr><td><a href="1.html">Set 1</a></td></tr><tr><td><a href="2.html">Set 2</a></td></tr><tr><td><font color="black"><b>Set 3</b></font></td></tr><tr><td><a href="4.html">Set 4</a></td></tr><tr><td><a href="5.html">Set 5</a></td></tr><tr><td><a href="6.html">Set 6</a></td></tr><tr><td><a href="7.html">Set 7</a></td></tr><tr><td><a href="8.html">Set 8</a></td></tr><tr><td><a href="9.html">Set 9</a></td></tr></table></td><td width="3%" /><td valign="top" align="left"><h3>Problem Set 3: Reduction Relations Revisited</h3></td><td valign="top" align="right" rowspan="2"><nbsp /></td></tr><tr><td /><td valign="top" align="left" colspan="2"><table width="85%"><tr><td><div><p><font color="red">Due date: </font>10/7<font color="red"> @ at the beginning of class</font></p>
+
+
+
+<blockquote>
+<p> 
+  The goal of this problem set is to deepen your understanding of
+  language specifications via relations. Doing so will enhance your
+  familiarity with reduction systems and Redex. Think of problem 1 as a
+  <strike>
+  "finger exercise"</strike> warm-up for problem 2. The deep domain content of the exercise
+  is relevant for those of you who end up in disciplines that heavily rely
+  on numeric computations. 
+</p>
+
+</blockquote>
+
+
+<p><b>Problem 1</b>:</p>
+
+<blockquote>
+<p>
+ The <tt>ListSum</tt> function consumes a list of numbers and
+ computes the sum. </p>
+
+<p>
+ Formulate the <tt>ListSum</tt> function as three different Redex
+ <em>reduction</em> model: the first one should evaluate addition from left
+ to right; the second one should evaluate addition from right to left; and
+ the third one should evaluate addition in arbitrary order. All
+ meta-operations from Racket must add/multiply exactly two numbers.
+</p>
+
+<p>
+ Define metafunctions that encapsulate the idea of evaluation-via-reduction
+ in all three models.  Find an example that produces distinct results for
+ at least two of three orders of evaluation and formulate the example as a
+ failing test case. Comment out the test case. 
+</p>
+
+</blockquote>
+
+<p><b>Problem 2</b>:</p>
+
+<blockquote>
+<p>
+ Develop a variant of the language of arithmetic from class so that
+ <tt>+</tt> and <tt>*</tt> can be applied to an arbitrary number of
+ numbers just like in Racket and similar programming languages. 
+</p>
+
+<p><strong>part a</strong> Extend the language with two distinct reduction
+ relations. The first should reduce the nested expressions from left to
+ right and the second one from right to left. Employ a corresponding
+ strategy to primitive arithmetic, respectively, i.e., for adding or
+ multiplying numbers. <b>Constraint:</b> All meta-operations from Racket
+ must add/multiply exactly two numbers.
+</p>
+
+<p><strong>part b</strong> Include two <tt>traces</tt> expressions that
+ demonstrate that the reduction graphs for one and the same example differ.
+</p>
+
+<p><strong>part c</strong> Formulate metafunctions that encapsulate the
+ idea of evaluation-via-reduction in both models. We know from grade school
+ that, in principle, the two evaluation functions are equal. Formulate a
+ corresponding conjecture with <tt>redex-check</tt>. Then formulate a
+ counter-example as a test or record one that <tt>redex-check</tt>
+ finds. Finally explain the counter-example with a single sentence (at most
+ two lines).
+</p>
+
+</blockquote>
+
+</div></td></tr></table></td></tr></table><hr width="80%" height="3" /><table width="80%" align="center"><tr><td align="left"><font size="-2">last updated on Tue Nov 15 15:51:00 EST 2011</font></td><td align="right"><font size="-2">generated with <a href="http://www.racket-lang.org/">Racket</a></font></td></tr></table></body></html>

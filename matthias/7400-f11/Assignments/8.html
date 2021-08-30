@@ -1,0 +1,73 @@
+<html><head><title>Problem Set 8: The CEK Machines and Exceptions</title><link rel="stylesheet" type="text/css" href="all.css" title="all" /></head><body bgcolor="white"><br /><hr width="80%" height="3" /><table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="15%" valign="top" align="left" rowspan="2"><table border="0"><tr><td><a href="../../index.html">Teaching</a></td></tr><tr><td><a href="../index.html">G7400 F'11</a></td></tr><tr><td><font color="black"><b>&nbsp;</b></font></td></tr><tr><td><a href="index.html">Assignments</a></td></tr><tr><td><a href="1.html">Set 1</a></td></tr><tr><td><a href="2.html">Set 2</a></td></tr><tr><td><a href="3.html">Set 3</a></td></tr><tr><td><a href="4.html">Set 4</a></td></tr><tr><td><a href="5.html">Set 5</a></td></tr><tr><td><a href="6.html">Set 6</a></td></tr><tr><td><a href="7.html">Set 7</a></td></tr><tr><td><font color="black"><b>Set 8</b></font></td></tr><tr><td><a href="9.html">Set 9</a></td></tr></table></td><td width="3%" /><td valign="top" align="left"><h3>Problem Set 8: The CEK Machines and Exceptions</h3></td><td valign="top" align="right" rowspan="2"><nbsp /></td></tr><tr><td /><td valign="top" align="left" colspan="2"><table width="85%"><tr><td><div><p><font color="red">Due date: </font>11/11 (a holiday)<font color="red"> @ at the beginning of class</font></p>
+
+
+
+<blockquote>
+<p> 
+ The goal of this problem set is to understand the CEK register machine.
+</p>
+
+<p>
+ Your solution should import <a href="8provided.rkt">"8provided.rkt"</a>.
+</p>
+</blockquote>
+
+
+<p><b>Problem</b>:</p>
+
+<blockquote>
+
+<p>
+ The purpose of this problem is to develop a CEK machine for the
+ <code>ISWIM*s</code> language from problem set 6. 
+</p>
+
+<p><strong>Task 1</strong>
+ Encode your CEK machine in Redex.
+</p>
+
+<p><a name="three"><strong>Task 2</strong></a>
+ Define the <code>cek</code> function, which uses the CEK machine to
+ map <code>ISWIM*s</code> programs to answers. 
+</p>
+
+<p><strong>Task 3</strong> 
+
+ Formulate a conjecture about the relationship between <code>eval*-s</code>
+ (solution for problem set 6, imported from 8provided.rkt) and
+ <code>cek</code> as a metafunction.  Test the conjecture manually and with
+ <code>redex-check</code>.
+</p>
+
+<p>
+ You must think of the imported solution as the "weather" and your own
+ model as a "weatherman". As you explore your solution, keep in mind that
+ you can't change the weather.
+</p>
+
+<p>
+ If testing finds a counter-example to your conjecture, formulate the
+ counter-example as a failing test case and explain the failure with a
+ one-line comment. Then fix those parts of your solution that broke so that
+ the test case passes. 
+</p>
+
+<p><strong>Task 4</strong> Add the following exception handling mechanism
+ to the CEK machine for ISWIM*s:
+<pre><code>  e = ... | (handle e x e) | (raise x e) 
+  x in Variables 
+</code></pre>
+ We say that a <code>(raise x e_x)</code> expressions raises an exception
+ with tag <code>x</code> and exception code <code>e_x</code>. A
+ <code>(handle e_body x e_handler)</code> expression sets up an exception
+ handler for exceptions with tag <code>x</code> and then evaluates
+ <code>e_body</code>. If the evaluation produces a value, the value is the
+ result of the <code>handle</code> expression. If the evaluation of
+ <code>e_body</code> raises an exception with tag <code>x</code> and
+ exception code <code>e_x</code>, then the <code>handler</code> expression
+ evaluates <code>(e_handler e_x)</code>. 
+</p>
+
+</blockquote>
+
+</div></td></tr></table></td></tr></table><hr width="80%" height="3" /><table width="80%" align="center"><tr><td align="left"><font size="-2">last updated on Tue Nov 15 15:51:00 EST 2011</font></td><td align="right"><font size="-2">generated with <a href="http://www.racket-lang.org/">Racket</a></font></td></tr></table></body></html>

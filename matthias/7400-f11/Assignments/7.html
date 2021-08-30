@@ -1,0 +1,112 @@
+<html><head><title>Problem Set 7: Type Checking</title><link rel="stylesheet" type="text/css" href="all.css" title="all" /></head><body bgcolor="white"><br /><hr width="80%" height="3" /><table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="15%" valign="top" align="left" rowspan="2"><table border="0"><tr><td><a href="../../index.html">Teaching</a></td></tr><tr><td><a href="../index.html">G7400 F'11</a></td></tr><tr><td><font color="black"><b>&nbsp;</b></font></td></tr><tr><td><a href="index.html">Assignments</a></td></tr><tr><td><a href="1.html">Set 1</a></td></tr><tr><td><a href="2.html">Set 2</a></td></tr><tr><td><a href="3.html">Set 3</a></td></tr><tr><td><a href="4.html">Set 4</a></td></tr><tr><td><a href="5.html">Set 5</a></td></tr><tr><td><a href="6.html">Set 6</a></td></tr><tr><td><font color="black"><b>Set 7</b></font></td></tr><tr><td><a href="8.html">Set 8</a></td></tr><tr><td><a href="9.html">Set 9</a></td></tr></table></td><td width="3%" /><td valign="top" align="left"><h3>Problem Set 7: Type Checking</h3></td><td valign="top" align="right" rowspan="2"><nbsp /></td></tr><tr><td /><td valign="top" align="left" colspan="2"><table width="85%"><tr><td><div><p><font color="red">Due date: </font>11/04<font color="red"> @ at the beginning of class</font></p>
+
+
+
+<blockquote>
+<p> 
+  The goal of this problem set is to understand "simple" type systems:
+  its design, its implementation, its (lack of) power. 
+</p>
+
+<p>
+ Your solution should import <a href="5provided.rkt">"5provided.rkt"</a>.
+</p>
+
+</blockquote>
+
+
+<p><b>Problem</b>:</p>
+
+<blockquote>
+The goal of this problem is to design and implement a typed variant of
+ ISWIM. The problem consists of four tasks. In principle, tasks 2 through 4
+ are orthogonal to task 1. That is, you could solve the former tasks first,
+ solve task 1, and then adapt the solutions of tasks 2 through 4. 
+
+<p><strong>Task 1</strong>  
+ Add the <code>(rec (f x) e)</code> form to the <code>ISWIM*</code> model
+ of <a href="6.html#one">problem set 6, problem 1</a>. The form abbreviates 
+ <code>(Y (lambda (f) (lambda (x) e)))</code>. The resulting language is
+ called <code>ISWIM*r</code>. 
+</p>
+
+<p>
+ Test ISWIM*r with <code>sum</code>, the list processing function that adds
+ up the numbers in a list. Also design the ISWIM*r function
+ <code>value</code>, which applies all functions in a list to 0, collecting
+ the results in a list. Finally, generalize the two functions into a
+ <code>fold</code>-style function (called <code>map-reduce</code> in modern
+ terminology).
+</p>
+
+<p><strong>Task 2</strong> 
+ Design <code>ISWIM*t</code>, a simply typed version of
+ <code>ISWIM*r</code>. Start from <code>Simply Typed ISWIM</code> presented
+ in chapter I.10 of the book.
+</p>
+
+<p>
+ The design requires two steps. First, write down a modification of the
+ <code>ISWIM*r</code> syntax so that it includes type declarations with all
+ binding occurrences of variables. Explain in comments what the types
+ mean. Second, it calls for type checking rules. Present these rules via a
+ block comment, e.g., 
+<pre><codee>  #| Typing Rules 
+
+   Ty[x] = t
+  ------------ [x]
+  Ty |- x : t
+
+     --- 
+  ------------- [b]
+  Ty |- b : num
+
+  |#</codee></pre>
+Present each rule on a separate "line", in the above style, that is, 
+with the antecedent(s) above the line, the conclusion below, and a name 
+that refers to the syntactic construction that the rule checks.  
+</p>
+
+<p>
+Your type system should be pragmatic. As you know from the text book, it
+will rule out some working programs. Make sure that your type system admits
+"interesting" programs such as <code>sum</code> and <code>value</code>
+ from task 1.
+</p>
+
+<p>
+ Demonstrate that the <code>fold</code>-style function from task 1 does not
+ type-check. 
+</p>
+
+<p>
+ State a type soundness theorem for your design. Doing so clarifies the
+ strength and weaknesses of your type system. Do <em>not</em> prove the
+ theorem. 
+</p>
+
+<p><strong>Task 3</strong> 
+ Implement the type system as a metafunction on 
+ <code>ISWIM*t</code>. The function should map expressions and type
+ environments to their types. -- <strong>Optional:</strong> To
+ ensure the correctness of your soundness theorem, you may wish
+ to implement a type standard reduction machine for <code>ISWIM*r</code>
+ and use <code>traces</code> to check type preservation across reduction
+ sequences. In our experience, <code>redex-check</code> doesn't work too
+ well for exploring the state space of this theorem, so you will need to
+ come up with "experiments" on your own. Do <em>not</em> include this part
+ in your submission. 
+</p>
+
+<p><strong>Task 4</strong> 
+ Finally, define an evaluator for <code>ISWIM*t</code>. It accepts typed
+ expressions, checks that they have the base type <code>num</code> in the
+ empty type environment, and runs them on the abstract syntax machine for
+ <code>ISWIM*r</code>. To do so, you need to design a function that strips
+ type declarations from <code>ISWIM*t</code> expressions to obtain plain
+ <code>ISWIM*r</code> expressions.
+</p>
+
+</blockquote>
+
+</div></td></tr></table></td></tr></table><hr width="80%" height="3" /><table width="80%" align="center"><tr><td align="left"><font size="-2">last updated on Tue Nov 15 15:51:00 EST 2011</font></td><td align="right"><font size="-2">generated with <a href="http://www.racket-lang.org/">Racket</a></font></td></tr></table></body></html>
