@@ -1,0 +1,217 @@
+<html><head><title>Problem Set 5: Calculational Semantics for Imperative Languages</title><link rel="stylesheet" type="text/css" href="all.css" title="all" /></head><body bgcolor="white"><br /><hr width="80%" height="3" /><table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="15%" valign="top" align="left" rowspan="2"><table border="0"><tr><td><a href="../../index.html">Teaching</a></td></tr><tr><td><a href="../index.html">G7400 F'12</a></td></tr><tr><td><font color="black"><b>&nbsp;</b></font></td></tr><tr><td><a href="index.html">Assignments</a></td></tr><tr><td><a href="1.html">Set 1</a></td></tr><tr><td><a href="2.html">Set 2</a></td></tr><tr><td><a href="3.html">Set 3</a></td></tr><tr><td><a href="4.html">Set 4</a></td></tr><tr><td><font color="black"><b>Set 5</b></font></td></tr><tr><td><a href="6.html">Set 6</a></td></tr><tr><td><a href="7.html">Set 7</a></td></tr><tr><td><a href="8.html">Set 8</a></td></tr><tr><td><a href="9.html">Set 9</a></td></tr><tr><td><a href="10.html">Set 10</a></td></tr></table></td><td width="3%"></td><td valign="top" align="left"><h3>Problem Set 5: Calculational Semantics for Imperative Languages</h3></td><td valign="top" align="right" rowspan="2"><nbsp></nbsp></td></tr><tr><td></td><td valign="top" align="left" colspan="2"><table width="85%"><tr><td><div><p><font color="red">Due date: </font>10/12<font color="red"> @ at the beginning of class</font></p>
+
+<blockquote>
+<p> 
+ <strong>Purpose:</strong> 
+ The goal of this problem set is to develop a "calculational" model of the
+ semantics of a (simplified variant of) <tt>simple-lang</tt>. The solution
+ will show that an imperative language has a naturally parallel semantics. 
+ Successful completion of the problem set will deepen your understanding of
+ scope and ordering of assignment statements. 
+</p>
+
+</blockquote>
+
+<hr />
+
+
+<a name="0"><p><b>Background</b>:</p></a>
+
+<blockquote>
+<p>
+ The module <a href="5-provided.rkt"><tt>5-provided.rkt</tt></a> provides
+ some language definitions, sample programs, and a faulty attempt to
+ specify a "calculational" semantics for a small imperative language: 
+<font size="-1">
+<code>
+<pre>  #lang racket 
+
+  (provide
+    ;; the core language definition:
+    simple-lang
+    ;; the language extended with statement and expression contexts:
+    sl+c
+    ;; the reduction relation
+    -&gt;simple-lang 
+    ;; the examples: 
+    s1 s2 s3 s4 s5)
+
+  ;; -----------------------------------------------------------------------------
+
+  (require redex)
+
+  (define-language simple-lang 
+    (s (x = e) (block (d ...) s ...) void)
+    (e x n (+ e e))
+    (d (x n))
+    (n number)
+    (x variable-not-otherwise-mentioned))
+
+  (define s1 
+    (term (block ((x 0) (y 1)) (x = (+ x 1)) (y = x))))
+
+  (define s2 
+    (term (block ((x 8) (y 9)) (x = 0) (block ((z 9)) (x = 0) (z = 2)) (y = 1))))
+
+  (define s3
+    (term (block ((x 0)) (block ((x 9)) (x = (+ x 1))))))
+
+  (define s4
+    (term (block ((x 0)) (block ((y 9)) (block ((z 3)) (y = x))))))
+
+  (define s5
+    (term (block ((x 0)) (x = 1) (x = (+ x 1)))))
+
+  (for/and ((an-s (list s3 s1 s4 s2)))
+    (redex-match? simple-lang s an-s))
+
+  ;; -----------------------------------------------------------------------------
+
+  (define-extended-language sl+c simple-lang
+    (S hole (block (d ...) s ... S s ...) (x = E))
+    (E hole (+ e E) (+ E e)))
+
+  (define -&gt;simple-lang
+    (reduction-relation 
+     sl+c
+     [==&gt; (block (d_1 ... (x n) d_2 ...) s_1 ... (in-hole S (+ n_1 n_2)) s_2 ...)
+	  (block (d_1 ... (x n) d_2 ...) s_1 ... (in-hole S n_3) s_2 ...)
+	  (where n_3 ,(+ (term n_1) (term n_2)))
+	  "add"]
+     [==&gt; (block (d_1 ... (x n) d_2 ...) s_1 ... (in-hole S x) s_2 ...)
+	  (block (d_1 ... (x n) d_2 ...) s_1 ... (in-hole S n) s_2 ...)
+	  "ref"]
+     [==&gt; (block (d_1 ... (x n) d_2 ...) s_1 ... (in-hole S (x = n_u)) s_2 ...)
+	  (block (d_1 ... (x n_u) d_2 ...) s_1 ... (in-hole S void) s_2 ...)
+	  "set"]
+     [==&gt; (block ((x n) ...) void s ...)
+	  (block ((x n) ...) s ...)
+	  "skip"]
+     [==&gt; (block ((x_1 n_1) ...) (block ((x_2 n_2) ...) s_2 ...) s_1 ...)
+	  (block ((x_1 n_1) ... (x_2 n_2) ...) s_2 ... s_1 ...)
+	  "merge"]
+     with 
+     [(--&gt; (in-hole S s_red) (in-hole S s_con))
+      (==&gt; s_red s_con)]))
+</pre>
+</code>
+</font>
+ The key change to <tt>simple-lang</tt> is that all variables are -- in
+ C/C++-like fashion -- initialized, an action distinct from assignment
+ statements (as you should know from C++). 
+</p>
+
+<p>
+ The goal of the relation is to reduce programs to the shape 
+<font size="-1">
+<code>
+<pre>  (block ((x n) ...))
+</pre>
+</code>
+</font>
+ The primary mechanism is to understand an assignment statement as a tool
+ for changing the declared value of a variable and to understand a
+ reference to a variable inside of an expression as an instruction to look
+ up its declared value. While the first three rules express these
+ "sentiments", <font color="purple">the last two rules simplify the
+ programs so that the final result is readable. Sadly, the relation is also
+ wrong. </font> 
+</p>
+
+<p>
+ Your solution file starts with 
+<font size="-1"><code><pre>  #lang racket
+
+  (require redex "5-provided.rkt")
+</pre></code></font>
+ The second line imports the pieces provided by <a href="5-provided.rkt"><tt>5-provided.rkt</tt></a>.
+</p>
+</blockquote>
+
+
+<a name="1"><p><b>Problem 1</b>:</p></a>
+
+<blockquote>
+<p>
+ Formulate test cases that specify all possible outcomes for the five
+ provided sample programs.
+</p>
+</blockquote>
+
+
+<a name="2"><p><b>Problem 2</b>:</p></a>
+
+<blockquote>
+<p>
+ Use your understanding of C/Java-style programming to formulate the
+ expected results for the five provided sample programs. 
+</p>
+
+<p>
+ Formulate five test cases from the five sample programs and the five
+ corresponding sample outcomes.  Create a Racket function that consumes a
+ reduction relation and abstracts over this test suite.
+</p>
+
+<p>
+ Run the function on the provided reduction relation. This should signal
+ some test failures because the relation is faulty. 
+</p>
+</blockquote>
+
+
+<a name="3"><p><b>Problem 3</b>:</p></a>
+
+<blockquote>
+<p>
+ Copy the reduction provided relation from <a href="">5-provided.rkt</a>
+ into your solution file and rename it <tt>-&gt;simple-lang.v2</tt>. 
+</p>
+
+<p>
+ Edit and/or supplement the <tt>==&gt;</tt> rules (and only those) of
+ <tt>-&gt;simple-lang.v2</tt> with side conditions as needed so that they
+ get triggered only according to your understanding of C's and Java's
+ semantics. You must make side-conditions minimally stringent, i.e., any
+ side conditions should not restrict the trigger conditions more than
+ necessary. In the end, the reduction relation must pass your abstracted
+ test suite from <a href="#2">problem 2</a>. 
+</p>
+
+<p>
+ <strong>Hint</strong> The point of <a href="#1">problem 1</a> is of course
+ to reflect on the problems with the existing relation. 
+</p>
+</blockquote>
+
+
+<a name="4"><p><b>Problem 4</b>:</p></a>
+
+<blockquote>
+<p>
+ Create the smallest possible example that shows -- via a <tt>traces</tt>
+ expression --- how even the correct reduction relation can produce the
+ single result of a program via multiple paths. 
+</p>
+</blockquote>
+
+
+<a name="d"><p><b>Deliverable</b>:</p></a>
+
+<blockquote>
+<p> Send in a single Racket file. Its name should
+consist of the two last names in alphabetical order separated with a
+hyphen; its suffix must be <tt>.rkt</tt>.</p>
+<p> Your file must start with the following two lines: 
+<blockquote>
+<pre><code>  ;; NameOfPartner1, NameOfPartner2 
+  ;; email@of.partner1.com, email@of.partner2.com
+</code></pre>
+</blockquote>
+appropriately instantiated of course. Also separate problems with lines of
+the shape ";; " followed by 77 "-". That gives you a width of 80 chars. Try
+to stick to this width for all of your code; it ensures basic readability. 
+</p>
+</blockquote>
+
+</div></td></tr></table></td></tr></table><hr width="80%" height="3" /><table width="80%" align="center"><tr><td align="left"><font size="-2">last updated on Wed Nov  7 10:09:15 EST 2012</font></td><td align="right"><font size="-2">generated with <a href="http://www.racket-lang.org/">Racket</a></font></td></tr></table></body></html>

@@ -1,0 +1,126 @@
+<html><head><title>Problem Set 10: Closing the Cycle</title><link rel="stylesheet" type="text/css" href="all.css" title="all" /></head><body bgcolor="white"><br /><hr width="80%" height="3" /><table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="15%" valign="top" align="left" rowspan="2"><table border="0"><tr><td><a href="../../index.html">Teaching</a></td></tr><tr><td><a href="../index.html">G7400 F'12</a></td></tr><tr><td><font color="black"><b>&nbsp;</b></font></td></tr><tr><td><a href="index.html">Assignments</a></td></tr><tr><td><a href="1.html">Set 1</a></td></tr><tr><td><a href="2.html">Set 2</a></td></tr><tr><td><a href="3.html">Set 3</a></td></tr><tr><td><a href="4.html">Set 4</a></td></tr><tr><td><a href="5.html">Set 5</a></td></tr><tr><td><a href="6.html">Set 6</a></td></tr><tr><td><a href="7.html">Set 7</a></td></tr><tr><td><a href="8.html">Set 8</a></td></tr><tr><td><a href="9.html">Set 9</a></td></tr><tr><td><font color="black"><b>Set 10</b></font></td></tr></table></td><td width="3%"></td><td valign="top" align="left"><h3>Problem Set 10: Closing the Cycle</h3></td><td valign="top" align="right" rowspan="2"><nbsp></nbsp></td></tr><tr><td></td><td valign="top" align="left" colspan="2"><table width="85%"><tr><td><div><p><font color="red">Due date: </font>11/16<font color="red"> @ at the beginning of class</font></p>
+
+<center>
+<font color="red" size="+2">
+DRAFT
+</font>
+</center>
+
+<blockquote>
+
+<p> 
+ <strong>Purpose:</strong> 
+
+ The goal of this problem set is to develop an implementation of the
+ <tt>CEK</tt> machine for the <tt>simple-lang</tt> language that lives up
+ to the specification of problem set 9. 
+
+</p>
+
+</blockquote>
+
+<hr />
+
+<a name="0"><p><b>Background</b>:</p></a>
+
+<blockquote>
+ <p>
+  The SimpleLang.com start up has decided to offer a new web service,
+  namely, an evaluator for an XML version of the <tt>simple-lang</tt>
+  programming language. Their star language designer has used Redex to
+  create the language, its CEK machine, and its rendering as an XML
+  dialect. For the latter part, see
+  <a href="10-provided.rkt"><tt>10-provided.rkt</tt>.</a> Since the CEK
+  machine is clearly the fastest implementation yet, the company had
+  decided to base its first implementation on this specification. 
+ </p>
+</blockquote>
+
+
+<a name="1"><p><b>Problem</b>:</p></a>
+
+<blockquote>
+ <p>
+   Implement the <tt>CEK</tt> machine for the <tt>simple-lang</tt>
+   language. Since the implementation must run on a cloud server and
+   connect to the web via CGI, it must accept <tt>simple-lang</tt> programs
+   in XML form from the standard input port and deliver it to the standard
+   output port, also in XML form.
+ </p>
+
+ <p>
+  Here would be a sample interaction: 
+<font size="-1"><pre><code>  $ ./evaluate &lt; in &gt; out </code></pre> </font>
+  where <tt>in</tt> is the input file 
+<font size="-1"><code><pre>  &lt;block&gt;
+    &lt;declarations&gt; &lt;var label="x" /&gt; &lt;num val="0" /&gt; &lt;/declarations&gt;
+    &lt;assign&gt; &lt;var label="x" /&gt; &lt;pls&gt; &lt;var label="x" /&gt; &lt;num val="1" /&gt; &lt;/pls&gt; &lt;/assign&gt;
+  &lt;/block&gt;  
+</pre></code></font>
+  and <tt>evaluate</tt> creates the <tt>out</tt> file with content equivalent to 
+<font size="-1"><code><pre>  &lt;block&gt;
+    &lt;declarations&gt; &lt;var label="x" /&gt; &lt;num val="1" /&gt; &lt;/declarations&gt;
+  &lt;/block&gt;  
+</pre></code></font>
+ </p>
+
+<p>
+ The <tt>evaluate</tt> program must live up to the CEK machine
+ specification. That is, if <tt>i</tt> is a <tt>simple-lang</tt> program
+ and <tt>o</tt> its expected result block, then running <tt>evaluate</tt>
+ on a XML representation of <tt>i</tt> must produce an XML representation
+ of <tt>o</tt>. 
+</p>
+
+<p>
+ Use any language of your choice.
+</p><p>
+<strong>Hints</strong> (1) My test harness will enforce the specification
+requirement automatically. (2) Your <tt>evaluate</tt> program should in
+principle have the following approximate shape: 
+<font size="-1"><code><pre>  void main() {
+    State s = read_XML_from_standard_input(); 
+    while (! s.isFinal()) do 
+      s = s.nextState();
+    s.write_as__XML_to_standard_output();
+  }
+</pre></code></font>
+ The code is in C++/Java-ish pseudo code to accommodate the majority of
+ students in this course. You should not feel obliged to use such a
+ language, however. There are <strong>no</strong> restrictions as long as
+ <tt>evaluate</tt> runs as a pure batch program (without access to a
+ display) on the College's <tt>login-linux</tt> machine. 
+</p>
+
+</blockquote>
+
+
+<a name="d"><p><b>Deliverable</b>:</p></a>
+
+<blockquote>
+<p> Send in a single tar file. Its name should
+consist of the two last names in alphabetical order separated with a
+hyphen; its suffix must be <tt>.tar</tt>.</p>
+<p> Your tar file must unpack into a directory that 
+<ol>
+<li>
+ either contains an executable file called <tt>evaluate</tt>,
+</li>
+<li>
+ or a <tt>Makefile</tt> so that running <tt>make</tt> creates the executable. 
+</li>
+</ol>
+ In addition, the directory should contain a file called <tt>README</tt>
+ that starts with the following two lines: 
+<blockquote>
+<pre><code>  NameOfPartner1, NameOfPartner2 
+  email@of.partner1.com, email@of.partner2.com
+</code></pre>
+</blockquote>
+appropriately instantiated of course. The <tt>README</tt> file should
+explain how to find the source code for <tt>evaluate</tt> in the
+directory. 
+</p>
+</blockquote>
+
+</div></td></tr></table></td></tr></table><hr width="80%" height="3" /><table width="80%" align="center"><tr><td align="left"><font size="-2">last updated on Wed Nov  7 10:09:15 EST 2012</font></td><td align="right"><font size="-2">generated with <a href="http://www.racket-lang.org/">Racket</a></font></td></tr></table></body></html>

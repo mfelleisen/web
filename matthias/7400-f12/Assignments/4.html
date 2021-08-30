@@ -1,0 +1,203 @@
+<html><head><title>Problem Set 4: Conjectures, Theorems, Proofs; Relations</title><link rel="stylesheet" type="text/css" href="all.css" title="all" /></head><body bgcolor="white"><br /><hr width="80%" height="3" /><table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="15%" valign="top" align="left" rowspan="2"><table border="0"><tr><td><a href="../../index.html">Teaching</a></td></tr><tr><td><a href="../index.html">G7400 F'12</a></td></tr><tr><td><font color="black"><b>&nbsp;</b></font></td></tr><tr><td><a href="index.html">Assignments</a></td></tr><tr><td><a href="1.html">Set 1</a></td></tr><tr><td><a href="2.html">Set 2</a></td></tr><tr><td><a href="3.html">Set 3</a></td></tr><tr><td><font color="black"><b>Set 4</b></font></td></tr><tr><td><a href="5.html">Set 5</a></td></tr><tr><td><a href="6.html">Set 6</a></td></tr><tr><td><a href="7.html">Set 7</a></td></tr><tr><td><a href="8.html">Set 8</a></td></tr><tr><td><a href="9.html">Set 9</a></td></tr><tr><td><a href="10.html">Set 10</a></td></tr></table></td><td width="3%"></td><td valign="top" align="left"><h3>Problem Set 4: Conjectures, Theorems, Proofs; Relations</h3></td><td valign="top" align="right" rowspan="2"><nbsp></nbsp></td></tr><tr><td></td><td valign="top" align="left" colspan="2"><table width="85%"><tr><td><div><p><font color="red">Due date: </font>10/05<font color="red"> @ at the beginning of class</font></p>
+
+<blockquote>
+
+<p> 
+ <strong>Purpose:</strong> One goal of this problem set is to prove simple
+ conjectures. The other goal is to acquire some familiarity with relational
+ programming. 
+</p>
+
+</blockquote>
+
+<hr />
+
+<a name="0"><p><b>Context</b>:</p></a>
+
+<blockquote>
+ <p>
+  This problem set requires the definition of <tt>TOP</tt> from
+  <a href="3.html#1">problem 1 on Problem Set 3</a> and some of your
+  solutions to the same problem.
+ </p>
+</blockquote>
+
+
+<a name="1"><p><b>Problem 1</b>:</p></a>
+
+<blockquote>
+ <p>
+  Develop a Redex relation that simulates the pattern matching process when an
+  <tt>FSM</tt> is "applied" to a sequence of keystrokes: 
+  <ol>
+   <li>
+     if a prefix of the sequence of keystrokes drives the given <tt>FSM</tt>
+     into a final state, the transition sequence ends in <tt>ACCEPTED</tt>;
+   </li>
+   <li>
+     if the sequence of keystrokes is exhausted  satisfies the <tt>FSM</tt>,
+     the transition sequence ends in <tt>SHORT</tt>;
+   </li>
+   <li>
+     if the sequence of keystrokes drives the <tt>FSM</tt> into a stuck
+     state, the transition sequence ends in <tt>REJECTED</tt>.
+   </li>
+  </ol>
+  Thus, the relation relates relates pairs of <tt>FSM</tt>s and keystroke
+  sequences extended with three tokens indicating the outcome of the
+  process.
+ </p>
+
+ <p>
+  Your solution should include a (subset of a) test suite that reveals the
+  non-deterministic nature of <tt>FSM</tt> specifications.
+ </p>
+
+ <p>
+  <strong>Hints</strong> Think of the initial state of the given
+  <tt>FSM</tt> as the current state. If you follow this advice,
+  <tt>stuck?</tt> requires some modifications, including the option of not
+  providing a current key (because there is none). You may uses
+  <tt>traces</tt> to debug your solution but your solution may not spawn a
+  trace window.
+ </p>
+
+
+<p> <strong>Constraint</strong> Your solution must use the Redex
+ programming language. The relations and functions may escape to the Racket
+ programming language only for non-recursive tasks like consing an item
+ onto a list.
+</p>
+
+</blockquote>
+
+
+<a name="2"><p><b>Problem 2</b>:</p></a>
+
+<blockquote>
+<p>
+ Prove the following claim  
+ <font size="-1">
+  <code>
+   <pre>  (define-metafunction TOP
+    x-2-f : XFSM -&gt; #t or #f
+    [(x-2-f XFSM) ,(equal? (term (fsm-2-xfsm (xfsm-2-fsm XFSM))) (term XFSM))])
+
+  (redex-check TOP XFSM (term (x-2-f XFSM)))
+   </pre>
+  </code>
+ </font>
+ where <tt>xfsm-2-fsm</tt> and <tt>fsm-2-xfsm</tt> are your (fixed)
+ solutions to Problem 1 on Problem Set 3. Include these solutions with your
+ homework and make sure that the above redex check does not find a
+ counter-example. 
+</p>
+
+<p>
+ It is best to formulate the proof in DrRacket's definition window and to
+ comment it out afterward. <strong>Hint</strong> Do not think all swans are
+ white just because all the swans you have seen are white. There are black
+ swans in Australia. 
+</p>
+</blockquote>
+
+
+<a name="3"><p><b>Problem 3</b>:</p></a>
+
+<blockquote>
+ <p>In the given context, run the following expression in DrRacket's
+ interactions area:  
+ <font size="-1">
+  <code>
+   <pre>  (redex-check TOP FSM (displayln (term FSM)) #:attempts 10)
+   </pre>
+  </code>
+ </font>
+ It generates 10 instances of <tt>FSM</tt> from <tt>TOP</tt>, which are
+ then supplied to the "conjecture" <tt>(displayln (term FSM))</tt>. Inspect
+ the outputs.  
+ </p>
+
+ <p>
+  Explain in 20 words (or less) a fundamental flaw of all <tt>FSM</tt>s generated.
+ </p>
+
+ <p>In Redex, you could read in an <tt>XFSM</tt> with the following
+ function: 
+ <font size="-1">
+  <code>
+   <pre>  (define-metafunction TOP
+    read-an-xfsm : string -&gt; XFSM
+    [(read-an-xfsm string_filename)
+     ,(let* ([file (term string_filename)]
+	     [elim (eliminate-whitespace '() (lambda (_) #t))])
+	(xml-&gt;xexpr (elim (with-input-from-file file read-xml/element))))])
+   </pre>
+  </code>
+ </font>
+ You could then run your simulation relation from <a name="1">Problem 1</a>
+ for some fixed sequence of keys. In other words, you could use the
+ <emph>model</emph> to check whether the <tt>XFSM</tt> in the file is a
+ good specification. 
+</p>
+
+<p>
+ Develop <tt>run</tt>. The meta-function consumes a filename (as a string),
+ reads an <tt>XFSM</tt> from the specified file, and traces its execution
+ on the key sequence <tt>("a" "b" "c" "d")</tt>. -- Your solution may
+ assume that your program will be run in the presence of a file "1.xml",
+ which contains an <tt>XFSM</tt> as an XML specification. 
+</p>
+
+ <p>Conversely, you could use the following function to generate
+ <tt>XFSM</tt>s with <tt>redex-check</tt> and run a solution to
+ <a href="1.html">Problem Set 1</a> on the randomly generated fsm: 
+ function: 
+ <font size="-1">
+  <code>
+   <pre>  (define (run-1 t)
+    (display-xml/content (xexpr-&gt;xml t))
+    (newline)
+    (define fl "1-temp.xml")
+    (with-output-to-file #:exists 'truncate fl 
+      (lambda () (write-xml/content (xexpr-&gt;xml t))))
+    ; for non-Racket solutions (system (format "./1.rkt ~a" fl))
+    (define r (main fl))
+    (displayln r)
+    r)
+
+   (redex-check FSM-L FSM (run-1 (term FSM)) #:attempts 3)
+   </pre>
+  </code>
+ </font>
+ In other words, you could use the <emph>model</emph> to check whether
+ program is a implementation that copes with random finite state machines. 
+</p>
+
+<p>
+ Explain in 40 words (or less) how the fundamental flaw discussed above
+ affects this connection between the model of finite state machines and
+ your "real world" program.
+</p>
+</blockquote>
+
+
+<a name="d"><p><b>Deliverable</b>:</p></a>
+
+<blockquote>
+<p> Send in a single Racket file. Its name should
+consist of the two last names in alphabetical order separated with a
+hyphen; its suffix must be <tt>.rkt</tt>.</p>
+<p> Your file must start with the following two lines: 
+<blockquote>
+<pre><code>  ;; NameOfPartner1, NameOfPartner2 
+  ;; email@of.partner1.com, email@of.partner2.com
+</code></pre>
+</blockquote>
+appropriately instantiated of course. Also separate problems with lines of
+the shape ";; " followed by 77 "-". That gives you a width of 80 chars. Try
+to stick to this width for all of your code; it ensures basic readability. 
+</p>
+</blockquote>
+
+</div></td></tr></table></td></tr></table><hr width="80%" height="3" /><table width="80%" align="center"><tr><td align="left"><font size="-2">last updated on Wed Nov  7 10:09:15 EST 2012</font></td><td align="right"><font size="-2">generated with <a href="http://www.racket-lang.org/">Racket</a></font></td></tr></table></body></html>

@@ -1,0 +1,146 @@
+<html><head><title>Problem Set 2: Languages, Data, and Recursive Programming</title><link rel="stylesheet" type="text/css" href="all.css" title="all" /></head><body bgcolor="white"><br /><hr width="80%" height="3" /><table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="15%" valign="top" align="left" rowspan="2"><table border="0"><tr><td><a href="../../index.html">Teaching</a></td></tr><tr><td><a href="../index.html">G7400 F'12</a></td></tr><tr><td><font color="black"><b>&nbsp;</b></font></td></tr><tr><td><a href="index.html">Assignments</a></td></tr><tr><td><a href="1.html">Set 1</a></td></tr><tr><td><font color="black"><b>Set 2</b></font></td></tr><tr><td><a href="3.html">Set 3</a></td></tr><tr><td><a href="4.html">Set 4</a></td></tr><tr><td><a href="5.html">Set 5</a></td></tr><tr><td><a href="6.html">Set 6</a></td></tr><tr><td><a href="7.html">Set 7</a></td></tr><tr><td><a href="8.html">Set 8</a></td></tr><tr><td><a href="9.html">Set 9</a></td></tr><tr><td><a href="10.html">Set 10</a></td></tr></table></td><td width="3%"></td><td valign="top" align="left"><h3>Problem Set 2: Languages, Data, and Recursive Programming</h3></td><td valign="top" align="right" rowspan="2"><nbsp></nbsp></td></tr><tr><td></td><td valign="top" align="left" colspan="2"><table width="85%"><tr><td><div><p><font color="red">Due date: </font>9/21<font color="red"> @ at the beginning of class</font></p>
+
+<blockquote>
+
+<p> 
+ <strong>Purpose:</strong> The goal of this problem set is to acquire basic
+ competence in designing metafunctions. 
+</p>
+
+<p> 
+ <strong>Constraint:</strong> Your solution must use the Redex programming
+ language for all problems. The function may escape to the Racket
+ programming language for simple tasks like multiplying two numbers or
+ determining the length of a list. 
+</p>
+
+</blockquote>
+
+<hr />
+
+
+<a name="1"><p><b>Problem 1</b>:</p></a>
+
+<blockquote>
+ <p>
+ Here is a data (language) definition for trees over numbers: 
+  <blockquote>
+   <pre><code>
+      (define-language tree-lang 
+	(t l        ;; leaf 
+	   (t + t)) ;; composite 
+	(l number))
+    </code></pre>
+  </blockquote>
+ </p>
+
+<p>Define five sample trees, with at least three composites.</p>
+
+<p>Design the following functions: 
+ <ol>
+  <li><tt>how-many</tt>, which counts the number of leafs in a tree;</li>
+  <li><tt>sum</tt>, which sums up all the numbers in a tree;</li> 
+  <li><tt>replace</tt>, which replaces all occurrences of some <tt>old</tt>
+  leaf for a <tt>new</tt> in some tree;</li>
+
+<li><tt>depth</tt>, which determines the maximal depth of all leaves in a tree;
+
+    <p>
+      Def.: The <em>depth of a leaf</em> is the number of <tt>+</tt>s
+      between the leaf and the root of the tree.  
+    </p>
+</li>
+
+  <li><tt>dive</tt>, which replaces all leaves with their depth.</li>
+ </ol>
+</p>
+</blockquote>
+
+
+<a name="2"><p><b>Problem 2</b>:</p></a>
+
+<blockquote>
+ <p>
+ Here is a data (language) definition for forests over strings and numbers: 
+  <blockquote>
+   <pre><code>
+      (define-language forest-lang 
+	(f (t ...))
+	(t l (t * t))
+	(l number string))
+    </code></pre>
+  </blockquote>
+ </p>
+
+<p>Define five sample forests, with at least three composites.</p>
+
+<p>Design the following functions: 
+ <ol>
+  <li><tt>fcount</tt>, which counts the number of strings in a forest;</li>
+  <li><tt>freplace</tt>, which replaces all numbers in a forest with their equivalent strings;
+    <p>
+      Hint: Experiment with <tt>number-&gt;string</tt>. 
+    </p>
+  </li> 
+  <li><tt>fdive</tt>, which replaces all leaves in a forest with their
+  containing tree's distance to the first tree in the surrounding forest. 
+    <p>
+      Def.: The <em>distance between two trees in a forest</em>
+      is the number of trees between them. 
+    </p>
+  </li>
+ </ol>
+</p>
+</blockquote>
+
+
+<a name="3"><p><b>Problem 3</b>:</p></a>
+
+<blockquote>
+<p>
+ Develop a Redex language definition for the following toy subset of the
+ Lisp/Scheme/Racket language, presented with a Java-style grammar notation:  
+ <blockquote>
+  An <em>Expression</em> is one of: 
+  <ul>
+    <li><tt>Variable</tt></li>
+    <li><tt>(function Variable Expression)</tt></li>
+    <li><tt>(Expression Expression)</tt></li>
+  </ul>
+  A <em>Variable</em> is a String. 
+ </blockquote>
+ The token <tt>function</tt> is the only keyword in the language. 
+</p>
+
+<p>
+ Design <tt>fv</tt>. The function consumes an Expression in the above
+ language. It replaces all free Variable occurrences with <tt>"free"</tt>
+ and all others with <tt>"bound"</tt>. 
+</p>
+
+<p>
+ Def: A Variable <tt>v</tt> is free in an Expression if it is not contained
+ within a <tt>function</tt> expression whose second part is <tt>v</tt>. 
+</p>
+
+</blockquote>
+
+<a name="3"><p><b>Deliverable</b>:</p></a>
+
+<blockquote>
+<p><font color="blue"> Send in a single Racket file. Its name should
+consist of the two last names in alphabetical order separated with a
+hyphen; the suffix is of course <tt>.rkt</tt>.  </font></p>
+<p><font color="purple"> Your file must start with the following two lines: 
+<blockquote>
+<pre><code>  ;; NameOfPartner1, NameOfPartner2 
+  ;; email@of.partner1.com, email@of.partner2.com
+</code></pre>
+</blockquote>
+appropriately instantiated of course. Also separates problems with lines of
+the shape ";; " followed by 77 "-". That gives you a width of 80 chars. Try
+to stick to this width for all code; it ensures basic readability. 
+</font></p>
+</blockquote>
+
+</div></td></tr></table></td></tr></table><hr width="80%" height="3" /><table width="80%" align="center"><tr><td align="left"><font size="-2">last updated on Wed Nov  7 10:09:15 EST 2012</font></td><td align="right"><font size="-2">generated with <a href="http://www.racket-lang.org/">Racket</a></font></td></tr></table></body></html>

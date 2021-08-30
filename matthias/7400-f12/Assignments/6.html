@@ -1,0 +1,119 @@
+<html><head><title>Problem Set 6: The AST Machine</title><link rel="stylesheet" type="text/css" href="all.css" title="all" /></head><body bgcolor="white"><br /><hr width="80%" height="3" /><table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="15%" valign="top" align="left" rowspan="2"><table border="0"><tr><td><a href="../../index.html">Teaching</a></td></tr><tr><td><a href="../index.html">G7400 F'12</a></td></tr><tr><td><font color="black"><b>&nbsp;</b></font></td></tr><tr><td><a href="index.html">Assignments</a></td></tr><tr><td><a href="1.html">Set 1</a></td></tr><tr><td><a href="2.html">Set 2</a></td></tr><tr><td><a href="3.html">Set 3</a></td></tr><tr><td><a href="4.html">Set 4</a></td></tr><tr><td><a href="5.html">Set 5</a></td></tr><tr><td><font color="black"><b>Set 6</b></font></td></tr><tr><td><a href="7.html">Set 7</a></td></tr><tr><td><a href="8.html">Set 8</a></td></tr><tr><td><a href="9.html">Set 9</a></td></tr><tr><td><a href="10.html">Set 10</a></td></tr></table></td><td width="3%"></td><td valign="top" align="left"><h3>Problem Set 6: The AST Machine</h3></td><td valign="top" align="right" rowspan="2"><nbsp></nbsp></td></tr><tr><td></td><td valign="top" align="left" colspan="2"><table width="85%"><tr><td><div><p><font color="red">Due date: </font>10/19<font color="red"> @ at the beginning of class</font></p>
+
+<blockquote>
+
+<p> 
+ <strong>Purpose:</strong> 
+ The goal of this problem set is to turn the "calculational" model of
+ <tt>simple-lang</tt> into a "standard reduction" model. The latter is like
+ a deterministic (not finite) state machine with programs as states and
+ reduction rules as instructions. 
+</p>
+</blockquote>
+
+<hr />
+
+
+<a name="0"><p><b>Background</b>:</p></a>
+
+<blockquote>
+<p>
+ The module <a href="5.rkt"><tt>5.rkt</tt></a> provides a solution for
+ problem set 5 to get you started here. Copy the file and rename it. 
+</p>
+</blockquote>
+
+
+<a name="1"><p><b>Problem 1</b>:</p></a>
+
+<blockquote>
+ <p>
+  Rename the provided reduction relation to <tt>-&gt;simple-lang.v3</tt> and
+  modify is so that 
+  <ol>
+    <li>
+     the <tt>==&gt;</tt> relation applies only to the first statement in a
+     block and so that two blocks are merged only when the inner's statement
+     sequence is exhausted; 
+    </li>
+
+    <li>
+     the <tt>--&gt;</tt> relation still allows statements to be reduced
+     everywhere in the program; 
+    </li>
+    <li>
+     simplify the constraints and their auxiliary functions as much as
+     possible, deleting useless definitions; and 
+    </li>
+    <li>
+     create an example, called <tt>s-graph</tt>, for which this relation still
+     generates a proper graph, not just a linear sequence of transition steps. 
+    </li>
+  </ol>
+</p>
+</blockquote>
+
+
+<a name="2"><p><b>Problem 2</b>:</p></a>
+
+<blockquote>
+<p>
+ Define the metafunction <tt>eval-c</tt>, which  consumes a
+ <tt>simple-lang</tt> <tt>s</tt> and produces a result <tt>r</tt>
+ according to <tt>-&gt;simple-lang.v3</tt>. You may assume a consistency
+ theorem for the reduction relation. 
+</p>
+</blockquote>
+
+
+<a name="3"><p><b>Problem 3</b>:</p></a>
+
+<blockquote>
+<p>
+ Create the standard reduction relation from <tt>-&gt;simple-lang.v3</tt>.
+ Call it <tt>-&gt;sl-standard</tt>. Confirm that the standard reduction
+ relation does not generate a graph for <tt>s-graph</tt>. 
+</p>
+</blockquote>
+
+
+<a name="4"><p><b>Problem 4</b>:</p></a>
+
+<blockquote>
+<p>
+ Define a metafunction <tt>eval-s</tt> that consumes a <tt>simple-lang
+ s</tt> and produces a result <tt>r</tt> according to <tt>-&gt;sl-standard
+ </tt>. You may assume a standard reduction theorem. 
+</p>
+</blockquote>
+
+
+<a name="5"><p><b>Problem 5</b>:</p></a>
+
+<blockquote>
+<p>
+ Formulate a conjecture concerning the relationship of <tt>eval-c</tt> and
+ <tt>eval-s</tt>. 
+</p>
+</blockquote>
+
+
+<a name="d"><p><b>Deliverable</b>:</p></a>
+
+<blockquote>
+<p> Send in a single Racket file. Its name should
+consist of the two last names in alphabetical order separated with a
+hyphen; its suffix must be <tt>.rkt</tt>.</p>
+<p> Your file must start with the following two lines: 
+<blockquote>
+<pre><code>  ;; NameOfPartner1, NameOfPartner2 
+  ;; email@of.partner1.com, email@of.partner2.com
+</code></pre>
+</blockquote>
+appropriately instantiated of course. Also separate problems with lines of
+the shape ";; " followed by 77 "-". That gives you a width of 80 chars. Try
+to stick to this width for all of your code; it ensures basic readability. 
+</p>
+</blockquote>
+
+</div></td></tr></table></td></tr></table><hr width="80%" height="3" /><table width="80%" align="center"><tr><td align="left"><font size="-2">last updated on Wed Nov  7 10:09:15 EST 2012</font></td><td align="right"><font size="-2">generated with <a href="http://www.racket-lang.org/">Racket</a></font></td></tr></table></body></html>

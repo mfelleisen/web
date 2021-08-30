@@ -1,0 +1,202 @@
+<html><head><title>Problem Set 3: More Metafunctions</title><link rel="stylesheet" type="text/css" href="all.css" title="all" /></head><body bgcolor="white"><br /><hr width="80%" height="3" /><table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="15%" valign="top" align="left" rowspan="2"><table border="0"><tr><td><a href="../../index.html">Teaching</a></td></tr><tr><td><a href="../index.html">G7400 F'12</a></td></tr><tr><td><font color="black"><b>&nbsp;</b></font></td></tr><tr><td><a href="index.html">Assignments</a></td></tr><tr><td><a href="1.html">Set 1</a></td></tr><tr><td><a href="2.html">Set 2</a></td></tr><tr><td><font color="black"><b>Set 3</b></font></td></tr><tr><td><a href="4.html">Set 4</a></td></tr><tr><td><a href="5.html">Set 5</a></td></tr><tr><td><a href="6.html">Set 6</a></td></tr><tr><td><a href="7.html">Set 7</a></td></tr><tr><td><a href="8.html">Set 8</a></td></tr><tr><td><a href="9.html">Set 9</a></td></tr><tr><td><a href="10.html">Set 10</a></td></tr></table></td><td width="3%"></td><td valign="top" align="left"><h3>Problem Set 3: More Metafunctions</h3></td><td valign="top" align="right" rowspan="2"><nbsp></nbsp></td></tr><tr><td></td><td valign="top" align="left" colspan="2"><table width="85%"><tr><td><div><p><font color="red">Due date: </font>9/28<font color="red"> @ at the beginning of class</font></p>
+
+<blockquote>
+
+<p> 
+ <strong>Purpose:</strong> The goal of this problem set is to reinforce
+ programming with metafunctions. 
+</p>
+
+</blockquote>
+
+<hr />
+
+
+<a name="1"><p><b>Problem 1</b>:</p></a>
+
+<blockquote>
+ <p>
+ Here are two language definitions for representing finite state machines: 
+  <blockquote>
+<font size="-1">
+   <pre><code>  (define-language BASE
+    (STATE string)
+    (KEY "A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M" 
+         "N" "O" "P" "Q" "R" "S" "T" "U" "V" "W" "X" "Y" "Z"
+         "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m"
+         "n" "o" "p" "q" "r" "s" "t" "u" "v" "w" "x" "y" "z"
+         "0" "1" "2" "3" "4" "5" "6" "7" "8" "9"))
+
+  (define-extended-language FSM-L BASE
+    (XFSM       (fsm ((initial STATE)) FINAL FINAL ... TRANSITION ...))
+    (FINAL      (final ((label STATE))))
+    (TRANSITION (transition ((current STATE) (next STATE)) ACTION ACTION ...))
+    (ACTION     (action ((key KEY)))))
+
+  (define-extended-language TOP FSM-L
+    (FSM        (fsm STATE (STATE STATE ...) ((STATE (KEY KEY ...) STATE) ...))))
+    </code></pre>
+</font>
+  </blockquote>
+ Clearly, there is a natural equivalence between the two variants --
+ <code>XFSM</code> and <code>FSM</code> -- of finite-state machine
+ specifications that <tt>TOP</tt> introduces. That is, for each instance of
+ an <code>XFSM</code> there is an equivalent instance of a <code>FSM</code>
+ and vice versa.  
+</p>
+
+<p>
+ Define three instances of an <code>XFSM</code> and construct three
+ corresponding <code>FSM</code> instances. 
+</p>
+
+<p>Design the following three functions: 
+ <ol>
+  <li><tt>fsm-2-xfsm</tt>, which constructs an <code>XFSM</code> from a
+   given <code>FSM</code>;</li>
+
+  <li><tt>xfsm-2-fsm</tt>, which constructs an <code>FSM</code> from a
+   given <code>XFSM</code>;</li>
+
+  <li><tt>stuck?</tt>, which determines whether an <code>FSM</code>
+   instance is stuck for a given <code>STATE</code> and <code>KEY</code>. 
+
+    <p>
+      Def.: A <tt>FSM</tt> is <em>stuck</em> if it does not contain a
+      transition that originates from the current <tt>STATE</tt> and
+      <tt>KEY</tt>.
+    </p>
+
+  </li>
+ </ol>
+</p>
+
+<p>
+ Formulate a logical conjecture about the relationship between
+ <tt>xfsm-2-fsm</tt> and <tt>fsm-2-xfsm</tt> via a metafunction. 
+</p>
+
+<p> 
+ <strong>Constraint</strong> Your solution must use the Redex programming
+ language for all problems. The function may escape to the Racket
+ programming language for simple tasks like consing an item onto a list. 
+</p>
+</blockquote>
+
+
+<a name="2"><p><b>Problem 2</b>:</p></a>
+
+<blockquote>
+<p>
+ The <tt>simple-lang</tt> toy language is Algol-C-Java like
+ except for types. Here is one way to add types to the abstract syntax tree
+ representation: 
+ <blockquote>
+  <font size="-1">
+   <pre><code> (define-language simple-lang 
+    (s (x ..._n = e ..._n)
+       (block d s ...))
+    (e x
+       n
+       (+ e e)
+       s)
+    (d ((t x) ...))
+    (n number)
+    (x variable-not-otherwise-mentioned)
+    (t int float))
+   </code></pre>
+  </font>
+ </blockquote>
+ Each identifier declaration in a <tt>block</tt> comes with a type
+ specification. To keep the language simple, a type is either <tt>int</tt>
+ or <tt>float</tt>.
+</p>
+
+<p>
+ Design the function <tt>type-of</tt>, which consumes a statement and
+ produces its type. In contrast to the C programming language,
+ <tt>simple-lang</tt> assigns non-void types to statements: (1) the type of
+ an assignment statement is the type of the last variable on the left-hand
+ side and (2) the type of a block statement is the type of the last
+ statement in the block. In addition, <tt>type-of</tt> checks the following
+ constraints:
+<ol>
+<li>
+ the declared type of the <em>i</em>th variable on the left-hand side of an
+ assignment statement is equal to the type of the <em>i</em>th
+ expression on the right-hand side; 
+</li>
+<li>
+ each statement inside of a block must have a type; 
+</li>
+<li>
+ the type of a variable expression is the specified type of the closest
+ variable declaration; 
+</li>
+<li>
+ the type of a number is <tt>int</tt> if it is an
+ <a href="http://doc.racket-lang.org/reference/number-types.html?q=exact-integer%3F#(def._((quote._~23~25kernel)._exact-integer~3f))"><tt>exact-integer?</tt></a>
+ and <tt>float</tt> otherwise; 
+</li>
+<li>
+ the types of the two subexpression of an addition expression must be equal
+ and the type of the addition expression is the same as the type of its two
+ subexpressions. 
+</li>
+</ol>
+ These rules correspond to those of Algol, C, and Java except that the
+ latter automatically convert <tt>int</tt>-typed expressions to
+ <tt>float</tt>-typed expressions. 
+</p>
+
+<p>
+ If any component of the given statement fails to satisfy one of the above
+ constraints, <tt>type-of</tt> signals an error.
+</p>
+
+<p>
+ As a reminder, here is a function that looks up a type in a series of
+ typed variable declarations: 
+ <blockquote>
+  <font size="-1">
+   <pre><code>  ;; lookup the type of a variable in a list of type declarations 
+  (define-metafunction simple-lang 
+    lookup : x d -&gt; t
+    [(lookup x ((t_1 x_1) ... (t x) (t_2 x_2) ...)) 
+     t
+     (side-condition (not (member (term x) (term (x_1 ...)))))]
+    [(lookup x d)
+     ,(error 'lookup "~s has no type in ~s" (term x) (term d))])
+
+  (test-equal (term (lookup y ((int x) (float y) (int z)))) (term float))
+  (with-handlers ((exn:fail? void)) (term (lookup y ())) 'bad-float)
+   </code></pre>
+  </font>
+ </blockquote>
+</p>
+
+<p>
+ <strong>Constraint</strong> Your program may escape to Racket for two
+ reasons: (1) to determine the type of a number and (2) to signal an
+ error. 
+</p>
+</blockquote>
+
+<blockquote>
+<font color="blue"><p> Send in a single Racket file. Its name should
+consist of the two last names in alphabetical order separated with a
+hyphen; its suffix must be <tt>.rkt</tt>.</p>
+<p> Your file must start with the following two lines: 
+<blockquote>
+<pre><code>  ;; NameOfPartner1, NameOfPartner2 
+  ;; email@of.partner1.com, email@of.partner2.com
+</code></pre>
+</blockquote>
+appropriately instantiated of course. Also separate problems with lines of
+the shape ";; " followed by 77 "="; for sub-problems use "-". Each gives
+you a width of 80 chars. Stick to this width for all of your code; if you
+also follow DrRacket's indentation rules, it ensures some readability.  
+</p></font>
+</blockquote>
+
+</div></td></tr></table></td></tr></table><hr width="80%" height="3" /><table width="80%" align="center"><tr><td align="left"><font size="-2">last updated on Wed Nov  7 10:09:15 EST 2012</font></td><td align="right"><font size="-2">generated with <a href="http://www.racket-lang.org/">Racket</a></font></td></tr></table></body></html>

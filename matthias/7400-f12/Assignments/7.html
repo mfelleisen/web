@@ -1,0 +1,207 @@
+<html><head><title>Problem Set 7: Types and Type Checking</title><link rel="stylesheet" type="text/css" href="all.css" title="all" /></head><body bgcolor="white"><br /><hr width="80%" height="3" /><table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="15%" valign="top" align="left" rowspan="2"><table border="0"><tr><td><a href="../../index.html">Teaching</a></td></tr><tr><td><a href="../index.html">G7400 F'12</a></td></tr><tr><td><font color="black"><b>&nbsp;</b></font></td></tr><tr><td><a href="index.html">Assignments</a></td></tr><tr><td><a href="1.html">Set 1</a></td></tr><tr><td><a href="2.html">Set 2</a></td></tr><tr><td><a href="3.html">Set 3</a></td></tr><tr><td><a href="4.html">Set 4</a></td></tr><tr><td><a href="5.html">Set 5</a></td></tr><tr><td><a href="6.html">Set 6</a></td></tr><tr><td><font color="black"><b>Set 7</b></font></td></tr><tr><td><a href="8.html">Set 8</a></td></tr><tr><td><a href="9.html">Set 9</a></td></tr><tr><td><a href="10.html">Set 10</a></td></tr></table></td><td width="3%"></td><td valign="top" align="left"><h3>Problem Set 7: Types and Type Checking</h3></td><td valign="top" align="right" rowspan="2"><nbsp></nbsp></td></tr><tr><td></td><td valign="top" align="left" colspan="2"><table width="85%"><tr><td><div><p><font color="red">Due date: </font>10/26<font color="red"> @ at the beginning of class</font></p>
+
+<blockquote>
+
+<p> 
+ <strong>Purpose:</strong> 
+ The goal of this problem set is to understand the role of types and type
+ checking. In addition, you will demonstrate that you can expand your
+ knowledge of a computing system (Redex) on your own
+ (<tt>define-judgment-form)</tt>. 
+</p>
+
+</blockquote>
+
+<hr />
+
+
+<a name="0"><p><b>Background</b>:</p></a>
+
+<blockquote>
+ <p>
+  The following revision of <tt>simple-lang</tt> equips the language with
+  types: 
+<font size="-1"><pre><code>  ;; specifying syntax 
+  (define-language simple-lang 
+    (st (x = et) (block (dt ...) st ...))
+    (et x n (+ et et) (coerce t et))
+    (dt (t x n))
+    (t  int float)
+    (n  number)
+    (x  variable-not-otherwise-mentioned))
+</code></pre></font> 
+  Here are the examples from the last problem set, adjusted to this new
+  syntax: 
+<font size="-1"><pre><code>  (define s1 
+    (term (block ((int x 0) (int y 1)) (x = (+ x 1)) (y = x))))
+
+  (define s2 
+    (term
+     (block ((int x 8) (int y 9))
+	    (x = 0)
+	    (block ((int z 9))
+		   (x = 0) 
+		   (z = 2))
+	    (y = 1))))
+
+  (define s3
+    (term (block ((int x 0)) (block ((int x 9)) (x = (+ x 1))))))
+
+  (define s4
+    (term (block ((int x 0)) (block ((int y 9)) (block ((int z 3)) (y = x))))))
+
+  (define s5
+    (term (block ((int x 0)) (x = 1) (x = (+ x 1)))))
+
+  (test-equal
+   (for/and ((an-s (list s3 s1 s4 s2)))
+     (redex-match? simple-lang st an-s))
+   #t)
+</code></pre></font>
+ Use this code to create your solution file. 
+ </p>
+</blockquote>
+
+
+<a name="1"><p><b>Problem 1</b>:</p></a>
+
+<blockquote>
+<p>
+ Design the type judgment <tt>check</tt>, which consumes a statement
+ <tt>st</tt> and checks whether <tt>st</tt> satisfies the type
+ constraints. In particular, <tt>check</tt> enforces the following
+ constraints:
+<ol>
+<li>
+ in the <em>i</em>th declaration of a block, the declared type is equal to
+ the type of the initial value; 
+</li>
+<li>
+ each statement inside of a block satisfies the type constraints; 
+</li>
+<li>
+ the declared type of the left-hand side of an assignment is
+ equal to the type of the right-hand side; 
+</li>
+<li>
+ similarly, the type of a variable is the specified type of the closest
+ matching variable declaration; 
+</li>
+<li>
+ the type of a number is <tt>int</tt> if it is a
+ <a href="http://doc.racket-lang.org/reference/number-types.html?q=exact-integer%3F#(def._((quote._~23~25kernel)._exact-integer~3f))"><tt>exact-integer?</tt></a>
+ and <tt>float</tt> if it is an <a href="http://doc.racket-lang.org/reference/number-types.html?q=exact-integer%3F#(def._((quote._~23~25kernel)._flonum~3f))"><tt>flonum?</tt></a>
+</li>
+<li>
+ the types of the two subexpression of an addition expression are equal
+ and the type of the addition expression is the same as the type of its two
+ sub-expressions. 
+</li>
+</ol>
+ These rules correspond to those of Algol, C, and Java except that these
+ languages automatically convert <tt>int</tt>-typed expressions to
+ <tt>float</tt>-typed expressions. In <tt>simple-lang</tt>, you need an
+ explicit <tt>coerce</tt> expression to convert a value from one type to
+ another.
+</p>
+
+ <p>
+  <strong>Warning</strong> The <tt>side-condition</tt> of judgments differs
+  from those of reduction rules and meta functions. 
+ </p>
+</blockquote>
+
+
+<a name="2"><p><b>Problem 2</b>:</p></a>
+
+<blockquote>
+<p>
+ Once the type checker has checked the constraints for a statement
+ <tt>st</tt>, it is possible to strip all type-related information from
+ <tt>st</tt> to determine its behavior via the standard reduction
+ relation. 
+</p>
+
+<p>
+ Copy and paste the relevant pieces of your standard reduction relation
+ from problem set 6 into your solution file. Correct any mistakes that were
+ pointed out. 
+</p>
+
+<p>
+ Design the function <tt>strip</tt>, which consumes a statement <tt>st</tt>
+ and strips all type-related elements. 
+</p>
+
+<p>
+ Design the function <tt>eval-st</tt>, which consumes a statement and
+ determines its behavior according to the untyped reduction semantics. For
+ the latter step, it strips all type-related elements. If a statement does
+ not type check, the function produces <tt>error</tt>. 
+</p>
+
+<p>
+ <strong>Hint</strong> I have carefully engineered the above language
+ definition so that copy-and-paste should work without problem. -- 
+ In principle, a semantics engineer would organize such a model in several
+ files and import the untyped reduction relation. 
+</p>
+
+<p>
+ Implementations for languages such as Algol have used type information to
+ compile and run code. Stripping type information was common for languages
+ such as SML; for example, the SML/NJ implementation used to translate its
+ input to Scheme. 
+</p>
+</blockquote>
+
+
+<a name="3"><p><b>Problem 3</b>:</p></a>
+
+<blockquote>
+<p> 
+ Claim: All programs (typed or untyped) in <tt>simple-lang</tt> terminate. 
+ Articulate the central proof idea in 20 words or less. 
+</p>
+
+<p>
+ Design the function <tt>size</tt>, which 
+
+<a href="http://doc.racket-lang.org/reference/Writing.html?q=displayln#(def._((lib._racket/private/misc..rkt)._displayln))">
+<tt>displayln</tt>s</a>
+
+the size of statements <tt>s</tt> in the
+untyped <tt>simple-lang</tt> language. 
+</p>
+
+<p>
+ <strong>Hint</strong> You may wish to turn your proof into an executable
+ metafunction that <tt>traces</tt> the standard reductions of
+ <tt>simple-lang</tt> programs and confirms your conjecture. Doing so
+ requires some learning about <tt>traces</tt> and a modicum of Racket
+ knowledge. Follow this hint only if you have time. 
+</p>
+
+</blockquote>
+
+
+
+<a name="d"><p><b>Deliverable</b>:</p></a>
+
+<blockquote>
+<p> Send in a single Racket file. Its name should
+consist of the two last names in alphabetical order separated with a
+hyphen; its suffix must be <tt>.rkt</tt>.</p>
+<p> Your file must start with the following two lines: 
+<blockquote>
+<pre><code>  ;; NameOfPartner1, NameOfPartner2 
+  ;; email@of.partner1.com, email@of.partner2.com
+</code></pre>
+</blockquote>
+appropriately instantiated of course. Also separate problems with lines of
+the shape ";; " followed by 77 "-". That gives you a width of 80 chars. Try
+to stick to this width for all of your code; it ensures basic readability. 
+</p>
+</blockquote>
+
+</div></td></tr></table></td></tr></table><hr width="80%" height="3" /><table width="80%" align="center"><tr><td align="left"><font size="-2">last updated on Wed Nov  7 10:09:15 EST 2012</font></td><td align="right"><font size="-2">generated with <a href="http://www.racket-lang.org/">Racket</a></font></td></tr></table></body></html>

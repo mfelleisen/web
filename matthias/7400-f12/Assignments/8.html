@@ -1,0 +1,135 @@
+<html><head><title>Problem Set 8: Register Machines</title><link rel="stylesheet" type="text/css" href="all.css" title="all" /></head><body bgcolor="white"><br /><hr width="80%" height="3" /><table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="15%" valign="top" align="left" rowspan="2"><table border="0"><tr><td><a href="../../index.html">Teaching</a></td></tr><tr><td><a href="../index.html">G7400 F'12</a></td></tr><tr><td><font color="black"><b>&nbsp;</b></font></td></tr><tr><td><a href="index.html">Assignments</a></td></tr><tr><td><a href="1.html">Set 1</a></td></tr><tr><td><a href="2.html">Set 2</a></td></tr><tr><td><a href="3.html">Set 3</a></td></tr><tr><td><a href="4.html">Set 4</a></td></tr><tr><td><a href="5.html">Set 5</a></td></tr><tr><td><a href="6.html">Set 6</a></td></tr><tr><td><a href="7.html">Set 7</a></td></tr><tr><td><font color="black"><b>Set 8</b></font></td></tr><tr><td><a href="9.html">Set 9</a></td></tr><tr><td><a href="10.html">Set 10</a></td></tr></table></td><td width="3%"></td><td valign="top" align="left"><h3>Problem Set 8: Register Machines</h3></td><td valign="top" align="right" rowspan="2"><nbsp></nbsp></td></tr><tr><td></td><td valign="top" align="left" colspan="2"><table width="85%"><tr><td><div><p><font color="red">Due date: </font>11/2<font color="red"> @ at the beginning of class</font></p>
+
+<blockquote>
+
+<p> 
+ <strong>Purpose:</strong> 
+ The goal of this problem set is to understand abstract register machines
+ and their relationship to the standard reduction semantics (textual
+ machine). 
+</p>
+
+</blockquote>
+
+<hr />
+
+<a name="0"><p><b>Background</b>:</p></a>
+
+<blockquote>
+<p>
+ The module <a href="8-provided.rkt"><tt>8-provided.rkt</tt></a> specifies
+ another (standard) semantics for the <tt>simple-lang</tt> language:
+<font size="-1"><pre><code>  (define -&gt;sl-standard 
+    (reduction-relation 
+     sl+c
+     [==&gt; (block (d_1 ... (x n) d_2 ...) (in-hole S (+ n_1 n_2)) s_2 ...)
+	  (block (d_1 ... (x n) d_2 ...) (in-hole S n_3) s_2 ...)
+	  (where n_3 ,(+ (term n_1) (term n_2)))
+	  "add"]
+     [==&gt; (block (d_1 ... (x n) d_2 ...) (in-hole S x) s_2 ...)
+	  (block (d_1 ... (x n) d_2 ...) (in-hole S n) s_2 ...)
+	  (side-condition (term (no-binding-for x S)))
+	  "ref"]
+     [==&gt; (block (d_1 ... (x n_o) d_2 ...) (in-hole S (x = n_n)) s_2 ...)
+	  (block (d_1 ... (x n_n) d_2 ...) (in-hole S void) s_2 ...)
+	  (side-condition (term (no-binding-for x S)))
+	  "set"]
+     [==&gt; (block ((x n) ...) void s ...) (block ((x n) ...) s ...) "void"]
+     [==&gt; (in-hole S (block ((x_1 n_1) ...))) 
+	  (in-hole S void)
+	  (side-condition (not (equal? (term S) (term hole))))
+	  "pop"]
+     with 
+     [(--&gt; (in-hole S s_red) (in-hole S s_con))
+      (==&gt; s_red s_con)]))
+</code></pre></font>
+ In contrast to the original semantics, this one implements a
+ stack-based evaluation; inner <tt>block</tt>s are "pushed" and, 
+ once their statement sequence is worked off,  "popped". 
+ </p>
+
+<p>
+ You must require the file into your homework solution. 
+</p>
+</blockquote>
+
+
+<a name="1"><p><b>Problem 1</b>:</p></a>
+
+<blockquote>
+<p>
+ Design a CEK-reduction relation that corresponds to the above standard
+ reduction relation. Here are specifications of the machine states and
+ their components: 
+ <font size="-1"><pre><code>  (define-extended-language sl+cek sl+c
+    (CEK (s (D ...) (S ...))) ;; states 
+    (FIN ??? ??? ???)         ;; final states
+    (D (d ...))               ;; environments (declaration stack)
+    (S (s ...)))              ;; continuations (control stack)
+ </code></pre></font>
+ As you can see, a machine state consists of
+<ol>
+<li>
+ the current statement, which corresponds to the statement in the hole of
+ the  evaluation context; 
+</li>
+<li>
+ the environment, which collects the declarations that surround the hole in
+ the evaluation context; and
+</li>
+<li>
+ the continuation, which collects the statements to be executed after the
+ current one is evaluated. 
+</li>
+</ol>
+ Your design must include a precise specification of the set of final
+ states and a <tt>eval-cek</tt> function. 
+</p>
+
+<p>
+ Like the original CEK machine, the CEK machine for <tt>simple-lang</tt>
+ must implement search instructions that find the next assignment statement
+ through the nest of blocks. <strong>Help</strong> Consider deriving your
+ CEK machine in a step-by-step fashion, following the text book's strategy
+ in the chapter on abstract register machines for ISWIM. If you follow this
+ path, do <strong>not</strong> turn in any intermediate steps.
+</p>
+
+<p>
+ <strong>Explanation</strong> Your CEK machine must use evaluation context
+ to evaluate expressions. A full-fledged machine would use an expression
+ stack and an expression continuation. Once you understand the basic idea,
+ there is no need to spell out these details too.
+</p>
+</blockquote>
+
+
+<a name="2"><p><b>Problem 2</b>:</p></a>
+
+<blockquote>
+<p>
+ Formulate and test a conjecture concerning <tt>eval-cek</tt> and
+ <tt>eval-s</tt>. 
+</p>
+</blockquote>
+
+
+<a name="d"><p><b>Deliverable</b>:</p></a>
+
+<blockquote>
+<p> Send in a single Racket file. Its name should
+consist of the two last names in alphabetical order separated with a
+hyphen; its suffix must be <tt>.rkt</tt>.</p>
+<p> Your file must start with the following two lines: 
+<blockquote>
+<pre><code>  ;; NameOfPartner1, NameOfPartner2 
+  ;; email@of.partner1.com, email@of.partner2.com
+</code></pre>
+</blockquote>
+appropriately instantiated of course. Also separate problems with lines of
+the shape ";; " followed by 77 "-". That gives you a width of 80 chars. Try
+to stick to this width for all of your code; it ensures basic readability. 
+</p>
+</blockquote>
+
+</div></td></tr></table></td></tr></table><hr width="80%" height="3" /><table width="80%" align="center"><tr><td align="left"><font size="-2">last updated on Wed Nov  7 10:09:15 EST 2012</font></td><td align="right"><font size="-2">generated with <a href="http://www.racket-lang.org/">Racket</a></font></td></tr></table></body></html>

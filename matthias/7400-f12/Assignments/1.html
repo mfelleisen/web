@@ -1,0 +1,127 @@
+<html><head><title>Problem Set 1: Basic Programming</title><link rel="stylesheet" type="text/css" href="all.css" title="all" /></head><body bgcolor="white"><br /><hr width="80%" height="3" /><table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="15%" valign="top" align="left" rowspan="2"><table border="0"><tr><td><a href="../../index.html">Teaching</a></td></tr><tr><td><a href="../index.html">G7400 F'12</a></td></tr><tr><td><font color="black"><b>&nbsp;</b></font></td></tr><tr><td><a href="index.html">Assignments</a></td></tr><tr><td><font color="black"><b>Set 1</b></font></td></tr><tr><td><a href="2.html">Set 2</a></td></tr><tr><td><a href="3.html">Set 3</a></td></tr><tr><td><a href="4.html">Set 4</a></td></tr><tr><td><a href="5.html">Set 5</a></td></tr><tr><td><a href="6.html">Set 6</a></td></tr><tr><td><a href="7.html">Set 7</a></td></tr><tr><td><a href="8.html">Set 8</a></td></tr><tr><td><a href="9.html">Set 9</a></td></tr><tr><td><a href="10.html">Set 10</a></td></tr></table></td><td width="3%"></td><td valign="top" align="left"><h3>Problem Set 1: Basic Programming</h3></td><td valign="top" align="right" rowspan="2"><nbsp></nbsp></td></tr><tr><td></td><td valign="top" align="left" colspan="2"><table width="85%"><tr><td><div><p><font color="red">Due date: </font>9/14<font color="red"> @ at the beginning of class</font></p>
+
+<blockquote>
+
+<p> 
+ <strong>Purpose:</strong> The goal of this problem set is to demonstrate
+ basic competence in the prerequisites of this course and the PhD program
+ in general (solid programming skills in <em>a</em> programming language, 
+ a basic understanding of regular expressions or (equivalently) finite state
+ machines.)
+</p>
+
+</blockquote>
+
+<hr />
+
+
+
+<blockquote>
+
+<p><strong>Task</strong> Design a program that discovers whether a user
+ presses a sequence of <em>alphanumeric</em> keys according to some regular
+ expression or finite state machine. Running the program on the
+ specification of a regular expression should open a 100 x 100 window and
+ accept key events. The window should be <em>white</em> for the initial
+ state, <em>yellow</em> for intermediate states (not initial, not final),
+ <em>green</em> when the sequence is an acceptable string (final state),
+ and <em>red</em> when a mismatch has been discovered. As soon as the
+ sequence of key events satisfies the given regular expression, the program
+ should shut down with a positive acknowledgment. Conversely, the program
+ should stop with a negative acknowledgment when a key event violates the
+ given specification.
+</p>
+
+<p><strong>Example</strong> Assume that the specified regular expression is
+  equivalent to  
+<font size="-1"><pre><code>    a(b|c)*d</code></pre></font>
+ Then (1) key sequences such as "abbbcd" and "ad" are accepted, (2) key
+  sequences such as "b" and "d" are unacceptable, and (3) key sequences
+  such as "abc" and "abbb" are strict prefixes.
+</p>
+
+<p><strong>Configuration</strong> The program is configured with a
+  "program" in a <em>domain-specific programming language</em> (DSL) for
+  the specification of finite state machines (FSM). Your program should
+  read the specification from a file whose path is given the command line.
+</p>
+
+<p>To keep the specification programming-language neutral, the DSL is a
+  dialect of XML (eXtensible Markup Language). Here is the formal grammar: 
+<font size="-1"><pre><code>    FSM = &lt;fsm initial=State&gt;
+	     &lt;final label=State&gt;&lt;/final&gt; ...1
+	     &lt;transition current=State next=State&gt;
+		&lt;action key=AlphaNumeric&gt;&lt;/action&gt; ...1
+	     &lt;/transition&gt; ...1
+	  &lt;/fsm&gt;
+
+    State = String 
+    AlphaNumeric = the one-char strings 'a' thru 'z', 'A' thru 'Z', and '0' thru '9'
+</code></pre></font>
+ The notation <code>...1</code> means "a sequence of at least one of the
+    preceding XML elements". 
+</p>
+
+<p>
+ Informally, a FSM specification consists of a single XML element that
+ specifies the initial state via an "initial" attribute; the final states
+ and transition between states are listed as the content of the elements,
+ i.e., as sequences of elements. The "final" XML element just names the
+ "accepting" states of the FSM. Each transition element specifies the
+ origin and destination states via attributes and the alphanumeric keys
+ that enable the transition as a sequence of content elements. 
+</p>
+
+<p>
+ Here are two sample specifications for
+ <font size="-1"><code>a(b|c)*d</code></font>: 
+<br />
+<table align="center" border="0" width="90%">
+<tr>
+<td>
+<font size="-1"><pre><code>    &lt;fsm initial="a"&gt;
+       &lt;final label="d"&gt;&lt;/final&gt;
+       &lt;transition current="a" next="bc"&gt;
+          &lt;action key="a"&gt;&lt;/action&gt;
+       &lt;/transition&gt;
+       &lt;transition current="bc" next="bc"&gt;
+          &lt;action key="b"&gt;&lt;/action&gt;
+          &lt;action key="c"&gt;&lt;/action&gt;
+       &lt;/transition&gt;
+       &lt;transition current="bc" next="d"&gt;
+         &lt;action key="d"&gt;&lt;/action&gt;
+       &lt;/transition&gt;
+    &lt;/fsm&gt;
+</code></pre></font>
+</td>
+<td>
+<font size="-1"><pre><code>    &lt;fsm initial="a"&gt;
+       &lt;final label="d" /&gt;
+       &lt;transition current="a" next="bc"&gt;
+          &lt;action key="a" /&gt;
+       &lt;/transition&gt;
+       &lt;transition current="bc" next="bc"&gt;
+          &lt;action key="b" /&gt;
+          &lt;action key="c" /&gt;
+       &lt;/transition&gt;
+       &lt;transition current="bc" next="d"&gt;
+         &lt;action key="d" /&gt;
+       &lt;/transition&gt;
+    &lt;/fsm&gt;
+</code></pre></font>
+</td>
+</tr>
+</table>
+ Your program should print a reasonably informative, one-line error message
+ if anything goes wrong with the configuration step. 
+</p>
+
+<strong>Deliverable</strong> Send in a tar.gz bundle via email that
+contains a single directory. When I unpack the bundle on the standard
+departmental LINUX boxes (login-linux is a good example), I expect to be
+able to cd into this directory and run your solution as 
+<font size="-1"><pre><code>  $ ./1.xyz 1.xml</code></pre></font>
+where <tt>1.xml</tt> is a file I will supply. 
+</blockquote>
+
+</div></td></tr></table></td></tr></table><hr width="80%" height="3" /><table width="80%" align="center"><tr><td align="left"><font size="-2">last updated on Wed Nov  7 10:09:15 EST 2012</font></td><td align="right"><font size="-2">generated with <a href="http://www.racket-lang.org/">Racket</a></font></td></tr></table></body></html>
