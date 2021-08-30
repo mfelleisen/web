@@ -1,0 +1,80 @@
+<html><head><title>Problem Set 9: State and Garbage</title><link rel="stylesheet" type="text/css" href="all.css" title="all" /></head><body bgcolor="white"><br /><hr width="80%" height="3" /><table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="15%" valign="top" align="left" rowspan="2"><table border="0"><tr><td><a href="../../index.html">Teaching</a></td></tr><tr><td><a href="../index.html">G7400 F'10</a></td></tr><tr><td><font color="black"><b>&nbsp;</b></font></td></tr><tr><td><a href="index.html">Assignments</a></td></tr><tr><td><a href="1.html">Set 1</a></td></tr><tr><td><a href="2.html">Set 2</a></td></tr><tr><td><a href="3.html">Set 3</a></td></tr><tr><td><a href="4.html">Set 4</a></td></tr><tr><td><a href="5.html">Set 5</a></td></tr><tr><td><a href="6.html">Set 6</a></td></tr><tr><td><a href="7.html">Set 7</a></td></tr><tr><td><a href="8.html">Set 8</a></td></tr><tr><td><font color="black"><b>Set 9</b></font></td></tr><tr><td><a href="10.html">Set 10</a></td></tr></table></td><td width="3%" /><td valign="top" align="left"><h3>Problem Set 9: State and Garbage</h3></td><td valign="top" align="right" rowspan="2"><nbsp /></td></tr><tr><td /><td valign="top" align="left" colspan="2"><table width="85%"><tr><td><div><p><font color="red">Due date: </font>11/23<font color="red"> @ at the beginning of class</font></p>
+
+<blockquote>
+<p> 
+  The goal of this problem set is to experiment with the CESK machine for
+  ISWIM. 
+</p>
+
+<p>
+ <strong>Warning: </strong> The second and third problem of this problem
+ set depend on a solution of the first problem.  
+</p>
+</blockquote>
+
+
+<p><b>Problem 0</b>:</p>
+
+<blockquote>
+
+<p> Construct a Redex model of the CESK machine for one of the three
+ variants of ISWIM (from problems 5(1), 5(2), or 5(3)). Your model's
+ <code>eval</code> function must produce the same results as the standard
+ reduction semantics.
+</p>
+</blockquote>
+
+
+<p><b>Problem 1</b>:</p>
+
+<blockquote>
+<p>
+ Equip the Redex model of problem 0 with a garbage collector: 
+<strike>
+ <ol>
+  <li>specify the garbage collector as a reduction rule;</li>
+  <li>develop a the garbage collector; and</li>
+  <li>validate the garbage collector against the rule.</li>
+ </ol>
+ The choice of validation method is left to you but it should represent a
+ strong effort. </strike>
+</p>
+</blockquote>
+
+
+<p><b>Problem 2</b>:</p>
+
+<blockquote>
+<p>
+ Equip the Redex model of problem 0 with a new kind of values: logged
+ cells. A logged cell is like a one-field structure that comes with three
+ operations: 
+<ol>
+ <li><code>cll</code>, which is applied to one value and returns a cell;</li>
+
+ <li><code>set</code>, which consumes a cell and a value <code>v</code>,
+ sets the cell to <code>v</code>, and returns the value in the cell;</li>
+
+ <li><code>log</code>, which returns a log of all changes to the cell. A
+ log is a function from integers to values. Specifically,
+ <code>0</code> is mapped to the number of changes the cell has
+ undergone. If a log returns <code>n</code> at <code>0</code>, then
+ applying it to <code>i</code> between <code>0</code> and <code>n</code>,
+ it produces the <code>i</code>th value that occupied the cell. For any
+ other value, it produces <code>0</code>.
+</li>
+</ol>
+</p>
+
+<p>
+ It is appears possible to implement the cell operations as macros or as
+ native ISWIM-Cell functions. Discuss in one paragraph (at most 57 words)
+ which alternative you consider the better one and why. 
+</p>
+</blockquote>
+
+<blockquote>
+
+</blockquote>
+
+</div></td></tr></table></td></tr></table><hr width="80%" height="3" /><table width="80%" align="center"><tr><td align="left"><font size="-2">last updated on Sun Nov 21 19:38:23 EST 2010</font></td><td align="right"><font size="-2">generated with <a href="http://www.plt-scheme.org/">PLT Scheme</a></font></td></tr></table></body></html>

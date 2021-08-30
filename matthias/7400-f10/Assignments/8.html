@@ -1,0 +1,68 @@
+<html><head><title>Problem Set 8: Abstract Register Machine and Control in Redex</title><link rel="stylesheet" type="text/css" href="all.css" title="all" /></head><body bgcolor="white"><br /><hr width="80%" height="3" /><table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="15%" valign="top" align="left" rowspan="2"><table border="0"><tr><td><a href="../../index.html">Teaching</a></td></tr><tr><td><a href="../index.html">G7400 F'10</a></td></tr><tr><td><font color="black"><b>&nbsp;</b></font></td></tr><tr><td><a href="index.html">Assignments</a></td></tr><tr><td><a href="1.html">Set 1</a></td></tr><tr><td><a href="2.html">Set 2</a></td></tr><tr><td><a href="3.html">Set 3</a></td></tr><tr><td><a href="4.html">Set 4</a></td></tr><tr><td><a href="5.html">Set 5</a></td></tr><tr><td><a href="6.html">Set 6</a></td></tr><tr><td><a href="7.html">Set 7</a></td></tr><tr><td><font color="black"><b>Set 8</b></font></td></tr><tr><td><a href="9.html">Set 9</a></td></tr><tr><td><a href="10.html">Set 10</a></td></tr></table></td><td width="3%" /><td valign="top" align="left"><h3>Problem Set 8: Abstract Register Machine and Control in Redex</h3></td><td valign="top" align="right" rowspan="2"><nbsp /></td></tr><tr><td /><td valign="top" align="left" colspan="2"><table width="85%"><tr><td><div><p><font color="red">Due date: </font>11/12<font color="red"> @ at the beginning of class</font></p>
+
+<blockquote>
+<p> 
+  The goal of this problem set is to study control constructs in the
+  context of CEK machines for ISWIM. <strong>Warning:</strong> The second 
+  problem relies on the solution for the first problem. 
+</p>
+</blockquote>
+
+
+<p><b>Problem 1</b>:</p>
+
+<blockquote>
+<p>
+ Add a <code>loop</code> construct with the following grammar to the ISWIM
+ variant of problem 7(1):
+<pre><code>  (loop x_loop (x_init e_init) e_body)</code></pre>
+ The variables <code>x_init</code> and <code>x_loop</code> are bound in the
+ <code>e_body</code> subexpression. Semantically, <code>x_loop</code> is a
+ recursive function of one argument (<code>x_init</code>), which is
+ initialized to the value of <code>e_init</code>. Hence the function body,
+ <code>e_body</code>, may call <code>x_loop</code> on one argument, and
+ such a call starts another "iteration" of the "loop". 
+</p>
+
+<p>
+ Why are the words "iteration" and "loop" in quotes? Show with an example
+ that <code>loop</code> isn't what one would call a loop in a traditional
+ language, say Java or C++. 
+</p>
+</blockquote>
+
+
+<p><b>Problem 2</b>:</p>
+
+<blockquote>
+<p>
+ Equip the ISWIM extension of problem 1 with a <code>break</code> construct.
+ That is, the body of a <code>loop</code> may contain expressions of
+ the form: 
+<pre><code>  (break x_loop e_xt)</code></pre>
+ where <code>x_loop</code> is the loop variable bound by <code>loop</code>.
+ The expression evaluates <code>e_xt</code> and returns it as the value of
+ the <code>loop</code> expression. 
+</p>
+
+<p>
+ Note: the <code>break</code> construct contains a <em>lexical</em>
+ reference to the loop identifier. This is NOT a dynamic notion. 
+</p>
+
+<p>
+ The design of <code>loop</code> raises several questions, e.g., 
+<ul>
+<li>
+ It is possible that a break expression refers to a loop that has
+ finished its evaluation. How? 
+</li>
+<li> 
+ What does your looping construct do in this case?
+</li>
+</ul>
+ How does your design answer these questions. Can you think of another design question? 
+</p>
+</blockquote>
+
+</div></td></tr></table></td></tr></table><hr width="80%" height="3" /><table width="80%" align="center"><tr><td align="left"><font size="-2">last updated on Sun Nov 21 19:38:23 EST 2010</font></td><td align="right"><font size="-2">generated with <a href="http://www.plt-scheme.org/">PLT Scheme</a></font></td></tr></table></body></html>

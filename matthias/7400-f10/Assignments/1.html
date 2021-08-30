@@ -1,0 +1,223 @@
+<html><head><title>Problem Set 1: Designing Recursive Programs, Proof by Induction</title><link rel="stylesheet" type="text/css" href="all.css" title="all" /></head><body bgcolor="white"><br /><hr width="80%" height="3" /><table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="15%" valign="top" align="left" rowspan="2"><table border="0"><tr><td><a href="../../index.html">Teaching</a></td></tr><tr><td><a href="../index.html">G7400 F'10</a></td></tr><tr><td><font color="black"><b>&nbsp;</b></font></td></tr><tr><td><a href="index.html">Assignments</a></td></tr><tr><td><font color="black"><b>Set 1</b></font></td></tr><tr><td><a href="2.html">Set 2</a></td></tr><tr><td><a href="3.html">Set 3</a></td></tr><tr><td><a href="4.html">Set 4</a></td></tr><tr><td><a href="5.html">Set 5</a></td></tr><tr><td><a href="6.html">Set 6</a></td></tr><tr><td><a href="7.html">Set 7</a></td></tr><tr><td><a href="8.html">Set 8</a></td></tr><tr><td><a href="9.html">Set 9</a></td></tr><tr><td><a href="10.html">Set 10</a></td></tr></table></td><td width="3%" /><td valign="top" align="left"><h3>Problem Set 1: Designing Recursive Programs, Proof by Induction</h3></td><td valign="top" align="right" rowspan="2"><nbsp /></td></tr><tr><td /><td valign="top" align="left" colspan="2"><table width="85%"><tr><td><div><p><font color="red">Due date: </font>9/24<font color="red"> @ at the beginning of class</font></p>
+
+<blockquote>
+<p> 
+  The goal of this problem set is to practice structural programming 
+  using structures, lists, S-expressions, recursive data definitions. 
+  Some problems demand accumulator-style programming. One of the problems
+  is about proof-by-induction, but as you know by now, this is closely
+  related to structural programming. 
+</p>
+
+<p>
+ The problems cover material from HtDP, specifically parts I, II, III, and
+ VI. To be reasonable effective in Racket, you also want to read part IV. 
+ HtDP is migrating to a second edition; the
+ <a href="/home/matthias/HtDP2e/index.html">draft</a> is on-line. 
+</p>
+
+<p>
+ Use the Racket programming language and the DrRacket programming
+ environment to solve the problems (#lang racket).  The appendix of part II
+ in your Redex textbook is a nutshell introduction to DrRacket. 
+
+ If you encounter errors you don't understand, you may wish to switch to
+ the HtDP Intermediate Student programming language. See the DrRacket
+ Language menu. 
+</p>
+
+<p><b>WARNING:</b> This problem set is labor-intensive for those of you who
+  have little or no practice with structural programming. <em>Start early.</em>
+  Do not for one moment believe, however, that this problem set is
+  difficult because it requires you to solve the problems in a new
+  language. If you have this impression, solve the problem in your favorite
+  language and show me your solution. 
+</p>
+
+</blockquote>
+
+
+<p><b>Problem 1</b>:</p>
+
+<blockquote>
+<p>
+ Develop a data representation for a mobile. Wikipedia describes
+  a moible as follows: 
+   <blockquote>
+   A mobile is a type of kinetic sculpture constructed to take advantage of
+   the principle of equilibrium. It consists of a number of rods, from which
+   weighted objects or further rods hang. The objects hanging from the rods
+   balance each other, so that the rods remain more or less horizontal. Each
+   rod hangs from only one string, which gives it freedom to rotate about the
+   string. 
+</blockquote>
+ We use this rigorous, structured description. A <em>Mobile</em>
+  <ul>
+   <li>a weight</li>
+   <li>a combination of two Mobiles and a weight. </li>
+  </ul>
+ The weight in the first case represents an "atomic" sculpture. You may
+ represent a weight as a plain number, say the number of "kg" that the
+ sculpture weighs. The weight in the second case is a pointwise
+ approximation of the beam that connects the two Mobiles. 
+</p>
+
+<p> Design the following functions: 
+<ol>
+<li>
+ <tt>weights#</tt>, which consumes a mobile and counts the number of
+ weights it contains; 
+</li>
+
+<li>
+ <tt>total-weight</tt>, which consumes a mobile and determines its total
+ weight; 
+</li>
+
+<li>
+ <tt>average-weight</tt>, which consumes a mobile and determines the
+ average weight of all the atomic sculptures it contains; 
+</li>
+
+<li>
+ <tt>depth</tt>, which consumes a mobile and determines the maximal number
+ of links from the top of the mobile to one of its atomic sculptures;
+</li>
+
+<li>
+ <tt>balanced?</tt>, which consumes a mobile and determines whether or not
+ it is balanced. A mobile is balanced if the weight of the mobile on one
+ end is equal to the weight of the mobile on the other end. The weight of a
+ mobile naturally includes the beams. 
+</li>
+</ol>
+</p>
+</blockquote>
+
+
+<p><b>Problem 2</b>:</p>
+
+<blockquote>
+ <p>
+ Recall the data definition for S-expressions over symbols. An
+ <em>S-expression</em> is one of: 
+ <ul>
+  <li>the <tt>empty</tt> list or <tt>'()</tt> for short;</li>
+  <li><tt>(cons Symbol S-expression)</tt></li>
+  <li><tt>(cons S-expression S-expression)</tt></li>
+ </ul>
+ For this problem, we ignore what this data represents. In general, though,
+ S-expressions are useful to represent the abstract syntax of any form of
+ program (Java, Scheme, XML, etc). 
+ </p>
+
+<p> Design the following functions: 
+ <ol>
+  <li><tt>count</tt>, which counts the number of symbols in an S-expression;</li>
+  <li><tt>flatten</tt>, which produces the list of all symbols in an
+    S-expression (duplicates allowed)</li> 
+  <li><tt>substitute</tt>, which replaces some <tt>old</tt> symbol with a
+    <tt>new</tt> symbol in the given S-expression.</li>
+ </ol>
+</p>
+</blockquote>
+
+
+<p><b>Problem 3</b>:</p>
+
+<blockquote>
+ Design the function <tt>silly</tt>. The function consumes a Mobile (see
+ Problem 1). It produces a Mobile, by adding to each sculpture <tt>S</tt>
+ (remember that it is represented by its weight) the depth of <tt>S</tt> in
+ the Mobile. 
+</blockquote>
+
+
+<p><b>Problem 4</b>:</p>
+
+<blockquote>
+ Design the function <tt>free</tt>. It consumes an S-expression of the
+ following shape. 
+ <blockquote>
+  An <em>XY</em> is one of: 
+  <ul>
+    <li>a <tt>Symbol</tt></li>
+    <li><tt>(list 'function Symbol XY)</tt></li>
+    <li><tt>(list XY XY)</tt></li>
+  </ul>
+ </blockquote>
+ It produces an S-expression of this shape: 
+ <blockquote>
+  An <em>AB</em> is one of: 
+  <ul>
+    <li>a <tt>Number</tt></li>
+    <li>a <tt>Symbol</tt></li>
+    <li><tt>(list 'function Symbol AB)</tt></li>
+    <li><tt>(list AB AB)</tt></li>
+  </ul>
+ </blockquote>
+ For each symbol introduced by the first clause in an <tt>XY</tt>
+ S-expression, <tt>free</tt> replaces it with the number of
+ <tt>'function</tt> symbols between it and the closest 
+ <tt>'function</tt> node that lists the same symbol. If there is no such
+ node, the symbol is transferred to the output. 
+
+ <p>For example, when given 
+<pre>
+       '(function y
+	  ((function x 
+	     (x y))
+	    (x y)))
+</pre>
+  <tt>free</tt> produces 
+<pre>
+      '(function y
+	  ((function x 
+	     (0 1))
+	    (x 0)))
+</pre>
+ </p>
+</blockquote>
+
+
+<p><b>Problem 5</b>:</p>
+
+<blockquote>Here is a rigorous definition of the set of shapes from the
+  first quiz. A <em>Shape</em> is one of:
+ <ul>
+   <li>
+    a rectangle whose sides are parallel to the two axes, specified as the
+    collection of four numbers:  <tt>xmin</tt>, <tt>xmax</tt>, <tt>ymin</tt>, and
+    <tt>ymax</tt> subject to the constraint that <tt>xmin</tt> &lt; <tt>xmax</tt>
+    and <tt>ymin</tt> &lt; <tt>ymax</tt>.
+   </li>
+
+   <li>
+    a combination of two shapes.
+   </li>
+  </ul>
+ Nothing else is a shape.
+</blockquote>
+
+<blockquote>Prove that
+ <ol>
+  <li>
+    all elements of <tt>Shape</tt> contain an even number of numbers;
+  </li> 
+  <li>
+    the number of rectangles in a <tt>Shape</tt> is always larger than the
+    number of combinations; 
+  </li>
+  <li>
+    the area covered by all rectangles in a <tt>Shape</tt> is smaller than
+    the "general" area of a shape. The "general" area of a shape <tt>S</tt> is 
+<center>
+(max { xmax | xmax in all rectangles in <tt>S</tt>} - min { xmin | xmin in all rectangles in <tt>S</tt>})<br />
+*<br />
+(max { ymax | ymax in all rectangles in <tt>S</tt>} - min { ymin | ymin in all rectangles in <tt>S</tt>})
+</center>
+  </li>
+ </ol>
+</blockquote>
+
+</div></td></tr></table></td></tr></table><hr width="80%" height="3" /><table width="80%" align="center"><tr><td align="left"><font size="-2">last updated on Sun Nov 21 19:38:23 EST 2010</font></td><td align="right"><font size="-2">generated with <a href="http://www.plt-scheme.org/">PLT Scheme</a></font></td></tr></table></body></html>

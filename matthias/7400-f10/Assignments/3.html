@@ -1,0 +1,104 @@
+<html><head><title>Problem Set 3: Redex Finer Exercises</title><link rel="stylesheet" type="text/css" href="all.css" title="all" /></head><body bgcolor="white"><br /><hr width="80%" height="3" /><table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="15%" valign="top" align="left" rowspan="2"><table border="0"><tr><td><a href="../../index.html">Teaching</a></td></tr><tr><td><a href="../index.html">G7400 F'10</a></td></tr><tr><td><font color="black"><b>&nbsp;</b></font></td></tr><tr><td><a href="index.html">Assignments</a></td></tr><tr><td><a href="1.html">Set 1</a></td></tr><tr><td><a href="2.html">Set 2</a></td></tr><tr><td><font color="black"><b>Set 3</b></font></td></tr><tr><td><a href="4.html">Set 4</a></td></tr><tr><td><a href="5.html">Set 5</a></td></tr><tr><td><a href="6.html">Set 6</a></td></tr><tr><td><a href="7.html">Set 7</a></td></tr><tr><td><a href="8.html">Set 8</a></td></tr><tr><td><a href="9.html">Set 9</a></td></tr><tr><td><a href="10.html">Set 10</a></td></tr></table></td><td width="3%" /><td valign="top" align="left"><h3>Problem Set 3: Redex Finer Exercises</h3></td><td valign="top" align="right" rowspan="2"><nbsp /></td></tr><tr><td /><td valign="top" align="left" colspan="2"><table width="85%"><tr><td><div><p><font color="red">Due date: </font>10/8<font color="red"> @ at the beginning of class</font></p>
+
+<blockquote>
+<p> 
+  The goal of this problem set is to acquire some basic familiarity with 
+  Redex and to experiment with reduction systems. 
+</p>
+
+</blockquote>
+
+
+<p><b>Background</b>:</p>
+
+<blockquote>
+ The <em>S</em> programming language consists of literal constants and
+ expressions combined via its only operation,  <tt>*</tt>. The 
+ constants of <em>S</em> are strings. 
+<p>
+ The purpose of <tt>*</tt> is to adjoin two strings, separated by one blank
+ space.
+</p>
+</blockquote>
+
+
+<p><b>Problem 0</b>:</p>
+
+<blockquote>
+<p>
+ Define the function <tt>eval</tt>, which consumes a reduction relation
+ <tt>R</tt> and a term <tt>t</tt> and produces the first irreducible form
+ of <tt>t</tt> with respect to <tt>R</tt>. 
+</p>
+</blockquote>
+
+
+<p><b>Problem 1</b>:</p>
+
+<blockquote>
+<p> 
+ Develop a Redex model for <em>S</em>.  Use <tt>eval</tt>  to test the
+ model. 
+</p> 
+
+</blockquote>
+
+
+<p><b>Problem 2</b>:</p>
+
+<blockquote>
+<p> 
+ Design a meta-function that measures the depth of contexts from the model
+ for <em>S</em>. The depth is the number of <tt>*</tt> operations between
+ the root of the context and the hole of the context. Use <tt>rackunit</tt>
+ to test the meta-function. 
+</p> 
+
+</blockquote>
+
+
+<p><b>Problem 3</b>:</p>
+
+<blockquote>
+<p> 
+ Develop an alternative reduction for <em>S</em> that refuses to reduce
+ <tt>*</tt> expressions if the surrounding context is deeper than 3. 
+ Demonstrate with some tests that an evaluation according to this second
+ relation may not produce strings while evaluation according to the first
+ relation (problem 1) always produces strings. 
+</p> 
+
+</blockquote>
+
+
+<p><b>Problem 4</b>:</p>
+
+<blockquote>
+<p> 
+ Formulate the Fibonacci function as a Redex model. 
+</p> 
+
+<p>
+ Here is the Racket definition of the Fibonacci function: 
+ <pre>
+   <code>
+(define (fib n)
+  (cond
+    [(= n 0) 1]
+    [(= n 1) 1]
+    [else (+ (fib (- n 1)) (fib (-n 2)))]))
+   </code>
+ </pre>
+</p>
+
+<p>
+ Formulate three different variants: the first one should evaluate addition
+ from left to right; the second one should evaluate addition from right to
+ left; and the third one should evaluate addition in arbitrary order (and
+ even switching between the two branches). The three models should share as
+ much as possible. 
+</p>
+
+</blockquote>
+
+</div></td></tr></table></td></tr></table><hr width="80%" height="3" /><table width="80%" align="center"><tr><td align="left"><font size="-2">last updated on Sun Nov 21 19:38:23 EST 2010</font></td><td align="right"><font size="-2">generated with <a href="http://www.plt-scheme.org/">PLT Scheme</a></font></td></tr></table></body></html>

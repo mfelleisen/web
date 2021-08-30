@@ -1,0 +1,173 @@
+<html><head><title>Problem Set 4: Redex and the LC</title><link rel="stylesheet" type="text/css" href="all.css" title="all" /></head><body bgcolor="white"><br /><hr width="80%" height="3" /><table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="15%" valign="top" align="left" rowspan="2"><table border="0"><tr><td><a href="../../index.html">Teaching</a></td></tr><tr><td><a href="../index.html">G7400 F'10</a></td></tr><tr><td><font color="black"><b>&nbsp;</b></font></td></tr><tr><td><a href="index.html">Assignments</a></td></tr><tr><td><a href="1.html">Set 1</a></td></tr><tr><td><a href="2.html">Set 2</a></td></tr><tr><td><a href="3.html">Set 3</a></td></tr><tr><td><font color="black"><b>Set 4</b></font></td></tr><tr><td><a href="5.html">Set 5</a></td></tr><tr><td><a href="6.html">Set 6</a></td></tr><tr><td><a href="7.html">Set 7</a></td></tr><tr><td><a href="8.html">Set 8</a></td></tr><tr><td><a href="9.html">Set 9</a></td></tr><tr><td><a href="10.html">Set 10</a></td></tr></table></td><td width="3%" /><td valign="top" align="left"><h3>Problem Set 4: Redex and the LC</h3></td><td valign="top" align="right" rowspan="2"><nbsp /></td></tr><tr><td /><td valign="top" align="left" colspan="2"><table width="85%"><tr><td><div><p><font color="red">Due date: </font>10/15<font color="red"> @ at the beginning of class</font></p>
+
+<blockquote>
+<p> 
+  The goal of this problem set is to understand the basics of the Lambda
+  calculus as a computing system and to increase your familiarity with
+  Redex and its interaction with Racket. 
+
+  <strong>Warning:</strong> It is nearly impossible to solve the problems 0
+  through 2 of this problem set separately. They are closely related and it
+  is best to proceed sequentially. Problem 3 is about ISWIM, not the Lambda
+  Calculus. 
+</p>
+
+</blockquote>
+
+
+<p><b>Background</b>:</p>
+
+<blockquote>
+<p>
+All problems in this assignment refer to this core grammar: 
+<pre><code>  (define-language Lambda0
+    (e x
+       (lambda (x) e)
+       (e e))
+    (x variable-not-otherwise-mentioned))
+</code></pre>
+
+ Furthermore, to help you along, this assignment comes with the definition
+ of a substitution metafunction for Redex-style languages whose only
+ 'binder' is lambda (see bottom). 
+
+ Both pieces are provided via <a href="4provided.rkt">library module</a>
+ that exports two identifier: <code>Lambda0</code> and
+ <code>subst-n</code>. Save the module and add 
+<pre><code>  (require "4provided.rkt")</code></pre>
+ to yours. Do not modify the module; I will link
+ your solution against my version of the module not yours.
+</p>
+
+<p>
+ In contrast to the text book, your lambda calculus model is used modulo
+ &alpha;-equivalence, an idea that is spelled out in chapter I.4 of the
+ text book.  
+</p>
+
+</blockquote>
+
+<p><b>Problem 0</b>:</p>
+
+<blockquote>
+<p>
+ Design the function <code>=alpha</code>, which consumes two expressions in
+ <code>Lambda0</code> and determines whether they are &alpha;-equivalent.
+
+ <strong>Hint:</strong> One way to compute &alpha;-equivalence efficiently
+ is to use a two-step procedure. First, translate the given expressions
+ into the so-called "static distance" notation of <a href="1.html">problem
+ set 1, problem 4</a>, though without leaving the parameter list in
+ place. Second, once the static-distance representation has been computed,
+ it suffices to use <code>equal?</code> to compare the results. (A 
+ proof of this idea can be found in the appendix of Barendregt's tome on
+ the <cite>Lambda Calculus, Its Syntax and Semantics</cite>.)
+</p>
+</blockquote>
+
+
+<p><b>Problem 1</b>:</p>
+
+<blockquote>
+<p>
+  Define terms in <code>Lambda0</code> that encode the booleans
+  <code>True</code> and <code>False</code>; the Church numerals
+  <code>Zero</code>, <code>One</code>, and <code>Two</code>; the
+  <code>Add1</code> function and the <code>Iszero</code> function; and the
+  <code>If</code> conditional.
+</p>
+
+<p> 
+ Develop a Redex model of the lambda &beta; calculus. 
+ That is, the model should use &beta; as the only notion of reduction. 
+ As for the &eta; notion of reduction, it is ignored; &alpha; is brought
+ back separately.
+</p> 
+
+<p>
+ Use the model to confirm the &alpha;-equivalence of 
+<ol>
+<li>
+ <code>(Add1 Zero)</code> and <code>One</code>
+</li>
+<li>
+ <code>(Add1 One)</code> and <code>Two</code>
+</li>
+<li>
+ <code>(((If True) M) N)</code> and <code>M</code>
+</li>
+<li>
+ <code>(((If False) M) N)</code> and <code>M</code>
+</li>
+<li>
+ <code>(Iszero Zero)</code> and <code>False</code>
+</li>
+</ol> 
+ The confirmations should take the shape of 
+<pre><code>  (check =alpha ... ...)</code></pre>
+ statements in your Racket modules. 
+</p>
+</blockquote>
+
+
+
+<p><b>Problem 2</b>:</p>
+
+<blockquote>
+<p> 
+ Use the consistency result of chapter I.3 to design
+ <code>=beta/semi</code>, a semi-algorithm in Racket for equality (module
+ &alpha;-equivalence) in the lambda calculus.
+ </p>
+
+<p>
+ Here a <strong>semi-algorithm</strong> is a function that produces true
+ (meaning the given terms are equal) in some cases but may diverge in
+ others. What does divergence mean?  In order to make this function total,
+ equip it with an optional fuel argument that is suitable decreased and
+ that causes the function to stop when it is zero or negative.
+</p>
+
+<p>
+ Use the semi-algorithm to solve exercise 3.15, i.e., ensure that the
+ algorithm can validate the following unit test: 
+<pre><code>  (check =beta/semi (term (M (,Y M))) (term (,Y M)))</code></pre>
+ for a suitable definition of <code>Y</code>.
+</p>
+
+<p>
+ Finally investigate whether 
+<pre><code>  (define Apply (term (lambda (f) (lambda (x) (f x)))))
+  (define Ident (term (lambda (x) x)))
+
+  (=beta/semi (term (,Y Ident)) (term (,Y ,Apply)) i)
+</code></pre>
+produces <code>true</code> for any <code>i</code> in 1, ..., 5. 
+
+<em>Should</em> the two terms produce identical fixed points?
+</p>
+
+</blockquote>
+
+
+<p><b>Problem 3</b>:</p>
+
+<blockquote>
+<p>
+ Use <code>define-extended-language</code> to extend <code>Lambda0</code>
+ to the syntax of the numeric variant of ISWIM (chapter I.4 [page
+ 48]). Then specify a <code>reduction-relation</code> that implements a
+ Redex model of the &beta;<sub>v</sub> reduction relation for ISWIM plus
+ the &delta; function for numerical primitives plus the <code>if0</code>
+ macro.  Finally define the <code>eval</code> function from I.4.5 as a
+ Racket function.
+</p>
+
+<p>
+ You do not need to design an &alpha;-equivalence relation for this
+ exercise. You should develop a reasonably comprehensive test suite for
+ <code>eval</code>, however.
+</p>
+</blockquote>
+
+</div></td></tr></table></td></tr></table><hr width="80%" height="3" /><table width="80%" align="center"><tr><td align="left"><font size="-2">last updated on Sun Nov 21 19:38:23 EST 2010</font></td><td align="right"><font size="-2">generated with <a href="http://www.plt-scheme.org/">PLT Scheme</a></font></td></tr></table></body></html>

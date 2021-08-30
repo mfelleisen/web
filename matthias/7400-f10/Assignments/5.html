@@ -1,0 +1,116 @@
+<html><head><title>Problem Set 5: Redex Models of ISWIM</title><link rel="stylesheet" type="text/css" href="all.css" title="all" /></head><body bgcolor="white"><br /><hr width="80%" height="3" /><table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="15%" valign="top" align="left" rowspan="2"><table border="0"><tr><td><a href="../../index.html">Teaching</a></td></tr><tr><td><a href="../index.html">G7400 F'10</a></td></tr><tr><td><font color="black"><b>&nbsp;</b></font></td></tr><tr><td><a href="index.html">Assignments</a></td></tr><tr><td><a href="1.html">Set 1</a></td></tr><tr><td><a href="2.html">Set 2</a></td></tr><tr><td><a href="3.html">Set 3</a></td></tr><tr><td><a href="4.html">Set 4</a></td></tr><tr><td><font color="black"><b>Set 5</b></font></td></tr><tr><td><a href="6.html">Set 6</a></td></tr><tr><td><a href="7.html">Set 7</a></td></tr><tr><td><a href="8.html">Set 8</a></td></tr><tr><td><a href="9.html">Set 9</a></td></tr><tr><td><a href="10.html">Set 10</a></td></tr></table></td><td width="3%" /><td valign="top" align="left"><h3>Problem Set 5: Redex Models of ISWIM</h3></td><td valign="top" align="right" rowspan="2"><nbsp /></td></tr><tr><td /><td valign="top" align="left" colspan="2"><table width="85%"><tr><td><div><p><font color="red">Due date: </font>10/22<font color="red"> @ at the beginning of class</font></p>
+
+<blockquote>
+<p> 
+  The goal of this problem set is to understand abstract syntax machines. 
+
+  <strong>Note:</strong> Problems 0 and 1 are "warm up" exercises and serve
+  as the platform for the problems 2 and 3, which are independent of each
+  other.
+</p>
+
+<p>
+ <font color="blue">Revised on 19 Oct 2010.</font>
+</p>
+</blockquote>
+
+
+<p><b>Background</b>:</p>
+
+<blockquote>
+<p>
+All problems in this assignment refer to this core grammar: 
+<pre><code>  (define-language ISWIM0
+    (e x               ;; parameter reference
+       (lambda (x) e)  ;; procedures
+       (e e)           ;; application 
+       (if0 e e e)     ;; branching on 0
+       n               ;; numbers 
+       (op e e))       ;; primitive operations 
+    (op +              ;; addition
+	-              ;; subtraction 
+	*              ;; multiplication 
+	^)             ;; exponentation 
+    (n number)
+    (x variable-not-otherwise-mentioned))
+</code></pre>
+
+ Furthermore, to help you along, this assignment comes with the definition
+ of a substitution metafunction for Redex-style languages whose only
+ 'binder' is lambda (see bottom). 
+
+ Both pieces are provided via <a href="5provided.rkt">library module</a>
+ that exports two identifier: <code>ISWIM0</code> and
+ <code>subst-n</code>. Save the module and add 
+<pre><code>  (require "5provided.rkt")</code></pre>
+ to yours. Do not modify the module; I will link
+ your solution against my version of the module not yours.
+</p>
+</blockquote>
+
+
+<p><b>Problem 0</b>:</p>
+
+<blockquote>
+<p>
+ Design the <strong>meta</strong>function <code>=alpha</code>, which
+ consumes two expressions in <code>ISWIM0</code> and determines whether
+ they are &alpha;-equivalent. Compare with problem set 4(0). 
+</p>
+</blockquote>
+
+
+<p><b>Problem 1</b>:</p>
+
+<blockquote>
+<p>
+ Develop a Redex model of the standard reduction semantics for
+ call-by-value <code>ISWIM0</code>.  Challenge: Add reduction rules that
+ take stuck states to <code>(term STUCK)</code>. 
+</p>
+</blockquote>
+
+
+<p><b>Problem 2</b>:</p>
+
+<blockquote>
+<p>
+ Extend <code>ISWIM0</code> <font color="blue">(or the language from
+ problem 1)</font> with another collection of data of your
+ choice. Anything that Redex accommodates is acceptable except for
+ booleans. 
+</p>
+
+</blockquote>
+
+
+<p><b>Problem 3</b>:</p>
+
+<blockquote>
+<p> 
+ Extend ISWIM0 <font color="blue">(or the languages from
+ problems 1 and 2)</font> with a <code>rec</code> construct: 
+<pre><code>  (rec x (lambda (x) e) in e)</code></pre>
+ The tokens <code>rec</code> and <code>in</code> are keywords. 
+</p>
+
+<p>In the concrete instance, 
+<pre><code>  (rec x (lambda (x_1) e_1) in e)</code></pre>
+ <code>x</code> is bound in both <code>e_1</code> and <code>e</code> while
+ <code>x_1</code> is bound only in <code>e_1</code>. The evaluation of this
+ expression creates a recursive function that satisfies the equation 
+<pre><code>  (x x_1) = e_1</code></pre>
+ and binds it to <code>x</code> during the evaluation of <code>e</code>. 
+ The result of the latter is the result of the entire expression. 
+</p>
+</blockquote>
+
+
+<p><b>Problem 4</b>:</p>
+
+<blockquote>
+Develop and prove a standard reduction theorem for language <code>B</code>
+from chapter I.1 in the text. 
+</blockquote>
+
+</div></td></tr></table></td></tr></table><hr width="80%" height="3" /><table width="80%" align="center"><tr><td align="left"><font size="-2">last updated on Sun Nov 21 19:38:23 EST 2010</font></td><td align="right"><font size="-2">generated with <a href="http://www.plt-scheme.org/">PLT Scheme</a></font></td></tr></table></body></html>
