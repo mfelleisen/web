@@ -9,7 +9,7 @@ players every time a referee grants a player a turn. <span class="refelem"><span
 assuming that the per-game map is available (as an explicit or implicit parameter):
 </div><div class="SIntrapara"><ul><li><p>given a player game state, determine all connections that can still be
 acquired;</p></li><li><p>given a referee game state, and a connection, decide whether it is legal
-to acquire this connection for the currently active player;</p></li><li><p>given a referee game state, produce a player game state.</p></li></ul></div><div class="SIntrapara">The phrase &ldquo;piece of functionality&rdquo; may not directly translate into &ldquo;one
+to acquire this connection for the currently active player;</p></li><li><p>given a referee game state, produce a player game state <span style="color: purple">that represents the knowledge of the currently active player</span>.</p></li></ul></div><div class="SIntrapara">The phrase &ldquo;piece of functionality&rdquo; may not directly translate into &ldquo;one
 function&rdquo; or &ldquo;one method&rdquo; in your chosen language.</div></p><p><span class="refelem"><span class="refcolumn"><span class="refcontent">The player will also communicate with the tournament
 manager. See <a href="plan.html" data-pltdoc="x"><span style="color: red">Trains</span><span class="stt">.</span><span style="color: red">Com</span>, <span style="color: red">a Plan</span></a>. You do not need to address this aspect yet.</span></span></span></p><p><span style="color: blue">Design Task</span> The player components must communicate with the
 referee, which manages and arbitrates the game.  This communication
