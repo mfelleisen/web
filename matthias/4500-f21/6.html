@@ -34,7 +34,9 @@ problem) or causes other undesirable run-time effects. Which of those your
 implementation has to deal with depends entirely on design choices, but
 exceptions and overly-long response time are guaranteed to be problems.  When
 a referee notices such misbehavior. the corresponding player is eliminated
-without ado.</p><p>In the purpose statement for your referee component, explicitly state what kind
+without ado.</p><p><span style="color: purple">When the referee removes a cheating/misbehaving player from its state,
+it makes the player's occupied connections available for future use. Its rails
+and cards are discarded.</span></p><p>In the purpose statement for your referee component, explicitly state what kind
 of abnormal interactions that referee takes care of now and what kind are left
 to the project phase that adds in remote communication.</p><p><span style="color: blue">Design Task</span> The next step is to design the tournament manager component.
 It interacts with the 1000s of players that sign up for a tournament,
