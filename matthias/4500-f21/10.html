@@ -32,8 +32,8 @@ server-side component to send well-formed and valid <a href="https://www.json.or
 better to be safe than sorry (think of the huge fee a client-creator pays to
 participate in Trains tournaments).</p><p><span style="color: blue">Misbehaving Players</span> In a distributed setting, all bad client behavior
 turns into bad JSON messages or a lack of a response. Make sure to protect all
-the interactions between the server and clients by timing out connections after
-2.0 seconds.</p><p><div class="SIntrapara"><span style="color: blue">Runnables Task</span> Construct two executable programs:
+the interactions (<span style="color: purple">that is, remote calls and returns</span>) between the
+server and clients by timing out connections after 2.0 seconds.</p><p><div class="SIntrapara"><span style="color: blue">Runnables Task</span> Construct two executable programs:
 </div><div class="SIntrapara"><ul><li><p><span class="stt">xserver</span>, which starts your server, and</p></li><li><p><span class="stt">xclients</span>, which launches a number of clients and points them to a server.</p></li></ul></div></p><p>Both programs are launched with a port argument on the command line. For
 <span class="stt">xclients</span>, the command line may also specify an IP address, as an optional
 second argument; the default is local host (<span class="stt">127.0.0.1</span>.</p><p>Their inputs&#8212;<wbr></wbr>both <span class="stt">xserver</span> and <span class="stt">xclients</span>&#8212;<wbr></wbr>are the same as those for
