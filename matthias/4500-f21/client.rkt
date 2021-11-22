@@ -15,13 +15,12 @@
         (match (read-message in)
           [`("ding" ,x) (send client ding (deserialize x))]
           [`("dong" ,y) (send client dong (deserialize y))]
-          [v (error "something bad happened: ~e" v)]))
+          [v (error 'go "something bad happened: ~e" v)]))
       (send-message (serialize result) out)
       (go))))
 
 (define (client-launch)
-  (define-values (in out) (tcp-connect "127.0.0.1" 12345))
+  (define-values (server-in server-out) (tcp-connect "127.0.0.1" 12345))
   (define client (new client%))
-  (define server (new proxy-server% [client client] [in in] [out out]))
+  (define server (new proxy-server% [client client] [in server-in] [out server-out]))
   (send server go))
-

@@ -5,8 +5,8 @@
 
 (define (server-launch)
   (define listener (tcp-listen 12345 30 #true))
-  (define-values (in out) (tcp-accept listener))
-  (define client (new proxy-client% [in in] [out out]))
+  (define-values (client-in client-out) (tcp-accept listener))
+  (define client (new proxy-client% [in client-in] [out client-out]))
   (define server (new server% [client client]))
   (send server go)
   "all done")
