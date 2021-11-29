@@ -12,12 +12,12 @@ task. <span class="refelem"><span class="refcolumn"><span class="refcontent">Whe
 <span class="emph">enbug</span> it. So don&rsquo;t touch the logical components if you can avoid it.</span></span></span>  The OOD
 patterns community teaches us that remote proxies are your friends here. They
 allow developers to inject a remote-communication layer into a software system
-while leaving the logical parts of a software system undisturbed.</p><p>The <span class="emph">client</span> TCP-connects a player (or several players) to a server.</p><p>The <span class="emph">server</span> waits for TCP connections for some time (here, 20)s for a minimum number (here, 5) of remote clients to connect. As long as there
-isn&rsquo;t this minimum number of clients connected at the end of a waiting period,
+while leaving the logical parts of a software system undisturbed.</p><p>The <span class="emph">client</span> TCP-connects a player (or several players) to a server.</p><p>The <span class="emph">server</span> waits for TCP connections <span style="color: purple">sign-ups</span> for some time (here, 20)s for a minimum number (here, 5) of remote clients to connect and <span style="color: purple">sign up</span>. As long as there
+isn&rsquo;t this minimum number of clients connected <span style="color: purple">and signed up</span> at the end of a waiting period,
 the server re-enters the waiting state (just once) and for the same amount of
 time; the second time around it will run a tournament if only 2 sign up.  Either waiting period also ends when the server has
 accepted a maximal number (here, 50)
-of client connections; this limit makes the duration of a tournament reasonable.
+of client connections <span style="color: purple">sign ups</span>; this limit makes the duration of a tournament reasonable.
 If <span class="emph">at most one player</span> signs up by the end of the second waiting period,
 the server doesn&rsquo;t run a tournament and instead delivers a simple default
 result: <span class="hspace">&nbsp;</span><span class="stt">[ [], [] ]</span>.</p><p>A <span class="emph">server-client</span> connection is established after the client has supplied
