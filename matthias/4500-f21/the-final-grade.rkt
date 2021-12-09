@@ -66,7 +66,7 @@
 (define (homework-grades grades)
   (define total-score ((inst sum-map Assignment) car grades))
   (define total-max   ((inst sum-map Assignment) cdr grades))
-  (4digits (/ total-max total-score)))
+  (4digits (/ total-score total-max)))
 
 (: sum-map (All (X) (-> (-> X Real) [Listof X] Real)))
 (define (sum-map f l) (apply + (map f l)))
