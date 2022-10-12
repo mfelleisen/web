@@ -4,7 +4,8 @@ case, you may place a link to <span class="stt">state.PP</span> into <span class
 repo directory named <span class="stt">3</span>.</p><p><span style="color: purple">If your testing task requires a <span class="stt">Makefile</span> place it in <span class="stt">3</span>, too.</span></p></li></ul><p><span style="color: blue">Programming Task</span> Design &amp; implement a data representation for the
 referee&rsquo;s game states.  This game state comprises three essential pieces of
 knowledge: the current state of the board; the spare tile; and the players&rsquo;
-assigned avatars, homes, goal tiles, and current positions.</p><p><div class="SIntrapara">The data representations should implement the following pieces of functionality:
+assigned avatars, homes, goal tiles, and current
+positions. <span style="color: purple">What else must the referee's knowledge come with?</span></p><p><div class="SIntrapara">The data representations should implement the following pieces of functionality:
 </div><div class="SIntrapara"><ul><li><p>rotate the spare tile by some number of degrees;</p></li><li><p>shift a row/column by inserting the spare tile plus moving the player from
 the newly created spare tile to the just inserted one if needed;</p></li><li><p>determine whether the currently active player can reach a given tile;</p></li><li><p>check whether the active player&rsquo;s move has placed it on its goal tile;</p></li><li><p>kick out the currently active player.</p></li></ul></div><div class="SIntrapara">If you think other pieces of functionality will be needed, you may implement them.</div></p><p><span style="font-weight: bold">Think</span> A player&rsquo;s knowledge about the game state differs from that of the
 referee. How? How would you change the representation to reflect this difference?</p><p><span style="color: blue">Design Task</span> In contrast to human players, AI players are not in charge;
