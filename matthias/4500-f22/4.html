@@ -19,11 +19,14 @@ sliding a player off the board re-inserts them on the new tile that is added on
 the other side.</div></p><p>A principled approach is to start with the tile that a player should move to and
 work backwards from there to answers to the first two questions. Each player
 (privately) knows at any moment in time which tile it has to reach.</p><p><div class="SIntrapara">Here then is the idea for the <span class="emph">first</span> strategy implementation, dubbed <span class="emph">Riemann</span>:
-</div><div class="SIntrapara"><ul><li><p>If the player can successfully reach the desired goal, obviously they
-should choose that.</p></li><li><p>If it is impossible to reach the gaol tile, the player should also explore
-some alternative goals. For this first strategy, the player enumerates all
-tiles in row-column order, starting from the top-most, left-most one and
-chooses those as alternative goals;</p></li><li><p>Then, for each enumerated tile, in order, the strategy first starts from
+</div><div class="SIntrapara"><ul><li><p>If the player can successfully reach the desired goal, obviously
+<span class="strike" style="text-decoration:line-through">they</span> <span style="color: purple">it</span> should choose that; <span style="color: purple">that is, the
+player's current goal is the highest priority candidate.</span> If it is
+impossible to reach the gaol tile, the player should explore
+some alternative <span class="strike" style="text-decoration:line-through">goals</span> <span style="color: purple">candidates</span>.  For this first
+strategy, the player enumerates all tiles in row-column order,
+starting from the top-most, left-most one and chooses those as
+alternative goals.</p></li><li><p>Then, for each enumerated <span class="strike" style="text-decoration:line-through">tile</span><span style="color: purple">candidate</span>, in order, the strategy first starts from
 the top of the board and tries sliding each successive possible row (trying to
 slide it left first, then right), before next starting from the left of the
 board and trying each possible column (again trying to slide each one up first,
