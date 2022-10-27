@@ -13,7 +13,7 @@ a player component should handle the mechanics of playing a game <span class="em
 abstract over a strategy component.</p><p><div class="SIntrapara">Design a strategy interface and implement two concrete variants. The generic
 purpose of a strategy component is to make decisions. The Maze game requires
 answers to three questions before it can compute the next action:
-</div><div class="SIntrapara"><ol><li><p>which row/column should the player move and in which direction;</p></li><li><p>how far should the spare tile be rotated before it is inserted; and</p></li><li><p>to which tile should the player move its avatar.</p></li></ol></div><div class="SIntrapara">Keep in mind that a player <span class="emph">must</span> slide a row/column first and insert a
+</div><div class="SIntrapara"><ol><li><p>which row/column should the player move and in which direction;</p></li><li><p>how far should the spare tile be rotated before it is inserted; and</p></li><li><p>to which <span class="strike" style="text-decoration:line-through">tile</span> <span style="color: purple">coordinate</span> should the player move its avatar.</p></li></ol></div><div class="SIntrapara">Keep in mind that a player <span class="emph">must</span> slide a row/column first and insert a
 tile, <span class="emph">before</span> it can move the avatar to a new spot. Also remember that
 sliding a player off the board re-inserts them on the new tile that is added on
 the other side.</div></p><p>A principled approach is to start with the tile that a player should move to and
@@ -22,7 +22,7 @@ work backwards from there to answers to the first two questions. Each player
 </div><div class="SIntrapara"><ul><li><p>If the player can successfully reach the desired goal, obviously
 <span class="strike" style="text-decoration:line-through">they</span> <span style="color: purple">it</span> should choose that; <span style="color: purple">that is, the
 player's current goal is the highest priority candidate.</span> If it is
-impossible to reach the gaol tile, the player should explore
+impossible to reach the goal tile, the player should explore
 some alternative <span class="strike" style="text-decoration:line-through">goals</span> <span style="color: purple">candidates</span>.  For this first
 strategy, the player enumerates all <span class="strike" style="text-decoration:line-through">tiles</span> <span style="color: purple">coordinats</span> in row-column order,
 starting from the top-most, left-most one and chooses those as
@@ -33,9 +33,9 @@ board and trying each possible column (again trying to slide each one up first,
 then down).</p></li><li><p>For each sliding action, it experiments with all possible rotations of
 the spare tile&#8212;<wbr></wbr>in the order of <a href="4.html#%28tech._degree%29" class="techoutside" data-pltdoc="x"><span class="techinside">Degrees</span></a> listed&#8212;<wbr></wbr>and tries inserting
 the tile into the freed-up spot.</p></li><li><p>Finally, for each of these actions (sliding plus rotating and inserting),
-it checks whether the chosen goal (original or alternative) tile becomes
-reachable.</p></li><li><p>If so, it stops the search and chooses the first such successful action.</p></li></ul></div><div class="SIntrapara">Otherwise, if none of these possibilities enables the player to reach any goal
-tile (original or alternative), the player <span class="emph">must</span> pass on this opportunity
+it checks whether the chosen goal (original or alternative) <span class="strike" style="text-decoration:line-through">tile</span> coordinate becomes
+reachable.</p></li><li><p>If so, it stops the search and chooses the first such successful action.</p></li></ul></div><div class="SIntrapara">Otherwise, if none of these possibilities enables the player to reach any <span class="strike" style="text-decoration:line-through">goal tile</span>
+<span style="color: purple">coordinate</span> (original or alternative), the player <span class="emph">must</span> pass on this opportunity
 to take a turn.</div></p><p>A second, similar strategy orders the alternative goal candidates according
 to their Euclidean distance to the original goal tile. To break ties (among
 candidates with equal distances to the original goal), it uses the
