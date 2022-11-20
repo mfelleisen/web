@@ -34,7 +34,9 @@ process. The server waits for the players to sign up and passes their local
 representation plus the given <a href="6.html#%28tech._refereestate%29" class="techoutside" data-pltdoc="x"><span class="techinside">RefereeState</span></a> to the referee. The latter
 runs a game and hands the result of running the game back to the server, which
 renders it as a JSON value to <span class="stt">STDOUT</span>.</p></li></ul></div><div class="SIntrapara">The test harness compares this actual output to the expected output of the test
-case. The test bed ignores the output of <span class="stt">xclients</span>.</div></p><p><span class="emph">Running the Scripts</span> Since the test inputs from <a href="8.html" data-pltdoc="x">8 &#8212;<wbr></wbr> Remote</a> consist of two
+case. The test bed ignores the output of <span class="stt">xclients</span>.</div></p><p><span style="color: purple">Configure your referee so that it grants each player 4.0s per
+method call. This time period is long but it allows for TCP hiccups, especially
+with the take-turn method.</span></p><p><span class="emph">Running the Scripts</span> Since the test inputs from <a href="8.html" data-pltdoc="x">8 &#8212;<wbr></wbr> Remote</a> consist of two
 lines, you can run the scripts in two separate terminal windows and have them
 communicate on the same machine, as the following two screenshots illustrate.</p><blockquote><p><img src="xclients.png" alt="" width="617" height="291"/></p></blockquote><p>This first screenshot displays a single shell script line. On the left of the
 pipe symbol, the <span class="stt">head</span> function extracts the first line from a test-input
