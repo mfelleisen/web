@@ -33,8 +33,13 @@ The test harness starts an <span class="stt">xclients</span> script and a <span 
 as independent processes, though not necessarily your pairs:
 </div><div class="SIntrapara"><ul><li><p>The <span class="stt">xclients</span> script turns the player specifications into
 independently running players; you may use threads in your language or Linux
-processes if you write this script as a plain shell script.</p></li><li><p>The <span class="stt">xserver</span> spawns the server as another independent thread or
-process. The server waits for the players to sign up and passes their local
+processes if you write this script as a plain shell script.</p><p><span style="color: purple">If these threads or processes are launched without precaution, the test
+is going to run in a non-deterministic fashion and will yield non-deterministic
+-- and therefore incomparable -- results. To reduce the likelihood of a
+non-deterministic outcome, the <span class="stt">xclients</span> script will wait for 3s between launching clients. In our test runs, the server
+will launch in time to allow the first client to connect first, but not
+necessarily on the first try.</span></p></li><li><p>The <span class="stt">xserver</span> spawns the server as another <span class="strike" style="text-decoration:line-through">independent</span> thread or
+process <span style="color: purple">that is independent of the client</span>. The server waits for the players to sign up and passes their local
 representation plus the given <a href="6.html#%28tech._refereestate%29" class="techoutside" data-pltdoc="x"><span class="techinside">RefereeState</span></a> to the referee. The latter
 runs a game and hands the result of running the game back to the server, which
 renders it as a JSON value to <span class="stt">STDOUT</span>.</p></li></ul></div><div class="SIntrapara">The test harness compares this actual output to the expected output of the test
