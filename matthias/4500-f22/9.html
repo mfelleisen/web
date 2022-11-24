@@ -7,13 +7,13 @@ players to chase down several treasures, not just one.</p><p>Here is the precise
 players, it assigns them homes. All potential goals are arranged as a ordered sequence. The
 first <span style="font-style: italic">n</span> elements are removed from this sequence and assigned to the players
 as goals during setup. Every time a player reaches a goal tile, the referee
-removes the next goals from the front of the sequence and assigns it to the player
+removes the next goal<span class="strike" style="text-decoration:line-through">s</span> from the front of the sequence and assigns it to the player
 that just landed on a goal tile. Once the sequence is empty, players are no longer
 assigned a new goal but are told to go home.</p><p><div class="SIntrapara">The ranking of players has to change, too. When the game is over, the referee
 <span class="emph">always</span> uses the following steps to determine the winner(s):
 </div><div class="SIntrapara"><ul><li><p>for all players that have collected the same highest number of
 treasures&#8212;<wbr></wbr>equivalently, have visited the same number of goals&#8212;<wbr></wbr>the
-referee determines their Euclidean distance to their <span class="emph">next</span>
+referee determines their Euclidean distance to their <span class="strike" style="text-decoration:line-through"><span class="emph">next</span></span>
 &ldquo;goal,&rdquo;<span class="refelem"><span class="refcolumn"><span class="refcontent"><span style="color: purple">The word ``goal'' is overloaded here.</span></span></span></span>
 <span style="color: purple">which is either a home or a treasure coordinate</span>. The
 winners are those that share the same <span style="color: purple">minimal</span> distance.</p></li></ul></div><div class="SIntrapara">Your referee methods/functions should initialize this sequence of additional
