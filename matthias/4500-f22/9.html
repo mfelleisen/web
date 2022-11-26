@@ -4,11 +4,13 @@ actual player as needed. Then describe the changes with concise prose and </span
 place <span style="color: purple">the resulting document,</span> <span class="stt">revisions.md</span>, into <span class="strike" style="text-decoration:line-through">Maze/Players/</span><span class="stt"> </span><span style="color: purple">Maze/Planning/</span>;</p></li><li><p>for the Runnable task, place <span class="stt">xserver</span> and <span class="stt">xclient</span><span style="color: purple">s</span> into a top-level repo directory named <span class="stt">9</span></p></li></ul><p><span style="color: blue">Programming Task</span> The co-CEOs received a request from their investors to
 make the game a bit more interesting. Specifically, the investors would like
 players to chase down several treasures, not just one.</p><p>Here is the precise specification. After the referee receives the <span style="font-style: italic">n</span>
-players, it assigns them homes. All potential goals are arranged as a ordered sequence. The
-first <span style="font-style: italic">n</span> elements are removed from this sequence and assigned to the players
-as goals during setup. Every time a player reaches a goal tile, the referee
-removes the next goal<span class="strike" style="text-decoration:line-through">s</span> from the front of the sequence and assigns it to the player
-that just landed on a goal tile. Once the sequence is empty, players are no longer
+players, it assigns them homes. All potential goals are arranged as a ordered
+sequence. The first <span style="font-style: italic">n</span> elements are removed from this sequence and
+assigned to the players as goals during setup. Every time a player reaches a
+goal tile, the referee removes the next goal<span class="strike" style="text-decoration:line-through">s</span> from the front of the
+sequence and assigns it to the player that just landed on a goal tile;
+<span style="color: purple">to inform the player of the chosen goal, the referee uses the <span class="stt">setup</span>
+method in the usual manner</span>. Once the sequence is empty, players are no longer
 assigned a new goal but are told to go home.</p><p><div class="SIntrapara">The ranking of players has to change, too. When the game is over, the referee
 <span class="emph">always</span> uses the following steps to determine the winner(s):
 </div><div class="SIntrapara"><ul><li><p>for all players that have collected the same highest number of
