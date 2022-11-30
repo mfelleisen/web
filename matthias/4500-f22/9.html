@@ -35,7 +35,9 @@ The test harness starts an <span class="stt">xclients</span> script and a <span 
 as independent processes, though not necessarily your pairs:
 </div><div class="SIntrapara"><ul><li><p>The <span class="stt">xclients</span> script turns the player specifications into
 independently running players; you may use threads in your language or Linux
-processes if you write this script as a plain shell script.</p><p><span style="color: purple">If these threads or processes are launched without precaution, the test
+processes if you write this script as a plain shell script. <span style="color: purple">It
+consumes the port and optionally an IP address from the commandline,
+in this order; if the IP address is missing, it is localhost.</span></p><p><span style="color: purple">If these threads or processes are launched without precaution, the test
 is going to run in a non-deterministic fashion and will yield non-deterministic
 -- and therefore incomparable -- results. To reduce the likelihood of a
 non-deterministic outcome, the <span class="stt">xclients</span> script will wait for 3s between launching clients. In our test runs, the server
