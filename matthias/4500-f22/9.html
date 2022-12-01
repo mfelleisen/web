@@ -18,7 +18,9 @@ treasures&#8212;<wbr></wbr>equivalently, have visited the same number of goals&#
 referee determines their Euclidean distance to their <span class="strike" style="text-decoration:line-through"><span class="emph">next</span></span>
 &ldquo;goal,&rdquo;<span class="refelem"><span class="refcolumn"><span class="refcontent"><span style="color: purple">The word ``goal'' is overloaded here.</span></span></span></span>
 <span style="color: purple">which is either a home or a treasure coordinate</span>. The
-winners are those that share the same <span style="color: purple">minimal</span> distance.</p></li></ul></div><div class="SIntrapara">Your referee methods/functions should initialize this sequence of additional
+winners are those that share the same <span style="color: purple">minimal</span> distance. <span style="color: purple">If the
+game-terminating player is one of the players with the highest number of
+collected treasures, it is the <span class="emph">sole</span> winner.</span></p></li></ul></div><div class="SIntrapara">Your referee methods/functions should initialize this sequence of additional
 goals to the empty one.</div></p><p>You may need to adapt your referee method that accepts a players and an already
 formed state, which includes player knowledge with the initially assigned goal.</p><p><div class="SIntrapara"><span style="color: blue">Runnables Task</span> Construct two executable programs:
 </div><div class="SIntrapara"><ul><li><p><span class="stt">xserver</span>, which starts your server, and</p></li><li><p><span class="stt">xclients</span>, which launches a number of clients and points them to a server.</p></li></ul></div></p><p><span style="font-weight: bold">Well-formed and Valid</span> You may assume that all (system-configurations) inputs to your
