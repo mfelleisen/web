@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"/><meta name="viewport" content="width=device-width, initial-scale=0.8"/><title>Prelude</title><link rel="stylesheet" type="text/css" href="scribble.css" title="default"/><link rel="stylesheet" type="text/css" href="shared.css" title="default"/><link rel="stylesheet" type="text/css" href="figure.css" title="default"/><link rel="stylesheet" type="text/css" href="manual-style.css" title="default"/><link rel="stylesheet" type="text/css" href="manual-racket.css" title="default"/><script type="text/javascript" src="scribble-common.js"></script><script type="text/javascript" src="figure.js"></script><script type="text/javascript" src="manual-racket.js"></script><!--[if IE 6]><style type="text/css">.SIEHidden { overflow: hidden; }</style><![endif]--></head><body id="scribble-racket-lang-org"><div class="tocset"><div class="tocview"><div class="tocviewlist tocviewlisttopspace"><div class="tocviewtitle"><table cellspacing="0" cellpadding="0"><tr><td style="width: 1em;"><a href="javascript:void(0);" title="Expand/Collapse" class="tocviewtoggle" onclick="TocviewToggle(this,&quot;tocview_0&quot;);">&#9660;</a></td><td></td><td><a href="index.html" class="tocviewlink" data-pltdoc="x">Socially Responsible <br/> Software Development</a></td></tr></table></div><div class="tocviewsublisttop" style="display: block;" id="tocview_0"><table cellspacing="0" cellpadding="0"><tr><td align="right"></td><td><a href="" class="tocviewselflink" data-pltdoc="x">Prelude</a></td></tr><tr><td align="right">I&nbsp;</td><td><a href="part_one.html" class="tocviewlink" data-pltdoc="x">Perspective</a></td></tr><tr><td align="right">II&nbsp;</td><td><a href="part_two.html" class="tocviewlink" data-pltdoc="x">Principles</a></td></tr><tr><td align="right">III&nbsp;</td><td><a href="part_four.html" class="tocviewlink" data-pltdoc="x">Project</a></td></tr><tr><td align="right">IV&nbsp;</td><td><a href="part_three.html" class="tocviewlink" data-pltdoc="x">Programming</a></td></tr><tr><td align="right"></td><td><a href="part_postlude.html" class="tocviewlink" data-pltdoc="x">Postlude</a></td></tr><tr><td align="right"></td><td><a href="part_old.html" class="tocviewlink" data-pltdoc="x">Old Material</a></td></tr></table></div></div><div class="tocviewlist"><table cellspacing="0" cellpadding="0"><tr><td style="width: 1em;">&bull;</td><td></td><td><a href="" class="tocviewselflink" data-pltdoc="x">Prelude</a></td></tr></table></div></div></div><div class="maincolumn"><div class="main"><div class="versionbox"><span class="version">8.10.0.1</span></div><div class="navsettop"><span class="navleft"><div class="nosearchform"></div>&nbsp;&nbsp;<span class="tocsettoggle">&nbsp;&nbsp;<a href="javascript:void(0);" title="show/hide table of contents" onclick="TocsetToggle();">contents</a></span></span><span class="navright">&nbsp;&nbsp;<a href="index.html" title="backward to &quot;Socially Responsible  Software Development&quot;" data-pltdoc="x">&larr; prev</a>&nbsp;&nbsp;<a href="index.html" title="up to &quot;Socially Responsible  Software Development&quot;" data-pltdoc="x">up</a>&nbsp;&nbsp;<a href="part_one.html" title="forward to &quot;I Perspective&quot;" data-pltdoc="x">next &rarr;</a></span>&nbsp;</div><h3><a name="(part._part~3apreface)"></a>Prelude</h3><h4><a name="(part._chap~3apart~3apreface)"></a></h4><table cellspacing="0" cellpadding="0"><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="#%28part._skills%29" class="toclink" data-pltdoc="x">Developing a Mind Set</a></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="#%28part._sec~3acontext%29" class="toclink" data-pltdoc="x">The Context, for the Instructor</a></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="#%28part._this%29" class="toclink" data-pltdoc="x">This Book and Its Parts</a></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="#%28part._dear%29" class="toclink" data-pltdoc="x">Dear Instructor:</a></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="#%28part._ackn%29" class="toclink" data-pltdoc="x">Acknowledgments</a></p></td></tr></table><p><span class="refelem"><span class="refcolumn"><span class="refcontent"><a href="https://felleisen.org/srsd/Notes#not-teaching">What to Teach</a></span></span></span></p><p>Every undergraduate curriculum in computer science comes with at least one
+highly intensive software course. In this course, students work on a large-ish
+project; develop several components that must interact; meet several deadlines;
+and learn to research for building blocks on their own. It is a course that
+teaches more than programming but not yet software engineering at scale. It is a
+course on software development.</p><p>In a <span class="emph">programming</span> course, students write programs that neither they nor
+anyone else ever looks at again after the grading is done. A course on
+<span class="emph">software development</span> differs in that students must maintain code beyond
+the first time they deliver it: react to new test cases; fix bugs; add
+functionality. Ideally, this revisiting of code should happen several
+times. <span class="emph">Software engineering</span> courses should go beyond code maintenance and
+cover work in team, meaning it may involve the entire class as one team; work on
+extremely large code bases, meaning code that students cannot produce in a
+single semester; work on problems whose solutions require trade-offs, meaning
+features vs time, algorithms optimized for space,  time, or energy; and perhaps
+on special industrial topics.</p><p><div class="SIntrapara">This book is a guide to a software development course. Its central premises are
+as follows:
+</div><div class="SIntrapara"><ul><li><p>software is a message from one developer to another across time;</p></li><li><p>the students&rsquo; programming must account for this &ldquo;messaging;&rdquo;</p></li><li><p>the instructor must run a semester-long project that creates stress
+situations (deadlines, rotating partners, switching code bases) so that (1)
+students demonstrate &ldquo;design under pressure&rdquo; and (2) they learn to appreciate
+what &ldquo;messaging&rdquo; implies.</p></li></ul></div><div class="SIntrapara">Concisely put, software development puts the human being into the center of
+activity, and doing so, must become a part of the students&rsquo; thinking.</div></p><p>Clearly, thinking is the difficult part of software development, especially
+expressing thinking clearly and reflecting in the code. This course aims to
+implement &ldquo;thinking&rdquo; as social processes and</p><p><div class="SIntrapara"><ul><li><p>developers must pair-program to continuously check their thinking;</p></li><li><p>pairs must submit their work for inspections to avoid &ldquo;pair think;&rdquo;</p></li><li><p>students must learn to ask hard questions about other students&rsquo; code.</p></li></ul></div><div class="SIntrapara">In short, the goal of the course is to develop a mindset that coding is a social
+process of several dimensions: the immediate pair-programming partner; the
+review panel; the teammate who takes over the module; the future developer who
+in two decades from now fixes bugs and adds features.  Instructors coach
+students to develop this mindset of programming socially and in a socially
+responsible manner.</div></p><p>The book is also for developers who missed such a course in their
+education. While reading the book isn&rsquo;t the same as working through it&#8212;<wbr></wbr>which
+is what instructors and students do&#8212;<wbr></wbr>developers should be able to relate the
+ideas to their hands-on experiences with projects.</p><h5><a name="(part._skills)"></a>Developing a Mind Set</h5><p><div class="SIntrapara">The goal is to develop a mind set about software development that focuses on two
+imperatives:
+</div><div class="SIntrapara"><ul><li><p>develop software in a systematic fashion, and</p></li><li><p>develop software with, <span class="emph">and for</span>, other developers.</p></li></ul></div><div class="SIntrapara">While it is easy and good to act responsibly with immediate colleagues&#8212;<wbr></wbr>to be
+&ldquo;nice&rdquo; to them&#8212;<wbr></wbr>socially responsible software development means far more than
+that. It is about treating the colleagues of the near and distant future
+properly. It is about both people we meet on a daily basis and those we may never meet.</div></p><p>Unsurprisingly the two imperatives are intertwined. Systematic software
+development means a lot of hard thinking, which happens in the developer&rsquo;s mind.
+No software tools in even the best interactive development environments check
+the <span class="emph">thinking</span> of a developer.  They can&rsquo;t. It takes another human being to
+make sure the thinking is on the right track, and that this thinking is
+systematically expressed in code.</p><p>On the flip side is the developer who is tasked with fixing a bug in old code or
+with adding a new feature. Nobody can fix code without some minimal
+comprehension of the software system&rsquo;s organization, the purpose of each of its
+pieces, and the code in the relevant pieces.  It takes time to read and
+comprehend code&#8212;<wbr></wbr>often much more time than the fix or the addition
+itself. Although some emerging software tools can assist with the mechanics of
+this task, systematically developed code and thinking properly presented as code
+has a huge advantage here. It reduces the time needed for this critical, and it
+simultaneously reduces negative feelings toward the creation that this
+&ldquo;maintenance developer&rdquo; has toward the code base.</p><p>Students must experience both sides of this coin. On the producer side, they
+must develop code with partners. Partners must learn to critique each other and
+to learn from critique from the rest of the class, which represents their
+teams. The partner and the class represent future developers and maintainers. On
+the consumer side, students must expect to switch partners and to take over
+someone else&rsquo;s code base.</p><p>In short, changing students&rsquo; mindset requires hard work on managing continuous
+and intense feedback from each other. While programming must happen in pairs,
+code inspections are public (in class) and are solo-performances. To motivate
+the latter, a code inspection starts with &ldquo;assume your partner has left.&rdquo; Solo
+presentations check whether each partner completely understands the code base,
+so that if one of them leaves, the other one isn&rsquo;t lost. Similarly, some of the
+students must play the role of colleagues who take over the code. But these
+peers also represent the future, unmet developers and maintainers. It is therefor
+their task to ask penetrating and potentially unpleasant questions about every
+aspect of the design and the code. Without exception, such interactions can lead
+to unhappy conversations. Yet, they are for the benefit of the future developer
+and for the students&rsquo; way of thinking about their profession.</p><p>Being socially responsible even in just our profession is hard. Practice makes
+perfect&#8212;<wbr></wbr>or at least good. It is the instructor&rsquo;s job is to make sure that the
+practice is done right. This book is also a guide to this job.</p><blockquote class="Figure"><blockquote class="Centerfigure"><blockquote class="FigureInside"><blockquote class="SCentered"><p><img style="vertical-align: -0.0px; margin: -3px -3px -3px -3px;" src="pict.png" alt="image" width="609.4101074218751" height="560.45"/></p></blockquote></blockquote></blockquote><p class="Centertext"><span class="Legend"><span class="FigureTarget"><a name="(counter._(figure._fig~3apc))" x-target-lift="Figure"></a>Figure&nbsp;1: </span>A core programming curriculum</span></p></blockquote><h5><a name="(part._sec~3acontext)"></a>The Context, for the Instructor</h5><p>At my current institution, the course sits atop three programming courses. See
+<a href="#%28counter._%28figure._fig~3apc%29%29" data-pltdoc="x">figure&nbsp;<span class="FigureRef">1</span></a> for a dependency diagram. The first course,
+<span class="emph">Fundamentals I</span>, introduces students to the idea that good programming
+calls for a systematic approach, starting with a careful analysis and
+description of the relevant sets of data all the way to the creation of a unit
+test suite.  It does not use an existing, &ldquo;industrial strength&rdquo; programming
+language but several languages specifically designed for this audience of
+novices and an approach to that insists on systematic programming. Even though
+the systematic design idea is about type-driven programming, these teaching
+languages lack a type system, because a large majority of students end up at
+co-op and internship positions where they use untyped languages. It is therefore
+imperative to expose students to the mental discipline of using types for
+program design even in the absence of a type checker.</p><p><span class="emph">Fundamentals II</span> injects two ideas into the curriculum: type checking and
+object-oriented programming. The goal is to demonstrate that the principles of
+systematic program design from <span class="emph">Fundamentals I</span> apply in the context of a
+commercially successful language, Java.  The programming assignment and the
+recurring programming project are still quite small.</p><p><span class="emph">Fundamentals III</span> scales up the ideas to projects with graphical views,
+complex controls, and interesting models. The course begins to emphasize the
+proper design of interfaces and programming to interfaces&#8212;<wbr></wbr>all in Java. The
+course also illustrates the role of logical assertions in interfaces and in code
+to supplement types, which almost never suffice to describe the true interface
+of a method. This step points back to the (optional) course on <span class="emph">Logic</span>,
+where students learn to formulate assertions about code as code.</p><p><span class="emph">Socially Responsible Software Development</span>, short: <span class="emph">SRSD</span> and also
+known as <span class="emph">Fundamentals IV</span>, is the source of the material in this book. It
+<span class="refelem"><span class="refcolumn"><span class="refcontent"><a href="https://felleisen.org/srsd/Notes#choosing-a-language">Choosing a Language</a></span></span></span>
+is the last course where instructors and teaching assistants inspect students&rsquo;
+code in depth. Students get to pick their favorite language and IDE, partly so
+that they can focus on program design and partly so that they can assess how
+good they are in the language ecosystem of their choice.</p><p>Most importantly, the course is much more about the non-technical aspects of
+programming-as-thinking; it is about the social interactions that foster good
+thinking.  While students program in pairs in the first three
+courses, they do so with some instruction but without much supervision.
+<span class="emph">SRSD</span> spends a large amount of time on the social aspect of
+programming-thinking. Students program in pairs, present their work to their
+peers on a regular basis, and critique each other extensively.  The
+instructor must teach that one doesn&rsquo;t criticize the creator of code but only
+the code.</p><p>Practicing social interactions and systematic design plus combining those
+ideas in one context is challenging. I have spent over two decades teaching and
+refining these pedagogic ideas. Quite a few of them failed. This book collects
+the successful ones.</p><p><span style="font-weight: bold">Note</span> QR symbols in the margins of the book point to supplementary notes
+for instructors. Check out the two above: one on what universities cannot teach
+and on why students should use their favorite language. These notes explain how
+to manage the course: from setting up the project and managing, to dealing with
+in-person code reviews.</p><h5><a name="(part._this)"></a>This Book and Its Parts</h5><p>The book consists of five chapters. The different lengths of these chapters do
+not indicate differences in importance.</p><p>Chapter I spells out the most basic truth about software projects: most of them die
+a rapid death. Yes, it is normal for projects to die. What matters are the
+survivors.  When software survives, it survives for decades&#8212;<wbr></wbr>growing, adapting,
+improving.  It is this longevity of software that demands socially responsible
+behavior of developers to, and for, each other.</p><p>Chapter II describes the psychology and sociology of software development.
+Developers are creators and artisans. Like all other artsy creators, they tend
+to invest their ego into their creations, which is good because it means they
+strive for excellence. But, by identifying with their creations, they also tend
+to consider criticism of their creations as criticisms of their ego. Hence the
+goal is to develop a healthy balance&#8212;<wbr></wbr>a compromise&#8212;<wbr></wbr>between pride in one&rsquo;s
+software and an understanding of criticism as an attempt to make this product
+even better.  Techniques for learning to critique and to embrace critique are
+critical so that developers come to terms with this compromise. Instructors must
+create and yet dampen tensions between developers who present their creation and
+peers who critique it. The tension is needed to train socially responsible
+developers who stand up for current and future colleagues, even if only because
+it could be them.</p><p>Chapter III explains how a software system comes about, how to build one, and how
+to think about their maintainers at this stage already. Unlike the
+<span class="emph">programs</span> students write in the first few courses, a <span class="emph">software
+system</span> consists of many components (packages, modules, frameworks). When a team
+follows a somewhat traditional development paths, it may create documents that
+describe the components, the dependencies among them, the construction plans,
+and the interfaces. Even if the team employs an &ldquo;agile&rdquo; or &ldquo;extreme coding&rdquo;
+approach, sooner or later the need for these documents arises.  And these
+non-code pieces exist so that, in the future, developers can easily and quickly
+navigate the code base, distinguish relevant from irrelevant pieces, and
+properly use components via interfaces. The way to get this right is to have
+students try, have basics checked, fail, try again, and so on, every week of the
+course.</p><p>Chapter IV is about the programming skills it takes to build and maintain a
+software system in a socially responsible manner. Conversely, ii is about the
+basics of what reviewers should look out for when they inspect code.  While
+students at this stage are expected to have a basic grasp of programming, this
+book aims to make code development <span class="emph">systematic</span> even under pressure so that
+the resulting code expresses the reasoning behind it clearly.  Here
+&ldquo;systematic&rdquo; ranges from small things&#8212;<wbr></wbr>naming&#8212;<wbr></wbr>and small pieces of code
+(say, 10 lines) over modules and classes to full-sized semester projects (say,
+10-20Kloc).  The key is to maintain this thoughtful, systematic approach under
+time pressure, something that most developers suffer from. Without practicing
+this form of development extensively&#8212;<wbr></wbr>in bootcamp fashion&#8212;<wbr></wbr>it is all to easy
+to slip and write code so that &ldquo;it works,&rdquo; which we all know is the shortest
+lie in computing. It works neither in the sense of functioning properly nor as a
+well-formed message to the future.</p><p>Chapter V draws a parallel between software development and life, and vice versa.
+Doing things with the future&#8212;<wbr></wbr>short or long term&#8212;<wbr></wbr>in mind isn&rsquo;t just good for
+software development, it is good for many different aspects of life. Then again,
+thinking about the cycle of life during software development is a good idea, too.</p><h5><a name="(part._dear)"></a>Dear Instructor:</h5><p>Teaching is hard. Teaching this course is the hardest task you will ever
+tackle. It will also be the most rewarding one. Good luck!</p><h5><a name="(part._ackn)"></a>Acknowledgments</h5><div class="navsetbottom"><span class="navleft"><div class="nosearchform"></div>&nbsp;&nbsp;<span class="tocsettoggle">&nbsp;&nbsp;<a href="javascript:void(0);" title="show/hide table of contents" onclick="TocsetToggle();">contents</a></span></span><span class="navright">&nbsp;&nbsp;<a href="index.html" title="backward to &quot;Socially Responsible  Software Development&quot;" data-pltdoc="x">&larr; prev</a>&nbsp;&nbsp;<a href="index.html" title="up to &quot;Socially Responsible  Software Development&quot;" data-pltdoc="x">up</a>&nbsp;&nbsp;<a href="part_one.html" title="forward to &quot;I Perspective&quot;" data-pltdoc="x">next &rarr;</a></span>&nbsp;</div></div></div><div id="contextindicator">&nbsp;</div></body></html>
