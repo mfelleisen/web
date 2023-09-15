@@ -10,7 +10,7 @@ stream of JSON arrays from <span class="stt">STDIN</span>. Each array has the fo
 as a specification of a sequence of colored shapes and saves the concatenated
 shapes as a single PNG image in the specified file (in the current
 directory). If the file exists, <span class="stt">xgui</span> replaces it.  After the file is
-saved, <span class="stt">xgui</span> sends <span class="stt">"done"</span> to <span class="stt">STDOUT</span>.  The next JSON array (if any)
+saved, <span class="stt">xgui</span> sends <span style="color: purple">JSON string</span> <span class="stt">"done"</span> to <span class="stt">STDOUT</span>.  The next JSON array (if any)
 arrives on the <span class="stt">STDIN</span> stream <span class="emph">only after</span> <span class="stt">"done"</span> has appeared.  Once
 <span class="stt">xgui</span> discovers that <span class="stt">STDIN</span> is exhausted, it shuts down.</div></p><p><span style="font-weight: bold">Well-formed and Valid</span>
 You may assume that all  inputs to your test harnesses from
