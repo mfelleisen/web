@@ -6,18 +6,18 @@ called <span class="stt">C</span> in your repository.</p><p>All auxiliary files 
 client to connect. It then processes a series of JSON values on this TCP
 connection. The series can be arbitrarily long and there can be arbitrary delays
 between the arrival of the separate JSON values.</p><p>When a JSON value arrives on the input side, <span class="stt">xtcp</span> turns it into a
-string&#8212;<wbr></wbr>according to the specification of <a href="" data-pltdoc="x">C &#8212;<wbr></wbr> TCP</a>&#8212;<wbr></wbr>and writes this string
+string&#8212;<wbr></wbr>according to the specification of <a href="A.html" data-pltdoc="x">A &#8212;<wbr></wbr> JSON</a>&#8212;<wbr></wbr>and writes this string
 out as a JSON string to the TCP output side. The next JSON value is guaranteed to
 arrive <span class="emph">only after</span> the result for the current one has been
 written. Once the client-in connection is closed, <span class="stt">xtcp</span> shuts down.</p><p>The program takes one command-line argument, an integer between 10000 and
 60000 (inclusive). This argument specifies the port on which
 <span class="stt">xtcp</span> accepts connections. (There is no need to validate this number.)</p><p><span style="color: blue">Reuse</span> Since the program&rsquo;s functionality is the same as that of <span class="stt">xjson</span>
-from <a href="" data-pltdoc="x">C &#8212;<wbr></wbr> TCP</a>, you are welcome and encouraged to reuse (parts of) your
+from <a href="A.html" data-pltdoc="x">A &#8212;<wbr></wbr> JSON</a>, you are welcome and encouraged to reuse (parts of) your
 solution. The ideal reuse is a <span class="emph">call</span> to the relevant functions or methods
 of the original solution; copying the code is acceptable for an exploratory
 programming task.</p><p><span style="color: blue">Tests</span> Create three tests for <span class="stt">xtcp</span> in the directory <span class="stt">Tests/</span>. You
-may re-use the validated tests from your solution for <a href="" data-pltdoc="x">C &#8212;<wbr></wbr> TCP</a> or create new ones.
-All tests must be well-formed and valid JSON according to <a href="" data-pltdoc="x">C &#8212;<wbr></wbr> TCP</a>.</p><p><span style="font-weight: bold">Constraint</span> No test file may exceed the size limit of 40Kb.</p><h4><a name="(part._g44283)"></a><span style="color: blue">Remote Connection</span></h4><p><div class="SIntrapara">The <span class="stt">netcat</span> program&#8212;<wbr></wbr>alternatively, <span class="stt">nc</span>&#8212;<wbr></wbr>is the best way to manually
+may re-use the validated test from your solution for <a href="A.html" data-pltdoc="x">A &#8212;<wbr></wbr> JSON</a> or create <span style="color: purple">entirely</span> new ones.
+All tests must be well-formed and valid JSON according to <a href="A.html" data-pltdoc="x">A &#8212;<wbr></wbr> JSON</a>.</p><p><span style="font-weight: bold">Constraint</span> No test file may exceed the size limit of 40Kb.</p><h4><a name="(part._g44283)"></a><span style="color: blue">Remote Connection</span></h4><p><div class="SIntrapara">The <span class="stt">netcat</span> program&#8212;<wbr></wbr>alternatively, <span class="stt">nc</span>&#8212;<wbr></wbr>is the best way to manually
 send JSON information from your shell to your server and retrieved it:
 </div><div class="SIntrapara"><table cellspacing="0" cellpadding="0" class="SVerbatim"><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="stt">[login-students] $ nc antarctia.ccs.neu.edu 45678</span></p></td></tr></table></div><div class="SIntrapara">This command connects the computer it is running on (<span class="stt">login-students</span>) with
 the specified computer ((<span class="stt">antarctia.ccs.neu.edu</span>) on the latter&rsquo;s port
