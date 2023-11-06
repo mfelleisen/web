@@ -3,7 +3,8 @@
 into a top-level repo directory named <span class="stt">8</span></p></li></ul><p><span style="color: blue">Programming Task</span> Implement an observer component with which dev ops can
 watch and inspect a game from a referee&rsquo;s perspective.</p><p><div class="SIntrapara">The observer has two different but related purposes:
 </div><div class="SIntrapara"><ol><li><p>it saves the states it receives as PNG files in a directory called Tmp/,
-using the names <span class="stt">"0.png"</span>, <span class="stt">"1.png"</span>, and so on.</p></li><li><p><div class="SIntrapara">it displays the states it receives as images in a graphical user
+using the names <span class="stt">"0.png"</span>, <span class="stt">"1.png"</span>, and so on.</p><p><span style="color: purple">The Tmp/ directory should be created at the place where the program is
+run, in this case, the test script (<span class="stt">xgames-with-observer</span>).</span></p></li><li><p><div class="SIntrapara">it displays the states it receives as images in a graphical user
 interface (GUI). This GUI must support at least three interaction capabilities:
 </div><div class="SIntrapara"><ol><li><p>A <span class="emph">next</span> functionality shows the next state of the game, if it is
 available.</p></li><li><p>A <span class="emph">previous</span> functionality shows the previous state of the game, if
