@@ -25,7 +25,7 @@ how a developer did <span class="emph">not</span> consider all the bad things th
 software system when a JSON message is ill-formed and/or invalid.</span></span></span></p><p><span style="color: blue">Communication</span> In a distributed setting, it is not realistic to
 assume well-formed and valid JSON messages. Here, it is arguably only
 the relevant server-side components
-that must protected themselves against this problem&#8212;<wbr></wbr>to eliminate misbehaving
+that must protect themselves against this problem&#8212;<wbr></wbr>to eliminate misbehaving
 player-clients. But, you may also wish to protect the relevant
 client-side components, just in
 case a server doesn&rsquo;t send well-formed, valid message. <span class="refelem"><span class="refcolumn"><span class="refcontent">Why?</span></span></span></p><p><span style="font-weight: bold">Note</span> From this perspective, the use of JSON for integration tests is
