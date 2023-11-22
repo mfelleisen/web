@@ -37,7 +37,8 @@ ten tests ([0-9]-{in,out}.json) and place them in the specified <span class="stt
 course, a test consists of a pair of files: <span class="stt">n-in.json</span>, the input file, and
 <span class="stt">n-out.json</span>, the expected output file, where <span class="stt">n</span> is an integer between 0
 and the requested number of tests (exclusive).&#8212;<wbr></wbr><span style="font-weight: bold">Constraint</span> No test file may exceed the size limit of 40Kb.</p><p>The inputs of <span class="stt">xbaddies</span> are similar to the one of <a href="7.html" data-pltdoc="x">7 &#8212;<wbr></wbr> The Clean Up</a>; they consist of a
-<a href="7.html#%28tech._jstate%29" class="techoutside" data-pltdoc="x"><span class="techinside">JState</span></a> followed by an array of <a href="#%28tech._jactorsb%29" class="techoutside" data-pltdoc="x"><span class="techinside">JActorsB</span></a>.  The test harness creates
+<a href="7.html#%28tech._jstate%29" class="techoutside" data-pltdoc="x"><span class="techinside">JState</span></a> followed by a a<span style="color: purple">JActorsB</span> array <span class="strike" style="text-decoration:line-through">of <a href="#%28tech._jactorsb%29" class="techoutside" data-pltdoc="x"><span class="techinside">JActorsB</span></a></span>.
+The test harness creates
 a series of players that are going to use the specified strategies.  It then
 hands these players and the given state to the referee, which runs the game to
 the end and computes the names of the winner(s) and drop-out(s). (The details
