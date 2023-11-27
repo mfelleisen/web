@@ -17,7 +17,7 @@ contain a configuration for another.</p><p>Abstract the server, the referee, and
 respective configurations.</p><p><div class="SIntrapara"><span style="color: blue">Runnables Task for the Last and Final Integration Test</span> Construct two
 executable programs:
 </div><div class="SIntrapara"><ul><li><p><span class="stt">xserver</span>, which starts your server from a JSON configuration, and</p></li><li><p><span class="stt">xclients</span>, which launches a number of clients from a JSON
-configuration and points them to a server.</p></li></ul></div><div class="SIntrapara">Also create ten tests ([0-9]-{in,out}.json) and place them in the specified <span class="stt">Tests/</span> folder.</div></p><p>Both programs are launched with one command-line argument and a JSON object
+configuration and points them to a server.</p></li></ul></div><div class="SIntrapara">Also create ten tests ([0-9]-{<span class="strike" style="text-decoration:line-through">in</span> <span style="color: purple">client-config, server-config</span>, out}.json) and place them in the specified <span class="stt">Tests/</span> folder.</div></p><p>Both programs are launched with one command-line argument and a JSON object
 coming in from <span class="stt">STDIN</span>. The first specifies the port on which servers and
 clients connect; the configuration is an object with fields that
 <span class="emph">approximately</span> correspond to the requested internal configurations.
