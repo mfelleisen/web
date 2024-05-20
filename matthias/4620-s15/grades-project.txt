@@ -1,0 +1,62 @@
+
+-----------------------------------------------------------------------------
+Eric and Francis 
+  presentation 100%
+  code base 85%
+    your testing is quite cursory 
+  [[ for a failed project, great job! ]]
+
+-----------------------------------------------------------------------------
+Ali and Paul 
+  presentation 75%
+    follow suggested outline
+    think about what you wish to say, what you don't wish to say beforehand
+    practice what you wish to say at least once 
+    use snippets of code to focus on the interesting aspects of your base 
+    Ali didn't say much
+ code base 95% 
+    our key criticism -- get help early to avoid getting into
+    problems with coding patterns; if we don't have the expertise, we will
+    find someone who does 
+
+-----------------------------------------------------------------------------
+David and Mimi 
+  presentation 90% 
+    follow suggested outline
+    Mimi didn't say a word 
+  code 80% 
+    too much code as data     
+    when you see such patterns, seek help 
+    (the project choice lowered the Rust-C challenge a lot)
+
+-----------------------------------------------------------------------------
+Josh and David 
+  presentation 100% 
+  code 90% 
+    lack of separation of responsibilities 
+  [[ cool! ]]
+
+-----------------------------------------------------------------------------
+Rob and Howard 
+  presentation 80% 
+    great start with an overview and a clear demo 
+    the presentation went into too much detail once you showed "dead code" 
+  code 80% 
+    architectural problem (MVC)
+    low-level problems with old code 
+
+-----------------------------------------------------------------------------
+Jon and Chris 
+  presentation 90% 
+    explanation of mismatch between interfaces remains unclear even now 
+    it killed the rest of the process 
+  code 95%
+
+-----------------------------------------------------------------------------
+Anh and Isaac 
+  presentation 95% 
+    can you make an unexciting project look exciting? Ask Anh and Isaac 
+  code 90% 
+    we lowered the baseline because you didn't have to jump thru the 
+      callback hurdles 
+    your code lacks Rust poetry 

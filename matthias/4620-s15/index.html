@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"/><title>Building Extensible Systems</title><link rel="stylesheet" type="text/css" href="scribble.css" title="default"/><link rel="stylesheet" type="text/css" href="manual-style.css" title="default"/><link rel="stylesheet" type="text/css" href="manual-racket.css" title="default"/><script type="text/javascript" src="scribble-common.js"></script><script type="text/javascript" src="manual-racket.js"></script><!--[if IE 6]><style type="text/css">.SIEHidden { overflow: hidden; }</style><![endif]--></head><body id="scribble-racket-lang-org"><div class="tocset"><div class="tocview"><div class="tocviewlist tocviewlisttopspace"><div class="tocviewtitle"><table cellspacing="0" cellpadding="0"><tr><td style="width: 1em;"><a href="javascript:void(0);" title="Expand/Collapse" class="tocviewtoggle" onclick="TocviewToggle(this,&quot;tocview_0&quot;);">&#9660;</a></td><td></td><td><a href="" class="tocviewselflink" data-pltdoc="x">Building Extensible Systems</a></td></tr></table></div><div class="tocviewsublistonly" style="display: block;" id="tocview_0"><table cellspacing="0" cellpadding="0"><tr><td align="right"></td><td><a href="general.html" class="tocviewlink" data-pltdoc="x">General</a></td></tr><tr><td align="right"></td><td><a href="syllabus.html" class="tocviewlink" data-pltdoc="x">Syllabus</a></td></tr><tr><td align="right"></td><td><a href="projects.html" class="tocviewlink" data-pltdoc="x">Projects</a></td></tr><tr><td align="right"></td><td><a href="resources.html" class="tocviewlink" data-pltdoc="x">Resources</a></td></tr><tr><td align="right"></td><td><a href="homework.html" class="tocviewlink" data-pltdoc="x">Homework</a></td></tr><tr><td align="right"></td><td><a href="writing.html" class="tocviewlink" data-pltdoc="x">Notes on Writing</a></td></tr><tr><td align="right"></td><td><a href="log.html" class="tocviewlink" data-pltdoc="x">Your Rust Log</a></td></tr></table></div></div></div><div class="tocsub"><div class="tocsubtitle">On this page:</div><table class="tocsublist" cellspacing="0"><tr><td><span class="tocsublinknumber"></span><a href="#%28part._.Building_.Extensible_.Systems%29" class="tocsubseclink" data-pltdoc="x">Building Extensible Systems</a></td></tr><tr><td><a href="https://piazza.com/class/i4uz0u1ff1g64w?cid=12">Piazza</a></td></tr><tr><td><a href="http://www.ccs.neu.edu/home/matthias/">Home</a></td></tr></table></div></div><div class="maincolumn"><div class="main"><div class="versionbox"><span class="version">6.2.0.2</span></div><div class="navsettop"><span class="navleft"><div class="nosearchform"></div>&nbsp;&nbsp;</span><span class="navright">&nbsp;&nbsp;<span class="nonavigation">&larr; prev</span>&nbsp;&nbsp;<span class="nonavigation">up</span>&nbsp;&nbsp;<a href="general.html" title="forward to &quot;General&quot;" data-pltdoc="x">next &rarr;</a></span>&nbsp;</div><h2><a name="(part._.Building_.Extensible_.Systems)"></a>Building Extensible Systems</h2><p><span class="refelem"><span class="refcolumn"><span class="refcontent"><img src="rust-logo.png" alt="Rust" width="63" height="63"/></span></span></span></p><p>Over the past few years, Mozilla has developed Rust, a new systems
+programming language. Mozilla is about to
+<a href="http://blog.rust-lang.org/2014/12/12/1.0-Timeline.html">release the
+alpha version of the language</a>. In this course we will jointly study and
+explore the Rust language.</p><p>Rust aims to make systems-level (C/C++) programming safe. Here safety means
+both memory safety and concurrency safety. That is, programs can manipulate
+memory almost as freely as C-level programs but cannot accidentally corrupt
+memory, and programs can spawn parallel threads but cannot suffer from race
+conditions.  Both goals are achieved with a sophisticated type system.</p><p>The challenge is whether programmers can understand and work with this type
+system to build systems or modify existing ones.  This course is the first
+university-level attempt to answer this question. [Don&rsquo;t worry, you are not
+alone. Several companies have already used Rust in production code,
+including for game servers, operating systems, and web browsers.]</p><p>Students are expected to know some C/C++, Java, and the fundamental
+differences between these two languages. The course will also rely on basic
+memories from Fundamentals I, II, and Logic.</p><p>The course will involve a significant writing component.</p><p><img src="pict.png" alt="image" width="651" height="1"/></p><blockquote class="SCentered"><p><span style="font-weight: bold">Announcements</span></p></blockquote><p><span style="font-weight: bold">Fri Apr 10 13:41:01 EDT 2015</span></p><p><div class="SIntrapara">For your final project presentations, we recommend you spend your 25
+minutes as follows:
+</div><div class="SIntrapara"><ol><li><p>explain the purpose of the existing code base and the original goal
+of your project; if you had to cut back or change goals, say so [1min]</p></li><li><p>recall the functionality of the existing code base, how to use it,
+and briefly demonstrate it [4min]</p></li><li><p>demo what you accomplished [5min]</p></li><li><p>describe the pre-existing code base, focusing on those modules with
+which your Rust code has to interface and/or the Rust code replaces [5min]</p></li><li><p>show-case your Rust extensions</p><p><span style="font-weight: bold">Do not simply walk us through the code line by line.</span></p><p>Start with an overview of the key pieces&#8212;<wbr></wbr>relating them to bullet 4&#8212;<wbr></wbr>and
+then focus on those parts of the Rust code that posed problems&#8212;<wbr></wbr>both in
+terms of integration and performance [10min]</p></li></ol></div><div class="SIntrapara">The ordering is approximate as is the suggested timing. In particular, you
+may wish to move the third part to the end of the presentation if this
+simplifies the flow. Similarly, you may wish to cut time from the second
+bullet and shift it to the last one.</div></p><p>Do keep in mind that we will have a guest who knows Rust but does not know
+what your projects are about and what your plans were.</p><p>Also, think of the request to repeat some of your initial presentation as a
+chance to improve your presentation skills.</p><blockquote class="SCentered"><p><span style="font-weight: bold">Schedule</span></p></blockquote><p><table cellspacing="0" cellpadding="0" class="boxed"><tr><td><p><span style="font-weight: bold">day</span></p></td><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;</span></p></td><td><p><span style="font-weight: bold">time</span></p></td><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;</span></p></td><td><p><span style="font-weight: bold">presenters</span></p></td></tr><tr><td><p>4/13</p></td><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;</span></p></td><td><p>6:10--6:35</p></td><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;</span></p></td><td><p>Kelly &amp; Nimick</p></td></tr><tr><td><p>--</p></td><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;</span></p></td><td><p>6:45--7:10</p></td><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;</span></p></td><td><p>Furtado &amp; Ukani</p></td></tr><tr><td><p>--</p></td><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;</span></p></td><td><p><span style="font-weight: bold">break</span></p></td><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;</span></p></td><td><p></p></td></tr><tr><td><p>--</p></td><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;</span></p></td><td><p>7:25--7:50</p></td><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;</span></p></td><td><p>Corbett &amp; Lin</p></td></tr><tr><td><p>--</p></td><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;</span></p></td><td><p>8:00--8:25</p></td><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;</span></p></td><td><p>Coates &amp; Silva</p></td></tr><tr><td><p></p></td><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;</span></p></td><td><p></p></td><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;</span></p></td><td><p></p></td></tr><tr><td><p>4/20</p></td><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;</span></p></td><td><p>6:10--6:35</p></td><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;</span></p></td><td><p>Cheung &amp; Jensen</p></td></tr><tr><td><p>--</p></td><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;</span></p></td><td><p>6:45--7:10</p></td><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;</span></p></td><td><p>Bower &amp; Kolek</p></td></tr><tr><td><p>--</p></td><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;</span></p></td><td><p><span style="font-weight: bold">break</span></p></td><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;</span></p></td><td><p></p></td></tr><tr><td><p>--</p></td><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;</span></p></td><td><p>7:25--7:50</p></td><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;</span></p></td><td><p>Boehman &amp; Tran</p></td></tr><tr><td><p>--</p></td><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;</span></p></td><td><p>8:00</p></td><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;</span></p></td><td><p>Good bye, grades</p></td></tr></table></p><p>The breaks are for slippage, set-up, and technical problems with overhead
+projections, etc. Do not plan on these extra minutes for your
+presentation.</p><p><span style="font-weight: bold">Fri Apr  3 09:55:51 EDT 2015</span></p><p>Please see addendum at bottom of <a href="8.html" data-pltdoc="x">Reflective Essay</a>.</p><p><span style="font-weight: bold">Wed Apr  1 21:23:46 EDT 2015</span></p><p><div class="SIntrapara">As announced in class, here are the basic changes to the syllabus:
+</div><div class="SIntrapara"><ul><li><p>On Monday, we will wrap up the Rust-C interaction segment. We will
+reserve some time for general questions on Rust topics that have come up
+while you have been working on your project.</p></li><li><p>The new due date for submitting the project is <span style="color: red">April 10</span>.</p></li><li><p>Use the additional time to get further feedback on your memo. Some of
+you need this feedback more than others; you know who you are.</p></li><li><p>You will present the projects on April 13 and 20. Instructions on
+how to present the projects will appear here.</p></li><li><p>I have also rewritten the last homework (<a href="8.html" data-pltdoc="x">Reflective Essay</a>). Take a look.</p></li></ul></div><div class="SIntrapara">The changes are also reflected on the relevant individual pages.</div></p><p><span style="font-weight: bold">Thu Mar 26 10:12:42 EDT 2015</span></p><p>Reminder: tomorrow is the deadline for turning in drafts of your project
+memo to Ms. Biron. Submission of an electronic copy is fine. If you need an
+extra 24 hours, sending in the draft by late Saturday is acceptable.</p><p><span style="color: red">Please hand in your draft together with (a copy of) the marked-up copy
+of your original project memo.</span></p><p><div class="SIntrapara">Following the outline of last week&rsquo;s presentations, here is how your memo
+should revise and extend the memo on the chosen code base:
+</div><div class="SIntrapara"><ul><li><p>a description of the purpose of the code base;</p></li><li><p>the original goal of your project;</p></li><li><p>a description of the organization of the code base, as relevant to
+the changes that you are implementing;</p></li><li><p>a write-up of your accomplishments<span class="refelem"><span class="refcolumn"><span class="refcontent">Do not write up a
+history of your activities; assess your successes and failures.</span></span></span>, that is,
+what you actually did;</p></li><li><p>a description of your failures, that is, discrepancies between your
+goals and achievements.</p></li></ul></div><div class="SIntrapara">Do not address the short-comings of Rust unless they critical contribute to
+a substantial failure.</div></p><p><span style="font-weight: bold">Fri Mar 13 17:14:08 EDT 2015</span></p><p><div class="SIntrapara">Here is what we expect from your project introductions in bullet form:
+</div><div class="SIntrapara"><ol><li><p><div class="SIntrapara">present your code base from a client perspective:
+</div><div class="SIntrapara"><ul><li><p>what does it do, overview</p></li><li><p>how do I use it, concrete examples, demo if possible</p></li><li><p>what kind of role do I play when I use it</p></li></ul></div></p></li><li><p><div class="SIntrapara">what does the code base look like from the inside:
+</div><div class="SIntrapara"><ul><li><p>what are the key modules, architectures</p></li><li><p>how do they collaborate, process</p></li><li><p>which ones do we need to know about from the perspective of this project?</p></li></ul></div></p></li><li><p>what do you wish to add to this code base? abstractly, examples, like
+bullet 1 above</p></li><li><p>how will you go about it? Which modules does my extension hook into? How?</p></li></ol></div><div class="SIntrapara">Dedicate about three quarters of your time (20 minutes) to the first two
+bullets and the remaining time to the last two.</div></p><p><span style="font-weight: bold">Thu Mar 12 17:40:18 EDT 2015</span></p><p><div class="SIntrapara">Here are the code snippets from the concurrency lectures:
+</div><div class="SIntrapara"><ul><li><p><a href="concurrency-philosophers.rs">concurrency-philosophers.rs</a> presents a solution for the &ldquo;N dining
+philosphers&rdquo; problem</p></li><li><p><a href="concurrency-barber.rs">concurrency-barber.rs</a> presents an <span class="stt">Arc</span>/<span class="stt">Mutex</span> solution for the basic
+&ldquo;sleeping barber&rdquo; problem, i.e., one barber serves an arbitrary number of
+customers</p></li><li><p><a href="concurrency-barber2.rs">concurrency-barber2.rs</a> supplements the <span class="stt">Arc</span>/<span class="stt">Mutex</span> solution
+for the sleeping barber with <span class="stt">Semaphore</span>s</p></li><li><p><a href="concurrency-barber3.rs">concurrency-barber3.rs</a> presents a <span class="stt">channel</span>-based solution to
+the basic &ldquo;sleeping barber&rdquo; problem</p></li><li><p><a href="concurrency-barbers.rs">concurrency-barbers.rs</a> shows how to extend the <span class="stt">channel</span>-based
+solution for the basic problem to a barber shop with many barbers.</p></li></ul></div></p><p><span style="font-weight: bold">Thu Feb 26 10:02:32 EST 2015</span></p><p><span style="color: red">See below for String.</span></p><p><span style="font-weight: bold">Wed Feb 25 19:22:05 EST 2015</span></p><p><div class="SIntrapara">Here are the most obvious rules of Rust program design:
+</div><div class="SIntrapara"><ul><li><p>Any place you could return a new array, an iterator is probably
+better. (Think of iterators as optimizing arrays for one-pass access.)</p></li><li><p>Methods should take arguments (except for small Copy types) by reference,
+except when they actually need to take ownership. The only reasons to take
+ownership of an argument are to send it to another thread, to store it in a
+data structure for later, or to destructively consume it (&#224; la <span class="stt">into_iter</span>).</p></li><li><p>Methods should take immutable references unless they actually need to
+mutate.</p></li><li><p>The difference between <span class="stt">&amp;mut String</span> and <span class="stt">&amp;mut str</span> is that the
+former is a string buffer with dynamic size, whereas the latter has fixed
+size. Methods should take the latter unless they need to change the size,
+because the former can always be viewed as the latter by the client.</p><p><span class="strike" style="text-decoration:line-through">(There's no use for <span class="stt">&amp;String</span> for which <span class="stt">&amp;str</span> isn&#8217;t
+better. [The exception is <span class="stt">String::capacity(&amp;self)</span>.])</span></p><p><span style="color: red">As the manual says for <span class="stt">std:str</span>, ``<span class="stt">String</span> is used for an
+owned string.''</span></p></li><li><p>Clone when you need to both retain and give away ownership of
+something. (Typically this creates two copies of its mutable state.)</p><p>Cloning is the caller&#8217;s job, not the callee&#8217;s.</p></li><li><p>Boxes are for recursive data structures and owned trait objects, not
+for passing arguments or returning them.</p></li><li><p>Use generic types whenever possible. For example, if your method
+takes a <span class="stt">&amp;mut BufferedReader&lt;StdinReader&gt;</span>, but the only method used is
+<span class="stt">lines()</span>, then have it take <span class="stt">&amp;mut B</span> where <span class="stt">B: Buffer</span> instead.</p></li></ul></div></p><p><span style="font-weight: bold">Mon Feb 23 15:19:18 EST 2015</span></p><p><div class="SIntrapara">You will receive the graded project memos tonight. The grade consists of
+three components:
+</div><div class="SIntrapara"><ul><li><p>the proposed project</p></li><li><p>the organization and content, i.e., the description of the project
+and its code base</p></li><li><p>and style items, ranging from sentence organization to choice of
+words, from grammar problems to layout.</p></li></ul></div><div class="SIntrapara">Each part is worth 5 points for a total of 15.</div></p><p><div class="SIntrapara">A project memo should have the following organization:
+</div><div class="SIntrapara"><ol><li><p>The opening specifies the project that you wish to extend, describes
+its purpose, and indicates how you wish to modify its functionality.</p></li><li><p>The middle supplements the project description. It also explains how
+the project&rsquo;s code base is organized.</p></li><li><p>The third part identifies a missing piece of functionality. It should
+list its purpose and sketch its workings.</p></li><li><p>The last part sketches how you will go about adding the functionality
+to the code base, making references to terms introduced in step 2.</p></li></ol></div><div class="SIntrapara">The four parts may or may not correspond to four paragraphs. For example,
+for some projects, it is possible to collapse parts, especially the
+first two.</div></p><p><div class="SIntrapara">Here are some common small problems with your memos:
+</div><div class="SIntrapara"><ul><li><p>Leave a one-inch margin all around. It makes the page readable.</p></li><li><p>Add a noun to uses of "this" and "these." Otherwise the reference
+remains unclear.</p></li><li><p>Avoid "there is" and "there are". Certainly don&rsquo;t pile them up.</p></li><li><p>Use colons ":" to introduce enumerations.</p></li><li><p>Reserve "you" for the recipient of the memo.</p><p><span style="font-weight: bold">Note</span> I understand that, outside of computer science, the word "user"
+is reserved for consumers of illicit drugs. But the usage is common now, so
+get used to it, too.</p></li><li><p>The word "however" is used to switch a paragraph&rsquo;s line of argument
+from support for its thesis to a different/opposite point you wish to make
+in the following paragraph.</p></li><li><p>An m-dash consists of three hyphens and is attached to the
+surrounding words.</p></li><li><p>Replace "they" with "he/she" if you wish to accommodate the gender
+police. Otherwise you are likely to write sentences whose subject will fail
+to match the verb in numbers.</p></li></ul></div></p><p><span style="font-weight: bold">Thu Feb 19 19:20:44 EST 2015</span></p><p><div class="SIntrapara">As announced, we will hold a
+</div><div class="SIntrapara"><blockquote class="SCentered"><p><span style="color: red">make-up class tomorrow (Friday) evening at 6pm in <span style="color: blue">WVH 166</span></span></p></blockquote></div></p><p><span style="font-weight: bold">Thu Feb 19 19:20:44 EST 2015</span></p><p><div class="SIntrapara">As announced, we will hold a
+</div><div class="SIntrapara"><blockquote class="SCentered"><p><span style="color: red">make-up class tomorrow (Friday) evening at 6pm in <span style="color: blue">WVH 166</span></span></p></blockquote></div></p><p><span style="font-weight: bold">Wed Feb 18 13:27:26 EST 2015</span></p><p><div class="SIntrapara">Someone asks:
+</div><div class="SIntrapara"><blockquote><p>What&rsquo;s a letter?</p></blockquote></div></p><p><div class="SIntrapara">We answer:
+</div><div class="SIntrapara"><blockquote><p>At the information level, let&rsquo;s define letter as a
+.. z and A &#8230; Z. At the data level, choose the natural representation.</p></blockquote></div></p><p><div class="SIntrapara">Someone else asks:
+</div><div class="SIntrapara"><blockquote><p>And in this context, how should we deal with
+apostrophes?</p></blockquote></div></p><p><div class="SIntrapara">We answer:
+</div><div class="SIntrapara"><blockquote><p>Consider them as word terminators.</p></blockquote></div></p><p><span style="font-weight: bold">Fri Feb 13 10:09:19 EST 2015</span></p><p>Keep those dates open.</p><blockquote><p><span class="Smaller">To: All Faculty</span></p><p><span class="Smaller">From: Stephen W. Director, Provost &amp; Senior Vice President for Academic Affairs</span></p><p><span class="Smaller">Date: February 13, 2015</span></p><p><span class="Smaller">RE: Options for making up classes cancelled due to snow closings</span></p><p><span class="Smaller">As a result of winter weather conditions, classes on the Boston campus have
+been cancelled five times this semester, including two Mondays, two
+Tuesdays and one Wednesday. Because there are a number of Monday holidays
+during the Spring Semester, cancellation of Monday classes due to snow has
+had the greatest impact on the educational program. We appreciate the
+efforts of many faculty members who have already begun to make
+accommodations to assure that students learn all that was planned within
+each course.</span></p><p><span class="Smaller">While a number of courses have already scheduled make-up class sessions and
+course activities on an ad hoc basis, we will be using both <span style="color: red">Patriots Day
+(April 20, 2015)</span> and <span style="color: red">Reading Day (April 23, 2015)</span> as opportunities to
+schedule missed classes.   To schedule a time for your class to meet during
+either of these days, or at another time that may work for you and your
+students outside of your assigned class hours, please use the Special Room
+Request Form found at www.neu.edu/registrar/schedfrms.html. The Registrar&#8217;s
+office will respond quickly to requests but will give preference to those
+classes that would have normally been scheduled on a Monday.</span></p><p><span class="Smaller">We recognize that the unprecedented snowfall has created a strain on all of
+our programs and there is no one solution to address this strain that will
+satisfy everyone. However, after a number of discussions with the academic
+deans, we feel this is the best alternative and we do appreciate everyone&#8217;s
+patience.</span></p></blockquote><p><span style="font-weight: bold">Thu Feb 12 09:42:53 EST 2015</span></p><p>Most of you came to see Jesse and me and got feedback on your proposed
+project. For the memo that is due tomorrow, please drop off the paper copy
+but <span style="color: red">also send Ms. Biron an electronic copy (PDF, Doc, etc)</span> so that
+she can  mark that up in case the weekend storm really comes
+through.</p><p><div class="SIntrapara">Recall that the primary purpose of the memo is to
+</div><div class="SIntrapara"><ul><li><p>specify the chosen code (external purpose statement),</p></li><li><p>describe its internal organization, and</p></li><li><p>state the goal of your Rust extension.</p></li></ul></div><div class="SIntrapara">Convince the reader that you have thought through this project and that it
+is a good choice&#8212;<wbr></wbr>via descriptive language, not unjustified subjective
+adjectives.</div></p><p>For those of you who are still struggling with this choice, the ideal
+project is something people can download, run, and interact with (e.g.,
+piping files into it, text console, or GUI interface). Your Rust extension
+should provide some additional functionality to such a project that becomes
+optionally visible. Typically this goal calls for small changes to the C
+code base, a Rust module, and a carefully constructed interface between the
+former and the latter.</p><p><span style="font-weight: bold">Tue Feb 10 16:39:49 EST 2015</span></p><p><div class="SIntrapara">We have blocked out four hours for you to consult with us on your current
+ideas about a project:
+</div><div class="SIntrapara"><blockquote class="SCentered"><p><span style="color: red">tomorrow (Wedn. Feb 11) from 3pm to 7pm in WVH 308b</span></p></blockquote></div><div class="SIntrapara">Please make use of this time to discuss your ideas with us so that the
+draft memo and revision step can be productive.</div></p><p><span style="font-weight: bold">Mon Feb  9 22:24:28 EST 2015</span></p><p><div class="SIntrapara">During Friday&rsquo;s lecture I mentioned a paper on turning profiling
+information plus information from the depth of the compiler into
+a useful tool. For those of you who wish to find out more, here is a
+pointer to the paper:
+</div><div class="SIntrapara"><blockquote><p><a href="http://www.ccs.neu.edu/racket/pubs/#oopsla12-stf">Optimization Coaching</a></p></blockquote></div><div class="SIntrapara">As a teaser, Mozilla has adapted the idea and is in the process of
+integrating an optimization coach into their SpiderMonkey JS engine.</div></p><p>Also note, if the T is running again on Wednesday, I will run an "open
+house" for advice on your project selection. Please watch this space for
+specifics.</p><p><span style="font-weight: bold">Sat Feb  7 15:30:05 EST 2015</span></p><p>As requested, I have asked Systems to install Rust and Cargo on their Linux
+systems, and they have already done so. When you see a Systems guy, thank
+him for the group&rsquo;s prompt services.</p><p><span style="font-weight: bold">Thu Feb 5 2015</span></p><p><div class="SIntrapara">As announced, we will hold a
+</div><div class="SIntrapara"><blockquote class="SCentered"><p><span style="color: red">make-up class tomorrow (Friday) evening at 6pm in WVH 366</span></p></blockquote></div></p><p><span style="font-weight: bold">Wed Feb 4 2015</span></p><p>Jesse has type-set his lecture notes on <a href="lecture1.pdf">lifetimes and borrowing</a>.</p><p><div class="SIntrapara">Here is a question related to the one from yesterday.
+</div><div class="SIntrapara"><blockquote><p><div class="SIntrapara">Given this code snippet,
+</div><div class="SIntrapara"><table cellspacing="0" cellpadding="0"><tr><td><p><span class="hspace">&nbsp;&nbsp;</span><span class="stt">use std::collections::HashMap;</span></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;</span><span class="stt"></span></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;</span><span class="stt">fn main() {</span></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;</span><span class="stt"></span><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="stt">let s = &amp; String::from_str("hello");</span></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;</span><span class="stt"></span><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="stt">let h = create_string(s);</span></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;</span><span class="stt"></span><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="stt">println!("{}",h.get("hello").unwrap());</span></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;</span><span class="stt">}</span></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;</span><span class="stt"></span></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;</span><span class="stt"></span></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;</span><span class="stt">fn create_string&lt;'a&gt;(s : &amp; String) -&gt; HashMap&lt;&amp;'a str, usize&gt; {</span></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;</span><span class="stt"></span><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="stt">let mut hm : HashMap&lt;&amp;str,usize&gt; = HashMap::new();</span></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;</span><span class="stt"></span><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="stt">hm.insert(s.as_slice(),1);</span></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;</span><span class="stt"></span><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="stt">return hm;</span></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;</span><span class="stt">}</span></p></td></tr></table></div><div class="SIntrapara">Why does this fail with a message about "not being able to infer the
+ correct life time?"</div></p></blockquote></div><div class="SIntrapara">}</div></p><p><div class="SIntrapara">The answer is that
+</div><div class="SIntrapara"><blockquote><p>You can see that the life time parameter <span class="stt"></span><span class="stt">&rsquo;</span><span class="stt">a</span>
+shows up in the result type but not in the argument. So, how can <span class="stt">s</span> can
+possibly be used to create a string slice that survives long
+enough?<span class="refelem"><span class="refcolumn"><span class="refcontent">All string constants are string slices with a
+<span class="stt">static</span> life time. That is, the compiler hoists them out and creates a
+unique pointer for them&#8212;<wbr></wbr>like for symbols in a Lisp-style language.</span></span></span></p><p><div class="SIntrapara">Now fortunately, the compiler provides a rather suggestive error message
+and following this message corrects the mistake:
+</div><div class="SIntrapara"><table cellspacing="0" cellpadding="0"><tr><td><p><span class="hspace">&nbsp;&nbsp;</span><span class="stt">fn create_string&lt;'a&gt;(s : &amp; 'a String) -&gt; HashMap&lt;&amp;'a str, usize&gt; {</span></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;</span><span class="stt"></span><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="stt">let mut hm : HashMap&lt;&amp;str,usize&gt; = HashMap::new();</span></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;</span><span class="stt"></span><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="stt">hm.insert(s.as_slice(),1);</span></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;</span><span class="stt"></span><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="stt">return hm;</span></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;</span><span class="stt">}</span></p></td></tr></table></div></p></blockquote></div><div class="SIntrapara">If you combine the two questions (the one from yesterday and the one from
+today), you get a rather confusing error message.</div></p><p><span style="font-weight: bold">Tue Feb 3 2015</span></p><p><div class="SIntrapara">Someone asks:
+</div><div class="SIntrapara"><blockquote><p>Also, apparently our selection of the final project is due on Friday? I&rsquo;m
+not really sure what the criteria is for what we select. The three projects
+you listed don&rsquo;t particularly interest me, but if I wanted to find another,
+what sort of attributes should we be looking for? </p></blockquote></div></p><p><div class="SIntrapara">We answer:
+</div><div class="SIntrapara"><blockquote><p><div class="SIntrapara">We welcome any project
+</div><div class="SIntrapara"><ul><li><p>whose source is in C (or C++ if you know enough to read the relevant
+part of the source),</p></li><li><p>that appeals to you in some way, and</p></li><li><p>for which you can think of some functionality that you would like to add.</p></li></ul></div></p></blockquote></div></p><p><div class="SIntrapara">Someone else asks why Rust complains about the following snippet of code:
+</div><div class="SIntrapara"><blockquote><table cellspacing="0" cellpadding="0"><tr><td><p><span class="hspace">&nbsp;&nbsp;</span><span class="stt">fn parse_lines&lt;'a, R: Reader&gt;(mut reader: BufferedReader&lt;R&gt;)</span></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;</span><span class="stt"></span><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="stt">-&gt; HashMap&lt;&amp;'a str, usize&gt; {</span></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;</span><span class="stt"></span><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="stt">let mut wordcounts: HashMap&lt;&amp;str, usize&gt; = HashMap::new();</span></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;</span><span class="stt"></span><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="stt">...</span></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;</span><span class="stt">}</span></p></td></tr></table></blockquote></div></p><p><div class="SIntrapara">The short answer is
+</div><div class="SIntrapara"><blockquote><p>that the string slices that get
+stuck into the hash map are created within <span class="stt">parse_lines</span>. By using
+<span class="stt">String</span> instead, this function gets through the borrow checker.</p></blockquote></div></p><p><span style="font-weight: bold">Sat Jan 31 2015</span></p><p>Last night we did not get to code-walk my
+<a href="assignment1.rs">conventional-looking solution</a> for <a href="2.html" data-pltdoc="x">Counting Words</a>. Please do
+take a look just so you understand that you can code in Rust in a style close to
+the one you know from courses using C or C++&#8212;<wbr></wbr>even though Rust is a language
+that emphasizes functional over imperative programming. (That&rsquo;s not news to PL
+researchers; years ago people started publishing books on "functional
+programming in C" but old-fashioned academics and overbearing industry habits
+revert even the best-trained graduate into a 1970&rsquo;s coder.)</p><p><span style="font-weight: bold">Thu Jan 29 2015</span></p><p><div class="SIntrapara">As announced via email on Monday, we will hold a
+</div><div class="SIntrapara"><blockquote class="SCentered"><p><span style="color: red">make-up class tomorrow (Friday) evening at 6pm in WVH 366</span></p></blockquote></div></p><p><span style="font-weight: bold">Sun Jan 25 2015</span></p><p>After grading the memos/essays, I have added a section on <a href="writing.html" data-pltdoc="x">Notes on Writing</a> to
+the course site. It includes suggested readings, notes on how I evaluate your
+writing, and a sample essay on my favorite language. I urge you to read these
+hints because the remaining writing tasks are of a similar nature.</p><p>Note that the grade is primarily a judgment of how well you can articulate your
+points, how well you can organize them, and how directly you can support the
+chosen points. Secondary are flow/style, grammar/typos, and content, though
+if you call something "red" when it is completely "blue" I will deduct points.</p><p>Obviously the grade is completely independent of your choice of favorite
+language. When I ask you to pick and describe your favorite language, I will not
+call into question what you choose.<span class="refelem"><span class="refcolumn"><span class="refcontent">If you ask me for my opinion
+about your reasoning, I will explain to you why you are wrong.</span></span></span> In case you are
+curious, essays on both Ruby and Python received 10/10 grades as well as failing
+grades&#8212;<wbr></wbr>so no, the grade also doesn&rsquo;t depend on which language you choose.</p><p>Oh yes, and do read course announcements.</p><p><div class="SIntrapara"><span style="font-weight: bold">Sat Jan 17, 2015</span>
+Ms. Biron shared some snippets with me:
+</div><div class="SIntrapara"><ul><li><p>"Python is like a tupperware container, you can put soup or a chicken
+sandwich in it."</p></li><li><p>"Javascript is clay, she has borne children, she flirts."</p></li></ul></div><div class="SIntrapara">These kinds of comparisons are not what your manager would look for. We are
+looking for descriptions of languages, which may contain an occasional
+"poetic" comparison but those must be kept concise and not used as thesis
+statements.</div></p><p><span style="font-weight: bold">Wed Jan 14, 2015</span></p><p><div class="SIntrapara">Someone asks:
+</div><div class="SIntrapara"><blockquote><p>For our Building Extensible System&rsquo;s essay assignment, are you expecting
+something that sway&rsquo;s more towards the "poetic" side (for the average
+reader) or do you want it to be purely technical.</p></blockquote></div></p><p><div class="SIntrapara">We answer:
+</div><div class="SIntrapara"><blockquote><p>The choice is yours as long as the essay is descriptive not
+judgmental. "The car is red" is good, "the car has beautiful curves" is
+bad. Okay?</p></blockquote></div></p><p><span style="font-weight: bold">Sat Jan 10, 2015</span></p><p><span style="color: red">Welcome!</span></p><p>Please reflect on all the programming languages you have experienced in the
+past. Then pick your currently favorite language and make sure it is
+installed on your laptop. Bring (1) a letter-size sheet with the name of
+your chosen language and (2) your laptop to the first meeting. Fold the
+sheet and place it front of you on your table/desk/chair in class. We will
+conduct live-coding sessions in these languages.</p><p>
+</p><div class="navsetbottom"><span class="navleft"><div class="nosearchform"></div>&nbsp;&nbsp;</span><span class="navright">&nbsp;&nbsp;<span class="nonavigation">&larr; prev</span>&nbsp;&nbsp;<span class="nonavigation">up</span>&nbsp;&nbsp;<a href="general.html" title="forward to &quot;General&quot;" data-pltdoc="x">next &rarr;</a></span>&nbsp;</div></div></div><div id="contextindicator">&nbsp;</div></body></html>
