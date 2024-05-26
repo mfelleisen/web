@@ -1,10 +1,14 @@
-#lang scribble
+#lang scribble/manual
+
+@; String *-> Line
+@(define (date . str*) (apply margin-note str*))
+
 
 @title{2024 Hill Country Christian School of Austin Commencement Address}
 
 @author{Christopher Felleisen}
 
-@date{25 May 2024}
+@date{31 Aug 2024}
 
 @; -----------------------------------------------------------------------------
 
