@@ -3,57 +3,24 @@
 // Page Parameters ------------------------------------------------------------
 
 var page_query_string = location.search.substring(1);
-
-var page_args =
-  ((function(){
-      if (!page_query_string) return [];
-      var args = page_query_string.split(/[&;]/);
-      for (var i=0; i<args.length; i++) {
-        var a = args[i];
-        var p = a.indexOf('=');
-        if (p >= 0) args[i] = [a.substring(0,p), a.substring(p+1)];
-        else args[i] = [a, false];
-      }
-      return args;
-    })());
+const page_args = new URLSearchParams(location.search);
 
 function GetPageArg(key, def) {
-  for (var i=0; i<page_args.length; i++)
-    if (page_args[i][0] == key) return decodeURIComponent(page_args[i][1]);
-  return def;
+  return page_args.get(key) || def;
 }
 
 function MergePageArgsIntoLink(a) {
-  if (page_args.length == 0 ||
-      (!a.attributes["data-pltdoc"]) || (a.attributes["data-pltdoc"].value == ""))
-    return;
+  if (page_args.size === 0 || !a.dataset.pltdoc) return;
   a.href = MergePageArgsIntoUrl(a.href);
 }
 
 function MergePageArgsIntoUrl(href) {
-    var mtch = href.match(/^([^?#]*)(?:\?([^#]*))?(#.*)?$/);
-    if (mtch == undefined) { // I think this never happens
-        return "?" + page_query_string;
-    }
-    if (!mtch[2]) {
-        return mtch[1] + "?" + page_query_string + (mtch[3] || "");
-    }
-    // need to merge here, precedence to arguments that exist in `a'
-    var i, j;
-    var prefix = mtch[1], str = mtch[2] || "", suffix = mtch[3] || "";
-    var args = str.split(/[&;]/);
-    for (i=0; i<args.length; i++) {
-      j = args[i].indexOf('=');
-      if (j) args[i] = args[i].substring(0,j);
-    }
-    var additions = "";
-    for (i=0; i<page_args.length; i++) {
-      var exists = false;
-      for (j=0; j<args.length; j++)
-        if (args[j] == page_args[i][0]) { exists = true; break; }
-      if (!exists) str += "&" + page_args[i][0] + "=" + page_args[i][1];
-    }
-    return prefix + "?" + str + suffix;
+  const url = new URL(href, window.location.href);
+  for (const [key, val] of page_args) {
+    if (url.searchParams.has(key)) continue;
+    url.searchParams.append(key, val)
+  }
+  return url.href;
 }
 
 // Cookies --------------------------------------------------------------------
@@ -129,7 +96,7 @@ function NormalizePath(path) {
 
 function DoSearchKey(event, field, ver, top_path) {
   var val = field.value;
-  if (event && event.keyCode == 13) {
+  if (event && event.key === 'Enter') {
     var u = GetCookie("PLT_Root."+ver, null);
     if (u == null) u = top_path; // default: go to the top path
     u += "search/index.html?q=" + encodeURIComponent(val);
@@ -145,6 +112,10 @@ function TocviewToggle(glyph, id) {
   var expand = s.display == "none";
   s.display = expand ? "block" : "none";
   glyph.innerHTML = expand ? "&#9660;" : "&#9658;";
+}
+
+function TocsetToggle() {
+  document.body.classList.toggle("tocsetoverlay");
 }
 
 // Page Init ------------------------------------------------------------------
@@ -171,10 +142,12 @@ AddOnLoad(function(){
 
 // Pressing "S" or "s" focuses on the "...search manuals..." text field
 AddOnLoad(function(){
-  window.addEventListener("keyup", function(event) {
-    if (event && (event.keyCode == 83 || event.keyCode == 115) && event.target == document.body) {
-      var field = document.getElementsByClassName("searchbox")[0];
-      field.focus();
+  window.addEventListener("keyup", function(e) {
+    if ((e.key === 's' || e.key === 'S') && e.target === document.body) {
+      var searchBox = document.getElementById('searchbox');
+      if (searchBox) {
+        searchBox.focus();
+      }
     }
   }, false);
 });
