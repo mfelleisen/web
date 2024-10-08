@@ -50,18 +50,21 @@ cards, unless all candidates have equal sequences of cards.</p><p><div class="SI
 </div><div class="SIntrapara"><ul><li><p><span style="font-style: italic">c</span> and <span style="font-style: italic">d</span> don&rsquo;t both come with a face and <span style="font-style: italic">c</span>
 doesn&rsquo;t display one; or</p></li><li><p>if <span style="font-style: italic">c</span>&rsquo;s pebbles considered as a wallet is less than <span style="font-style: italic">d</span>&rsquo;s
 pebbles considered as a wallet.</p></li></ul></div></p><p>A sequence of cards <span style="font-style: italic">c*</span> is less than a sequence of cards <span style="font-style: italic">d*</span> if
+<span style="color: purple">the first is shorter than the second</span> or
 each card in <span style="font-style: italic">c*</span> at position <span style="font-style: italic">i</span> is less than the corresponding
-card in <span style="font-style: italic">d*</span> at <span style="font-style: italic">i</span> for <span style="font-style: italic">i</span> in range for the shorter of the
-two sequences.</p></li></ol></div></p><p><div class="SIntrapara">Here are the rules for breaking ties among <span class="emph">exchange-and-purchase requests</span>:
+card in <span style="font-style: italic">d*</span> at <span style="font-style: italic">i</span> for <span style="font-style: italic">i</span> in range for <span class="strike" style="text-decoration:line-through">the shorter of</span> the
+two <span style="color: purple">equally-long</span> sequences.</p></li></ol></div></p><p><div class="SIntrapara">Here are the rules for breaking ties among <span class="emph">exchange-and-purchase requests</span>:
 </div><div class="SIntrapara"><ol><li><p>from equivalent candidates, pick the ones that need the smallest number of trades;</p></li><li><p>from the remaining equivalent candidates, use the tie breaker for card
-purchases; and if this still leaves a non-singleton set of equal candidates, </p></li><li><p>pick the one that uses the smallest pebble-exchanges.</p><p>A pebble exchange <span style="font-style: italic">P</span> is less than a pebble exchange <span style="font-style: italic">Q</span> if the
+purchases; and if this still leaves a non-singleton set of equal candidates, </p></li><li><p>pick the one that uses the smallest pebble-exchanges.</p><p>A pebble exchange <span style="font-style: italic">P</span> is less than a pebble exchange <span style="font-style: italic">Q</span> the
 pebbles on the left-hand side of <span style="font-style: italic">P</span> (as a wallet) are less than the
 pebbles on the left-hand side of <span style="font-style: italic">Q</span> (as a wallet) or, assuming those
 are equal, if the pebbles on the right-hand side of <span style="font-style: italic">P</span> (as a wallet) are
 less than the pebbles on the right-hand side of <span style="font-style: italic">Q</span> (as a wallet).</p><p>A sequence of pebble exchanges <span style="font-style: italic">P*</span> is less than a sequence of pebble
-exchanges <span style="font-style: italic">Q*</span> if each exchange in <span style="font-style: italic">P*</span> at position <span style="font-style: italic">i</span> is
+exchanges <span style="font-style: italic">Q*</span>
+if <span style="color: purple">the first is shorter than the second or</span>
+each exchange in <span style="font-style: italic">P*</span> at position <span style="font-style: italic">i</span> is
 less than the corresponding exchange in <span style="font-style: italic">Q*</span> at <span style="font-style: italic">i</span> for <span style="font-style: italic">i</span>
-in range for the shorter of the two sequences.</p></li></ol></div></p><p><span style="color: blue">Design Task</span> The player components must communicate with the referee.
+in range for <span class="strike" style="text-decoration:line-through">the shorter of</span> the two <span style="color: purple">equally-long</span> sequences.</p></li></ol></div></p><p><span style="color: blue">Design Task</span> The player components must communicate with the referee.
 This communication involves both function/method calls and orderings of those,
 i.e., a protocol. Since outsiders will program to this interface, it must be
 spelled out precisely and in detail.  <span style="font-weight: bold">Hint</span> To start your
