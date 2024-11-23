@@ -33,20 +33,23 @@ server has registered players according to the policy specified in <a href="7.ht
 it hands them in <span class="strike" style="text-decoration:line-through">descendant</span><span style="color: purple">descending</span>-age order to the referee&rsquo;s testing method, together
 with the given equations and game state to the referee&rsquo;s testing method. The
 latter runs a game and hands the result of running the game back to the server,
-which renders it as a JSON value to <span class="stt">STDOUT</span>.</p><p>The <span class="stt">xclients</span> program consumes just one <a href="https://www.json.org">JSON</a> value:</p><ul><li><p><a href="9.html#%28tech._%2Aactorsb%29" class="techoutside" data-pltdoc="x"><span class="techinside">*ActorsB</span></a>, representing the actual players;</p></li></ul><p>It turns these actor specifications into independently running processes. The
-actors are specified in the exact order in which the referee&rsquo;s knowledge about
-them resides in the game state.</p><p>If these processes are launched without precaution, the test is going to run in
-a non-deterministic fashion and will yield non-deterministic &ndash; and therefore
-irreproducible &ndash; results. To reduce the likelihood of a non-deterministic
-outcome, the <span class="stt">xclients</span> script should wait for a couple of seconds between
-launching clients.</p><p><div class="SIntrapara"><span style="font-weight: bold">Well-formed and Valid</span>
+which renders it as a JSON value to <span class="stt">STDOUT</span>.</p><p>The <span class="stt">xclients</span> program consumes just one <a href="https://www.json.org">JSON</a> value:</p><ul><li><p><a href="9.html#%28tech._%2Aactorsb%29" class="techoutside" data-pltdoc="x"><span class="techinside">*ActorsB</span></a>, representing the actual players;</p></li></ul><p>It turns these actor specifications into independently running <span class="strike" style="text-decoration:line-through">processes</span>
+<span style="color: purple">clients</span>. The actors are specified in the exact order in which the
+referee&rsquo;s knowledge about them resides in the game state.</p><p>If these <span class="strike" style="text-decoration:line-through">processes</span> <span style="color: purple">clients</span> are launched without precaution, the
+test is going to run in a non-deterministic fashion and will yield
+non-deterministic &ndash; and therefore <span style="color: purple">unpredictable and</span> irreproducible &ndash;
+results. To reduce the likelihood of a non-deterministic outcome, the
+<span class="stt">xclients</span> script should <span style="color: purple">ensure that each client completes the sign-up
+step before it launches the next one</span> <span class="strike" style="text-decoration:line-through">wait for a couple of seconds
+between launching clients</span>.</p><p><div class="SIntrapara"><span style="font-weight: bold">Well-formed and Valid</span>
 You may assume that all configuration inputs to your test harnesses from
 <span class="stt">STDIN</span> are well-formed and valid.  A <span class="emph">well-formed</span> piece of
 JSON satisfies the grammar; such a piece is <span class="emph">valid</span> if it
 also satisfies all the side constraints of a schema
 specification. </div><div class="SIntrapara"> Keep in mind though that the JSON sent from
 clients to servers should not be trusted and for that matter clients may not
-wish to trust servers either.</div></p><p>The test bed ensures that the server program runs independently of the client
-programs. The idea is to spawn the server and the clients as parallel programs
-to mimic a distributed setting as much as possible using a single machine.</p><p>The test bed compares this actual output to the expected output of the test
+wish to trust servers either.</div></p><p>The test bed ensures that the server program runs independently of the clients
+<span class="strike" style="text-decoration:line-through">programs</span>. The idea is to spawn the server and the clients as parallel
+programs to mimic a distributed setting as much as possible using a single
+machine.</p><p>The test bed compares this actual output to the expected output of the test
 case; it ignores the output of <span class="stt">xclients</span>.</p><div class="navsetbottom"><span class="navleft"><div class="nosearchform"></div>&nbsp;&nbsp;<span class="tocsettoggle">&nbsp;&nbsp;<a href="javascript:void(0);" title="show/hide table of contents" onclick="TocsetToggle();">contents</a></span></span><span class="navright">&nbsp;&nbsp;<a href="9.html" title="backward to &quot;9 --- Remote&quot;" data-pltdoc="x" rel="prev">&larr; prev</a>&nbsp;&nbsp;<a href="assignments.html" title="up to &quot;---Project Milestones&quot;" data-pltdoc="x">up</a>&nbsp;&nbsp;<span class="nonavigation">next &rarr;</span></span>&nbsp;</div></div></div><div id="contextindicator">&nbsp;</div></body></html>
