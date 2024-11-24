@@ -33,7 +33,8 @@ server has registered players according to the policy specified in <a href="7.ht
 it hands them in <span class="strike" style="text-decoration:line-through">descendant</span><span style="color: purple">descending</span>-age order to the referee&rsquo;s testing method, together
 with the given equations and game state to the referee&rsquo;s testing method. The
 latter runs a game and hands the result of running the game back to the server,
-which renders it as a JSON value to <span class="stt">STDOUT</span>.</p><p>The <span class="stt">xclients</span> program consumes just one <a href="https://www.json.org">JSON</a> value:</p><ul><li><p><a href="9.html#%28tech._%2Aactorsb%29" class="techoutside" data-pltdoc="x"><span class="techinside">*ActorsB</span></a>, representing the actual players;</p></li></ul><p>It turns these actor specifications into independently running <span class="strike" style="text-decoration:line-through">processes</span>
+which renders it as a JSON value to <span class="stt">STDOUT</span>: <span style="color: purple">an array containing the
+array of winners followed by the array of drop-outs.</span></p><p>The <span class="stt">xclients</span> program consumes just one <a href="https://www.json.org">JSON</a> value:</p><ul><li><p><a href="9.html#%28tech._%2Aactorsb%29" class="techoutside" data-pltdoc="x"><span class="techinside">*ActorsB</span></a>, representing the actual players;</p></li></ul><p>It turns these actor specifications into independently running <span class="strike" style="text-decoration:line-through">processes</span>
 <span style="color: purple">clients</span>. The actors are specified in the exact order in which the
 referee&rsquo;s knowledge about them resides in the game state.</p><p>If these <span class="strike" style="text-decoration:line-through">processes</span> <span style="color: purple">clients</span> are launched without precaution, the
 test is going to run in a non-deterministic fashion and will yield
