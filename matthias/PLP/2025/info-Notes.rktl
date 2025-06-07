@@ -1,0 +1,1 @@
+((3) 1 (((lib "scribble/render-struct.rkt") . deserialize-info:mobile-root-v0)) 1 ((q part "notes")) () (c (0 #f) h ! (equal) ((? . 0) v! (q "Notes on PLP") (? . 0) () (p+ #"./Notes/index.html" . unix) #t)))

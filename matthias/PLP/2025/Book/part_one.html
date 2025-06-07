@@ -1,0 +1,230 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"/><meta name="viewport" content="width=device-width, initial-scale=0.8"/><title>I&nbsp;The Study of Programming Languages</title><link rel="stylesheet" type="text/css" href="scribble.css" title="default"/><link rel="stylesheet" type="text/css" href="shared.css" title="default"/><link rel="stylesheet" type="text/css" href="manual-style.css" title="default"/><link rel="stylesheet" type="text/css" href="manual-racket.css" title="default"/><script type="text/javascript" src="scribble-common.js"></script><script type="text/javascript" src="manual-racket.js"></script><!--[if IE 6]><style type="text/css">.SIEHidden { overflow: hidden; }</style><![endif]--></head><body id="scribble-racket-lang-org"><div class="tocset"><div class="tocview"><div class="tocviewlist tocviewlisttopspace"><div class="tocviewtitle"><table cellspacing="0" cellpadding="0"><tr><td style="width: 1em;"><a href="javascript:void(0);" title="Expand/Collapse" class="tocviewtoggle" onclick="TocviewToggle(this,&quot;tocview_0&quot;);">&#9660;</a></td><td></td><td><a href="index.html" class="tocviewlink" data-pltdoc="x">Programming Language Pragmatics</a></td></tr></table></div><div class="tocviewsublisttop" style="display: block;" id="tocview_0"><table cellspacing="0" cellpadding="0"><tr><td align="right">I&nbsp;</td><td><a href="" class="tocviewselflink" data-pltdoc="x">The Study of Programming Languages</a></td></tr><tr><td align="right">II&nbsp;</td><td><a href="part_two.html" class="tocviewlink" data-pltdoc="x">Syntax and Parsing</a></td></tr><tr><td align="right">III&nbsp;</td><td><a href="part_three.html" class="tocviewlink" data-pltdoc="x">Semantics and Execution</a></td></tr><tr><td align="right">IV&nbsp;</td><td><a href="part_four.html" class="tocviewlink" data-pltdoc="x">Variable Declarations</a></td></tr><tr><td align="right">V&nbsp;</td><td><a href="part_five.html" class="tocviewlink" data-pltdoc="x">Nested Blocks</a></td></tr><tr><td align="right">VI&nbsp;</td><td><a href="part_six.html" class="tocviewlink" data-pltdoc="x">Structured Data and Abstraction</a></td></tr><tr><td align="right">VII&nbsp;</td><td><a href="part_seven.html" class="tocviewlink" data-pltdoc="x">Modules and Dependencies</a></td></tr><tr><td align="right">VIII&nbsp;</td><td><a href="part_eight.html" class="tocviewlink" data-pltdoc="x">Types</a></td></tr><tr><td align="right">IX&nbsp;</td><td><a href="part_nine.html" class="tocviewlink" data-pltdoc="x">Mixing Typed and Untyped Code</a></td></tr><tr><td align="right">X&nbsp;</td><td><a href="part_x.html" class="tocviewlink" data-pltdoc="x">More Pragmatics</a></td></tr></table></div></div><div class="tocviewlist"><table cellspacing="0" cellpadding="0"><tr><td style="width: 1em;"><a href="javascript:void(0);" title="Expand/Collapse" class="tocviewtoggle" onclick="TocviewToggle(this,&quot;tocview_1&quot;);">&#9658;</a></td><td>I&nbsp;</td><td><a href="" class="tocviewselflink" data-pltdoc="x">The Study of Programming Languages</a></td></tr></table><div class="tocviewsublistbottom" style="display: none;" id="tocview_1"><table cellspacing="0" cellpadding="0"><tr><td align="right">1&nbsp;</td><td><a href="#%28part._the-pragmatics%29" class="tocviewlink" data-pltdoc="x">The Pragmatics Question</a></td></tr><tr><td align="right">2&nbsp;</td><td><a href="#%28part._.Programming_.Language%29" class="tocviewlink" data-pltdoc="x">Programming Language</a></td></tr><tr><td align="right">3&nbsp;</td><td><a href="#%28part._.Studying_.Programming_.Languages%29" class="tocviewlink" data-pltdoc="x">Studying Programming Languages</a></td></tr><tr><td align="right">4&nbsp;</td><td><a href="#%28part._.Syntax%29" class="tocviewlink" data-pltdoc="x">Syntax</a></td></tr><tr><td align="right">5&nbsp;</td><td><a href="#%28part._.Semantics%29" class="tocviewlink" data-pltdoc="x">Semantics</a></td></tr><tr><td align="right">6&nbsp;</td><td><a href="#%28part._.Pragmatics%29" class="tocviewlink" data-pltdoc="x">Pragmatics</a></td></tr></table></div></div></div></div><div class="maincolumn"><div class="main"><div class="versionbox"><span class="version">8.17.0.3</span></div><div class="navsettop"><span class="navleft"><div class="nosearchform"></div>&nbsp;&nbsp;<span class="tocsettoggle">&nbsp;&nbsp;<a href="javascript:void(0);" title="show/hide table of contents" onclick="TocsetToggle();">contents</a></span></span><span class="navright">&nbsp;&nbsp;<a href="index.html" title="backward to &quot;Programming Language Pragmatics&quot;" data-pltdoc="x" rel="prev">&larr; prev</a>&nbsp;&nbsp;<a href="index.html" title="up to &quot;Programming Language Pragmatics&quot;" data-pltdoc="x">up</a>&nbsp;&nbsp;<a href="part_two.html" title="forward to &quot;II Syntax and Parsing&quot;" data-pltdoc="x" rel="next">next &rarr;</a></span>&nbsp;</div><h3 class="heading">I<tt>&nbsp;</tt><a name="(part._part~3aone)"></a>The Study of Programming Languages<span class="button-group"><a href="#(part._part~3aone)" class="heading-anchor" title="Link to here">🔗</a><span style="visibility: hidden"> </span></span></h3><table cellspacing="0" cellpadding="0"><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="#%28part._the-pragmatics%29" class="toclink" data-pltdoc="x">1<span class="hspace">&nbsp;</span>The Pragmatics Question</a></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="#%28part._.Programming_.Language%29" class="toclink" data-pltdoc="x">2<span class="hspace">&nbsp;</span>Programming Language</a></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="#%28part._.Studying_.Programming_.Languages%29" class="toclink" data-pltdoc="x">3<span class="hspace">&nbsp;</span>Studying Programming Languages</a></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="#%28part._.Syntax%29" class="toclink" data-pltdoc="x">4<span class="hspace">&nbsp;</span>Syntax</a></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="#%28part._.Semantics%29" class="toclink" data-pltdoc="x">5<span class="hspace">&nbsp;</span>Semantics</a></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="#%28part._.Pragmatics%29" class="toclink" data-pltdoc="x">6<span class="hspace">&nbsp;</span>Pragmatics</a></p></td></tr></table><p><table cellspacing="0" cellpadding="0"><tr><td><p>&#160;</p></td></tr><tr><td><p></p></td></tr><tr><td><p>&#160;</p></td></tr></table></p><p>What is a programming Language?</p><p>How do people study programming languages?</p><h3 class="heading">1<tt>&nbsp;</tt><a name="(part._the-pragmatics)"></a>The Pragmatics Question<span class="button-group"><a href="#(part._the-pragmatics)" class="heading-anchor" title="Link to here">🔗</a><span style="visibility: hidden"> </span></span></h3><p>Software developers create software systems with programming languages and their
+tool chains. They edit code in an IDE, which, in turn, provides feedback as the
+code evolves. They read code and they rely on properties of the
+language&#8212;<wbr></wbr>meaning properties that hold for all programs&#8212;<wbr></wbr>to help them with
+this task.  They add test suites and ask the IDE to perform these tests; the IDE
+indicates which tests fail. They use failing test cases to start the bug
+locating process, using the IDE to set breakpoints so that they can see where
+execution goes wrong. They change the code to fix bugs once found. They measure
+the performance of systems, and if it is found wanting, they try replace
+low-performing pieces with faster ones. During this entire process, software
+developers engages with the chosen programming language and its tools, and the
+question is how well the language and the tools serve their purpose in each of
+these situations.</p><p>Linguists have studied natural languages and their use in various contexts for
+even longer than programming language researchers have studied their
+<span class="refelem"><span class="refcolumn"><span class="refcontent">Our use of &ldquo;pragmatics&rdquo; slightly differs from the use in linguistics.</span></span></span>
+subjects. They recognize this description immediately. They have a word for it:
+<span style="font-style: italic">pragmatics</span>&#8212;<wbr></wbr>short for &ldquo;use of language in context.&rdquo; Linguists
+appreciate the central role that pragmatics plays in improving people&rsquo;s
+understanding of the fundamental laws of language.</p><p>This text book tackles the question of programming-language pragmatics head on.
+Following the historic development, the emphasis is on how certain elements of
+languages facilitate the creation of code and reasoning about it. With
+&ldquo;reasoning&rdquo; we mean reading, understanding relationships between pieces of
+code, validating those, and spotting problematic spots. Each element of a
+language represents a design decision, that is, a choice by language creators to
+pick one of several alternatives. Such design alternatives come with different
+costs and benefits, and understanding the rationale behind the choice is an
+essential aspect of the study of programming languages.</p><p>Near the end, this book presents the design rationale behind portions of Type
+Script, a widely used language. Its construction combines many advanced language
+elements in an intriguing manner. At the same time, the language is a case study
+of how its creators strictly emphasized one cost-benefit aspect over all
+others&#8212;<wbr></wbr>to the potential detriment of neglecting many uses cases of this
+language.</p><h3 class="heading">2<tt>&nbsp;</tt><a name="(part._.Programming_.Language)"></a>Programming Language<span class="button-group"><a href="#(part._.Programming_.Language)" class="heading-anchor" title="Link to here">🔗</a><span style="visibility: hidden"> </span></span></h3><p>Like every natural language, any <span style="font-style: italic">programming language</span>, which
+is an artificial language, has three properties that a programmer must
+understand: syntax, semantics, and pragmatics.</p><ul><li><p><span style="font-style: italic">Syntax</span> consists of the vocabulary and the grammatical rules,
+which determine which sequences of &ldquo;letters&rdquo; form a &ldquo;word&rdquo; and which
+sequences of &ldquo;words&rdquo; are <span style="font-style: italic">well-formed</span> sentences. A syntax
+specification may also impose additional <span style="font-style: italic">validity</span> constraints on
+well-formed sentences before one of these is accepted as an actual program.</p></li><li><p><span style="font-style: italic">Semantics</span> assigns meaning to programs and, implicitly, to valid
+sentences. This meaning is typically specified via a natural-language document;
+a few programming languages come with mathematical specifications, based on the
+research of &ldquo;semanticists.&rdquo;. A software developer, however, has to accept
+whatever the chosen implementation of a language does when presented with a
+program. Language researchers tend to call the latter &ldquo;behavior&rdquo; to
+differentiate it from the <span class="emph">desired</span> semantics of the language.</p></li><li><p><span style="font-style: italic">Pragmatics</span> is about the usage of a language in specific work
+situations. This wording covers the creation of programs, the reading of code,
+the search for bugs, and so on. Unlike syntax and semantics, pragmatics remains
+an imprecise term and the idea of pragmatics has received much less attention
+from researchers than syntax and semantics&#8212;<wbr></wbr>even though it clearly matters most
+to the working software developer.</p></li></ul><h3 class="heading">3<tt>&nbsp;</tt><a name="(part._.Studying_.Programming_.Languages)"></a>Studying Programming Languages<span class="button-group"><a href="#(part._.Studying_.Programming_.Languages)" class="heading-anchor" title="Link to here">🔗</a><span style="visibility: hidden"> </span></span></h3><p>Programming language researchers use models to study programming languages. In
+this, they follow standard scientific procedure. Roughly speaking, a model
+reduces an object of study to those elements that a researcher wishes to
+understand in depth&#8212;<wbr></wbr>without eliminating elements that would invalidate any
+results for the actual object. Put differently, the goal is to answer questions
+about the object via the model so that these answers are of some value in the
+actual world.</p><p>One great example is physics. In many cases, a physicist can think about moving
+objects as if they were simple points, even though the object may experience
+friction due to its extent. Similarly, a system biologist may act as if DNA were
+just a sequence of &ldquo;letters&rdquo; (A, C, G, and T), but these letters are
+nucleotide bases with chemical and physical properties. Models are also of use
+in social sciences. Classical economists assume that human beings act rationally
+as participant in economic activities, and they do so with some success for
+macro-level predictions.</p><p><div class="SIntrapara">Over time, researchers have developed three kinds of programming-language
+models:
+</div><div class="SIntrapara"><ul><li><p>informal descriptions, using natural languages;</p></li><li><p>mathematical functions and relations; and</p></li><li><p>executable programs.</p></li></ul></div><div class="SIntrapara">All of these share the key property of models, namely, that they do not cover
+the entire language to be studied. They tend to restrict the syntax to essential
+features, and they tend to formulate a semantics that covers a wide range of
+cases, not all of them.</div></p><p>Each of these approaches has advantages and disadvantages. While a natural
+language description of a programming language can be used for an entire
+language, it necessarily comes with gaps. By their very nature, natural
+languages tend to allow the formulation of ambiguous formulations. A
+mathematical model is usually extremely exact, but it tends to describe a small,
+even minuscule fraction of any given real language. To a working developer, an
+executable model of any aspect of a programming language has the advantage that
+it runs and that it is amenable to quick explorations for specific cases.  If
+the source code is available, a programmer can even explore designs
+alternatives. At the same time, writing a program to understand a fragment of a
+programming language means that an understanding of one language is&#8212;<wbr></wbr>at least
+partially&#8212;<wbr></wbr>reduced to understanding another one. For this reason, this text
+uses executable models while borrowing elements from the mathematical
+side&#8212;<wbr></wbr>this allows for making precise models without tying them too closely to
+<span class="refelem"><span class="refcolumn"><span class="refcontent">Implementing executable models is also a good
+way to reinforce good programming habits.</span></span></span>
+the chosen implementation language.</p><p>Given this background, let&rsquo;s take a close but quick look at each of the
+properties of a programming language&#8212;<wbr></wbr>that is, how people about and what people
+get out of studying syntax, semantics, and pragmatics.</p><h3 class="heading">4<tt>&nbsp;</tt><a name="(part._.Syntax)"></a>Syntax<span class="button-group"><a href="#(part._.Syntax)" class="heading-anchor" title="Link to here">🔗</a><span style="visibility: hidden"> </span></span></h3><p>People are told not to judge a book by its cover, but software developers
+routinely do. The &ldquo;cover&rdquo; of a programming language is the program text that
+developers enter into an IDE, read, and comprehend. Different language creators
+make different assumptions about which &ldquo;letters&rdquo; make up the <span style="font-style: italic">vocabulary</span>
+of the words of programs. And, these assumptions have a direct impact on
+developers.  Some opt to allow only sequences of alpha-numerical characters as
+the &ldquo;letters&rdquo; of the vocabulary; others accept that developers wish to use
+<span class="stt">fahrenheit-&gt;celsius</span> as the name of a temperature conversion function.</p><p><div class="SIntrapara">Similarly, language creators also make assumptions about how developers wish to
+compose words into sentences. It starts with simple expressions, that is, the
+<span style="font-style: italic">grammatical rules</span> that govern how individual words are composed into
+expressions. Some creators think that the infix notation of algebra, which only
+emerged over the past couple of centuries, elegantly generalizes to programming,
+where developers define new operators all the time. Thus, they allow developers
+to write
+</div><div class="SIntrapara"><table cellspacing="0" cellpadding="0" class="SVerbatim"><tr><td><p><span class="hspace">&nbsp;&nbsp;</span><span class="stt"></span><span class="hspace">&nbsp;</span><span class="stt">x -&gt; f ++ k </span></p></td></tr></table></div><div class="SIntrapara">and, implicitly, assume that all future readers of such expressions can easily
+decipher the order in which the two operations are evaluated. Others prefer to
+have developers spell out this order of operator precedence so that the same
+expression may look like this:
+</div><div class="SIntrapara"><table cellspacing="0" cellpadding="0" class="SVerbatim"><tr><td><p><span class="hspace">&nbsp;&nbsp;</span><span class="stt"></span><span class="hspace">&nbsp;</span><span class="stt">(++ (-&gt; x f) k) </span></p></td></tr></table></div><div class="SIntrapara">After all, all students in elementary schools know that parentheses clarify
+operator precedence. People also intensely disagree whether <span class="stt">;</span> is a
+statement terminator or separator; others want TAB characters to signify
+something about programs; and the parentheses lovers don&rsquo;t care because
+parentheses and a bit of white space make it all obvious.</div></p><p><div class="SIntrapara">A student of programming languages must ignore the specific differences of
+<span class="refelem"><span class="refcolumn"><span class="refcontent">This approach is the definition of <span style="font-style: italic">abstraction</span>.</span></span></span>
+syntax and focus on the commonalities. This focus is a step from concrete
+examples to general ideas, insights that should be useful across languages.
+Concerning syntax, language researchers figured out two such general insights
+by the 1960s:
+</div><div class="SIntrapara"><ol><li><p>The first one is a sufficiently general technique for describing
+vocabularies and grammars.  In essence, this technique&#8212;<wbr></wbr>called
+<span style="font-style: italic">Backus-Naur Form</span> (short BNF)&#8212;<wbr></wbr>is a standard grammar for defining
+grammars.</p><p>A logical-mathematical way of expressing this idea is that a grammar consists of
+a collection of <span style="font-style: italic">n</span> equations in <span style="font-style: italic">n</span> variables. Unlike the equations
+we know from high school and college courses, solutions to these grammar
+equations are sets of terms.</p></li><li><p>The second concerns the description of syntax with respect to questions
+concerning semantics. Whether a language uses prefix, infix, or postfix notation
+for an addition expression is simply irrelevant. What matters is that (1) the
+description brings across that it <span class="emph">is</span> about addition, (2) how many
+operands there are, and (3) how to refer to the operands. This idea is referee
+to as <span style="font-style: italic">abstract syntax</span>.</p></li></ol></div><div class="SIntrapara"><a href="part_two.html" data-pltdoc="x">Syntax and Parsing</a> expands on these insights and provides concrete
+examples. Critically, it explains how these two insights are the basis of a
+straightforward implementation of syntax checking&#8212;<wbr></wbr>an executable model of
+syntax.</div></p><h3 class="heading">5<tt>&nbsp;</tt><a name="(part._.Semantics)"></a>Semantics<span class="button-group"><a href="#(part._.Semantics)" class="heading-anchor" title="Link to here">🔗</a><span style="visibility: hidden"> </span></span></h3><p><div class="SIntrapara">English speakers are familiar with the phrase &ldquo;it&rsquo;s just semantics,&rdquo; typically
+used to dismiss an argument because the differences are trivial, but people who
+know that &ldquo;semantics&rdquo; is a fancy word for &ldquo;meaning&rdquo; must be stumped by this
+usage. Of course, it&rsquo;s all about &ldquo;meaning&rdquo; and software developers are
+perfectly aware of this fact.  They know that it matters whether
+</div><div class="SIntrapara"><blockquote><p>an array reference enforces the container&rsquo;s boundaries.</p></blockquote></div><div class="SIntrapara">If it doesn&rsquo;t, an array reference can cause a program to segfault when it uses a
+negative index or an index that exceeds the length of the array. Alternatively,
+the lookup succeeds and retrieves random bits that masquerade as an array
+element&#8212;<wbr></wbr>and the code may appear to terminate normally and output proper
+results. This kind of semantics has posed major security problems for decades.
+By contrast, a boundary-enforcing array reference signals a run-time exception
+for such use cases, preventing catastrophic misinterpretations. In short,
+semantics very much matters.</div></p><p><div class="SIntrapara">Inspired by the success of investigations into syntax, programming language
+researchers struggled for quite some time to come up with a simple mathematical
+framework for describing the meaning of programs. Here are the most well-known
+in historical order:
+</div><div class="SIntrapara"><ul><li><p>An interpreter is a recursive function from syntax to values in some
+chosen programming language.</p></li><li><p>An <span style="font-style: italic">abstract machine</span> consists of two pieces: (1) a (large) set of
+states and (2) an instruction function that maps one state to another.</p><p>Instead of the sequence of all bits in a hardware machine&#8212;<wbr></wbr>where each feasible
+sequence of 0s and 1s describes a possible state&#8212;<wbr></wbr>an abstract machine uses
+pieces of the modeled language. Some states are marked as initial, others as
+final.</p><p>The function correspond to high-level instructions, hence its name. For final
+machine states, this function is undefined.</p><p>Given a program, it is loaded into the machine, which puts it into an initial
+state. Then the instruction function is applied until the machine is in a final
+state. This final state is unloaded to yield an answer (or several).</p></li><li><p>A <span style="font-style: italic">denotational semantics</span> consists of a <span style="font-style: italic">domain</span>&#8212;<wbr></wbr>a set of
+mathematical elements that satisfies some properties&#8212;<wbr></wbr>-plus a meaning function
+from the syntax to the domain. The meaning function tends to resemble an
+interpreter.</p></li><li><p>An <span style="font-style: italic">operational semantics</span> combines ideas from the meaning function
+of denotational semantics with ideas from the world of abstract machines.</p></li></ul></div><div class="SIntrapara">None can easily express all possible behaviors.</div></p><p>Of these approaches, the interpreter&#8212;<wbr></wbr>by definition&#8212;<wbr></wbr>and the abstract machine
+approach lend themselves most easily to implementation. Implementing an
+interpreter or abstract machine yields a first impression of how much work it
+will be build a performant implementation. Most importantly, with an
+implementation, people can check whether programs behave in the expected manner;
+they can explore corner cases of behavior; and they can begin to answer
+questions about how software developers can use language elements in various
+work situations.</p><h3 class="heading">6<tt>&nbsp;</tt><a name="(part._.Pragmatics)"></a>Pragmatics<span class="button-group"><a href="#(part._.Pragmatics)" class="heading-anchor" title="Link to here">🔗</a><span style="visibility: hidden"> </span></span></h3><p>Models of syntax and semantics enable researchers to explore question of
+pragmatics. Executable models help most, because researchers can interact with
+them and explore ideas rapidly. Well-organized executable models also lend
+themselves to language experimentation.</p><p><div class="SIntrapara">Such a language experiment can help answer questions about language pragmatics.
+Consider the already-mentioned case of an array lookup.  Employing the widely
+used syntax of <span class="stt">a[i]</span> a researcher can ponder what the impact of the two
+distinct meanings is in various work situations. Recall the two possible
+meanings, formulated in terms of a machine controlled by program expressions and
+a memory:
+</div><div class="SIntrapara"><ul><li><p><span class="stt">a[i]</span> checks whether <span class="stt">i</span> is between <span class="stt">0</span> and the upper boundary
+of <span class="stt">a</span>. If so, it retrieves the corresponding element; otherwise it stops the
+executing machine or interpreter and signals a problem.</p></li><li><p><span class="stt">a[i]</span> retrieves the <span class="stt">i</span>th element or, if <span class="stt">i</span> is outside the
+boundary, makes up an element that meets the type of <span class="stt">a</span>. The machine
+continues to execute the next instruction.</p></li></ul></div></p><p>A researcher can now ask two different, but related sets of questions. The first
+set concerns the costs and benefits to the person who uses the language. The
+second one is of interest to the implementer of the language, that is, the
+person who builds a robust and performant implementation from the executable
+model.</p><p><div class="SIntrapara">Let&rsquo;s take a look at some work situations that developers encounter:
+</div><div class="SIntrapara"><ul><li><p>During the editing of code, what matters is whether the sequence of
+characters entered into the IDE form a well-formed and valid sentence. Since the
+syntax is the same for both meanings, editing code isn&rsquo;t affected by the choice
+of meaning.</p></li><li><p>The developer runs the program and notices that it doesn&rsquo;t run as fast as
+expected. It turns out that the most frequently executed code consists of a nest
+of loops with many array references in the body of the innermost loop. In this
+case, it is quite possible that a boundary-checking implementation of array
+references causes the bottleneck.  That is, a developer might prefer the
+non-checking variant here.</p></li><li><p>When the program is tested, a quality assurance engineer notices an
+unusual output. Although the program does not crash, its answers just seem off.
+Now the engineer may question whether a non-checking array reference is going
+wrong and whether by going wrong it injects some random element that causes the
+program to give a bad answer&#8212;<wbr></wbr>at least on some occasions. This developer would
+clearly prefer the bounds-checking variant of array references.</p><p>Alternatively, the developer should inspect all array references and manually
+wrap them with boundary checks. That is, a developer can take on the work of
+implementing the checked variant based on the unchecked one, if needed.</p></li></ul></div><div class="SIntrapara">In sum, from the perspective of a language user, there might not be a clear
+answer as to which meaning of some syntax is preferable.</div></p><p><div class="SIntrapara">From the perspective of a language implementer, the questions are related those
+of a user but differ a bit for this specific case. Let&rsquo;s assume the implementer
+wishes to write a compiler, that is, a translation of source code to
+assembly. An array lookup with two different meanings is subject to the
+following considerations:
+</div><div class="SIntrapara"><ul><li><p>A translation of a non-checking array reference is
+straightforward. Assuming <span class="stt">a</span> is represented as a memory address and <span class="stt">i</span>
+denotes an offset, the compiler should issue an instruction to load the bits at
+memory location <span class="stt">a + i</span>.</p></li><li><p>Without any further information, the compilation for the alternative
+meaning differs sharply.  The compiler cannot represent an array as just an
+address; it must store the size of the array somewhere. This number must be
+retrieved and compared to <span class="stt">i</span>, assuming the latter is even a non-negative
+integer. If the comparison succeeds, the retrievable of the bits can proceed in
+a manner similar to the first case; otherwise the sequence of assembly
+instructions must jump to a place that reports the error.</p></li><li><p>The phrase &ldquo;without any further information&rdquo; is suggestive. What if the
+compiler could &ldquo;think&rdquo; about the program and determine up front that some
+particular array reference will always succeed? That is, the generated code does
+not need to perform the bound checking.</p><p>Next the author of the compiler must consider (1) how difficult it is to
+implement this &ldquo;thinking,&rdquo; (2) how safe this thinking is, and (3) how much it
+slows down the translation process.</p></li></ul></div></p><p>Together these two sets of questions yield a cost-benefit analysis.  For many
+decades, the decision almost always came down to what was easiest to
+implement. That is, until people discovered that unchecked array references are
+a major source of safety and security flaws. In turn, the work shifted from the
+many software developers using the language to the few compiler writers.</p><p><span class="refelem"><span class="refcolumn"><span class="refcontent">We ignore the case when two forms of syntax have the same
+meaning, because we consider this one mostly a question of taste.</span></span></span></p><p>Questions of pragmatics aren&rsquo;t always as clear-cut as the one for array
+references. Design alternatives may require different source syntax and
+different meaning. People encounter many different work situations, not just
+editing code, observing performance, and locating bugs.  For example, a student
+in a beginning programming course <span class="emph">is</span> in a work situation, a situation
+that differs from those just mentioned. Try to imagine some others.</p><p>This rest of book focuses on those question of pragmatics that concern the
+working developer. The expectation is that the series of examples help (future)
+developers create an informal framework for approach programming languages and
+evaluating features of programming languages. Before we can get started though,
+we need to take a close look at the basic notions of syntax and semantics.</p><div class="navsetbottom"><span class="navleft"><div class="nosearchform"></div>&nbsp;&nbsp;<span class="tocsettoggle">&nbsp;&nbsp;<a href="javascript:void(0);" title="show/hide table of contents" onclick="TocsetToggle();">contents</a></span></span><span class="navright">&nbsp;&nbsp;<a href="index.html" title="backward to &quot;Programming Language Pragmatics&quot;" data-pltdoc="x" rel="prev">&larr; prev</a>&nbsp;&nbsp;<a href="index.html" title="up to &quot;Programming Language Pragmatics&quot;" data-pltdoc="x">up</a>&nbsp;&nbsp;<a href="part_two.html" title="forward to &quot;II Syntax and Parsing&quot;" data-pltdoc="x" rel="next">next &rarr;</a></span>&nbsp;</div></div></div><div id="contextindicator">&nbsp;</div></body></html>
