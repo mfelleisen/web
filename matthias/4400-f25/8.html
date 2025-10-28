@@ -45,10 +45,10 @@ occur for a given program.</span></span></span>
 <span style="font-style: italic">Module</span> grammar;</p></li><li><p><span class="Smaller">"duplicate module name"</span> if in the well-formed <span style="font-style: italic">Module</span> system two of the
 <span class="Smaller">module</span> definitions come with the same name;</p></li><li><p><span class="Smaller">"duplicate method, field, or parameter name"</span> if in the well-formed <span style="font-style: italic">Module</span> system at least
 one <span class="Smaller">class</span> definition comes with two fields or methods that have the
-same name;</p></li><li><p><span class="Smaller">"undeclared variable error"</span> if in the well-formed <span style="font-style: italic">Module</span> system one of its
-variable occurrences comes without declaration or one occurrence of a
-<span class="Smaller">ClassName</span> in a statement or an expression comes without class
-definition;</p></li><li><p><span class="Smaller">"object"</span> if the CESK machine produces an object for
+same name;</p></li><li><p><span class="Smaller">"undeclared variable error"</span> if in the well-formed <span style="font-style: italic">Module</span> system <span style="color: purple">one of its
+import specifications refers to a non-existent module</span>, one of its variable occurrences
+comes without declaration, or one occurrence of a <span class="Smaller">ClassName</span> in <span class="strike" style="text-decoration:line-through">a statement or</span>
+an expression comes without class definition;</p></li><li><p><span class="Smaller">"object"</span> if the CESK machine produces an object for
 the well-formed and valid <span style="font-style: italic">Module</span> system;</p></li><li><p>a number <span class="Smaller">n</span> if the CESK machine produces a number <span class="Smaller">n</span> for
 the well-formed and valid <span style="font-style: italic">Module</span> system;</p></li><li><p><span class="Smaller">"run-time error"</span> if the CESK machine produces an error outcome for the
 well-formed and valid <span style="font-style: italic">Moduled</span> system.</p></li></ul></div></p><p><span style="color: red">Testing Task</span> Create 10 integration tests for <span class="stt">xmodule</span>.</p><p>A test always consists of inputs, expected
