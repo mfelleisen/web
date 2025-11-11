@@ -35,10 +35,12 @@ different <span class="Smaller">Shape</span>s.</p></li><li><p>A <span class="Sma
 </div><div class="SIntrapara"><ul><li><p>Adapt the AST data representation from <span style="font-style: italic">Typed</span> to <span style="font-style: italic">Mixed</span>.
 Update your parser and type checker for <span style="font-style: italic">Module</span> accordingly.</p></li><li><p>Implement an additional pass that checks the validity of import specifications.</p></li><li><p>Consider modifying the rule for type checking systems from
 <a href="types.html#%28counter._%28figure._fig~3asystem-rule%29%29" data-pltdoc="x">figure&nbsp;<span class="FigureRef">20</span></a> so that untyped modules (<span class="Smaller">module</span>) are
-ignored. Your type checker needs to be modified accordingly.</p></li><li><p>Modify the pass that turns the AST of a well-formed and well-typed
-<span style="font-style: italic">Mixed</span> system into a <span style="font-style: italic">Module</span> AST so that the linker from
-<a href="8.html" data-pltdoc="x">8 &#8212;<wbr></wbr> Modules</a> can create a <span style="font-style: italic">Class</span> program, which can then be run on the
-<span style="font-style: italic">Class</span> CESK machine.</p><p><span style="font-weight: bold">Note</span> Depending on your chosen implementation language and your choice of
+ignored. Your type checker needs to be modified accordingly.</p></li><li><p><span style="color: purple">Create a pass that <span style="font-weight: bold">throws away</span> the types in
+<span class="Smaller">tmodule</span>s and <span class="Smaller">timport</span>s, turning them into
+<span class="Smaller">module</span>s and <span class="Smaller">import</span>s, respectively.</span></p><p><span class="refelem"><span class="refcolumn"><span class="refcontent"><span style="color: purple">I have deleted words from this item because
+striking out might have obfuscated its meaning.</span></span></span></span></p><p><span style="color: purple">At that point the linker can take over and generate an
+ordinary <span style="font-style: italic">Classes</span> program that can be run on the existing CESK
+machine.</span></p><p><span style="font-weight: bold">Note</span> Depending on your chosen implementation language and your choice of
 AST data representation, your linker might already work for <span style="font-style: italic">Mixed</span> ASTs or
 you might find it easy to adapt the linker so that it works this way.</p></li><li><p>Uncomment the cases of the CESK machine that you commented for
 <a href="9.html" data-pltdoc="x">9 &#8212;<wbr></wbr> Static Types</a>. Stop! Why is this necessary?</p></li></ul></div></p><p>The <span class="stt">xjs</span> program reads one <a href="#%28tech._examplegg%29" class="techoutside" data-pltdoc="x"><span class="techinside">ExampleGG</span></a> from <span class="stt">STDIN</span>, constructs
