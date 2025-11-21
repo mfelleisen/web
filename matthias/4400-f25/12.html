@@ -11,7 +11,7 @@ Racket-like semantics.</p><p><div class="SIntrapara">In contrast to the JavaScri
 CESK semantics checks interactions between typed and untyped pieces of code.
 Concretely, the machine has additional instructions to ensure types are sound:
 </div><div class="SIntrapara"><ul><li><p>Every time the machine instantiates a typed class&#8212;<wbr></wbr>whether originally
-typed and typed-checked or synthetic and unchecked&#8212;<wbr></wbr>it creates a proxy instead
+typed and type-checked or synthetic and unchecked&#8212;<wbr></wbr>it creates a proxy instead
 of a plain object. A <span style="font-style: italic">proxy</span> combines the object with the type of its
 class.</p></li><li><p>When the machine encounters a proxy as it attempts to evaluate a method
 call, it checks whether the arguments <a href="#%28tech._conform%29" class="techoutside" data-pltdoc="x"><span class="techinside">conform</span></a> to the parameter types of the
